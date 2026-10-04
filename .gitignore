@@ -1,0 +1,10 @@
+node_modules/
+dist/
+artifacts/
+*.local
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc

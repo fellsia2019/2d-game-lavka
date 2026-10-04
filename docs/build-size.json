@@ -1,0 +1,57 @@
+{
+  "bytes": 685449,
+  "files": [
+    {
+      "path": "dist/assets/shop.webp",
+      "bytes": 288054
+    },
+    {
+      "path": "dist/assets/shelf.webp",
+      "bytes": 62010
+    },
+    {
+      "path": "dist/assets/bread.webp",
+      "bytes": 50120
+    },
+    {
+      "path": "dist/assets/jam.webp",
+      "bytes": 46040
+    },
+    {
+      "path": "dist/assets/honey.webp",
+      "bytes": 45534
+    },
+    {
+      "path": "dist/assets/pear.webp",
+      "bytes": 44714
+    },
+    {
+      "path": "dist/assets/lemon.webp",
+      "bytes": 40684
+    },
+    {
+      "path": "dist/assets/index-Ck_m1kLp.js",
+      "bytes": 36969
+    },
+    {
+      "path": "dist/assets/index-CQ0CiWwQ.css",
+      "bytes": 34582
+    },
+    {
+      "path": "dist/assets/milk.webp",
+      "bytes": 26586
+    },
+    {
+      "path": "dist/assets/worker-BdDsVENF.js",
+      "bytes": 8958
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 920
+    },
+    {
+      "path": "dist/favicon.svg",
+      "bytes": 278
+    }
+  ]
+}
