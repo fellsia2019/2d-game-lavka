@@ -1,5 +1,5 @@
 {
-  "bytes": 1045483,
+  "bytes": 1063101,
   "files": [
     {
       "path": "dist/assets/shop.webp",
@@ -18,12 +18,12 @@
       "bytes": 62010
     },
     {
-      "path": "dist/assets/bread.webp",
-      "bytes": 50120
+      "path": "dist/assets/jobs-CNI2wtdw.css",
+      "bytes": 60543
     },
     {
-      "path": "dist/assets/jobs-DOatB7GQ.css",
-      "bytes": 48253
+      "path": "dist/assets/bread.webp",
+      "bytes": 50120
     },
     {
       "path": "dist/assets/jam.webp",
@@ -38,31 +38,31 @@
       "bytes": 44714
     },
     {
-      "path": "dist/assets/lemon.webp",
-      "bytes": 40684
+      "path": "dist/assets/game-DplZMqlL.js",
+      "bytes": 44270
     },
     {
-      "path": "dist/assets/game-C3h9HWh_.js",
-      "bytes": 40002
+      "path": "dist/assets/lemon.webp",
+      "bytes": 40684
     },
     {
       "path": "dist/assets/milk.webp",
       "bytes": 26586
     },
     {
-      "path": "dist/assets/worker-CCuQA5X9.js",
-      "bytes": 17064
+      "path": "dist/assets/worker-DSG7z3r_.js",
+      "bytes": 18052
     },
     {
-      "path": "dist/assets/jobs-CL6NG09E.js",
-      "bytes": 9890
+      "path": "dist/assets/jobs-D-8C1Aew.js",
+      "bytes": 9962
     },
     {
-      "path": "dist/assets/author-2CW5P6id.js",
+      "path": "dist/assets/author-Dy8RD4NB.js",
       "bytes": 6315
     },
     {
-      "path": "dist/assets/author-myPqSN0k.css",
+      "path": "dist/assets/author-bxatv301.css",
       "bytes": 1982
     },
     {

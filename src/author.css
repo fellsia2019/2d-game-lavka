@@ -37,7 +37,7 @@ body:has(#author) {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  font-size: 13px;
+  font-size: 16px;
   margin-bottom: 13px;
 }
 .author-layout input,
@@ -50,14 +50,14 @@ body:has(#author) {
   padding: 11px;
   width: 100%;
   font:
-    14px "Trebuchet MS",
+    16px "Trebuchet MS",
     sans-serif;
   min-height: 44px;
 }
 .author-editor textarea {
   height: 530px;
   resize: vertical;
-  font: 12px/1.5 monospace;
+  font: 16px/1.5 monospace;
 }
 .author-actions {
   display: flex;
@@ -71,13 +71,13 @@ body:has(#author) {
   border-radius: 9px;
   background: #187d79;
   color: white;
-  font-size: 12px;
+  font-size: 16px;
 }
 .author-actions button:disabled {
   opacity: 0.5;
 }
 .author-layout p {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.6;
   margin: 15px 0;
 }
@@ -85,7 +85,7 @@ body:has(#author) {
   color: #a63d36;
 }
 #author-summary {
-  font-size: 12px;
+  font-size: 16px;
   padding: 10px;
   background: #e7eee0;
   border-radius: 10px;
@@ -102,7 +102,7 @@ body:has(#author) {
   padding: 10px;
 }
 .author-shelf strong {
-  font-size: 11px;
+  font-size: 16px;
 }
 .author-shelf > div {
   display: flex;

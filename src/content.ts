@@ -12,6 +12,7 @@ export interface ChapterEntry {
   line: string;
   profile: Profile | "tutorial";
   lesson?: "transfer" | "tools" | "rear" | "crate";
+  guidance?: "gentle";
 }
 export const CHAPTER: readonly ChapterEntry[] = [
   {
@@ -24,6 +25,7 @@ export const CHAPTER: readonly ChapterEntry[] = [
   },
   {
     id: "morning-breakfast",
+    guidance: "gentle",
     name: "Солнечный завтрак",
     customer: "Борис",
     line: "Хлеб ещё тёплый. Поможете собрать заказ?",
@@ -31,6 +33,7 @@ export const CHAPTER: readonly ChapterEntry[] = [
   },
   {
     id: "morning-opening",
+    guidance: "gentle",
     name: "Утро в лавке",
     customer: "Мила",
     line: "Ещё один заказ — и у нас будет новая вывеска!",
@@ -61,6 +64,7 @@ export const CHAPTER: readonly ChapterEntry[] = [
   {
     id: "morning-delivery",
     lesson: "rear",
+    guidance: "gentle",
     name: "Свежая поставка",
     customer: "Илья",
     line: "За первым рядом спрятан ещё один. Освободите полку!",
@@ -76,6 +80,7 @@ export const CHAPTER: readonly ChapterEntry[] = [
   {
     id: "morning-baker",
     lesson: "crate",
+    guidance: "gentle",
     name: "Посылка от пекаря",
     customer: "Илья",
     line: "Поставка откроется после отправки троек.",

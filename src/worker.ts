@@ -1,10 +1,11 @@
 import { chapterLevel } from "./content";
 import { solve } from "./engine";
+import { compactHintPath } from "./hints";
 import { generate, mixVisible, type GenerationOptions } from "./generator";
-import type { Board, Profile } from "./engine";
+import type { Board, Move, Profile } from "./engine";
 type Request =
   | { id: number; kind: "level"; number: number }
-  | { id: number; kind: "hint"; board: Board }
+  | { id: number; kind: "hint"; board: Board; path?: Move[] | null }
   | {
       id: number;
       kind: "generate";
@@ -22,7 +23,7 @@ self.onmessage = (event: MessageEvent<Request>) => {
         : request.kind === "generate"
           ? generate(request.seed, request.profile, 1, request.options)
           : request.kind === "hint"
-            ? solve(request.board, 30000, 72)
+            ? hint(request.board, request.path)
             : mixVisible(request.board, request.seed);
     self.postMessage({ id: request.id, value });
   } catch (error) {
@@ -32,3 +33,13 @@ self.onmessage = (event: MessageEvent<Request>) => {
     });
   }
 };
+
+function hint(board: Board, known?: Move[] | null) {
+  if (known) {
+    const path = compactHintPath(board, known);
+    if (path) return { status: "solved", path, visited: 0 };
+  }
+  const result = solve(board, 30000, 72);
+  if (result.path) result.path = compactHintPath(board, result.path);
+  return result;
+}
