@@ -1,0 +1,65 @@
+{
+  "assets": [
+    {
+      "source": "docs/art/campaign-shop-empty-original.png",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceSha256": "7b850697a29a4bb65a5db1eb359cb8cfde596dce43613974d304fdbf2aad8d79",
+      "runtime": "public/assets/campaign-shop-empty.webp",
+      "runtimeSize": [
+        1536,
+        1024
+      ],
+      "bytes": 182596,
+      "transparent": false
+    },
+    {
+      "source": "docs/art/campaign-map-original.png",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceSha256": "792a22baf220040aa6738730a53e256f0828061e94dcf6877b8ebeaa59aca20e",
+      "runtime": "public/assets/campaign-map.webp",
+      "runtimeSize": [
+        1536,
+        1024
+      ],
+      "bytes": 529648,
+      "transparent": false
+    },
+    {
+      "source": "docs/art/campaign-shelving-original.png",
+      "sourceSize": [
+        1511,
+        1041
+      ],
+      "sourceSha256": "98a0df5fddeb89a80027e0712767286c706f90b4d85f31629409068e385d588f",
+      "runtime": "public/assets/campaign-shelving.webp",
+      "runtimeSize": [
+        1000,
+        590
+      ],
+      "bytes": 116132,
+      "transparent": true
+    },
+    {
+      "source": "docs/art/campaign-basket-original.png",
+      "sourceSize": [
+        1816,
+        866
+      ],
+      "sourceSha256": "fe8f3a18685efd3b0ecc3c0524f339b93b02a8888cfc86babfb50a9d2a749fb3",
+      "runtime": "public/assets/campaign-basket.webp",
+      "runtimeSize": [
+        640,
+        188
+      ],
+      "bytes": 48576,
+      "transparent": true
+    }
+  ],
+  "bytes": 876952
+}

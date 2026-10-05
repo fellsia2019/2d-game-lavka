@@ -1,9 +1,17 @@
 {
-  "bytes": 1063101,
+  "bytes": 1955240,
   "files": [
+    {
+      "path": "dist/assets/campaign-map.webp",
+      "bytes": 529648
+    },
     {
       "path": "dist/assets/shop.webp",
       "bytes": 288054
+    },
+    {
+      "path": "dist/assets/campaign-shop-empty.webp",
+      "bytes": 182596
     },
     {
       "path": "dist/assets/counter.webp",
@@ -12,6 +20,10 @@
     {
       "path": "dist/assets/garden.webp",
       "bytes": 151674
+    },
+    {
+      "path": "dist/assets/campaign-shelving.webp",
+      "bytes": 116132
     },
     {
       "path": "dist/assets/shelf.webp",
@@ -26,6 +38,10 @@
       "bytes": 50120
     },
     {
+      "path": "dist/assets/campaign-basket.webp",
+      "bytes": 48576
+    },
+    {
       "path": "dist/assets/jam.webp",
       "bytes": 46040
     },
@@ -38,8 +54,8 @@
       "bytes": 44714
     },
     {
-      "path": "dist/assets/game-DplZMqlL.js",
-      "bytes": 44270
+      "path": "dist/assets/game-2rwn63AO.js",
+      "bytes": 44315
     },
     {
       "path": "dist/assets/lemon.webp",
@@ -54,12 +70,20 @@
       "bytes": 18052
     },
     {
-      "path": "dist/assets/jobs-D-8C1Aew.js",
-      "bytes": 9962
+      "path": "dist/assets/jobs-DKhVoiHx.js",
+      "bytes": 9292
     },
     {
-      "path": "dist/assets/author-Dy8RD4NB.js",
-      "bytes": 6315
+      "path": "dist/assets/campaign-A67LbV4u.js",
+      "bytes": 8658
+    },
+    {
+      "path": "dist/assets/author-BxHtna9i.js",
+      "bytes": 6360
+    },
+    {
+      "path": "dist/assets/campaign-CO-7_-rX.css",
+      "bytes": 5590
     },
     {
       "path": "dist/assets/author-bxatv301.css",
@@ -67,11 +91,19 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 994
+      "bytes": 1088
     },
     {
       "path": "dist/author.html",
-      "bytes": 635
+      "bytes": 729
+    },
+    {
+      "path": "dist/assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "bytes": 670
+    },
+    {
+      "path": "dist/campaign.html",
+      "bytes": 661
     },
     {
       "path": "dist/favicon.svg",

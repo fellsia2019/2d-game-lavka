@@ -1,0 +1,52 @@
+[
+  {
+    "name": "campaign-shop-empty-original.png",
+    "prompt": "Use case: stylized-concept. Asset type: a production-ready background for a 2D cozy seaside grocery renovation game, wide landscape composition. The provided image is a STYLE REFERENCE ONLY: preserve its tactile honey oak, rich turquoise, warm cream plaster, dimensional painterly illustration and soft sunlight from upper left, not its UI or composition. Create the SAME KIND of small coastal grocery room BEFORE ANY FURNITURE has been installed. Fixed nearly frontal camera, modest view of floor and upper surfaces, straight architectural lines and mild perspective. Left third: an open turquoise-trimmed doorway and a large window revealing the bright blue Mediterranean sea, distant sailboat and sunlight. Middle and right two thirds: plain clean warm cream wall, completely clear for separately rendered freestanding furniture. Lower half: a beautiful uninterrupted honey wooden floor, clear placement space. Simple bare architecture, charming and welcoming rather than dirty or ruined. Only architecture and outside view. No shelving, no counter, no furniture, no baskets, no goods, no indoor plants, no rugs, no lamps, no people, no signs, no letters, no labels, no UI, no watermark. Nothing across the central or right wall. Room geometry must be reusable unchanged for empty, partly stocked and finished stages.",
+    "references": [
+      "../reference/coastal-shop-approved-visual.png"
+    ],
+    "tool": "image_gen built-in",
+    "generatedOn": "2026-10-05"
+  },
+  {
+    "name": "campaign-map-clifftop-draft.png",
+    "prompt": "Use case: stylized-concept. Asset type: a wide illustrated overview map background for a 2D cozy seaside grocery renovation game. Provided image is STYLE REFERENCE ONLY for bright turquoise, honey oak, cream plaster, rich tactile materials and soft warm sunlight. Create a coherent small privately owned coastal plot, viewed from an elevated fixed three-quarter illustration angle, with the blue sea along the lower edge and a sandy promenade. A modest SINGLE-STORY turquoise-and-cream grocery building near the center-left, with empty dark shop windows and a small cream canopy, clearly not yet equipped; a closed plain small warehouse near the upper-right; open cleared plots connected by simple paths at the upper-left, center-right, lower-left and lower-right. The open areas are visible enough to suggest later fruit stalls, bakery and seaside dining terraces. At this START state there are only the small shop and closed warehouse: future plots are EMPTY, no operating restaurant, no second floor, no installed outdoor tables, no active bakery. Low stone boundary and sparse framing coastal plants, do not hide the open plots or buildings with foliage. Beautiful sunny inviting diorama illustration with dimensional materials and clear silhouettes, close to the supplied coastal game reference. Keep every building and planned plot fully inside frame, moderate margins. No labels, no letters, no numbers, no signs, no dashed outlines, no UI, no icons, no watermark.",
+    "references": [
+      "../reference/coastal-shop-approved-visual.png"
+    ],
+    "tool": "image_gen built-in",
+    "generatedOn": "2026-10-05",
+    "status": "Отклонён: скалистый изолированный берег без понятного маршрута покупателей"
+  },
+  {
+    "name": "campaign-shelving-original.png",
+    "prompt": "Use case: stylized-concept. Asset type: one EMPTY freestanding grocery shelving unit as a genuinely transparent 2D game sprite. Image 1 is the new empty room: match its fixed nearly frontal camera, warm honey oak and turquoise trim, bright sunlight from upper left. Image 2 is the approved game STYLE reference only: tactile dimensional stylized illustration and readable silhouettes. Create a beautiful wide low grocery shelf, like a small waist-height display rack, entirely isolated against alpha transparency. A single unified warm honey wooden cabinet with rich turquoise sides and cream edging, two large EMPTY horizontal display bays above one EMPTY bottom wicker-basket storage bay. Front view with slightly visible top ledges, subtle depth consistent with the room. The rack is wider than tall, about 1.45:1 width-to-height. All front ledges are straight horizontal, with clear usable spaces for separately rendered bottles, jars, bread and wicker baskets. Small contained floor contact shadow, strong clean edges and comfortable transparent padding. Absolutely no food, no goods, no bottles, no jars, no baskets, no plants, no signs, no letters, no UI, no room, no floor, no opaque rectangle, no checkerboard painted into the sprite, no watermark. Preserve transparent alpha around and through any open portions of the rack.",
+    "references": [
+      "campaign-shop-empty-original.png",
+      "../reference/coastal-shop-approved-visual.png"
+    ],
+    "tool": "image_gen built-in",
+    "generatedOn": "2026-10-05"
+  },
+  {
+    "name": "campaign-basket-original.png",
+    "prompt": "Use case: stylized-concept. Asset type: one empty reusable wicker display basket as a transparent 2D game sprite. Image 1 is the empty coastal room and establishes the nearly frontal camera and warm sunlight from upper left. Image 2 is the freestanding rack this basket will sit on. Create one shallow rectangular honey-coloured wicker basket with a clear wide open top, viewed almost straight from the front with a modest view of its empty interior. Rich dimensional woven material, soft sunny highlights, rounded friendly corners, a small contact shadow tightly contained around the base. Wide compact silhouette, about 2.1:1 width-to-height. Isolated with genuinely transparent alpha and generous transparent margins. Empty, no food, no goods, no bottles, no jars, no text, no label, no letters, no room, no floor, no opaque background, no painted checkerboard, no watermark. Match the illustrated coastal game's tactile warm wood-and-turquoise style but this object is natural wicker.",
+    "references": [
+      "campaign-shop-empty-original.png",
+      "campaign-shelving-original.png"
+    ],
+    "tool": "image_gen built-in",
+    "generatedOn": "2026-10-05"
+  },
+  {
+    "name": "campaign-map-original.png",
+    "prompt": "Use case: stylized-concept edit. Asset: production-ready overview map for a cozy 2D Mediterranean seaside shop renovation game. Image 1 is the CURRENT DRAFT: retain the warm painterly turquoise-and-cream single-story shop near center-left, the small closed warehouse at upper-right, the honey stone paving, soft sunny lighting and four empty plots for future development. Image 2 is the approved material/color STYLE reference only. CORRECT THE GEOGRAPHY AND CUSTOMER ACCESS: this is a small privately owned retail courtyard ON A POPULATED BEACHFRONT, not an isolated rocky headland. Replace the rocky wave-battered coast, drop/cliff, enclosing front wall, stairs terminating at the sea, and dead-end jetty with a broad FLAT paved PEDESTRIAN PROMENADE that runs continuously LEFT TO RIGHT across the lower third of the picture and visibly continues beyond BOTH side edges. The shop's FRONT DOOR FACES THIS PROMENADE. A short, broad level paved entrance connects the promenade directly to the shop doorway with absolutely no wall, stairs, gates or building obstructing the route. The promenade connects to the neighboring village on the left: suggest a few distant white Mediterranean village rooftops and an adjoining lane, outside the owned plot, so visitors have a credible origin. Add just three tiny relaxed holiday pedestrians walking along the public promenade, clear simple silhouettes far smaller than buildings, no close-ups or faces. BELOW the promenade show a broad clean sandy public beach and a narrow band of CALM turquoise Mediterranean water along the very bottom edge, gentle small shore ripples. No rocks in surf, no cliffs, no wild waves, no isolated island, no dead-end landing, no dock. Reduce foreground sea so beach and customer route are plainly legible. Shop and warehouse remain fully inside frame. Keep four future plots bare and mostly empty, two behind/alongside the shop and two inside courtyard areas to the right and left, linked by internal paved paths. Small private boundary walls may border back or sides, never the shop's front/customer route. Keep believable scale and one coherent fixed elevated three-quarter camera, with the shop's front pointing toward the bottom of frame. Dimensional stylized illustration, rich tactile stone/wood/plaster, turquoise trim, cypresses and bougainvillea sparse at upper outer edges. START state: no operating bakery, no terrace tables, no fruit stalls, no restaurant, no second floor, no signs, no letters, no labels, no numbers, no pins, no UI, no watermark. The final image must immediately read as a beachfront shop people can reach on foot from a seaside village.",
+    "references": [
+      "campaign-map-clifftop-draft.png",
+      "../reference/coastal-shop-approved-visual.png"
+    ],
+    "tool": "image_gen built-in",
+    "generatedOn": "2026-10-05",
+    "revision": "Песчаный пляж, проходная набережная и вход со стороны посёлка по замечанию пользователя"
+  }
+]
