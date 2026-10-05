@@ -5,6 +5,8 @@ import {
   applyMove,
   clone,
   initial,
+  hasMoves,
+  validateDefinition,
   won,
   type Board,
   type Definition,
@@ -13,7 +15,17 @@ import {
   type Position,
   type SearchResult,
 } from "./engine";
-import { CHAPTER, SEEDS } from "./content";
+import {
+  CHAPTER,
+  chapterNumber,
+  completedCount,
+  isCompleted,
+  isUnlocked,
+  nextOrder,
+} from "./content";
+import { structuralKey } from "./generator";
+import { RENOVATIONS, COLORS, type RenovationId } from "./renovations";
+import { track, downloadEvents } from "./telemetry";
 import { job } from "./jobs";
 import {
   STORAGE_KEY,
@@ -21,6 +33,9 @@ import {
   loadProgress,
   renovate,
   saveProgress,
+  cachedHint,
+  rememberHint,
+  validateAttempt,
   type Attempt,
   type RenovationColor,
   type Settings,
@@ -31,6 +46,9 @@ import { icon } from "./icons";
 const app = document.querySelector<HTMLDivElement>("#app")!;
 const overlay = document.querySelector<HTMLDivElement>("#overlay")!;
 const toastElement = document.querySelector<HTMLDivElement>("#toast")!;
+const coach = document.createElement("div");
+coach.id = "coach";
+document.body.append(coach);
 // Access the storage getter inside the persistence functions' try/catch as well:
 // some embedded/privacy modes throw even when obtaining window.localStorage.
 const storage = {
@@ -40,7 +58,7 @@ const storage = {
 };
 const loaded = loadProgress(storage);
 const progress = loaded.progress;
-let screen: "home" | "game" = "home";
+let screen: "home" | "game" | "finish" | "shop" = "home";
 let selected: Position | null = null;
 let highlighted: Move | null = null;
 let busy = false;
@@ -48,7 +66,10 @@ let modal: string | null = null;
 let toastTimer: ReturnType<typeof setTimeout>;
 let lastFocus: HTMLElement | null = null;
 let storageWarned = false;
-let externalChanged = false;
+let externalChanged = !!loaded.readOnly;
+let repairTarget: RenovationId = "sign";
+let pendingLevel: number | null = null;
+let toolLesson = false;
 let drag: {
   from: Position;
   x: number;
@@ -65,6 +86,14 @@ const samePosition = (a: Position | null, b: Position) =>
   !!a && a[0] === b[0] && a[1] === b[1];
 const positionSelector = (p: Position) => `[data-slot="${p[0]},${p[1]}"]`;
 const current = () => progress.attempt!;
+const escapeHTML = (s: string) =>
+  s.replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        c
+      ]!,
+  );
 const today = () => new Date().toLocaleDateString("sv-SE");
 function persist() {
   if (externalChanged) return;
@@ -79,6 +108,11 @@ function toast(message: string) {
   toastElement.classList.add("visible");
   toastTimer = setTimeout(() => toastElement.classList.remove("visible"), 3800);
 }
+function clearToast() {
+  clearTimeout(toastTimer);
+  toastElement.classList.remove("visible");
+  toastElement.textContent = "";
+}
 function applySettings() {
   document.documentElement.classList.toggle(
     "reduced-motion",
@@ -87,80 +121,208 @@ function applySettings() {
   audio.configure(progress.settings);
 }
 function stats() {
-  return `<div class="wallet"><span class="currency star" aria-label="${progress.stars} звёзд ремонта">${icon("star")}<b>${progress.stars}</b></span><span class="currency coin" aria-label="${progress.coins} монет">${icon("coin")}<b>${progress.coins}</b></span></div>`;
+  const stars = progress.stars % 100;
+  const unit =
+    stars >= 11 && stars <= 14
+      ? "звёзд"
+      : stars % 10 === 1
+        ? "звезда"
+        : stars % 10 >= 2 && stars % 10 <= 4
+          ? "звезды"
+          : "звёзд";
+  return `<div class="wallet"><span class="currency star" aria-label="${progress.stars} ${unit} ремонта">${icon("star")}<b>${progress.stars}</b></span><span class="currency coin" aria-label="${progress.coins} монет">${icon("coin")}<b>${progress.coins}</b></span></div>`;
+}
+function focusGame(selector = "#order-heading") {
+  if (screen === "game" && !modal && !externalChanged)
+    app.querySelector<HTMLElement>(coachSelector() ?? selector)?.focus({ preventScroll: true });
 }
 function settingsButton() {
   return `<button class="round cream" data-action="settings" aria-label="Настройки">${icon("settings")}</button>`;
 }
 function render() {
-  app.className = screen === "home" ? "home-screen" : "game-screen";
-  app.innerHTML = screen === "home" ? homeHTML() : gameHTML();
+  const active = document.activeElement as HTMLElement | null;
+  const focusSelector =
+    active && app.contains(active)
+      ? active.dataset.slot
+        ? positionSelector(
+            active.dataset.slot.split(",").map(Number) as Position,
+          )
+        : active.dataset.action
+          ? `[data-action="${active.dataset.action}"]`
+          : active.id === "order-heading"
+            ? "#order-heading"
+            : null
+      : null;
+  app.className = screen === "game" ? "game-screen" : "home-screen";
+  app.innerHTML =
+    screen === "home"
+      ? homeHTML()
+      : screen === "finish"
+        ? finishHTML()
+        : screen === "shop"
+          ? shopHTML()
+          : gameHTML();
+  if (focusSelector)
+    app
+      .querySelector<HTMLElement>(focusSelector)
+      ?.focus({ preventScroll: true });
+  if (screen === "game") renderSelection();
+  else updateCoach();
+  if (busy)
+    app.querySelectorAll<HTMLButtonElement>("button").forEach((b) => {
+      if (b.dataset.action !== "settings") b.disabled = true;
+    });
+  else if (!modal && document.activeElement === document.body)
+    app
+      .querySelector<HTMLElement>(
+        screen === "game" ? "#order-heading" : ".primary:not([disabled])",
+      )
+      ?.focus({ preventScroll: true });
+}
+const repairNext = () => RENOVATIONS.find((r) => !progress.renovations[r.id]);
+const chapterDone = () => completedCount(progress.completed) === CHAPTER.length;
+const allDone = () => chapterDone() && !repairNext();
+function sceneHTML() {
+  return `<div class="shop-scene" aria-hidden="true"></div><div class="home-shade"></div>
+    ${progress.renovations.counter ? `<div class="shop-counter ${progress.renovations.counter}" aria-hidden="true"><img src="${assets}counter.webp" alt="" /></div>` : ""}
+    ${progress.renovations.window ? `<div class="shop-garden ${progress.renovations.window}" aria-hidden="true"><img src="${assets}garden.webp" alt="" /></div>` : ""}
+    <header class="topbar"><div class="brand">${icon("shell")}<span>Лавка у моря</span></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
+    <div class="shop-sign ${progress.renovation ? "renovated " + progress.renovation : "unrestored"}"><span class="sign-rope left"></span><span class="sign-rope right"></span>${icon(progress.renovation ? "shell" : "wave")}<strong>${progress.renovation ? "Лавка у моря" : "Скоро открытие"}</strong></div>`;
 }
 function homeHTML() {
-  const nextNumber = Math.min(progress.completed.length + 1, CHAPTER.length);
+  const next = nextOrder(progress.completed),
+    node = repairNext(),
+    count = completedCount(progress.completed);
   const unfinished = progress.attempt && !won(progress.attempt.board);
   const label = unfinished
-    ? `Продолжить заказ ${progress.attempt!.definition.number}`
-    : progress.completed.length >= 10
-      ? "Выбрать заказ"
-      : `Играть · заказ ${nextNumber}`;
-  const repaired = !!progress.renovation;
-  return `<div class="shop-scene" aria-hidden="true"></div><div class="home-shade"></div>
-    <header class="topbar"><div class="brand">${icon("shell")}<span>Лавка у моря<small>Ваша маленькая история</small></span></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
-    <div class="shop-sign ${repaired ? "renovated " + progress.renovation : "unrestored"}" aria-label="${repaired ? "Обновлённая вывеска: Лавка у моря" : "Старая вывеска: скоро открытие"}"><span class="sign-rope left"></span><span class="sign-rope right"></span>${icon(repaired ? "shell" : "wave")}<strong>${repaired ? "Лавка у моря" : "Скоро открытие"}</strong><small>${repaired ? "Свежесть. Солнце. Немного счастья." : "Здесь начинается наша история"}</small></div>
-    <main class="home-content"><section class="welcome"><span class="eyebrow">ГЛАВА 1 · СОЛНЕЧНОЕ УТРО</span><h1>${progress.completed.length ? "В лавке снова<br>пахнет счастьем." : "Море за окном.<br>Счастье на полках."}</h1><p>Собирайте заказы, наводите порядок<br class="desktop-break"> и подарите этой лавке новую жизнь.</p><button class="primary play" data-action="play">${label}${icon("arrow")}</button><button class="quiet home-levels" data-action="levels">${icon("reserve")} Книжка заказов <span>${progress.completed.length}/10</span></button></section>
-    <section class="renovation-card"><div class="card-kicker">ВАША ЛАВКА</div><div class="repair-heading"><span class="repair-symbol">${icon(repaired ? "check" : "star")}</span><div><h2>${repaired ? "Вот теперь — наша!" : "Первый штрих"}</h2><p>${repaired ? "Новая вывеска уже встречает гостей." : "Красивая вывеска над окном"}</p></div></div><div class="repair-meter"><span style="width:${repaired ? 100 : Math.min(100, (progress.stars / 3) * 100)}%"></span></div><div class="repair-detail"><span>${repaired ? "Вывеска обновлена" : `Собрано ${Math.min(progress.stars, 3)} из 3 звёзд`}</span>${icon("star")}</div><button class="secondary" data-action="renovation">${repaired ? "Сменить оформление" : progress.stars >= 3 ? "Обновить вывеску · 3 ★" : "Посмотреть варианты"}${icon("arrow")}</button></section></main>
-    <footer class="home-footer">${icon("wave")} Тихое утро. Никакой спешки.</footer>`;
+    ? "Продолжить"
+    : next
+      ? "Играть"
+      : allDone()
+        ? "Итоги главы"
+        : "Оформить лавку";
+  return `${sceneHTML()}<main class="home-content"><section class="welcome"><span class="eyebrow">ГЛАВА 1</span><h1>Лавка у моря</h1><button class="primary play" data-action="play">${label}${icon("arrow")}</button><button class="quiet home-levels" data-action="levels">${icon("reserve")} Заказы <span>${count}/${CHAPTER.length}</span></button></section>
+    <section class="renovation-card"><div class="card-kicker">ВАША ЛАВКА · ${Object.keys(progress.renovations).length}/${RENOVATIONS.length}</div><div class="repair-heading"><span class="repair-symbol">${icon(node ? node.icon : "check")}</span><div><h2>${node ? node.name : "Лавка готова!"}</h2></div></div><div class="repair-meter"><span style="width:${node ? Math.min(100, (progress.stars / node.cost) * 100) : 100}%"></span></div><div class="repair-detail"><span>${node ? `★ ${Math.min(progress.stars, node.cost)} / ${node.cost}` : "3 / 3"}</span>${icon("star")}</div><button class="secondary" data-action="renovation">${node ? (progress.stars >= node.cost ? `Обновить · ${node.cost} ★` : "Выбрать") : "Оформление"}${icon("arrow")}</button></section></main>`;
+}
+function shopHTML() {
+  return `${sceneHTML()}<main class="shop-tour" aria-label="Оформление лавки"><button class="tour-node tour-sign cream" data-repair="sign">${icon("shell")} Вывеска</button><button class="tour-node tour-counter cream" data-repair="counter">${icon("reserve")} Прилавок</button><button class="tour-node tour-window cream" data-repair="window">${icon("wave")} Цветы у окна</button><div class="tour-footer"><strong>Ваша лавка у моря</strong><button class="primary" data-action="home">Заказы${icon("arrow")}</button></div></main>`;
+}
+function finishHTML() {
+  return `${sceneHTML()}<main class="chapter-finale"><div class="result-badge">${icon("shell")}</div><span class="eyebrow">ГЛАВА 1 · ГОТОВО</span><h1>Лавка открыта!</h1><div class="final-stats"><span>${icon("check")} ${CHAPTER.length} заказов</span><span>${icon("star")} ${RENOVATIONS.length} улучшения</span></div><button class="primary" data-action="show-shop">Моя лавка${icon("home")}</button><button class="secondary" data-action="levels">Играть ещё${icon("restart")}</button><button class="quiet" data-action="renovation">Сменить оформление</button></main>`;
+}
+function guidedLesson() {
+  if (screen !== "game" || won(current().board)) return null;
+  const key = CHAPTER.find((s) => s.id === current().definition.id)?.lesson;
+  return key && key !== "tools" &&
+    !isCompleted(progress.completed, chapterNumber(current().definition.id)!) &&
+    !progress.tutorialSeen.includes(`spotlight-${key}`) &&
+    current().solution?.length ? key : null;
+}
+function guided() {
+  return !!guidedLesson();
+}
+function guideMove(): Move | null {
+  return guided() ? (current().solution?.[0] ?? null) : null;
+}
+function activeHint() {
+  return guideMove() ?? highlighted;
+}
+function startLesson(number: number) {
+  const key = CHAPTER[number - 1]?.lesson;
+  toolLesson = key === "tools" && !progress.tutorialSeen.includes("spotlight-tools");
+  if (!key || progress.tutorialSeen.includes(`spotlight-${key}`)) return;
+  if (toolLesson) render();
+  updateCoach(true);
+  track("lesson_start", current().definition.id, { lesson: key });
+}
+function completeLesson(key: string) {
+  const id = `spotlight-${key}`;
+  if (!progress.tutorialSeen.includes(id)) progress.tutorialSeen.push(id);
+  toolLesson = false;
+  track("lesson_done", current().definition.id, { lesson: key });
+  persist();
+}
+function coachSelector() {
+  if (screen !== "game" || modal || busy || externalChanged) return null;
+  if (toolLesson) return '[data-action="hint"]';
+  const step = activeHint();
+  return step ? positionSelector(selected ? step[1] : step[0]) : null;
+}
+function updateCoach(focus = false) {
+  // Restore only buttons disabled by coaching; preserve gameplay restrictions.
+  app.querySelectorAll<HTMLButtonElement>("[data-coach-disabled]").forEach((el) => {
+    el.disabled = false;
+    delete el.dataset.coachDisabled;
+  });
+  app.querySelectorAll('[aria-describedby="coach-instruction"]').forEach(el => el.removeAttribute("aria-describedby"));
+  const selector = coachSelector();
+  const target = selector ? app.querySelector<HTMLElement>(selector) : null;
+  coach.replaceChildren();
+  if (!target) return;
+  app.querySelectorAll<HTMLButtonElement>("button").forEach((el) => {
+    if (el !== target && !el.disabled) {
+      el.dataset.coachDisabled = "true";
+      el.disabled = true;
+    }
+  });
+  const port = app.querySelector(".puzzle-layout")!.getBoundingClientRect();
+  let r = target.getBoundingClientRect();
+  if (r.top < port.top + 4 || r.bottom > port.bottom - 4) {
+    target.scrollIntoView({ block: "nearest", inline: "nearest" });
+    r = target.getBoundingClientRect();
+  }
+  const label = toolLesson ? "Покажи ход" : selected ? "Сюда" : "Возьми";
+  const skip = guided() || toolLesson ? "Пропустить" : "Закрыть";
+  coach.innerHTML = `<div class="coach-spotlight" style="left:${r.left - 4}px;top:${r.top - 4}px;width:${r.width + 8}px;height:${r.height + 8}px" aria-hidden="true"><span class="coach-hand">${icon("hand")}</span></div><div class="coach-label" id="coach-instruction" role="status" style="left:${Math.max(8, Math.min(innerWidth - 140, r.left + r.width / 2 - 66))}px;top:${Math.max(68, r.top - 42)}px">${label}${icon("arrow")}</div><button class="coach-skip" data-action="skip-lesson">${skip}</button>`;
+  target.setAttribute("aria-describedby", "coach-instruction");
+  if (focus || (document.activeElement !== target && !coach.contains(document.activeElement)))
+    target.focus({ preventScroll: true });
 }
 function gameHTML() {
   const attempt = current(),
     def = attempt.definition,
     board = attempt.board;
-  const story = CHAPTER[def.number - 1];
-  const total = Object.values(board.goals).reduce((n, x) => n + x!, 0);
-  const delivered = Object.values(board.delivered).reduce((n, x) => n + x!, 0);
   const goalCount = Object.keys(board.goals).length;
-  const tooltip = highlighted
-    ? `Перенесите ${GOODS[board.shelves[highlighted[0][0]].front[highlighted[0][1]]!].name.toLowerCase()}: полка ${highlighted[0][0] + 1} → полка ${highlighted[1][0] + 1}`
-    : def.number === 1 && board.used === 0 && attempt.mixCount === 0
-      ? "Нажмите на молоко, затем на свободное место"
-      : "Три одинаковых на одной полке — готовый заказ";
+  const stuck = !won(board) && !hasMoves(board);
+  const noSpace =
+    board.budget !== null && board.used >= board.budget
+      ? "Ходы закончились."
+      : "Нет свободных мест.";
+  const tooltip = stuck
+    ? `${noSpace} ${attempt.undo.length ? "↶ Отмена" : "↻ Заново"}`
+    : board.budget !== null
+      ? `Ходы: ${board.budget - board.used}`
+      : "";
   return `<div class="game-backdrop" aria-hidden="true"></div>
-    <header class="topbar game-topbar"><button class="round cream" data-action="home" aria-label="Вернуться в лавку">${icon("home")}</button><div class="level-title"><span>ЗАКАЗ ${def.number} / 10</span><h1>${def.name}</h1></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
+    <header class="topbar game-topbar"><button class="round cream" data-action="home" aria-label="Вернуться в лавку">${icon("home")}</button><div class="level-title"><span>ЗАКАЗ ${chapterNumber(def.id)} / ${CHAPTER.length}</span><h1 id="order-heading" tabindex="-1">${escapeHTML(def.name)}</h1></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
     <main class="puzzle-layout">
-      <aside class="story-panel"><div class="story-icon">${icon("shell")}</div><span class="eyebrow">УТРЕННИЕ ЗАКАЗЫ</span><h2>Всё начинается<br>с заботы.</h2><p>«${story.line}»</p><span class="customer">— ${story.customer}, с набережной</span><div class="story-progress"><span>Собрано товаров</span><b>${delivered} / ${total}</b><div class="mini-meter"><i style="width:${(delivered / total) * 100}%"></i></div></div><button class="quiet" data-action="help">${icon("help")} Как играть</button></aside>
-      <section class="puzzle" aria-label="Игровое поле"><div class="orders goals-${goalCount}" aria-label="Товары для заказа">${Object.entries(
+      <section class="puzzle rows-${Math.ceil(def.shelves.length / 2)} ${board.shelves.some(sh => sh.reserve) ? "with-reserve" : ""}" aria-label="Игровое поле"><div class="orders goals-${goalCount}" aria-label="Товары для заказа">${Object.entries(
         board.goals,
       )
         .map(([key, goal]) => {
           const k = key as Good,
             n = board.delivered[k] ?? 0;
-          return `<div class="order-card ${n === goal ? "fulfilled" : ""}" data-order="${k}" aria-label="${GOODS[k].name}: ${n} из ${goal}">${goodImage(k)}<div><span>${GOODS[k].name}</span><strong>${n}<small> / ${goal}</small></strong></div>${n === goal ? `<i class="done-icon">${icon("check")}</i>` : ""}</div>`;
+          return `<div class="order-card ${n === goal ? "fulfilled" : ""}" data-order="${k}" aria-label="${GOODS[k].name}: ${n} из ${goal}">${goodImage(k)}<div><strong>${n}<small> / ${goal}</small></strong></div>${n === goal ? `<i class="done-icon">${icon("check")}</i>` : ""}</div>`;
         })
         .join("")}</div>
       <div class="board-wrap"><div class="board shelves-${def.shelves.length}" aria-label="Полки">${board.shelves
         .map((sh, i) => {
           if (sh.reserve) return "";
           const events = board.events.filter((e) => e.shelf === i);
-          return `<div class="shelf ${!sh.opened ? "locked" : ""} ${events.some((e) => e.type === "unlock") ? "just-unlocked" : ""}" data-shelf="${i}"><div class="shelf-top"><span>ПОЛКА ${i + 1}</span>${sh.rear.length ? `<span class="rear-badge">ещё ${sh.rear.length} ${sh.rear.length === 1 ? "ряд" : "ряда"}</span>` : ""}</div>${sh.opened ? `${sh.rear.length ? `<div class="rear-preview" aria-hidden="true">${sh.rear[0].map((k) => (k ? goodImage(k) : "<span></span>")).join("")}</div>` : ""}<div class="shelf-tray"></div><div class="slots">${sh.front.map((k, j) => slotHTML(k, [i, j])).join("")}</div>` : `<div class="shelf-tray"></div><div class="crate-cover">${icon("lock")}<strong>Новая поставка</strong><span>Ещё ${Math.max(0, (sh.unlockAfter ?? 0) - board.triples)} ${Math.max(0, (sh.unlockAfter ?? 0) - board.triples) === 1 ? "тройка" : "тройки"}</span></div>`}</div>`;
+          return `<div class="shelf ${!sh.opened ? "locked" : ""} ${events.some((e) => e.type === "unlock") ? "just-unlocked" : ""}" data-shelf="${i}"><div class="shelf-top"><span>${i + 1}</span>${sh.rear.length ? `<span class="rear-badge" aria-label="${sh.rear.length} скрытых ряда">${icon("reserve")} ${sh.rear.length}</span>` : ""}</div>${sh.opened ? `${sh.rear.length ? `<div class="rear-preview" aria-label="Задний ряд, товары пока недоступны">${sh.rear[0].map((k) => (k ? goodImage(k) : "<span></span>")).join("")}</div>` : ""}<div class="shelf-tray"></div><div class="slots">${sh.front.map((k, j) => slotHTML(k, [i, j])).join("")}</div>` : `<div class="shelf-tray"></div><div class="crate-cover">${icon("lock")}<span>${board.triples} / ${sh.unlockAfter}</span></div>`}</div>`;
         })
         .join("")}</div></div>
-      <div class="game-message" aria-live="polite">${icon(highlighted ? "hint" : "wave")}<span>${tooltip}</span></div>
-      <div class="tools">${toolHTML("hint", "Подсказка", "hint", 100)}${toolHTML("mix", "Смешать", "mix", 200)}${toolHTML("reserve", "Резерв", "reserve", 300)}</div>
-      <div class="utility-bar"><button class="quiet" data-action="undo" ${!attempt.undo.length || won(board) ? "disabled" : ""}>${icon("undo")} Отмена</button><span class="calm-mode">${icon("wave")} Без таймера</span><button class="quiet" data-action="restart">${icon("restart")} Заново</button><button class="mobile-help quiet" data-action="help" aria-label="Как играть">${icon("help")}</button></div>
+      <div class="game-message ${stuck ? "stuck-message" : ""}" aria-live="polite">${tooltip ? `${icon(stuck ? "undo" : "hint")}<span>${tooltip}</span>` : `<span class="triple-rule" aria-label="Три одинаковых товара на одной полке отправляются в заказ">${goodImage("j")}${goodImage("j")}${goodImage("j")}${icon("arrow")}${icon("check")}</span>`}</div>
+      <div class="tools">${toolHTML("hint", stuck ? "Как выйти" : "Подсказка", "hint", 100)}${toolHTML("mix", "Смешать", "mix", 200)}${toolHTML("reserve", "Резерв", "reserve", 300)}</div>
+      <div class="utility-bar"><button data-action="undo" ${!attempt.undo.length || won(board) ? "disabled" : ""} class="quiet ${stuck ? "recover-action" : ""}">${icon("undo")} Отмена</button><button class="quiet" data-action="restart">${icon("restart")} Заново</button><button class="mobile-help quiet" data-action="help" aria-label="Как играть">${icon("help")}</button></div>
       ${board.shelves.some((sh) => sh.reserve) ? `<div class="reserve-slot"><span>Резерв</span>${slotHTML(board.shelves[board.shelves.length - 1].front[0], [board.shelves.length - 1, 0])}</div>` : ""}
       </section>
     </main>`;
 }
 function slotHTML(good: Good | null, position: Position) {
-  const hintSource = highlighted
-    ? samePosition(highlighted[0], position)
-    : current().definition.number === 1 &&
-      current().board.used === 0 &&
-      current().mixCount === 0 &&
-      position[0] === 0 &&
-      position[1] === 2;
-  const hintDest = highlighted && samePosition(highlighted[1], position);
+  const step = activeHint();
+  const hintSource = step && samePosition(step[0], position);
+  const hintDest = step && samePosition(step[1], position);
   return `<button class="slot ${good ? "occupied" : "empty"} ${samePosition(selected, position) ? "selected" : ""} ${hintSource ? "hint-source" : ""} ${hintDest ? "hint-dest" : ""}" data-slot="${position.join(",")}" aria-label="Полка ${position[0] + 1}, место ${position[1] + 1}: ${good ? GOODS[good].name : "свободно"}" aria-pressed="${samePosition(selected, position)}">${good ? goodImage(good) : '<span class="empty-mark">+</span>'}</button>`;
 }
 function toolHTML(
@@ -170,34 +332,73 @@ function toolHTML(
   cost: number,
 ) {
   const count = progress.inventory[kind];
+  const locked =
+    kind === "mix" && !isCompleted(progress.completed, 3)
+      ? "Заказ 4"
+      : kind === "reserve" && !isCompleted(progress.completed, 6)
+        ? "Заказ 7"
+        : null;
+  const board = current().board;
+  const unavailable =
+    (kind === "mix" && !hasMoves(board)) ||
+    (kind === "reserve" && board.budget !== null && board.used >= board.budget);
+  const freeHint =
+    kind === "hint" &&
+    (!hasMoves(current().board) || guided() || toolLesson || !!cachedHint(current()));
   const used =
     kind === "reserve" && current().board.shelves.some((sh) => sh.reserve);
-  return `<button class="tool ${used ? "tool-used" : ""}" data-action="${kind}" ${used || busy || won(current().board) ? "disabled" : ""}><span class="tool-circle">${icon(symbol)}</span><span class="tool-name">${name}</span><small>${used ? "На поле" : count > 0 ? `${count} бесплатно` : `${cost} монет`}</small></button>`;
+  return `<button class="tool ${used ? "tool-used" : ""}" data-action="${kind}" ${used || locked || unavailable || busy || won(current().board) ? "disabled" : ""}><span class="tool-circle">${icon(symbol)}</span><span class="tool-name">${name}</span><small>${locked ?? (unavailable ? "Нужна отмена" : used ? "На поле" : freeHint ? "Бесплатно" : count > 0 ? `×${count}` : `${cost} ◉`)}</small></button>`;
 }
 async function start(number: number, force = false) {
-  if (busy) return;
+  if (busy || externalChanged || !isUnlocked(progress.completed, number))
+    return;
+  if (
+    !force &&
+    progress.attempt &&
+    !won(progress.attempt.board) &&
+    chapterNumber(progress.attempt.definition.id) !== number
+  ) {
+    pendingLevel = number;
+    showModal(
+      "switch",
+      `<h2>Сменить заказ?</h2><p>Текущая попытка будет заменена</p><button class="primary" data-action="confirm-switch">Сменить</button><button class="secondary" data-action="keep-order">Продолжить</button>`,
+    );
+    return;
+  }
+  clearTimeout(toastTimer);
+  toolLesson = false;
+  toastElement.classList.remove("visible");
+  toastElement.textContent = "";
   busy = true;
   closeModal();
   if (
     !force &&
-    progress.attempt?.definition.number === number &&
+    progress.attempt &&
+    chapterNumber(progress.attempt.definition.id) === number &&
     !won(progress.attempt.board)
   ) {
     screen = "game";
     selected = null;
-    highlighted = null;
+    highlighted = cachedHint(current())?.[0] ?? null;
     busy = false;
     render();
+    focusGame();
+    startLesson(number);
     return;
   }
   showModal(
     "loading",
-    `<div class="loading-shell">${icon("shell")}</div><h2>Готовим ваш заказ</h2><p>Расставляем товары на полках…</p>`,
+    `<div class="loading-shell">${icon("shell")}</div><h2>Готовим заказ…</h2>`,
     false,
   );
   try {
     const definition = await job<Definition>({ kind: "level", number });
     if (externalChanged) return;
+    validateDefinition(definition);
+    if (chapterNumber(definition.id) !== number)
+      throw new Error(
+        "Получен другой заказ. Попробуйте открыть заказ ещё раз.",
+      );
     progress.attempt = {
       id: crypto.randomUUID(),
       definition,
@@ -205,19 +406,27 @@ async function start(number: number, force = false) {
       undo: [],
       solution: clone(definition.verifiedSolution),
       mixCount: 0,
+      hints: {},
       reward: null,
     };
+    const key = structuralKey(definition);
+    progress.recentStructures = [
+      ...progress.recentStructures.filter((k) => k !== key),
+      key,
+    ].slice(-12);
+    track("order_start", definition.id, {
+      replay: isCompleted(progress.completed, number),
+    });
     persist();
     screen = "game";
     selected = null;
     highlighted = null;
     closeModal();
     render();
-    if (number === 7)
-      toast("Новая механика: освободите полку, чтобы открыть задний ряд.");
-    if (number === 9)
-      toast("Новая поставка откроется после нужного числа отправленных троек.");
+    app.querySelector<HTMLElement>("#order-heading")?.focus();
+    startLesson(number);
   } catch (error) {
+    if (externalChanged) return;
     closeModal();
     toast(error instanceof Error ? error.message : "Не удалось открыть заказ.");
   } finally {
@@ -237,12 +446,14 @@ function selectSlot(position: Position) {
     return;
   const sh = current().board.shelves[position[0]];
   if (!sh?.opened) return;
+  const step = activeHint();
+  if (step && !samePosition(selected ? step[1] : step[0], position)) return;
   if (sh.front[position[1]]) {
     selected = samePosition(selected, position) ? null : position;
     audio.play("take");
     renderSelection();
   } else if (selected) move(selected, position);
-  else toast("Сначала выберите товар на открытой полке.");
+  else toast("Выбери товар");
 }
 function renderSelection() {
   document.querySelectorAll<HTMLElement>("[data-slot]").forEach((el) => {
@@ -255,14 +466,17 @@ function renderSelection() {
       !!selected && el.classList.contains("empty"),
     );
   });
+  updateCoach();
 }
 function move(from: Position, to: Position) {
   if (externalChanged || busy || modal || document.hidden) return;
+  const lesson = guidedLesson(), step = activeHint();
+  if (step && (!samePosition(step[0], from) || !samePosition(step[1], to))) return;
   const attempt = current();
   const before = attempt.board;
   const next = applyMove(before, from, to);
   if (!next) {
-    toast("Товар можно поставить только в свободное место.");
+    toast("Нужно свободное место");
     return;
   }
   const sourceRect = app
@@ -280,10 +494,21 @@ function move(from: Position, to: Position) {
       ? attempt.solution!.slice(1)
       : null;
   attempt.board = next;
+  track("move", attempt.definition.id, {
+    used: next.used,
+    triples: next.triples,
+  });
+  if (!won(next) && !hasMoves(next)) track("blocked", attempt.definition.id);
   selected = null;
   highlighted = null;
   const victory = won(next);
-  if (victory) completeAttempt(progress, today());
+  if (lesson && (victory || next.events.some(e =>
+    (lesson === "rear" && e.type === "reveal") ||
+    (lesson === "crate" && e.type === "unlock")))) completeLesson(lesson);
+  if (victory) {
+    completeAttempt(progress, today());
+    track("order_win", attempt.definition.id, { moves: next.used });
+  }
   persist();
   render();
   audio.play(next.events.some((e) => e.type === "triple") ? "ship" : "place");
@@ -330,7 +555,8 @@ function move(from: Position, to: Position) {
       });
   }
   const opened = next.events.find((e) => e.type === "unlock");
-  if (opened) toast(`Поставка на полке ${opened.shelf + 1} открыта!`);
+  if (opened) toast(`Полка ${opened.shelf + 1} открыта!`);
+  else if (next.events.some(e => e.type === "reveal")) toast("Новый ряд!");
   if (victory) {
     audio.play("win");
     showResult();
@@ -342,11 +568,28 @@ function showModal(
   closable = true,
   wide = false,
 ) {
+  endDrag(undefined, true);
   if (!modal) lastFocus = document.activeElement as HTMLElement;
   modal = name;
-  audio.pause(document.hidden);
-  overlay.innerHTML = `<div class="modal-backdrop"><section class="modal ${wide ? "wide" : ""} modal-${name}" role="dialog" aria-modal="true" aria-label="${({ settings: "Настройки", result: "Заказ готов", renovation: "Ремонт вывески", levels: "Книжка заказов", help: "Как играть", restart: "Начать заново", loading: "Загрузка", needCoins: "Помощь" } as Record<string, string>)[name] ?? "Лавка у моря"}">${closable ? `<button class="modal-close round cream" data-action="close" aria-label="Закрыть">${icon("close")}</button>` : ""}${content}</section></div>`;
+  audio.pause(document.hidden || !document.hasFocus());
+  overlay.innerHTML = `<div class="modal-backdrop"><section class="modal ${wide ? "wide" : ""} modal-${name}" role="dialog" aria-modal="true" aria-label="${
+    (
+      {
+        settings: "Настройки",
+                switch: "Смена заказа",
+        unsupported: "Обновление игры",
+        result: "Заказ готов",
+        renovation: "Оформление лавки",
+        levels: "Книжка заказов",
+        help: "Как играть",
+        restart: "Начать заново",
+        loading: "Загрузка",
+        needCoins: "Помощь",
+      } as Record<string, string>
+    )[name] ?? "Лавка у моря"
+  }">${closable ? `<button class="modal-close round cream" data-action="close" aria-label="Закрыть">${icon("close")}</button>` : ""}${content}</section></div>`;
   app.inert = true;
+  updateCoach();
   queueMicrotask(() =>
     overlay.querySelector<HTMLElement>("button,input")?.focus(),
   );
@@ -356,43 +599,50 @@ function closeModal() {
   modal = null;
   app.inert = false;
   audio.pause(document.hidden || !document.hasFocus());
-  lastFocus?.focus();
+  if (lastFocus?.isConnected) lastFocus.focus();
+  updateCoach();
 }
 function showResult() {
+  clearToast();
   const attempt = current(),
-    reward = attempt.reward!;
-  const all = progress.completed.length >= CHAPTER.length;
+    reward = attempt.reward ?? completeAttempt(progress, today())!;
+  const next = nextOrder(progress.completed),
+    node = repairNext(),
+    affordable = node && progress.stars >= node.cost;
+  persist();
   showModal(
     "result",
-    `<div class="result-badge">${icon("check")}</div><span class="eyebrow">${all ? "СОЛНЕЧНОЕ УТРО УДАЛОСЬ" : "СПАСИБО ЗА ЗАБОТУ"}</span><h2>Заказ готов!</h2><p>${all ? "Все десять заказов собраны.<br>В лавке стало немного уютнее." : `${CHAPTER[attempt.definition.number - 1].customer} улыбается: всё на месте.`}</p><div class="reward-row"><div>${icon("coin")}<strong>+${reward.coins}</strong><span>монет</span></div><div>${icon("star")}<strong>+${reward.stars}</strong><span>${reward.stars ? "звезда ремонта" : "за повтор"}</span></div></div><p class="result-note">${reward.fresh ? "Ещё один маленький шаг к вашей новой лавке." : "Основная награда за этот заказ уже получена."}</p>${!progress.renovation && progress.stars >= 3 ? `<button class="primary" data-action="renovation">Пора обновить вывеску${icon("star")}</button>` : `<button class="primary" data-action="${all ? "home" : "next"}">${all ? "Вернуться в лавку" : "Следующий заказ"}${icon("arrow")}</button>`}<button class="quiet" data-action="home">В мою лавку${icon("home")}</button>`,
+    `<div class="result-badge">${icon("check")}</div><h2>Заказ готов!</h2><div class="reward-row"><div>${icon("coin")}<strong>+${reward.coins}</strong><span>монет</span></div><div>${icon("star")}<strong>+${reward.stars}</strong><span>${reward.stars ? "" : "Повтор"}</span></div></div><p class="result-note">${reward.fresh ? (node ? `${node.name} · ★ ${Math.min(progress.stars, node.cost)}/${node.cost}` : "") : ""}</p><button class="primary" data-action="${affordable ? "renovation" : allDone() ? "finish" : next ? "next" : "home"}">${affordable ? `Обновить: ${node.name.toLowerCase()}` : allDone() ? "Моя лавка" : next ? "Дальше" : "В лавку"}${icon("arrow")}</button><button class="quiet" data-action="home">В лавку${icon("home")}</button>`,
     false,
   );
 }
 function settingsModal() {
   showModal(
     "settings",
-    `<span class="eyebrow">КАК ВАМ УЮТНЕЕ</span><h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong><small>${{ sound: "Мягкие звуки товаров и заказов", music: "Спокойная мелодия на фоне", reducedMotion: "Без покачивания и частиц" }[key]}</small></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button><p class="save-note">Прогресс автоматически сохраняется<br>в этом браузере.</p>`,
+    `<h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button>${new URLSearchParams(location.search).has("playtest") ? `<button class="quiet" data-action="export-events">Скачать отчёт этой сессии</button>` : ""}<p class="save-note">${storageWarned ? "Сохранение недоступно — игра работает в этой вкладке." : "Сохранено в браузере"}</p>`,
   );
 }
-function renovationModal() {
-  const color = progress.renovation ?? "sea";
+function renovationModal(target: RenovationId = repairNext()?.id ?? "sign") {
+  repairTarget = target;
+  const node = RENOVATIONS.find((r) => r.id === target)!,
+    color = progress.renovations[target] ?? "sea",
+    owned = !!progress.renovations[target];
+  const unlocked = RENOVATIONS.slice(0, RENOVATIONS.indexOf(node)).every(
+    (r) => progress.renovations[r.id],
+  );
   showModal(
     "renovation",
-    `<span class="eyebrow">ПЕРВЫЙ ШТРИХ · ВЫВЕСКА</span><h2>${progress.renovation ? "Выберите настроение" : "У лавки будет своё имя"}</h2><p>Маленькая перемена, которую заметит каждый.</p><div class="sign-preview ${color}" id="sign-preview">${icon("shell")}<strong>Лавка у моря</strong><small>Свежесть. Солнце. Немного счастья.</small></div><div class="color-choices">${(["sea", "honey", "coral"] as const).map((c) => `<button class="color-choice ${c} ${color === c ? "chosen" : ""}" data-color="${c}" aria-pressed="${color === c}" aria-label="${{ sea: "Морская бирюза", honey: "Тёплый мёд", coral: "Коралловый закат" }[c]}"><i></i><span>${{ sea: "Морская<br>бирюза", honey: "Тёплый<br>мёд", coral: "Коралловый<br>закат" }[c]}</span></button>`).join("")}</div><button class="primary" data-action="buy-renovation" data-choice="${color}" ${!progress.renovation && progress.stars < 3 ? "disabled" : ""}>${progress.renovation ? "Сохранить оформление" : "Обновить за 3 звезды"}${icon("star")}</button><p class="save-note">${progress.renovation ? "Открытые цвета можно менять бесплатно." : progress.stars < 3 ? `Осталось собрать ${3 - progress.stars} ${3 - progress.stars === 1 ? "звезду" : "звезды"} в новых заказах.` : "Выбор цвета не влияет на головоломки."}</p>`,
+    `<span class="eyebrow">ВАША ЛАВКА · ${Object.keys(progress.renovations).length}/${RENOVATIONS.length}</span><h2>${node.name}</h2><div class="repair-tabs">${RENOVATIONS.map((r) => `<button class="quiet ${r.id === target ? "active" : ""}" data-repair="${r.id}">${progress.renovations[r.id] ? icon("check") : icon(r.icon)}${r.name}</button>`).join("")}</div><div class="repair-preview preview-${target} ${color}" id="sign-preview">${target === "sign" ? `${icon("shell")}<strong>Лавка у моря</strong>` : target === "counter" ? `<img src="${assets}counter.webp" alt="Прилавок с корзиной и кассой" />` : `<img src="${assets}garden.webp" alt="Цветы и фонарь у окна" />`}</div><div class="color-choices">${(Object.keys(COLORS) as RenovationColor[]).map((c) => `<button class="color-choice ${c} ${c === color ? "chosen" : ""}" data-color="${c}" aria-pressed="${c === color}" aria-label="${COLORS[c]}"><i></i><span>${COLORS[c]}</span></button>`).join("")}</div><button class="primary" data-action="buy-renovation" data-choice="${color}" ${!owned && (!unlocked || progress.stars < node.cost) ? "disabled" : ""}>${owned ? "Готово" : `Обновить · ${node.cost} ★`}${icon("star")}</button><p class="save-note">${owned ? "Бесплатно" : !unlocked ? "Сначала — предыдущий ремонт" : progress.stars < node.cost ? `Не хватает ${node.cost - progress.stars} ★` : ""}</p>`,
   );
 }
 function levelsModal() {
   showModal(
     "levels",
-    `<span class="eyebrow">ГЛАВА 1 · СОЛНЕЧНОЕ УТРО</span><h2>Книжка заказов</h2><p>Десять маленьких историй одной лавки.</p><div class="level-list">${CHAPTER.map(
+    `<span class="eyebrow">ГЛАВА 1</span><h2>Заказы</h2><div class="level-list">${CHAPTER.map(
       (level, i) => {
-        const completed = progress.completed.some((id) =>
-          i < 3
-            ? id.endsWith(`tutorial:${i + 1}`)
-            : id.endsWith(`:${SEEDS[i]}`),
-        );
-        const unlocked = i <= progress.completed.length;
-        return `<button class="level-entry ${completed ? "complete" : ""}" data-level="${i + 1}" ${unlocked ? "" : "disabled"}><span class="level-number">${completed ? icon("check") : i + 1}</span><span><strong>${level.name}</strong><small>${completed ? "Можно пройти ещё раз" : i === 6 ? "Открываем задние ряды" : i === 8 ? "Новая поставка" : i === 9 ? "Большой заказ" : "Заказ на три товара"}</small></span>${icon(unlocked ? "arrow" : "lock")}</button>`;
+        const completed = isCompleted(progress.completed, i + 1);
+        const unlocked = isUnlocked(progress.completed, i + 1);
+        return `<button class="level-entry ${completed ? "complete" : ""}" data-level="${i + 1}" ${unlocked ? "" : "disabled"}><span class="level-number">${completed ? icon("check") : i + 1}</span><span><strong>${level.name}</strong></span>${icon(unlocked ? "arrow" : "lock")}</button>`;
       },
     ).join("")}</div>`,
     true,
@@ -402,14 +652,14 @@ function levelsModal() {
 function helpModal() {
   showModal(
     "help",
-    `<span class="eyebrow">ОДИН ПРОСТОЙ ЖЕСТ</span><h2>Порядок — по тройкам</h2><div class="help-goods">${goodImage("j")}${goodImage("j")}${goodImage("j")}</div><ol class="help-steps"><li>Нажмите на товар, затем на свободное место. Или перетащите его мышью или пальцем.</li><li>Три одинаковых в переднем ряду одной полки автоматически уходят в заказ.</li><li>Очистите передний ряд, чтобы открыть следующий. Закрытая поставка ждёт указанное число троек.</li></ol><p>Никакого таймера. Отмена и перезапуск бесплатны. С клавиатуры: Tab и Enter, Escape снимает выбор.</p><button class="primary" data-action="close">Всё понятно${icon("check")}</button>`,
+    `<h2>Собери тройку</h2><div class="visual-help"><div class="help-transfer">${goodImage("m")}${icon("arrow")}<span class="help-empty">+</span></div><span>Товар → место</span><div class="help-goods">${goodImage("j")}${goodImage("j")}${goodImage("j")}${icon("arrow")}${icon("check")}</div><span>Три в ряд — готово</span><div class="help-shortcuts"><span>${icon("undo")} Отмена</span><span>${icon("restart")} Заново</span></div></div><button class="primary" data-action="close">Играть${icon("arrow")}</button>`,
   );
 }
 function canPay(kind: "hint" | "mix" | "reserve", cost: number): boolean {
   if (progress.inventory[kind] > 0 || progress.coins >= cost) return true;
   showModal(
     "needCoins",
-    `<div class="loading-shell">${icon(kind)}</div><h2>Немного терпения</h2><p>Для этой помощи нужно ${cost} монет.<br>Новые заказы дают по 60 монет.</p><p>Можно бесплатно отменить ход<br>или начать заказ заново.</p><button class="primary" data-action="close">Вернуться к заказу${icon("arrow")}</button>`,
+    `<div class="loading-shell">${icon(kind)}</div><h2>Не хватает монет</h2><p>${cost} ◉ · за заказ +60</p><button class="primary" data-action="close">Вернуться к заказу${icon("arrow")}</button>`,
   );
   return false;
 }
@@ -417,9 +667,27 @@ function pay(kind: "hint" | "mix" | "reserve", cost: number) {
   if (progress.inventory[kind] > 0) progress.inventory[kind]--;
   else progress.coins -= cost;
 }
-async function hint() {
-  if (busy || highlighted || won(current().board)) return;
-  if (!canPay("hint", 100)) return;
+async function hint(teaching = false) {
+  if (busy || won(current().board)) return;
+  if (!hasMoves(current().board)) {
+    toast(
+      "↶ Отмена или ↻ Заново — бесплатно",
+    );
+    focusGame(
+      current().undo.length
+        ? '[data-action="undo"]'
+        : '[data-action="restart"]',
+    );
+    return;
+  }
+  const cached = cachedHint(current());
+  if (cached) {
+    highlighted = cached[0];
+    selected = null;
+    render();
+    return;
+  }
+  if (!guided() && !teaching && !canPay("hint", 100)) return;
   const attempt = current(),
     id = attempt.id;
   busy = true;
@@ -432,30 +700,42 @@ async function hint() {
     if (externalChanged || progress.attempt?.id !== id) return;
     if (!solution?.length) {
       toast(
-        "За ограниченный поиск решение не найдено. Помощь не потрачена. Попробуйте отмену или перезапуск.",
+        "Шаг не найден. Помощь не потрачена. ↶ Отмена",
       );
       return;
     }
-    attempt.solution = solution;
+    if (!rememberHint(attempt, solution))
+      throw new Error("Шаг не найден. Помощь не потрачена");
     highlighted = solution[0];
-    selected = highlighted[0];
-    pay("hint", 100);
+    selected = null;
+    if (!guided() && !teaching) pay("hint", 100);
+    track("help", attempt.definition.id, { kind: "hint", free: guided() || teaching });
     persist();
-    toast("Подсвечены товар и свободное место для него.");
+    clearToast();
   } catch (error) {
     toast(
       error instanceof Error
         ? error.message
-        : "Подсказка недоступна. Помощь не потрачена.",
+        : "Подсказка недоступна. Помощь не потрачена",
     );
   } finally {
     busy = false;
     render();
     renderSelection();
+    focusGame(
+      highlighted ? positionSelector(highlighted[0]) : '[data-action="hint"]',
+    );
   }
 }
 async function mix() {
-  if (busy || won(current().board) || !canPay("mix", 200)) return;
+  if (
+    busy ||
+    !isCompleted(progress.completed, 3) ||
+    !hasMoves(current().board) ||
+    won(current().board) ||
+    !canPay("mix", 200)
+  )
+    return;
   const attempt = current(),
     id = attempt.id;
   busy = true;
@@ -469,10 +749,24 @@ async function mix() {
     });
     if (externalChanged || progress.attempt?.id !== id) return;
     if (!result) {
-      toast("Подтверждённый вариант не найден. Помощь не потрачена.");
+      toast(
+        "Не удалось смешать. Помощь не потрачена. ↶ Отмена",
+      );
       return;
     }
+    if (
+      !validateAttempt({
+        ...attempt,
+        board: result.board,
+        solution: result.solution,
+        undo: [],
+      })
+    )
+      throw new Error(
+        "Новая расстановка не прошла проверку. Помощь не потрачена.",
+      );
     pay("mix", 200);
+    track("help", attempt.definition.id, { kind: "mix" });
     attempt.board = result.board;
     attempt.solution = result.solution;
     attempt.undo = [];
@@ -481,7 +775,7 @@ async function mix() {
     highlighted = null;
     persist();
     audio.play("place");
-    toast("Товары расставлены заново. Эта попытка по-прежнему имеет решение.");
+    toast("Товары смешаны");
   } catch (error) {
     toast(
       error instanceof Error
@@ -491,31 +785,45 @@ async function mix() {
   } finally {
     busy = false;
     render();
+    focusGame('[data-action="mix"]');
   }
 }
 function reserve() {
-  if (busy || won(current().board)) return;
+  if (busy || !isCompleted(progress.completed, 6) || won(current().board))
+    return;
+  if (
+    current().board.budget !== null &&
+    current().board.used >= current().board.budget!
+  )
+    return;
   const next = addReserve(current().board);
   if (!next || !canPay("reserve", 300)) return;
   pay("reserve", 300);
+  track("help", current().definition.id, { kind: "reserve" });
   current().board = next;
   current().undo = [];
   selected = null;
   highlighted = null;
   persist();
   render();
-  toast("Добавлено одно место. Переносите товар туда и обратно.");
+  focusGame(positionSelector([next.shelves.length - 1, 0]));
+  clearToast();
 }
 function undo() {
   const attempt = current();
+  if (won(attempt.board)) return;
   const previous = attempt.undo.pop();
-  if (!previous || won(attempt.board)) return;
+  if (!previous) return;
+  clearToast();
   attempt.board = previous;
   attempt.solution = null;
   selected = null;
-  highlighted = null;
+  highlighted = cachedHint(attempt)?.[0] ?? null;
+  track("undo", attempt.definition.id);
   persist();
   render();
+  if (!attempt.undo.length)
+    focusGame(highlighted ? positionSelector(highlighted[0]) : "[data-slot]");
   audio.play("place");
 }
 function action(name: string, button: HTMLElement) {
@@ -523,28 +831,73 @@ function action(name: string, button: HTMLElement) {
   if (busy && !["settings", "close"].includes(name)) return;
   audio.play("button");
   switch (name) {
+    case "skip-lesson": {
+      const key = toolLesson ? "tools" : guidedLesson();
+      if (key) completeLesson(key);
+      selected = null;
+      highlighted = null;
+      render();
+      focusGame();
+      break;
+    }
     case "refresh":
       window.location.reload();
       break;
     case "play":
       if (progress.attempt && !won(progress.attempt.board))
-        void start(progress.attempt.definition.number);
-      else if (progress.completed.length >= 10) levelsModal();
-      else void start(progress.completed.length + 1);
+        void start(chapterNumber(progress.attempt.definition.id)!);
+      else if (allDone()) {
+        screen = "finish";
+        render();
+      } else if (chapterDone()) renovationModal();
+      else void start(nextOrder(progress.completed));
+      break;
+    case "show-shop":
+      closeModal();
+      screen = "shop";
+      render();
+      break;
+    case "finish":
+      closeModal();
+      screen = allDone() ? "finish" : "home";
+      render();
+      track("chapter_finish");
+      break;
+    case "keep-order":
+      closeModal();
+      pendingLevel = null;
+      void start(chapterNumber(current().definition.id)!);
+      break;
+    case "confirm-switch":
+      if (pendingLevel !== null) {
+        const number = pendingLevel;
+        pendingLevel = null;
+        void start(number, true);
+      }
+      break;
+    case "export-events":
+      downloadEvents();
+      toast("Отчёт этой сессии сохранён. Данные никуда не отправлялись.");
       break;
     case "home":
       closeModal();
       screen = "home";
+      toolLesson = false;
       selected = null;
       highlighted = null;
+      clearTimeout(toastTimer);
+      toastElement.classList.remove("visible");
+      toastElement.textContent = "";
       render();
       break;
     case "next":
       closeModal();
-      if (current().definition.number >= 10) {
-        screen = "home";
+      if (nextOrder(progress.completed))
+        void start(nextOrder(progress.completed));
+      else {
+        screen = allDone() ? "finish" : "home";
         render();
-      } else void start(current().definition.number + 1);
+      }
       break;
     case "settings":
       settingsModal();
@@ -561,9 +914,12 @@ function action(name: string, button: HTMLElement) {
     case "help":
       helpModal();
       break;
-    case "hint":
-      void hint();
+    case "hint": {
+      const teaching = toolLesson;
+      if (teaching) completeLesson("tools");
+      void hint(teaching);
       break;
+    }
     case "mix":
       void mix();
       break;
@@ -576,11 +932,13 @@ function action(name: string, button: HTMLElement) {
     case "restart":
       showModal(
         "restart",
-        `<h2>Попробуем ещё раз?</h2><p>Вернём исходную расстановку этого заказа.<br>Использованная помощь уже потрачена.</p><button class="primary" data-action="confirm-restart">Начать заново${icon("restart")}</button><button class="quiet" data-action="close">Продолжить попытку</button>`,
+        `<h2>Начать заново?</h2><p>Помощь не вернётся</p><button class="primary" data-action="confirm-restart">Заново${icon("restart")}</button><button class="quiet" data-action="close">Продолжить</button>`,
       );
       break;
     case "confirm-restart": {
+      clearToast();
       const def = current().definition;
+      const hints = clone(current().hints);
       progress.attempt = {
         id: crypto.randomUUID(),
         definition: clone(def),
@@ -588,6 +946,7 @@ function action(name: string, button: HTMLElement) {
         undo: [],
         solution: clone(def.verifiedSolution),
         mixCount: 0,
+        hints,
         reward: null,
       };
       selected = null;
@@ -595,21 +954,23 @@ function action(name: string, button: HTMLElement) {
       persist();
       closeModal();
       render();
+      focusGame();
       break;
     }
     case "buy-renovation": {
       const color = button.dataset.choice as RenovationColor;
       if (
         !["sea", "honey", "coral"].includes(color) ||
-        !renovate(progress, color)
+        !renovate(progress, color, repairTarget)
       )
         return;
       persist();
       closeModal();
-      screen = "home";
+      track("renovation", undefined, { node: repairTarget, color });
+      screen = allDone() ? "finish" : "home";
       render();
       audio.play("repair");
-      toast("Как красиво! Новая вывеска уже встречает гостей.");
+      toast("Готово!");
       break;
     }
   }
@@ -626,13 +987,16 @@ document.addEventListener("click", (event) => {
   else if (target.dataset.level) void start(Number(target.dataset.level));
   else if (target.dataset.slot)
     selectSlot(target.dataset.slot.split(",").map(Number) as Position);
+  else if (target.dataset.repair)
+    renovationModal(target.dataset.repair as RenovationId);
   else if (target.dataset.color) {
     const color = target.dataset.color;
     overlay.querySelectorAll<HTMLElement>("[data-color]").forEach((b) => {
       b.classList.toggle("chosen", b === target);
       b.setAttribute("aria-pressed", String(b === target));
     });
-    overlay.querySelector("#sign-preview")!.className = `sign-preview ${color}`;
+    overlay.querySelector("#sign-preview")!.className =
+      `repair-preview preview-${repairTarget} ${color}`;
     overlay.querySelector<HTMLElement>(
       '[data-action="buy-renovation"]',
     )!.dataset.choice = color;
@@ -649,6 +1013,7 @@ document.addEventListener("change", (event) => {
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
+    endDrag(undefined, true);
     if (modal && overlay.querySelector('[data-action="close"]')) closeModal();
     else {
       selected = null;
@@ -674,6 +1039,12 @@ document.addEventListener("keydown", (event) => {
       first.focus();
     }
   }
+  if (event.key === "Tab" && coachSelector()) {
+    const target = app.querySelector<HTMLElement>(coachSelector()!)!,
+      skip = coach.querySelector<HTMLElement>("button")!;
+    event.preventDefault();
+    (document.activeElement === target ? skip : target).focus({ preventScroll: true });
+  }
 });
 document.addEventListener("pointerdown", (event) => {
   void audio.unlock();
@@ -689,6 +1060,8 @@ document.addEventListener("pointerdown", (event) => {
     "[data-slot]",
   );
   if (!slot?.classList.contains("occupied") || won(current().board)) return;
+  const step = activeHint();
+  if (step && !samePosition(step[0], slot.dataset.slot!.split(",").map(Number) as Position)) return;
   drag = {
     from: slot.dataset.slot!.split(",").map(Number) as Position,
     x: event.clientX,
@@ -779,13 +1152,15 @@ document.addEventListener("contextmenu", (event) => {
 });
 document.addEventListener("visibilitychange", () => {
   endDrag(undefined, true);
-  audio.pause(document.hidden || !!modal);
+  audio.pause(document.hidden);
 });
 window.addEventListener("blur", () => {
   endDrag(undefined, true);
   audio.pause(true);
 });
-window.addEventListener("focus", () => audio.pause(document.hidden || !!modal));
+window.addEventListener("focus", () => audio.pause(document.hidden));
+window.addEventListener("resize", () => updateCoach());
+app.addEventListener("scroll", () => updateCoach(), true);
 document.addEventListener(
   "keydown",
   () => {
@@ -805,5 +1180,16 @@ window.addEventListener("storage", (event) => {
   }
 });
 applySettings();
+if (allDone() && (!progress.attempt || won(progress.attempt.board)))
+  screen = "finish";
 render();
-if (loaded.warning) toast(loaded.warning);
+track("session_start", undefined, {
+  completed: completedCount(progress.completed),
+});
+if (loaded.readOnly)
+  showModal(
+    "unsupported",
+    `<h2>Обновите игру</h2><p>${loaded.warning}</p><button class="primary" data-action="refresh">Обновить страницу</button>`,
+    false,
+  );
+else if (loaded.warning) toast(loaded.warning);

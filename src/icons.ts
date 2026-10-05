@@ -1,4 +1,5 @@
 const paths: Record<string, string> = {
+  hand: '<path d="M9 13V4a2 2 0 0 1 4 0v6l1-1 3 2h2l2 3-2 7H9l-5-6a2 2 0 0 1 3-3z"/>',
   home: '<path d="m3 11 9-8 9 8M5 9v12h5v-7h4v7h5V9"/>',
   settings:
     '<path d="m9 3-1 3-3 1-2 5 2 5 3 1 1 3h6l1-3 3-1 2-5-2-5-3-1-1-3z"/><circle cx="12" cy="12" r="3"/>',

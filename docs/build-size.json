@@ -1,9 +1,17 @@
 {
-  "bytes": 685449,
+  "bytes": 1045483,
   "files": [
     {
       "path": "dist/assets/shop.webp",
       "bytes": 288054
+    },
+    {
+      "path": "dist/assets/counter.webp",
+      "bytes": 164654
+    },
+    {
+      "path": "dist/assets/garden.webp",
+      "bytes": 151674
     },
     {
       "path": "dist/assets/shelf.webp",
@@ -12,6 +20,10 @@
     {
       "path": "dist/assets/bread.webp",
       "bytes": 50120
+    },
+    {
+      "path": "dist/assets/jobs-DOatB7GQ.css",
+      "bytes": 48253
     },
     {
       "path": "dist/assets/jam.webp",
@@ -30,24 +42,36 @@
       "bytes": 40684
     },
     {
-      "path": "dist/assets/index-Ck_m1kLp.js",
-      "bytes": 36969
-    },
-    {
-      "path": "dist/assets/index-CQ0CiWwQ.css",
-      "bytes": 34582
+      "path": "dist/assets/game-C3h9HWh_.js",
+      "bytes": 40002
     },
     {
       "path": "dist/assets/milk.webp",
       "bytes": 26586
     },
     {
-      "path": "dist/assets/worker-BdDsVENF.js",
-      "bytes": 8958
+      "path": "dist/assets/worker-CCuQA5X9.js",
+      "bytes": 17064
+    },
+    {
+      "path": "dist/assets/jobs-CL6NG09E.js",
+      "bytes": 9890
+    },
+    {
+      "path": "dist/assets/author-2CW5P6id.js",
+      "bytes": 6315
+    },
+    {
+      "path": "dist/assets/author-myPqSN0k.css",
+      "bytes": 1982
     },
     {
       "path": "dist/index.html",
-      "bytes": 920
+      "bytes": 994
+    },
+    {
+      "path": "dist/author.html",
+      "bytes": 635
     },
     {
       "path": "dist/favicon.svg",

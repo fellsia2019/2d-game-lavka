@@ -1,14 +1,7 @@
 // Rules adapted from the supplied coastal-shop-level-generator.js.
 // The engine has no DOM, time, storage, sound or commerce dependencies.
-export const GOODS = {
-  j: { name: "Варенье", file: "jam", color: "#d9464b" },
-  m: { name: "Молоко", file: "milk", color: "#238dc7" },
-  b: { name: "Хлеб", file: "bread", color: "#e2a546" },
-  p: { name: "Груши", file: "pear", color: "#83a547" },
-  h: { name: "Мёд", file: "honey", color: "#dea02f" },
-  l: { name: "Лимоны", file: "lemon", color: "#e8c23b" },
-} as const;
-export type Good = keyof typeof GOODS;
+import { GOODS, isGood, type Good } from "./catalog";
+export { GOODS, type Good } from "./catalog";
 export type Row = (Good | null)[];
 export type Position = [number, number];
 export type Move = [Position, Position];
@@ -31,6 +24,7 @@ export interface Definition {
   shelves: Omit<Shelf, "opened">[];
   verifiedSolution: Move[];
   budget: number | null;
+  recipe?: string;
 }
 export type Event = {
   type: "triple" | "reveal" | "unlock";
@@ -101,6 +95,7 @@ export function won(board: Board): boolean {
   );
 }
 export function validMove(board: Board, from: Position, to: Position): boolean {
+  if (![...from, ...to].every(Number.isInteger)) return false;
   if (won(board) || (board.budget !== null && board.used >= board.budget))
     return false;
   const a = board.shelves[from[0]],
@@ -158,19 +153,43 @@ export function countGoods(board: Board): Partial<Record<Good, number>> {
   return counts;
 }
 export function validateDefinition(def: Definition): void {
-  if (!def.shelves.length || def.shelves.length > 6)
+  if (
+    !def ||
+    ![def.id, def.seed, def.generatorVersion, def.name, def.note].every(
+      (s) => typeof s === "string" && s.length > 0 && s.length <= 200,
+    ) ||
+    !Number.isSafeInteger(def.number) ||
+    def.number < 1 ||
+    !["tutorial", "front", "layers", "crate", "mixed"].includes(def.profile) ||
+    (def.recipe !== undefined &&
+      (typeof def.recipe !== "string" ||
+        !def.recipe.length ||
+        def.recipe.length > 64)) ||
+    !(
+      def.budget === null ||
+      (Number.isSafeInteger(def.budget) && def.budget > 0)
+    ) ||
+    !Array.isArray(def.verifiedSolution) ||
+    def.verifiedSolution.length > 100 ||
+    !Array.isArray(def.shelves) ||
+    !def.shelves.length ||
+    def.shelves.length > 6
+  )
     throw new Error("Invalid shelf count");
   for (const sh of def.shelves) {
     if (
+      !Array.isArray(sh.front) ||
+      !Array.isArray(sh.rear) ||
+      sh.reserve ||
       sh.front.length !== 3 ||
       sh.rear.length > 2 ||
       sh.rear.some((r) => r.length !== 3)
     )
       throw new Error("Invalid rows");
-    if ([...sh.front, ...sh.rear.flat()].some((k) => k && !GOODS[k]))
+    if ([...sh.front, ...sh.rear.flat()].some((k) => k !== null && !isGood(k)))
       throw new Error("Unknown goods");
     if (
-      sh.unlockAfter &&
+      sh.unlockAfter !== undefined &&
       (!Number.isInteger(sh.unlockAfter) || sh.unlockAfter < 1)
     )
       throw new Error("Invalid lock");
@@ -184,6 +203,14 @@ export function validateDefinition(def: Definition): void {
     throw new Error("Invalid goals");
   if (!replay(def, def.verifiedSolution))
     throw new Error("Unverified solution");
+}
+export function hasMoves(board: Board): boolean {
+  if (won(board) || (board.budget !== null && board.used >= board.budget))
+    return false;
+  return (
+    board.shelves.some((s) => s.opened && s.front.some(isGood)) &&
+    board.shelves.some((s) => s.opened && s.front.includes(null))
+  );
 }
 // Slot order is immaterial to a search state. Shelves remain ordered, since their
 // hidden rows and locks are different. Stored paths still use actual slot indexes.

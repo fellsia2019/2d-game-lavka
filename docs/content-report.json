@@ -1,0 +1,171 @@
+{
+  "contentVersion": "coastal-chapter-2",
+  "generatorVersion": "coastal-slice-2",
+  "levels": [
+    {
+      "id": "morning-first",
+      "name": "Первый покупатель",
+      "seed": "first",
+      "key": "0:AAB:|0:ABB:|0:CC_:|0:C__:",
+      "shelves": 4,
+      "kinds": 3,
+      "goods": 9,
+      "free": 3,
+      "rearRows": 0,
+      "locks": 0,
+      "verifiedMoves": 4,
+      "recipe": "tutorial"
+    },
+    {
+      "id": "morning-breakfast",
+      "name": "Солнечный завтрак",
+      "seed": "morning",
+      "key": "0:AAB:|0:ABC:|0:BC_:|0:C__:",
+      "shelves": 4,
+      "kinds": 3,
+      "goods": 9,
+      "free": 3,
+      "rearRows": 0,
+      "locks": 0,
+      "verifiedMoves": 5,
+      "recipe": "tutorial"
+    },
+    {
+      "id": "morning-opening",
+      "name": "Утро в лавке",
+      "seed": "opening",
+      "key": "0:ABC:|0:ABC:|0:AB_:|0:C__:",
+      "shelves": 4,
+      "kinds": 3,
+      "goods": 9,
+      "free": 3,
+      "rearRows": 0,
+      "locks": 0,
+      "verifiedMoves": 7,
+      "recipe": "tutorial"
+    },
+    {
+      "id": "morning-coast",
+      "name": "Привет с набережной",
+      "seed": "coast-4",
+      "key": "0:AAB:|0:AB_:|0:BCC:|0:C__:",
+      "shelves": 4,
+      "kinds": 3,
+      "goods": 9,
+      "free": 3,
+      "rearRows": 0,
+      "locks": 0,
+      "verifiedMoves": 5,
+      "recipe": "front-classic"
+    },
+    {
+      "id": "morning-picnic",
+      "name": "Пикник у маяка",
+      "seed": "coast-5",
+      "key": "0:AAB:|0:ACC:|0:BC_:|0:B__:",
+      "shelves": 4,
+      "kinds": 3,
+      "goods": 9,
+      "free": 3,
+      "rearRows": 0,
+      "locks": 0,
+      "verifiedMoves": 4,
+      "recipe": "front-classic"
+    },
+    {
+      "id": "morning-neighbours",
+      "name": "Для добрых соседей",
+      "seed": "coast-6-v2",
+      "key": "0:AAB:|0:AC_:|0:BC_:|0:BC_:",
+      "shelves": 4,
+      "kinds": 3,
+      "goods": 9,
+      "free": 3,
+      "rearRows": 0,
+      "locks": 0,
+      "verifiedMoves": 5,
+      "recipe": "front-classic"
+    },
+    {
+      "id": "morning-delivery",
+      "name": "Свежая поставка",
+      "seed": "coast-7",
+      "key": "0:AB_:|0:AB_:ABC|0:AC_:|0:A__:ABC/BCC|0:BC_:",
+      "shelves": 5,
+      "kinds": 3,
+      "goods": 18,
+      "free": 6,
+      "rearRows": 3,
+      "locks": 0,
+      "verifiedMoves": 18,
+      "recipe": "layers-deep"
+    },
+    {
+      "id": "morning-shelves",
+      "name": "Полные полки",
+      "seed": "coast-8",
+      "key": "0:AAB:ACC|0:AA_:|0:BB_:BBC|0:CC_:ABC",
+      "shelves": 4,
+      "kinds": 3,
+      "goods": 18,
+      "free": 3,
+      "rearRows": 3,
+      "locks": 0,
+      "verifiedMoves": 7,
+      "recipe": "layers-classic"
+    },
+    {
+      "id": "morning-baker",
+      "name": "Посылка от пекаря",
+      "seed": "coast-9",
+      "key": "0:ABC:|0:AD_:|0:AD_:|0:B__:|0:D__:|2:BCC:",
+      "shelves": 6,
+      "kinds": 4,
+      "goods": 12,
+      "free": 6,
+      "rearRows": 0,
+      "locks": 1,
+      "verifiedMoves": 10,
+      "recipe": "crate-room"
+    },
+    {
+      "id": "morning-party",
+      "name": "Маленький праздник",
+      "seed": "coast-10",
+      "key": "0:AAB:CCD/DDD|0:AB_:|0:AC_:|0:BB_:ABB/CCD|0:___:|1:ACD:",
+      "shelves": 6,
+      "kinds": 4,
+      "goods": 24,
+      "free": 6,
+      "rearRows": 4,
+      "locks": 1,
+      "verifiedMoves": 11,
+      "recipe": "mixed-deep"
+    }
+  ],
+  "renovations": [
+    {
+      "id": "sign",
+      "name": "Вывеска",
+      "cost": 3,
+      "description": "Новое имя и цвет вашей лавки",
+      "icon": "shell"
+    },
+    {
+      "id": "counter",
+      "name": "Прилавок",
+      "cost": 3,
+      "description": "Тёплое дерево и место для заказов",
+      "icon": "reserve"
+    },
+    {
+      "id": "window",
+      "name": "Зелёный уголок",
+      "cost": 4,
+      "description": "Цветы у окна и уютный свет",
+      "icon": "wave"
+    }
+  ],
+  "starsAvailable": 10,
+  "starsRequired": 10
+}

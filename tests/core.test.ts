@@ -46,6 +46,7 @@ function attempt(def = chapterLevel(1)): Attempt {
     undo: [],
     solution: clone(def.verifiedSolution),
     mixCount: 0,
+    hints: {},
     reward: null,
   };
 }

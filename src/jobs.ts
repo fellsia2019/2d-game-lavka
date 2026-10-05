@@ -1,30 +1,58 @@
 let nextId = 0;
-// Each job has its own worker; termination bounds wall time and cancels all work.
-// Generator acceptance depends on node counts, never machine speed.
-export function job<T>(request: object): Promise<T> {
+// One worker per request. A deadline also terminates the computation itself.
+export function job<T>(request: object, timeoutMs = 12000): Promise<T> {
   return new Promise((resolve, reject) => {
-    const worker = new Worker(new URL("./worker.ts", import.meta.url), {
-      type: "module",
-    });
-    const id = ++nextId;
-    const finish = () => {
+    let worker: Worker | undefined,
+      timer: ReturnType<typeof setTimeout> | undefined,
+      settled = false;
+    const finish = (error?: Error, value?: T) => {
+      if (settled) return;
+      settled = true;
       clearTimeout(timer);
-      worker.terminate();
+      worker?.terminate();
+      if (error) reject(error);
+      else resolve(value as T);
     };
-    const timer = setTimeout(() => {
-      finish();
-      reject(new Error("Проверка заняла слишком долго. Попробуйте ещё раз."));
-    }, 12000);
-    worker.onmessage = (event) => {
-      if (event.data.id !== id) return;
-      finish();
-      if (event.data.error) reject(new Error(event.data.error));
-      else resolve(event.data.value as T);
-    };
-    worker.onerror = () => {
-      finish();
-      reject(new Error("Не удалось проверить заказ."));
-    };
-    worker.postMessage({ ...request, id });
+    try {
+      worker = new Worker(new URL("./worker.ts", import.meta.url), {
+        type: "module",
+      });
+      const id = ++nextId;
+      timer = setTimeout(
+        () =>
+          finish(
+            new Error(
+              "Не удалось завершить проверку вовремя. Помощь не потрачена. Попробуйте ещё раз.",
+            ),
+          ),
+        Math.min(12000, Math.max(1, timeoutMs)),
+      );
+      worker.onmessage = (event) => {
+        const data = event.data;
+        if (!data || typeof data !== "object") {
+          finish(new Error("Не удалось проверить заказ."));
+          return;
+        }
+        if (data.id !== id) return;
+        if (data.error)
+          finish(
+            new Error(
+              typeof data.error === "string"
+                ? data.error
+                : "Не удалось проверить заказ.",
+            ),
+          );
+        else if (Object.hasOwn(data, "value")) finish(undefined, data.value);
+        else finish(new Error("Не удалось проверить заказ."));
+      };
+      worker.onerror = () => finish(new Error("Не удалось проверить заказ."));
+      worker.postMessage({ ...request, id });
+    } catch {
+      finish(
+        new Error(
+          "Не удалось запустить проверку заказа. Попробуйте обновить страницу.",
+        ),
+      );
+    }
   });
 }

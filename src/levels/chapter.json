@@ -1,0 +1,644 @@
+[
+  {
+    "id": "morning-first",
+    "number": 1,
+    "seed": "first",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Первый покупатель",
+    "note": "К завтраку — хлеб, молоко и немного варенья.",
+    "profile": "tutorial",
+    "budget": null,
+    "shelves": [
+      {
+        "front": ["j", "j", "m"],
+        "rear": []
+      },
+      {
+        "front": ["m", "m", "j"],
+        "rear": []
+      },
+      {
+        "front": ["b", "b", null],
+        "rear": []
+      },
+      {
+        "front": ["b", null, null],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 2],
+        [3, 1]
+      ],
+      [
+        [1, 2],
+        [0, 2]
+      ],
+      [
+        [3, 1],
+        [1, 2]
+      ],
+      [
+        [3, 0],
+        [2, 2]
+      ]
+    ]
+  },
+  {
+    "id": "morning-breakfast",
+    "number": 2,
+    "seed": "morning",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Солнечный завтрак",
+    "note": "Хлеб ещё тёплый. Поможете собрать заказ?",
+    "profile": "tutorial",
+    "budget": null,
+    "shelves": [
+      {
+        "front": ["b", "j", "m"],
+        "rear": []
+      },
+      {
+        "front": ["j", "m", "m"],
+        "rear": []
+      },
+      {
+        "front": ["b", "j", null],
+        "rear": []
+      },
+      {
+        "front": ["b", null, null],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 0],
+        [2, 2]
+      ],
+      [
+        [1, 0],
+        [0, 0]
+      ],
+      [
+        [0, 2],
+        [1, 0]
+      ],
+      [
+        [2, 1],
+        [0, 2]
+      ],
+      [
+        [3, 0],
+        [2, 1]
+      ]
+    ]
+  },
+  {
+    "id": "morning-opening",
+    "number": 3,
+    "seed": "opening",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Утро в лавке",
+    "note": "Ещё один заказ — и у нас будет новая вывеска!",
+    "profile": "tutorial",
+    "budget": null,
+    "shelves": [
+      {
+        "front": ["j", "m", "b"],
+        "rear": []
+      },
+      {
+        "front": ["m", "b", "j"],
+        "rear": []
+      },
+      {
+        "front": ["b", null, "m"],
+        "rear": []
+      },
+      {
+        "front": ["j", null, null],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 0],
+        [3, 1]
+      ],
+      [
+        [1, 2],
+        [3, 2]
+      ],
+      [
+        [0, 1],
+        [1, 2]
+      ],
+      [
+        [0, 2],
+        [2, 1]
+      ],
+      [
+        [1, 1],
+        [0, 0]
+      ],
+      [
+        [2, 2],
+        [1, 1]
+      ],
+      [
+        [0, 0],
+        [2, 2]
+      ]
+    ]
+  },
+  {
+    "id": "morning-coast",
+    "number": 4,
+    "seed": "coast-4",
+    "profile": "front",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Привет с набережной",
+    "note": "Как хорошо, что ваша лавка совсем рядом.",
+    "budget": null,
+    "recipe": "front-classic",
+    "shelves": [
+      {
+        "front": [null, null, "p"],
+        "rear": []
+      },
+      {
+        "front": ["p", "b", "p"],
+        "rear": []
+      },
+      {
+        "front": ["l", "l", "b"],
+        "rear": []
+      },
+      {
+        "front": ["l", null, "b"],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [1, 1],
+        [3, 1]
+      ],
+      [
+        [0, 2],
+        [1, 1]
+      ],
+      [
+        [2, 2],
+        [0, 0]
+      ],
+      [
+        [3, 0],
+        [2, 2]
+      ],
+      [
+        [0, 0],
+        [3, 0]
+      ]
+    ]
+  },
+  {
+    "id": "morning-picnic",
+    "number": 5,
+    "seed": "coast-5",
+    "profile": "front",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Пикник у маяка",
+    "note": "Возьмём самое вкусное с собой к морю.",
+    "budget": null,
+    "recipe": "front-classic",
+    "shelves": [
+      {
+        "front": ["m", "l", "m"],
+        "rear": []
+      },
+      {
+        "front": ["m", "p", "p"],
+        "rear": []
+      },
+      {
+        "front": ["l", null, null],
+        "rear": []
+      },
+      {
+        "front": ["l", null, "p"],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 1],
+        [2, 1]
+      ],
+      [
+        [1, 0],
+        [0, 1]
+      ],
+      [
+        [3, 0],
+        [2, 2]
+      ],
+      [
+        [3, 2],
+        [1, 0]
+      ]
+    ]
+  },
+  {
+    "id": "morning-neighbours",
+    "number": 6,
+    "seed": "coast-6-v2",
+    "profile": "front",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Для добрых соседей",
+    "note": "Наши первые постоянные покупатели!",
+    "budget": null,
+    "recipe": "front-classic",
+    "shelves": [
+      {
+        "front": [null, "h", "b"],
+        "rear": []
+      },
+      {
+        "front": ["b", "h", null],
+        "rear": []
+      },
+      {
+        "front": ["b", "m", "m"],
+        "rear": []
+      },
+      {
+        "front": [null, "m", "h"],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 1],
+        [1, 2]
+      ],
+      [
+        [1, 0],
+        [0, 0]
+      ],
+      [
+        [2, 0],
+        [0, 1]
+      ],
+      [
+        [3, 1],
+        [2, 0]
+      ],
+      [
+        [3, 2],
+        [1, 0]
+      ]
+    ]
+  },
+  {
+    "id": "morning-delivery",
+    "number": 7,
+    "seed": "coast-7",
+    "profile": "layers",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Свежая поставка",
+    "note": "За первым рядом спрятан ещё один. Освободите полку!",
+    "budget": null,
+    "recipe": "layers-deep",
+    "shelves": [
+      {
+        "front": [null, "j", "h"],
+        "rear": [["l", "h", "j"]]
+      },
+      {
+        "front": ["j", "h", null],
+        "rear": []
+      },
+      {
+        "front": [null, "l", "j"],
+        "rear": []
+      },
+      {
+        "front": [null, "h", null],
+        "rear": [
+          ["h", "j", "l"],
+          ["l", "j", "l"]
+        ]
+      },
+      {
+        "front": ["h", "l", null],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 1],
+        [1, 2]
+      ],
+      [
+        [1, 1],
+        [0, 0]
+      ],
+      [
+        [2, 2],
+        [1, 1]
+      ],
+      [
+        [4, 0],
+        [0, 1]
+      ],
+      [
+        [0, 0],
+        [2, 0]
+      ],
+      [
+        [4, 1],
+        [2, 2]
+      ],
+      [
+        [0, 1],
+        [3, 0]
+      ],
+      [
+        [0, 2],
+        [1, 0]
+      ],
+      [
+        [1, 0],
+        [2, 0]
+      ],
+      [
+        [2, 0],
+        [3, 2]
+      ],
+      [
+        [3, 2],
+        [4, 0]
+      ],
+      [
+        [3, 0],
+        [0, 0]
+      ],
+      [
+        [3, 1],
+        [0, 1]
+      ],
+      [
+        [3, 0],
+        [0, 2]
+      ],
+      [
+        [3, 1],
+        [4, 1]
+      ],
+      [
+        [3, 2],
+        [0, 0]
+      ],
+      [
+        [3, 1],
+        [4, 2]
+      ],
+      [
+        [0, 0],
+        [3, 1]
+      ]
+    ]
+  },
+  {
+    "id": "morning-shelves",
+    "number": 8,
+    "seed": "coast-8",
+    "profile": "layers",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Полные полки",
+    "note": "Сначала передний ряд, затем — всё остальное.",
+    "budget": null,
+    "recipe": "layers-classic",
+    "shelves": [
+      {
+        "front": ["m", "m", "p"],
+        "rear": [["b", "m", "b"]]
+      },
+      {
+        "front": ["b", "b", null],
+        "rear": [["b", "p", "m"]]
+      },
+      {
+        "front": [null, "m", "m"],
+        "rear": []
+      },
+      {
+        "front": [null, "p", "p"],
+        "rear": [["p", "b", "p"]]
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 2],
+        [3, 0]
+      ],
+      [
+        [2, 1],
+        [0, 2]
+      ],
+      [
+        [3, 1],
+        [1, 2]
+      ],
+      [
+        [1, 1],
+        [3, 1]
+      ],
+      [
+        [0, 1],
+        [1, 1]
+      ],
+      [
+        [1, 0],
+        [0, 1]
+      ],
+      [
+        [2, 2],
+        [1, 0]
+      ]
+    ]
+  },
+  {
+    "id": "morning-baker",
+    "number": 9,
+    "seed": "coast-9",
+    "profile": "crate",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Посылка от пекаря",
+    "note": "Поставка откроется после отправки троек.",
+    "budget": null,
+    "recipe": "crate-room",
+    "shelves": [
+      {
+        "front": ["l", "b", "h"],
+        "rear": []
+      },
+      {
+        "front": [null, null, "h"],
+        "rear": []
+      },
+      {
+        "front": ["h", "b", "b"],
+        "rear": [],
+        "unlockAfter": 2
+      },
+      {
+        "front": ["j", null, null],
+        "rear": []
+      },
+      {
+        "front": ["l", null, "j"],
+        "rear": []
+      },
+      {
+        "front": ["l", "j", null],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 0],
+        [4, 1]
+      ],
+      [
+        [0, 2],
+        [1, 0]
+      ],
+      [
+        [3, 0],
+        [5, 2]
+      ],
+      [
+        [0, 1],
+        [1, 1]
+      ],
+      [
+        [1, 1],
+        [3, 0]
+      ],
+      [
+        [4, 2],
+        [0, 0]
+      ],
+      [
+        [5, 0],
+        [4, 2]
+      ],
+      [
+        [0, 0],
+        [5, 0]
+      ],
+      [
+        [2, 0],
+        [1, 1]
+      ],
+      [
+        [3, 0],
+        [2, 0]
+      ]
+    ]
+  },
+  {
+    "id": "morning-party",
+    "number": 10,
+    "seed": "coast-10",
+    "profile": "mixed",
+    "generatorVersion": "coastal-slice-2",
+    "name": "Маленький праздник",
+    "note": "Сегодня гостей много. Давайте соберём все заказы!",
+    "budget": null,
+    "recipe": "mixed-deep",
+    "shelves": [
+      {
+        "front": ["m", "p", null],
+        "rear": []
+      },
+      {
+        "front": [null, null, null],
+        "rear": []
+      },
+      {
+        "front": ["h", "m", "j"],
+        "rear": [],
+        "unlockAfter": 1
+      },
+      {
+        "front": [null, "p", "p"],
+        "rear": [
+          ["p", "m", "p"],
+          ["j", "j", "h"]
+        ]
+      },
+      {
+        "front": ["p", "m", "m"],
+        "rear": [
+          ["j", "h", "j"],
+          ["h", "h", "h"]
+        ]
+      },
+      {
+        "front": [null, "m", "j"],
+        "rear": []
+      }
+    ],
+    "verifiedSolution": [
+      [
+        [0, 1],
+        [3, 0]
+      ],
+      [
+        [0, 0],
+        [5, 0]
+      ],
+      [
+        [2, 0],
+        [0, 0]
+      ],
+      [
+        [3, 1],
+        [2, 0]
+      ],
+      [
+        [4, 0],
+        [3, 1]
+      ],
+      [
+        [2, 0],
+        [4, 0]
+      ],
+      [
+        [3, 2],
+        [0, 1]
+      ],
+      [
+        [2, 2],
+        [3, 2]
+      ],
+      [
+        [4, 1],
+        [0, 2]
+      ],
+      [
+        [5, 2],
+        [4, 1]
+      ],
+      [
+        [2, 1],
+        [5, 2]
+      ]
+    ]
+  }
+]

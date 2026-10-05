@@ -32,3 +32,13 @@ shelf.save(assets / 'shelf.webp', quality=90, method=6)
 scene = Image.open(ROOT / 'docs' / 'reference' / 'coastal-shop-concept.png').convert('RGB')
 scene.save(assets / 'shop.webp', quality=88, method=6)
 print('\n'.join(f'{p.name}: {p.stat().st_size:,} bytes' for p in assets.glob('*.webp')))
+
+# Repair layers preserve generated alpha and share the runtime sprite pipeline.
+for source, name, size in [('counter-original.png', 'counter', (1400, 700)), ('garden-original.png', 'garden', (900, 600))]:
+    sprite = Image.open(art / source).convert('RGBA')
+    assert sprite.getchannel('A').getextrema()[0] == 0, f'{source}: transparent alpha required'
+    bounds = sprite.getchannel('A').getbbox()
+    if bounds: sprite = sprite.crop(bounds)
+    sprite.thumbnail(size, Image.Resampling.LANCZOS)
+    sprite.save(assets / f'{name}.webp', quality=90, method=6)
+    print(f'{name}.webp: {sprite.width} × {sprite.height}, { (assets / (name+".webp")).stat().st_size:,} bytes')

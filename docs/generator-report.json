@@ -1,0 +1,51 @@
+{
+  "generatorVersion": "coastal-slice-2",
+  "sample": "audit-0 through audit-99, no exclusion history",
+  "profiles": {
+    "front": {
+      "requested": 100,
+      "verified": 100,
+      "unknown": 0,
+      "distinctStructures": 38,
+      "maxRepetitions": 13,
+      "recipes": {
+        "front-four": 37,
+        "front-classic": 25,
+        "front-double": 38
+      }
+    },
+    "layers": {
+      "requested": 100,
+      "verified": 100,
+      "unknown": 0,
+      "distinctStructures": 100,
+      "maxRepetitions": 1,
+      "recipes": {
+        "layers-deep": 50,
+        "layers-classic": 50
+      }
+    },
+    "crate": {
+      "requested": 100,
+      "verified": 100,
+      "unknown": 0,
+      "distinctStructures": 86,
+      "maxRepetitions": 4,
+      "recipes": {
+        "crate-room": 50,
+        "crate-classic": 50
+      }
+    },
+    "mixed": {
+      "requested": 100,
+      "verified": 100,
+      "unknown": 0,
+      "distinctStructures": 100,
+      "maxRepetitions": 1,
+      "recipes": {
+        "mixed-deep": 50,
+        "mixed-classic": 50
+      }
+    }
+  }
+}

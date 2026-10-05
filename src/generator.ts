@@ -9,7 +9,8 @@ import {
   type Good,
   type Profile,
 } from "./engine";
-export const VERSION = "coastal-slice-1";
+import { GOOD_IDS } from "./catalog";
+export const VERSION = "coastal-slice-2";
 export function hash(s: string): number {
   let h = 2166136261;
   for (let i = 0; i < s.length; i++) {
@@ -43,7 +44,6 @@ export const PROFILES = {
     front: 9,
     rear: 0,
     locked: false,
-    min: 3,
     depth: 24,
     nodes: 1800,
     attempts: 32,
@@ -55,7 +55,6 @@ export const PROFILES = {
     front: 9,
     rear: 3,
     locked: false,
-    min: 7,
     depth: 40,
     nodes: 2800,
     attempts: 32,
@@ -67,7 +66,6 @@ export const PROFILES = {
     front: 12,
     rear: 0,
     locked: true,
-    min: 4,
     depth: 32,
     nodes: 2400,
     attempts: 32,
@@ -79,12 +77,109 @@ export const PROFILES = {
     front: 12,
     rear: 4,
     locked: true,
-    min: 9,
     depth: 48,
     nodes: 4000,
     attempts: 40,
   },
 } as const;
+export const RECIPES = [
+  {
+    id: "front-classic",
+    profile: "front",
+    label: "Знакомые полки",
+    shelves: 4,
+    kinds: 3,
+    each: 3,
+    front: 9,
+    rear: 0,
+  },
+  {
+    id: "front-four",
+    profile: "front",
+    label: "Четыре заказа",
+    shelves: 5,
+    kinds: 4,
+    each: 3,
+    front: 12,
+    rear: 0,
+  },
+  {
+    id: "front-double",
+    profile: "front",
+    label: "Двойной заказ",
+    shelves: 5,
+    kinds: 2,
+    each: 6,
+    front: 12,
+    rear: 0,
+  },
+  {
+    id: "layers-classic",
+    profile: "layers",
+    label: "Задние ряды",
+    shelves: 4,
+    kinds: 3,
+    each: 6,
+    front: 9,
+    rear: 3,
+  },
+  {
+    id: "layers-deep",
+    profile: "layers",
+    label: "Глубокая полка",
+    shelves: 5,
+    kinds: 3,
+    each: 6,
+    front: 9,
+    rear: 3,
+    deep: true,
+  },
+  {
+    id: "crate-classic",
+    profile: "crate",
+    label: "Закрытая поставка",
+    shelves: 5,
+    kinds: 4,
+    each: 3,
+    front: 12,
+    rear: 0,
+  },
+  {
+    id: "crate-room",
+    profile: "crate",
+    label: "Место для поставки",
+    shelves: 6,
+    kinds: 4,
+    each: 3,
+    front: 12,
+    rear: 0,
+  },
+  {
+    id: "mixed-classic",
+    profile: "mixed",
+    label: "Большой заказ",
+    shelves: 6,
+    kinds: 4,
+    each: 6,
+    front: 12,
+    rear: 4,
+  },
+  {
+    id: "mixed-deep",
+    profile: "mixed",
+    label: "Две глубокие полки",
+    shelves: 6,
+    kinds: 4,
+    each: 6,
+    front: 12,
+    rear: 4,
+    deep: true,
+  },
+] as const;
+export interface GenerationOptions {
+  recipe?: string;
+  avoidStructures?: string[];
+}
 export function structuralKey(def: Definition): string {
   const kinds = [
     ...new Set(
@@ -128,14 +223,28 @@ export function generate(
   seed: string,
   profile: Profile,
   number = 1,
+  options: GenerationOptions = {},
 ): Definition {
   if (!seed.trim() || seed.length > 64 || !PROFILES[profile])
-    throw new Error("Invalid seed or profile");
-  const p = PROFILES[profile];
+    throw new Error(
+      "Укажите seed длиной от 1 до 64 символов и доступный профиль.",
+    );
+  const candidates = RECIPES.filter(
+    (r) =>
+      r.profile === profile && (!options.recipe || r.id === options.recipe),
+  );
+  if (!candidates.length)
+    throw new Error("Этот рецепт недоступен для выбранного профиля.");
+  const recipe = candidates[hash(`${seed}|recipe`) % candidates.length];
+  const p = {
+    ...PROFILES[profile],
+    ...recipe,
+    nodes: Math.max(PROFILES[profile].nodes, 6000),
+    attempts: 64,
+  };
   for (let attempt = 0; attempt < p.attempts; attempt++) {
     const rng = random(hash(`${VERSION}|${profile}|${seed}|${attempt}`));
-    const pool: Good[] =
-      p.kinds === 3 ? ["j", "m", "b"] : ["j", "m", "b", "p", "h", "l"];
+    const pool: Good[] = GOOD_IDS;
     const kinds = shuffle(pool, rng).slice(0, p.kinds);
     const bag = shuffle(
       kinds.flatMap((k) => Array<Good>(p.each).fill(k)),
@@ -157,9 +266,13 @@ export function generate(
       rng,
     );
     for (let n = 0; n < p.rear; n++)
-      shelves[indexes[n % indexes.length]].rear.push(
-        bag.slice(p.front + n * 3, p.front + n * 3 + 3),
-      );
+      shelves[
+        indexes[
+          "deep" in recipe && recipe.deep
+            ? Math.floor(n / 2)
+            : n % indexes.length
+        ]
+      ].rear.push(bag.slice(p.front + n * 3, p.front + n * 3 + 3));
     if (p.locked) {
       const full = shelves
         .map((s, i) => (s.front.every(Boolean) ? i : -1))
@@ -177,6 +290,7 @@ export function generate(
       name: "Заказ с набережной",
       note: "Соберите три одинаковых на одной полке.",
       budget: null,
+      recipe: recipe.id,
       shelves,
       verifiedSolution: [],
     };
@@ -186,8 +300,8 @@ export function generate(
       .reduce((n, sh) => n + sh.front.filter((k) => !k).length, 0);
     if (board.triples || empties < 2) continue;
     const result = solve(board, p.nodes, p.depth);
-    if (!result.path || result.path.length < p.min || !replay(def, result.path))
-      continue;
+    if (!result.path || !replay(def, result.path)) continue;
+    if (options.avoidStructures?.includes(structuralKey(def))) continue;
     def.verifiedSolution = result.path;
     validateDefinition(def);
     return def;
@@ -195,6 +309,23 @@ export function generate(
   throw new Error(
     "Не удалось подтвердить раскладку за ограниченный поиск. Уровень не выдан.",
   );
+}
+// Coarse features let authors compare nearby recipes without calling them difficulty.
+export function describeStructure(def: Definition) {
+  const board = initial(def);
+  return {
+    key: structuralKey(def),
+    shelves: def.shelves.length,
+    kinds: Object.keys(board.goals).length,
+    goods: Object.values(board.goals).reduce((a, b) => a + b!, 0),
+    free: board.shelves
+      .filter((s) => s.opened)
+      .reduce((n, s) => n + s.front.filter((g) => g === null).length, 0),
+    rearRows: def.shelves.reduce((n, s) => n + s.rear.length, 0),
+    locks: def.shelves.filter((s) => s.unlockAfter).length,
+    verifiedMoves: def.verifiedSolution.length,
+    recipe: def.recipe ?? def.profile,
+  };
 }
 export function mixVisible(
   board: Board,
