@@ -143,7 +143,7 @@
       "recipe": "mixed-deep"
     }
   ],
-  "renovations": [
+  "legacyRenovations": [
     {
       "id": "sign",
       "name": "Вывеска",
@@ -164,6 +164,111 @@
       "cost": 4,
       "description": "Цветы у окна и уютный свет",
       "icon": "wave"
+    }
+  ],
+  "campaignVersion": "coastal-campaign-1",
+  "campaignChapters": [
+    {
+      "id": "chapter-shop",
+      "areaId": "shop",
+      "name": "Маленькая лавка",
+      "orderIds": [
+        "morning-first",
+        "morning-breakfast",
+        "morning-opening",
+        "morning-coast",
+        "morning-picnic",
+        "morning-neighbours",
+        "morning-delivery",
+        "morning-shelves",
+        "morning-baker",
+        "morning-party"
+      ],
+      "taskIds": [
+        "first-shelf",
+        "display-baskets",
+        "first-stock",
+        "order-counter",
+        "shop-opening"
+      ],
+      "requires": null
+    },
+    {
+      "id": "chapter-warehouse",
+      "areaId": "warehouse",
+      "name": "Склад и поставки",
+      "orderIds": [],
+      "taskIds": [],
+      "requires": "chapter-shop"
+    },
+    {
+      "id": "chapter-fruit-yard",
+      "areaId": "fruit-yard",
+      "name": "Большая лавка и фруктовый двор",
+      "orderIds": [],
+      "taskIds": [],
+      "requires": "chapter-warehouse"
+    },
+    {
+      "id": "chapter-bakery",
+      "areaId": "bakery",
+      "name": "Пекарня",
+      "orderIds": [],
+      "taskIds": [],
+      "requires": "chapter-fruit-yard"
+    },
+    {
+      "id": "chapter-terrace",
+      "areaId": "terrace",
+      "name": "Терраса у моря",
+      "orderIds": [],
+      "taskIds": [],
+      "requires": "chapter-bakery"
+    },
+    {
+      "id": "chapter-restaurant",
+      "areaId": "restaurant",
+      "name": "Второй этаж и ресторан",
+      "orderIds": [],
+      "taskIds": [],
+      "requires": "chapter-terrace"
+    }
+  ],
+  "shopTasks": [
+    {
+      "id": "first-shelf",
+      "name": "Первая полка",
+      "cost": 1,
+      "icon": "reserve",
+      "result": "Есть место для первого ассортимента."
+    },
+    {
+      "id": "display-baskets",
+      "name": "Корзины",
+      "cost": 2,
+      "icon": "reserve",
+      "result": "Полка готова для хлеба и фруктов."
+    },
+    {
+      "id": "first-stock",
+      "name": "Первые товары",
+      "cost": 2,
+      "icon": "check",
+      "result": "В лавке появились хлеб, молоко, варенье и фрукты."
+    },
+    {
+      "id": "order-counter",
+      "name": "Прилавок",
+      "cost": 2,
+      "icon": "reserve",
+      "result": "Покупателям есть где получить заказ."
+    },
+    {
+      "id": "shop-opening",
+      "name": "Открытие лавки",
+      "cost": 3,
+      "icon": "shell",
+      "result": "Вывеска на месте. Следующая цель — склад."
     }
   ],
   "starsAvailable": 10,

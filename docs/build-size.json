@@ -1,5 +1,5 @@
 {
-  "bytes": 1955240,
+  "bytes": 1969688,
   "files": [
     {
       "path": "dist/assets/campaign-map.webp",
@@ -30,8 +30,8 @@
       "bytes": 62010
     },
     {
-      "path": "dist/assets/jobs-CNI2wtdw.css",
-      "bytes": 60543
+      "path": "dist/assets/game-B8SLqJUd.js",
+      "bytes": 52352
     },
     {
       "path": "dist/assets/bread.webp",
@@ -54,8 +54,8 @@
       "bytes": 44714
     },
     {
-      "path": "dist/assets/game-2rwn63AO.js",
-      "bytes": 44315
+      "path": "dist/assets/jobs-D7rhbHQH.css",
+      "bytes": 43915
     },
     {
       "path": "dist/assets/lemon.webp",
@@ -66,24 +66,36 @@
       "bytes": 26586
     },
     {
-      "path": "dist/assets/worker-DSG7z3r_.js",
-      "bytes": 18052
+      "path": "dist/assets/worker-Buu-pRXw.js",
+      "bytes": 21023
     },
     {
-      "path": "dist/assets/jobs-DKhVoiHx.js",
-      "bytes": 9292
+      "path": "dist/assets/game-DM9r2m4i.css",
+      "bytes": 17575
     },
     {
-      "path": "dist/assets/campaign-A67LbV4u.js",
-      "bytes": 8658
+      "path": "dist/assets/content-RhyQrPfB.js",
+      "bytes": 6950
     },
     {
-      "path": "dist/assets/author-BxHtna9i.js",
-      "bytes": 6360
+      "path": "dist/assets/author-DQYA73_s.js",
+      "bytes": 6350
     },
     {
-      "path": "dist/assets/campaign-CO-7_-rX.css",
-      "bytes": 5590
+      "path": "dist/assets/campaign-fOk3eHVU.css",
+      "bytes": 6097
+    },
+    {
+      "path": "dist/assets/campaign-scene-fZ4uTnxc.js",
+      "bytes": 5611
+    },
+    {
+      "path": "dist/assets/campaign-gdHfQ5gG.js",
+      "bytes": 4808
+    },
+    {
+      "path": "dist/assets/jobs-CwOkw8LM.js",
+      "bytes": 3046
     },
     {
       "path": "dist/assets/author-bxatv301.css",
@@ -91,19 +103,15 @@
     },
     {
       "path": "dist/index.html",
-      "bytes": 1088
-    },
-    {
-      "path": "dist/author.html",
-      "bytes": 729
-    },
-    {
-      "path": "dist/assets/modulepreload-polyfill-P2Xu9kJm.js",
-      "bytes": 670
+      "bytes": 1233
     },
     {
       "path": "dist/campaign.html",
-      "bytes": 661
+      "bytes": 732
+    },
+    {
+      "path": "dist/author.html",
+      "bytes": 714
     },
     {
       "path": "dist/favicon.svg",

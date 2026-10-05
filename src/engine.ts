@@ -1,6 +1,6 @@
 // Rules adapted from the supplied coastal-shop-level-generator.js.
 // The engine has no DOM, time, storage, sound or commerce dependencies.
-import { GOODS, isGood, type Good } from "./catalog";
+import { isGood, type Good } from "./catalog";
 export { GOODS, type Good } from "./catalog";
 export type Row = (Good | null)[];
 export type Position = [number, number];

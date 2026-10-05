@@ -1,6 +1,6 @@
 {
   "name": "lavka-u-morya",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,10 +8,12 @@
     "build": "tsc --noEmit && npm run content:check && vite build && node scripts/check-size.mjs",
     "preview": "vite preview --host 0.0.0.0 --port 4173 --strictPort",
     "test": "tsx --test tests/*.test.ts",
+    "test:ui": "npm run build && playwright test",
     "content:check": "tsx scripts/check-content.ts",
     "content:audit": "tsx scripts/audit-generator.ts"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@types/node": "^22.19.0",
     "tsx": "4.23.15",
     "typescript": "~5.9.3",

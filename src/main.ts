@@ -1,4 +1,7 @@
 import "./style.css";
+import "./campaign-game.css";
+import { CAMPAIGN_AREAS, nextShopTask, shopComplete, type CampaignAreaId, type ShopTaskId } from "./campaign";
+import { worldHTML, taskArtwork } from "./world";
 import {
   GOODS,
   addReserve,
@@ -33,17 +36,19 @@ import {
   completeAttempt,
   loadProgress,
   renovate,
+  purchaseShopTask,
   saveProgress,
   cachedHint,
   finishes,
   rememberHint,
   validateAttempt,
-  type Attempt,
   type RenovationColor,
   type Settings,
 } from "./storage";
 import { audio } from "./audio";
 import { icon } from "./icons";
+import { TOOLS, purchaseTool, toolUnlocked, type ToolKind } from "./tools";
+import "./tool-shop.css";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 const overlay = document.querySelector<HTMLDivElement>("#overlay")!;
@@ -60,7 +65,11 @@ const storage = {
 };
 const loaded = loadProgress(storage);
 const progress = loaded.progress;
-let screen: "home" | "game" | "finish" | "shop" = "home";
+type Screen = "home" | "game" | "finish" | "shop" | "map" | "tools-shop";
+let screen: Screen = "home";
+let toolShopReturn: Screen = "home";
+let shopTool: ToolKind | null = null;
+let renderedScreen: Screen | null = null;
 let selected: Position | null = null;
 let highlighted: Move | null = null;
 let gentleBoard: Board | null = null;
@@ -73,6 +82,8 @@ let lastFocus: HTMLElement | null = null;
 let storageWarned = false;
 let externalChanged = !!loaded.readOnly;
 let repairTarget: RenovationId = "sign";
+let selectedArea: CampaignAreaId = "shop";
+let justBuilt: ShopTaskId | undefined;
 let pendingLevel: number | null = null;
 let toolLesson = false;
 let drag: {
@@ -148,6 +159,8 @@ function settingsButton() {
   return `<button class="round cream" data-action="settings" aria-label="Настройки">${icon("settings")}</button>`;
 }
 function render() {
+  const previousScroll = app.scrollTop;
+  const changedScreen = renderedScreen !== screen;
   const active = document.activeElement as HTMLElement | null;
   const focusSelector =
     active && app.contains(active)
@@ -156,12 +169,12 @@ function render() {
             active.dataset.slot.split(",").map(Number) as Position,
           )
         : active.dataset.action
-          ? `[data-action="${active.dataset.action}"]`
+          ? `[data-action="${active.dataset.action}"]${active.dataset.tool ? `[data-tool="${active.dataset.tool}"]` : ""}`
           : active.id === "order-heading"
             ? "#order-heading"
             : null
       : null;
-  app.className = screen === "game" ? "game-screen" : "home-screen";
+  app.className = screen === "game" ? "game-screen" : screen === "tools-shop" ? "tool-shop-screen" : "campaign-screen";
   app.innerHTML =
     screen === "home"
       ? homeHTML()
@@ -169,7 +182,7 @@ function render() {
         ? finishHTML()
         : screen === "shop"
           ? shopHTML()
-          : gameHTML();
+          : screen === "map" ? mapHTML() : screen === "tools-shop" ? toolsShopHTML() : gameHTML();
   if (focusSelector)
     app
       .querySelector<HTMLElement>(focusSelector)
@@ -186,38 +199,35 @@ function render() {
         screen === "game" ? "#order-heading" : ".primary:not([disabled])",
       )
       ?.focus({ preventScroll: true });
-  if (screen !== "game") app.scrollTop = 0;
+  if (screen !== "game") app.scrollTop = changedScreen ? 0 : previousScroll;
+  renderedScreen = screen;
 }
-const repairNext = () => RENOVATIONS.find((r) => !progress.renovations[r.id]);
+const repairNext = () => nextShopTask(progress.campaign);
 const chapterDone = () => completedCount(progress.completed) === CHAPTER.length;
-const allDone = () => chapterDone() && !repairNext();
-function sceneHTML() {
-  return `<header class="topbar"><div class="brand">${icon("shell")}<span>Лавка у моря</span></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
-    <div class="shop-display"><div class="shop-scene" aria-hidden="true"></div><div class="home-shade"></div>
-    ${progress.renovations.counter ? `<div class="shop-counter ${progress.renovations.counter}" aria-hidden="true"><img src="${assets}counter.webp" width="1400" height="698" alt="" /></div>` : ""}
-    ${progress.renovations.window ? `<div class="shop-garden ${progress.renovations.window}" aria-hidden="true"><img src="${assets}garden.webp" width="878" height="600" alt="" /></div>` : ""}
-    <div class="shop-sign ${progress.renovation ? "renovated " + progress.renovation : "unrestored"}"><span class="sign-rope left"></span><span class="sign-rope right"></span>${icon(progress.renovation ? "shell" : "wave")}<strong>${progress.renovation ? "Лавка у моря" : "Скоро открытие"}</strong></div></div>`;
+const allDone = () => shopComplete(progress.completed, progress.campaign);
+const ownedDecorations = () => RENOVATIONS.filter(r => progress.renovations[r.id]);
+function homeHTML() { return worldHTML(progress, assets, "home", selectedArea, justBuilt); }
+function shopHTML() { return worldHTML(progress, assets, "shop", selectedArea, justBuilt); }
+function finishHTML() { return worldHTML(progress, assets, "finish", selectedArea, justBuilt); }
+function mapHTML() { return worldHTML(progress, assets, "map", selectedArea); }
+function toolsShopHTML() {
+  return `<main class="tool-shop"><header class="tool-shop-header"><button class="round cream" data-action="leave-tools-shop" aria-label="${toolShopReturn === "game" ? "Вернуться в заказ" : "Вернуться в лавку"}">${icon("undo")}</button><h1 id="tool-shop-heading" tabindex="-1">Магазин помощи</h1><span class="store-wallet" aria-label="${progress.coins} монет">${icon("coin")}<b>${progress.coins}</b></span></header><div class="tool-shop-content"><p class="store-intro">Любой заказ можно пройти без помощи.</p><div class="store-shelves">${TOOLS.map(tool => {
+    const unlocked = toolUnlocked(progress, tool.id);
+    const affordable = progress.coins >= tool.cost;
+    const note = !unlocked ? `С заказа ${tool.afterOrder + 1}` : !affordable ? `Ещё ${tool.cost - progress.coins}${icon("coin")}` : "1 использование";
+    const availability = !unlocked ? `Откроется с заказа ${tool.afterOrder + 1}` : !affordable ? `Не хватает ${tool.cost - progress.coins} монет` : "Добавить одно использование в запас";
+    return `<article class="store-tool ${shopTool === tool.id ? "store-tool-selected" : ""}" data-store-tool="${tool.id}" aria-labelledby="store-${tool.id}"><div class="store-tool-heading"><span class="tool-circle">${icon(tool.id)}</span><h2 id="store-${tool.id}">${tool.name}</h2></div><p class="store-description">${tool.description}</p><div class="store-purchase"><span class="store-stock">Есть: <b>${progress.inventory[tool.id]}</b></span><button class="primary store-buy" data-action="buy-tool" data-tool="${tool.id}" title="${availability}" aria-label="Купить: ${tool.name} за ${tool.cost} монет. ${availability}" ${!unlocked || !affordable ? "disabled" : ""}>${unlocked ? "Купить" : `Заказ ${tool.afterOrder + 1}`}<span>${tool.cost}${icon("coin")}</span></button></div><small class="store-note" aria-label="${availability}">${note}</small></article>`;
+  }).join("")}</div><p class="store-earn">${icon("coin")} За новый заказ +60 монет</p></div><footer class="tool-shop-footer"><button class="primary" data-action="leave-tools-shop">${toolShopReturn === "game" ? "Вернуться в заказ" : "Вернуться в лавку"}${icon("arrow")}</button></footer></main>`;
 }
-function homeHTML() {
-  const next = nextOrder(progress.completed),
-    node = repairNext(),
-    count = completedCount(progress.completed);
-  const unfinished = progress.attempt && !won(progress.attempt.board);
-  const label = unfinished
-    ? "Продолжить"
-    : next
-      ? "Играть"
-      : allDone()
-        ? "Итоги главы"
-        : "Оформить лавку";
-  return `${sceneHTML()}<main class="home-content"><section class="welcome"><span class="eyebrow">ГЛАВА 1</span><h1>Лавка у моря</h1><button class="primary play" data-action="play">${label}${icon("arrow")}</button><div class="home-shortcuts"><button class="quiet home-levels" data-action="levels">Заказы <span>${count}/${CHAPTER.length}</span></button>${progress.renovation ? `<button class="quiet" data-action="show-shop">Моя лавка${icon("home")}</button>` : ""}</div></section>
-    <section class="renovation-card"><div class="card-kicker">ВАША ЛАВКА · ${Object.keys(progress.renovations).length}/${RENOVATIONS.length}</div><div class="repair-heading"><span class="repair-symbol">${icon(node ? node.icon : "check")}</span><div><h2>${node ? node.name : "Лавка готова!"}</h2></div></div><div class="repair-meter"><span style="width:${node ? Math.min(100, (progress.stars / node.cost) * 100) : 100}%"></span></div><div class="repair-detail"><span>${node ? `★ ${Math.min(progress.stars, node.cost)} / ${node.cost}` : "3 / 3"}</span>${icon("star")}</div><button class="secondary" data-action="renovation">${node ? (progress.stars >= node.cost ? `Обновить · ${node.cost} ★` : "Выбрать") : "Оформление"}${icon("arrow")}</button></section></main>`;
-}
-function shopHTML() {
-  return `${sceneHTML()}<main class="shop-tour" aria-label="Оформление лавки"><div class="shop-repair-actions"><button class="tour-node tour-sign cream" data-repair="sign">${icon("shell")} Вывеска</button><button class="tour-node tour-counter cream" data-repair="counter">${icon("reserve")} Прилавок</button><button class="tour-node tour-window cream" data-repair="window">${icon("wave")} Цветы у окна</button></div><div class="tour-footer"><strong>Ваша лавка у моря</strong><button class="primary" data-action="home">Заказы${icon("arrow")}</button></div></main>`;
-}
-function finishHTML() {
-  return `${sceneHTML()}<main class="chapter-finale"><div class="result-badge">${icon("shell")}</div><span class="eyebrow">ГЛАВА 1 · ГОТОВО</span><h1>Лавка открыта!</h1><div class="final-stats"><span>${icon("check")} ${CHAPTER.length} заказов</span><span>${icon("star")} ${RENOVATIONS.length} улучшения</span></div><button class="primary" data-action="show-shop">Моя лавка${icon("home")}</button><button class="secondary" data-action="levels">Играть ещё${icon("restart")}</button><button class="quiet" data-action="renovation">Сменить оформление</button></main>`;
+function openToolsShop(kind: ToolKind | null = null) {
+  if (screen !== "tools-shop") toolShopReturn = screen;
+  closeModal();
+  clearToast();
+  shopTool = kind;
+  screen = "tools-shop";
+  render();
+  app.querySelector<HTMLElement>("#tool-shop-heading")?.focus({ preventScroll: true });
+  if (kind) app.querySelector(`[data-store-tool="${kind}"]`)?.scrollIntoView({ block: "nearest" });
 }
 function guidedLesson() {
   if (screen !== "game" || won(current().board)) return null;
@@ -352,26 +362,13 @@ function gameHTML() {
     def = attempt.definition,
     board = attempt.board;
   const goalCount = Object.keys(board.goals).length;
-  const visible = board.shelves.flatMap(sh => sh.opened ? sh.front : []);
-  const readyGoods = Object.keys(board.goals).some(good => visible.filter(k => k === good).length >= 3);
-  const hiddenShelf = board.shelves.findIndex(sh => sh.opened && sh.rear.length);
-  const rearTip = hiddenShelf >= 0 && !readyGoods
-    ? `Освободи полку ${hiddenShelf + 1} — появится следующий ряд из запаса`
-    : "";
   const stuck = !won(board) && !hasMoves(board);
-  const noSpace =
-    board.budget !== null && board.used >= board.budget
-      ? "Ходы закончились."
-      : "Нет свободных мест.";
-  const tooltip = stuck
-    ? `${noSpace} ${attempt.undo.length ? "↶ Отмена" : "↻ Заново"}`
-    : board.budget !== null
-      ? `Ходы: ${board.budget - board.used}`
-      : rearTip;
+  const status = stuck ? (board.budget !== null && board.used >= board.budget
+    ? "Ходы закончились. Отмени ход или начни заново." : "Нет свободных мест. Отмени ход или начни заново.") : "";
   return `<div class="game-backdrop" aria-hidden="true"></div>
-    <header class="topbar game-topbar"><button class="round cream" data-action="home" aria-label="Вернуться в лавку">${icon("home")}</button><div class="level-title"><span>ЗАКАЗ ${chapterNumber(def.id)} / ${CHAPTER.length}</span><h1 id="order-heading" tabindex="-1">${escapeHTML(def.name)}</h1></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
+    <header class="topbar game-topbar"><button class="round cream" data-action="home" aria-label="Вернуться в лавку">${icon("home")}</button><div class="level-title"><span>ЗАКАЗ ${chapterNumber(def.id)} / ${CHAPTER.length}${board.budget !== null ? ` · ХОДЫ ${board.budget - board.used}` : ""}</span><h1 id="order-heading" tabindex="-1">${escapeHTML(def.name)}</h1></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
     <main class="puzzle-layout">
-      <section class="puzzle rows-${Math.ceil(def.shelves.length / 2)} ${board.shelves.some(sh => sh.reserve) ? "with-reserve" : ""}" aria-label="Игровое поле"><div class="orders goals-${goalCount}" aria-label="Товары для заказа">${Object.entries(
+      <section class="puzzle rows-${Math.ceil(def.shelves.length / 2)}" aria-label="Игровое поле"><div class="orders goals-${goalCount}" aria-label="Товары для заказа">${Object.entries(
         board.goals,
       )
         .map(([key, goal]) => {
@@ -386,14 +383,15 @@ function gameHTML() {
           const events = board.events.filter((e) => e.shelf === i);
           const stock = hiddenStock(sh);
           const stockLabel = stock.map(([good, count]) => `${GOODS[good].name}: ${count}`).join(", ");
-          return `<div class="shelf ${!sh.opened ? "locked" : ""} ${events.some((e) => e.type === "unlock") ? "just-unlocked" : ""}" data-shelf="${i}"><div class="shelf-top"><span>${i + 1}</span>${sh.rear.length ? `<span class="rear-badge">Запас · ${sh.rear.length} ${sh.rear.length === 1 ? "ряд" : "ряда"}</span>` : ""}</div>${sh.opened ? `${sh.rear.length ? `<div class="rear-preview" aria-label="Запас во всех скрытых рядах: ${stockLabel}. Освободи полку, чтобы открыть следующий ряд.">${stock.map(([good, count]) => `<span class="rear-stock">${goodImage(good)}<b>×${count}</b></span>`).join("")}</div>` : ""}<div class="shelf-tray"></div><div class="slots">${sh.front.map((k, j) => slotHTML(k, [i, j])).join("")}</div>` : `<div class="shelf-tray"></div><div class="crate-cover">${icon("lock")}<span>${board.triples} / ${sh.unlockAfter}</span></div>`}</div>`;
+          const stockPreview = sh.opened && sh.rear.length ? `<div class="rear-preview" aria-label="Запас во всех скрытых рядах: ${stockLabel}. Освободи полку, чтобы открыть следующий ряд.">${stock.map(([good, count]) => `<span class="rear-stock">${goodImage(good)}<b><span class="stock-times">×</span>${count}</b></span>`).join("")}</div>` : "";
+          const stockBadge = sh.rear.length ? `<span class="rear-badge" aria-label="Запас: ${sh.rear.length} ${sh.rear.length === 1 ? "ряд" : "ряда"}">${icon("layers")}<span class="stock-label">Запас ·</span>${sh.rear.length}<span class="stock-label">${sh.rear.length === 1 ? "ряд" : "ряда"}</span></span>` : "";
+          return `<div class="shelf ${!sh.opened ? "locked" : ""} ${events.some((e) => e.type === "unlock") ? "just-unlocked" : ""}" data-shelf="${i}"><div class="shelf-footer"><span>${i + 1}</span>${stockPreview}${stockBadge}</div>${sh.opened ? `<div class="shelf-tray"></div><div class="slots">${sh.front.map((k, j) => slotHTML(k, [i, j])).join("")}</div>` : `<div class="shelf-tray"></div><div class="crate-cover">${icon("lock")}<span>${board.triples} / ${sh.unlockAfter}</span></div>`}</div>`;
         })
         .join("")}</div></div>
-      <div class="game-message ${stuck ? "stuck-message" : ""}" aria-live="polite">${tooltip ? `${icon(stuck ? "undo" : "hint")}<span>${tooltip}</span>` : `<span class="triple-rule" aria-label="Три одинаковых товара на одной полке отправляются в заказ">${goodImage("j")}${goodImage("j")}${goodImage("j")}${icon("arrow")}${icon("check")}</span>`}</div>
-      <div class="tools">${toolHTML("hint", stuck ? "Как выйти" : "Подсказка", "hint", 100)}${toolHTML("mix", "Смешать", "mix", 200)}${toolHTML("reserve", "Резерв", "reserve", 300)}</div>
-      <div class="utility-bar"><button data-action="undo" ${!attempt.undo.length || won(board) ? "disabled" : ""} class="quiet ${stuck ? "recover-action" : ""}">${icon("undo")} Отмена</button><button class="quiet" data-action="restart">${icon("restart")} Заново</button><button class="mobile-help quiet" data-action="help" aria-label="Как играть">${icon("help")}</button>${toolLesson || highlighted ? `<button class="quiet" data-action="skip-lesson">${toolLesson ? "Пропустить" : "Скрыть подсказку"}</button>` : ""}</div>
+      <div class="tools" aria-label="Дополнительная помощь">${toolHTML("hint", stuck ? "Как выйти" : "Подсказка")}${toolHTML("mix", "Смешать")}${board.shelves.some(sh => sh.reserve) ? `<div class="tool tray-tool" role="group" aria-label="Лоток для одного товара"><span class="tool-label"><span class="tool-name">Лоток</span></span>${slotHTML(board.shelves[board.shelves.length - 1].front[0], [board.shelves.length - 1, 0])}</div>` : toolHTML("reserve", "Лоток")}</div>
+      <div class="utility-bar"><button data-action="undo" ${!attempt.undo.length || won(board) ? "disabled" : ""} class="quiet ${stuck ? "recover-action" : ""}" aria-label="Отмена">${icon("undo")} Отмена</button><button class="quiet" data-action="restart" aria-label="Заново">${icon("restart")} Заново</button><button class="quiet game-store-link" data-action="tools-shop" aria-label="Магазин помощи">${icon("store")} Магазин</button><button class="mobile-help quiet" data-action="help" aria-label="Как играть">${icon("help")}</button>${toolLesson || highlighted ? `<button class="quiet" data-action="skip-lesson" aria-label="${toolLesson ? "Пропустить" : "Скрыть подсказку"}">${icon("close")}${toolLesson ? "Пропустить" : "Скрыть подсказку"}</button>` : ""}</div>
+      <span class="visually-hidden" role="status">${status}</span>
       <span id="gentle-instruction" class="visually-hidden" role="status"></span>
-      ${board.shelves.some((sh) => sh.reserve) ? `<div class="reserve-slot"><span>Резерв</span>${slotHTML(board.shelves[board.shelves.length - 1].front[0], [board.shelves.length - 1, 0])}</div>` : ""}
       </section>
     </main>`;
 }
@@ -401,31 +399,21 @@ function slotHTML(good: Good | null, position: Position) {
   const step = activeHint();
   const hintSource = step && samePosition(step[0], position);
   const hintDest = step && samePosition(step[1], position);
-  return `<button class="slot ${good ? "occupied" : "empty"} ${samePosition(selected, position) ? "selected" : ""} ${hintSource ? "hint-source" : ""} ${hintDest ? "hint-dest" : ""}" data-slot="${position.join(",")}" aria-label="Полка ${position[0] + 1}, место ${position[1] + 1}: ${good ? GOODS[good].name : "свободно"}" aria-pressed="${samePosition(selected, position)}">${good ? goodImage(good) : '<span class="empty-mark">+</span>'}</button>`;
+  const place = current().board.shelves[position[0]]?.reserve ? "Лоток" : `Полка ${position[0] + 1}, место ${position[1] + 1}`;
+  return `<button class="slot ${good ? "occupied" : "empty"} ${samePosition(selected, position) ? "selected" : ""} ${hintSource ? "hint-source" : ""} ${hintDest ? "hint-dest" : ""}" data-slot="${position.join(",")}" aria-label="${place}: ${good ? GOODS[good].name : "свободно"}" aria-pressed="${samePosition(selected, position)}">${good ? goodImage(good) : '<span class="empty-mark">+</span>'}</button>`;
 }
-function toolHTML(
-  kind: "hint" | "mix" | "reserve",
-  name: string,
-  symbol: string,
-  cost: number,
-) {
+function toolHTML(kind: ToolKind, name: string) {
+  const tool = TOOLS.find(tool => tool.id === kind)!;
   const count = progress.inventory[kind];
-  const locked =
-    kind === "mix" && !isCompleted(progress.completed, 3)
-      ? "Заказ 4"
-      : kind === "reserve" && !isCompleted(progress.completed, 6)
-        ? "Заказ 7"
-        : null;
+  const locked = !toolUnlocked(progress, kind);
   const board = current().board;
-  const unavailable =
-    (kind === "mix" && !hasMoves(board)) ||
+  const unavailable = (kind === "mix" && !hasMoves(board)) ||
     (kind === "reserve" && board.budget !== null && board.used >= board.budget);
-  const freeHint =
-    kind === "hint" &&
-    (!hasMoves(current().board) || guided() || gentleGuidance() || toolLesson || !!cachedHint(current()));
-  const used =
-    kind === "reserve" && current().board.shelves.some((sh) => sh.reserve);
-  return `<button class="tool ${used ? "tool-used" : ""}" data-action="${kind}" ${used || locked || unavailable || busy || won(current().board) ? "disabled" : ""}><span class="tool-circle">${icon(symbol)}</span><span class="tool-name">${name}</span><small>${locked ?? (unavailable ? "Нужна отмена" : used ? "На поле" : freeHint ? "Бесплатно" : count > 0 ? `×${count}` : `${cost} ◉`)}</small></button>`;
+  const freeHint = kind === "hint" &&
+    (!hasMoves(board) || guided() || gentleGuidance() || toolLesson || !!cachedHint(current()));
+  const empty = !locked && !freeHint && !count;
+  const stock = locked ? `Заказ ${tool.afterOrder + 1}` : unavailable ? "Нет ходов" : freeHint ? "Бесплатно" : empty ? "В магазине" : `Есть: ${count}`;
+  return `<button class="tool ${empty ? "tool-empty" : ""}" data-action="${empty ? "tools-shop" : kind}" ${empty ? `data-tool="${kind}"` : ""} aria-label="${name} ${stock}" title="${tool.description}${empty ? " Купить в магазине помощи." : " Дополнительная помощь: все заказы можно пройти без неё."}" ${locked || unavailable || busy || won(board) ? "disabled" : ""}><span class="tool-circle">${icon(kind)}</span><span class="tool-label"><span class="tool-name">${name}</span><span class="tool-stock">${stock}</span></span></button>`;
 }
 async function start(number: number, force = false) {
   if (busy || externalChanged || !isUnlocked(progress.completed, number))
@@ -634,7 +622,8 @@ function move(from: Position, to: Position) {
       });
   }
   const opened = next.events.find((e) => e.type === "unlock");
-  if (opened) toast(`Полка ${opened.shelf + 1} открыта!`);
+  if (!victory && !hasMoves(next)) toast("Нет ходов. Отмени ход или начни заново — это бесплатно.");
+  else if (opened) toast(`Полка ${opened.shelf + 1} открыта!`);
   else if (next.events.some(e => e.type === "reveal")) toast("Новый ряд!");
   if (victory) {
     audio.play("win");
@@ -659,6 +648,7 @@ function showModal(
         unsupported: "Обновление игры",
         result: "Заказ готов",
         renovation: "Оформление лавки",
+        task: "Обустройство лавки",
         levels: "Книжка заказов",
         help: "Как играть",
         restart: "Начать заново",
@@ -681,6 +671,7 @@ function closeModal() {
   if (lastFocus?.isConnected) lastFocus.focus();
   updateCoach();
 }
+function dismissModal() { closeModal(); }
 function showResult() {
   clearToast();
   const attempt = current(),
@@ -691,7 +682,7 @@ function showResult() {
   persist();
   showModal(
     "result",
-    `<div class="result-badge">${icon("check")}</div><h2>Заказ готов!</h2><div class="reward-row"><div>${icon("coin")}<strong>+${reward.coins}</strong><span>монет</span></div><div>${icon("star")}<strong>+${reward.stars}</strong><span>${reward.stars ? "" : "Повтор"}</span></div></div><p class="result-note">${reward.fresh ? (node ? `${node.name} · ★ ${Math.min(progress.stars, node.cost)}/${node.cost}` : "") : ""}</p><button class="primary" data-action="${affordable ? "renovation" : allDone() ? "finish" : next ? "next" : "home"}">${affordable ? `Обновить: ${node.name.toLowerCase()}` : allDone() ? "Моя лавка" : next ? "Дальше" : "В лавку"}${icon("arrow")}</button><button class="quiet" data-action="home">В лавку${icon("home")}</button>`,
+    `<div class="result-badge">${icon("check")}</div><h2>Заказ готов!</h2><div class="reward-row"><div>${icon("coin")}<strong>+${reward.coins}</strong><span>монет</span></div><div>${icon("star")}<strong>+${reward.stars}</strong><span>${reward.stars ? "" : "Повтор"}</span></div></div>${node ? `<div class="result-goal"><span class="result-goal-art">${taskArtwork(node.id, assets)}</span>${icon("arrow")}<span>${node.name}</span></div>` : ""}<button class="primary" data-action="${affordable ? "buy-task" : allDone() ? "finish" : next ? "next" : "home"}" ${affordable ? `data-task-id="${node.id}"` : ""}>${affordable ? `Поставить · ${node.cost} ★` : allDone() ? "В лавку" : next ? "Дальше" : "В лавку"}${icon("arrow")}</button><button class="quiet" data-action="home">В лавку${icon("home")}</button>`,
     false,
   );
 }
@@ -701,30 +692,26 @@ function settingsModal() {
     `<h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button>${new URLSearchParams(location.search).has("playtest") ? `<button class="quiet" data-action="export-events">Скачать отчёт этой сессии</button>` : ""}<p class="save-note">${storageWarned ? "Сохранение недоступно — игра работает в этой вкладке." : "Сохранено в браузере"}</p>`,
   );
 }
-function renovationModal(target: RenovationId = repairNext()?.id ?? "sign", focusTab = false) {
+function renovationModal(target: RenovationId = ownedDecorations()[0]?.id ?? "sign", focusTab = false) {
   repairTarget = target;
   const node = RENOVATIONS.find((r) => r.id === target)!,
     color = progress.renovations[target] ?? "sea",
     owned = !!progress.renovations[target];
-  const unlocked = RENOVATIONS.slice(0, RENOVATIONS.indexOf(node)).every(
-    (r) => progress.renovations[r.id],
-  );
-  const note = owned ? "" : !unlocked
-    ? target === "counter" ? "Сначала обновите вывеску." : "Сначала обновите прилавок."
-    : progress.stars < node.cost ? `Нужно ещё ${node.cost - progress.stars} ★ для обновления.` : "";
+  if (!owned) return;
+  const note = "Смена цвета бесплатна.";
   const preview = target === "sign" ? `${icon("shell")}<strong>Лавка у моря</strong>`
     : `<img src="${assets}${target === "counter" ? "counter" : "garden"}.webp" alt="" />`;
   showModal(
     "renovation",
     `<div class="repair-header"><h2>Оформление лавки</h2></div>
-    <div class="repair-tabs" role="tablist" aria-label="Что оформить">${RENOVATIONS.map(r =>
+    <div class="repair-tabs" role="tablist" aria-label="Что оформить">${ownedDecorations().map(r =>
       `<button class="repair-tab ${r.id === target ? "active" : ""}" role="tab" id="repair-tab-${r.id}" aria-controls="repair-panel-${r.id}" aria-selected="${r.id === target}" tabindex="${r.id === target ? 0 : -1}" data-repair="${r.id}">${icon(r.icon)}<span>${r.name}</span></button>`).join("")}</div>
     <div class="repair-content" role="tabpanel" id="repair-panel-${target}" aria-labelledby="repair-tab-${target}" tabindex="0">
       <div class="repair-preview preview-${target} ${color}" id="sign-preview" role="img" aria-label="Предпросмотр: ${node.name}, ${COLORS[color]}">${preview}</div>
       <fieldset class="color-choices"><legend>Цвет оформления</legend><div class="color-grid">${(Object.keys(COLORS) as RenovationColor[]).map(c =>
         `<label class="color-choice ${c} ${c === color ? "chosen" : ""}"><input type="radio" name="repair-color" data-color="${c}" value="${c}" ${c === color ? "checked" : ""} /><i aria-hidden="true"></i><span>${COLORS[c]}</span></label>`).join("")}</div></fieldset>
-    </div>${RENOVATIONS.filter(r => r.id !== target).map(r => `<div role="tabpanel" id="repair-panel-${r.id}" aria-labelledby="repair-tab-${r.id}" hidden></div>`).join("")}
-    <div class="repair-footer">${note ? `<p class="repair-note">${note}</p>` : ""}<button class="primary" data-action="${owned ? "close" : "buy-renovation"}" data-choice="${color}" ${!owned && (!unlocked || progress.stars < node.cost) ? "disabled" : ""}>${owned ? "Готово" : `Обновить за ${node.cost} ★`}</button></div>`,
+    </div>${ownedDecorations().filter(r => r.id !== target).map(r => `<div role="tabpanel" id="repair-panel-${r.id}" aria-labelledby="repair-tab-${r.id}" hidden></div>`).join("")}
+    <div class="repair-footer">${note ? `<p class="repair-note">${note}</p>` : ""}<button class="primary" data-action="close" data-choice="${color}">Готово</button></div>`,
   );
   if (focusTab) queueMicrotask(() => overlay.querySelector<HTMLElement>(`#repair-tab-${target}`)?.focus());
 }
@@ -760,20 +747,16 @@ function levelsModal() {
 function helpModal() {
   showModal(
     "help",
-    `<h2>Собери тройку</h2><div class="visual-help"><div class="help-transfer">${goodImage("m")}${icon("arrow")}<span class="help-empty">+</span></div><span>Товар → место</span><div class="help-goods">${goodImage("j")}${goodImage("j")}${goodImage("j")}${icon("arrow")}${icon("check")}</div><span>Три в ряд — готово</span><div class="help-shortcuts"><span>${icon("undo")} Отмена</span><span>${icon("restart")} Заново</span></div></div><button class="primary" data-action="close">Играть${icon("arrow")}</button>`,
+    `<h2>Собери тройку</h2><div class="visual-help"><div class="help-transfer">${goodImage("m")}${icon("arrow")}<span class="help-empty">+</span></div><span>Товар → место</span><div class="help-goods">${goodImage("j")}${goodImage("j")}${goodImage("j")}${icon("arrow")}${icon("check")}</div><span>Три в ряд — готово</span><div class="help-shortcuts"><span>${icon("undo")} Отмена</span><span>${icon("restart")} Заново</span></div></div><div class="help-tools"><p>Все заказы можно пройти обычными переносами. Инструменты — дополнительная помощь.</p><p><strong>${icon("mix")} Смешать</strong> — помогает сменить неудобную расстановку открытых товаров. Запас и выполненная часть заказа сохраняются.</p><p><strong>${icon("reserve")} Лоток</strong> — если товар мешает собрать тройку, временно убери его в лоток на месте кнопки. Позже верни товар на полку.</p><p>Помощь пополняется в магазине. Покупка добавляет использование в запас; чтобы применить его, нажми кнопку в заказе.</p></div><button class="primary" data-action="close">Играть${icon("arrow")}</button>`,
   );
 }
-function canPay(kind: "hint" | "mix" | "reserve", cost: number): boolean {
-  if (progress.inventory[kind] > 0 || progress.coins >= cost) return true;
-  showModal(
-    "needCoins",
-    `<div class="loading-shell">${icon(kind)}</div><h2>Не хватает монет</h2><p>${cost} ◉ · за заказ +60</p><button class="primary" data-action="close">Вернуться к заказу${icon("arrow")}</button>`,
-  );
+function hasTool(kind: ToolKind): boolean {
+  if (progress.inventory[kind] > 0) return true;
+  openToolsShop(kind);
   return false;
 }
-function pay(kind: "hint" | "mix" | "reserve", cost: number) {
-  if (progress.inventory[kind] > 0) progress.inventory[kind]--;
-  else progress.coins -= cost;
+function consumeTool(kind: ToolKind) {
+  progress.inventory[kind]--;
 }
 async function hint(teaching = false) {
   if (busy || won(current().board)) return;
@@ -798,7 +781,7 @@ async function hint(teaching = false) {
     return;
   }
   const cached = cachedHint(current());
-  if (!cached && !guided() && !teaching && !canPay("hint", 100)) return;
+  if (!cached && !guided() && !teaching && !hasTool("hint")) return;
   const attempt = current(),
     id = attempt.id;
   busy = true;
@@ -819,7 +802,7 @@ async function hint(teaching = false) {
       throw new Error("Шаг не найден. Помощь не потрачена");
     highlighted = solution[0];
     selected = null;
-    if (!cached && !guided() && !teaching) pay("hint", 100);
+    if (!cached && !guided() && !teaching) consumeTool("hint");
     track("help", attempt.definition.id, { kind: "hint", free: !!cached || guided() || teaching });
     persist();
     clearToast();
@@ -845,7 +828,7 @@ async function mix() {
     !isCompleted(progress.completed, 3) ||
     !hasMoves(current().board) ||
     won(current().board) ||
-    !canPay("mix", 200)
+    !hasTool("mix")
   )
     return;
   const attempt = current(),
@@ -877,7 +860,7 @@ async function mix() {
       throw new Error(
         "Новая расстановка не прошла проверку. Помощь не потрачена.",
       );
-    pay("mix", 200);
+    consumeTool("mix");
     track("help", attempt.definition.id, { kind: "mix" });
     attempt.board = result.board;
     attempt.solution = result.solution;
@@ -909,8 +892,8 @@ function reserve() {
   )
     return;
   const next = addReserve(current().board);
-  if (!next || !canPay("reserve", 300)) return;
-  pay("reserve", 300);
+  if (!next || !hasTool("reserve")) return;
+  consumeTool("reserve");
   track("help", current().definition.id, { kind: "reserve" });
   current().board = next;
   current().undo = [];
@@ -919,7 +902,6 @@ function reserve() {
   persist();
   render();
   focusGame(positionSelector([next.shelves.length - 1, 0]));
-  app.querySelector<HTMLElement>(".reserve-slot")?.scrollIntoView({ block: "nearest", inline: "nearest" });
   clearToast();
 }
 function undo() {
@@ -963,8 +945,32 @@ function action(name: string, button: HTMLElement) {
       else if (allDone()) {
         screen = "finish";
         render();
-      } else if (chapterDone()) renovationModal();
+      } else if (chapterDone()) { screen = "home"; render(); }
       else void start(nextOrder(progress.completed));
+      break;
+    case "tools-shop":
+      openToolsShop(TOOLS.some(tool => tool.id === button.dataset.tool) ? button.dataset.tool as ToolKind : null);
+      break;
+    case "leave-tools-shop":
+      screen = toolShopReturn;
+      shopTool = null;
+      render();
+      if (screen === "game") focusGame();
+      break;
+    case "buy-tool": {
+      const kind = button.dataset.tool!;
+      if (screen !== "tools-shop" || !purchaseTool(progress, kind)) return;
+      shopTool = kind as ToolKind;
+      persist();
+      render();
+      track("tool_purchase", undefined, { kind });
+      break;
+    }
+    case "show-map":
+      closeModal();
+      screen = "map";
+      selectedArea = allDone() ? "warehouse" : "shop";
+      render();
       break;
     case "show-shop":
       closeModal();
@@ -1017,14 +1023,27 @@ function action(name: string, button: HTMLElement) {
       settingsModal();
       break;
     case "close":
-      closeModal();
+      dismissModal();
       break;
     case "levels":
       levelsModal();
       break;
-    case "renovation":
+    case "appearance":
       renovationModal();
       break;
+    case "buy-task": {
+      if (!purchaseShopTask(progress, button.dataset.taskId as ShopTaskId)) return;
+      persist();
+      closeModal();
+      justBuilt = button.dataset.taskId as ShopTaskId;
+      screen = allDone() ? "finish" : "shop";
+      render();
+      setTimeout(() => { justBuilt = undefined; }, 1000);
+      audio.play("repair");
+      track("campaign_task", undefined, { task: button.dataset.taskId! });
+      toast("Готово!");
+      break;
+    }
     case "help":
       helpModal();
       break;
@@ -1102,6 +1121,15 @@ document.addEventListener("click", (event) => {
   else if (target.dataset.level) void start(Number(target.dataset.level));
   else if (target.dataset.slot)
     selectSlot(target.dataset.slot.split(",").map(Number) as Position);
+  else if (target.dataset.area && screen === "map") {
+    const area = CAMPAIGN_AREAS.find(a => a.id === target.dataset.area);
+    if (area) {
+      selectedArea = area.id;
+      if (area.id === "shop") screen = "shop";
+      render();
+      if (screen === "map") app.querySelector<HTMLElement>(`.world-pin[data-area="${area.id}"]`)?.focus({ preventScroll: true });
+    }
+  }
   else if (target.dataset.repair)
     renovationModal(target.dataset.repair as RenovationId, modal === "renovation");
 });
@@ -1119,15 +1147,16 @@ document.addEventListener("keydown", (event) => {
   const tab = (event.target as HTMLElement).closest<HTMLElement>('[role="tab"][data-repair]');
   if (modal === "renovation" && tab && ["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
     event.preventDefault();
-    const index = RENOVATIONS.findIndex(r => r.id === tab.dataset.repair);
-    const next = event.key === "Home" ? 0 : event.key === "End" ? RENOVATIONS.length - 1
-      : (index + (event.key === "ArrowRight" ? 1 : -1) + RENOVATIONS.length) % RENOVATIONS.length;
-    renovationModal(RENOVATIONS[next].id, true);
+    const tabs = ownedDecorations();
+    const index = tabs.findIndex(r => r.id === tab.dataset.repair);
+    const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1
+      : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+    renovationModal(tabs[next].id, true);
     return;
   }
   if (event.key === "Escape") {
     endDrag(undefined, true);
-    if (modal && overlay.querySelector('[data-action="close"]')) closeModal();
+    if (modal && overlay.querySelector('[data-action="close"]')) dismissModal();
     else {
       const refresh = !!highlighted || toolLesson;
       if (toolLesson) completeLesson("tools");
@@ -1296,6 +1325,7 @@ window.addEventListener("storage", (event) => {
   }
 });
 applySettings();
+if (loaded.migrated) persist();
 if (allDone() && (!progress.attempt || won(progress.attempt.board)))
   screen = "finish";
 render();

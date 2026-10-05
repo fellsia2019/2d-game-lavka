@@ -1,0 +1,68 @@
+#app.tool-shop-screen { overflow: hidden; color: #24575a; background: #e9c694; }
+.tool-shop { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: linear-gradient(#f9edcfe8, #efc68adb), url("/assets/campaign-shop-empty.webp") center/cover; }
+.tool-shop-header { display: flex; align-items: center; justify-content: center; gap: 24px; padding: 12px max(16px, env(safe-area-inset-right)) 12px max(16px, env(safe-area-inset-left)); }
+.tool-shop-header h1 { margin: 0; font: bold 28px/1.15 Georgia, serif; }
+.tool-shop-header .round { width: 44px; height: 44px; flex: none; }
+.store-wallet { display: flex; align-items: center; gap: 6px; flex: none; padding: 8px 14px; border-radius: 24px; background: #fff7df; font-size: 18px; }
+.store-wallet .icon, .store-buy .icon, .store-earn .icon { color: #ac731f; fill: #f8d16c; }
+.tool-shop-content { overflow-y: auto; overscroll-behavior: contain; padding: 8px 20px 16px; }
+.store-intro { margin: 0 0 24px; text-align: center; color: #6c553a; font-size: 18px; line-height: 1.45; }
+.store-shelves { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; width: min(100%, 960px); margin: 0 auto; }
+.store-tool { display: flex; flex-direction: column; padding: 24px; gap: 18px; background: linear-gradient(#fff3d4, #f5ddb0); border: 3px solid #fff7de; border-radius: 24px; box-shadow: 0 6px 0 #b88a544d, 0 12px 22px #68452a1c; }
+.store-tool-selected { border-color: #098e95; }
+.store-tool-heading { display: flex; align-items: center; gap: 16px; }
+.store-tool-heading .tool-circle { width: 44px; height: 44px; }
+.store-tool-heading h2 { margin: 0; font: bold 24px/1.2 Georgia, serif; }
+.store-description { flex: 1; margin: 0; color: #6f5538; font-size: 18px; line-height: 1.45; }
+.store-purchase { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.store-stock { flex: none; font-size: 16px; }
+.store-buy.primary { min-width: 0; min-height: 48px; margin: 0; padding: 10px 14px; gap: 10px; font-size: 16px; white-space: nowrap; }
+.store-buy > span { display: flex; align-items: center; gap: 4px; }
+.store-buy .icon { width: 18px; height: 18px; color: inherit; }
+.store-note { display: flex; justify-content: center; align-items: center; gap: 4px; min-height: 20px; font-size: 16px; line-height: 20px; color: #796145; }
+.store-note .icon { width: 18px; height: 18px; color: #ac731f; fill: #f8d16c; }
+.store-earn { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 24px 0 0; font-size: 16px; }
+.tool-shop-footer { display: flex; justify-content: center; padding: 12px 16px max(16px, env(safe-area-inset-bottom)); background: #eed2a5de; }
+.tool-shop-footer .primary { width: min(100%, 380px); min-height: 48px; margin: 0; padding: 12px 20px; font-size: 18px; gap: 12px; }
+.world-store { position: relative; }
+.world-store > span { position: absolute; top: calc(100% + 2px); padding: 1px 5px; font-size: 12px; line-height: 16px; background: #fff1cc; border-radius: 6px; box-shadow: 0 1px 3px #69492c33; }
+@media (max-width: 760px) {
+  .tool-shop-header { gap: 12px; padding: 8px 12px; }
+  .tool-shop-header h1 { font-size: 20px; flex: 1; text-align: center; }
+  .store-wallet { padding: 8px; font-size: 16px; }
+  .store-wallet .icon { width: 20px; height: 20px; }
+  .tool-shop-content { padding: 4px 12px 12px; }
+  .store-intro { margin: 0 0 8px; font-size: 16px; line-height: 20px; }
+  .store-shelves { grid-template-columns: minmax(0, 1fr); gap: 8px; max-width: 480px; }
+  .store-tool { position: relative; padding: 8px 12px; gap: 8px; border-width: 2px; border-radius: 18px; }
+  .store-tool-heading { gap: 12px; }
+  .store-tool-heading .tool-circle { width: 28px; height: 28px; }
+  .store-tool-heading .tool-circle > .icon { width: 20px; height: 20px; }
+  .store-tool-heading h2 { font-size: 20px; }
+  .store-stock { position: absolute; top: 12px; right: 12px; }
+  .store-description { font-size: 16px; line-height: 20px; }
+  .store-purchase { justify-content: end; }
+  .store-buy.primary { flex: none; width: 142px; min-height: 44px; padding: 8px 12px; }
+  .store-note { position: absolute; left: 12px; bottom: 20px; max-width: calc(100% - 178px); justify-content: start; }
+  .store-earn { display: none; }
+  .tool-shop-footer { padding: 8px 12px max(12px, env(safe-area-inset-bottom)); }
+  .tool-shop-footer .primary { min-height: 44px; padding: 10px 16px; font-size: 16px; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .tool-shop-header { padding: 8px 12px; }
+  .tool-shop-header h1 { font-size: 20px; }
+  .tool-shop-content { padding: 4px 12px 8px; }
+  .store-shelves { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 960px; gap: 12px; }
+  .store-tool { padding: 8px; gap: 6px; border-width: 2px; }
+  .store-tool-heading { gap: 8px; }
+  .store-tool-heading .tool-circle { width: 28px; height: 28px; }
+  .store-tool-heading .tool-circle > .icon { width: 20px; height: 20px; }
+  .store-tool-heading h2 { font-size: 18px; }
+  .store-stock { position: static; }
+  .store-description { font-size: 16px; line-height: 20px; }
+  .store-purchase { flex-wrap: wrap; gap: 6px; }
+  .store-buy.primary { width: 100%; min-height: 44px; padding: 8px; }
+  .store-intro, .store-earn, .store-note { display: none; }
+  .tool-shop-footer { padding: 8px 12px max(12px, env(safe-area-inset-bottom)); }
+  .tool-shop-footer .primary { min-height: 44px; padding: 10px 16px; font-size: 16px; }
+}

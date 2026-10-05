@@ -10,6 +10,8 @@ import {
   type Move,
 } from "./engine";
 import { GOOD_IDS, isGood } from "./catalog";
+import { CAMPAIGN_VERSION, freshCampaign, migrateCampaign, nextShopTask, validCampaign,
+  type CampaignProgress, type ShopTaskId } from "./campaign";
 import {
   CHAPTER,
   canonicalLevelId,
@@ -38,7 +40,8 @@ export interface Attempt {
   reward: { coins: number; stars: number; fresh: boolean } | null;
 }
 export interface Progress {
-  schema: 2;
+  schema: 3;
+  campaign: CampaignProgress;
   contentVersion: string;
   completed: string[];
   coins: number;
@@ -57,7 +60,8 @@ export interface Progress {
 export const STORAGE_KEY = "coastal-shop:progress:v1";
 export function freshProgress(): Progress {
   return {
-    schema: 2,
+    schema: 3,
+    campaign: freshCampaign(),
     contentVersion: CONTENT_VERSION,
     completed: [],
     coins: 0,
@@ -268,12 +272,13 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
   progress: Progress;
   warning?: string;
   readOnly?: boolean;
+  migrated?: boolean;
 } {
   try {
     const raw = storage.getItem(STORAGE_KEY);
     if (!raw) return { progress: freshProgress() };
     const p = JSON.parse(raw);
-    if (p && p.schema !== 1 && p.schema !== 2)
+    if (p && p.schema !== 1 && p.schema !== 2 && p.schema !== 3)
       return {
         progress: freshProgress(),
         readOnly: true,
@@ -281,6 +286,10 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
           "Сохранение создано более новой версией игры. Обновите игру, чтобы продолжить. Прогресс не изменён.",
       };
     const legacy = p.schema === 1;
+    const migrated = p.schema === 1 || p.schema === 2;
+    if (p.schema === 3 && typeof p.campaign?.version === "string" && p.campaign.version !== CAMPAIGN_VERSION)
+      return { progress: freshProgress(), readOnly: true,
+        warning: "Сохранение использует другую версию кампании. Обновите игру. Прогресс не изменён." };
     if (legacy) {
       p.schema = 2;
       p.renovations = p.renovation ? { sign: p.renovation } : {};
@@ -330,6 +339,14 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     )
       throw new Error("Corrupted save");
     p.completed = [...new Set(p.completed.map(canonicalLevelId))];
+    if (migrated) {
+      p.campaign = migrateCampaign(p.renovations);
+      p.schema = 3;
+    }
+    if (!validCampaign(p.campaign) ||
+      p.campaign.completedTasks.includes("shop-opening") !== !!p.renovations.sign ||
+      p.campaign.completedTasks.includes("order-counter") !== !!p.renovations.counter)
+      throw new Error("Corrupted campaign");
     p.renovation = p.renovations.sign ?? null;
     p.contentVersion = CONTENT_VERSION;
     const typed = p as Progress;
@@ -337,6 +354,7 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
       typed.attempt = null;
       return {
         progress: typed,
+        migrated,
         warning:
           "Не удалось восстановить текущий заказ. Ремонт и награды сохранены.",
       };
@@ -347,7 +365,7 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     // Preserve that valid path for free instead of charging an old hint twice.
     if (legacy && typed.attempt?.solution?.length)
       rememberHint(typed.attempt, typed.attempt.solution);
-    return { progress: typed };
+    return { progress: typed, migrated };
   } catch {
     return {
       progress: freshProgress(),
@@ -398,16 +416,21 @@ export function renovate(
 ): boolean {
   const node = RENOVATIONS.find((r) => r.id === id);
   if (!node || !colors.slice(1).includes(color)) return false;
-  const index = RENOVATIONS.indexOf(node);
-  if (!progress.renovations[id]) {
-    if (
-      progress.stars < node.cost ||
-      !RENOVATIONS.slice(0, index).every((r) => progress.renovations[r.id])
-    )
-      return false;
-    progress.stars -= node.cost;
-  }
+  // Cosmetics cannot buy obsolete repairs or bypass the campaign task graph.
+  if (!progress.renovations[id]) return false;
   progress.renovations[id] = color;
   progress.renovation = progress.renovations.sign ?? null;
+  return true;
+}
+export function purchaseShopTask(progress: Progress, id: ShopTaskId): boolean {
+  const task = nextShopTask(progress.campaign);
+  if (!task || task.id !== id || progress.stars < task.cost) return false;
+  progress.stars -= task.cost;
+  progress.campaign.completedTasks.push(task.id);
+  if (task.id === "shop-opening") {
+    progress.renovations.sign = "sea";
+    progress.renovation = "sea";
+  }
+  if (task.id === "order-counter") progress.renovations.counter = "sea";
   return true;
 }

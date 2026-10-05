@@ -1,4 +1,8 @@
 const paths: Record<string, string> = {
+  store: '<path d="M4 10v11h16V10M3 3h18l1 7a3 3 0 0 1-5 2 3 3 0 0 1-5 0 3 3 0 0 1-5 0 3 3 0 0 1-5-2zM9 21v-7h6v7"/>',
+  play: '<path d="m8 4 12 8-12 8z"/>',
+  palette: '<path d="M12 3a9 9 0 1 0 0 18h2a2 2 0 0 0 1-4 2 2 0 0 1 1-4h2c4 0 3-10-6-10z"/><circle cx="7" cy="9" r="1"/><circle cx="11" cy="6" r="1"/><circle cx="16" cy="7" r="1"/>',
+  layers: '<path d="m3 7 9-4 9 4-9 4zM3 12l9 4 9-4M3 17l9 4 9-4"/>',
   hand: '<path d="M9 13V4a2 2 0 0 1 4 0v6l1-1 3 2h2l2 3-2 7H9l-5-6a2 2 0 0 1 3-3z"/>',
   home: '<path d="m3 11 9-8 9 8M5 9v12h5v-7h4v7h5V9"/>',
   settings:

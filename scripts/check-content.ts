@@ -9,12 +9,15 @@ import { validateDefinition, replay } from "../src/engine";
 import { describeStructure, VERSION } from "../src/generator";
 import { RENOVATIONS } from "../src/renovations";
 import { GOODS } from "../src/catalog";
+import { CAMPAIGN_CHAPTERS, SHOP_STEPS, CAMPAIGN_VERSION } from "../src/campaign";
+import { SCENE_ASSETS } from "../src/campaign-scene";
 for (const file of [
   ...Object.values(GOODS).map((g) => g.file),
   "shelf",
   "shop",
   "counter",
   "garden",
+  ...SCENE_ASSETS.map(file => file.replace(/\.webp$/, "")),
 ]) {
   const path = `public/assets/${file}.webp`;
   if (!/^[a-z0-9-]+$/.test(file) || !existsSync(path) || !statSync(path).size)
@@ -41,9 +44,13 @@ const levels = CHAPTER.map((story, i) => {
   structures.add(info.key);
   return { id: d.id, name: story.name, seed: d.seed, ...info };
 });
-const cost = RENOVATIONS.reduce((n, r) => n + r.cost, 0);
+const cost = SHOP_STEPS.reduce((n, r) => n + r.cost, 0);
 if (cost > CHAPTER.length)
   throw new Error("Not enough chapter stars for repairs");
+if (new Set(SHOP_STEPS.map(task => task.id)).size !== SHOP_STEPS.length ||
+  CAMPAIGN_CHAPTERS[0].orderIds.join() !== CHAPTER.map(order => order.id).join() ||
+  CAMPAIGN_CHAPTERS.slice(1).some(chapter => chapter.orderIds.length || chapter.taskIds.length))
+  throw new Error("Invalid playable campaign catalog");
 writeFileSync(
   "docs/content-report.json",
   JSON.stringify(
@@ -51,7 +58,10 @@ writeFileSync(
       contentVersion: CONTENT_VERSION,
       generatorVersion: VERSION,
       levels,
-      renovations: RENOVATIONS,
+      legacyRenovations: RENOVATIONS,
+      campaignVersion: CAMPAIGN_VERSION,
+      campaignChapters: CAMPAIGN_CHAPTERS,
+      shopTasks: SHOP_STEPS,
       starsAvailable: CHAPTER.length,
       starsRequired: cost,
     },

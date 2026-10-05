@@ -4,7 +4,7 @@ import {
   type Definition,
   type Profile,
 } from "./engine";
-import levelDefinitions from "./levels/chapter.json";
+import levelDefinitions from "./levels/chapter.json" with { type: "json" };
 export interface ChapterEntry {
   id: string;
   name: string;

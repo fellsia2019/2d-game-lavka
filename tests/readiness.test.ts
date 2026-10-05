@@ -23,15 +23,15 @@ import { generate, RECIPES, structuralKey, VERSION } from "../src/generator";
 import {
   freshProgress,
   loadProgress,
-  saveProgress,
   validateAttempt,
   rememberHint,
   cachedHint,
   completeAttempt,
   renovate,
+  purchaseShopTask,
   type Attempt,
 } from "../src/storage";
-import { RENOVATIONS } from "../src/renovations";
+import { SHOP_STEPS } from "../src/campaign";
 function attempt(def = chapterLevel(1)): Attempt {
   return {
     id: "readiness",
@@ -126,7 +126,7 @@ test("Schema 1 migration retains the pinned layout, seed, old generator version,
   const original = clone(p.attempt.definition),
     result = loadProgress({ getItem: () => JSON.stringify(p) });
   assert.equal(result.warning, undefined);
-  assert.equal(result.progress.schema, 2);
+  assert.equal(result.progress.schema, 3);
   assert.deepEqual(result.progress.completed, [CHAPTER[0].id]);
   assert.equal(result.progress.coins, 60);
   assert.deepEqual(result.progress.renovations, { sign: "coral" });
@@ -229,13 +229,13 @@ test("All ten wins fund the complete repair graph, switches are free and choices
   assert.equal(p.coins, 600);
   assert.equal(p.stars, 10);
   assert.equal(renovate(p, "sea", "window"), false);
-  for (const r of RENOVATIONS) assert.equal(renovate(p, "sea", r.id), true);
+  for (const task of SHOP_STEPS) assert.equal(purchaseShopTask(p, task.id), true);
   assert.equal(p.stars, 0);
-  for (const r of RENOVATIONS) assert.equal(renovate(p, "coral", r.id), true);
+  for (const id of ["sign", "counter"] as const) assert.equal(renovate(p, "coral", id), true);
   const loaded = loadProgress({ getItem: () => JSON.stringify(p) });
   assert.equal(loaded.warning, undefined);
-  assert.equal(Object.keys(loaded.progress.renovations).length, 3);
-  assert.equal(loaded.progress.renovations.window, "coral");
+  assert.equal(Object.keys(loaded.progress.renovations).length, 2);
+  assert.equal(loaded.progress.renovations.sign, "coral");
   assert.equal(completedCount(loaded.progress.completed), CHAPTER.length);
 });
 test("A player-created full board is detected exactly, and one undo restores free moves", () => {

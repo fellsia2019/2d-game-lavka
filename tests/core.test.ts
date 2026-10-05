@@ -298,14 +298,13 @@ test("Rewards are idempotent, new orders give one star, repeats are capped at 10
   assert.equal(progress.coins, 170);
   assert.equal(progress.repeatCount, 1);
 });
-test("Renovation spends three stars once, subsequent choices are free", () => {
+test("Owned decoration colors are free; cosmetics cannot purchase campaign tasks", () => {
   const progress = freshProgress();
+  progress.stars = 10;
   assert.equal(renovate(progress, "sea"), false);
-  progress.stars = 3;
-  assert.equal(renovate(progress, "sea"), true);
-  assert.equal(progress.stars, 0);
+  progress.renovations.sign = "sea";
   assert.equal(renovate(progress, "coral"), true);
-  assert.equal(progress.stars, 0);
+  assert.equal(progress.stars, 10);
   assert.equal(progress.renovation, "coral");
 });
 test("Corrupted data and unavailable storage do not crash loading or saving", () => {

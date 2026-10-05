@@ -1,3 +1,5 @@
+// Frozen 0.2.0 repair ids/costs for migration and owned-object cosmetics.
+// New purchases are defined by SHOP_STEPS in campaign.ts.
 export const RENOVATIONS = [
   {
     id: "sign",
