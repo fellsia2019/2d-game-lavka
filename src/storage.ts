@@ -10,7 +10,7 @@ import {
   type Move,
 } from "./engine";
 import { GOOD_IDS, isGood } from "./catalog";
-import { CAMPAIGN_VERSION, freshCampaign, migrateCampaign, nextShopTask, validCampaign,
+import { CAMPAIGN_VERSION, freshCampaign, migrateCampaign, nextShopTask, validCampaign, validLegacyCampaign,
   type CampaignProgress, type ShopTaskId } from "./campaign";
 import {
   CHAPTER,
@@ -40,7 +40,7 @@ export interface Attempt {
   reward: { coins: number; stars: number; fresh: boolean } | null;
 }
 export interface Progress {
-  schema: 3;
+  schema: 4;
   campaign: CampaignProgress;
   contentVersion: string;
   completed: string[];
@@ -60,7 +60,7 @@ export interface Progress {
 export const STORAGE_KEY = "coastal-shop:progress:v1";
 export function freshProgress(): Progress {
   return {
-    schema: 3,
+    schema: 4,
     campaign: freshCampaign(),
     contentVersion: CONTENT_VERSION,
     completed: [],
@@ -278,7 +278,7 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     const raw = storage.getItem(STORAGE_KEY);
     if (!raw) return { progress: freshProgress() };
     const p = JSON.parse(raw);
-    if (p && p.schema !== 1 && p.schema !== 2 && p.schema !== 3)
+    if (p && ![1, 2, 3, 4].includes(p.schema))
       return {
         progress: freshProgress(),
         readOnly: true,
@@ -286,8 +286,11 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
           "Сохранение создано более новой версией игры. Обновите игру, чтобы продолжить. Прогресс не изменён.",
       };
     const legacy = p.schema === 1;
-    const migrated = p.schema === 1 || p.schema === 2;
-    if (p.schema === 3 && typeof p.campaign?.version === "string" && p.campaign.version !== CAMPAIGN_VERSION)
+    const oldRepairs = p.schema === 1 || p.schema === 2;
+    const oldCampaign = p.schema === 3;
+    const migrated = oldRepairs || oldCampaign;
+    if ((oldCampaign || p.schema === 4) && typeof p.campaign?.version === "string" &&
+      p.campaign.version !== (oldCampaign ? "coastal-campaign-1" : CAMPAIGN_VERSION))
       return { progress: freshProgress(), readOnly: true,
         warning: "Сохранение использует другую версию кампании. Обновите игру. Прогресс не изменён." };
     if (legacy) {
@@ -339,10 +342,14 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     )
       throw new Error("Corrupted save");
     p.completed = [...new Set(p.completed.map(canonicalLevelId))];
-    if (migrated) {
+    if (oldRepairs) {
       p.campaign = migrateCampaign(p.renovations);
-      p.schema = 3;
     }
+    if (oldCampaign) {
+      if (!validLegacyCampaign(p.campaign)) throw new Error("Corrupted legacy campaign");
+      p.campaign.version = CAMPAIGN_VERSION;
+    }
+    if (migrated) p.schema = 4;
     if (!validCampaign(p.campaign) ||
       p.campaign.completedTasks.includes("shop-opening") !== !!p.renovations.sign ||
       p.campaign.completedTasks.includes("order-counter") !== !!p.renovations.counter)

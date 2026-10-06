@@ -152,21 +152,21 @@
           "id": "shop-s1-t06",
           "name": "Поставить второй стеллаж",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "shop-s1-object-06"
         },
         {
           "id": "shop-s1-t07",
           "name": "Установить корзины второй выкладки",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "shop-s1-object-07"
         },
         {
           "id": "shop-s1-t08",
           "name": "Наполнить вторую выкладку",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "shop-s1-object-08"
         },
         {
@@ -5525,7 +5525,7 @@
       "chapterNumber": 11,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-012",
@@ -5534,7 +5534,7 @@
       "chapterNumber": 12,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-013",
@@ -5543,7 +5543,7 @@
       "chapterNumber": 13,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-014",
@@ -5552,7 +5552,7 @@
       "chapterNumber": 14,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-015",
@@ -5561,7 +5561,7 @@
       "chapterNumber": 15,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-016",
@@ -5570,7 +5570,7 @@
       "chapterNumber": 16,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-017",
@@ -5579,7 +5579,7 @@
       "chapterNumber": 17,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-018",
@@ -5588,7 +5588,7 @@
       "chapterNumber": 18,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-019",
@@ -5597,7 +5597,7 @@
       "chapterNumber": 19,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-020",
@@ -5606,7 +5606,7 @@
       "chapterNumber": 20,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition"
+      "status": "implemented-definition"
     },
     {
       "id": "shop-s1-order-021",
@@ -21631,10 +21631,10 @@
   ],
   "validationScope": "План, id, маршрут, бюджеты и доступность заработка; не проверка проходимости ещё не созданных Definition.",
   "deliveryStatus": {
-    "existingOrders": 10,
-    "plannedOrders": 1790,
-    "existingTasks": 5,
-    "plannedTasks": 475,
+    "existingOrders": 20,
+    "plannedOrders": 1780,
+    "existingTasks": 8,
+    "plannedTasks": 472,
     "fullyImplementedPlannedPhases": 0
   }
 }

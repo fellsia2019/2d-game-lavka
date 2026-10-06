@@ -5,11 +5,11 @@
   "chapters": 6,
   "phases": 24,
   "plannedOrderSlots": 1800,
-  "existingDefinitions": 10,
-  "definitionsToProduce": 1790,
+  "existingDefinitions": 20,
+  "definitionsToProduce": 1780,
   "taskDesigns": 480,
-  "existingTasks": 5,
-  "tasksToImplement": 475,
+  "existingTasks": 8,
+  "tasksToImplement": 472,
   "goods": 48,
   "characters": 12,
   "starsEarned": 1800,
@@ -367,7 +367,7 @@
     }
   ],
   "notVerified": [
-    "Решения 1790 будущих Definition",
+    "Решения 1780 будущих Definition",
     "Интерес и длительность",
     "Будущий размер dist и память",
     "Будущие сцены, UI и SDK"

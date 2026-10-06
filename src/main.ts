@@ -1,6 +1,6 @@
 import "./style.css";
 import "./campaign-game.css";
-import { CAMPAIGN_AREAS, nextShopTask, shopComplete, type CampaignAreaId, type ShopTaskId } from "./campaign";
+import { CAMPAIGN_AREAS, FIRST_SHOP_PHASE, nextShopTask, shopComplete, type CampaignAreaId, type ShopTaskId } from "./campaign";
 import { worldHTML, taskArtwork } from "./world";
 import {
   GOODS,
@@ -366,7 +366,7 @@ function gameHTML() {
   const status = stuck ? (board.budget !== null && board.used >= board.budget
     ? "Ходы закончились. Отмени ход или начни заново." : "Нет свободных мест. Отмени ход или начни заново.") : "";
   return `<div class="game-backdrop" aria-hidden="true"></div>
-    <header class="topbar game-topbar"><button class="round cream" data-action="home" aria-label="Вернуться в лавку">${icon("home")}</button><div class="level-title"><span>ЗАКАЗ ${chapterNumber(def.id)} / ${CHAPTER.length}${board.budget !== null ? ` · ХОДЫ ${board.budget - board.used}` : ""}</span><h1 id="order-heading" tabindex="-1">${escapeHTML(def.name)}</h1></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
+    <header class="topbar game-topbar"><button class="round cream" data-action="home" aria-label="Вернуться в лавку">${icon("home")}</button><div class="level-title"><span>ЗАКАЗ ${chapterNumber(def.id)} / ${FIRST_SHOP_PHASE.orderTarget}${board.budget !== null ? ` · ХОДЫ ${board.budget - board.used}` : ""}</span><h1 id="order-heading" tabindex="-1">${escapeHTML(def.name)}</h1></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
     <main class="puzzle-layout">
       <section class="puzzle rows-${Math.ceil(def.shelves.length / 2)}" aria-label="Игровое поле"><div class="orders goals-${goalCount}" aria-label="Товары для заказа">${Object.entries(
         board.goals,
@@ -733,7 +733,7 @@ function selectRepairColor(color: RenovationColor) {
 function levelsModal() {
   showModal(
     "levels",
-    `<span class="eyebrow">ГЛАВА 1</span><h2>Заказы</h2><div class="level-list">${CHAPTER.map(
+    `<span class="eyebrow">ЛАВКА · ЭТАП 1 ИЗ 4</span><h2>Заказы</h2><p>Первый торговый день: ${completedCount(progress.completed)} / ${FIRST_SHOP_PHASE.orderTarget}. В этой сборке доступны ${CHAPTER.length} заказов.</p><div class="level-list">${CHAPTER.map(
       (level, i) => {
         const completed = isCompleted(progress.completed, i + 1);
         const unlocked = isUnlocked(progress.completed, i + 1);

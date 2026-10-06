@@ -1,8 +1,10 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import {
   chapterLevel,
   CHAPTER,
+  CHAPTER_DEFINITIONS,
   canonicalLevelId,
   completedCount,
   isUnlocked,
@@ -58,6 +60,11 @@ function roundTrip(a: Attempt) {
   assert.deepEqual(result.progress.attempt, a);
   return result.progress.attempt!;
 }
+test("The ten published Definitions retain their exact layout, seed, version and proof", () => {
+  const digest = createHash("sha256").update(JSON.stringify(CHAPTER_DEFINITIONS.slice(0, 10))).digest("hex");
+  // JSON object digest frozen from main 87ec6ce before producing the expansion.
+  assert.equal(digest, "e0a2d3ce7e32ccab8aac703f9281d80018a1ed020e5940c0691de5eb71699f0e");
+});
 test("Authored chapter is cloned and legacy ids keep their fixed meaning", () => {
   const def = chapterLevel(10),
     original = clone(def);
@@ -126,7 +133,7 @@ test("Schema 1 migration retains the pinned layout, seed, old generator version,
   const original = clone(p.attempt.definition),
     result = loadProgress({ getItem: () => JSON.stringify(p) });
   assert.equal(result.warning, undefined);
-  assert.equal(result.progress.schema, 3);
+  assert.equal(result.progress.schema, 4);
   assert.deepEqual(result.progress.completed, [CHAPTER[0].id]);
   assert.equal(result.progress.coins, 60);
   assert.deepEqual(result.progress.renovations, { sign: "coral" });
@@ -220,14 +227,14 @@ test("Unknown future save schema is read-only and retains its storage bytes", ()
   assert.equal(loaded.readOnly, true);
   assert.equal(memory.get("save"), raw);
 });
-test("All ten wins fund the complete repair graph, switches are free and choices persist", () => {
+test("All available wins fund their produced repairs, switches are free and choices persist", () => {
   const p = freshProgress();
   for (let n = 1; n <= CHAPTER.length; n++) {
     p.attempt = finished(attempt(chapterLevel(n)));
     completeAttempt(p, "2026-10-04");
   }
-  assert.equal(p.coins, 600);
-  assert.equal(p.stars, 10);
+  assert.equal(p.coins, CHAPTER.length * 60);
+  assert.equal(p.stars, CHAPTER.length);
   assert.equal(renovate(p, "sea", "window"), false);
   for (const task of SHOP_STEPS) assert.equal(purchaseShopTask(p, task.id), true);
   assert.equal(p.stars, 0);

@@ -18,10 +18,10 @@ root.innerHTML = `<header class="preview-header"><a class="preview-brand" href="
       <div class="area-description" aria-live="polite" id="area-description"></div>
     </section>
     <section class="shop-section" aria-labelledby="shop-heading"><div class="section-heading"><div><span class="eyebrow">ПЕРВАЯ ГЛАВА</span><h2 id="shop-heading">Из пустого помещения — в лавку</h2></div></div>
-      <div class="state-selector" role="group" aria-label="Основные состояния лавки"><button type="button" data-stage="0">Начало</button><button type="button" data-stage="3">Середина</button><button type="button" data-stage="5">Открытие</button></div>
+      <div class="state-selector" role="group" aria-label="Основные состояния лавки"><button type="button" data-stage="0">Начало</button><button type="button" data-stage="5">Открытие</button><button type="button" data-stage="8">Вторая выкладка</button></div>
       <div id="scene-container"></div>
       <div class="scene-caption" aria-live="polite"><h3 id="scene-title"></h3><span id="scene-orders"></span><p id="scene-result"></p></div>
-      <ol class="purchase-list" aria-label="Пять видимых изменений лавки">${SHOP_STEPS.map((step, index) => `<li><button type="button" data-stage="${index + 1}" aria-label="Показать: ${step.name}"><span class="purchase-number">${index + 1}</span><span class="purchase-name">${step.name}</span><span class="purchase-cost">${step.cost} ★</span></button></li>`).join("")}</ol>
+      <ol class="purchase-list" aria-label="Видимые изменения лавки">${SHOP_STEPS.map((step, index) => `<li><button type="button" data-stage="${index + 1}" aria-label="Показать: ${step.name}"><span class="purchase-number">${index + 1}</span><span class="purchase-name">${step.name}</span><span class="purchase-cost">${step.cost} ★</span></button></li>`).join("")}</ol>
     </section>
   </div>
   <footer class="preview-footer"><p>Переключайте покупки, чтобы увидеть результат каждого шага. Это предпросмотр визуального плана кампании.</p><a href="./author.html">Мастерская заказов</a></footer>`;

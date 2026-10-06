@@ -1,6 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import { CHAPTER, chapterLevel } from "../../src/content";
 import { SHOP_STEPS } from "../../src/campaign";
+import { completedOrders } from "../../src/campaign-scene";
 import { initial, applyMove, type Move } from "../../src/engine";
 import { freshProgress, STORAGE_KEY, type Progress } from "../../src/storage";
 
@@ -130,29 +131,42 @@ test("Visible shop goal starts the tutorial directly, survives reload, and buys 
   await expect(page.locator(".scene-basket.scene-planned")).toHaveCount(2);
 });
 
-test("Ten real orders fund five purchases, free colors, finale, warehouse goal and replay", async ({ page }, info) => {
+test("Twenty real orders fund eight purchases and continue beyond the old finale without closing the phase", async ({ page }, info) => {
   await page.goto("/");
   await page.locator('.world-main-action[data-action="play"]').click();
-  for (let number = 1; number <= 10; number++) {
+  const thresholds = SHOP_STEPS.map((_, index) => completedOrders(index + 1));
+  for (let number = 1; number <= CHAPTER.length; number++) {
     await solveOrder(page, number);
     const p = await saved(page);
     expect(p.completed).toHaveLength(number);
     expect(p.coins).toBe(number * 60);
-    if ([1, 3, 5, 7, 10].includes(number)) {
+    if (thresholds.includes(number)) {
       await page.locator('.modal-result [data-action="buy-task"]').click();
-      expect((await saved(page)).campaign.completedTasks).toEqual(SHOP_STEPS.slice(0, [1, 3, 5, 7, 10].indexOf(number) + 1).map(task => task.id));
+      expect((await saved(page)).campaign.completedTasks).toEqual(SHOP_STEPS.slice(0, thresholds.indexOf(number) + 1).map(task => task.id));
       expect((await saved(page)).stars).toBe(0);
-      if (number < 10) await page.locator('.world-main-action[data-action="play"]').click();
+      if (number === 10) {
+        await expect(page.getByRole("heading", { name: "Расширяем лавку!", exact: true })).toBeVisible();
+        await expect(page.locator(".scene-shelving-secondary .shelving-base.scene-planned")).toHaveCount(1);
+        await page.reload();
+        expect((await saved(page)).completed).toHaveLength(10);
+      }
+      if (number < CHAPTER.length) await page.locator('.world-main-action[data-action="play"]').click();
     } else await page.locator('.modal-result [data-action="next"]').click();
   }
-  await expect(page.getByRole("heading", { name: "Лавка открыта!", exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Дальше — склад" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Вторая выкладка", exact: true })).toBeVisible();
+  await expect(page.locator(".world-progress")).toContainText("Заказы 20 / 60");
+  await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "8");
+  await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuemax", "20");
+  await expect(page.locator(".world-victory")).toHaveCount(0);
+  await expect(page.locator(".scene-shelving-secondary .scene-good:not(.scene-planned)")).toHaveCount(6);
   await page.reload();
-  await expect(page.getByRole("heading", { name: "Лавка открыта!", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Вторая выкладка", exact: true })).toBeVisible();
   await settleImages(page);
-  await page.screenshot({ path: info.outputPath("finale.png"), fullPage: true });
+  await page.screenshot({ path: `docs/screenshots/shop-expansion-${info.project.name}.png`, fullPage: true });
   await page.locator('[data-action="show-map"]').first().click();
-  await expect(page.locator('.world-pin[data-area="warehouse"]')).toHaveAttribute("aria-pressed", "true");
+  await page.locator('.world-pin[data-area="warehouse"]').click();
+  await expect(page.locator(".world-map-status")).toHaveText("После этапа 1: Лавка");
+  await expect(page.locator('.world-pin[data-area="warehouse"]')).toHaveClass(/locked/);
   await page.locator('[data-action="home"]').first().click();
   await page.locator('[data-action="show-map"]').first().click();
   await page.locator('.world-pin[data-area="shop"]').click();
@@ -163,13 +177,13 @@ test("Ten real orders fund five purchases, free colors, finale, warehouse goal a
   expect((await saved(page)).stars).toBe(0);
   await page.reload();
   await expect(page.locator(".scene-sign.coral")).toHaveCount(1);
-  await page.locator('[data-action="levels"]').click();
+  await page.locator('.world-hud [data-action="levels"]').click();
   await page.locator('[data-level="1"]').click();
   await expect(page.locator(".coach-spotlight")).toHaveCount(0);
   await solveOrder(page, 1);
-  expect((await saved(page)).coins).toBe(610);
+  expect((await saved(page)).coins).toBe(CHAPTER.length * 60 + 10);
   expect((await saved(page)).stars).toBe(0);
-  expect((await saved(page)).completed).toHaveLength(10);
+  expect((await saved(page)).completed).toHaveLength(CHAPTER.length);
 });
 
 test("Schema 2 migration survives reload and preserves old partial ownership, proof and balance", async ({ page }) => {
@@ -184,7 +198,7 @@ test("Schema 2 migration survives reload and preserves old partial ownership, pr
     undo: [board], solution: definition.verifiedSolution.slice(1), mixCount: 0, hints: {}, reward: null };
   await seed(page, old);
   const migrated = await saved(page);
-  expect(migrated.schema).toBe(3);
+  expect(migrated.schema).toBe(4);
   expect(migrated.campaign.completedTasks).toEqual(["shop-opening"]);
   expect(migrated.attempt).toEqual(old.attempt);
   expect(migrated.coins).toBe(80);
@@ -195,17 +209,53 @@ test("Schema 2 migration survives reload and preserves old partial ownership, pr
   await page.locator('.world-main-action[data-action="play"]').click();
   await expect(page.locator("#order-heading")).toHaveText(definition.name);
   expect((await saved(page)).attempt).toEqual(old.attempt);
-  old.completed = CHAPTER.map(order => order.id);
+  old.completed = CHAPTER.slice(0, 10).map(order => order.id);
   old.renovations = { sign: "honey", counter: "coral", window: "sea" };
   old.coins = 600;
   old.attempt = null;
   await seed(page, old);
-  await expect(page.getByRole("heading", { name: "Лавка открыта!", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Расширяем лавку!", exact: true })).toBeVisible();
   await expect(page.locator(".scene-garden.sea")).toHaveCount(1);
   await expect(page.locator(".scene-counter.coral")).toHaveCount(1);
   expect((await saved(page)).campaign.completedTasks).toHaveLength(5);
   expect((await saved(page)).stars).toBe(0);
   expect((await saved(page)).coins).toBe(600);
+  await page.locator('.world-main-action[data-action="play"]').click();
+  await expect(page.locator("#order-heading")).toHaveText(CHAPTER[10].name);
+});
+
+test("Schema 3 old finale continues at eleven and a new active order survives navigation and reload", async ({ page }) => {
+  const old: any = freshProgress();
+  old.schema = 3;
+  old.campaign.version = "coastal-campaign-1";
+  old.campaign.completedTasks = SHOP_STEPS.slice(0, 5).map(task => task.id);
+  old.completed = CHAPTER.slice(0, 10).map(order => order.id);
+  old.coins = 600;
+  old.renovations = { sign: "coral", counter: "honey" };
+  old.renovation = "coral";
+  await seed(page, old);
+  const migrated = await saved(page);
+  expect(migrated.schema).toBe(4);
+  expect(migrated.campaign.completedTasks).toEqual(old.campaign.completedTasks);
+  expect(migrated.coins).toBe(600);
+  expect(migrated.stars).toBe(0);
+  await page.locator('.world-main-action[data-action="play"]').click();
+  await solveOrder(page, 11);
+  expect((await saved(page)).coins).toBe(660);
+  expect((await saved(page)).stars).toBe(1);
+  await page.locator('.modal-result [data-action="next"]').click();
+  await expect(page.locator("#order-heading")).toHaveText(CHAPTER[11].name);
+  await transfer(page, chapterLevel(12).verifiedSolution[0], 1);
+  const pinned = (await saved(page)).attempt;
+  await page.locator('[data-action="home"]').click();
+  await page.reload();
+  await page.locator('.world-main-action[data-action="play"]').click();
+  expect((await saved(page)).attempt).toEqual(pinned);
+  for (const [index, move] of chapterLevel(12).verifiedSolution.slice(1).entries()) await transfer(page, move, index + 2);
+  await expect(page.getByRole("dialog", { name: "Заказ готов", exact: true })).toBeVisible();
+  expect((await saved(page)).completed).toHaveLength(12);
+  expect((await saved(page)).stars).toBe(2);
+  expect((await saved(page)).coins).toBe(720);
 });
 
 test("Future saves remain byte-identical, and another tab blocks stale purchases", async ({ page, context }) => {
@@ -268,9 +318,9 @@ test("Shelf and goal geometry stays separate across the control viewport matrix"
 });
 
 test("Room goals and map stay usable in both orientations without stretching or scrolling", async ({ page }, info) => {
-  for (const step of [0, 1, 2, 3, 4, 5]) {
+  for (const step of Array.from({ length: SHOP_STEPS.length + 1 }, (_, index) => index)) {
     const p = freshProgress();
-    p.completed = CHAPTER.slice(0, [0, 1, 3, 5, 7, 10][step]).map(order => order.id);
+    p.completed = CHAPTER.slice(0, completedOrders(step)).map(order => order.id);
     p.campaign.completedTasks = SHOP_STEPS.slice(0, step).map(task => task.id);
     if (step >= 4) p.renovations.counter = "sea";
     if (step >= 5) p.renovations.sign = p.renovation = "sea";
@@ -282,15 +332,13 @@ test("Room goals and map stay usable in both orientations without stretching or 
         const app = document.querySelector("#app")!;
         return { scroll: app.scrollHeight - app.clientHeight, scene: rect(document.querySelector(".world-scene")!),
           controls: [...document.querySelectorAll(".world button")].map(rect),
-          steps: [...document.querySelectorAll(".world-step")].map(el => ({ box: rect(el), art: rect(el.querySelector("img,.task-sign")!) })) };
+          progress: rect(document.querySelector(".world-progress")!),
+          progressOverflow: document.querySelector(".world-progress")!.scrollWidth - document.querySelector(".world-progress")!.clientWidth };
       });
       expect(geometry.scroll, `stage ${step} at ${width}×${height}`).toBeLessThanOrEqual(1);
       expect(geometry.scene.width / geometry.scene.height).toBeCloseTo(1.5, 2);
-      for (const { box, art } of geometry.steps) {
-        expect(box.bottom).toBeLessThanOrEqual(height - 20 + 1);
-        expect(art.top).toBeGreaterThanOrEqual(box.top - 1);
-        expect(art.bottom).toBeLessThanOrEqual(box.bottom + 1);
-      }
+      expect(geometry.progress.bottom).toBeLessThanOrEqual(height - 20 + 1);
+      expect(geometry.progressOverflow).toBeLessThanOrEqual(1);
       for (const control of geometry.controls) {
         expect(control.width).toBeGreaterThanOrEqual(44);
         expect(control.height).toBeGreaterThanOrEqual(44);

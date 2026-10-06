@@ -1,5 +1,5 @@
 {
-  "bytes": 1969688,
+  "bytes": 1993849,
   "files": [
     {
       "path": "dist/assets/campaign-map.webp",
@@ -30,8 +30,8 @@
       "bytes": 62010
     },
     {
-      "path": "dist/assets/game-B8SLqJUd.js",
-      "bytes": 52352
+      "path": "dist/assets/game-BoV8NRfx.js",
+      "bytes": 53277
     },
     {
       "path": "dist/assets/bread.webp",
@@ -62,39 +62,39 @@
       "bytes": 40684
     },
     {
+      "path": "dist/assets/worker-CrfmLeOr.js",
+      "bytes": 34916
+    },
+    {
       "path": "dist/assets/milk.webp",
       "bytes": 26586
     },
     {
-      "path": "dist/assets/worker-Buu-pRXw.js",
-      "bytes": 21023
+      "path": "dist/assets/game-mk6XbxMw.css",
+      "bytes": 17867
     },
     {
-      "path": "dist/assets/game-DM9r2m4i.css",
-      "bytes": 17575
+      "path": "dist/assets/campaign-scene-BTYXQ_X9.js",
+      "bytes": 12123
     },
     {
-      "path": "dist/assets/content-RhyQrPfB.js",
-      "bytes": 6950
+      "path": "dist/assets/content-CTUKFkz6.js",
+      "bytes": 9438
     },
     {
-      "path": "dist/assets/author-DQYA73_s.js",
+      "path": "dist/assets/author-DYR08Vk8.js",
       "bytes": 6350
     },
     {
-      "path": "dist/assets/campaign-fOk3eHVU.css",
-      "bytes": 6097
+      "path": "dist/assets/campaign-CIa7KgyQ.css",
+      "bytes": 6149
     },
     {
-      "path": "dist/assets/campaign-scene-fZ4uTnxc.js",
-      "bytes": 5611
+      "path": "dist/assets/campaign-CrEeD0nd.js",
+      "bytes": 4807
     },
     {
-      "path": "dist/assets/campaign-gdHfQ5gG.js",
-      "bytes": 4808
-    },
-    {
-      "path": "dist/assets/jobs-CwOkw8LM.js",
+      "path": "dist/assets/jobs-Bdj4rMzf.js",
       "bytes": 3046
     },
     {

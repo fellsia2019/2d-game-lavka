@@ -1,0 +1,12 @@
+[
+  { "id": "shop-s1-order-011", "name": "Ещё одна полка", "customer": "Нина", "line": "На новой полке хватит места и для соседских заказов.", "profile": "front", "recipe": "front-classic" },
+  { "id": "shop-s1-order-012", "name": "Завтрак на двоих", "customer": "Борис", "line": "Сегодня соберём по две тройки каждого товара.", "profile": "front", "recipe": "front-double" },
+  { "id": "shop-s1-order-013", "name": "Корзины для новой выкладки", "customer": "Мила", "line": "Освободим передний ряд и разберём запас для новых корзин.", "profile": "layers", "recipe": "layers-classic" },
+  { "id": "shop-s1-order-014", "name": "Четыре списка", "customer": "Нина", "line": "Соседи прислали четыре небольших списка. Ничего не забудем!", "profile": "front", "recipe": "front-four" },
+  { "id": "shop-s1-order-015", "name": "Гости с набережной", "customer": "Борис", "line": "К нам заглянули гости. Каждому хватит свежих продуктов.", "profile": "front", "recipe": "front-double" },
+  { "id": "shop-s1-order-016", "name": "Запас для корзин", "customer": "Илья", "line": "В одной полке запас лежит глубже. Разберём его по порядку.", "profile": "layers", "recipe": "layers-deep" },
+  { "id": "shop-s1-order-017", "name": "Солнечный полдник", "customer": "Мила", "line": "Закажем продукты к полднику и продолжим обустраивать лавку.", "profile": "front", "recipe": "front-classic" },
+  { "id": "shop-s1-order-018", "name": "Две семейные корзины", "customer": "Нина", "line": "Один заказ — для двух семей. Соберём весь двойной набор.", "profile": "front", "recipe": "front-double" },
+  { "id": "shop-s1-order-019", "name": "За передним рядом", "customer": "Илья", "line": "Следующая партия уже на полках. Доберёмся до каждого ряда.", "profile": "layers", "recipe": "layers-classic" },
+  { "id": "shop-s1-order-020", "name": "Вторая выкладка готова", "customer": "Мила", "line": "Новые корзины полны. Дальше подготовим место для холодных продуктов.", "profile": "front", "recipe": "front-four" }
+]

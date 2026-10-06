@@ -43,7 +43,9 @@
 .world .world-main-action.build-action { border-color: #fff2c0; background: linear-gradient(#ffe9a0, #eaae44); box-shadow: inset 0 -4px #c78b2d, 0 4px #956120, 0 7px 13px #51453140; color: #65431c; }
 .world-main-action > span { display: flex; align-items: center; gap: 4px; }
 .world-main-action .icon { width: 25px; height: 25px; }
-.world-progress { grid-column: 1 / -1; display: flex; justify-content: center; align-items: center; gap: 18px; }
+.world-progress { grid-column: 1 / -1; display: flex; justify-content: center; align-items: center; gap: 18px; font-size: 16px; white-space: nowrap; }
+.world-build-progress { display: grid; gap: 3px; }
+.world-build-progress i { display: block; height: 5px; border-radius: 4px; background: linear-gradient(to right, #138d76 var(--built), #b29e76 var(--built)); }
 .world-step { position: relative; width: 44px; height: 32px; display: grid; place-items: center; opacity: .4; filter: grayscale(.55); }
 .world-step > img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; max-height: 100%; object-fit: contain; }
 .world-step.current { opacity: 1; filter: none; border-bottom: 3px solid #d4942f; }
@@ -87,7 +89,7 @@
   .world-mission h2 { font-size: 18px; }
   .world .world-main-action { font-size: 18px; gap: 6px; padding: 8px; }
   .world-main-action .icon { width: 21px; height: 21px; }
-  .world-progress { gap: 16px; }
+  .world-progress { gap: 12px; font-size: 16px; }
   .world-target { width: 54px; height: 54px; }
   .target-plus { font-size: 32px; line-height: 36px; }
   .world-pin > span { width: 44px; height: 44px; border-width: 3px; }

@@ -4,7 +4,7 @@ export { SHOP_STEPS, CAMPAIGN_AREAS, type CampaignAreaId } from "./campaign";
 
 export const SCENE_ASSETS = ["campaign-shop-empty.webp", "campaign-map.webp",
   "campaign-shelving.webp", "campaign-basket.webp", "counter.webp",
-  "jam.webp", "milk.webp", "honey.webp", "bread.webp", "pear.webp"] as const;
+  "jam.webp", "milk.webp", "honey.webp", "bread.webp", "pear.webp", "lemon.webp"] as const;
 
 export function sceneDescription(stage: number): string {
   if (stage === 0) return "Пустая лавка";
@@ -30,9 +30,18 @@ export function shopSceneHTML(stage: number | readonly ShopTaskId[], assets: str
     `<img class="scene-good ${state("first-stock")}" src="${assets}${file}.webp" alt="" style="left:${left}%;bottom:${bottom}%;height:${height}%" />`).join("") : "";
   const baskets = has("display-baskets") ? [15, 53].map(left =>
     `<img class="scene-basket ${state("display-baskets")}" src="${assets}campaign-basket.webp" width="640" height="188" alt="" style="left:${left}%" />`).join("") : "";
+  const secondBaskets = has("shop-s1-t07") ? [15, 53].map(left =>
+    `<img class="scene-basket ${state("shop-s1-t07")}" src="${assets}campaign-basket.webp" width="640" height="188" alt="" style="left:${left}%" />`).join("") : "";
+  const secondGoods = has("shop-s1-t08") ? [
+    ["honey", 18, 73.5, 20], ["lemon", 36, 73.5, 20],
+    ["jam", 54, 73.5, 20], ["milk", 73, 73.5, 25],
+    ["pear", 27, 50, 20], ["bread", 65, 50, 18],
+  ].map(([file, left, bottom, height]) =>
+    `<img class="scene-good ${state("shop-s1-t08")}" src="${assets}${file}.webp" alt="" style="left:${left}%;bottom:${bottom}%;height:${height}%" />`).join("") : "";
   return `<div class="shop-composition" role="${options.controls ? "group" : "img"}" aria-label="${label}">
     <img class="scene-background" src="${assets}campaign-shop-empty.webp" width="1536" height="1024" alt="" />
     ${(has("first-shelf") || has("display-baskets") || has("first-stock")) ? `<div class="scene-shelving" aria-hidden="true"><img class="shelving-base ${state("first-shelf")}" src="${assets}campaign-shelving.webp" width="1000" height="590" alt="" />${baskets}${goods}</div>` : ""}
+    ${has("shop-s1-t06") ? `<div class="scene-shelving scene-shelving-secondary" aria-hidden="true"><img class="shelving-base ${state("shop-s1-t06")}" src="${assets}campaign-shelving.webp" width="1000" height="590" alt="" />${secondBaskets}${secondGoods}</div>` : ""}
     ${has("order-counter") ? `<img class="scene-counter ${decorations.counter ?? "sea"} ${state("order-counter")}" src="${assets}counter.webp" width="1400" height="698" alt="" />` : ""}
     ${has("shop-opening") ? `<div class="scene-sign ${decorations.sign ?? "sea"} ${state("shop-opening")}" aria-hidden="true"><span>Лавка<br />у моря</span></div>` : ""}
     ${decorations.window ? `<img class="scene-garden ${decorations.window}" src="${assets}garden.webp" width="878" height="600" alt="" aria-hidden="true" />` : ""}

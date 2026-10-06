@@ -66,7 +66,7 @@ for (const phaseId of plan.route) {
     assert(slot.globalNumber === nextGlobal + index && slot.chapterNumber === previousLocal + index + 1, `Order numbering mismatch ${slot.id}`);
     assert(families.has(slot.family), `Unknown order family ${slot.id}`);
     assert(["tutorial", "intro", "rest", "standard", "complex"].includes(slot.difficulty), `Unknown planned difficulty ${slot.id}`);
-    assert(["existing-definition", "planned-no-definition"].includes(slot.status), `Incorrect verification status ${slot.id}`);
+    assert(["existing-definition", "implemented-definition", "planned-no-definition"].includes(slot.status), `Incorrect verification status ${slot.id}`);
   }
   unique(p.goodsPool, `goods pool ${p.id}`);
   for (const id of p.goodsPool) {
@@ -78,7 +78,7 @@ for (const phaseId of plan.route) {
   let phaseEarned = 0, taskIndex = 0, phaseSpent = 0;
   for (const t of p.tasks) {
     assert(Number.isSafeInteger(t.cost) && t.cost > 0 && t.cost <= 5, `Invalid task price ${t.id}`);
-    assert(t.name && t.target && ["existing", "planned"].includes(t.status), `Incomplete task ${t.id}`);
+    assert(t.name && t.target && ["existing", "implemented", "planned"].includes(t.status), `Incomplete task ${t.id}`);
     maxWaitForNextTask = Math.max(maxWaitForNextTask, t.cost);
   }
   // Greedy purchases demonstrate that available orders finance every task prefix.
@@ -109,6 +109,22 @@ const existingSlots = plan.orderSlots.filter(s => s.status === "existing-definit
 assert(existingSlots.length === 10 && existingSlots.every((s, i) => s.id === original[i]?.id), "Published order ids changed");
 const existingTasks = tasks.filter(t => t.status === "existing");
 assert(existingTasks.map(t => `${t.id}:${t.cost}`).join() === "first-shelf:1,display-baskets:2,first-stock:2,order-counter:2,shop-opening:3", "Published tasks/prices changed");
+const readySlots = plan.orderSlots.filter(s => s.status !== "planned-no-definition");
+assert(readySlots.length === original.length && readySlots.every(s => original.some(d => d.id === s.id)), "Definition production status mismatch");
+const readyTasks = tasks.filter(t => t.status !== "planned");
+assert(plan.deliveryStatus.existingOrders === readySlots.length &&
+  plan.deliveryStatus.plannedOrders === plan.orderSlots.length - readySlots.length &&
+  plan.deliveryStatus.existingTasks === readyTasks.length &&
+  plan.deliveryStatus.plannedTasks === tasks.length - readyTasks.length, "Delivery counts differ from actual statuses");
+const runtimePhases = plan.route.map(id => {
+  const p = phases.get(id);
+  return { id: p.id, areaId: p.areaId, stage: p.stage, title: p.title,
+    orderTarget: p.orderCount, taskTarget: p.tasks.length, starTarget: sum(p.tasks.map(t => t.cost)),
+    requiresCompletedPhases: p.requiresCompletedPhases };
+});
+if (process.argv.includes("--write")) {
+  writeFileSync(new URL("src/campaign-plan.json", root), JSON.stringify(runtimePhases, null, 2) + "\n");
+} else assert(JSON.stringify(read("src/campaign-plan.json")) === JSON.stringify(runtimePhases), "Runtime phase plan differs from master plan; run --write");
 
 // Arithmetic for the 25 normal legacy repair prefixes. This does not execute migration.
 const legacyRepairPrefixes = [
@@ -132,15 +148,15 @@ const difficultyCounts = Object.fromEntries(["tutorial", "intro", "rest", "stand
 const report = {
   planVersion: plan.planVersion, date: plan.date, scope: plan.validationScope,
   chapters: plan.chapters.length, phases: plan.phases.length, plannedOrderSlots: plan.orderSlots.length,
-  existingDefinitions: existingSlots.length, definitionsToProduce: plan.orderSlots.length - existingSlots.length,
-  taskDesigns: tasks.length, existingTasks: existingTasks.length, tasksToImplement: tasks.length - existingTasks.length,
+  existingDefinitions: readySlots.length, definitionsToProduce: plan.orderSlots.length - readySlots.length,
+  taskDesigns: tasks.length, existingTasks: readyTasks.length, tasksToImplement: tasks.length - readyTasks.length,
   goods: plan.goods.length, characters: plan.characters.length, starsEarned: earned, starsSpent: spent,
   finalStarBalance: earned - spent, minimumSimulatedBalance: minimumBalance,
   legacyArithmeticCases,
   maxNewOrdersBetweenPurchases: maxWaitForNextTask, sitePreparationBundles: plan.phases.filter(p => p.constructionBundleStars).length,
   byteBudgetTarget: plan.byteBudget.shippingTarget, byteBudgetHardLimitExclusive: plan.byteBudget.hardLimitExclusive,
   difficultyCounts, route: summary,
-  notVerified: ["Решения 1790 будущих Definition", "Интерес и длительность", "Будущий размер dist и память", "Будущие сцены, UI и SDK"]
+  notVerified: [`Решения ${plan.orderSlots.length - readySlots.length} будущих Definition`, "Интерес и длительность", "Будущий размер dist и память", "Будущие сцены, UI и SDK"]
 };
 
 if (process.argv.includes("--write")) {
@@ -148,7 +164,7 @@ if (process.argv.includes("--write")) {
   const lines = [
     "# Каталог полной кампании", "",
     `План ${plan.planVersion}, ${plan.date}. Автоматически собран из [full-product-plan.json](content/full-product-plan.json).`, "",
-    "Главный документ — [CONTENT_MASTER_PLAN.md](CONTENT_MASTER_PLAN.md). Это проект 1800 заказов и 480 работ; готовые Definition есть у первых десяти заказов, реализованы первые пять покупок. Записи planned-no-definition не являются выдаваемыми уровнями.", "",
+    `Главный документ — [CONTENT_MASTER_PLAN.md](CONTENT_MASTER_PLAN.md). Это проект 1800 заказов и 480 работ; готовых Definition сейчас ${readySlots.length}, реализованных покупок ${readyTasks.length}. Записи planned-no-definition не являются выдаваемыми уровнями.`, "",
     "## Полный маршрут", ""
   ];
   for (const [i, row] of summary.entries()) {
@@ -165,7 +181,7 @@ if (process.argv.includes("--write")) {
       let localThreshold = p.localOrderRange[0] - 1;
       for (const [i, t] of p.tasks.entries()) {
         localThreshold += t.cost;
-        lines.push(`${i + 1}. **${t.name}** — ${t.cost} ★; накопленная цена этапа ${localThreshold - p.localOrderRange[0] + 1} ★, ориентир локального заказа ${localThreshold}. id: \`${t.id}\`${t.status === "existing" ? "; уже реализовано" : ""}.`);
+        lines.push(`${i + 1}. **${t.name}** — ${t.cost} ★; накопленная цена этапа ${localThreshold - p.localOrderRange[0] + 1} ★, ориентир локального заказа ${localThreshold}. id: \`${t.id}\`${t.status !== "planned" ? "; уже реализовано" : ""}.`);
       }
     }
   }

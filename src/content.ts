@@ -5,7 +5,9 @@ import {
   type Profile,
 } from "./engine";
 import levelDefinitions from "./levels/chapter.json" with { type: "json" };
+import expansionStories from "./levels/shop-expansion.json" with { type: "json" };
 export interface ChapterEntry {
+  phaseId: string;
   id: string;
   name: string;
   customer: string;
@@ -14,7 +16,7 @@ export interface ChapterEntry {
   lesson?: "transfer" | "tools" | "rear" | "crate";
   guidance?: "gentle";
 }
-export const CHAPTER: readonly ChapterEntry[] = [
+const INTRO_CHAPTER = [
   {
     id: "morning-first",
     lesson: "transfer",
@@ -94,7 +96,11 @@ export const CHAPTER: readonly ChapterEntry[] = [
     profile: "mixed",
   },
 ] as const;
-export const CONTENT_VERSION = "coastal-chapter-2";
+export const CHAPTER: readonly ChapterEntry[] = [
+  ...INTRO_CHAPTER.map(story => ({ ...story, phaseId: "shop-1" })),
+  ...expansionStories.map(story => ({ ...story, phaseId: "shop-1", profile: story.profile as Profile })),
+];
+export const CONTENT_VERSION = "coastal-shop-1-expansion-1";
 // Frozen migration map: changing a seed or reordering today's catalog must not
 // change the meaning of ids that have already been stored by schema 1.
 const LEGACY_IDS: Record<string, string> = {

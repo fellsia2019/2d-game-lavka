@@ -17,7 +17,7 @@ import {
   type Move,
   type Profile,
 } from "../src/engine";
-import { chapterLevel } from "../src/content";
+import { CHAPTER, chapterLevel } from "../src/content";
 import { generate, mixVisible, structuralKey, VERSION } from "../src/generator";
 import {
   completeAttempt,
@@ -173,9 +173,9 @@ test("Reserve is one reversible storage slot, conserves goods and never ships tr
   assert.deepEqual(back.shelves, board.shelves);
   assert.ok(solve(moved).path);
 });
-test("All ten curated chapter tasks have replayed solutions and distinct structures", () => {
+test("All authored orders have replayed solutions and distinct structures", () => {
   const structures = new Set<string>();
-  for (let n = 1; n <= 10; n++) {
+  for (let n = 1; n <= CHAPTER.length; n++) {
     const def = chapterLevel(n);
     validateDefinition(def);
     assert.equal(replay(def, def.verifiedSolution), true);
