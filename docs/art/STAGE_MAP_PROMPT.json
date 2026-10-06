@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-06",
+  "tool": "image_gen.imagegen",
+  "status": "draft-cleared-base-not-in-runtime",
+  "reference": "public/assets/campaign-map.webp",
+  "source": "docs/art/campaign-map-cleared-original.png",
+  "prompt": "Use case: precise-object-edit. Asset type: background map for coastal-shop 2D browser game, 1536 by 1024 landscape. Edit the supplied map: keep the central turquoise small shop, sea, beach, sunlight, walking paths, Mediterranean village, perspective and composition exactly. Remove the finished blue-roof warehouse from the upper-right plot, leaving a cleared bare sandy plot edged by the same stone border. Make all other building plots (upper left, lower left, middle right, lower right) bare empty sandy plots too, free of built structures or furniture. Preserve surrounding decorative trees OUTSIDE these plots. We will overlay separate rubbish, shrub, old-shed, foundation, wall and roof sprites dynamically, so do NOT paint those into the plots. No UI, text, characters on the construction plots, labels or watermark. Preserve warm detailed polished casual game rendering.",
+  "nextWork": "Produce independent abandoned-site layers and construction states; package and connect through the campaign scene/map manifest. Do not show this clean base alone as the initial abandoned map.",
+  "width": 1536,
+  "height": 1024,
+  "bytes": 2808737,
+  "sha256": "335280c6c9f92ee3a7694074dfa8b5369af5b5659c2916c0591019034cb22340"
+}

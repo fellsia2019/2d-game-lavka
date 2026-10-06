@@ -17,7 +17,7 @@ for (const [index, story] of stories.entries()) {
     for (let candidate = 0; candidate < 32; candidate++) {
       try {
         pinned = generate(`shop-1-order-${index + 11}-v1-${candidate}`, story.profile as Profile,
-          index + 11, { recipe: story.recipe, avoidStructures: keys });
+          index + 11, { recipe: story.recipe, avoidStructures: keys, goods: story.goods, requireGoods: story.requireGoods });
         break;
       } catch (error) {
         if (!(error instanceof Error) || !error.message.startsWith("Не удалось подтвердить")) throw error;

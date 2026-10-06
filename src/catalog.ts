@@ -6,6 +6,9 @@ export const GOODS = {
   p: { name: "Груши", file: "pear", color: "#83a547" },
   h: { name: "Мёд", file: "honey", color: "#dea02f" },
   l: { name: "Лимоны", file: "lemon", color: "#e8c23b" },
+  eg: { name: "Яйца в коробке", file: "eggs", color: "#dec5a0" },
+  ch: { name: "Сыр", file: "cheese", color: "#efb838" },
+  ju: { name: "Сок", file: "juice", color: "#ee9431" },
 } as const;
 export type Good = keyof typeof GOODS;
 export const GOOD_IDS = Object.keys(GOODS) as Good[];

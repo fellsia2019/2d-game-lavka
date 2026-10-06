@@ -43,7 +43,6 @@ const INTRO_CHAPTER = [
   },
   {
     id: "morning-coast",
-    lesson: "tools",
     name: "Привет с набережной",
     customer: "Нина",
     line: "Как хорошо, что ваша лавка совсем рядом.",
@@ -66,7 +65,6 @@ const INTRO_CHAPTER = [
   {
     id: "morning-delivery",
     lesson: "rear",
-    guidance: "gentle",
     name: "Свежая поставка",
     customer: "Илья",
     line: "За первым рядом спрятан ещё один. Освободите полку!",
@@ -82,7 +80,6 @@ const INTRO_CHAPTER = [
   {
     id: "morning-baker",
     lesson: "crate",
-    guidance: "gentle",
     name: "Посылка от пекаря",
     customer: "Илья",
     line: "Поставка откроется после отправки троек.",
@@ -100,7 +97,7 @@ export const CHAPTER: readonly ChapterEntry[] = [
   ...INTRO_CHAPTER.map(story => ({ ...story, phaseId: "shop-1" })),
   ...expansionStories.map(story => ({ ...story, phaseId: "shop-1", profile: story.profile as Profile })),
 ];
-export const CONTENT_VERSION = "coastal-shop-1-expansion-1";
+export const CONTENT_VERSION = "coastal-shop-1-cold-1";
 // Frozen migration map: changing a seed or reordering today's catalog must not
 // change the meaning of ids that have already been stored by schema 1.
 const LEGACY_IDS: Record<string, string> = {

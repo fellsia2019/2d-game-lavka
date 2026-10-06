@@ -1,0 +1,47 @@
+[
+  {
+    "source": "campaign-shop-cold-original.png",
+    "sourceSha256": "0be036c89d6e3303b86ca4aea012713987d89825bf283da8441671552749776a",
+    "output": "public/assets/campaign-shop-cold.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 169960,
+    "alpha": false
+  },
+  {
+    "source": "campaign-fridge-original.png",
+    "sourceSha256": "ab8af235a49a9c7bfecef13f9b76fa81024b23265a0b9e490a23cd46a694d281",
+    "output": "public/assets/campaign-fridge.webp",
+    "width": 1100,
+    "height": 683,
+    "bytes": 94416,
+    "alpha": true
+  },
+  {
+    "source": "cold-goods-atlas-original.png",
+    "sourceSha256": "f58c988e889a01705bbeab2446504945ef4cccbbc9f9b15f913b5e0fcabbf453",
+    "output": "public/assets/eggs.webp",
+    "width": 320,
+    "height": 299,
+    "bytes": 30724,
+    "alpha": true
+  },
+  {
+    "source": "cold-goods-atlas-original.png",
+    "sourceSha256": "f58c988e889a01705bbeab2446504945ef4cccbbc9f9b15f913b5e0fcabbf453",
+    "output": "public/assets/cheese.webp",
+    "width": 320,
+    "height": 284,
+    "bytes": 22414,
+    "alpha": true
+  },
+  {
+    "source": "cold-goods-atlas-original.png",
+    "sourceSha256": "f58c988e889a01705bbeab2446504945ef4cccbbc9f9b15f913b5e0fcabbf453",
+    "output": "public/assets/juice.webp",
+    "width": 233,
+    "height": 420,
+    "bytes": 34286,
+    "alpha": true
+  }
+]

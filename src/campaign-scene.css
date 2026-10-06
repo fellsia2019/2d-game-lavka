@@ -17,3 +17,7 @@
 .scene-counter.honey, .scene-garden.honey { filter: sepia(.28) saturate(1.15); }
 .scene-counter.coral, .scene-garden.coral { filter: sepia(.18) hue-rotate(330deg) saturate(1.15); }
 .scene-garden { position: absolute; left: 3%; bottom: 7%; width: 23%; height: auto; }
+.scene-fridge { position: absolute; left: 42%; top: 30%; width: 52%; aspect-ratio: 1100 / 683; }
+.fridge-base { display: block; width: 100%; height: 100%; }
+.scene-receiving { position: absolute; left: 10%; bottom: 12%; width: 28%; display: flex; gap: 4%; align-items: end; }
+.scene-receiving img { width: 48%; height: auto; }

@@ -3,7 +3,7 @@ import { CHAPTER, chapterLevel } from "../../src/content";
 import { SHOP_STEPS } from "../../src/campaign";
 import { completedOrders } from "../../src/campaign-scene";
 import { initial, applyMove, type Move } from "../../src/engine";
-import { freshProgress, STORAGE_KEY, type Progress } from "../../src/storage";
+import { cachedHint, freshProgress, STORAGE_KEY, type Progress } from "../../src/storage";
 
 const errors = new WeakMap<Page, string[]>();
 test.beforeEach(async ({ page }) => {
@@ -131,7 +131,7 @@ test("Visible shop goal starts the tutorial directly, survives reload, and buys 
   await expect(page.locator(".scene-basket.scene-planned")).toHaveCount(2);
 });
 
-test("Twenty real orders fund eight purchases and continue beyond the old finale without closing the phase", async ({ page }, info) => {
+test("Thirty real orders fund eleven purchases and open the cold department without closing the phase", async ({ page }, info) => {
   await page.goto("/");
   await page.locator('.world-main-action[data-action="play"]').click();
   const thresholds = SHOP_STEPS.map((_, index) => completedOrders(index + 1));
@@ -150,19 +150,25 @@ test("Twenty real orders fund eight purchases and continue beyond the old finale
         await page.reload();
         expect((await saved(page)).completed).toHaveLength(10);
       }
+      if (number === 20) {
+        expect((await saved(page)).coins).toBe(1200);
+        await expect(page.locator(".scene-shelving-secondary .scene-good:not(.scene-planned)")).toHaveCount(6);
+        await page.locator('.world-main-action[data-action="show-target"]').click();
+        await expect(page.locator(".fridge-base.scene-planned")).toHaveCount(1);
+      }
       if (number < CHAPTER.length) await page.locator('.world-main-action[data-action="play"]').click();
     } else await page.locator('.modal-result [data-action="next"]').click();
   }
-  await expect(page.getByRole("heading", { name: "Вторая выкладка", exact: true })).toBeVisible();
-  await expect(page.locator(".world-progress")).toContainText("Заказы 20 / 60");
-  await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "8");
-  await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuemax", "20");
+  await expect(page.getByRole("heading", { name: "Продолжение готовится", exact: true })).toBeVisible();
+  await expect(page.locator(".world-progress")).toContainText("Заказы 30 / 80");
+  await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "11");
+  await expect(page.getByRole("progressbar")).toHaveAttribute("aria-valuemax", "26");
   await expect(page.locator(".world-victory")).toHaveCount(0);
-  await expect(page.locator(".scene-shelving-secondary .scene-good:not(.scene-planned)")).toHaveCount(6);
+  await expect(page.locator(".scene-fridge .scene-good:not(.scene-planned)")).toHaveCount(9);
   await page.reload();
-  await expect(page.getByRole("heading", { name: "Вторая выкладка", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Продолжение готовится", exact: true })).toBeVisible();
   await settleImages(page);
-  await page.screenshot({ path: `docs/screenshots/shop-expansion-${info.project.name}.png`, fullPage: true });
+  await page.screenshot({ path: `docs/screenshots/shop-cold-${info.project.name}.png`, fullPage: true });
   await page.locator('[data-action="show-map"]').first().click();
   await page.locator('.world-pin[data-area="warehouse"]').click();
   await expect(page.locator(".world-map-status")).toHaveText("После этапа 1: Лавка");
@@ -170,12 +176,15 @@ test("Twenty real orders fund eight purchases and continue beyond the old finale
   await page.locator('[data-action="home"]').first().click();
   await page.locator('[data-action="show-map"]').first().click();
   await page.locator('.world-pin[data-area="shop"]').click();
+  await page.locator('.world-view-selector [data-view="hall"]').click();
+  await expect(page.locator(".scene-shelving-secondary .scene-good:not(.scene-planned)")).toHaveCount(6);
   await page.locator('[data-action="appearance"]').click();
   await page.getByRole("radio", { name: "Коралловый закат" }).check();
   await page.getByRole("button", { name: "Применить цвет", exact: true }).click();
   await expect(page.locator(".scene-sign.coral")).toHaveCount(1);
   expect((await saved(page)).stars).toBe(0);
   await page.reload();
+  await page.locator('.world-view-selector [data-view="hall"]').click();
   await expect(page.locator(".scene-sign.coral")).toHaveCount(1);
   await page.locator('.world-hud [data-action="levels"]').click();
   await page.locator('[data-level="1"]').click();
@@ -198,7 +207,7 @@ test("Schema 2 migration survives reload and preserves old partial ownership, pr
     undo: [board], solution: definition.verifiedSolution.slice(1), mixCount: 0, hints: {}, reward: null };
   await seed(page, old);
   const migrated = await saved(page);
-  expect(migrated.schema).toBe(4);
+  expect(migrated.schema).toBe(5);
   expect(migrated.campaign.completedTasks).toEqual(["shop-opening"]);
   expect(migrated.attempt).toEqual(old.attempt);
   expect(migrated.coins).toBe(80);
@@ -235,7 +244,7 @@ test("Schema 3 old finale continues at eleven and a new active order survives na
   old.renovation = "coral";
   await seed(page, old);
   const migrated = await saved(page);
-  expect(migrated.schema).toBe(4);
+  expect(migrated.schema).toBe(5);
   expect(migrated.campaign.completedTasks).toEqual(old.campaign.completedTasks);
   expect(migrated.coins).toBe(600);
   expect(migrated.stars).toBe(0);
@@ -256,6 +265,35 @@ test("Schema 3 old finale continues at eleven and a new active order survives na
   expect((await saved(page)).completed).toHaveLength(12);
   expect((await saved(page)).stars).toBe(2);
   expect((await saved(page)).coins).toBe(720);
+});
+
+test("Completed schema 4 orders expose a new goal and orders 21 through 30 instead of a checked-off dead end", async ({ page }) => {
+  const old: any = freshProgress();
+  old.schema = 4;
+  old.campaign.version = "coastal-campaign-2";
+  old.campaign.completedTasks = SHOP_STEPS.slice(0, 8).map(task => task.id);
+  old.completed = CHAPTER.slice(0, 20).map(order => order.id);
+  old.coins = 1200;
+  old.renovations = { sign: "coral", counter: "honey" };
+  old.renovation = "coral";
+  await seed(page, old);
+  const migrated = await saved(page);
+  expect(migrated.schema).toBe(5);
+  expect(migrated.coins).toBe(1200);
+  expect(migrated.stars).toBe(0);
+  expect(migrated.campaign.completedTasks).toEqual(old.campaign.completedTasks);
+  await expect(page.getByRole("heading", { name: "Холодная витрина", exact: true })).toBeVisible();
+  await expect(page.locator(".fridge-base.scene-planned")).toHaveCount(1);
+  await expect(page.locator(".world-target")).toBeVisible();
+  await page.locator('.world-hud [data-action="levels"]').click();
+  await expect(page.getByRole("heading", { name: "Холодный отдел · 21–30", exact: true })).toBeVisible();
+  await expect(page.locator('[data-level="21"]')).toBeEnabled();
+  await expect(page.locator('[data-level="21"]')).not.toHaveClass(/complete/);
+  await page.locator('[data-level="21"]').click();
+  await solveOrder(page, 21);
+  expect((await saved(page)).coins).toBe(1260);
+  expect((await saved(page)).stars).toBe(1);
+  expect((await saved(page)).completed).toHaveLength(21);
 });
 
 test("Future saves remain byte-identical, and another tab blocks stale purchases", async ({ page, context }) => {
@@ -486,6 +524,42 @@ test("Order 7 keeps each front product the same size on every shelf throughout h
   }
   await expect(page.getByRole("dialog", { name: "Заказ готов", exact: true })).toBeVisible();
   expect((await saved(page)).attempt!.board.shelves.every(shelf => shelf.rear.length === 0)).toBe(true);
+});
+
+test("Later orders show hints only on request, including after reload and undo", async ({ page }) => {
+  const noGuidance = async () => {
+    await expect(page.locator(".coach-spotlight,.gentle-source,.gentle-dest,.gentle-tool,.hint-source,.hint-dest")).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "Скрыть подсказку", exact: true })).toHaveCount(0);
+  };
+  for (const number of [4, 7, 9]) {
+    const p = freshProgress();
+    p.completed = CHAPTER.slice(0, number - 1).map(order => order.id);
+    await seed(page, p);
+    await page.locator('.world-main-action[data-action="play"]').click();
+    await expect(page.locator("#order-heading")).toHaveText(CHAPTER[number - 1].name);
+    await noGuidance();
+    const pinned = (await saved(page)).attempt!.definition;
+    await page.locator('[data-action="hint"]').click();
+    await expect(page.locator(".gentle-source")).toHaveCount(1);
+    expect((await saved(page)).inventory.hint).toBe(1);
+    await page.getByRole("button", { name: "Скрыть подсказку", exact: true }).click();
+    await noGuidance();
+    await page.locator('[data-action="home"]').click();
+    await page.reload();
+    await page.locator('.world-main-action[data-action="play"]').click();
+    await expect(page.locator("#order-heading")).toBeVisible();
+    await noGuidance();
+    await page.locator('[data-action="hint"]').click();
+    await expect(page.locator(".gentle-source")).toHaveCount(1);
+    expect((await saved(page)).inventory.hint).toBe(1); // Previously paid proof remains free.
+    const move = cachedHint((await saved(page)).attempt!)![0];
+    await transfer(page, move, 1);
+    await noGuidance();
+    await page.locator('[data-action="undo"]').click();
+    await expect.poll(async () => (await saved(page)).attempt!.board.used).toBe(0);
+    await noGuidance();
+    expect((await saved(page)).attempt!.definition).toEqual(pinned);
+  }
 });
 
 test("Tools are bought in the store, persist without applying, and spend inventory only when used", async ({ page }, info) => {

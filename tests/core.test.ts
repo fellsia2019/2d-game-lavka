@@ -180,7 +180,7 @@ test("All authored orders have replayed solutions and distinct structures", () =
     validateDefinition(def);
     assert.equal(replay(def, def.verifiedSolution), true);
     assert.deepEqual(chapterLevel(n), def);
-    assert.equal(def.generatorVersion, VERSION);
+    assert.equal(def.generatorVersion, n <= 20 ? "coastal-slice-2" : VERSION);
     const key = structuralKey(def);
     assert.equal(structures.has(key), false, `Duplicate at ${n}`);
     structures.add(key);
@@ -226,6 +226,20 @@ test("Search exhaustion means unknown, not impossible", () => {
     status: "unknown",
   });
   assert.ok(solve(board).path);
+});
+test("Project assortments introduce required goods while retaining replayed deterministic proofs", () => {
+  const options = { recipe: "front-double", goods: ["eg", "m"] as const, requireGoods: ["eg"] as const };
+  const request = { ...options, goods: [...options.goods], requireGoods: [...options.requireGoods] };
+  const d = generate("cold-introduction", "front", 21, request);
+  assert.equal(d.generatorVersion, "coastal-slice-3");
+  assert.deepEqual(Object.keys(initial(d).goals).sort(), ["eg", "m"]);
+  assert.equal(replay(d, d.verifiedSolution), true);
+  assert.deepEqual(generate("cold-introduction", "front", 21, request), d);
+  for (const bad of [
+    { goods: ["eg"] }, { goods: ["eg", "eg"] },
+    { goods: ["eg", "m"], requireGoods: ["ch"] },
+    { goods: ["eg", "m", "ch"], requireGoods: ["eg", "m", "ch"] },
+  ]) assert.throws(() => generate("invalid-pool", "front", 21, { ...bad, recipe: "front-double" } as any), /ассортимент/);
 });
 test("Shuffle retains quantities, hidden rows, locks and delivered orders, and returns a replayable solution", () => {
   const def = chapterLevel(7),

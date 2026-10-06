@@ -134,6 +134,24 @@
   .world-target, .target-hand, .scene-built-pop { animation: none; }
 }
 .reduced-motion .world-target, .reduced-motion .target-hand, .reduced-motion .scene-built-pop { animation: none; }
+.world.in-cold::before { background-image: url("/assets/campaign-shop-cold.webp"); }
+.world.has-shop-views { --world-dock: calc(210px + env(safe-area-inset-bottom)); }
+.has-shop-views .world-dock { grid-template-rows: 62px 44px 34px; }
+.has-shop-views .world-progress { grid-row: 3; }
+.world-view-selector { grid-column: 1 / -1; grid-row: 2; display: flex; justify-content: center; gap: 8px; }
+.world-view-selector button { min-width: 94px; min-height: 44px; padding: 8px 12px; border: 2px solid #ad9363; border-radius: 14px; background: #fff2d6; color: #24575a; font-size: 16px; }
+.world-view-selector button[aria-pressed="true"] { background: #127b80; border-color: #12666a; color: #fff8e4; }
+@media (max-height: 500px) {
+  .world.has-shop-views { --world-dock: calc(200px + env(safe-area-inset-bottom)); }
+  .has-shop-views .world-dock { grid-template-rows: 52px 44px 28px; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .world-view-selector { width: 100%; flex: none; }
+  .world-view-selector button { flex: 1; min-width: 0; padding: 8px 4px; }
+  .has-shop-views .world-mission-art { display: none; }
+  .has-shop-views .world-mission h2 { font-size: 18px; }
+  .world.has-shop-views .world-dock { padding-left: 8px; padding-right: 8px; }
+}
 
 /* Keep all progress artwork inside its row, with breathing room at the screen edge. */
 .world-dock { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }

@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-06",
+  "tool": "image_gen.imagegen",
+  "reference": "../reference/coastal-shop-approved-visual.png",
+  "assets": [
+    {
+      "source": "campaign-shop-cold-original.png",
+      "prompt": "Use case: stylized-concept. Asset type: empty background for a 2D cozy seaside grocery game, a new adjacent cold-storage corner of the same shop. Input images: image 1 is the approved rendering-style reference only (do not copy any UI); image 2 is the existing empty shop reference for warm honey wood, cream plaster, turquoise trim, sunlight and frontal perspective. Generate a new wide 3:2 room background. Empty back wall in the right two thirds for a large freestanding refrigerated display sprite, wall floor seam at about 64 percent height, plenty of warm wooden floor in lower third. Small tall turquoise-framed coastal window on far left and a simple closed turquoise service door at left quarter, sunlight from upper left. Polished tactile casual-game raster illustration matching reference materials, warm and inviting rather than clinical. Only permanent room architecture. No furniture, no counters, no refrigeration unit, no shelves, no goods, no people, no interface, no lettering or signs. Preserve clear floor access and coherent front view with slight view of floor, not isometric."
+    },
+    {
+      "source": "campaign-fridge-original.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE standalone empty refrigerated display cabinet sprite for a 2D cozy seaside grocery game, actual transparent alpha background. Input image 1 is rendering and materials reference only; do not copy its UI. Create a charming wide upright open-front refrigerated dairy case, honey oak lower base with turquoise front panels and rounded cream trim. Frontal view with only slight view of shelf surfaces matching the game furniture. Two broad EMPTY cream shelves inside an opaque cool pale mint interior, generous vertical clearance for separate product sprites. Clearly readable shelf contact surfaces, no dividers, no glass doors or front glass obscuring products. Small warm brass vents in the base, soft turquoise cooling accent light. Four feet on one baseline. Entire cabinet fully visible, centered with transparent padding; isolated compact contact shadow only, no room or floor. Polished tactile raster casual-game rendering, soft upper-left sunlight, friendly craft details, not futuristic or clinical. No products, food, baskets, text, logos, interface, people, watermark. Transparent background must be genuine alpha, not a checkerboard painted into the image."
+    },
+    {
+      "source": "cold-goods-atlas-original.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE transparent game goods sprite atlas, 3 equally spaced columns in a single row, no overlap, actual transparent alpha background. Input image is the approved style reference only; do not copy UI. Exactly three isolated objects in left-to-right order: LEFT an open small honey-brown pulp carton holding SIX pale cream eggs; CENTER a single golden Swiss cheese wedge with a few rounded holes and warm rind; RIGHT a squat clear glass bottle of orange juice, bright orange contents, cream paper band with only an orange-fruit pictogram and NO letters, rich turquoise metal screw cap. Each object centered in its own column with large transparent gutters and margin on every side. Same frontal view with slightly visible top as the existing milk bottle and jam jar, soft upper-left sunlight, small compact contact shadow, strong readable silhouette at tiny game sizes. Warm polished tactile casual-game raster illustration; egg box sturdy and chunky, cheese clean and appetizing, juice bottle with believable glass highlights. No room, floor, people, furniture, interface, grid lines, frames, labels, letters, watermark, logos. Preserve actual transparency, not a painted checkerboard."
+    }
+  ]
+}

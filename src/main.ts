@@ -1,6 +1,6 @@
 import "./style.css";
 import "./campaign-game.css";
-import { CAMPAIGN_AREAS, FIRST_SHOP_PHASE, nextShopTask, shopComplete, type CampaignAreaId, type ShopTaskId } from "./campaign";
+import { CAMPAIGN_AREAS, FIRST_SHOP_PHASE, nextShopTask, shopComplete, type CampaignAreaId, type ShopTaskId, type ShopView } from "./campaign";
 import { worldHTML, taskArtwork } from "./world";
 import {
   GOODS,
@@ -205,9 +205,10 @@ function render() {
 const repairNext = () => nextShopTask(progress.campaign);
 const chapterDone = () => completedCount(progress.completed) === CHAPTER.length;
 const allDone = () => shopComplete(progress.completed, progress.campaign);
+let shopView: ShopView | undefined;
 const ownedDecorations = () => RENOVATIONS.filter(r => progress.renovations[r.id]);
-function homeHTML() { return worldHTML(progress, assets, "home", selectedArea, justBuilt); }
-function shopHTML() { return worldHTML(progress, assets, "shop", selectedArea, justBuilt); }
+function homeHTML() { return worldHTML(progress, assets, "home", selectedArea, justBuilt, shopView); }
+function shopHTML() { return worldHTML(progress, assets, "shop", selectedArea, justBuilt, shopView); }
 function finishHTML() { return worldHTML(progress, assets, "finish", selectedArea, justBuilt); }
 function mapHTML() { return worldHTML(progress, assets, "map", selectedArea); }
 function toolsShopHTML() {
@@ -307,6 +308,7 @@ function updateGentleGuide() {
   }
 }
 function startLesson(number: number) {
+  if (number > 3) return;
   const key = CHAPTER[number - 1]?.lesson;
   toolLesson = key === "tools" && !isCompleted(progress.completed, number) &&
     !progress.tutorialSeen.includes("spotlight-tools");
@@ -450,7 +452,6 @@ async function start(number: number, force = false) {
     render();
     focusGame();
     startLesson(number);
-    if (cachedHint(current()) && !guided() && !gentleGuidance()) void hint();
     return;
   }
   showModal(
@@ -733,13 +734,14 @@ function selectRepairColor(color: RenovationColor) {
 function levelsModal() {
   showModal(
     "levels",
-    `<span class="eyebrow">ЛАВКА · ЭТАП 1 ИЗ 4</span><h2>Заказы</h2><p>Первый торговый день: ${completedCount(progress.completed)} / ${FIRST_SHOP_PHASE.orderTarget}. В этой сборке доступны ${CHAPTER.length} заказов.</p><div class="level-list">${CHAPTER.map(
+    `<span class="eyebrow">ЛАВКА · ПЕРВЫЙ ТОРГОВЫЙ ДЕНЬ</span><h2>Заказы</h2><p>Выполнено ${completedCount(progress.completed)} из ${FIRST_SHOP_PHASE.orderTarget}. Доступно ${CHAPTER.length} заказов; продолжение этапа ещё готовится.</p><div class="level-list">${CHAPTER.map(
       (level, i) => {
         const completed = isCompleted(progress.completed, i + 1);
         const unlocked = isUnlocked(progress.completed, i + 1);
-        return `<button class="level-entry ${completed ? "complete" : ""}" data-level="${i + 1}" ${unlocked ? "" : "disabled"}><span class="level-number">${completed ? icon("check") : i + 1}</span><span><strong>${level.name}</strong></span>${icon(unlocked ? "arrow" : "lock")}</button>`;
+        const block = i === 0 ? "Открытие лавки · 1–10" : i === 10 ? "Вторая выкладка · 11–20" : i === 20 ? "Холодный отдел · 21–30" : "";
+        return `${block ? `<h3 class="level-block-heading">${block}</h3>` : ""}<button class="level-entry ${completed ? "complete" : ""}" data-level="${i + 1}" ${unlocked ? "" : "disabled"}><span class="level-number">${completed ? icon("check") : i + 1}</span><span><strong>${level.name}</strong></span>${icon(unlocked ? "arrow" : "lock")}</button>`;
       },
-    ).join("")}</div>`,
+    ).join("")}</div><p class="content-boundary">Далее: хлебная стойка, упаковка и вход. Эти заказы и покупки ещё не подключены. Складской проект станет доступен после всех ${FIRST_SHOP_PHASE.orderTarget} заказов и ${FIRST_SHOP_PHASE.taskTarget} работ первого этапа лавки.</p>`,
     true,
     true,
   );
@@ -920,7 +922,6 @@ function undo() {
   if (!attempt.undo.length)
     focusGame(highlighted ? positionSelector(highlighted[0]) : "[data-slot]");
   audio.play("place");
-  if (cachedHint(attempt) && !guided() && !gentleGuidance()) void hint();
 }
 function action(name: string, button: HTMLElement) {
   if (externalChanged && name !== "refresh") return;
@@ -947,6 +948,18 @@ function action(name: string, button: HTMLElement) {
         render();
       } else if (chapterDone()) { screen = "home"; render(); }
       else void start(nextOrder(progress.completed));
+      break;
+    case "shop-view":
+      if (button.dataset.view === "hall" || button.dataset.view === "cold") shopView = button.dataset.view;
+      justBuilt = undefined;
+      render();
+      app.querySelector<HTMLElement>(`[data-view="${shopView}"]`)?.focus({ preventScroll: true });
+      break;
+    case "show-target":
+      shopView = undefined;
+      justBuilt = undefined;
+      render();
+      app.querySelector<HTMLElement>(".world-target")?.focus({ preventScroll: true });
       break;
     case "tools-shop":
       openToolsShop(TOOLS.some(tool => tool.id === button.dataset.tool) ? button.dataset.tool as ToolKind : null);

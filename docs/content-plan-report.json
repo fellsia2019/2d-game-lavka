@@ -1,375 +1,930 @@
 {
-  "planVersion": "coastal-full-product-plan-1",
+  "planVersion": "coastal-full-product-plan-2",
   "date": "2026-10-06",
-  "scope": "План, id, маршрут, бюджеты и доступность заработка; не проверка проходимости ещё не созданных Definition.",
+  "scope": "Арифметика 6000/756, глобальные и локальные зависимости, произвольный допустимый выбор проектов, финансирование расчистки/стройки до доступа к внутренним заказам, совместимость выпущенных id; не проходимость будущих Definition и не коммерческий результат.",
   "chapters": 6,
-  "phases": 24,
-  "plannedOrderSlots": 1800,
-  "existingDefinitions": 20,
-  "definitionsToProduce": 1780,
-  "taskDesigns": 480,
-  "existingTasks": 8,
-  "tasksToImplement": 472,
+  "globalStages": [
+    {
+      "stage": 1,
+      "orders": 160,
+      "tasks": 52,
+      "introducedAreaIds": [
+        "shop",
+        "warehouse"
+      ],
+      "completionPhaseIds": [
+        "shop-1",
+        "warehouse-1"
+      ]
+    },
+    {
+      "stage": 2,
+      "orders": 440,
+      "tasks": 86,
+      "introducedAreaIds": [
+        "fruit-yard"
+      ],
+      "completionPhaseIds": [
+        "shop-2",
+        "warehouse-2",
+        "fruit-yard-2"
+      ]
+    },
+    {
+      "stage": 3,
+      "orders": 840,
+      "tasks": 126,
+      "introducedAreaIds": [
+        "bakery"
+      ],
+      "completionPhaseIds": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3"
+      ]
+    },
+    {
+      "stage": 4,
+      "orders": 1360,
+      "tasks": 166,
+      "introducedAreaIds": [
+        "terrace"
+      ],
+      "completionPhaseIds": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4"
+      ]
+    },
+    {
+      "stage": 5,
+      "orders": 1880,
+      "tasks": 206,
+      "introducedAreaIds": [
+        "restaurant"
+      ],
+      "completionPhaseIds": [
+        "shop-5",
+        "warehouse-5",
+        "fruit-yard-5",
+        "bakery-5",
+        "terrace-5",
+        "restaurant-5"
+      ]
+    },
+    {
+      "stage": 6,
+      "orders": 1320,
+      "tasks": 120,
+      "introducedAreaIds": [],
+      "completionPhaseIds": [
+        "shop-6",
+        "warehouse-6",
+        "fruit-yard-6",
+        "bakery-6",
+        "terrace-6",
+        "restaurant-6"
+      ]
+    }
+  ],
+  "phases": 36,
+  "plannedOrderSlots": 6000,
+  "existingDefinitions": 30,
+  "definitionsToProduce": 5970,
+  "taskDesigns": 756,
+  "existingTasks": 11,
+  "tasksToImplement": 745,
   "goods": 48,
   "characters": 12,
-  "starsEarned": 1800,
-  "starsSpent": 1800,
+  "starsEarned": 6000,
+  "starsSpent": 6000,
   "finalStarBalance": 0,
   "minimumSimulatedBalance": 0,
   "legacyArithmeticCases": 25,
-  "maxNewOrdersBetweenPurchases": 5,
-  "sitePreparationBundles": 5,
+  "maxNewOrdersBetweenPurchases": 11,
+  "constructionProjects": 6,
+  "constructionProjectOrders": 262,
   "byteBudgetTarget": 64000000,
   "byteBudgetHardLimitExclusive": 80000000,
   "difficultyCounts": {
     "tutorial": 3,
-    "intro": 7,
-    "rest": 534,
-    "standard": 995,
-    "complex": 261
+    "intro": 43,
+    "rest": 954,
+    "standard": 4199,
+    "complex": 801
   },
   "route": [
     {
       "phase": "shop-1",
-      "orders": 60,
-      "tasks": 20,
-      "stars": 60,
+      "globalStage": 1,
+      "orders": 80,
+      "tasks": 26,
+      "stars": 80,
       "globalRange": [
         1,
-        60
+        80
       ],
       "localRange": [
         1,
-        60
-      ]
+        80
+      ],
+      "dependencies": [],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "warehouse-1",
-      "orders": 60,
-      "tasks": 20,
-      "stars": 60,
+      "globalStage": 1,
+      "orders": 80,
+      "tasks": 26,
+      "stars": 80,
       "globalRange": [
-        61,
-        120
+        81,
+        160
       ],
       "localRange": [
         1,
-        60
-      ]
+        80
+      ],
+      "dependencies": [
+        "shop-1"
+      ],
+      "constructionProjectOrders": 38
     },
     {
       "phase": "shop-2",
-      "orders": 70,
+      "globalStage": 2,
+      "orders": 120,
       "tasks": 20,
-      "stars": 70,
+      "stars": 120,
       "globalRange": [
-        121,
-        190
+        161,
+        280
       ],
       "localRange": [
-        61,
-        130
-      ]
-    },
-    {
-      "phase": "fruit-yard-1",
-      "orders": 60,
-      "tasks": 20,
-      "stars": 60,
-      "globalRange": [
-        191,
-        250
+        81,
+        200
       ],
-      "localRange": [
-        1,
-        60
-      ]
+      "dependencies": [
+        "shop-1",
+        "warehouse-1"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "warehouse-2",
-      "orders": 70,
+      "globalStage": 2,
+      "orders": 120,
       "tasks": 20,
-      "stars": 70,
+      "stars": 120,
       "globalRange": [
-        251,
-        320
+        281,
+        400
       ],
       "localRange": [
-        61,
-        130
-      ]
+        81,
+        200
+      ],
+      "dependencies": [
+        "shop-1",
+        "warehouse-1"
+      ],
+      "constructionProjectOrders": 0
     },
     {
-      "phase": "bakery-1",
-      "orders": 60,
-      "tasks": 20,
-      "stars": 60,
+      "phase": "fruit-yard-1",
+      "globalStage": 2,
+      "orders": 80,
+      "tasks": 26,
+      "stars": 80,
       "globalRange": [
-        321,
-        380
+        401,
+        480
       ],
       "localRange": [
         1,
-        60
-      ]
-    },
-    {
-      "phase": "shop-3",
-      "orders": 80,
-      "tasks": 20,
-      "stars": 80,
-      "globalRange": [
-        381,
-        460
+        80
       ],
-      "localRange": [
-        131,
-        210
-      ]
+      "dependencies": [
+        "shop-1",
+        "warehouse-1"
+      ],
+      "constructionProjectOrders": 38
     },
     {
       "phase": "fruit-yard-2",
-      "orders": 70,
+      "globalStage": 2,
+      "orders": 120,
       "tasks": 20,
-      "stars": 70,
+      "stars": 120,
       "globalRange": [
-        461,
-        530
-      ],
-      "localRange": [
-        61,
-        130
-      ]
-    },
-    {
-      "phase": "bakery-2",
-      "orders": 70,
-      "tasks": 20,
-      "stars": 70,
-      "globalRange": [
-        531,
+        481,
         600
       ],
       "localRange": [
-        61,
-        130
-      ]
+        81,
+        200
+      ],
+      "dependencies": [
+        "shop-1",
+        "warehouse-1",
+        "fruit-yard-1"
+      ],
+      "constructionProjectOrders": 72
     },
     {
-      "phase": "terrace-1",
-      "orders": 60,
+      "phase": "shop-3",
+      "globalStage": 3,
+      "orders": 160,
       "tasks": 20,
-      "stars": 60,
+      "stars": 160,
       "globalRange": [
         601,
-        660
+        760
       ],
       "localRange": [
-        1,
-        60
-      ]
+        201,
+        360
+      ],
+      "dependencies": [
+        "shop-2",
+        "warehouse-2",
+        "fruit-yard-2"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "warehouse-3",
-      "orders": 80,
+      "globalStage": 3,
+      "orders": 160,
       "tasks": 20,
-      "stars": 80,
+      "stars": 160,
       "globalRange": [
-        661,
-        740
+        761,
+        920
       ],
       "localRange": [
-        131,
-        210
-      ]
+        201,
+        360
+      ],
+      "dependencies": [
+        "shop-2",
+        "warehouse-2",
+        "fruit-yard-2"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "fruit-yard-3",
-      "orders": 80,
+      "globalStage": 3,
+      "orders": 160,
       "tasks": 20,
+      "stars": 160,
+      "globalRange": [
+        921,
+        1080
+      ],
+      "localRange": [
+        201,
+        360
+      ],
+      "dependencies": [
+        "shop-2",
+        "warehouse-2",
+        "fruit-yard-2"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "bakery-1",
+      "globalStage": 3,
+      "orders": 80,
+      "tasks": 26,
       "stars": 80,
       "globalRange": [
-        741,
-        820
-      ],
-      "localRange": [
-        131,
-        210
-      ]
-    },
-    {
-      "phase": "shop-4",
-      "orders": 90,
-      "tasks": 20,
-      "stars": 90,
-      "globalRange": [
-        821,
-        910
-      ],
-      "localRange": [
-        211,
-        300
-      ]
-    },
-    {
-      "phase": "bakery-3",
-      "orders": 80,
-      "tasks": 20,
-      "stars": 80,
-      "globalRange": [
-        911,
-        990
-      ],
-      "localRange": [
-        131,
-        210
-      ]
-    },
-    {
-      "phase": "terrace-2",
-      "orders": 70,
-      "tasks": 20,
-      "stars": 70,
-      "globalRange": [
-        991,
-        1060
-      ],
-      "localRange": [
-        61,
-        130
-      ]
-    },
-    {
-      "phase": "restaurant-1",
-      "orders": 60,
-      "tasks": 20,
-      "stars": 60,
-      "globalRange": [
-        1061,
-        1120
+        1081,
+        1160
       ],
       "localRange": [
         1,
-        60
-      ]
+        80
+      ],
+      "dependencies": [
+        "shop-2",
+        "warehouse-2",
+        "fruit-yard-2"
+      ],
+      "constructionProjectOrders": 38
+    },
+    {
+      "phase": "bakery-2",
+      "globalStage": 3,
+      "orders": 120,
+      "tasks": 20,
+      "stars": 120,
+      "globalRange": [
+        1161,
+        1280
+      ],
+      "localRange": [
+        81,
+        200
+      ],
+      "dependencies": [
+        "shop-2",
+        "warehouse-2",
+        "fruit-yard-2",
+        "bakery-1"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "bakery-3",
+      "globalStage": 3,
+      "orders": 160,
+      "tasks": 20,
+      "stars": 160,
+      "globalRange": [
+        1281,
+        1440
+      ],
+      "localRange": [
+        201,
+        360
+      ],
+      "dependencies": [
+        "shop-2",
+        "warehouse-2",
+        "fruit-yard-2",
+        "bakery-2"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "shop-4",
+      "globalStage": 4,
+      "orders": 200,
+      "tasks": 20,
+      "stars": 200,
+      "globalRange": [
+        1441,
+        1640
+      ],
+      "localRange": [
+        361,
+        560
+      ],
+      "dependencies": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "warehouse-4",
-      "orders": 90,
+      "globalStage": 4,
+      "orders": 200,
       "tasks": 20,
-      "stars": 90,
+      "stars": 200,
       "globalRange": [
-        1121,
-        1210
+        1641,
+        1840
       ],
       "localRange": [
-        211,
-        300
-      ]
+        361,
+        560
+      ],
+      "dependencies": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "fruit-yard-4",
-      "orders": 90,
+      "globalStage": 4,
+      "orders": 200,
       "tasks": 20,
-      "stars": 90,
+      "stars": 200,
       "globalRange": [
-        1211,
-        1300
+        1841,
+        2040
       ],
       "localRange": [
-        211,
-        300
-      ]
+        361,
+        560
+      ],
+      "dependencies": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "bakery-4",
-      "orders": 90,
+      "globalStage": 4,
+      "orders": 200,
       "tasks": 20,
-      "stars": 90,
+      "stars": 200,
       "globalRange": [
-        1301,
-        1390
+        2041,
+        2240
       ],
       "localRange": [
-        211,
-        300
-      ]
+        361,
+        560
+      ],
+      "dependencies": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "terrace-1",
+      "globalStage": 4,
+      "orders": 80,
+      "tasks": 26,
+      "stars": 80,
+      "globalRange": [
+        2241,
+        2320
+      ],
+      "localRange": [
+        1,
+        80
+      ],
+      "dependencies": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3"
+      ],
+      "constructionProjectOrders": 38
+    },
+    {
+      "phase": "terrace-2",
+      "globalStage": 4,
+      "orders": 120,
+      "tasks": 20,
+      "stars": 120,
+      "globalRange": [
+        2321,
+        2440
+      ],
+      "localRange": [
+        81,
+        200
+      ],
+      "dependencies": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3",
+        "terrace-1"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "terrace-3",
-      "orders": 80,
+      "globalStage": 4,
+      "orders": 160,
       "tasks": 20,
-      "stars": 80,
+      "stars": 160,
       "globalRange": [
-        1391,
-        1470
+        2441,
+        2600
       ],
       "localRange": [
-        131,
-        210
-      ]
-    },
-    {
-      "phase": "restaurant-2",
-      "orders": 70,
-      "tasks": 20,
-      "stars": 70,
-      "globalRange": [
-        1471,
-        1540
+        201,
+        360
       ],
-      "localRange": [
-        61,
-        130
-      ]
+      "dependencies": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3",
+        "terrace-2"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "terrace-4",
-      "orders": 90,
+      "globalStage": 4,
+      "orders": 200,
       "tasks": 20,
-      "stars": 90,
+      "stars": 200,
       "globalRange": [
-        1541,
-        1630
+        2601,
+        2800
       ],
       "localRange": [
-        211,
-        300
-      ]
+        361,
+        560
+      ],
+      "dependencies": [
+        "shop-3",
+        "warehouse-3",
+        "fruit-yard-3",
+        "bakery-3",
+        "terrace-3"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "shop-5",
+      "globalStage": 5,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        2801,
+        3020
+      ],
+      "localRange": [
+        561,
+        780
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "warehouse-5",
+      "globalStage": 5,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        3021,
+        3240
+      ],
+      "localRange": [
+        561,
+        780
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "fruit-yard-5",
+      "globalStage": 5,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        3241,
+        3460
+      ],
+      "localRange": [
+        561,
+        780
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "bakery-5",
+      "globalStage": 5,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        3461,
+        3680
+      ],
+      "localRange": [
+        561,
+        780
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "terrace-5",
+      "globalStage": 5,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        3681,
+        3900
+      ],
+      "localRange": [
+        561,
+        780
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "restaurant-1",
+      "globalStage": 5,
+      "orders": 80,
+      "tasks": 26,
+      "stars": 80,
+      "globalRange": [
+        3901,
+        3980
+      ],
+      "localRange": [
+        1,
+        80
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4"
+      ],
+      "constructionProjectOrders": 38
+    },
+    {
+      "phase": "restaurant-2",
+      "globalStage": 5,
+      "orders": 120,
+      "tasks": 20,
+      "stars": 120,
+      "globalRange": [
+        3981,
+        4100
+      ],
+      "localRange": [
+        81,
+        200
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4",
+        "restaurant-1"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "restaurant-3",
-      "orders": 80,
+      "globalStage": 5,
+      "orders": 160,
       "tasks": 20,
-      "stars": 80,
+      "stars": 160,
       "globalRange": [
-        1631,
-        1710
+        4101,
+        4260
       ],
       "localRange": [
-        131,
-        210
-      ]
+        201,
+        360
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4",
+        "restaurant-2"
+      ],
+      "constructionProjectOrders": 0
     },
     {
       "phase": "restaurant-4",
-      "orders": 90,
+      "globalStage": 5,
+      "orders": 200,
       "tasks": 20,
-      "stars": 90,
+      "stars": 200,
       "globalRange": [
-        1711,
-        1800
+        4261,
+        4460
       ],
       "localRange": [
-        211,
-        300
-      ]
+        361,
+        560
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4",
+        "restaurant-3"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "restaurant-5",
+      "globalStage": 5,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        4461,
+        4680
+      ],
+      "localRange": [
+        561,
+        780
+      ],
+      "dependencies": [
+        "shop-4",
+        "warehouse-4",
+        "fruit-yard-4",
+        "bakery-4",
+        "terrace-4",
+        "restaurant-4"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "shop-6",
+      "globalStage": 6,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        4681,
+        4900
+      ],
+      "localRange": [
+        781,
+        1000
+      ],
+      "dependencies": [
+        "shop-5",
+        "warehouse-5",
+        "fruit-yard-5",
+        "bakery-5",
+        "terrace-5",
+        "restaurant-5"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "warehouse-6",
+      "globalStage": 6,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        4901,
+        5120
+      ],
+      "localRange": [
+        781,
+        1000
+      ],
+      "dependencies": [
+        "shop-5",
+        "warehouse-5",
+        "fruit-yard-5",
+        "bakery-5",
+        "terrace-5",
+        "restaurant-5"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "fruit-yard-6",
+      "globalStage": 6,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        5121,
+        5340
+      ],
+      "localRange": [
+        781,
+        1000
+      ],
+      "dependencies": [
+        "shop-5",
+        "warehouse-5",
+        "fruit-yard-5",
+        "bakery-5",
+        "terrace-5",
+        "restaurant-5"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "bakery-6",
+      "globalStage": 6,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        5341,
+        5560
+      ],
+      "localRange": [
+        781,
+        1000
+      ],
+      "dependencies": [
+        "shop-5",
+        "warehouse-5",
+        "fruit-yard-5",
+        "bakery-5",
+        "terrace-5",
+        "restaurant-5"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "terrace-6",
+      "globalStage": 6,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        5561,
+        5780
+      ],
+      "localRange": [
+        781,
+        1000
+      ],
+      "dependencies": [
+        "shop-5",
+        "warehouse-5",
+        "fruit-yard-5",
+        "bakery-5",
+        "terrace-5",
+        "restaurant-5"
+      ],
+      "constructionProjectOrders": 0
+    },
+    {
+      "phase": "restaurant-6",
+      "globalStage": 6,
+      "orders": 220,
+      "tasks": 20,
+      "stars": 220,
+      "globalRange": [
+        5781,
+        6000
+      ],
+      "localRange": [
+        781,
+        1000
+      ],
+      "dependencies": [
+        "shop-5",
+        "warehouse-5",
+        "fruit-yard-5",
+        "bakery-5",
+        "terrace-5",
+        "restaurant-5"
+      ],
+      "constructionProjectOrders": 0
     }
   ],
   "notVerified": [
-    "Решения 1780 будущих Definition",
-    "Интерес и длительность",
+    "Решения 5970 будущих Definition",
+    "Интерес, длительность, удержание и доход",
     "Будущий размер dist и память",
-    "Будущие сцены, UI и SDK"
+    "Runtime глобальных Stage, выбора проектов и строительства",
+    "Будущие сцены, UI, сезоны, платежи и SDK"
   ]
 }

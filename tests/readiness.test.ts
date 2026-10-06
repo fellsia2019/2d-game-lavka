@@ -60,10 +60,13 @@ function roundTrip(a: Attempt) {
   assert.deepEqual(result.progress.attempt, a);
   return result.progress.attempt!;
 }
-test("The ten published Definitions retain their exact layout, seed, version and proof", () => {
-  const digest = createHash("sha256").update(JSON.stringify(CHAPTER_DEFINITIONS.slice(0, 10))).digest("hex");
-  // JSON object digest frozen from main 87ec6ce before producing the expansion.
-  assert.equal(digest, "e0a2d3ce7e32ccab8aac703f9281d80018a1ed020e5940c0691de5eb71699f0e");
+test("The twenty published Definitions retain their exact layout, seed, version and proof", () => {
+  const digest = createHash("sha256").update(JSON.stringify(CHAPTER_DEFINITIONS.slice(0, 20))).digest("hex");
+  // JSON object digest frozen from main 69f2332 before producing the cold department.
+  assert.equal(digest, "86ee2c26eb037d66215c99113bc355ecd684ff630a34bfe3f610766acfca8c0e");
+  // Freeze the complete 0.5.0 baseline, including the cold department, for handoff.
+  assert.equal(createHash("sha256").update(JSON.stringify(CHAPTER_DEFINITIONS.slice(0, 30))).digest("hex"),
+    "f8c0083f5fa7d067823bde46ba2fb322f60c35e276648370fe28ae548a5ca39c");
 });
 test("Authored chapter is cloned and legacy ids keep their fixed meaning", () => {
   const def = chapterLevel(10),
@@ -133,7 +136,7 @@ test("Schema 1 migration retains the pinned layout, seed, old generator version,
   const original = clone(p.attempt.definition),
     result = loadProgress({ getItem: () => JSON.stringify(p) });
   assert.equal(result.warning, undefined);
-  assert.equal(result.progress.schema, 4);
+  assert.equal(result.progress.schema, 5);
   assert.deepEqual(result.progress.completed, [CHAPTER[0].id]);
   assert.equal(result.progress.coins, 60);
   assert.deepEqual(result.progress.renovations, { sign: "coral" });

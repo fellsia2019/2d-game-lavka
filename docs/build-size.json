@@ -1,5 +1,5 @@
 {
-  "bytes": 1993849,
+  "bytes": 2402532,
   "files": [
     {
       "path": "dist/assets/campaign-map.webp",
@@ -14,6 +14,10 @@
       "bytes": 182596
     },
     {
+      "path": "dist/assets/campaign-shop-cold.webp",
+      "bytes": 169960
+    },
+    {
       "path": "dist/assets/counter.webp",
       "bytes": 164654
     },
@@ -26,12 +30,20 @@
       "bytes": 116132
     },
     {
+      "path": "dist/assets/campaign-fridge.webp",
+      "bytes": 94416
+    },
+    {
+      "path": "dist/assets/worker-CyMeiIjg.js",
+      "bytes": 64371
+    },
+    {
       "path": "dist/assets/shelf.webp",
       "bytes": 62010
     },
     {
-      "path": "dist/assets/game-BoV8NRfx.js",
-      "bytes": 53277
+      "path": "dist/assets/game-BeVTRpKt.js",
+      "bytes": 55116
     },
     {
       "path": "dist/assets/bread.webp",
@@ -62,39 +74,47 @@
       "bytes": 40684
     },
     {
-      "path": "dist/assets/worker-CrfmLeOr.js",
-      "bytes": 34916
+      "path": "dist/assets/juice.webp",
+      "bytes": 34286
+    },
+    {
+      "path": "dist/assets/campaign-scene-CUseQUfR.js",
+      "bytes": 33084
+    },
+    {
+      "path": "dist/assets/eggs.webp",
+      "bytes": 30724
     },
     {
       "path": "dist/assets/milk.webp",
       "bytes": 26586
     },
     {
-      "path": "dist/assets/game-mk6XbxMw.css",
-      "bytes": 17867
+      "path": "dist/assets/cheese.webp",
+      "bytes": 22414
     },
     {
-      "path": "dist/assets/campaign-scene-BTYXQ_X9.js",
-      "bytes": 12123
+      "path": "dist/assets/game-C1m4eo4W.css",
+      "bytes": 19244
     },
     {
-      "path": "dist/assets/content-CTUKFkz6.js",
-      "bytes": 9438
+      "path": "dist/assets/content-DFe4qp7f.js",
+      "bytes": 12340
     },
     {
-      "path": "dist/assets/author-DYR08Vk8.js",
+      "path": "dist/assets/campaign-DRilzifX.css",
+      "bytes": 6424
+    },
+    {
+      "path": "dist/assets/author-CGfbQEGi.js",
       "bytes": 6350
     },
     {
-      "path": "dist/assets/campaign-CIa7KgyQ.css",
-      "bytes": 6149
+      "path": "dist/assets/campaign-BQaBXxXd.js",
+      "bytes": 4881
     },
     {
-      "path": "dist/assets/campaign-CrEeD0nd.js",
-      "bytes": 4807
-    },
-    {
-      "path": "dist/assets/jobs-Bdj4rMzf.js",
+      "path": "dist/assets/jobs-B4k-DL22.js",
       "bytes": 3046
     },
     {

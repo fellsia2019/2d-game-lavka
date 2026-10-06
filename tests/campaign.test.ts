@@ -33,7 +33,7 @@ test("Every valid legacy repair prefix migrates without changing any currency or
       assert.equal(result.warning, undefined);
       assert.equal(result.migrated, true);
       const p = result.progress;
-      assert.equal(p.schema, 4);
+      assert.equal(p.schema, 5);
       for (const key of ["coins", "stars", "inventory", "completed", "renovations", "tutorialSeen", "attempt", "settings", "repeatDay", "repeatCount"] as const)
         assert.deepEqual(p[key], original[key], `${repairs} repairs / ${wins} wins: ${key}`);
       const credited = SHOP_STEPS.filter(task => p.campaign.completedTasks.includes(task.id)).reduce((sum, task) => sum + task.cost, 0);
@@ -66,7 +66,7 @@ test("Migration is one-time and preserves completed demo ownership and colors af
 test("Purchases require order, funds and a new task; each adds a distinct permanent scene layer", () => {
   const p = freshProgress();
   assert.equal(purchaseShopTask(p, "first-shelf"), false);
-  p.stars = 20;
+  p.stars = CHAPTER.length;
   assert.equal(purchaseShopTask(p, "shop-opening"), false);
   let before = shopSceneHTML(p.campaign.completedTasks, "assets/");
   for (const task of SHOP_STEPS) {
@@ -100,24 +100,46 @@ test("Schema 3 keeps every old task prefix and a pinned active order; old finale
     const result = loadProgress({ getItem: () => JSON.stringify(old) });
     assert.equal(result.warning, undefined);
     assert.equal(result.migrated, true);
-    assert.equal(result.progress.schema, 4);
+    assert.equal(result.progress.schema, 5);
     for (const key of ["coins", "stars", "inventory", "completed", "renovations", "attempt"] as const)
       assert.deepEqual(result.progress[key], old[key]);
     assert.deepEqual(result.progress.campaign.completedTasks, old.campaign.completedTasks);
     assert.equal(nextOrder(result.progress.completed), 11);
   }
 });
-test("Available slice cannot masquerade as the sixty-order phase or unlock later projects", () => {
+test("Available content cannot masquerade as the eighty-order phase or unlock later projects", () => {
   const p = freshProgress();
   p.completed = CHAPTER.map(order => order.id);
   p.campaign.completedTasks = SHOP_STEPS.map(task => task.id);
-  assert.equal(FIRST_SHOP_PHASE.orderTarget, 60);
-  assert.equal(FIRST_SHOP_PHASE.taskTarget, 20);
-  assert.equal(CAMPAIGN_PHASES.length, 24);
-  assert.equal(CAMPAIGN_PHASES.reduce((sum, phase) => sum + phase.orderTarget, 0), 1800);
+  assert.equal(FIRST_SHOP_PHASE.orderTarget, 80);
+  assert.equal(FIRST_SHOP_PHASE.taskTarget, 26);
+  assert.equal(CAMPAIGN_PHASES.length, 36);
+  assert.equal(CAMPAIGN_PHASES.reduce((sum, phase) => sum + phase.orderTarget, 0), 6000);
+  assert.deepEqual(CAMPAIGN_CHAPTERS.map(chapter => [chapter.orderTarget, chapter.taskTarget]), Array(6).fill([1000, 126]));
   assert.equal(phaseStatus("shop-1", p.completed, p.campaign), "available");
   for (const phase of CAMPAIGN_PHASES.slice(1)) assert.equal(phaseStatus(phase.id, p.completed, p.campaign), "planned");
   assert.equal(shopComplete(p.completed, p.campaign), false);
+});
+test("Schema 4 completed displays open the cold department without resetting balances or pinned attempts", () => {
+  const old: any = freshProgress();
+  old.schema = 4;
+  old.campaign.version = "coastal-campaign-2";
+  old.campaign.completedTasks = SHOP_STEPS.slice(0, 8).map(task => task.id);
+  old.completed = CHAPTER.slice(0, 20).map(order => order.id);
+  old.coins = 1200;
+  old.renovations = { sign: "coral", counter: "honey" };
+  old.renovation = "coral";
+  const definition = chapterLevel(20), board = initial(definition);
+  old.attempt = { id: "old-display-attempt", definition, board: applyMove(board, ...definition.verifiedSolution[0]),
+    undo: [board], solution: definition.verifiedSolution.slice(1), mixCount: 0, hints: {}, reward: null };
+  const migrated = loadProgress({ getItem: () => JSON.stringify(old) });
+  assert.equal(migrated.warning, undefined);
+  assert.equal(migrated.migrated, true);
+  assert.equal(migrated.progress.schema, 5);
+  for (const key of ["coins", "stars", "inventory", "renovations", "completed", "attempt"] as const)
+    assert.deepEqual(migrated.progress[key], old[key]);
+  assert.equal(nextOrder(migrated.progress.completed), 21);
+  assert.equal(nextShopTask(migrated.progress.campaign)?.id, "shop-s1-t09");
 });
 test("An in-flight old victory retains its exact proof and grants its new reward once after migration", () => {
   const old = oldSave(1, 3);

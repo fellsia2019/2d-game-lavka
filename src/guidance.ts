@@ -6,10 +6,10 @@ export function guidanceMode(
   completed: string[],
   tutorialSeen: string[],
 ): "strict" | "gentle" | "none" {
-  if (!number || isCompleted(completed, number)) return "none";
+  if (!number || number > 3 || isCompleted(completed, number)) return "none";
   if (number === 1 && !tutorialSeen.includes("spotlight-transfer")) return "strict";
-  // Learning a mechanic is not finishing its order. Old reveal/unlock lesson
-  // flags must not cut off practice while that order is still unfinished.
+  // Automatic move guidance belongs only to the introductory three orders.
+  // Later mechanics and saved hint proofs never enable it again.
   return CHAPTER[number - 1]?.guidance === "gentle" ? "gentle" : "none";
 }
 

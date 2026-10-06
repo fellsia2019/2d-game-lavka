@@ -6,16 +6,18 @@ import { guidanceMode, hiddenStock } from "../src/guidance";
 import { compactHintPath } from "../src/hints";
 import { finishes } from "../src/storage";
 
-test("Only the first order has strict teaching; rear/crate practice survives old lesson flags", () => {
+test("Automatic guidance ends after order three, regardless of old lesson flags", () => {
   assert.equal(guidanceMode(1, [], []), "strict");
   assert.equal(guidanceMode(1, [], ["spotlight-transfer"]), "none");
   const seen = ["spotlight-transfer", "spotlight-rear", "spotlight-crate"];
-  for (const number of [2, 3, 7, 9]) {
+  for (const number of [2, 3]) {
     assert.equal(guidanceMode(number, [], seen), "gentle");
     assert.equal(guidanceMode(number, [CHAPTER[number - 1].id], seen), "none");
   }
-  for (const number of [4, 5, 6, 8, 10])
+  for (let number = 4; number <= CHAPTER.length; number++) {
     assert.equal(guidanceMode(number, [], []), "none");
+    assert.equal(guidanceMode(number, [], seen), "none");
+  }
 });
 
 test("Order 7 after the user's lemon triple: remaining honey, jam and lemons are conserved and deliverable", () => {
@@ -50,7 +52,7 @@ test("Order 7 after the user's lemon triple: remaining honey, jam and lemons are
     next = applyMove(next, from, to)!;
     reveals += next.events.filter(event => event.type === "reveal").length;
     assert.deepEqual(countGoods(next), counts);
-    if (!won(next)) assert.equal(guidanceMode(7, [], ["spotlight-rear"]), "gentle");
+    if (!won(next)) assert.equal(guidanceMode(7, [], ["spotlight-rear"]), "none");
     const stock = hiddenStock(next.shelves[3]);
     assert.equal(stock.reduce((sum, [, count]) => sum + count, 0),
       next.shelves[3].rear.flat().filter(Boolean).length);

@@ -9,8 +9,8 @@ import {
   type Good,
   type Profile,
 } from "./engine";
-import { GOOD_IDS } from "./catalog";
-export const VERSION = "coastal-slice-2";
+import { GOOD_IDS, isGood } from "./catalog";
+export const VERSION = "coastal-slice-3";
 export function hash(s: string): number {
   let h = 2166136261;
   for (let i = 0; i < s.length; i++) {
@@ -179,6 +179,8 @@ export const RECIPES = [
 export interface GenerationOptions {
   recipe?: string;
   avoidStructures?: string[];
+  goods?: Good[];
+  requireGoods?: Good[];
 }
 export function structuralKey(def: Definition): string {
   const kinds = [
@@ -236,6 +238,11 @@ export function generate(
   if (!candidates.length)
     throw new Error("Этот рецепт недоступен для выбранного профиля.");
   const recipe = candidates[hash(`${seed}|recipe`) % candidates.length];
+  const pool = options.goods ?? GOOD_IDS;
+  const required = options.requireGoods ?? [];
+  if (!Array.isArray(pool) || pool.length < recipe.kinds || !pool.every(isGood) || new Set(pool).size !== pool.length ||
+    !Array.isArray(required) || required.length > recipe.kinds || new Set(required).size !== required.length ||
+    required.some(good => !pool.includes(good))) throw new Error("Недопустимый ассортимент рецепта.");
   const p = {
     ...PROFILES[profile],
     ...recipe,
@@ -244,8 +251,7 @@ export function generate(
   };
   for (let attempt = 0; attempt < p.attempts; attempt++) {
     const rng = random(hash(`${VERSION}|${profile}|${seed}|${attempt}`));
-    const pool: Good[] = GOOD_IDS;
-    const kinds = shuffle(pool, rng).slice(0, p.kinds);
+    const kinds = [...required, ...shuffle(pool.filter(good => !required.includes(good)), rng).slice(0, p.kinds - required.length)];
     const bag = shuffle(
       kinds.flatMap((k) => Array<Good>(p.each).fill(k)),
       rng,

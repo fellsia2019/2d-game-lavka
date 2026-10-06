@@ -1,10 +1,11 @@
-import { SHOP_STEPS, type ShopTaskId } from "./campaign";
+import { SHOP_STEPS, shopTaskView, type ShopTaskId, type ShopView } from "./campaign";
 import type { RenovationColor, RenovationId } from "./renovations";
 export { SHOP_STEPS, CAMPAIGN_AREAS, type CampaignAreaId } from "./campaign";
 
 export const SCENE_ASSETS = ["campaign-shop-empty.webp", "campaign-map.webp",
   "campaign-shelving.webp", "campaign-basket.webp", "counter.webp",
-  "jam.webp", "milk.webp", "honey.webp", "bread.webp", "pear.webp", "lemon.webp"] as const;
+  "jam.webp", "milk.webp", "honey.webp", "bread.webp", "pear.webp", "lemon.webp",
+  "campaign-shop-cold.webp", "campaign-fridge.webp", "eggs.webp", "cheese.webp", "juice.webp"] as const;
 
 export function sceneDescription(stage: number): string {
   if (stage === 0) return "Пустая лавка";
@@ -17,11 +18,25 @@ export function completedOrders(stage: number): number {
 
 export function shopSceneHTML(stage: number | readonly ShopTaskId[], assets: string,
   decorations: Partial<Record<RenovationId, RenovationColor>> = {},
-  options: { pending?: ShopTaskId; justBuilt?: ShopTaskId; controls?: string } = {}): string {
+  options: { pending?: ShopTaskId; justBuilt?: ShopTaskId; controls?: string; view?: ShopView } = {}): string {
   const tasks = typeof stage === "number" ? SHOP_STEPS.slice(0, stage).map(task => task.id) : stage;
   const has = (id: ShopTaskId) => tasks.includes(id) || options.pending === id;
   const state = (id: ShopTaskId) => options.pending === id ? "scene-planned" : options.justBuilt === id ? "scene-built-pop" : "";
   const label = tasks.length === 0 ? "Пустая лавка" : `Лавка: ${tasks.length} из ${SHOP_STEPS.length} изменений`;
+  const view = options.view ?? shopTaskView(options.pending ?? tasks[tasks.length - 1] ?? "first-shelf");
+  if (view === "cold") {
+    const coldGoods = has("shop-s1-t11") ? [
+      ["milk", 20, 70, 17], ["eggs", 50, 70, 14], ["cheese", 78, 70, 14],
+      ["juice", 22, 46, 20], ["eggs", 50, 46, 14], ["cheese", 78, 46, 14],
+      ["milk", 22, 29, 14], ["juice", 50, 29, 14], ["eggs", 78, 29, 11],
+    ].map(([file, left, bottom, height]) => `<img class="scene-good ${state("shop-s1-t11")}" src="${assets}${file}.webp" alt="" style="left:${left}%;bottom:${bottom}%;height:${height}%" />`).join("") : "";
+    return `<div class="shop-composition cold-composition" role="${options.controls ? "group" : "img"}" aria-label="Холодный отдел. ${label}">
+      <img class="scene-background" src="${assets}campaign-shop-cold.webp" width="1536" height="1024" alt="" />
+      ${has("shop-s1-t09") ? `<div class="scene-fridge" aria-hidden="true"><img class="fridge-base ${state("shop-s1-t09")}" src="${assets}campaign-fridge.webp" width="1100" height="683" alt="" />${coldGoods}</div>` : ""}
+      ${has("shop-s1-t10") ? `<div class="scene-receiving ${state("shop-s1-t10")}" aria-hidden="true"><img src="${assets}campaign-basket.webp" width="640" height="188" alt="" /><img src="${assets}campaign-basket.webp" width="640" height="188" alt="" /></div>` : ""}
+      ${options.controls ?? ""}
+    </div>`;
+  }
   const goods = has("first-stock") ? [
     ["jam", 18, 73.5, 20], ["milk", 36, 73.5, 25],
     ["honey", 54, 73.5, 20], ["milk", 73, 73.5, 25],

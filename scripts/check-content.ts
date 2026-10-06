@@ -8,7 +8,7 @@ import {
 import { validateDefinition, replay } from "../src/engine";
 import { describeStructure, VERSION } from "../src/generator";
 import { RENOVATIONS } from "../src/renovations";
-import { GOODS } from "../src/catalog";
+import { GOODS, GOOD_IDS } from "../src/catalog";
 import { CAMPAIGN_CHAPTERS, CAMPAIGN_PHASES, FIRST_SHOP_PHASE, SHOP_STEPS, CAMPAIGN_VERSION } from "../src/campaign";
 import { SCENE_ASSETS } from "../src/campaign-scene";
 for (const file of [
@@ -45,13 +45,24 @@ const levels = CHAPTER.map((story, i) => {
   return { id: d.id, name: story.name, seed: d.seed, ...info };
 });
 const cost = SHOP_STEPS.reduce((n, r) => n + r.cost, 0);
-if (cost > CHAPTER.length || CHAPTER.length > FIRST_SHOP_PHASE.orderTarget || SHOP_STEPS.length > FIRST_SHOP_PHASE.taskTarget)
+if (cost > CHAPTER.length)
   throw new Error("Not enough chapter stars for repairs");
+for (const phase of CAMPAIGN_PHASES) {
+  const producedOrders = CHAPTER.filter(order => order.phaseId === phase.id);
+  const producedTasks = SHOP_STEPS.filter(task => phase.taskIds.includes(task.id));
+  if (producedOrders.length > phase.orderTarget || producedTasks.length > phase.taskTarget ||
+    producedTasks.reduce((sum, task) => sum + task.cost, 0) > producedOrders.length)
+    throw new Error(`Produced phase budget mismatch ${phase.id}`);
+}
 if (new Set(SHOP_STEPS.map(task => task.id)).size !== SHOP_STEPS.length ||
-  CAMPAIGN_CHAPTERS[0].orderIds.join() !== CHAPTER.map(order => order.id).join() ||
-  CAMPAIGN_CHAPTERS.slice(1).some(chapter => chapter.orderIds.length || chapter.taskIds.length))
+  CAMPAIGN_CHAPTERS.some(chapter => chapter.orderIds.join() !== CHAPTER.filter(order =>
+    CAMPAIGN_PHASES.some(phase => phase.areaId === chapter.areaId && phase.id === order.phaseId)).map(order => order.id).join()) ||
+  CAMPAIGN_CHAPTERS.flatMap(chapter => chapter.taskIds).length !== SHOP_STEPS.length)
   throw new Error("Invalid playable campaign catalog");
 const plan = JSON.parse(readFileSync("docs/content/full-product-plan.json", "utf8"));
+const producedGoods = plan.goods.filter((good: { status: string }) => good.status !== "planned");
+if (producedGoods.map((good: { id: string }) => good.id).sort().join() !== [...GOOD_IDS].sort().join())
+  throw new Error("Plan goods production status mismatch");
 const producedTasks = plan.phases.flatMap((phase: { tasks: { id: string; cost: number; status: string }[] }) => phase.tasks)
   .filter((task: { status: string }) => task.status !== "planned");
 if (producedTasks.map((task: { id: string; cost: number }) => `${task.id}:${task.cost}`).join() !==
