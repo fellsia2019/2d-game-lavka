@@ -1,0 +1,375 @@
+{
+  "planVersion": "coastal-full-product-plan-1",
+  "date": "2026-10-06",
+  "scope": "План, id, маршрут, бюджеты и доступность заработка; не проверка проходимости ещё не созданных Definition.",
+  "chapters": 6,
+  "phases": 24,
+  "plannedOrderSlots": 1800,
+  "existingDefinitions": 10,
+  "definitionsToProduce": 1790,
+  "taskDesigns": 480,
+  "existingTasks": 5,
+  "tasksToImplement": 475,
+  "goods": 48,
+  "characters": 12,
+  "starsEarned": 1800,
+  "starsSpent": 1800,
+  "finalStarBalance": 0,
+  "minimumSimulatedBalance": 0,
+  "legacyArithmeticCases": 25,
+  "maxNewOrdersBetweenPurchases": 5,
+  "sitePreparationBundles": 5,
+  "byteBudgetTarget": 64000000,
+  "byteBudgetHardLimitExclusive": 80000000,
+  "difficultyCounts": {
+    "tutorial": 3,
+    "intro": 7,
+    "rest": 534,
+    "standard": 995,
+    "complex": 261
+  },
+  "route": [
+    {
+      "phase": "shop-1",
+      "orders": 60,
+      "tasks": 20,
+      "stars": 60,
+      "globalRange": [
+        1,
+        60
+      ],
+      "localRange": [
+        1,
+        60
+      ]
+    },
+    {
+      "phase": "warehouse-1",
+      "orders": 60,
+      "tasks": 20,
+      "stars": 60,
+      "globalRange": [
+        61,
+        120
+      ],
+      "localRange": [
+        1,
+        60
+      ]
+    },
+    {
+      "phase": "shop-2",
+      "orders": 70,
+      "tasks": 20,
+      "stars": 70,
+      "globalRange": [
+        121,
+        190
+      ],
+      "localRange": [
+        61,
+        130
+      ]
+    },
+    {
+      "phase": "fruit-yard-1",
+      "orders": 60,
+      "tasks": 20,
+      "stars": 60,
+      "globalRange": [
+        191,
+        250
+      ],
+      "localRange": [
+        1,
+        60
+      ]
+    },
+    {
+      "phase": "warehouse-2",
+      "orders": 70,
+      "tasks": 20,
+      "stars": 70,
+      "globalRange": [
+        251,
+        320
+      ],
+      "localRange": [
+        61,
+        130
+      ]
+    },
+    {
+      "phase": "bakery-1",
+      "orders": 60,
+      "tasks": 20,
+      "stars": 60,
+      "globalRange": [
+        321,
+        380
+      ],
+      "localRange": [
+        1,
+        60
+      ]
+    },
+    {
+      "phase": "shop-3",
+      "orders": 80,
+      "tasks": 20,
+      "stars": 80,
+      "globalRange": [
+        381,
+        460
+      ],
+      "localRange": [
+        131,
+        210
+      ]
+    },
+    {
+      "phase": "fruit-yard-2",
+      "orders": 70,
+      "tasks": 20,
+      "stars": 70,
+      "globalRange": [
+        461,
+        530
+      ],
+      "localRange": [
+        61,
+        130
+      ]
+    },
+    {
+      "phase": "bakery-2",
+      "orders": 70,
+      "tasks": 20,
+      "stars": 70,
+      "globalRange": [
+        531,
+        600
+      ],
+      "localRange": [
+        61,
+        130
+      ]
+    },
+    {
+      "phase": "terrace-1",
+      "orders": 60,
+      "tasks": 20,
+      "stars": 60,
+      "globalRange": [
+        601,
+        660
+      ],
+      "localRange": [
+        1,
+        60
+      ]
+    },
+    {
+      "phase": "warehouse-3",
+      "orders": 80,
+      "tasks": 20,
+      "stars": 80,
+      "globalRange": [
+        661,
+        740
+      ],
+      "localRange": [
+        131,
+        210
+      ]
+    },
+    {
+      "phase": "fruit-yard-3",
+      "orders": 80,
+      "tasks": 20,
+      "stars": 80,
+      "globalRange": [
+        741,
+        820
+      ],
+      "localRange": [
+        131,
+        210
+      ]
+    },
+    {
+      "phase": "shop-4",
+      "orders": 90,
+      "tasks": 20,
+      "stars": 90,
+      "globalRange": [
+        821,
+        910
+      ],
+      "localRange": [
+        211,
+        300
+      ]
+    },
+    {
+      "phase": "bakery-3",
+      "orders": 80,
+      "tasks": 20,
+      "stars": 80,
+      "globalRange": [
+        911,
+        990
+      ],
+      "localRange": [
+        131,
+        210
+      ]
+    },
+    {
+      "phase": "terrace-2",
+      "orders": 70,
+      "tasks": 20,
+      "stars": 70,
+      "globalRange": [
+        991,
+        1060
+      ],
+      "localRange": [
+        61,
+        130
+      ]
+    },
+    {
+      "phase": "restaurant-1",
+      "orders": 60,
+      "tasks": 20,
+      "stars": 60,
+      "globalRange": [
+        1061,
+        1120
+      ],
+      "localRange": [
+        1,
+        60
+      ]
+    },
+    {
+      "phase": "warehouse-4",
+      "orders": 90,
+      "tasks": 20,
+      "stars": 90,
+      "globalRange": [
+        1121,
+        1210
+      ],
+      "localRange": [
+        211,
+        300
+      ]
+    },
+    {
+      "phase": "fruit-yard-4",
+      "orders": 90,
+      "tasks": 20,
+      "stars": 90,
+      "globalRange": [
+        1211,
+        1300
+      ],
+      "localRange": [
+        211,
+        300
+      ]
+    },
+    {
+      "phase": "bakery-4",
+      "orders": 90,
+      "tasks": 20,
+      "stars": 90,
+      "globalRange": [
+        1301,
+        1390
+      ],
+      "localRange": [
+        211,
+        300
+      ]
+    },
+    {
+      "phase": "terrace-3",
+      "orders": 80,
+      "tasks": 20,
+      "stars": 80,
+      "globalRange": [
+        1391,
+        1470
+      ],
+      "localRange": [
+        131,
+        210
+      ]
+    },
+    {
+      "phase": "restaurant-2",
+      "orders": 70,
+      "tasks": 20,
+      "stars": 70,
+      "globalRange": [
+        1471,
+        1540
+      ],
+      "localRange": [
+        61,
+        130
+      ]
+    },
+    {
+      "phase": "terrace-4",
+      "orders": 90,
+      "tasks": 20,
+      "stars": 90,
+      "globalRange": [
+        1541,
+        1630
+      ],
+      "localRange": [
+        211,
+        300
+      ]
+    },
+    {
+      "phase": "restaurant-3",
+      "orders": 80,
+      "tasks": 20,
+      "stars": 80,
+      "globalRange": [
+        1631,
+        1710
+      ],
+      "localRange": [
+        131,
+        210
+      ]
+    },
+    {
+      "phase": "restaurant-4",
+      "orders": 90,
+      "tasks": 20,
+      "stars": 90,
+      "globalRange": [
+        1711,
+        1800
+      ],
+      "localRange": [
+        211,
+        300
+      ]
+    }
+  ],
+  "notVerified": [
+    "Решения 1790 будущих Definition",
+    "Интерес и длительность",
+    "Будущий размер dist и память",
+    "Будущие сцены, UI и SDK"
+  ]
+}

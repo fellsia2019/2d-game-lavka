@@ -1,15 +1,5 @@
 [
   {
-    "file": "coastal-shop-gamedoc.html",
-    "bytes": 7190937,
-    "sha256": "77923ec83dde00115aa4b257fa0bf9394d17154afc1413cc54dc1121f616b83d"
-  },
-  {
-    "file": "yandex-games-report.html",
-    "bytes": 100151,
-    "sha256": "cfde6ad4011d21cbd12ebe2adedf92db643c2d9ff3de2620baa51456614fc958"
-  },
-  {
     "file": "coastal-shop-approved-visual.png",
     "bytes": 2717244,
     "sha256": "e911d0786ef1b46c29652fef52d8c98fbe74e62c3cb116d06e3310dabc19d957"
@@ -18,11 +8,6 @@
     "file": "coastal-shop-concept.png",
     "bytes": 2518221,
     "sha256": "0bacfe7c0ec68ff4e2338b7a157ffa3a668882026e3a19ee3bf46ba5c94522ec"
-  },
-  {
-    "file": "coastal-shop-level-generator.js",
-    "bytes": 11206,
-    "sha256": "28f5d2b37ec598d701264877a01818312531c4dd297309d98d0eb2883212c4f6"
   },
   {
     "file": "coastal-shop-gameplay-art-prompt.txt",
