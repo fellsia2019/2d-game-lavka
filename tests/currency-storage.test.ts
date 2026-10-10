@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { offlineChapterLevel } from "../src/content-offline";
 import { applyMove, clone, initial } from "../src/engine";
-import { SHOP_STEPS, TASKS, projectOrders, projectTasks, nextProjectTask, validCampaign, interiorOpen, isProjectOrderUnlocked } from "../src/campaign";
+import { SHOP_STEPS, projectOrders, projectTasks, nextProjectTask, validCampaign, interiorOpen, isProjectOrderUnlocked } from "../src/campaign";
 import { applyDebugSceneState } from "../src/debug-scene";
 import { createOrderAppearance } from "../src/order-supplies";
 import { completeAttempt, freshProgress, loadProgress, saveProgress, validateAttempt, purchaseProjectTask, rememberHint, type Attempt, type Progress } from "../src/storage";
@@ -80,8 +80,8 @@ test("Schema 7 splits only unspent credit and preserves cross-funded ownership w
     const loaded = loadProgress({ getItem: () => JSON.stringify(old) });
     assert.equal(loaded.warning, undefined);
     assert.equal(loaded.migrated, true);
-    assert.equal(loaded.progress.schema, 10);
-    assert.equal(loaded.progress.campaign.version, "coastal-campaign-8");
+    assert.equal(loaded.progress.schema, 11);
+    assert.equal(loaded.progress.campaign.version, "coastal-campaign-9");
     assert.deepEqual([loaded.progress.repairKits, loaded.progress.stars], [kits, stars]);
     assert.equal(kits + stars, credit);
     assert.deepEqual(loaded.progress.campaign.completedTasks, old.campaign.completedTasks);
@@ -174,8 +174,8 @@ test("A schema-8 optional missing appearance pins once without rewriting wallets
   const result = loadProgress({ getItem: () => JSON.stringify(source) });
   assert.equal(result.warning, undefined);
   assert.equal(result.migrated, true, "the controller persists the newly pinned field once");
-  assert.equal(result.progress.schema, 10);
-  assert.equal(result.progress.campaign.version, "coastal-campaign-8");
+  assert.equal(result.progress.schema, 11);
+  assert.equal(result.progress.campaign.version, "coastal-campaign-9");
   assert.deepEqual([result.progress.stars, result.progress.repairKits], [11, 7]);
   assert.deepEqual(result.progress.attempt, { ...original, appearance: createOrderAppearance(original.definition) });
   assert.deepEqual(result.progress.attempt!.definition, original.definition);
@@ -186,7 +186,7 @@ test("A schema-8 optional missing appearance pins once without rewriting wallets
   assert.deepEqual(reload(result.progress), result.progress);
 });
 
-test("Schema 8 moves to 10 without redistributing either wallet or changing paid ownership and pinned attempts", () => {
+test("Schema 8 moves to 11 without redistributing either wallet or changing paid ownership and pinned attempts", () => {
   const old = freshProgress() as any;
   old.schema = 8;
   old.campaign.version = "coastal-campaign-6";
@@ -204,8 +204,8 @@ test("Schema 8 moves to 10 without redistributing either wallet or changing paid
   const loaded = loadProgress({getItem: () => JSON.stringify(old)});
   assert.equal(loaded.warning, undefined);
   assert.equal(loaded.migrated, true);
-  assert.equal(loaded.progress.schema, 10);
-  assert.equal(loaded.progress.campaign.version, "coastal-campaign-8");
+  assert.equal(loaded.progress.schema, 11);
+  assert.equal(loaded.progress.campaign.version, "coastal-campaign-9");
   for (const key of ["coins", "stars", "repairKits", "completed", "renovations", "sceneDecor", "attempt", "attempts", "inventory", "settings"] as const)
     assert.deepEqual(loaded.progress[key], snapshot[key], key);
   assert.deepEqual(loaded.progress.campaign.completedTasks, snapshot.campaign.completedTasks);
@@ -220,7 +220,7 @@ test("All kitchen-first schema-9 prefixes keep their paid objects, wallets and u
     const old: any = freshProgress();
     old.schema = 9; old.campaign.version = "coastal-campaign-7";
     old.selectedProject = "bakery-1";
-    old.campaign.completedTasks = TASKS.filter(task => task.phaseId !== "bakery-1").map(task => task.id).concat(formerTasks.slice(0, count));
+    old.campaign.completedTasks = ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2"].flatMap(id => projectTasks(id).map(task => task.id)).concat(formerTasks.slice(0, count));
     old.completed = ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2"]
       .flatMap(id => projectOrders(id).map(order => order.id));
     old.coins = 2460; old.stars = 17; old.repairKits = 9;
@@ -238,8 +238,8 @@ test("All kitchen-first schema-9 prefixes keep their paid objects, wallets and u
     const result = loadProgress({getItem: () => JSON.stringify(old)});
     assert.equal(result.warning, undefined, `old prefix ${count}`);
     const p = result.progress;
-    assert.equal(p.schema, 10);
-    assert.equal(p.campaign.version, "coastal-campaign-8");
+    assert.equal(p.schema, 11);
+    assert.equal(p.campaign.version, "coastal-campaign-9");
     assert.deepEqual(p.campaign.completedTasks, snapshot.campaign.completedTasks);
     for (const key of ["coins", "stars", "repairKits", "completed", "attempt", "attempts", "inventory"] as const)
       assert.deepEqual(p[key], snapshot[key], `${count}: ${key}`);

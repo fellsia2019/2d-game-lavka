@@ -203,7 +203,7 @@ if (bakeryReady) {
   const manifest = read("docs/content/bakery-1-production.json"), contract = read("docs/content/bakery-1-contract.json");
   const bakeryDefinitions = read(manifest.definitionFile), bakeryStories = stories.filter(story => story.phaseId === "bakery-1");
   const digest = value => createHash("sha256").update(typeof value === "string" ? value : JSON.stringify(value)).digest("hex");
-  assert(plan.planVersion === "coastal-full-product-plan-6" && contract.planVersion === plan.planVersion &&
+  assert(["coastal-full-product-plan-6", "coastal-full-product-plan-7"].includes(plan.planVersion) && contract.planVersion === "coastal-full-product-plan-6" &&
     contract.contractVersion === "bakery-1-production-2" && manifest.productionVersion === contract.contractVersion &&
     contract.contentVersion === "coastal-stage-1-2-bakery-v2" && manifest.contentVersion === contract.contentVersion,
     "Bakery metadata revision must have matching plan, contract and content versions");
@@ -225,6 +225,39 @@ if (bakeryReady) {
     sum(remainingStage3.map(phase => phase.tasks.length)) === 100, "Remaining Stage 3 production scope mismatch");
   assert(plan.deliveryStatus.fullyImplementedPlannedPhases === readyPhases.length, "Produced phase count mismatch");
 }
+const terrace = phases.get("terrace-1"), terraceReady = readyPhases.includes("terrace-1");
+assert(terrace.tasks.every((task, index) => task.id === `terrace-s1-t${String(index + 1).padStart(2,"0")}` &&
+  task.currency === (index < 12 ? "repairKits" : "stars")), "Terrace repair prefix or stable task IDs changed");
+assert(sum(terrace.tasks.slice(0,12).map(task => task.cost)) === 32 && sum(terrace.tasks.slice(12).map(task => task.cost)) === 48,
+  "Terrace 32/48 budget mismatch");
+assert(terrace.requiresCompletedPhases.join() === "shop-3,warehouse-3,fruit-yard-3,bakery-3", "Long-term terrace dependencies changed");
+assert(terrace.runtimeDeliveryOverride.requiresCompletedPhases.join() === "bakery-1" &&
+  terrace.runtimeDeliveryOverride.reason === "prototype-preview-after-bakery-1" &&
+  terrace.runtimeDeliveryOverride.completeGlobalStage3 === false && terrace.runtimeDeliveryOverride.completeGlobalStage4 === false,
+  "Terrace prototype override must stay explicit without claiming stage completion");
+if (terraceReady) {
+  const contract=read("docs/content/terrace-1-contract.json"), manifest=read(contract.productionManifest);
+  const terraceStories=stories.filter(story=>story.phaseId==="terrace-1"), terraceDefinitions=read(manifest.definitionFile);
+  const digest=value=>createHash("sha256").update(typeof value==="string"?value:JSON.stringify(value)).digest("hex");
+  assert(plan.planVersion === "coastal-full-product-plan-7" && contract.planVersion === plan.planVersion &&
+    contract.contractVersion === "terrace-1-production-1" && manifest.productionVersion === contract.contractVersion &&
+    contract.contentVersion === "coastal-stage-1-2-bakery-terrace-v1" && manifest.contentVersion === contract.contentVersion,
+    "Terrace production versions differ");
+  assert(contract.produced === true && contract.runtimeEnabled === true && manifest.produced === true && manifest.runtimeEnabled === true,
+    "Terrace readiness must have pinned production and runtime integration");
+  assert(manifest.definitionDigest===digest(terraceDefinitions) && manifest.sourceFileDigest===digest(readFileSync(new URL(manifest.definitionFile,root),"utf8")) &&
+    manifest.storiesDigest===digest(terraceStories), "Terrace production fingerprint mismatch");
+  assert(digest(stories.slice(0,680))===contract.baseline.storiesDigest,"Existing 680 metadata changed");
+  for(const project of contract.baseline.projects) assert(digest(readFileSync(new URL(project.definitionFile,root),"utf8"))===project.sourceFileDigest,
+    `Existing pinned source changed: ${project.id}`);
+  assert(manifest.entries.length===80 && manifest.entries.every((entry,index)=>entry.id===terraceDefinitions[index].id &&
+    entry.localNumber===index+1 && entry.catalogNumber===2241+index && entry.denseNumber===681+index &&
+    entry.seed===terraceDefinitions[index].seed && entry.generatorVersion===terraceDefinitions[index].generatorVersion), "Terrace numbering mismatch");
+  assert(terraceStories.every((story,index)=>story.orderContext.requiresCompletedTaskId===(index<38?undefined:"terrace-s1-t14")),"Terrace interior gate mismatch");
+  assert(plan.nextDelivery.completeGlobalStage3===false && plan.nextDelivery.completeGlobalStage4===false,"Prototype delivery cannot finish Stage3 or4");
+  assert(plan.orderSupplyPolicy.implementedRepairOrders===243 && plan.orderSupplyPolicy.implementedFoodOrders===517 &&
+    plan.orderSupplyPolicy.implementedScope.join()===readyPhases.join(),"Actual supply policy differs from produced eight projects");
+}
 const readyTasks = tasks.filter(t => t.status !== "planned");
 assert(plan.deliveryStatus.existingOrders === readySlots.length &&
   plan.deliveryStatus.plannedOrders === plan.orderSlots.length - readySlots.length &&
@@ -244,7 +277,8 @@ if (process.argv.includes("--write") && !process.argv.includes("--catalog-only")
 const runtimeBlock = plan.nextDelivery.phaseIds.map(id => {
   const p = phases.get(id);
   return { id: p.id, areaId: p.areaId, stage: p.stage, globalStage: p.globalStage, title: p.title,
-    result: p.result, requiresCompletedPhases: p.requiresCompletedPhases, orderTarget: p.orderCount,
+    result: p.result, requiresCompletedPhases: p.runtimeDeliveryOverride?.requiresCompletedPhases ?? p.requiresCompletedPhases,
+    ...(p.runtimeDeliveryOverride ? { plannedRequiresCompletedPhases:p.requiresCompletedPhases, runtimeDeliveryOverride:p.runtimeDeliveryOverride } : {}), orderTarget: p.orderCount,
     taskTarget: p.tasks.length, taskIds: p.tasks.map(task => task.id),
     tasks: p.tasks.map(({ status, ...task }) => task),
     ...(p.construction ? { construction: p.construction } : {}) };

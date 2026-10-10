@@ -23,7 +23,7 @@ export interface DebugSceneResult {
 const safe = (number: unknown): number is number => Number.isSafeInteger(number) && (number as number) >= 0;
 const projectLabel = (id: ProjectId) => {
   const project = projectById(id)!;
-  const area = { shop: "Лавка", warehouse: "Склад", "fruit-yard": "Фруктовый двор", bakery: "Пекарня" };
+  const area = { shop: "Лавка", warehouse: "Склад", "fruit-yard": "Фруктовый двор", bakery: "Пекарня", terrace: "Терраса" };
   return `${area[project.areaId as keyof typeof area] ?? project.title} · этап ${project.stage}`;
 };
 const escape = (text: string) => text.replace(/[&<>"']/g, character =>

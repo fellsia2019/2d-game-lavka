@@ -18,6 +18,8 @@ const checker = await import(checkerURL);
 const contract = checker.readBakeryContract();
 const plan = JSON.parse(readFileSync(new URL("../docs/content/full-product-plan.json", import.meta.url), "utf8"));
 const taskIds = contract.tasks.map((task: { id: string }) => task.id);
+const bakeryPrerequisites = ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2"];
+const prerequisiteTaskIds = TASKS.filter(task => bakeryPrerequisites.includes(task.phaseId)).map(task => task.id);
 
 test("Pinned bakery production refuses changed Definitions and unversioned metadata instead of silently resealing them", () => {
   const repositoryRoot = fileURLToPath(new URL("../", import.meta.url));
@@ -68,13 +70,13 @@ test("Pinned bakery production refuses changed Definitions and unversioned metad
   }
 });
 
-test("Bakery integration replays all 680 and fingerprints the unchanged six baseline catalogs", () => {
+test("Bakery integration replays all 760 and fingerprints the unchanged six baseline catalogs", () => {
   assert.deepEqual(checker.checkBakeryContract(), { planning: false, produced: true, runtimeEnabled: true, bakeryOrders: 80, bakeryWorks: 26,
     repairKits: 32, stars: 48, gate: "bakery-s1-t20 after order 38", baselineOrders: 600, baselineWorks: 126,
-    replayed: 680, catalogRange: [1081, 1160], denseRange: [601, 680], completeGlobalStage3: false });
-  assert.equal(PROJECTS.length, 7);
-  assert.equal(TASKS.length, 152);
-  assert.equal(CHAPTER.length, 680);
+    replayed: 760, catalogRange: [1081, 1160], denseRange: [601, 680], completeGlobalStage3: false });
+  assert.equal(PROJECTS.length, 8);
+  assert.equal(TASKS.length, 178);
+  assert.equal(CHAPTER.length, 760);
   assert.equal(phaseStatus("bakery-1", [], freshProgress().campaign), "locked");
   assert.ok(Object.hasOwn(GOODS, "bg") && Object.hasOwn(GOODS, "cr"));
 });
@@ -129,7 +131,7 @@ test("Order 39 waits for the entrance counter and trays, then opens before any k
   assert.equal(checker.bakeryOrderAllowed(contract, 81, 80, taskIds), false);
   const p = freshProgress();
   p.completed = CHAPTER.slice(0, 638).map(story => story.id);
-  p.campaign.completedTasks = TASKS.filter(task => task.phaseId !== "bakery-1").map(task => task.id).concat(taskIds.slice(0, 13));
+  p.campaign.completedTasks = prerequisiteTaskIds.concat(taskIds.slice(0, 13));
   p.stars = 3;
   assert.equal(nextProjectOrder("bakery-1", p.completed, p.campaign), null);
   assert.equal(isProjectOrderUnlocked(p.completed, p.campaign, 639, "bakery-1"), false);
@@ -177,9 +179,9 @@ test("Catalog 1081–1160 loads through real dense indices 601–680 without rew
     assert.deepEqual(definition, offlineChapterLevel(entry.denseNumber));
     assert.equal(orderCurrency(entry.id), entry.localNumber <= 32 ? "repairKits" : "stars");
   }
-  await assert.rejects(loader.load(681), /Unknown chapter/);
+  await assert.rejects(loader.load(761), /Unknown chapter/);
   assert.equal(currentGlobalStage(CHAPTER.map(story => story.id), { ...freshProgress().campaign, completedTasks: TASKS.map(task => task.id) }), 3);
-  for (const id of ["shop-3", "warehouse-3", "fruit-yard-3", "bakery-2", "terrace-1"])
+  for (const id of ["shop-3", "warehouse-3", "fruit-yard-3", "bakery-2", "bakery-3", "terrace-2"])
     assert.equal(phaseStatus(id, CHAPTER.map(story => story.id), { ...freshProgress().campaign, completedTasks: TASKS.map(task => task.id) }), "planned");
 });
 
@@ -205,7 +207,7 @@ test("Production validation rejects lost readiness, wrong currency, price, numbe
 test("The 80 actual bakery wins finance exactly its 26 purchases from empty wallets", () => {
   const p = freshProgress();
   p.completed = CHAPTER.slice(0, 600).map(story => story.id);
-  p.campaign.completedTasks = TASKS.filter(task => task.phaseId !== "bakery-1").map(task => task.id);
+  p.campaign.completedTasks = [...prerequisiteTaskIds];
   assert.equal(selectProject(p, "bakery-1"), true);
   let wins = 0, purchases = 0;
   while (phaseStatus("bakery-1", p.completed, p.campaign) !== "complete") {

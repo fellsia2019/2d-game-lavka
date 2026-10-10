@@ -1,0 +1,213 @@
+[
+  {
+    "name": "tables",
+    "filename": "terrace-contact-tables.svg",
+    "points": [
+      [
+        440,
+        585,
+        14
+      ],
+      [
+        459,
+        554,
+        10
+      ],
+      [
+        559,
+        585,
+        13
+      ],
+      [
+        583,
+        554,
+        10
+      ],
+      [
+        1016,
+        554,
+        10
+      ],
+      [
+        1034,
+        585,
+        14
+      ],
+      [
+        1130,
+        554,
+        10
+      ],
+      [
+        1151,
+        585,
+        14
+      ]
+    ],
+    "ry": 4
+  },
+  {
+    "name": "chairs",
+    "filename": "terrace-contact-chairs.svg",
+    "points": [
+      [
+        573,
+        583,
+        8
+      ],
+      [
+        640,
+        583,
+        8
+      ],
+      [
+        649,
+        562,
+        7
+      ],
+      [
+        970,
+        583,
+        8
+      ],
+      [
+        960,
+        561,
+        7
+      ],
+      [
+        1031,
+        579,
+        8
+      ],
+      [
+        1162,
+        583,
+        8
+      ],
+      [
+        1226,
+        583,
+        8
+      ],
+      [
+        1235,
+        562,
+        7
+      ]
+    ],
+    "ry": 4
+  },
+  {
+    "name": "counter",
+    "filename": "terrace-contact-counter.svg",
+    "points": [
+      [
+        618,
+        426,
+        15
+      ],
+      [
+        922,
+        426,
+        14
+      ],
+      [
+        1025,
+        420,
+        12
+      ]
+    ],
+    "ry": 4
+  },
+  {
+    "name": "cupboard",
+    "filename": "terrace-contact-cupboard.svg",
+    "points": [
+      [
+        500,
+        404,
+        12
+      ],
+      [
+        587,
+        404,
+        12
+      ]
+    ],
+    "ry": 4
+  },
+  {
+    "name": "returns",
+    "filename": "terrace-contact-returns.svg",
+    "points": [
+      [
+        1201,
+        420,
+        10
+      ],
+      [
+        1251,
+        420,
+        10
+      ]
+    ],
+    "ry": 4
+  },
+  {
+    "name": "drinks",
+    "filename": "terrace-contact-drinks.svg",
+    "points": [
+      [
+        1060,
+        424,
+        11
+      ],
+      [
+        1177,
+        421,
+        11
+      ]
+    ],
+    "ry": 4
+  },
+  {
+    "name": "bench",
+    "filename": "terrace-contact-bench.svg",
+    "points": [
+      [
+        276,
+        596,
+        11
+      ],
+      [
+        337,
+        599,
+        12
+      ],
+      [
+        399,
+        514,
+        9
+      ]
+    ],
+    "ry": 4
+  },
+  {
+    "name": "sink",
+    "filename": "terrace-contact-sink.svg",
+    "points": [
+      [
+        394,
+        409,
+        10
+      ],
+      [
+        470,
+        407,
+        11
+      ]
+    ],
+    "ry": 4
+  }
+]

@@ -42,9 +42,9 @@ test("Accepted design has 6000 slots, while production status still matches only
   assert.deepEqual(plan.orderSlots.filter(slot => slot.status !== "planned-no-definition").map(slot => slot.id), CHAPTER_DEFINITIONS.map(definition => definition.id));
   assert.equal(CAMPAIGN_PHASES.reduce((sum, phase) => sum + phase.orderTarget, 0), 6000);
   const firstBlock = plan.phases.filter(phase => plan.nextDelivery.phaseIds.includes(phase.id));
-  assert.equal(firstBlock.reduce((sum, phase) => sum + phase.orderCount, 0), 680);
-  assert.equal(firstBlock.reduce((sum, phase) => sum + phase.tasks.length, 0), 152);
-  assert.deepEqual(plan.nextDelivery.phaseIds, ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2", "bakery-1"]);
+  assert.equal(firstBlock.reduce((sum, phase) => sum + phase.orderCount, 0), 760);
+  assert.equal(firstBlock.reduce((sum, phase) => sum + phase.tasks.length, 0), 178);
+  assert.deepEqual(plan.nextDelivery.phaseIds, ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2", "bakery-1", "terrace-1"]);
   assert.deepEqual(plan.phases.filter(phase => phase.globalStage === 3 && !plan.nextDelivery.phaseIds.includes(phase.id)).map(phase => phase.id),
     ["shop-3", "warehouse-3", "fruit-yard-3", "bakery-2", "bakery-3"]);
 });
@@ -97,6 +97,18 @@ test("Bakery sorting starts in the entrance hall after its paid trays and does n
   assert.ok(!bakery.construction!.taskIds.includes("bakery-s1-t13"));
   const slots = slotsByPhase.get(bakery.id)!;
   assert.ok(slots.slice(38).every(slot => slot.requiresCompletedTaskId === "bakery-s1-t20"));
+});
+test("Terrace delivery uses an explicit bakery prototype dependency while the full Stage4 plan keeps all Stage3 gates", () => {
+  const terrace=plan.phases.find(phase=>phase.id==="terrace-1")!;
+  assert.deepEqual(terrace.requiresCompletedPhases,["shop-3","warehouse-3","fruit-yard-3","bakery-3"]);
+  const block=JSON.parse(readFileSync(new URL("../src/campaign-block.json",import.meta.url),"utf8"));
+  const delivered=block.find((phase:any)=>phase.id==="terrace-1");
+  assert.deepEqual(delivered.requiresCompletedPhases,["bakery-1"]);
+  assert.deepEqual(delivered.plannedRequiresCompletedPhases,terrace.requiresCompletedPhases);
+  assert.equal(delivered.runtimeDeliveryOverride.completeGlobalStage3,false);
+  assert.equal(delivered.runtimeDeliveryOverride.completeGlobalStage4,false);
+  assert.equal(terrace.construction!.opensInteriorAfterTaskId,"terrace-s1-t14");
+  assert.deepEqual(terrace.tasks.map(task=>task.currency),terrace.tasks.map((_,index)=>index<12?"repairKits":"stars"));
 });
 
 test("Design economy finishes in 16 mixed branch/purchase orders without borrowing from locked interiors", () => {

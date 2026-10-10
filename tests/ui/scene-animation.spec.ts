@@ -115,7 +115,7 @@ test('All fourteen ordinary shop improvements retain their completed room frame 
   await page.screenshot({path:`docs/screenshots/scene-animation-stable-${info.project.name}.png`});
 });
 
-for(const project of ['warehouse-1','bakery-1'] as const)test(`${project} foundation stays on its painted Canvas2D fallback at the end of the effect`,async({page})=>{
+for(const project of ['warehouse-1','bakery-1','terrace-1'] as const)test(`${project} foundation stays on its painted Canvas2D fallback at the end of the effect`,async({page})=>{
   await page.emulateMedia({reducedMotion:'no-preference'});
   await page.addInitScript(()=>{
     const original=HTMLCanvasElement.prototype.getContext;
@@ -241,7 +241,7 @@ test('Counter contour repair retains the painted service room through purchase t
   await page.screenshot({path:`docs/screenshots/shop-expansion-counter-animation-${info.project.name}.png`});
 });
 
-for(const project of ['fruit-yard-1','fruit-yard-2','bakery-1'] as const)test(`Every ${project} purchase retains its registered scene and pinned order`,async({page},info)=>{
+for(const project of ['fruit-yard-1','fruit-yard-2','bakery-1','terrace-1'] as const)test(`Every ${project} purchase retains its registered scene and pinned order`,async({page},info)=>{
   test.setTimeout(300_000);await page.emulateMedia({reducedMotion:'no-preference'});
   await seed(page,project,0,true);
   const before=await saved(page),tasks=projectTasks(project);

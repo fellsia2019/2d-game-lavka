@@ -1,5 +1,6 @@
 import {isFruitView} from './fruit-scene';
 import {isBakeryView} from './bakery-scene';
+import {isTerraceView} from './terrace-scene';
 import { isShopExpansionView } from './shop-expansion-scene';
 import { sceneShopDecorations } from "./scene-shop";
 import { icon } from "./icons";
@@ -80,8 +81,8 @@ export function worldHTML(progress: Progress, assets: string, mode: "home" | "sh
   const controls = task && !showTarget ? (() => {
     const { x, y } = sceneTaskAnchor(task.id);
     // Registered rooms fit as a whole; only their DOM goal keeps a usable margin.
-    const registered = isHallView(view) || isShopExpansionView(view) || isFruitView(view) || isBakeryView(view) || area.id === "warehouse";
-    const clearBack = (area.id === "warehouse" || isShopExpansionView(view) || isFruitView(view) || isBakeryView(view)) && x < 22 && y < 42;
+    const registered = isHallView(view) || isShopExpansionView(view) || isFruitView(view) || isBakeryView(view) || isTerraceView(view) || area.id === "warehouse";
+    const clearBack = (area.id === "warehouse" || isShopExpansionView(view) || isFruitView(view) || isBakeryView(view) || isTerraceView(view)) && x < 22 && y < 42;
     const top = registered ? `clamp(36px,${y}%,calc(100% - 56px))` : `${y}%`;
     const left = registered ? `clamp(${clearBack ? 78 : 36}px,${x}%,calc(100% - 36px))` : `${x}%`;
     return `<button class="world-target ${affordable ? "ready" : ""} ${guideBuild ? "game-guidance" : ""}" ${targetAttrs} ${guideBuild ? 'data-guide="build"' : ""} aria-label="${affordable ? `Выполнить: ${task.name} за ${task.cost} ${currencyLabel(task.currency)}` : `Играть для цели: ${task.name}`}" style="left:${left};top:${top}"><span class="target-plus">+</span><span class="target-price" aria-label="Цена: ${task.cost} ${currencyLabel(task.currency)}">${currencyIcon(task.currency)}${task.cost}</span>${guideBuild ? `<span class="target-hand" aria-hidden="true">${icon("hand")}</span>` : ""}</button>`;

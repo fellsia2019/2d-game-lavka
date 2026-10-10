@@ -52,11 +52,11 @@ const openingLabels: Record<CampaignAreaId, string> = {
 export function projectSpaceName(id:string):string {
   return ({'shop-1':'Торговый зал','shop-2':'Бакалея','warehouse-1':'Склад',
     'warehouse-2':'Холодильная комната','fruit-yard-1':'Фруктовый павильон',
-    'fruit-yard-2':'Пристройка','bakery-1':'Пекарня'} as Record<string,string>)[id] ?? projectLabel(id);
+    'fruit-yard-2':'Пристройка','bakery-1':'Пекарня','terrace-1':'Терраса у моря'} as Record<string,string>)[id] ?? projectLabel(id);
 }
 export function projectEntryLabel(id:string):string {
   return ({'shop-1':'В лавку','shop-2':'В бакалею','warehouse-1':'К складу',
-    'warehouse-2':'В холодильную','fruit-yard-1':'К павильону','fruit-yard-2':'К пристройке','bakery-1':'К пекарне'} as Record<string,string>)[id]??'Продолжить';
+    'warehouse-2':'В холодильную','fruit-yard-1':'К павильону','fruit-yard-2':'К пристройке','bakery-1':'К пекарне','terrace-1':'К террасе'} as Record<string,string>)[id]??'Продолжить';
 }
 const orderProject = new Map(CHAPTER.map(order => [order.id, order.phaseId]));
 

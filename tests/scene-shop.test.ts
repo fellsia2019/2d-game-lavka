@@ -141,8 +141,8 @@ test("Schema-8 saves without a cosmetic catalog initialize it without touching c
   const result = loadProgress({ getItem: () => JSON.stringify(source) });
   assert.equal(result.warning, undefined);
   assert.equal(result.migrated, true);
-  assert.equal(result.progress.schema, 10);
-  assert.equal(result.progress.campaign.version, "coastal-campaign-8");
+  assert.equal(result.progress.schema, 11);
+  assert.equal(result.progress.campaign.version, "coastal-campaign-9");
   assert.deepEqual(result.progress, { ...p, sceneDecor: freshSceneDecor() });
   assert.deepEqual(roundTrip(result.progress), result.progress);
 });

@@ -1,5 +1,5 @@
 {
-  "planVersion": "coastal-full-product-plan-6",
+  "planVersion": "coastal-full-product-plan-7",
   "status": "design-not-runtime",
   "date": "2026-10-10",
   "launchPolicy": "Полный первый публичный выпуск: 6000 закреплённых проверенных заказов, шесть локаций по 1000 заказов, 36 локальных этапов в шести глобальных Stage, 744 постоянных работ, выбор доступных проектов, расчистка и стройка каждой новой локации, сезоны и монетизация. Производственные блоки внутренние.",
@@ -9,10 +9,10 @@
     "phases": 36,
     "orders": 6000,
     "tasks": 744,
-    "starsEarned": 5789,
-    "starsSpent": 5789,
-    "repairKitsEarned": 211,
-    "repairKitsSpent": 211
+    "starsEarned": 5757,
+    "starsSpent": 5757,
+    "repairKitsEarned": 243,
+    "repairKitsSpent": 243
   },
   "chapters": [
     {
@@ -4304,115 +4304,115 @@
           "id": "terrace-s1-t01",
           "name": "Вывезти мусор с участка",
           "cost": 2,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-01",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t02",
-          "name": "Разобрать сгнившие хозяйственные остатки",
+          "name": "Разобрать сгнившую перголу",
           "cost": 2,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-02",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t03",
           "name": "Вырубить кусты и заросшие лианы",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-03",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t04",
           "name": "Убрать поваленные деревья и пни",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-04",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t05",
           "name": "Дочистить и выровнять площадку",
           "cost": 2,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-05",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t06",
           "name": "Разметить контур постройки",
           "cost": 2,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-06",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t07",
           "name": "Заложить опоры и основание террасы",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-07",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t08",
           "name": "Поставить каркас, перила и ветрозащиту",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-08",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t09",
           "name": "Установить крышу гостевого навеса",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-09",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t10",
           "name": "Подготовить ступени и безопасные проходы",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-10",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t11",
           "name": "Уложить настил и отделать сервисную зону",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-11",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t12",
           "name": "Провести освещение и подготовить безопасный вход",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-12",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "terrace-s1-t13",
           "name": "Установить первые гостевые столы",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-13",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4421,7 +4421,7 @@
           "id": "terrace-s1-t14",
           "name": "Добавить стулья",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-14",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4430,7 +4430,7 @@
           "id": "terrace-s1-t15",
           "name": "Поставить стойку выдачи",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-15",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4439,7 +4439,7 @@
           "id": "terrace-s1-t16",
           "name": "Добавить шкаф посуды",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-16",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4448,7 +4448,7 @@
           "id": "terrace-s1-t17",
           "name": "Оборудовать возврат подносов",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-17",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4457,7 +4457,7 @@
           "id": "terrace-s1-t18",
           "name": "Установить стол напитков",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-18",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4466,7 +4466,7 @@
           "id": "terrace-s1-t19",
           "name": "Поставить секцию выпечки",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-19",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4475,7 +4475,7 @@
           "id": "terrace-s1-t20",
           "name": "Добавить холодную выдачу",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-20",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4484,7 +4484,7 @@
           "id": "terrace-s1-t21",
           "name": "Подготовить первые гостевые наборы",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-21",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4493,7 +4493,7 @@
           "id": "terrace-s1-t22",
           "name": "Обустроить зону отдыха",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-22",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4502,7 +4502,7 @@
           "id": "terrace-s1-t23",
           "name": "Установить сервисную мойку",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-23",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4511,7 +4511,7 @@
           "id": "terrace-s1-t24",
           "name": "Обозначить гостевые проходы",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-24",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4520,7 +4520,7 @@
           "id": "terrace-s1-t25",
           "name": "Подготовить первую встречу гостей",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-25",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4529,7 +4529,7 @@
           "id": "terrace-s1-t26",
           "name": "Открыть гостевую террасу",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "terrace-s1-object-26",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -4550,9 +4550,7 @@
         80
       ],
       "scenes": [
-        "Настил и столы",
-        "Сервисная стойка",
-        "Беседка и вход"
+        "Настил и гостевые столы"
       ],
       "goodsPool": [
         "j",
@@ -4627,7 +4625,15 @@
         "earningContext": "any-already-open-building",
         "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
       },
-      "earningPolicy": "project-in-open-building-then-gated-interior"
+      "earningPolicy": "project-in-open-building-then-gated-interior",
+      "runtimeDeliveryOverride": {
+        "requiresCompletedPhases": [
+          "bakery-1"
+        ],
+        "reason": "prototype-preview-after-bakery-1",
+        "completeGlobalStage3": false,
+        "completeGlobalStage4": false
+      }
     },
     {
       "id": "terrace-2",
@@ -9986,17 +9992,19 @@
     },
     {
       "id": "pr",
-      "name": "Крендель",
+      "name": "Пирог",
       "introducedIn": "bakery-2",
-      "status": "planned",
-      "availableFromGlobalStage": 3
+      "status": "implemented",
+      "availableFromGlobalStage": 3,
+      "productionPhase": "terrace-1"
     },
     {
       "id": "bu",
       "name": "Булочка",
       "introducedIn": "bakery-2",
-      "status": "planned",
-      "availableFromGlobalStage": 3
+      "status": "implemented",
+      "availableFromGlobalStage": 3,
+      "productionPhase": "terrace-1"
     },
     {
       "id": "ck",
@@ -10044,8 +10052,9 @@
       "id": "le",
       "name": "Лимонад",
       "introducedIn": "terrace-1",
-      "status": "planned",
-      "availableFromGlobalStage": 4
+      "status": "implemented",
+      "availableFromGlobalStage": 4,
+      "productionPhase": "terrace-1"
     },
     {
       "id": "yo",
@@ -41145,12 +41154,15 @@
       "chapterNumber": 1,
       "family": "paired-demand",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t01"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t01",
+      "catalogNumber": 2241,
+      "denseNumber": 681,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-002",
@@ -41159,12 +41171,15 @@
       "chapterNumber": 2,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t01"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t01",
+      "catalogNumber": 2242,
+      "denseNumber": 682,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-003",
@@ -41173,12 +41188,15 @@
       "chapterNumber": 3,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t02"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t02",
+      "catalogNumber": 2243,
+      "denseNumber": 683,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-004",
@@ -41187,12 +41205,15 @@
       "chapterNumber": 4,
       "family": "space-recovery",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t02"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t02",
+      "catalogNumber": 2244,
+      "denseNumber": 684,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-005",
@@ -41201,12 +41222,15 @@
       "chapterNumber": 5,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t03"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t03",
+      "catalogNumber": 2245,
+      "denseNumber": 685,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-006",
@@ -41215,12 +41239,15 @@
       "chapterNumber": 6,
       "family": "front-flow",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t03"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t03",
+      "catalogNumber": 2246,
+      "denseNumber": 686,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-007",
@@ -41229,12 +41256,15 @@
       "chapterNumber": 7,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t03"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t03",
+      "catalogNumber": 2247,
+      "denseNumber": 687,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-008",
@@ -41243,12 +41273,15 @@
       "chapterNumber": 8,
       "family": "paired-demand",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t04"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t04",
+      "catalogNumber": 2248,
+      "denseNumber": 688,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-009",
@@ -41257,12 +41290,15 @@
       "chapterNumber": 9,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t04"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t04",
+      "catalogNumber": 2249,
+      "denseNumber": 689,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-010",
@@ -41271,12 +41307,15 @@
       "chapterNumber": 10,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t04"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t04",
+      "catalogNumber": 2250,
+      "denseNumber": 690,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-011",
@@ -41285,12 +41324,15 @@
       "chapterNumber": 11,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t05"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t05",
+      "catalogNumber": 2251,
+      "denseNumber": 691,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-012",
@@ -41299,12 +41341,15 @@
       "chapterNumber": 12,
       "family": "counter-space",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t05"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t05",
+      "catalogNumber": 2252,
+      "denseNumber": 692,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-013",
@@ -41313,12 +41358,15 @@
       "chapterNumber": 13,
       "family": "front-flow",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t06"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t06",
+      "catalogNumber": 2253,
+      "denseNumber": 693,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-014",
@@ -41327,12 +41375,15 @@
       "chapterNumber": 14,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t06"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t06",
+      "catalogNumber": 2254,
+      "denseNumber": 694,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-015",
@@ -41341,12 +41392,15 @@
       "chapterNumber": 15,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t07"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t07",
+      "catalogNumber": 2255,
+      "denseNumber": 695,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-016",
@@ -41355,12 +41409,15 @@
       "chapterNumber": 16,
       "family": "supply-chain",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t07"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t07",
+      "catalogNumber": 2256,
+      "denseNumber": 696,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-017",
@@ -41369,12 +41426,15 @@
       "chapterNumber": 17,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t07"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t07",
+      "catalogNumber": 2257,
+      "denseNumber": 697,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-018",
@@ -41383,12 +41443,15 @@
       "chapterNumber": 18,
       "family": "space-recovery",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t08"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t08",
+      "catalogNumber": 2258,
+      "denseNumber": 698,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-019",
@@ -41397,12 +41460,15 @@
       "chapterNumber": 19,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t08"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t08",
+      "catalogNumber": 2259,
+      "denseNumber": 699,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-020",
@@ -41411,12 +41477,15 @@
       "chapterNumber": 20,
       "family": "front-flow",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t08"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t08",
+      "catalogNumber": 2260,
+      "denseNumber": 700,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-021",
@@ -41425,12 +41494,15 @@
       "chapterNumber": 21,
       "family": "rear-priority",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t09"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t09",
+      "catalogNumber": 2261,
+      "denseNumber": 701,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-022",
@@ -41439,12 +41511,15 @@
       "chapterNumber": 22,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t09"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t09",
+      "catalogNumber": 2262,
+      "denseNumber": 702,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-023",
@@ -41453,12 +41528,15 @@
       "chapterNumber": 23,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t09"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t09",
+      "catalogNumber": 2263,
+      "denseNumber": 703,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-024",
@@ -41467,12 +41545,15 @@
       "chapterNumber": 24,
       "family": "multi-crate",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t10"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t10",
+      "catalogNumber": 2264,
+      "denseNumber": 704,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-025",
@@ -41481,12 +41562,15 @@
       "chapterNumber": 25,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t10"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t10",
+      "catalogNumber": 2265,
+      "denseNumber": 705,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-026",
@@ -41495,12 +41579,15 @@
       "chapterNumber": 26,
       "family": "counter-space",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t10"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t10",
+      "catalogNumber": 2266,
+      "denseNumber": 706,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-027",
@@ -41509,12 +41596,15 @@
       "chapterNumber": 27,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t11"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t11",
+      "catalogNumber": 2267,
+      "denseNumber": 707,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-028",
@@ -41523,12 +41613,15 @@
       "chapterNumber": 28,
       "family": "rear-priority",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t11"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t11",
+      "catalogNumber": 2268,
+      "denseNumber": 708,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-029",
@@ -41537,12 +41630,15 @@
       "chapterNumber": 29,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t11"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t11",
+      "catalogNumber": 2269,
+      "denseNumber": 709,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-030",
@@ -41551,12 +41647,15 @@
       "chapterNumber": 30,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t12"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t12",
+      "catalogNumber": 2270,
+      "denseNumber": 710,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-031",
@@ -41565,12 +41664,15 @@
       "chapterNumber": 31,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t12"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t12",
+      "catalogNumber": 2271,
+      "denseNumber": 711,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-032",
@@ -41579,12 +41681,15 @@
       "chapterNumber": 32,
       "family": "space-recovery",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t12"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "terrace-s1-t12",
+      "catalogNumber": 2272,
+      "denseNumber": 712,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-033",
@@ -41593,12 +41698,15 @@
       "chapterNumber": 33,
       "family": "counter-space",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t13"
+      "fundingTaskId": "terrace-s1-t13",
+      "catalogNumber": 2273,
+      "denseNumber": 713,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-034",
@@ -41607,12 +41715,15 @@
       "chapterNumber": 34,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t13"
+      "fundingTaskId": "terrace-s1-t13",
+      "catalogNumber": 2274,
+      "denseNumber": 714,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-035",
@@ -41621,12 +41732,15 @@
       "chapterNumber": 35,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t13"
+      "fundingTaskId": "terrace-s1-t13",
+      "catalogNumber": 2275,
+      "denseNumber": 715,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-036",
@@ -41635,12 +41749,15 @@
       "chapterNumber": 36,
       "family": "paired-demand",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t14"
+      "fundingTaskId": "terrace-s1-t14",
+      "catalogNumber": 2276,
+      "denseNumber": 716,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-037",
@@ -41649,12 +41766,15 @@
       "chapterNumber": 37,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t14"
+      "fundingTaskId": "terrace-s1-t14",
+      "catalogNumber": 2277,
+      "denseNumber": 717,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-038",
@@ -41663,12 +41783,15 @@
       "chapterNumber": 38,
       "family": "multi-crate",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t14"
+      "fundingTaskId": "terrace-s1-t14",
+      "catalogNumber": 2278,
+      "denseNumber": 718,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-039",
@@ -41677,12 +41800,15 @@
       "chapterNumber": 39,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t15"
+      "fundingTaskId": "terrace-s1-t15",
+      "catalogNumber": 2279,
+      "denseNumber": 719,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-040",
@@ -41691,12 +41817,15 @@
       "chapterNumber": 40,
       "family": "counter-space",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t15"
+      "fundingTaskId": "terrace-s1-t15",
+      "catalogNumber": 2280,
+      "denseNumber": 720,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-041",
@@ -41705,12 +41834,15 @@
       "chapterNumber": 41,
       "family": "front-flow",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t15"
+      "fundingTaskId": "terrace-s1-t15",
+      "catalogNumber": 2281,
+      "denseNumber": 721,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-042",
@@ -41719,12 +41851,15 @@
       "chapterNumber": 42,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t16"
+      "fundingTaskId": "terrace-s1-t16",
+      "catalogNumber": 2282,
+      "denseNumber": 722,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-043",
@@ -41733,12 +41868,15 @@
       "chapterNumber": 43,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t16"
+      "fundingTaskId": "terrace-s1-t16",
+      "catalogNumber": 2283,
+      "denseNumber": 723,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-044",
@@ -41747,12 +41885,15 @@
       "chapterNumber": 44,
       "family": "supply-chain",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t16"
+      "fundingTaskId": "terrace-s1-t16",
+      "catalogNumber": 2284,
+      "denseNumber": 724,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-045",
@@ -41761,12 +41902,15 @@
       "chapterNumber": 45,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t17"
+      "fundingTaskId": "terrace-s1-t17",
+      "catalogNumber": 2285,
+      "denseNumber": 725,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-046",
@@ -41775,12 +41919,15 @@
       "chapterNumber": 46,
       "family": "space-recovery",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t17"
+      "fundingTaskId": "terrace-s1-t17",
+      "catalogNumber": 2286,
+      "denseNumber": 726,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-047",
@@ -41789,12 +41936,15 @@
       "chapterNumber": 47,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t17"
+      "fundingTaskId": "terrace-s1-t17",
+      "catalogNumber": 2287,
+      "denseNumber": 727,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-048",
@@ -41803,12 +41953,15 @@
       "chapterNumber": 48,
       "family": "front-flow",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t18"
+      "fundingTaskId": "terrace-s1-t18",
+      "catalogNumber": 2288,
+      "denseNumber": 728,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-049",
@@ -41817,12 +41970,15 @@
       "chapterNumber": 49,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t18"
+      "fundingTaskId": "terrace-s1-t18",
+      "catalogNumber": 2289,
+      "denseNumber": 729,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-050",
@@ -41831,12 +41987,15 @@
       "chapterNumber": 50,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t18"
+      "fundingTaskId": "terrace-s1-t18",
+      "catalogNumber": 2290,
+      "denseNumber": 730,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-051",
@@ -41845,12 +42004,15 @@
       "chapterNumber": 51,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t19"
+      "fundingTaskId": "terrace-s1-t19",
+      "catalogNumber": 2291,
+      "denseNumber": 731,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-052",
@@ -41859,12 +42021,15 @@
       "chapterNumber": 52,
       "family": "multi-crate",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t19"
+      "fundingTaskId": "terrace-s1-t19",
+      "catalogNumber": 2292,
+      "denseNumber": 732,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-053",
@@ -41873,12 +42038,15 @@
       "chapterNumber": 53,
       "family": "space-recovery",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t19"
+      "fundingTaskId": "terrace-s1-t19",
+      "catalogNumber": 2293,
+      "denseNumber": 733,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-054",
@@ -41887,12 +42055,15 @@
       "chapterNumber": 54,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t19"
+      "fundingTaskId": "terrace-s1-t19",
+      "catalogNumber": 2294,
+      "denseNumber": 734,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-055",
@@ -41901,12 +42072,15 @@
       "chapterNumber": 55,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t20"
+      "fundingTaskId": "terrace-s1-t20",
+      "catalogNumber": 2295,
+      "denseNumber": 735,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-056",
@@ -41915,12 +42089,15 @@
       "chapterNumber": 56,
       "family": "rear-priority",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t20"
+      "fundingTaskId": "terrace-s1-t20",
+      "catalogNumber": 2296,
+      "denseNumber": 736,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-057",
@@ -41929,12 +42106,15 @@
       "chapterNumber": 57,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t20"
+      "fundingTaskId": "terrace-s1-t20",
+      "catalogNumber": 2297,
+      "denseNumber": 737,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-058",
@@ -41943,12 +42123,15 @@
       "chapterNumber": 58,
       "family": "supply-chain",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t20"
+      "fundingTaskId": "terrace-s1-t20",
+      "catalogNumber": 2298,
+      "denseNumber": 738,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-059",
@@ -41957,12 +42140,15 @@
       "chapterNumber": 59,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t21"
+      "fundingTaskId": "terrace-s1-t21",
+      "catalogNumber": 2299,
+      "denseNumber": 739,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-060",
@@ -41971,12 +42157,15 @@
       "chapterNumber": 60,
       "family": "space-recovery",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t21"
+      "fundingTaskId": "terrace-s1-t21",
+      "catalogNumber": 2300,
+      "denseNumber": 740,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-061",
@@ -41985,12 +42174,15 @@
       "chapterNumber": 61,
       "family": "section-shelves",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t21"
+      "fundingTaskId": "terrace-s1-t21",
+      "catalogNumber": 2301,
+      "denseNumber": 741,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-062",
@@ -41999,12 +42191,15 @@
       "chapterNumber": 62,
       "family": "targeted-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t21"
+      "fundingTaskId": "terrace-s1-t21",
+      "catalogNumber": 2302,
+      "denseNumber": 742,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-063",
@@ -42013,12 +42208,15 @@
       "chapterNumber": 63,
       "family": "front-flow",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t22"
+      "fundingTaskId": "terrace-s1-t22",
+      "catalogNumber": 2303,
+      "denseNumber": 743,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-064",
@@ -42027,12 +42225,15 @@
       "chapterNumber": 64,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t22"
+      "fundingTaskId": "terrace-s1-t22",
+      "catalogNumber": 2304,
+      "denseNumber": 744,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-065",
@@ -42041,12 +42242,15 @@
       "chapterNumber": 65,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t22"
+      "fundingTaskId": "terrace-s1-t22",
+      "catalogNumber": 2305,
+      "denseNumber": 745,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-066",
@@ -42055,12 +42259,15 @@
       "chapterNumber": 66,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t23"
+      "fundingTaskId": "terrace-s1-t23",
+      "catalogNumber": 2306,
+      "denseNumber": 746,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-067",
@@ -42069,12 +42276,15 @@
       "chapterNumber": 67,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t23"
+      "fundingTaskId": "terrace-s1-t23",
+      "catalogNumber": 2307,
+      "denseNumber": 747,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-068",
@@ -42083,12 +42293,15 @@
       "chapterNumber": 68,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t23"
+      "fundingTaskId": "terrace-s1-t23",
+      "catalogNumber": 2308,
+      "denseNumber": 748,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-069",
@@ -42097,12 +42310,15 @@
       "chapterNumber": 69,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t23"
+      "fundingTaskId": "terrace-s1-t23",
+      "catalogNumber": 2309,
+      "denseNumber": 749,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-070",
@@ -42111,12 +42327,15 @@
       "chapterNumber": 70,
       "family": "section-shelves",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t24"
+      "fundingTaskId": "terrace-s1-t24",
+      "catalogNumber": 2310,
+      "denseNumber": 750,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-071",
@@ -42125,12 +42344,15 @@
       "chapterNumber": 71,
       "family": "targeted-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t24"
+      "fundingTaskId": "terrace-s1-t24",
+      "catalogNumber": 2311,
+      "denseNumber": 751,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-072",
@@ -42139,12 +42361,15 @@
       "chapterNumber": 72,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t24"
+      "fundingTaskId": "terrace-s1-t24",
+      "catalogNumber": 2312,
+      "denseNumber": 752,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-073",
@@ -42153,12 +42378,15 @@
       "chapterNumber": 73,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t24"
+      "fundingTaskId": "terrace-s1-t24",
+      "catalogNumber": 2313,
+      "denseNumber": 753,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-074",
@@ -42167,12 +42395,15 @@
       "chapterNumber": 74,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t25"
+      "fundingTaskId": "terrace-s1-t25",
+      "catalogNumber": 2314,
+      "denseNumber": 754,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-075",
@@ -42181,12 +42412,15 @@
       "chapterNumber": 75,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t25"
+      "fundingTaskId": "terrace-s1-t25",
+      "catalogNumber": 2315,
+      "denseNumber": 755,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-076",
@@ -42195,12 +42429,15 @@
       "chapterNumber": 76,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t25"
+      "fundingTaskId": "terrace-s1-t25",
+      "catalogNumber": 2316,
+      "denseNumber": 756,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-077",
@@ -42209,12 +42446,15 @@
       "chapterNumber": 77,
       "family": "space-recovery",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t25"
+      "fundingTaskId": "terrace-s1-t25",
+      "catalogNumber": 2317,
+      "denseNumber": 757,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-078",
@@ -42223,12 +42463,15 @@
       "chapterNumber": 78,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t26"
+      "fundingTaskId": "terrace-s1-t26",
+      "catalogNumber": 2318,
+      "denseNumber": 758,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-079",
@@ -42237,12 +42480,15 @@
       "chapterNumber": 79,
       "family": "section-shelves",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t26"
+      "fundingTaskId": "terrace-s1-t26",
+      "catalogNumber": 2319,
+      "denseNumber": 759,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s1-order-080",
@@ -42251,12 +42497,15 @@
       "chapterNumber": 80,
       "family": "targeted-crate",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "terrace-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "terrace-s1-t26"
+      "fundingTaskId": "terrace-s1-t26",
+      "catalogNumber": 2320,
+      "denseNumber": 760,
+      "definitionFile": "src/levels/projects/terrace-1.json"
     },
     {
       "id": "terrace-s2-order-001",
@@ -90181,11 +90430,11 @@
   ],
   "validationScope": "Арифметика 6000/744, глобальные и локальные зависимости, произвольный допустимый выбор проектов, финансирование расчистки/стройки до доступа к внутренним заказам, совместимость выпущенных заказов и перенос ценового кредита прежних работ лавки; не проходимость будущих Definition и не коммерческий результат.",
   "deliveryStatus": {
-    "existingOrders": 680,
-    "plannedOrders": 5320,
-    "existingTasks": 152,
-    "plannedTasks": 592,
-    "fullyImplementedPlannedPhases": 7
+    "existingOrders": 760,
+    "plannedOrders": 5240,
+    "existingTasks": 178,
+    "plannedTasks": 566,
+    "fullyImplementedPlannedPhases": 8
   },
   "productDirection": {
     "platform": "Yandex Games, online browser game; desktop and mobile browsers, not a native Android/iOS app",
@@ -90366,7 +90615,7 @@
     }
   ],
   "nextDelivery": {
-    "scope": "Полные Stage 1–2 и первая пекарня; остальной Stage 3 ещё не готов",
+    "scope": "Stage 1–2, bakery I and a terrace prototype; global Stage 3 and 4 remain incomplete",
     "phaseIds": [
       "shop-1",
       "warehouse-1",
@@ -90374,10 +90623,11 @@
       "warehouse-2",
       "fruit-yard-1",
       "fruit-yard-2",
-      "bakery-1"
+      "bakery-1",
+      "terrace-1"
     ],
-    "orders": 680,
-    "tasks": 152,
+    "orders": 760,
+    "tasks": 178,
     "requirements": [
       "Полная лавка I 80/14",
       "Расчистка и строительство склада до внутренних заказов",
@@ -90386,10 +90636,12 @@
       "Фруктовый двор I и пристройка II",
       "Сохранение незавершённых попыток и проектов между локациями",
       "Первая пекарня: 80 закреплённых Definition и 26 зарегистрированных результатов",
-      "Все 680 решений воспроизведены; каталожные номера отделены от индексов выдачи"
+      "Все 680 решений воспроизведены; каталожные номера отделены от индексов выдачи",
+      "Terrace: 80 pinned Definitions and 26 registered results; explicit prototype dependencies"
     ],
     "status": "implemented-internal-block",
-    "completeGlobalStage3": false
+    "completeGlobalStage3": false,
+    "completeGlobalStage4": false
   },
   "monetization": {
     "launchRequired": true,
@@ -90527,14 +90779,16 @@
     ]
   },
   "orderSupplyPolicy": {
-    "version": 1,
+    "version": 2,
     "implementedScope": [
       "shop-1",
       "warehouse-1",
-      "fruit-yard-1",
       "shop-2",
       "warehouse-2",
-      "fruit-yard-2"
+      "fruit-yard-1",
+      "fruit-yard-2",
+      "bakery-1",
+      "terrace-1"
     ],
     "repairTaskPrefixes": {
       "shop-1": 3,
@@ -90542,10 +90796,12 @@
       "fruit-yard-1": 12,
       "shop-2": 3,
       "warehouse-2": 3,
-      "fruit-yard-2": 10
+      "fruit-yard-2": 10,
+      "bakery-1": 12,
+      "terrace-1": 12
     },
-    "implementedRepairOrders": 179,
-    "implementedFoodOrders": 421,
+    "implementedRepairOrders": 243,
+    "implementedFoodOrders": 517,
     "plannedPhases": "Retain existing star economics until their architectural tasks are classified.",
     "reward": "Each unique completed order gives exactly one unit of its pinned rewardCurrency; replay gives none."
   }

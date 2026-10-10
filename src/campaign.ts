@@ -2,7 +2,7 @@ import { CHAPTER, canonicalLevelId } from "./content";
 import phasePlan from "./campaign-plan.json" with { type: "json" };
 import blockPlan from "./campaign-block.json" with { type: "json" };
 
-export const CAMPAIGN_VERSION = "coastal-campaign-8";
+export const CAMPAIGN_VERSION = "coastal-campaign-9";
 export type TaskCurrency = "repairKits" | "stars";
 export interface CurrencyWallet { repairKits: number; stars: number; }
 export const LEGACY_SHOP_STEPS = [
@@ -92,12 +92,12 @@ export type CampaignAreaId = (typeof CAMPAIGN_AREAS)[number]["id"];
 
 // The larger plan remains metadata. Only these projects have runtime content
 // and scene layers; adding a planned phase never makes it playable by itself.
-export const PROJECT_IDS = ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2", "bakery-1"] as const;
+export const PROJECT_IDS = ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2", "bakery-1", "terrace-1"] as const;
 export type ProjectId = (typeof PROJECT_IDS)[number];
 const REPAIR_TASK_PREFIX: Record<ProjectId, number> = {
   "shop-1": 3, "warehouse-1": 12, "fruit-yard-1": 12,
   "shop-2": 3, "warehouse-2": 3, "fruit-yard-2": 10,
-  "bakery-1": 12,
+  "bakery-1": 12, "terrace-1": 12,
 };
 export interface Construction {
   kind: string;
@@ -202,7 +202,7 @@ function phaseStatusWithIds(id: string, completed: Set<string>, campaign: Campai
   if (produced && orders.every(order => completed.has(order.id)) &&
     tasks.every(task => campaign.completedTasks.includes(task.id))) status = "complete";
   else if (!orders.length || !tasks.length) status = "planned";
-  else if (phase.requiresCompletedPhases.some(required => phaseStatusWithIds(required, completed, campaign, statuses) !== "complete")) status = "locked";
+  else if (project.requiresCompletedPhases.some(required => phaseStatusWithIds(required, completed, campaign, statuses) !== "complete")) status = "locked";
   else status = "available";
   statuses.set(id, status);
   return status;
@@ -333,12 +333,15 @@ export const validLegacyCampaign = (value: unknown): boolean => validTasks(value
 export const validPreviousCampaign = (value: unknown): boolean => validTasks(value, "coastal-campaign-2", LEGACY_SHOP_STEPS.slice(0, 8), true);
 export const validSchemaFiveCampaign = (value: unknown): boolean => validTasks(value, "coastal-campaign-3", LEGACY_SHOP_STEPS, true);
 export const validSchemaSixCampaign = (value: unknown): value is LegacyCampaignProgress =>
-  validTasks(value, "coastal-campaign-4", [...LEGACY_SHOP_TASKS, ...TASKS.filter(task => task.phaseId !== "shop-1" && task.phaseId !== "bakery-1")],
+  validTasks(value, "coastal-campaign-4", [...LEGACY_SHOP_TASKS, ...TASKS.filter(task => task.phaseId !== "shop-1" && task.phaseId !== "bakery-1" && task.phaseId !== "terrace-1")],
     (value as LegacyCampaignProgress | null)?.legacyTaskOrder === true);
-export const validSchemaSevenCampaign = (value: unknown): boolean => validTasks(value, "coastal-campaign-5", TASKS.filter(task => task.phaseId !== "bakery-1"), false);
-export const validSchemaEightCampaign = (value: unknown): boolean => validTasks(value, "coastal-campaign-6", TASKS.filter(task => task.phaseId !== "bakery-1"), false);
+export const validSchemaSevenCampaign = (value: unknown): boolean => validTasks(value, "coastal-campaign-5", TASKS.filter(task => task.phaseId !== "bakery-1" && task.phaseId !== "terrace-1"), false);
+export const validSchemaEightCampaign = (value: unknown): boolean => validTasks(value, "coastal-campaign-6", TASKS.filter(task => task.phaseId !== "bakery-1" && task.phaseId !== "terrace-1"), false);
 export const validSchemaNineCampaign = (value: unknown): boolean => validTasks(value, "coastal-campaign-7",
-  [...TASKS.filter(task => task.phaseId !== "bakery-1"), ...projectTasks("bakery-1").slice().sort((a, b) => a.id.localeCompare(b.id))], false);
+  [...TASKS.filter(task => task.phaseId !== "bakery-1" && task.phaseId !== "terrace-1"), ...projectTasks("bakery-1").slice().sort((a, b) => a.id.localeCompare(b.id))], false);
+
+export const validSchemaTenCampaign = (value: unknown): boolean =>
+  validTasks(value, "coastal-campaign-8", TASKS.filter(task => task.phaseId !== "terrace-1"), false, true);
 
 // Preserve paid star credit rather than guessing equivalence between old props
 // and whole new modules. Unspent credit is refunded exactly once by schema 7.

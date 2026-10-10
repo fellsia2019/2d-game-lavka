@@ -1,0 +1,83 @@
+{
+  "generator": "built-in ImageGen",
+  "assets": [
+    {
+      "name": "before",
+      "source": "docs/art/terrace-map/before.png",
+      "asset": "public/assets/coastal-terrace-map-before.webp",
+      "bytes": 230542,
+      "size": [
+        1536,
+        1024
+      ],
+      "quality": 76
+    },
+    {
+      "name": "clear",
+      "source": "docs/art/terrace-map/clear.png",
+      "asset": "public/assets/coastal-terrace-map-clear.webp",
+      "bytes": 237750,
+      "size": [
+        1536,
+        1024
+      ],
+      "quality": 76
+    },
+    {
+      "name": "foundation",
+      "source": "docs/art/terrace-map/foundation.png",
+      "asset": "public/assets/coastal-terrace-map-foundation.webp",
+      "bytes": 238482,
+      "size": [
+        1536,
+        1024
+      ],
+      "quality": 76
+    },
+    {
+      "name": "frame",
+      "source": "docs/art/terrace-map/frame.png",
+      "asset": "public/assets/coastal-terrace-map-frame.webp",
+      "bytes": 236226,
+      "size": [
+        1536,
+        1024
+      ],
+      "quality": 76
+    },
+    {
+      "name": "roof",
+      "source": "docs/art/terrace-map/roof.png",
+      "asset": "public/assets/coastal-terrace-map-roof.webp",
+      "bytes": 223410,
+      "size": [
+        1536,
+        1024
+      ],
+      "quality": 76
+    },
+    {
+      "name": "ready",
+      "source": "docs/art/terrace-map/ready.png",
+      "asset": "public/assets/coastal-terrace-map-ready.webp",
+      "bytes": 232624,
+      "size": [
+        1536,
+        1024
+      ],
+      "quality": 76
+    },
+    {
+      "name": "final",
+      "source": "docs/art/terrace-map/final.png",
+      "asset": "public/assets/coastal-terrace-map-final.webp",
+      "bytes": 230448,
+      "size": [
+        1536,
+        1024
+      ],
+      "quality": 76
+    }
+  ],
+  "totalBytes": 1629482
+}

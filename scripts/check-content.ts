@@ -11,6 +11,16 @@ import { GOODS, GOOD_IDS } from "../src/catalog";
 import { CAMPAIGN_CHAPTERS, CAMPAIGN_PHASES, FIRST_SHOP_PHASE, TASKS, PROJECTS, CAMPAIGN_VERSION, orderCurrency } from "../src/campaign";
 import { SCENE_ASSETS } from "../src/campaign-scene";
 import { MATERIALS } from "../src/order-supplies";
+if (CHAPTER.some(order=>order.phaseId==="terrace-1")) {
+  const terrace=PROJECTS.find(project=>project.id==="terrace-1");
+  const delivery=JSON.parse(readFileSync("docs/content/full-product-plan.json","utf8")).nextDelivery;
+  if(CHAPTER.length!==delivery.orders || TASKS.length!==delivery.tasks || PROJECTS.length!==delivery.phaseIds.length)
+    throw new Error("Runtime must expose exactly the latest produced delivery");
+  if(delivery.phaseIds.at(-1)==="terrace-1" && (CONTENT_VERSION!=="coastal-stage-1-2-bakery-terrace-v1" || CAMPAIGN_VERSION!=="coastal-campaign-9"))
+    throw new Error("Terrace delivery content and campaign versions differ");
+  if(terrace?.requiresCompletedPhases.join()!=="bakery-1")
+    throw new Error("Terrace prototype must use the explicit bakery dependency");
+}
 for (const file of [
   ...Object.values(GOODS).map((g) => `${g.file}.webp`),
   ...Object.values(MATERIALS).map((material) => `${material.file}.webp`),

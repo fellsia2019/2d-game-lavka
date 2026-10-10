@@ -294,8 +294,9 @@ function configureHallScene() {
   if (!scene || !stage || !world || !worldStage) return;
   const viewport = scene.parentElement!;
   world.classList.add("hall-game-world");
-  world.classList.toggle('bakery-game-world', scene.classList.contains('bakery-composition'));
-  if (scene.classList.contains('bakery-composition')) {
+  const currentSurround = scene.classList.contains('bakery-composition') || scene.classList.contains('terrace-composition');
+  world.classList.toggle('bakery-game-world', currentSurround);
+  if (currentSurround) {
     const plan = JSON.parse(stage.querySelector('script.hall-canvas-plan')!.textContent!);
     world.style.setProperty('--bakery-surround', `url("${new URL(plan.base, document.baseURI).href}")`);
   } else world.style.removeProperty('--bakery-surround');

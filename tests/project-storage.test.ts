@@ -74,7 +74,7 @@ test("Schemas 1–5 migrate once with exact paid credit, preserved preferences a
       assert.equal(result.warning, undefined, `schema ${schema}, prefix ${prefix}`);
       assert.equal(result.migrated, true);
       const p = result.progress;
-      assert.equal(p.schema, 10);
+      assert.equal(p.schema, 11);
       assert.equal(p.selectedProject, "shop-1");
       for (const key of ["coins", "inventory", "completed", "settings", "repeatDay", "repeatCount"] as const)
         assert.deepEqual(p[key], old[key], `schema ${schema}: ${key}`);
@@ -184,7 +184,7 @@ test("A completed project reward is paid once across switching, reload and stabl
   assert.deepEqual(loaded.progress.attempt!.definition, pinned);
 });
 test("Unknown schemas and campaign versions are read-only; impossible local ownership and foreign attempt projects do not acquire credit", () => {
-  for (const future of [{ ...freshProgress(), schema: 11 }, { ...freshProgress(), campaign: { version: "coastal-campaign-99", completedTasks: [] } }]) {
+  for (const future of [{ ...freshProgress(), schema: 12 }, { ...freshProgress(), campaign: { version: "coastal-campaign-99", completedTasks: [] } }]) {
     const raw = JSON.stringify(future);
     assert.equal(loadProgress({ getItem: () => raw }).readOnly, true);
   }
@@ -200,9 +200,9 @@ test("Unknown schemas and campaign versions are read-only; impossible local owne
   assert.match(result.warning!, /один из заказов/);
 });
 
-test("A mixed route replays all 680 pinned solutions, finances all 152 works and restores each completed project", () => {
+test("A mixed route replays all 760 pinned solutions, finances all 178 works and restores each completed project", () => {
   let p = freshProgress();
-  for (const id of ["shop-1", "warehouse-1", "fruit-yard-1", "fruit-yard-2", "warehouse-2", "shop-2", "bakery-1"] as const) {
+  for (const id of ["shop-1", "warehouse-1", "fruit-yard-1", "fruit-yard-2", "warehouse-2", "shop-2", "bakery-1", "terrace-1"] as const) {
     assert.equal(selectProject(p, id), true);
     let guard = 0;
     while (phaseStatus(id, p.completed, p.campaign) !== "complete") {
@@ -236,12 +236,12 @@ test("A mixed route replays all 680 pinned solutions, finances all 152 works and
     p = restored.progress;
   }
   assert.equal(blockComplete(p.completed, p.campaign), true);
-  assert.equal(p.completed.length, 680);
-  assert.equal(p.campaign.completedTasks.length, 152);
-  assert.equal(p.coins, 40800);
+  assert.equal(p.completed.length, 760);
+  assert.equal(p.campaign.completedTasks.length, 178);
+  assert.equal(p.coins, 45600);
   assert.equal(p.stars, 0);
   assert.equal(p.repairKits, 0);
-  assert.equal(Object.keys(p.attempts).length, 7);
+  assert.equal(Object.keys(p.attempts).length, 8);
 });
 
 test("A saved victory without a reward restores its pinned task and pays exactly once after migration or reload", () => {

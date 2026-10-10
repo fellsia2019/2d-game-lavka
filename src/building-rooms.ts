@@ -11,6 +11,7 @@ const kinds:Partial<Record<CampaignView,string>>={
   'fruit-yard':'Строительная площадка', 'fruit-extension-site':'Строительная площадка',
   'fruit-market':'Открытый павильон',
   'bakery-yard':'Фасад и строительная площадка', 'bakery-oven':'Помещение выпечки', 'bakery-shop':'Торговый зал',
+  'terrace-deck':'Открытая гостевая площадка',
 };
 
 /** Opening a chooser is read-only. Each card belongs to an available local stage. */

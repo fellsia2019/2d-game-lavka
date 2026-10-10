@@ -61,7 +61,7 @@ test("All 27 schema-6 ownership prefixes retain exact paid stars, can finish wit
     assert.deepEqual(p.inventory, old.inventory);
     assert.deepEqual(p.renovations, old.renovations);
     assert.deepEqual(p.completed, old.completed);
-    assert.equal(p.schema, 10);
+    assert.equal(p.schema, 11);
     assert.deepEqual(reload(p), p);
     let next;
     while ((next = nextProjectTask(p.campaign, "shop-1"))) assert.equal(purchaseProjectTask(p, next.id), true);
@@ -180,7 +180,7 @@ test("Retained color preferences never buy new modules and purchases preserve th
 test("Refund overflow and unknown campaign/schema versions preserve raw storage read-only", () => {
   const old = oldProjectSave(1);
   old.stars = Number.MAX_SAFE_INTEGER;
-  for (const fixture of [old, { ...freshProgress(), schema: 11 }, { ...old, campaign: { ...old.campaign, version: "coastal-campaign-99" } }]) {
+  for (const fixture of [old, { ...freshProgress(), schema: 12 }, { ...old, campaign: { ...old.campaign, version: "coastal-campaign-99" } }]) {
     const raw = JSON.stringify(fixture);
     let saved = raw;
     const result = loadProgress({ getItem: () => saved });

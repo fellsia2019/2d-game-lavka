@@ -46,11 +46,11 @@ function completedStageOne() {
   return p;
 }
 
-test("The produced block contains Stage 1–2 and the first bakery, with exact planned works", () => {
+test("The produced block contains Stage 1–2, first bakery and prototype terrace, with exact planned works", () => {
   const plan = JSON.parse(readFileSync(new URL("../docs/content/full-product-plan.json", import.meta.url), "utf8"));
-  assert.equal(CHAPTER.length, 680);
-  assert.equal(TASKS.length, 152);
-  assert.equal(PROJECTS.length, 7);
+  assert.equal(CHAPTER.length, 760);
+  assert.equal(TASKS.length, 178);
+  assert.equal(PROJECTS.length, 8);
   assert.equal(FIRST_SHOP_PHASE.orderTarget, 80);
   assert.equal(FIRST_SHOP_PHASE.taskTarget, 14);
   for (const project of PROJECTS) {
@@ -81,13 +81,14 @@ test("Completion includes every local order and work; 30 published victories nev
   assert.equal(areaStatus("bakery", p.completed, p.campaign), "locked");
 });
 test("Construction workflows pay repair kits then food stars in an open building and gate interior until all base equipment is owned", () => {
-  for (const [id, projectCount, gateCount] of [["warehouse-1", 38, 14], ["fruit-yard-1", 38, 14], ["fruit-yard-2", 72, 12], ["bakery-1", 38, 14]] as const) {
+  for (const [id, projectCount, gateCount] of [["warehouse-1", 38, 14], ["fruit-yard-1", 38, 14], ["fruit-yard-2", 72, 12], ["bakery-1", 38, 14], ["terrace-1", 38, 14]] as const) {
     const p = freshProgress();
     finishProject(p, "shop-1");
     if (id !== "warehouse-1") finishProject(p, "warehouse-1");
     if (id === "fruit-yard-2") finishProject(p, "fruit-yard-1");
-    if (id === "bakery-1") for (const prerequisite of ["shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2"] as const)
+    if (id === "bakery-1" || id === "terrace-1") for (const prerequisite of ["shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2"] as const)
       finishProject(p, prerequisite);
+    if (id === "terrace-1") finishProject(p, "bakery-1");
     assert.equal(selectProject(p, id), true);
     assert.equal(constructionState(id, p.campaign), "abandoned");
     for (let i = 0; i < projectCount; i++) earnOrder(p, nextProjectOrder(id, p.completed, p.campaign)!);
@@ -179,10 +180,10 @@ test("Purchases require selected available project, local sequence, sufficient f
 });
 
 
-test("Produced budgets keep the old 179/421 and add exactly the bakery's 32/48, independent of construction gates", () => {
+test("Produced budgets keep the old 179/421 and add exactly each bakery/terrace32/48, independent of construction gates", () => {
   const expected = [
     ["shop-1", 3, 19], ["warehouse-1", 12, 32], ["fruit-yard-1", 12, 32],
-    ["shop-2", 3, 18], ["warehouse-2", 3, 18], ["fruit-yard-2", 10, 60], ["bakery-1", 12, 32],
+    ["shop-2", 3, 18], ["warehouse-2", 3, 18], ["fruit-yard-2", 10, 60], ["bakery-1", 12, 32], ["terrace-1", 12, 32],
   ] as const;
   for (const [id, prefix, units] of expected) {
     const tasks = projectTasks(id), orders = projectOrders(id);
@@ -190,18 +191,19 @@ test("Produced budgets keep the old 179/421 and add exactly the bakery's 32/48, 
     assert.equal(repairOrderCount(id), units);
     assert.deepEqual(orders.map(order => orderCurrency(order.id)), orders.map((_, index) => index < units ? "repairKits" : "stars"));
   }
-  const baselineTasks = TASKS.filter(task => task.phaseId !== "bakery-1");
-  const baselineOrders = CHAPTER.filter(order => order.phaseId !== "bakery-1");
+  const oldSix = ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2"];
+  const baselineTasks = TASKS.filter(task => oldSix.includes(task.phaseId));
+  const baselineOrders = CHAPTER.filter(order => oldSix.includes(order.phaseId));
   assert.equal(baselineTasks.length, 126);
   assert.equal(baselineOrders.length, 600);
   assert.equal(baselineTasks.filter(task => task.currency === "repairKits").reduce((sum, task) => sum + task.cost, 0), 179);
   assert.equal(baselineTasks.filter(task => task.currency === "stars").reduce((sum, task) => sum + task.cost, 0), 421);
   assert.equal(baselineOrders.filter(order => orderCurrency(order.id) === "repairKits").length, 179);
   assert.equal(baselineOrders.filter(order => orderCurrency(order.id) === "stars").length, 421);
-  assert.equal(TASKS.filter(task => task.currency === "repairKits").reduce((sum, task) => sum + task.cost, 0), 211);
-  assert.equal(TASKS.filter(task => task.currency === "stars").reduce((sum, task) => sum + task.cost, 0), 469);
-  assert.equal(CHAPTER.filter(order => orderCurrency(order.id) === "repairKits").length, 211);
-  assert.equal(CHAPTER.filter(order => orderCurrency(order.id) === "stars").length, 469);
+  assert.equal(TASKS.filter(task => task.currency === "repairKits").reduce((sum, task) => sum + task.cost, 0), 243);
+  assert.equal(TASKS.filter(task => task.currency === "stars").reduce((sum, task) => sum + task.cost, 0), 517);
+  assert.equal(CHAPTER.filter(order => orderCurrency(order.id) === "repairKits").length, 243);
+  assert.equal(CHAPTER.filter(order => orderCurrency(order.id) === "stars").length, 517);
   assert.equal(orderCurrency("coastal-slice-1:tutorial:1"), "repairKits");
   assert.equal(orderCurrency("missing-order"), undefined);
 });

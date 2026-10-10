@@ -163,4 +163,4 @@ writeFileSync("docs/content-production-report.json", JSON.stringify({ contentVer
   preservedBaselineDigests: { first20: createHash("sha256").update(JSON.stringify(output.slice(0, 20))).digest("hex"),
     first30: createHash("sha256").update(JSON.stringify(output.slice(0, 30))).digest("hex") },
   notMeasured: ["Interest", "Minimum difficulty", "Duration", "Retention", "Revenue", "Browser decoded memory"] }, null, 2) + "\n");
-console.log(`Stage 1–2: ${output.length} pinned, replayed, structurally distinct orders; first thirty untouched.`);
+console.log(`Stage 1–2: ${output.length} pinned, replayed, structurally distinct orders; preserved ${appendedStories.length} later records, ${appendedKeys.size} total replayed structures; first thirty untouched.`);

@@ -1,0 +1,4912 @@
+{
+  "contractVersion": "terrace-1-production-1",
+  "date": "2026-10-10",
+  "state": "implemented",
+  "produced": true,
+  "runtimeEnabled": true,
+  "phaseId": "terrace-1",
+  "globalStage": 4,
+  "localStage": 1,
+  "orders": 80,
+  "works": 26,
+  "planVersion": "coastal-full-product-plan-7",
+  "contentVersion": "coastal-stage-1-2-bakery-terrace-v1",
+  "schema": 11,
+  "campaignVersion": "coastal-campaign-9",
+  "numbering": {
+    "stableOrderIds": {
+      "first": "terrace-s1-order-001",
+      "last": "terrace-s1-order-080"
+    },
+    "local": {
+      "first": 1,
+      "last": 80
+    },
+    "catalog": {
+      "first": 2241,
+      "last": 2320
+    },
+    "denseAppend": {
+      "first": 681,
+      "last": 760,
+      "status": "runtime"
+    },
+    "semantics": "Only 80 real entries are appended; Definition.number remains the stable full-catalog number."
+  },
+  "requiresCompletedPhases": [
+    "shop-3",
+    "warehouse-3",
+    "fruit-yard-3",
+    "bakery-3"
+  ],
+  "runtimeDeliveryOverride": {
+    "requiresCompletedPhases": [
+      "bakery-1"
+    ],
+    "reason": "prototype-preview-after-bakery-1",
+    "completeGlobalStage3": false,
+    "completeGlobalStage4": false
+  },
+  "prerequisiteClosure": [
+    "shop-1",
+    "warehouse-1",
+    "shop-2",
+    "warehouse-2",
+    "fruit-yard-1",
+    "fruit-yard-2",
+    "bakery-1"
+  ],
+  "rooms": [
+    {
+      "id": "terrace-deck",
+      "name": "Настил и гостевые столы",
+      "status": "implemented"
+    }
+  ],
+  "newGoods": [
+    "pr",
+    "bu",
+    "le"
+  ],
+  "economy": {
+    "repairKits": 32,
+    "stars": 48,
+    "freshCoins": 60,
+    "firstRepairOrder": 1,
+    "lastRepairOrder": 32,
+    "firstFoodOrder": 33,
+    "lastFoodOrder": 80,
+    "constructionOrders": 38,
+    "interiorOrders": 42,
+    "earningContext": "already-open-building",
+    "opensInteriorAfterTaskId": "terrace-s1-t14",
+    "opensInteriorAfterPaidWorks": 14,
+    "interiorFirstOrder": 39,
+    "allWorksAffordableAfterOrder": 80,
+    "requiredPurchaseThresholds": [
+      {
+        "taskId": "terrace-s1-t01",
+        "minimumCompletedOrders": 2,
+        "currency": "repairKits",
+        "cost": 2
+      },
+      {
+        "taskId": "terrace-s1-t02",
+        "minimumCompletedOrders": 4,
+        "currency": "repairKits",
+        "cost": 2
+      },
+      {
+        "taskId": "terrace-s1-t03",
+        "minimumCompletedOrders": 7,
+        "currency": "repairKits",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t04",
+        "minimumCompletedOrders": 10,
+        "currency": "repairKits",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t05",
+        "minimumCompletedOrders": 12,
+        "currency": "repairKits",
+        "cost": 2
+      },
+      {
+        "taskId": "terrace-s1-t06",
+        "minimumCompletedOrders": 14,
+        "currency": "repairKits",
+        "cost": 2
+      },
+      {
+        "taskId": "terrace-s1-t07",
+        "minimumCompletedOrders": 17,
+        "currency": "repairKits",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t08",
+        "minimumCompletedOrders": 20,
+        "currency": "repairKits",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t09",
+        "minimumCompletedOrders": 23,
+        "currency": "repairKits",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t10",
+        "minimumCompletedOrders": 26,
+        "currency": "repairKits",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t11",
+        "minimumCompletedOrders": 29,
+        "currency": "repairKits",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t12",
+        "minimumCompletedOrders": 32,
+        "currency": "repairKits",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t13",
+        "minimumCompletedOrders": 35,
+        "currency": "stars",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t14",
+        "minimumCompletedOrders": 38,
+        "currency": "stars",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t15",
+        "minimumCompletedOrders": 41,
+        "currency": "stars",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t16",
+        "minimumCompletedOrders": 44,
+        "currency": "stars",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t17",
+        "minimumCompletedOrders": 47,
+        "currency": "stars",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t18",
+        "minimumCompletedOrders": 50,
+        "currency": "stars",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t19",
+        "minimumCompletedOrders": 54,
+        "currency": "stars",
+        "cost": 4
+      },
+      {
+        "taskId": "terrace-s1-t20",
+        "minimumCompletedOrders": 58,
+        "currency": "stars",
+        "cost": 4
+      },
+      {
+        "taskId": "terrace-s1-t21",
+        "minimumCompletedOrders": 62,
+        "currency": "stars",
+        "cost": 4
+      },
+      {
+        "taskId": "terrace-s1-t22",
+        "minimumCompletedOrders": 65,
+        "currency": "stars",
+        "cost": 3
+      },
+      {
+        "taskId": "terrace-s1-t23",
+        "minimumCompletedOrders": 69,
+        "currency": "stars",
+        "cost": 4
+      },
+      {
+        "taskId": "terrace-s1-t24",
+        "minimumCompletedOrders": 73,
+        "currency": "stars",
+        "cost": 4
+      },
+      {
+        "taskId": "terrace-s1-t25",
+        "minimumCompletedOrders": 77,
+        "currency": "stars",
+        "cost": 4
+      },
+      {
+        "taskId": "terrace-s1-t26",
+        "minimumCompletedOrders": 80,
+        "currency": "stars",
+        "cost": 3
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "id": "terrace-s1-t01",
+      "name": "Вывезти мусор с участка",
+      "cost": 2,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 1,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 1,
+        "lastOrder": 2
+      }
+    },
+    {
+      "id": "terrace-s1-t02",
+      "name": "Разобрать сгнившую перголу",
+      "cost": 2,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 2,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 3,
+        "lastOrder": 4
+      }
+    },
+    {
+      "id": "terrace-s1-t03",
+      "name": "Вырубить кусты и заросшие лианы",
+      "cost": 3,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 3,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 5,
+        "lastOrder": 7
+      }
+    },
+    {
+      "id": "terrace-s1-t04",
+      "name": "Убрать поваленные деревья и пни",
+      "cost": 3,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 4,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 8,
+        "lastOrder": 10
+      }
+    },
+    {
+      "id": "terrace-s1-t05",
+      "name": "Дочистить и выровнять площадку",
+      "cost": 2,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 5,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 11,
+        "lastOrder": 12
+      }
+    },
+    {
+      "id": "terrace-s1-t06",
+      "name": "Разметить контур постройки",
+      "cost": 2,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 6,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 13,
+        "lastOrder": 14
+      }
+    },
+    {
+      "id": "terrace-s1-t07",
+      "name": "Заложить опоры и основание террасы",
+      "cost": 3,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 7,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 15,
+        "lastOrder": 17
+      }
+    },
+    {
+      "id": "terrace-s1-t08",
+      "name": "Поставить каркас, перила и ветрозащиту",
+      "cost": 3,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 8,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 18,
+        "lastOrder": 20
+      }
+    },
+    {
+      "id": "terrace-s1-t09",
+      "name": "Установить крышу гостевого навеса",
+      "cost": 3,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 9,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 21,
+        "lastOrder": 23
+      }
+    },
+    {
+      "id": "terrace-s1-t10",
+      "name": "Подготовить ступени и безопасные проходы",
+      "cost": 3,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 10,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 24,
+        "lastOrder": 26
+      }
+    },
+    {
+      "id": "terrace-s1-t11",
+      "name": "Уложить настил и отделать сервисную зону",
+      "cost": 3,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 11,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 27,
+        "lastOrder": 29
+      }
+    },
+    {
+      "id": "terrace-s1-t12",
+      "name": "Провести освещение и подготовить безопасный вход",
+      "cost": 3,
+      "currency": "repairKits",
+      "fundingSource": "repair-orders",
+      "status": "implemented",
+      "index": 12,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 30,
+        "lastOrder": 32
+      }
+    },
+    {
+      "id": "terrace-s1-t13",
+      "name": "Установить первые гостевые столы",
+      "cost": 3,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 13,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 33,
+        "lastOrder": 35
+      }
+    },
+    {
+      "id": "terrace-s1-t14",
+      "name": "Добавить стулья",
+      "cost": 3,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 14,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 36,
+        "lastOrder": 38
+      }
+    },
+    {
+      "id": "terrace-s1-t15",
+      "name": "Поставить стойку выдачи",
+      "cost": 3,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 15,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 39,
+        "lastOrder": 41
+      }
+    },
+    {
+      "id": "terrace-s1-t16",
+      "name": "Добавить шкаф посуды",
+      "cost": 3,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 16,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 42,
+        "lastOrder": 44
+      }
+    },
+    {
+      "id": "terrace-s1-t17",
+      "name": "Оборудовать возврат подносов",
+      "cost": 3,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 17,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 45,
+        "lastOrder": 47
+      }
+    },
+    {
+      "id": "terrace-s1-t18",
+      "name": "Установить стол напитков",
+      "cost": 3,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 18,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 48,
+        "lastOrder": 50
+      }
+    },
+    {
+      "id": "terrace-s1-t19",
+      "name": "Поставить секцию выпечки",
+      "cost": 4,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 19,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 51,
+        "lastOrder": 54
+      }
+    },
+    {
+      "id": "terrace-s1-t20",
+      "name": "Добавить холодную выдачу",
+      "cost": 4,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 20,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 55,
+        "lastOrder": 58
+      }
+    },
+    {
+      "id": "terrace-s1-t21",
+      "name": "Подготовить первые гостевые наборы",
+      "cost": 4,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 21,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 59,
+        "lastOrder": 62
+      }
+    },
+    {
+      "id": "terrace-s1-t22",
+      "name": "Обустроить зону отдыха",
+      "cost": 3,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 22,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 63,
+        "lastOrder": 65
+      }
+    },
+    {
+      "id": "terrace-s1-t23",
+      "name": "Установить сервисную мойку",
+      "cost": 4,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 23,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 66,
+        "lastOrder": 69
+      }
+    },
+    {
+      "id": "terrace-s1-t24",
+      "name": "Обозначить гостевые проходы",
+      "cost": 4,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 24,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 70,
+        "lastOrder": 73
+      }
+    },
+    {
+      "id": "terrace-s1-t25",
+      "name": "Подготовить первую встречу гостей",
+      "cost": 4,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 25,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 74,
+        "lastOrder": 77
+      }
+    },
+    {
+      "id": "terrace-s1-t26",
+      "name": "Открыть гостевую террасу",
+      "cost": 3,
+      "currency": "stars",
+      "fundingSource": "food-orders",
+      "status": "implemented",
+      "index": 26,
+      "view": "terrace-deck",
+      "funding": {
+        "firstOrder": 78,
+        "lastOrder": 80
+      }
+    }
+  ],
+  "baseline": {
+    "orders": 680,
+    "works": 152,
+    "projectIds": [
+      "shop-1",
+      "warehouse-1",
+      "shop-2",
+      "warehouse-2",
+      "fruit-yard-1",
+      "fruit-yard-2",
+      "bakery-1"
+    ],
+    "schema": 10,
+    "campaignVersion": "coastal-campaign-8",
+    "contentVersion": "coastal-stage-1-2-bakery-v2",
+    "stars": 469,
+    "repairKits": 211,
+    "storiesDigest": "2448efcaf20bfa822a57ab04ead45e5ba7fd44bc8176fc19081f0aeff31d2166",
+    "projects": [
+      {
+        "id": "shop-1",
+        "definitionFile": "src/levels/projects/shop-1.json",
+        "orders": 80,
+        "works": 14,
+        "sourceFileDigest": "88ad3a9eb7760ba8217bfc84d313372aefc26a90d5fdc0e734dc01cc2d4a193c",
+        "definitionDigest": "f9b1aa4b42269277a10a4e8ac7b53f675cb753e178261ac6c0c3c8c97b32109a",
+        "taskDigest": "758270748f237951f129b70900dfc829ac4195964673b2b55c0b2388045286b3",
+        "tasks": [
+          {
+            "id": "shop-s1-r01",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-r02",
+            "cost": 5,
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-r03",
+            "cost": 8,
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-r04",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r05",
+            "cost": 7,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r06",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r07",
+            "cost": 7,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r08",
+            "cost": 5,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r09",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r10",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r11",
+            "cost": 8,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r12",
+            "cost": 5,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r13",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-r14",
+            "cost": 3,
+            "currency": "stars"
+          }
+        ],
+        "orderIds": [
+          "morning-first",
+          "morning-breakfast",
+          "morning-opening",
+          "morning-coast",
+          "morning-picnic",
+          "morning-neighbours",
+          "morning-delivery",
+          "morning-shelves",
+          "morning-baker",
+          "morning-party",
+          "shop-s1-order-011",
+          "shop-s1-order-012",
+          "shop-s1-order-013",
+          "shop-s1-order-014",
+          "shop-s1-order-015",
+          "shop-s1-order-016",
+          "shop-s1-order-017",
+          "shop-s1-order-018",
+          "shop-s1-order-019",
+          "shop-s1-order-020",
+          "shop-s1-order-021",
+          "shop-s1-order-022",
+          "shop-s1-order-023",
+          "shop-s1-order-024",
+          "shop-s1-order-025",
+          "shop-s1-order-026",
+          "shop-s1-order-027",
+          "shop-s1-order-028",
+          "shop-s1-order-029",
+          "shop-s1-order-030",
+          "shop-s1-order-031",
+          "shop-s1-order-032",
+          "shop-s1-order-033",
+          "shop-s1-order-034",
+          "shop-s1-order-035",
+          "shop-s1-order-036",
+          "shop-s1-order-037",
+          "shop-s1-order-038",
+          "shop-s1-order-039",
+          "shop-s1-order-040",
+          "shop-s1-order-041",
+          "shop-s1-order-042",
+          "shop-s1-order-043",
+          "shop-s1-order-044",
+          "shop-s1-order-045",
+          "shop-s1-order-046",
+          "shop-s1-order-047",
+          "shop-s1-order-048",
+          "shop-s1-order-049",
+          "shop-s1-order-050",
+          "shop-s1-order-051",
+          "shop-s1-order-052",
+          "shop-s1-order-053",
+          "shop-s1-order-054",
+          "shop-s1-order-055",
+          "shop-s1-order-056",
+          "shop-s1-order-057",
+          "shop-s1-order-058",
+          "shop-s1-order-059",
+          "shop-s1-order-060",
+          "shop-s1-order-061",
+          "shop-s1-order-062",
+          "shop-s1-order-063",
+          "shop-s1-order-064",
+          "shop-s1-order-065",
+          "shop-s1-order-066",
+          "shop-s1-order-067",
+          "shop-s1-order-068",
+          "shop-s1-order-069",
+          "shop-s1-order-070",
+          "shop-s1-order-071",
+          "shop-s1-order-072",
+          "shop-s1-order-073",
+          "shop-s1-order-074",
+          "shop-s1-order-075",
+          "shop-s1-order-076",
+          "shop-s1-order-077",
+          "shop-s1-order-078",
+          "shop-s1-order-079",
+          "shop-s1-order-080"
+        ],
+        "rewards": [
+          {
+            "id": "morning-first",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-breakfast",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-opening",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-coast",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-picnic",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-neighbours",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-delivery",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-shelves",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-baker",
+            "currency": "repairKits"
+          },
+          {
+            "id": "morning-party",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-011",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-012",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-013",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-014",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-015",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-016",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-017",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-018",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-019",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s1-order-020",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-021",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-022",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-023",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-024",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-025",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-026",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-027",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-028",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-029",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-030",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-031",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-032",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-033",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-034",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-035",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-036",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-037",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-038",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-039",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-040",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-041",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-042",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-043",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-044",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-045",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-046",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-047",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-048",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-049",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-050",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-051",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-052",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-053",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-054",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-055",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-056",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-057",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-058",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-059",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-060",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-061",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-062",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-063",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-064",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-065",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-066",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-067",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-068",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-069",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-070",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-071",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-072",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-073",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-074",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-075",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-076",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-077",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-078",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-079",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s1-order-080",
+            "currency": "stars"
+          }
+        ]
+      },
+      {
+        "id": "warehouse-1",
+        "definitionFile": "src/levels/projects/warehouse-1.json",
+        "orders": 80,
+        "works": 26,
+        "sourceFileDigest": "ffb8bfcea36b69d4e86cb461b1ea1a236228190590681ff2f21e40bfcab6e676",
+        "definitionDigest": "01c8e6e8a608f9c76b537dee5497c0340038d0a1a9ca64abcd5ce48a9634bc4d",
+        "taskDigest": "236b6124dae3968c86de98be9ea9b112a215ea0440c2e999844c930e7f78b84d",
+        "tasks": [
+          {
+            "id": "warehouse-s1-t01",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t02",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t03",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t04",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t05",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t06",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t07",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t08",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t09",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t10",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t11",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t12",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-t13",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t14",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t15",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t16",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t17",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t18",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t19",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t20",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t21",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t22",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t23",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t24",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t25",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-t26",
+            "cost": 3,
+            "currency": "stars"
+          }
+        ],
+        "orderIds": [
+          "warehouse-s1-order-001",
+          "warehouse-s1-order-002",
+          "warehouse-s1-order-003",
+          "warehouse-s1-order-004",
+          "warehouse-s1-order-005",
+          "warehouse-s1-order-006",
+          "warehouse-s1-order-007",
+          "warehouse-s1-order-008",
+          "warehouse-s1-order-009",
+          "warehouse-s1-order-010",
+          "warehouse-s1-order-011",
+          "warehouse-s1-order-012",
+          "warehouse-s1-order-013",
+          "warehouse-s1-order-014",
+          "warehouse-s1-order-015",
+          "warehouse-s1-order-016",
+          "warehouse-s1-order-017",
+          "warehouse-s1-order-018",
+          "warehouse-s1-order-019",
+          "warehouse-s1-order-020",
+          "warehouse-s1-order-021",
+          "warehouse-s1-order-022",
+          "warehouse-s1-order-023",
+          "warehouse-s1-order-024",
+          "warehouse-s1-order-025",
+          "warehouse-s1-order-026",
+          "warehouse-s1-order-027",
+          "warehouse-s1-order-028",
+          "warehouse-s1-order-029",
+          "warehouse-s1-order-030",
+          "warehouse-s1-order-031",
+          "warehouse-s1-order-032",
+          "warehouse-s1-order-033",
+          "warehouse-s1-order-034",
+          "warehouse-s1-order-035",
+          "warehouse-s1-order-036",
+          "warehouse-s1-order-037",
+          "warehouse-s1-order-038",
+          "warehouse-s1-order-039",
+          "warehouse-s1-order-040",
+          "warehouse-s1-order-041",
+          "warehouse-s1-order-042",
+          "warehouse-s1-order-043",
+          "warehouse-s1-order-044",
+          "warehouse-s1-order-045",
+          "warehouse-s1-order-046",
+          "warehouse-s1-order-047",
+          "warehouse-s1-order-048",
+          "warehouse-s1-order-049",
+          "warehouse-s1-order-050",
+          "warehouse-s1-order-051",
+          "warehouse-s1-order-052",
+          "warehouse-s1-order-053",
+          "warehouse-s1-order-054",
+          "warehouse-s1-order-055",
+          "warehouse-s1-order-056",
+          "warehouse-s1-order-057",
+          "warehouse-s1-order-058",
+          "warehouse-s1-order-059",
+          "warehouse-s1-order-060",
+          "warehouse-s1-order-061",
+          "warehouse-s1-order-062",
+          "warehouse-s1-order-063",
+          "warehouse-s1-order-064",
+          "warehouse-s1-order-065",
+          "warehouse-s1-order-066",
+          "warehouse-s1-order-067",
+          "warehouse-s1-order-068",
+          "warehouse-s1-order-069",
+          "warehouse-s1-order-070",
+          "warehouse-s1-order-071",
+          "warehouse-s1-order-072",
+          "warehouse-s1-order-073",
+          "warehouse-s1-order-074",
+          "warehouse-s1-order-075",
+          "warehouse-s1-order-076",
+          "warehouse-s1-order-077",
+          "warehouse-s1-order-078",
+          "warehouse-s1-order-079",
+          "warehouse-s1-order-080"
+        ],
+        "rewards": [
+          {
+            "id": "warehouse-s1-order-001",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-002",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-003",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-004",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-005",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-006",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-007",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-008",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-009",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-010",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-011",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-012",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-013",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-014",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-015",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-016",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-017",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-018",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-019",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-020",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-021",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-022",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-023",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-024",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-025",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-026",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-027",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-028",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-029",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-030",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-031",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-032",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s1-order-033",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-034",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-035",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-036",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-037",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-038",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-039",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-040",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-041",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-042",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-043",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-044",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-045",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-046",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-047",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-048",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-049",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-050",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-051",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-052",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-053",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-054",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-055",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-056",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-057",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-058",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-059",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-060",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-061",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-062",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-063",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-064",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-065",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-066",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-067",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-068",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-069",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-070",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-071",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-072",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-073",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-074",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-075",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-076",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-077",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-078",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-079",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s1-order-080",
+            "currency": "stars"
+          }
+        ]
+      },
+      {
+        "id": "shop-2",
+        "definitionFile": "src/levels/projects/shop-2.json",
+        "orders": 120,
+        "works": 20,
+        "sourceFileDigest": "bbb658758a7202c11fefba7cf52e7ad7341976e95e0e7646d86005292c8fc3c0",
+        "definitionDigest": "67944d8d02d3cc6eb94f88b94b6e857af2db47fc29f22c2cc94ba2b60d30162c",
+        "taskDigest": "88fbf86d6c3d9c8510f1255531f71316c57ec02ff1e6fd1e12407da43b3e5df1",
+        "tasks": [
+          {
+            "id": "shop-s2-t01",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-t02",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-t03",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-t04",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t05",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t06",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t07",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t08",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t09",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t10",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t11",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t12",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t13",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t14",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t15",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t16",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t17",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t18",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t19",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-t20",
+            "cost": 6,
+            "currency": "stars"
+          }
+        ],
+        "orderIds": [
+          "shop-s2-order-001",
+          "shop-s2-order-002",
+          "shop-s2-order-003",
+          "shop-s2-order-004",
+          "shop-s2-order-005",
+          "shop-s2-order-006",
+          "shop-s2-order-007",
+          "shop-s2-order-008",
+          "shop-s2-order-009",
+          "shop-s2-order-010",
+          "shop-s2-order-011",
+          "shop-s2-order-012",
+          "shop-s2-order-013",
+          "shop-s2-order-014",
+          "shop-s2-order-015",
+          "shop-s2-order-016",
+          "shop-s2-order-017",
+          "shop-s2-order-018",
+          "shop-s2-order-019",
+          "shop-s2-order-020",
+          "shop-s2-order-021",
+          "shop-s2-order-022",
+          "shop-s2-order-023",
+          "shop-s2-order-024",
+          "shop-s2-order-025",
+          "shop-s2-order-026",
+          "shop-s2-order-027",
+          "shop-s2-order-028",
+          "shop-s2-order-029",
+          "shop-s2-order-030",
+          "shop-s2-order-031",
+          "shop-s2-order-032",
+          "shop-s2-order-033",
+          "shop-s2-order-034",
+          "shop-s2-order-035",
+          "shop-s2-order-036",
+          "shop-s2-order-037",
+          "shop-s2-order-038",
+          "shop-s2-order-039",
+          "shop-s2-order-040",
+          "shop-s2-order-041",
+          "shop-s2-order-042",
+          "shop-s2-order-043",
+          "shop-s2-order-044",
+          "shop-s2-order-045",
+          "shop-s2-order-046",
+          "shop-s2-order-047",
+          "shop-s2-order-048",
+          "shop-s2-order-049",
+          "shop-s2-order-050",
+          "shop-s2-order-051",
+          "shop-s2-order-052",
+          "shop-s2-order-053",
+          "shop-s2-order-054",
+          "shop-s2-order-055",
+          "shop-s2-order-056",
+          "shop-s2-order-057",
+          "shop-s2-order-058",
+          "shop-s2-order-059",
+          "shop-s2-order-060",
+          "shop-s2-order-061",
+          "shop-s2-order-062",
+          "shop-s2-order-063",
+          "shop-s2-order-064",
+          "shop-s2-order-065",
+          "shop-s2-order-066",
+          "shop-s2-order-067",
+          "shop-s2-order-068",
+          "shop-s2-order-069",
+          "shop-s2-order-070",
+          "shop-s2-order-071",
+          "shop-s2-order-072",
+          "shop-s2-order-073",
+          "shop-s2-order-074",
+          "shop-s2-order-075",
+          "shop-s2-order-076",
+          "shop-s2-order-077",
+          "shop-s2-order-078",
+          "shop-s2-order-079",
+          "shop-s2-order-080",
+          "shop-s2-order-081",
+          "shop-s2-order-082",
+          "shop-s2-order-083",
+          "shop-s2-order-084",
+          "shop-s2-order-085",
+          "shop-s2-order-086",
+          "shop-s2-order-087",
+          "shop-s2-order-088",
+          "shop-s2-order-089",
+          "shop-s2-order-090",
+          "shop-s2-order-091",
+          "shop-s2-order-092",
+          "shop-s2-order-093",
+          "shop-s2-order-094",
+          "shop-s2-order-095",
+          "shop-s2-order-096",
+          "shop-s2-order-097",
+          "shop-s2-order-098",
+          "shop-s2-order-099",
+          "shop-s2-order-100",
+          "shop-s2-order-101",
+          "shop-s2-order-102",
+          "shop-s2-order-103",
+          "shop-s2-order-104",
+          "shop-s2-order-105",
+          "shop-s2-order-106",
+          "shop-s2-order-107",
+          "shop-s2-order-108",
+          "shop-s2-order-109",
+          "shop-s2-order-110",
+          "shop-s2-order-111",
+          "shop-s2-order-112",
+          "shop-s2-order-113",
+          "shop-s2-order-114",
+          "shop-s2-order-115",
+          "shop-s2-order-116",
+          "shop-s2-order-117",
+          "shop-s2-order-118",
+          "shop-s2-order-119",
+          "shop-s2-order-120"
+        ],
+        "rewards": [
+          {
+            "id": "shop-s2-order-001",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-002",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-003",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-004",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-005",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-006",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-007",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-008",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-009",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-010",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-011",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-012",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-013",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-014",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-015",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-016",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-017",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-018",
+            "currency": "repairKits"
+          },
+          {
+            "id": "shop-s2-order-019",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-020",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-021",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-022",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-023",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-024",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-025",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-026",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-027",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-028",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-029",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-030",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-031",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-032",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-033",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-034",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-035",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-036",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-037",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-038",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-039",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-040",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-041",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-042",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-043",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-044",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-045",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-046",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-047",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-048",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-049",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-050",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-051",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-052",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-053",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-054",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-055",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-056",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-057",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-058",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-059",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-060",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-061",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-062",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-063",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-064",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-065",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-066",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-067",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-068",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-069",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-070",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-071",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-072",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-073",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-074",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-075",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-076",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-077",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-078",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-079",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-080",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-081",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-082",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-083",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-084",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-085",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-086",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-087",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-088",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-089",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-090",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-091",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-092",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-093",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-094",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-095",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-096",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-097",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-098",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-099",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-100",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-101",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-102",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-103",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-104",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-105",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-106",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-107",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-108",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-109",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-110",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-111",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-112",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-113",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-114",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-115",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-116",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-117",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-118",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-119",
+            "currency": "stars"
+          },
+          {
+            "id": "shop-s2-order-120",
+            "currency": "stars"
+          }
+        ]
+      },
+      {
+        "id": "warehouse-2",
+        "definitionFile": "src/levels/projects/warehouse-2.json",
+        "orders": 120,
+        "works": 20,
+        "sourceFileDigest": "292ca409ab959614359555263189c3b4d3ef8220be9c4168dc9a1bf1a61429c3",
+        "definitionDigest": "dade5e7fa15a9b61e352795166e908e1e9276e44ade84b69fe6d96e1da02cfbd",
+        "taskDigest": "1389e4c199f8a4bf4b877e8297ee2f59efc01369f8ce709b48b91104e2fe9def",
+        "tasks": [
+          {
+            "id": "warehouse-s2-t01",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-t02",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-t03",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-t04",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t05",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t06",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t07",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t08",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t09",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t10",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t11",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t12",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t13",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t14",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t15",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t16",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t17",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t18",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t19",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-t20",
+            "cost": 6,
+            "currency": "stars"
+          }
+        ],
+        "orderIds": [
+          "warehouse-s2-order-001",
+          "warehouse-s2-order-002",
+          "warehouse-s2-order-003",
+          "warehouse-s2-order-004",
+          "warehouse-s2-order-005",
+          "warehouse-s2-order-006",
+          "warehouse-s2-order-007",
+          "warehouse-s2-order-008",
+          "warehouse-s2-order-009",
+          "warehouse-s2-order-010",
+          "warehouse-s2-order-011",
+          "warehouse-s2-order-012",
+          "warehouse-s2-order-013",
+          "warehouse-s2-order-014",
+          "warehouse-s2-order-015",
+          "warehouse-s2-order-016",
+          "warehouse-s2-order-017",
+          "warehouse-s2-order-018",
+          "warehouse-s2-order-019",
+          "warehouse-s2-order-020",
+          "warehouse-s2-order-021",
+          "warehouse-s2-order-022",
+          "warehouse-s2-order-023",
+          "warehouse-s2-order-024",
+          "warehouse-s2-order-025",
+          "warehouse-s2-order-026",
+          "warehouse-s2-order-027",
+          "warehouse-s2-order-028",
+          "warehouse-s2-order-029",
+          "warehouse-s2-order-030",
+          "warehouse-s2-order-031",
+          "warehouse-s2-order-032",
+          "warehouse-s2-order-033",
+          "warehouse-s2-order-034",
+          "warehouse-s2-order-035",
+          "warehouse-s2-order-036",
+          "warehouse-s2-order-037",
+          "warehouse-s2-order-038",
+          "warehouse-s2-order-039",
+          "warehouse-s2-order-040",
+          "warehouse-s2-order-041",
+          "warehouse-s2-order-042",
+          "warehouse-s2-order-043",
+          "warehouse-s2-order-044",
+          "warehouse-s2-order-045",
+          "warehouse-s2-order-046",
+          "warehouse-s2-order-047",
+          "warehouse-s2-order-048",
+          "warehouse-s2-order-049",
+          "warehouse-s2-order-050",
+          "warehouse-s2-order-051",
+          "warehouse-s2-order-052",
+          "warehouse-s2-order-053",
+          "warehouse-s2-order-054",
+          "warehouse-s2-order-055",
+          "warehouse-s2-order-056",
+          "warehouse-s2-order-057",
+          "warehouse-s2-order-058",
+          "warehouse-s2-order-059",
+          "warehouse-s2-order-060",
+          "warehouse-s2-order-061",
+          "warehouse-s2-order-062",
+          "warehouse-s2-order-063",
+          "warehouse-s2-order-064",
+          "warehouse-s2-order-065",
+          "warehouse-s2-order-066",
+          "warehouse-s2-order-067",
+          "warehouse-s2-order-068",
+          "warehouse-s2-order-069",
+          "warehouse-s2-order-070",
+          "warehouse-s2-order-071",
+          "warehouse-s2-order-072",
+          "warehouse-s2-order-073",
+          "warehouse-s2-order-074",
+          "warehouse-s2-order-075",
+          "warehouse-s2-order-076",
+          "warehouse-s2-order-077",
+          "warehouse-s2-order-078",
+          "warehouse-s2-order-079",
+          "warehouse-s2-order-080",
+          "warehouse-s2-order-081",
+          "warehouse-s2-order-082",
+          "warehouse-s2-order-083",
+          "warehouse-s2-order-084",
+          "warehouse-s2-order-085",
+          "warehouse-s2-order-086",
+          "warehouse-s2-order-087",
+          "warehouse-s2-order-088",
+          "warehouse-s2-order-089",
+          "warehouse-s2-order-090",
+          "warehouse-s2-order-091",
+          "warehouse-s2-order-092",
+          "warehouse-s2-order-093",
+          "warehouse-s2-order-094",
+          "warehouse-s2-order-095",
+          "warehouse-s2-order-096",
+          "warehouse-s2-order-097",
+          "warehouse-s2-order-098",
+          "warehouse-s2-order-099",
+          "warehouse-s2-order-100",
+          "warehouse-s2-order-101",
+          "warehouse-s2-order-102",
+          "warehouse-s2-order-103",
+          "warehouse-s2-order-104",
+          "warehouse-s2-order-105",
+          "warehouse-s2-order-106",
+          "warehouse-s2-order-107",
+          "warehouse-s2-order-108",
+          "warehouse-s2-order-109",
+          "warehouse-s2-order-110",
+          "warehouse-s2-order-111",
+          "warehouse-s2-order-112",
+          "warehouse-s2-order-113",
+          "warehouse-s2-order-114",
+          "warehouse-s2-order-115",
+          "warehouse-s2-order-116",
+          "warehouse-s2-order-117",
+          "warehouse-s2-order-118",
+          "warehouse-s2-order-119",
+          "warehouse-s2-order-120"
+        ],
+        "rewards": [
+          {
+            "id": "warehouse-s2-order-001",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-002",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-003",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-004",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-005",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-006",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-007",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-008",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-009",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-010",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-011",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-012",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-013",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-014",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-015",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-016",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-017",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-018",
+            "currency": "repairKits"
+          },
+          {
+            "id": "warehouse-s2-order-019",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-020",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-021",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-022",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-023",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-024",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-025",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-026",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-027",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-028",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-029",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-030",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-031",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-032",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-033",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-034",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-035",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-036",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-037",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-038",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-039",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-040",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-041",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-042",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-043",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-044",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-045",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-046",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-047",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-048",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-049",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-050",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-051",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-052",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-053",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-054",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-055",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-056",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-057",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-058",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-059",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-060",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-061",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-062",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-063",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-064",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-065",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-066",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-067",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-068",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-069",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-070",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-071",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-072",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-073",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-074",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-075",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-076",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-077",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-078",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-079",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-080",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-081",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-082",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-083",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-084",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-085",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-086",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-087",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-088",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-089",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-090",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-091",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-092",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-093",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-094",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-095",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-096",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-097",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-098",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-099",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-100",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-101",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-102",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-103",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-104",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-105",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-106",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-107",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-108",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-109",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-110",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-111",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-112",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-113",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-114",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-115",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-116",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-117",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-118",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-119",
+            "currency": "stars"
+          },
+          {
+            "id": "warehouse-s2-order-120",
+            "currency": "stars"
+          }
+        ]
+      },
+      {
+        "id": "fruit-yard-1",
+        "definitionFile": "src/levels/projects/fruit-yard-1.json",
+        "orders": 80,
+        "works": 26,
+        "sourceFileDigest": "9e9a718da9b3ddb8cde52ac00877a31c6b737c2ee38a36aeb78696bb8a54e1fb",
+        "definitionDigest": "3552209e856be4600163f30196b196c92a979d4a3cf2830d6985b4f0cae597c8",
+        "taskDigest": "b20a6bb92321fe00b2f15ab5c1cbfee2371f09c3b0c45c8ddb8a0ea78ebfb701",
+        "tasks": [
+          {
+            "id": "fruit-yard-s1-t01",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t02",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t03",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t04",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t05",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t06",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t07",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t08",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t09",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t10",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t11",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t12",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-t13",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t14",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t15",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t16",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t17",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t18",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t19",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t20",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t21",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t22",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t23",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t24",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t25",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-t26",
+            "cost": 3,
+            "currency": "stars"
+          }
+        ],
+        "orderIds": [
+          "fruit-yard-s1-order-001",
+          "fruit-yard-s1-order-002",
+          "fruit-yard-s1-order-003",
+          "fruit-yard-s1-order-004",
+          "fruit-yard-s1-order-005",
+          "fruit-yard-s1-order-006",
+          "fruit-yard-s1-order-007",
+          "fruit-yard-s1-order-008",
+          "fruit-yard-s1-order-009",
+          "fruit-yard-s1-order-010",
+          "fruit-yard-s1-order-011",
+          "fruit-yard-s1-order-012",
+          "fruit-yard-s1-order-013",
+          "fruit-yard-s1-order-014",
+          "fruit-yard-s1-order-015",
+          "fruit-yard-s1-order-016",
+          "fruit-yard-s1-order-017",
+          "fruit-yard-s1-order-018",
+          "fruit-yard-s1-order-019",
+          "fruit-yard-s1-order-020",
+          "fruit-yard-s1-order-021",
+          "fruit-yard-s1-order-022",
+          "fruit-yard-s1-order-023",
+          "fruit-yard-s1-order-024",
+          "fruit-yard-s1-order-025",
+          "fruit-yard-s1-order-026",
+          "fruit-yard-s1-order-027",
+          "fruit-yard-s1-order-028",
+          "fruit-yard-s1-order-029",
+          "fruit-yard-s1-order-030",
+          "fruit-yard-s1-order-031",
+          "fruit-yard-s1-order-032",
+          "fruit-yard-s1-order-033",
+          "fruit-yard-s1-order-034",
+          "fruit-yard-s1-order-035",
+          "fruit-yard-s1-order-036",
+          "fruit-yard-s1-order-037",
+          "fruit-yard-s1-order-038",
+          "fruit-yard-s1-order-039",
+          "fruit-yard-s1-order-040",
+          "fruit-yard-s1-order-041",
+          "fruit-yard-s1-order-042",
+          "fruit-yard-s1-order-043",
+          "fruit-yard-s1-order-044",
+          "fruit-yard-s1-order-045",
+          "fruit-yard-s1-order-046",
+          "fruit-yard-s1-order-047",
+          "fruit-yard-s1-order-048",
+          "fruit-yard-s1-order-049",
+          "fruit-yard-s1-order-050",
+          "fruit-yard-s1-order-051",
+          "fruit-yard-s1-order-052",
+          "fruit-yard-s1-order-053",
+          "fruit-yard-s1-order-054",
+          "fruit-yard-s1-order-055",
+          "fruit-yard-s1-order-056",
+          "fruit-yard-s1-order-057",
+          "fruit-yard-s1-order-058",
+          "fruit-yard-s1-order-059",
+          "fruit-yard-s1-order-060",
+          "fruit-yard-s1-order-061",
+          "fruit-yard-s1-order-062",
+          "fruit-yard-s1-order-063",
+          "fruit-yard-s1-order-064",
+          "fruit-yard-s1-order-065",
+          "fruit-yard-s1-order-066",
+          "fruit-yard-s1-order-067",
+          "fruit-yard-s1-order-068",
+          "fruit-yard-s1-order-069",
+          "fruit-yard-s1-order-070",
+          "fruit-yard-s1-order-071",
+          "fruit-yard-s1-order-072",
+          "fruit-yard-s1-order-073",
+          "fruit-yard-s1-order-074",
+          "fruit-yard-s1-order-075",
+          "fruit-yard-s1-order-076",
+          "fruit-yard-s1-order-077",
+          "fruit-yard-s1-order-078",
+          "fruit-yard-s1-order-079",
+          "fruit-yard-s1-order-080"
+        ],
+        "rewards": [
+          {
+            "id": "fruit-yard-s1-order-001",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-002",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-003",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-004",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-005",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-006",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-007",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-008",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-009",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-010",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-011",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-012",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-013",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-014",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-015",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-016",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-017",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-018",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-019",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-020",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-021",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-022",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-023",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-024",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-025",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-026",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-027",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-028",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-029",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-030",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-031",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-032",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s1-order-033",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-034",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-035",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-036",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-037",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-038",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-039",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-040",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-041",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-042",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-043",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-044",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-045",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-046",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-047",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-048",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-049",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-050",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-051",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-052",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-053",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-054",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-055",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-056",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-057",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-058",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-059",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-060",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-061",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-062",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-063",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-064",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-065",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-066",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-067",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-068",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-069",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-070",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-071",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-072",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-073",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-074",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-075",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-076",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-077",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-078",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-079",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s1-order-080",
+            "currency": "stars"
+          }
+        ]
+      },
+      {
+        "id": "fruit-yard-2",
+        "definitionFile": "src/levels/projects/fruit-yard-2.json",
+        "orders": 120,
+        "works": 20,
+        "sourceFileDigest": "031fc07b8d282ae21978c3cb8bf51e9510fa59de98f511c8ecd9b0b8e257ba7e",
+        "definitionDigest": "6760824a76c136c55221a10e34c87f0d1cfdc48226bd42d9cb6f7d5f3a160de2",
+        "taskDigest": "8301b7bfa7a9899dd5a7e99ace196c10835617240b2f210989a075389fba6b1c",
+        "tasks": [
+          {
+            "id": "fruit-yard-s2-t01",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t02",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t03",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t04",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t05",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t06",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t07",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t08",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t09",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t10",
+            "cost": 6,
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-t11",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t12",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t13",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t14",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t15",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t16",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t17",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t18",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t19",
+            "cost": 6,
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-t20",
+            "cost": 6,
+            "currency": "stars"
+          }
+        ],
+        "orderIds": [
+          "fruit-yard-s2-order-001",
+          "fruit-yard-s2-order-002",
+          "fruit-yard-s2-order-003",
+          "fruit-yard-s2-order-004",
+          "fruit-yard-s2-order-005",
+          "fruit-yard-s2-order-006",
+          "fruit-yard-s2-order-007",
+          "fruit-yard-s2-order-008",
+          "fruit-yard-s2-order-009",
+          "fruit-yard-s2-order-010",
+          "fruit-yard-s2-order-011",
+          "fruit-yard-s2-order-012",
+          "fruit-yard-s2-order-013",
+          "fruit-yard-s2-order-014",
+          "fruit-yard-s2-order-015",
+          "fruit-yard-s2-order-016",
+          "fruit-yard-s2-order-017",
+          "fruit-yard-s2-order-018",
+          "fruit-yard-s2-order-019",
+          "fruit-yard-s2-order-020",
+          "fruit-yard-s2-order-021",
+          "fruit-yard-s2-order-022",
+          "fruit-yard-s2-order-023",
+          "fruit-yard-s2-order-024",
+          "fruit-yard-s2-order-025",
+          "fruit-yard-s2-order-026",
+          "fruit-yard-s2-order-027",
+          "fruit-yard-s2-order-028",
+          "fruit-yard-s2-order-029",
+          "fruit-yard-s2-order-030",
+          "fruit-yard-s2-order-031",
+          "fruit-yard-s2-order-032",
+          "fruit-yard-s2-order-033",
+          "fruit-yard-s2-order-034",
+          "fruit-yard-s2-order-035",
+          "fruit-yard-s2-order-036",
+          "fruit-yard-s2-order-037",
+          "fruit-yard-s2-order-038",
+          "fruit-yard-s2-order-039",
+          "fruit-yard-s2-order-040",
+          "fruit-yard-s2-order-041",
+          "fruit-yard-s2-order-042",
+          "fruit-yard-s2-order-043",
+          "fruit-yard-s2-order-044",
+          "fruit-yard-s2-order-045",
+          "fruit-yard-s2-order-046",
+          "fruit-yard-s2-order-047",
+          "fruit-yard-s2-order-048",
+          "fruit-yard-s2-order-049",
+          "fruit-yard-s2-order-050",
+          "fruit-yard-s2-order-051",
+          "fruit-yard-s2-order-052",
+          "fruit-yard-s2-order-053",
+          "fruit-yard-s2-order-054",
+          "fruit-yard-s2-order-055",
+          "fruit-yard-s2-order-056",
+          "fruit-yard-s2-order-057",
+          "fruit-yard-s2-order-058",
+          "fruit-yard-s2-order-059",
+          "fruit-yard-s2-order-060",
+          "fruit-yard-s2-order-061",
+          "fruit-yard-s2-order-062",
+          "fruit-yard-s2-order-063",
+          "fruit-yard-s2-order-064",
+          "fruit-yard-s2-order-065",
+          "fruit-yard-s2-order-066",
+          "fruit-yard-s2-order-067",
+          "fruit-yard-s2-order-068",
+          "fruit-yard-s2-order-069",
+          "fruit-yard-s2-order-070",
+          "fruit-yard-s2-order-071",
+          "fruit-yard-s2-order-072",
+          "fruit-yard-s2-order-073",
+          "fruit-yard-s2-order-074",
+          "fruit-yard-s2-order-075",
+          "fruit-yard-s2-order-076",
+          "fruit-yard-s2-order-077",
+          "fruit-yard-s2-order-078",
+          "fruit-yard-s2-order-079",
+          "fruit-yard-s2-order-080",
+          "fruit-yard-s2-order-081",
+          "fruit-yard-s2-order-082",
+          "fruit-yard-s2-order-083",
+          "fruit-yard-s2-order-084",
+          "fruit-yard-s2-order-085",
+          "fruit-yard-s2-order-086",
+          "fruit-yard-s2-order-087",
+          "fruit-yard-s2-order-088",
+          "fruit-yard-s2-order-089",
+          "fruit-yard-s2-order-090",
+          "fruit-yard-s2-order-091",
+          "fruit-yard-s2-order-092",
+          "fruit-yard-s2-order-093",
+          "fruit-yard-s2-order-094",
+          "fruit-yard-s2-order-095",
+          "fruit-yard-s2-order-096",
+          "fruit-yard-s2-order-097",
+          "fruit-yard-s2-order-098",
+          "fruit-yard-s2-order-099",
+          "fruit-yard-s2-order-100",
+          "fruit-yard-s2-order-101",
+          "fruit-yard-s2-order-102",
+          "fruit-yard-s2-order-103",
+          "fruit-yard-s2-order-104",
+          "fruit-yard-s2-order-105",
+          "fruit-yard-s2-order-106",
+          "fruit-yard-s2-order-107",
+          "fruit-yard-s2-order-108",
+          "fruit-yard-s2-order-109",
+          "fruit-yard-s2-order-110",
+          "fruit-yard-s2-order-111",
+          "fruit-yard-s2-order-112",
+          "fruit-yard-s2-order-113",
+          "fruit-yard-s2-order-114",
+          "fruit-yard-s2-order-115",
+          "fruit-yard-s2-order-116",
+          "fruit-yard-s2-order-117",
+          "fruit-yard-s2-order-118",
+          "fruit-yard-s2-order-119",
+          "fruit-yard-s2-order-120"
+        ],
+        "rewards": [
+          {
+            "id": "fruit-yard-s2-order-001",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-002",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-003",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-004",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-005",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-006",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-007",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-008",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-009",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-010",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-011",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-012",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-013",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-014",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-015",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-016",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-017",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-018",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-019",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-020",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-021",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-022",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-023",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-024",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-025",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-026",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-027",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-028",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-029",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-030",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-031",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-032",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-033",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-034",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-035",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-036",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-037",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-038",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-039",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-040",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-041",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-042",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-043",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-044",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-045",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-046",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-047",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-048",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-049",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-050",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-051",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-052",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-053",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-054",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-055",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-056",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-057",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-058",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-059",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-060",
+            "currency": "repairKits"
+          },
+          {
+            "id": "fruit-yard-s2-order-061",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-062",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-063",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-064",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-065",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-066",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-067",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-068",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-069",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-070",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-071",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-072",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-073",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-074",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-075",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-076",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-077",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-078",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-079",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-080",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-081",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-082",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-083",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-084",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-085",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-086",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-087",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-088",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-089",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-090",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-091",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-092",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-093",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-094",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-095",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-096",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-097",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-098",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-099",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-100",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-101",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-102",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-103",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-104",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-105",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-106",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-107",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-108",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-109",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-110",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-111",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-112",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-113",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-114",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-115",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-116",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-117",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-118",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-119",
+            "currency": "stars"
+          },
+          {
+            "id": "fruit-yard-s2-order-120",
+            "currency": "stars"
+          }
+        ]
+      },
+      {
+        "id": "bakery-1",
+        "definitionFile": "src/levels/projects/bakery-1.json",
+        "orders": 80,
+        "works": 26,
+        "sourceFileDigest": "6b631612960a4aece3007f04c7ee28455cddc05fd714b0fff69e4d112ca7fbad",
+        "definitionDigest": "5b82c014ca5659d8afcb407d5ad34f3568ef16bbc52d108fe302be718b2ac42c",
+        "taskDigest": "d8eaf464cade69af80d21dc978c9105b4b8cd3e042743db0b1773ae8a0971fcb",
+        "tasks": [
+          {
+            "id": "bakery-s1-t01",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t02",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t03",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t04",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t05",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t06",
+            "cost": 2,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t07",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t08",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t09",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t10",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t11",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t12",
+            "cost": 3,
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-t19",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t20",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t21",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t22",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t23",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t24",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t25",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t13",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t14",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t15",
+            "cost": 3,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t16",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t17",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t18",
+            "cost": 4,
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-t26",
+            "cost": 3,
+            "currency": "stars"
+          }
+        ],
+        "orderIds": [
+          "bakery-s1-order-001",
+          "bakery-s1-order-002",
+          "bakery-s1-order-003",
+          "bakery-s1-order-004",
+          "bakery-s1-order-005",
+          "bakery-s1-order-006",
+          "bakery-s1-order-007",
+          "bakery-s1-order-008",
+          "bakery-s1-order-009",
+          "bakery-s1-order-010",
+          "bakery-s1-order-011",
+          "bakery-s1-order-012",
+          "bakery-s1-order-013",
+          "bakery-s1-order-014",
+          "bakery-s1-order-015",
+          "bakery-s1-order-016",
+          "bakery-s1-order-017",
+          "bakery-s1-order-018",
+          "bakery-s1-order-019",
+          "bakery-s1-order-020",
+          "bakery-s1-order-021",
+          "bakery-s1-order-022",
+          "bakery-s1-order-023",
+          "bakery-s1-order-024",
+          "bakery-s1-order-025",
+          "bakery-s1-order-026",
+          "bakery-s1-order-027",
+          "bakery-s1-order-028",
+          "bakery-s1-order-029",
+          "bakery-s1-order-030",
+          "bakery-s1-order-031",
+          "bakery-s1-order-032",
+          "bakery-s1-order-033",
+          "bakery-s1-order-034",
+          "bakery-s1-order-035",
+          "bakery-s1-order-036",
+          "bakery-s1-order-037",
+          "bakery-s1-order-038",
+          "bakery-s1-order-039",
+          "bakery-s1-order-040",
+          "bakery-s1-order-041",
+          "bakery-s1-order-042",
+          "bakery-s1-order-043",
+          "bakery-s1-order-044",
+          "bakery-s1-order-045",
+          "bakery-s1-order-046",
+          "bakery-s1-order-047",
+          "bakery-s1-order-048",
+          "bakery-s1-order-049",
+          "bakery-s1-order-050",
+          "bakery-s1-order-051",
+          "bakery-s1-order-052",
+          "bakery-s1-order-053",
+          "bakery-s1-order-054",
+          "bakery-s1-order-055",
+          "bakery-s1-order-056",
+          "bakery-s1-order-057",
+          "bakery-s1-order-058",
+          "bakery-s1-order-059",
+          "bakery-s1-order-060",
+          "bakery-s1-order-061",
+          "bakery-s1-order-062",
+          "bakery-s1-order-063",
+          "bakery-s1-order-064",
+          "bakery-s1-order-065",
+          "bakery-s1-order-066",
+          "bakery-s1-order-067",
+          "bakery-s1-order-068",
+          "bakery-s1-order-069",
+          "bakery-s1-order-070",
+          "bakery-s1-order-071",
+          "bakery-s1-order-072",
+          "bakery-s1-order-073",
+          "bakery-s1-order-074",
+          "bakery-s1-order-075",
+          "bakery-s1-order-076",
+          "bakery-s1-order-077",
+          "bakery-s1-order-078",
+          "bakery-s1-order-079",
+          "bakery-s1-order-080"
+        ],
+        "rewards": [
+          {
+            "id": "bakery-s1-order-001",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-002",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-003",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-004",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-005",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-006",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-007",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-008",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-009",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-010",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-011",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-012",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-013",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-014",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-015",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-016",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-017",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-018",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-019",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-020",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-021",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-022",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-023",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-024",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-025",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-026",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-027",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-028",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-029",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-030",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-031",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-032",
+            "currency": "repairKits"
+          },
+          {
+            "id": "bakery-s1-order-033",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-034",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-035",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-036",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-037",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-038",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-039",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-040",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-041",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-042",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-043",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-044",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-045",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-046",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-047",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-048",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-049",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-050",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-051",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-052",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-053",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-054",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-055",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-056",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-057",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-058",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-059",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-060",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-061",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-062",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-063",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-064",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-065",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-066",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-067",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-068",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-069",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-070",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-071",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-072",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-073",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-074",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-075",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-076",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-077",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-078",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-079",
+            "currency": "stars"
+          },
+          {
+            "id": "bakery-s1-order-080",
+            "currency": "stars"
+          }
+        ]
+      }
+    ]
+  },
+  "productionManifest": "docs/content/terrace-1-production.json",
+  "notProduced": [
+    "Other 760 orders and 100 works of global Stage 3",
+    "Other 1280 orders and 140 works of global Stage 4",
+    "Remaining Stages 5–6",
+    "Release SDK and monetization"
+  ],
+  "implementedBlock": {
+    "orders": 760,
+    "works": 178,
+    "stars": 517,
+    "repairKits": 243,
+    "completeGlobalStage3": false,
+    "completeGlobalStage4": false
+  }
+}

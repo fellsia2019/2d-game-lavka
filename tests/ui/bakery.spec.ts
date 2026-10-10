@@ -97,7 +97,7 @@ test('A kitchen-first save migrates to the entrance route and keeps the partly p
   const source={...p,schema:9,campaign:{...p.campaign,version:'coastal-campaign-7'}};
   await page.goto('/');await page.evaluate(({key,source})=>localStorage.setItem(key,JSON.stringify(source)),{key:STORAGE_KEY,source});
   await page.reload();await settleHallFrame(page);
-  let after=await saved(page);expect(after.schema).toBe(10);expect(after.campaign.bakeryLegacyPrefix).toBe(14);
+  let after=await saved(page);expect(after.schema).toBe(11);expect(after.campaign.bakeryLegacyPrefix).toBe(14);
   expect(after.attempt).toEqual(p.attempt);expect(after.attempts).toEqual(p.attempts);
   expect([after.coins,after.stars,after.repairKits]).toEqual([1234,7,2]);
   if(await page.locator('.world-main-action[data-action="show-target"]').count())await page.locator('.world-main-action').click();

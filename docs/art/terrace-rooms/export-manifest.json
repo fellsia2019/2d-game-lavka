@@ -1,0 +1,167 @@
+[
+  {
+    "name": "before",
+    "source": "docs/art/terrace-rooms/before.png",
+    "runtime": "public/assets/terrace-before.webp",
+    "bytes": 547300,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "d4dd34c58889405439ffa056298620e1f804673384671b15899a3ffa29a07d8b",
+    "runtimeSha256": "0d6fdb158ac74ef188702b7c0ef71704e62dd9d9b07ba6989b1e19e157032bf8",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "before-v2",
+    "source": "docs/art/terrace-rooms/before-v2.png",
+    "runtime": "public/assets/terrace-before-v2.webp",
+    "bytes": 538898,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "979ff88e911b2bf44665395d578b5f575b8f6bd72e2e7ac978e529d4a79d7a6b",
+    "runtimeSha256": "007036a7d84b3c606895fc5ab27bdad3edff259ad54df1b830fcea00719ccccd",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "tidied",
+    "source": "docs/art/terrace-rooms/tidied.png",
+    "runtime": "public/assets/terrace-tidied.webp",
+    "bytes": 527656,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "1d67e66cf34f559e918d3fed76c108437614bc2076fdab8f66a1dc59e94c355e",
+    "runtimeSha256": "ca4f3cb1695c0e65e5e6dcc6d6a45ecf7770361bcef3659ccb58559026857762",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "level",
+    "source": "docs/art/terrace-rooms/level.png",
+    "runtime": "public/assets/terrace-level.webp",
+    "bytes": 458776,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "fa45d83ae2a8991716ff27f78bc9bb6a62db7b090ae2a5e262144eb74bb6cf09",
+    "runtimeSha256": "360365b1720dca63e0b639e4df80f7a7120a0633deb9f5327c578dd6973c0e0f",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "foundation",
+    "source": "docs/art/terrace-rooms/foundation.png",
+    "runtime": "public/assets/terrace-foundation.webp",
+    "bytes": 395214,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "25cdd28b956bf2112f0661593a7718f38c721487f9184256897e5dc737e828a3",
+    "runtimeSha256": "3e84bd96c301372cc9bd22fef7f88bdfa8a0d7d3f55742fd9cebd3def08f491e",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "frame",
+    "source": "docs/art/terrace-rooms/frame.png",
+    "runtime": "public/assets/terrace-frame.webp",
+    "bytes": 387052,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "8006d126054f21ffb7303a06a443d602e483c6c258a9f63c36b083fc7b54e34c",
+    "runtimeSha256": "174f4879abfe7d88d9691e987e15ef5d53ba0f3bc719d2cf2e8c83109cae95c8",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "empty",
+    "source": "docs/art/terrace-rooms/empty.png",
+    "runtime": "public/assets/terrace-empty.webp",
+    "bytes": 330778,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "ad2465d835587e6d8fe103fe278f4f428cecda9a484970f74776b9a30cc466d7",
+    "runtimeSha256": "8bf672927e3e5e177b2e5b30f20924184ca6341ac52c2bd9f24375bcd0487662",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "tables-only-v2",
+    "source": "docs/art/terrace-rooms/tables-only-v2.png",
+    "runtime": "public/assets/terrace-tables-only-v2.webp",
+    "bytes": 335118,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "5c82dc0172f7bd03ce3783d6029604c763606630dced61ae9f6f86d6c534d625",
+    "runtimeSha256": "901ddbe966f61e9ab593b8676b64c69bc55da446b2b269fa8e71681d94f732f0",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "furniture-bare",
+    "source": "docs/art/terrace-rooms/furniture-bare.png",
+    "runtime": "public/assets/terrace-furniture-bare.webp",
+    "bytes": 335166,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "c43361d866fba16adadfd18340aa6a72348eddef8e66fd78bb1355b68bd2d21a",
+    "runtimeSha256": "45c40faae8d1f0835992e9fae4d88b7be27cddbcde508389356973622a10cdc0",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "furniture-full",
+    "source": "docs/art/terrace-rooms/furniture-full.png",
+    "runtime": "public/assets/terrace-furniture-full.webp",
+    "bytes": 372104,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "3a854324988a85afb1e44d86ac7c6bcb6dccd445cd50f3771ed7887f2d4b4d03",
+    "runtimeSha256": "d0cc3d556f40c5caceecc6bb9c3829d00fc893d6a51888b604cfb19d0dc78c69",
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "master-v2",
+    "source": "docs/art/terrace-rooms/master-v2.png",
+    "runtime": "public/assets/terrace-master-v2.webp",
+    "bytes": 384172,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "8ea337347347167bc1a702bad80ab1d70b8e4124712ef328c1cb1c20cdcfdf16",
+    "runtimeSha256": "b68c845f5a8a8dbabb2887b5cd9ad48d2edd67c966e16b1ea90f530f789f8c0e",
+    "operation": "RGB WebP export only"
+  }
+]

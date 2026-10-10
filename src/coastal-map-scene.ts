@@ -3,12 +3,26 @@ export const COASTAL_MAP_VERSION = 'coastal-map-2';
 const plates = ['dormant', 'tidied', 'rough', 'cleared', 'foundation', 'structure', 'roofed', 'ready', 'complete'] as const;
 type Plate = typeof plates[number];
 const bakeryPlates = ['before', 'clear', 'foundation', 'walls', 'roof', 'ready', 'final'] as const;
+const terracePlates = ['before', 'clear', 'foundation', 'frame', 'roof', 'ready', 'final'] as const;
 export const COASTAL_MAP_ASSETS = [...plates.map(name => `coastal-map-${name}-v1.webp`),
-  ...bakeryPlates.map(name => `coastal-bakery-map-${name}.webp`)];
+  ...bakeryPlates.map(name => `coastal-bakery-map-${name}.webp`),
+  ...terracePlates.map(name => `coastal-terrace-map-${name}.webp`)];
 export const COASTAL_BAKERY_SITE = {
   domain: 'M993 322 L1010 303 L1015 290 L1064 253 L1277 263 L1277 234 L1303 228 L1338 234 L1338 275 L1411 297 L1422 329 L1425 454 L1410 486 L1330 496 L1242 479 L1160 474 L1071 457 L994 462 L980 445 Z',
   beforeDomain: 'M1000 298 L1177 292 L1210 265 L1234 283 L1248 284 L1248 261 L1311 261 L1321 296 L1431 298 L1424 452 L1395 470 L1359 477 L1050 446 L994 423 Z',
   footprint: 'M1050 435 L1333 472 L1406 420 L1131 391 Z',
+} as const;
+
+/** Terrace sources share the new stone foundation. Background outside these shapes stays live. */
+export const COASTAL_TERRACE_SITE = {
+  domain: 'M802 475 L885 472 L916 439 L988 432 L1050 439 L1110 450 L1238 447 L1294 453 L1340 478 L1418 494 L1412 641 L1390 659 L834 619 L772 602 Z',
+  footprint: 'M880 582 L942 484 L1350 499 L1307 636 L985 623 Z',
+  foundation: 'M877 574 L939 507 L941 500 L972 501 L971 497 L1318 520 L1318 532 L1345 532 L1348 559 L1321 608 L1318 640 L1290 650 L1168 643 L1137 647 L1013 640 L987 633 L876 611 Z',
+  deck: 'M905 577 L956 495 L1322 512 L1293 605 L1293 626 L905 597 Z',
+  frame: 'M886 451 L948 407 L1340 425 L1343 441 L1322 479 L1303 483 L1320 439 L957 424 L906 461 Z M886 451 L1318 469 L1318 490 L886 470 Z M886 466 L906 466 L906 574 L915 575 L914 603 L879 602 L879 576 L886 574 Z M1292 482 L1318 482 L1318 604 L1321 607 L1317 637 L1283 633 L1285 605 L1292 603 Z M1321 439 L1340 437 L1339 535 L1347 538 L1347 557 L1320 558 L1320 532 Z M945 423 L960 423 L960 501 L972 503 L972 529 L939 529 L939 505 L945 501 Z',
+  roof: 'M883 451 L950 405 L1342 426 L1343 444 L1323 482 L1301 484 L889 467 Z',
+  rails: 'M899 551 L944 489 L952 487 L1306 506 L1342 519 L1345 558 L1315 614 L1313 635 L1172 628 L1172 578 L1014 571 L1014 609 L905 603 Z',
+  furnished: 'M852 548 L871 491 L899 479 L934 481 L942 473 L1292 488 L1331 481 L1347 524 L1368 556 L1360 606 L1342 634 L1311 638 L1172 628 L1171 607 L1140 608 L1137 641 L1010 635 L1009 604 L983 606 L880 608 L850 594 Z',
 } as const;
 
 export const COASTAL_MAP_SITES = [
@@ -105,5 +119,23 @@ export function coastalMapArtHTML(completed: readonly string[], assets: string):
   }
   const bakeryBuilding=`<image href="${escape(assets)}coastal-bakery-map-${bakeryPlate}.webp" width="1536" height="1024" clip-path="url(#${bakeryClip})" data-map-plate="bakery-${bakeryPlate}"${bakeryTask}/>`;
   parts.push(`<g data-map-site="bakery" data-map-stage="${bakeryStage}" data-map-state="${bakeryPlate}">${bakeryBuilding}${bakeryOutline}${bakeryRoofBase}${bakeryAwning}</g>`);
+  let terraceStage = 0;
+  for (let n=1;n<=26;n++) if(owned.has(`terrace-s1-t${String(n).padStart(2,'0')}`)) terraceStage=n;
+  const terracePlate = terraceStage>=26?'final':terraceStage>=10?'ready':terraceStage>=9?'roof':terraceStage>=8?'frame':terraceStage>=7?'foundation':terraceStage>=2?'clear':'before';
+  const terraceImage = (plate: typeof terracePlates[number], path: string, label=plate) => {
+    const id=`${namespace}-${clipIndex++}`;
+    defs.push(`<clipPath id="${id}"><path d="${path}"/></clipPath>`);
+    return `<image href="${escape(assets)}coastal-terrace-map-${plate}.webp" width="1536" height="1024" clip-path="url(#${id})" data-map-plate="terrace-${label}"${terraceStage?` data-scene-task="terrace-s1-t${String(terraceStage).padStart(2,'0')}"`:''}/>`;
+  };
+  // Clear only the old pergola; structural silhouettes never import the donors' bakery facade.
+  const terraceLayers=[terraceImage(terraceStage<2?'before':'clear',COASTAL_TERRACE_SITE.domain)];
+  if(terraceStage>=7) terraceLayers.push(terraceImage('foundation',COASTAL_TERRACE_SITE.foundation));
+  if(terraceStage>=8) terraceLayers.push(terraceImage('frame',COASTAL_TERRACE_SITE.deck),terraceImage('frame',COASTAL_TERRACE_SITE.frame));
+  if(terraceStage>=9) terraceLayers.push(terraceImage('roof',COASTAL_TERRACE_SITE.roof));
+  if(terraceStage>=10) terraceLayers.push(terraceImage('ready',COASTAL_TERRACE_SITE.rails));
+  if(terraceStage>=26) terraceLayers.push(terraceImage('final',COASTAL_TERRACE_SITE.furnished));
+  terraceLayers.push(terraceImage('before','M811 556 L824 548 L846 563 L835 594 L833 674 L847 689 L841 704 L806 701 L802 690 L814 675 L816 593 L806 577 Z M1317 588 L1334 577 L1355 596 L1346 626 L1343 704 L1358 733 L1354 753 L1314 756 L1309 742 L1324 706 L1326 629 L1313 607 Z'));
+  if(terraceStage===6) terraceLayers.push(`<path d="${COASTAL_TERRACE_SITE.footprint}" fill="none" stroke="#fff1be" stroke-width="4" stroke-dasharray="12 8" data-scene-task="terrace-s1-t06"/>`);
+  parts.push(`<g data-map-site="terrace" data-map-stage="${terraceStage}" data-map-state="${terracePlate}">${terraceLayers.join('')}</g>`);
   return `<svg class="coastal-map-art scene-background map-image" viewBox="0 0 1536 1024" width="1536" height="1024" data-art-version="${COASTAL_MAP_VERSION}" aria-hidden="true"><defs>${defs.join('')}</defs><image href="${escape(assets)}coastal-map-cleared-v1.webp" width="1536" height="1024"/>${parts.join('')}</svg>`;
 }

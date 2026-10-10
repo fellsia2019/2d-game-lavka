@@ -149,16 +149,38 @@ for (const [index, slot] of slots.entries()) {
 save(definitionsFile, output);
 const activate = process.argv.includes("--activate");
 let currentStories: { id: string; phaseId: string }[] | undefined;
+let checkedStructures = keySet.size;
 if (activate) {
   currentStories = read("src/levels/stage-block.json");
   const baselineIds = contract.baseline.projects.flatMap((project: { orderIds: string[] }) => project.orderIds);
   assert.deepEqual(currentStories!.slice(0, 600).map(story => story.id), baselineIds);
-  assert.ok(currentStories!.length === 600 || currentStories!.length === 680, "Unexpected playable block size");
-  if (currentStories!.length === 680) {
-    const existingDigest = digest(currentStories!.slice(600));
+  assert.ok(currentStories!.length === 600 || currentStories!.length >= 680, "Unexpected playable block size");
+  if (currentStories!.length >= 680) {
+    const existingDigest = digest(currentStories!.slice(600, 680));
     assert.ok(existingDigest === digest(stories) || existingDigest === contract.metadataRevision.previousStoriesDigest,
       "Do not rewrite bakery metadata outside the explicitly versioned revision");
   }
+  const tailKeys = new Set(keys);
+  for (const phaseId of new Set(currentStories!.slice(680).map(story => story.phaseId))) {
+    const tail = currentStories!.slice(680).filter(story => story.phaseId === phaseId);
+    const phaseSlots = plan.orderSlots.filter((slot: Slot & { status: string }) => slot.phaseId === phaseId);
+    assert.ok(phaseSlots.length === tail.length && phaseSlots.every((slot: { status: string }) => slot.status !== "planned-no-definition"),
+      `Cannot preserve an unproduced runtime tail: ${phaseId}`);
+    const tailManifest = read(`docs/content/${phaseId}-production.json`);
+    const raw = readFileSync(new URL(tailManifest.definitionFile, root), "utf8");
+    assert.ok(tailManifest.produced && tailManifest.runtimeEnabled, `Tail is not integrated: ${phaseId}`);
+    assert.equal(digest(raw), tailManifest.sourceFileDigest, `Pinned tail source changed: ${phaseId}`);
+    assert.equal(digest(tail), tailManifest.storiesDigest, `Pinned tail metadata changed: ${phaseId}`);
+    for (const definition of JSON.parse(raw) as Definition[]) {
+      const slot = phaseSlots.find((slot: Slot) => slot.id === definition.id);
+      validateDefinition(definition);
+      const key = structuralKey(definition);
+      assert.ok(slot && slot.globalNumber === definition.number && replay(definition, definition.verifiedSolution) && !tailKeys.has(key),
+        `Invalid or duplicate tail Definition: ${definition.id}`);
+      tailKeys.add(key);
+    }
+  }
+  checkedStructures = tailKeys.size;
 }
 const manifest = {
   productionVersion: contract.contractVersion, contentVersion: contract.contentVersion, phaseId: phase.id,
@@ -181,24 +203,25 @@ save(manifestFile, manifest);
 
 if (activate) {
   // Explicit integration step after registered room art and runtime support are ready.
-  save("src/levels/stage-block.json", [...currentStories!.slice(0, 600), ...stories]);
+  save("src/levels/stage-block.json", [...currentStories!.slice(0, 600), ...stories, ...currentStories!.slice(680)]);
   for (const task of phase.tasks) task.status = "implemented";
   for (const slot of slots) {
     Object.assign(slot, { status: "implemented-definition", catalogNumber: slot.globalNumber,
       denseNumber: 601 + slots.indexOf(slot), definitionFile: definitionsFile });
   }
   for (const good of plan.goods.filter((good: { introducedIn: string }) => good.introducedIn === "bakery-1")) good.status = "implemented";
-  plan.planVersion = "coastal-full-product-plan-6";
-  plan.nextDelivery = { scope: "Полные Stage 1–2 и первая пекарня; остальной Stage 3 ещё не готов",
-    phaseIds: [...contract.baseline.projectIds, phase.id], orders: 680, tasks: 152,
+  const readyPhases = plan.route.filter((id: string) => plan.orderSlots.some((slot: Slot & { status: string }) => slot.phaseId === id && slot.status !== "planned-no-definition"));
+  const readyOrders = plan.orderSlots.filter((slot: { status: string }) => slot.status !== "planned-no-definition").length;
+  const readyTasks = plan.phases.flatMap((phase: { tasks: { status: string }[] }) => phase.tasks).filter((task: { status: string }) => task.status !== "planned").length;
+  plan.nextDelivery = { ...plan.nextDelivery,
+    phaseIds: readyPhases, orders: readyOrders, tasks: readyTasks,
     requirements: [...new Set([...plan.nextDelivery.requirements.filter((requirement: string) => !requirement.includes("600 Definition")),
       "Первая пекарня: 80 закреплённых Definition и 26 зарегистрированных результатов",
       "Все 680 решений воспроизведены; каталожные номера отделены от индексов выдачи"])],
     status: "implemented-internal-block", completeGlobalStage3: false };
-  plan.deliveryStatus = { existingOrders: 680, plannedOrders: 5320, existingTasks: 152,
-    plannedTasks: 592, fullyImplementedPlannedPhases: 7 };
+  plan.deliveryStatus = { existingOrders: readyOrders, plannedOrders: 6000 - readyOrders, existingTasks: readyTasks,
+    plannedTasks: 744 - readyTasks, fullyImplementedPlannedPhases: readyPhases.length };
   save("docs/content/full-product-plan.json", plan);
-  contract.planVersion = plan.planVersion;
   contract.state = "implemented";
   contract.produced = true; contract.runtimeEnabled = true;
   contract.numbering.denseAppend = { first: 601, last: 680, status: "runtime" };
@@ -216,4 +239,4 @@ if (activate) {
   assert.equal(check.status, 0, check.stderr || check.error?.message);
   process.stdout.write(check.stdout);
 }
-console.log(`Bakery: 80 pinned Definitions, ${keySet.size} replayed distinct structures; ${process.argv.includes("--activate") ? "runtime integrated" : "prepared; activation is a separate integration step"}.`);
+console.log(`Bakery: 80 pinned Definitions, ${checkedStructures} replayed distinct structures including preserved runtime tail; ${process.argv.includes("--activate") ? "runtime integrated" : "prepared; activation is a separate integration step"}.`);

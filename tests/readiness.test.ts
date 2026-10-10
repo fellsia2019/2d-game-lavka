@@ -139,7 +139,7 @@ test("Schema 1 migration retains the pinned layout, seed, old generator version,
   const original = clone(p.attempt.definition),
     result = loadProgress({ getItem: () => JSON.stringify(p) });
   assert.equal(result.warning, undefined);
-  assert.equal(result.progress.schema, 10);
+  assert.equal(result.progress.schema, 11);
   assert.deepEqual(result.progress.completed, [CHAPTER[0].id]);
   assert.equal(result.progress.coins, 60);
   assert.deepEqual(result.progress.renovations, { sign: "coral" });
@@ -228,7 +228,7 @@ test("Invalid metadata, goods, locks and reward flags discard only the attempt",
   }
 });
 test("Unknown future save schema is read-only and retains its storage bytes", () => {
-  const raw = JSON.stringify({ ...freshProgress(), schema: 11 }),
+  const raw = JSON.stringify({ ...freshProgress(), schema: 12 }),
     memory = new Map([["save", raw]]);
   const loaded = loadProgress({ getItem: () => memory.get("save")! });
   assert.equal(loaded.readOnly, true);

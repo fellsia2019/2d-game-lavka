@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-10",
+  "tool": "built-in ImageGen",
+  "frame": [
+    1536,
+    1024
+  ],
+  "sources": [
+    {
+      "file": "master-v1.png",
+      "prompt": "prompts/master.txt",
+      "references": [
+        {
+          "file": "../fruit-rooms/pavilion-master.png",
+          "role": "material and illustration style only"
+        },
+        {
+          "file": "../bakery-map/final.png",
+          "role": "coastal geography"
+        }
+      ],
+      "status": "superseded background"
+    },
+    {
+      "file": "master-v2.png",
+      "prompt": "prompts/master-v2-background.txt",
+      "references": [
+        {
+          "file": "master-v1.png",
+          "role": "registered edit target"
+        },
+        {
+          "file": "../bakery-rooms/yard-master-v2.png",
+          "role": "bakery window contents and sign"
+        }
+      ],
+      "status": "accepted furniture/plants only; superseded background geography"
+    },
+    {
+      "file": "empty.png",
+      "prompt": "prompts/empty.txt",
+      "references": [
+        {
+          "file": "master-v1.png",
+          "role": "registered edit target"
+        }
+      ],
+      "status": "accepted architecture only"
+    },
+    {
+      "file": "furniture-full.png",
+      "prompt": "prompts/furniture-full.txt",
+      "references": [
+        {
+          "file": "master-v1.png",
+          "role": "registered edit target; remove front rail only"
+        }
+      ],
+      "status": "accepted furniture only"
+    },
+    {
+      "file": "furniture-bare.png",
+      "prompt": "prompts/furniture-bare.txt",
+      "references": [
+        {
+          "file": "furniture-full.png",
+          "role": "registered edit target; empty furniture"
+        }
+      ],
+      "status": "accepted"
+    },
+    {
+      "file": "tables-only.png",
+      "prompt": "prompts/tables-only.txt",
+      "references": [
+        {
+          "file": "furniture-bare.png",
+          "role": "registered edit target"
+        }
+      ],
+      "status": "rejected; right table shifted"
+    },
+    {
+      "file": "tables-only-v2.png",
+      "prompt": "prompts/tables-only-v2.txt",
+      "references": [
+        {
+          "file": "furniture-bare.png",
+          "role": "registered edit target; chairs only removed"
+        }
+      ],
+      "status": "accepted table silhouettes only"
+    },
+    {
+      "file": "level.png",
+      "prompt": "prompts/level.txt",
+      "references": [
+        {
+          "file": "master-v2.png",
+          "role": "registered edit target"
+        }
+      ],
+      "status": "accepted"
+    },
+    {
+      "file": "before.png",
+      "prompt": "prompts/before.txt",
+      "references": [
+        {
+          "file": "level.png",
+          "role": "registered edit target"
+        }
+      ],
+      "status": "superseded permanent background; obstacle thumbnails only"
+    },
+    {
+      "file": "tidied.png",
+      "prompt": "prompts/tidied.txt",
+      "references": [
+        {
+          "file": "before.png",
+          "role": "registered edit target"
+        }
+      ],
+      "status": "accepted four cleanup areas"
+    },
+    {
+      "file": "foundation.png",
+      "prompt": "prompts/foundation.txt",
+      "references": [
+        {
+          "file": "empty.png",
+          "role": "registered edit target"
+        }
+      ],
+      "status": "accepted foundation silhouette only"
+    },
+    {
+      "file": "frame.png",
+      "prompt": "prompts/frame.txt",
+      "references": [
+        {
+          "file": "empty.png",
+          "role": "registered edit target"
+        }
+      ],
+      "status": "accepted frame silhouette only"
+    },
+    {
+      "file": "before-v2.png",
+      "prompt": "prompts/before-v2-background.txt",
+      "references": [
+        {
+          "file": "before.png",
+          "role": "registered edit target; preserve plot and obstacles"
+        },
+        {
+          "file": "../bakery-rooms/yard-master-v2.png",
+          "role": "bakery exterior D1 left, W1 right, chimney"
+        },
+        {
+          "file": "../terrace-map/final.png",
+          "role": "bakery north-east of terrace"
+        }
+      ],
+      "status": "accepted permanent background; neutral west neighbor and north-east bakery"
+    }
+  ],
+  "postprocessing": "Copy generated PNG into repository; diagnostic crops only in artifacts; RGB WebP export only for runtime. No programmatic bitmap painting."
+}

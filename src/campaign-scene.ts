@@ -1,5 +1,6 @@
 import {isFruitView,fruitSceneHTML,fruitTaskArtwork,FRUIT_ASSETS} from './fruit-scene';
 import {isBakeryView,bakerySceneHTML,bakeryTaskArtwork,BAKERY_ASSETS} from './bakery-scene';
+import {isTerraceView,terraceSceneHTML,terraceTaskArtwork,TERRACE_ASSETS} from './terrace-scene';
 import {coastalMapArtHTML,COASTAL_MAP_ASSETS} from './coastal-map-scene';
 import type { SceneShopDecorations } from './scene-shop';
 import { SHOP_STEPS, shopTaskView, type ShopTaskId, type ShopView } from "./campaign";
@@ -12,7 +13,7 @@ import { SCENE_TASKS, SCENE_TASK_BY_ID, SCENE_VIEW_NAMES, SCENE_BACKGROUNDS, SIT
 export { SCENE_TASKS, type CampaignView } from './stage-scene-manifest';
 export { SHOP_STEPS, CAMPAIGN_AREAS, type CampaignAreaId } from "./campaign";
 
-export const SCENE_ASSETS = [...new Set([...HALL_ASSETS, ...WAREHOUSE_ASSETS, ...SHOP_EXPANSION_ASSETS, ...FRUIT_ASSETS, ...BAKERY_ASSETS, ...COASTAL_MAP_ASSETS, "hall-corner-empty.webp", "campaign-map.webp",
+export const SCENE_ASSETS = [...new Set([...HALL_ASSETS, ...WAREHOUSE_ASSETS, ...SHOP_EXPANSION_ASSETS, ...FRUIT_ASSETS, ...BAKERY_ASSETS, ...TERRACE_ASSETS, ...COASTAL_MAP_ASSETS, "hall-corner-empty.webp", "campaign-map.webp",
   "hall-corner-left.webp", "hall-corner-right.webp", "hall-corner-tray-left.webp", "hall-corner-tray-right.webp", "hall-corner-counter.webp", "campaign-basket.webp", "counter.webp",
   "jam.webp", "milk.webp", "honey.webp", "bread.webp", "pear.webp", "lemon.webp",
   "campaign-shop-cold.webp", "campaign-fridge.webp", "eggs.webp", "cheese.webp", "juice.webp", "garden.webp",
@@ -67,6 +68,7 @@ export function sceneOverview(areaId: string, phaseId?: string): CampaignView {
   if (areaId === 'warehouse') return phaseId?.endsWith('-2') ? 'warehouse-cold' : 'warehouse';
   if (areaId === 'fruit-yard') return phaseId?.endsWith('-2') ? 'fruit-extension' : 'fruit-market';
   if (areaId === 'bakery') return 'bakery-shop';
+  if (areaId === 'terrace') return 'terrace-deck';
   return phaseId?.endsWith('-2') ? 'shop-grocery' : 'hall';
 }
 export function sceneTaskAnchor(id: string): { view: CampaignView; x: number; y: number } {
@@ -84,13 +86,15 @@ export function sceneTaskArtwork(id: string, assets: string): string {
   if (warehouse) return warehouse;
   const bakery = bakeryTaskArtwork(id, assets);
   if (bakery) return bakery;
+  const terrace = terraceTaskArtwork(id, assets);
+  if (terrace) return terrace;
   const entry = SCENE_TASK_BY_ID.get(id);
   return `<img src="${assets}${entry?.artwork ?? 'furniture-opening-sign'}.webp" alt="" width="160" height="160" />`;
 }
 export function sceneViews(areaId: string, completed: readonly string[]): { id: CampaignView; name: string }[] {
   const owned = new Set(completed);
   const areaPhases = areaId === 'shop' ? ['shop-1','shop-2'] : areaId === 'warehouse'
-    ? ['warehouse-1','warehouse-2'] : areaId === 'fruit-yard' ? ['fruit-yard-1','fruit-yard-2'] : areaId === 'bakery' ? ['bakery-1'] : [];
+    ? ['warehouse-1','warehouse-2'] : areaId === 'fruit-yard' ? ['fruit-yard-1','fruit-yard-2'] : areaId === 'bakery' ? ['bakery-1'] : areaId === 'terrace' ? ['terrace-1'] : [];
   const views = new Set<CampaignView>();
   if (areaId === 'shop') { views.add('hall'); views.add('hall-prep'); }
   for (const phase of areaPhases) {
@@ -129,6 +133,7 @@ export function campaignSceneHTML(completed: readonly string[], assets: string, 
   if (isShopExpansionView(expansionView)) return shopExpansionSceneHTML(completed, assets, {...options, view:expansionView});
   if(isFruitView(view))return fruitSceneHTML(completed,assets,{...options,view});
   if(isBakeryView(view))return bakerySceneHTML(completed,assets,{...options,view});
+  if(isTerraceView(view))return terraceSceneHTML(completed,assets,{...options,view});
   if (isWarehouseView(view)) return warehouseSceneHTML(completed, assets, {...options, view});
   if (view === 'hall' || view === 'hall-prep' || view === 'cold') return shopSceneHTML(completed, assets, options.decorations, {
     pending: options.pending as ShopTaskId, justBuilt: options.justBuilt as ShopTaskId, controls: options.controls, view, decor: options.decor,

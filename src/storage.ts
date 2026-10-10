@@ -12,7 +12,7 @@ import {
 import { GOOD_IDS, isGood } from "./catalog";
 import { CAMPAIGN_VERSION, freshCampaign, migrateCampaign, nextProjectTask, phaseStatus,
   campaignWithLegacyOrder, isProjectId, validCampaign, validLegacyCampaign,
-  validPreviousCampaign, validSchemaFiveCampaign, validSchemaSixCampaign, validSchemaSevenCampaign, validSchemaEightCampaign, validSchemaNineCampaign, migrateShopCampaign,
+  validPreviousCampaign, validSchemaFiveCampaign, validSchemaSixCampaign, validSchemaSevenCampaign, validSchemaEightCampaign, validSchemaNineCampaign, validSchemaTenCampaign, migrateShopCampaign,
   orderCurrency, taskBalance, TASKS, type CampaignProgress, type ProjectId,
   type ShopTaskId } from "./campaign";
 import {
@@ -47,7 +47,7 @@ export interface Attempt {
   reward: { coins: number; stars: number; repairKits: number; fresh: boolean } | null;
 }
 export interface Progress {
-  schema: 10;
+  schema: 11;
   campaign: CampaignProgress;
   contentVersion: string;
   completed: string[];
@@ -73,7 +73,7 @@ export interface Progress {
 export const STORAGE_KEY = "coastal-shop:progress:v1";
 export function freshProgress(): Progress {
   return {
-    schema: 10,
+    schema: 11,
     campaign: freshCampaign(),
     contentVersion: CONTENT_VERSION,
     completed: [],
@@ -313,7 +313,7 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     const raw = storage.getItem(STORAGE_KEY);
     if (!raw) return { progress: freshProgress() };
     const p = JSON.parse(raw);
-    if (p && ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(p.schema))
+    if (p && ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].includes(p.schema))
       return {
         progress: freshProgress(),
         readOnly: true,
@@ -329,9 +329,9 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     const ownershipMigration = p.schema < 7;
     const originalSchema = p.schema;
     const currencyMigration = p.schema < 8;
-    const migrated = p.schema !== 10;
+    const migrated = p.schema !== 11;
     if ((oldCampaign || previousCampaign || schemaFive || p.schema >= 6) && typeof p.campaign?.version === "string" &&
-      p.campaign.version !== (oldCampaign ? "coastal-campaign-1" : previousCampaign ? "coastal-campaign-2" : schemaFive ? "coastal-campaign-3" : p.schema === 6 ? "coastal-campaign-4" : p.schema === 7 ? "coastal-campaign-5" : p.schema === 8 ? "coastal-campaign-6" : p.schema === 9 ? "coastal-campaign-7" : CAMPAIGN_VERSION))
+      p.campaign.version !== (oldCampaign ? "coastal-campaign-1" : previousCampaign ? "coastal-campaign-2" : schemaFive ? "coastal-campaign-3" : p.schema === 6 ? "coastal-campaign-4" : p.schema === 7 ? "coastal-campaign-5" : p.schema === 8 ? "coastal-campaign-6" : p.schema === 9 ? "coastal-campaign-7" : p.schema === 10 ? "coastal-campaign-8" : CAMPAIGN_VERSION))
       return { progress: freshProgress(), readOnly: true,
         warning: "Сохранение использует другую версию кампании. Обновите игру. Прогресс не изменён." };
     if (legacy) {
@@ -418,7 +418,8 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     }
     if (migrated) {
       if (!ownershipMigration) {
-        const valid = originalSchema === 9 ? validSchemaNineCampaign(p.campaign)
+        const valid = originalSchema === 10 ? validSchemaTenCampaign(p.campaign)
+          : originalSchema === 9 ? validSchemaNineCampaign(p.campaign)
           : originalSchema === 8 ? validSchemaEightCampaign(p.campaign) : validSchemaSevenCampaign(p.campaign);
         if (!valid) throw new Error("Corrupted previous campaign");
         if (originalSchema === 9) {
@@ -440,7 +441,7 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
         if (p.attempt) attempts.push(p.attempt);
         for (const value of attempts) migrateReward(value);
       }
-      p.schema = 10;
+      p.schema = 11;
     }
     if (!validCampaign(p.campaign)) throw new Error("Corrupted campaign");
     p.renovation = p.renovations.sign ?? null;

@@ -14,7 +14,8 @@
     "content:produce-shop": "tsx scripts/produce-shop-expansion.ts",
     "content:audit": "tsx scripts/audit-generator.ts",
     "content:produce-stage-block": "tsx scripts/produce-stage-block.ts",
-    "content:produce-bakery": "tsx scripts/produce-bakery.ts"
+    "content:produce-bakery": "tsx scripts/produce-bakery.ts",
+    "content:produce-terrace": "tsx scripts/produce-terrace.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

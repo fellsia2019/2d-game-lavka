@@ -2,6 +2,8 @@ import './campaign-preview.css';
 import { PROJECTS, TASKS, type ProjectId } from './campaign';
 import { campaignSceneHTML, campaignMapHTML, sceneTaskView, sceneViews, type CampaignView } from './campaign-scene';
 import { mountHallCanvases } from './hall-canvas';
+import { projectSpaceName } from './world-navigation';
+import { currencyIcon, currencyLabel } from './economy-ui';
 
 const root = document.querySelector<HTMLElement>('#campaign-preview')!;
 const assets = `${import.meta.env.BASE_URL}assets/`;
@@ -24,15 +26,15 @@ counts[selected] = Math.max(0, Math.min(selectedProject().taskTarget, Number(url
 const owned = () => PROJECTS.flatMap(p => p.taskIds.slice(0, counts[p.id]));
 
 root.innerHTML = `<header class="preview-header"><a class="preview-brand" href="./index.html">Лавка у моря</a><a class="back-link" href="./index.html">Вернуться в игру</a></header>
-  <section class="preview-intro"><div><span class="eyebrow">МАСТЕРСКАЯ СЦЕН · STAGE 1–2</span><h1>От заросшего участка — к торговому двору</h1><p>Шесть проектов, 126 самостоятельных изменений. Осмотрите стройку, выкладки и оснащение каждого предприятия.</p></div><div class="preview-note">600 заказов · 126 работ<br /><span>Предпросмотр не изменяет сохранение игры</span></div></section>
-  <div class="preview-toolbar"><label>Проект<select id="project-select" aria-label="Проект предпросмотра">${PROJECTS.map(p => `<option value="${p.id}">${p.areaId === 'shop' ? 'Лавка' : p.areaId === 'warehouse' ? 'Склад' : 'Фруктовый двор'} · этап ${p.stage}</option>`).join('')}</select></label><label>Помещение / зона<select id="view-select" aria-label="Помещение или зона предпросмотра"></select></label><button type="button" id="all-ready">Все 126 работ</button><button type="button" id="reset-scenes">Заброшенное начало</button></div>
+  <section class="preview-intro"><div><span class="eyebrow">МАСТЕРСКАЯ СЦЕН</span><h1>От заросшего участка — к торговому двору</h1><p>${PROJECTS.length} проектов, ${TASKS.length} самостоятельных изменений. Осмотрите стройку, выкладки и оснащение каждого предприятия.</p></div><div class="preview-note">${PROJECTS.reduce((sum, project) => sum + project.orderTarget, 0)} заказов · ${TASKS.length} работ<br /><span>Предпросмотр не изменяет сохранение игры</span></div></section>
+  <div class="preview-toolbar"><label>Проект<select id="project-select" aria-label="Проект предпросмотра">${PROJECTS.map(p => `<option value="${p.id}">${projectSpaceName(p.id)} · этап ${p.stage}</option>`).join('')}</select></label><label>Помещение / зона<select id="view-select" aria-label="Помещение или зона предпросмотра"></select></label><button type="button" id="all-ready">Все ${TASKS.length} работ</button><button type="button" id="reset-scenes">Заброшенное начало</button></div>
   <div class="preview-layout">
-    <section class="map-section" aria-labelledby="map-heading"><div class="section-heading"><div><span class="eyebrow">ОБЩИЙ УЧАСТОК</span><h2 id="map-heading">Ваш участок у моря</h2></div><span class="chapter-count" id="built-count"></span></div><div id="map-container"></div><p class="preview-map-note">Пекарня, терраса и верхняя площадка остаются будущими проектами. Склады, павильон и пристройка появляются по мере оплаченных работ.</p></section>
+    <section class="map-section" aria-labelledby="map-heading"><div class="section-heading"><div><span class="eyebrow">ОБЩИЙ УЧАСТОК</span><h2 id="map-heading">Ваш участок у моря</h2></div><span class="chapter-count" id="built-count"></span></div><div id="map-container"></div><p class="preview-map-note">Территории и оборудование появляются по мере оплаченных работ. Второй этаж ещё готовится.</p></section>
     <section class="shop-section" aria-labelledby="shop-heading"><div class="section-heading"><div><span class="eyebrow" id="project-eyebrow"></span><h2 id="shop-heading"></h2></div></div>
       <div class="state-selector" role="group" aria-label="Контрольные состояния"><button type="button" data-control="start">Начало</button><button type="button" data-control="middle">Середина</button><button type="button" data-control="finish">Готово</button></div>
       <label class="preview-timeline">Работы <input id="step-range" type="range" min="0" max="14" value="0" aria-label="Число завершённых работ" /><output id="step-output"></output></label>
       <div id="scene-container"></div><div class="scene-caption" aria-live="polite"><h3 id="scene-title"></h3><span id="scene-orders"></span><p id="scene-result"></p></div>
-      <ol class="purchase-list" aria-label="126 видимых работ выбранного проекта" id="work-list"></ol>
+      <ol class="purchase-list" aria-label="Работы выбранного проекта" id="work-list"></ol>
     </section>
   </div><footer class="preview-footer"><p>Выберите работу, чтобы увидеть её постоянный результат. Каждая стройка проходит очистку, фундамент, стены, крышу, вход и оборудование.</p><a href="./author.html">Мастерская заказов</a></footer>`;
 
@@ -50,16 +52,17 @@ function render() {
   root.querySelector<HTMLElement>('#scene-container')!.innerHTML = campaignSceneHTML(completed, assets, {areaId: project.areaId, phaseId: project.id, view: targetView, justBuilt: task?.id});
   root.querySelector<HTMLElement>('#project-eyebrow')!.textContent = `STAGE ${project.globalStage} · ЭТАП ${project.stage}`;
   root.querySelector<HTMLElement>('#shop-heading')!.textContent = project.title;
-  root.querySelector<HTMLElement>('#built-count')!.textContent = `${completed.length} / 126`;
+  root.querySelector<HTMLElement>('#built-count')!.textContent = `${completed.length} / ${TASKS.length}`;
   root.querySelector<HTMLElement>('#scene-title')!.textContent = task?.name ?? 'До первой работы';
-  const spent = TASKS.filter(t => t.phaseId === selected).slice(0, count).reduce((sum,t) => sum + t.cost,0);
-  root.querySelector<HTMLElement>('#scene-orders')!.textContent = `Обустройство ${count} / ${project.taskTarget} · ${spent} ★`;
+  const paid = TASKS.filter(t => t.phaseId === selected).slice(0, count);
+  const spent = ['repairKits', 'stars'].map(currency => ({currency, amount:paid.filter(task => task.currency === currency).reduce((sum, task) => sum + task.cost, 0)})).filter(wallet => wallet.amount);
+  root.querySelector<HTMLElement>('#scene-orders')!.textContent = `Обустройство ${count} / ${project.taskTarget}${spent.map(wallet => ` · ${wallet.amount} ${wallet.currency === 'repairKits' ? 'ремкомплектов' : 'звёзд'}`).join('')}`;
   root.querySelector<HTMLElement>('#scene-result')!.textContent = task?.result ?? (project.construction ? 'Участок заброшен. Сначала уберём мусор и старые конструкции.' : 'Помещение готово для первой выкладки.');
   root.querySelector<HTMLOutputElement>('#step-output')!.value = `${count} / ${project.taskTarget}`;
   const range = root.querySelector<HTMLInputElement>('#step-range')!; range.max = String(project.taskTarget); range.value = String(count);
   root.querySelector<HTMLElement>('#work-list')!.innerHTML = project.taskIds.map((id, i) => {
     const t = TASKS.find(t => t.id === id)!;
-    return `<li><button type="button" data-step="${i + 1}" aria-pressed="${i + 1 === count}" class="${i < count ? 'completed' : ''}"><span class="purchase-number">${i + 1}</span><span class="purchase-name">${t.name}</span><span class="purchase-cost">${t.cost} ★</span></button></li>`;
+    return `<li><button type="button" data-step="${i + 1}" aria-pressed="${i + 1 === count}" class="${i < count ? 'completed' : ''}"><span class="purchase-number">${i + 1}</span><span class="purchase-name">${t.name}</span><span class="purchase-cost" aria-label="${t.cost} ${currencyLabel(t.currency)}">${t.cost} ${currencyIcon(t.currency)}</span></button></li>`;
   }).join('');
   const params = new URLSearchParams({project:selected,step:String(count)});
   history.replaceState(null,'',`${location.pathname}?${params}`);

@@ -69,8 +69,8 @@ export function validateBakeryPlan(contract, plan) {
   assert.equal(contract.contentVersion, "coastal-stage-1-2-bakery-v2");
   assert.equal(contract.schema, 10);
   assert.equal(contract.campaignVersion, "coastal-campaign-8");
-  assert.equal(plan.planVersion, "coastal-full-product-plan-6");
-  assert.equal(contract.planVersion, plan.planVersion);
+  assert.ok(["coastal-full-product-plan-6", "coastal-full-product-plan-7"].includes(plan.planVersion));
+  assert.equal(contract.planVersion, "coastal-full-product-plan-6");
   assert.equal(contract.orders, 80);
   assert.equal(contract.works, 26);
   assert.equal(contract.globalStage, 3);
@@ -158,20 +158,21 @@ function validateBaseline(contract, plan) {
   assert.deepEqual(contract.baseline.projectIds, ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2"]);
   assert.deepEqual(contract.prerequisiteClosure, contract.baseline.projectIds);
   assert.deepEqual(block.slice(0, 6).map(project => project.id), contract.baseline.projectIds);
-  assert.equal(stories.length, 680, "Playable metadata must contain only the 680 real produced orders");
-  assert.equal(block.flatMap(project => project.tasks).length, 152);
-  assert.deepEqual(block.map(project => project.id), [...contract.baseline.projectIds, "bakery-1"]);
+  assert.equal(stories.length, plan.nextDelivery.orders, "Playable metadata must contain only real produced orders");
+  assert.equal(block.flatMap(project => project.tasks).length, plan.nextDelivery.tasks);
+  assert.deepEqual(block.slice(0, 7).map(project => project.id), [...contract.baseline.projectIds, "bakery-1"]);
+  assert.deepEqual(block.map(project => project.id), plan.nextDelivery.phaseIds);
   assert.equal(existsSync(new URL("src/levels/projects/bakery-1.json", root)), true, "Missing bakery production");
   const readySlots = plan.orderSlots.filter(slot => slot.status !== "planned-no-definition");
   const readyTasks = plan.phases.flatMap(phase => phase.tasks).filter(task => task.status !== "planned");
-  assert.equal(readySlots.length, 680);
-  assert.equal(readyTasks.length, 152);
-  assert.deepEqual(plan.nextDelivery.phaseIds, [...contract.baseline.projectIds, "bakery-1"]);
-  assert.equal(plan.nextDelivery.orders, 680);
-  assert.equal(plan.nextDelivery.tasks, 152);
+  assert.equal(readySlots.length, plan.nextDelivery.orders);
+  assert.equal(readyTasks.length, plan.nextDelivery.tasks);
+  assert.deepEqual(plan.nextDelivery.phaseIds.slice(0, 7), [...contract.baseline.projectIds, "bakery-1"]);
+  assert.ok(plan.nextDelivery.orders >= 680);
+  assert.ok(plan.nextDelivery.tasks >= 152);
   assert.equal(plan.nextDelivery.completeGlobalStage3, false);
-  assert.equal(readySlots.filter(slot => slot.rewardCurrency === "stars").length, 469);
-  assert.equal(readySlots.filter(slot => slot.rewardCurrency === "repairKits").length, 211);
+  assert.equal(readySlots.filter(slot => slot.globalNumber <= 1160 && slot.rewardCurrency === "stars").length, 469);
+  assert.equal(readySlots.filter(slot => slot.globalNumber <= 1160 && slot.rewardCurrency === "repairKits").length, 211);
   assert.equal(contract.baseline.stars, 421);
   assert.equal(contract.baseline.repairKits, 179);
   for (const recorded of contract.baseline.projects) {
@@ -196,6 +197,8 @@ function validateBaseline(contract, plan) {
 
 /** Reuse the actual engine and current reward registry; no copied puzzle implementation. */
 function replayProduction(contract, manifest) {
+  const delivery = read("docs/content/full-product-plan.json").nextDelivery;
+  const runtimeContract = delivery.phaseIds.includes("terrace-1") ? read("docs/content/terrace-1-contract.json") : contract;
   const code = `import assert from 'node:assert/strict';
     import { OFFLINE_CHAPTER_DEFINITIONS } from './src/content-offline.ts';
     import { replay, validateDefinition } from './src/engine.ts';
@@ -205,10 +208,10 @@ function replayProduction(contract, manifest) {
     import { structuralKey } from './src/generator.ts';
     import { CAMPAIGN_VERSION, PROJECTS, TASKS, orderCurrency } from './src/campaign.ts';
     import { freshProgress } from './src/storage.ts';
-    assert.equal(CHAPTER.length, 680); assert.equal(OFFLINE_CHAPTER_DEFINITIONS.length, 680);
-    assert.equal(TASKS.length, 152); assert.equal(CAMPAIGN_VERSION, ${JSON.stringify(contract.campaignVersion)});
-    assert.equal(CONTENT_VERSION, ${JSON.stringify(manifest.contentVersion)}); assert.equal(freshProgress().schema, ${contract.schema});
-    assert.equal(PROJECTS.length, 7); assert.ok(PROJECTS.some(p => p.id === 'bakery-1'));
+    assert.equal(CHAPTER.length, ${delivery.orders}); assert.equal(OFFLINE_CHAPTER_DEFINITIONS.length, ${delivery.orders});
+    assert.equal(TASKS.length, ${delivery.tasks}); assert.equal(CAMPAIGN_VERSION, ${JSON.stringify(runtimeContract.campaignVersion)});
+    assert.equal(CONTENT_VERSION, ${JSON.stringify(runtimeContract.contentVersion)}); assert.equal(freshProgress().schema, ${runtimeContract.schema});
+    assert.equal(PROJECTS.length, ${delivery.phaseIds.length}); assert.ok(PROJECTS.some(p => p.id === 'bakery-1'));
     assert.equal(chapterNumber('bakery-s1-order-001'), 601); assert.equal(chapterNumber('bakery-s1-order-080'), 680);
     assert.ok(Object.hasOwn(GOODS, 'bg') && Object.hasOwn(GOODS, 'cr'));
     for (const definition of OFFLINE_CHAPTER_DEFINITIONS) { validateDefinition(definition);
@@ -220,16 +223,16 @@ function replayProduction(contract, manifest) {
     }
     const structures = OFFLINE_CHAPTER_DEFINITIONS.map(definition => ({ id: definition.id,
       key: structuralKey(definition), moves: definition.verifiedSolution.length }));
-    assert.equal(new Set(structures.map(entry => entry.key)).size, 680);
+    assert.equal(new Set(structures.map(entry => entry.key)).size, ${delivery.orders});
     console.log(JSON.stringify({ replayed: OFFLINE_CHAPTER_DEFINITIONS.length,
-      structures: structures.slice(600), rewards: CHAPTER.map(order => ({ id: order.id, currency: orderCurrency(order.id) })) }));`;
+      structures: structures.slice(600,680), rewards: CHAPTER.map(order => ({ id: order.id, currency: orderCurrency(order.id) })) }));`;
   const execution = spawnSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", code],
     { cwd: fileURLToPath(root), encoding: "utf8", timeout: 60_000 });
   assert.equal(execution.status, 0, execution.stderr || execution.error?.message || "Production replay failed");
   const result = JSON.parse(execution.stdout.trim());
-  assert.equal(result.replayed, 680);
+  assert.equal(result.replayed, delivery.orders);
   assert.deepEqual(result.rewards.slice(0, 600), contract.baseline.projects.flatMap(project => project.rewards));
-  assert.deepEqual(result.rewards.slice(600), manifest.entries.map(entry => ({ id: entry.id,
+  assert.deepEqual(result.rewards.slice(600,680), manifest.entries.map(entry => ({ id: entry.id,
     currency: entry.localNumber <= 32 ? "repairKits" : "stars" })));
   assert.deepEqual(result.structures, manifest.entries.map(entry => ({ id: entry.id, key: entry.structuralKey, moves: entry.replayedMoves })));
   return result.replayed;
@@ -237,7 +240,7 @@ function replayProduction(contract, manifest) {
 
 function validateProduction(contract) {
   const manifest = read(contract.productionManifest), raw = readFileSync(new URL(manifest.definitionFile, root), "utf8");
-  const definitions = JSON.parse(raw), stories = read("src/levels/stage-block.json").slice(600);
+  const definitions = JSON.parse(raw), stories = read("src/levels/stage-block.json").slice(600,680);
   assert.equal(manifest.produced, true); assert.equal(manifest.runtimeEnabled, true);
   assert.equal(manifest.productionVersion, "bakery-1-production-2");
   assert.equal(manifest.contentVersion, contract.contentVersion);

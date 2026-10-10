@@ -6,11 +6,12 @@ import warehouse2 from "./levels/projects/warehouse-2.json" with { type: "json" 
 import fruit1 from "./levels/projects/fruit-yard-1.json" with { type: "json" };
 import fruit2 from "./levels/projects/fruit-yard-2.json" with { type: "json" };
 import bakery1 from "./levels/projects/bakery-1.json" with { type: "json" };
+import terrace1 from "./levels/projects/terrace-1.json" with { type: "json" };
 import { CHAPTER } from "./content";
 import { clone, validateDefinition, type Definition } from "./engine";
 
 // Prepared catalogs only contribute once their IDs appear in the produced block.
-export const OFFLINE_CHAPTER_DEFINITIONS = [shop1, warehouse1, shop2, warehouse2, fruit1, fruit2, bakery1].flat()
+export const OFFLINE_CHAPTER_DEFINITIONS = [shop1, warehouse1, shop2, warehouse2, fruit1, fruit2, bakery1, terrace1].flat()
   .filter(definition => CHAPTER.some(story => story.id === definition.id)) as Definition[];
 export function offlineProjectDefinitions(phaseId: string): Definition[] {
   const ids = new Set(CHAPTER.filter(story => story.phaseId === phaseId).map(story => story.id));

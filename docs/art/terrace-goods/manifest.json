@@ -1,0 +1,80 @@
+[
+  {
+    "id": "pie",
+    "source": "docs/art/terrace-goods/pie-v1.png",
+    "prompt": "docs/art/terrace-goods/pie.prompt.txt",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceSha256": "68767e1b4f4477531b6be9d304cf5491b4f6eae805d85fef629748a248c6f23c",
+    "runtime": "public/assets/pie.webp",
+    "runtimeSize": [
+      320,
+      320
+    ],
+    "mode": "RGBA",
+    "bytes": 49002,
+    "runtimeSha256": "c7d14173d93e00378499305b925efa3c1e3483de2e0f600cdbbb4d1895739211",
+    "generator": "built-in ImageGen",
+    "references": [
+      "public/assets/bread.webp",
+      "public/assets/juice.webp",
+      "docs/art/bakery-goods/baguette-v1.png"
+    ],
+    "referenceRole": "read-only visual style study; not attached to generation",
+    "normalization": "complete frame resized to 320x320; RGBA alpha preserved; WebP quality96"
+  },
+  {
+    "id": "bun",
+    "source": "docs/art/terrace-goods/bun-v1.png",
+    "prompt": "docs/art/terrace-goods/bun.prompt.txt",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceSha256": "3875e523ee49e033179ebfaf2609c3e2bc11773cdf0b178e0d1284d2abb9b739",
+    "runtime": "public/assets/bun.webp",
+    "runtimeSize": [
+      320,
+      320
+    ],
+    "mode": "RGBA",
+    "bytes": 43432,
+    "runtimeSha256": "04d6fadd634584791afe21a9001ef2ae89e1a322dbaf0de3444f833b1195d497",
+    "generator": "built-in ImageGen",
+    "references": [
+      "public/assets/bread.webp",
+      "public/assets/juice.webp",
+      "docs/art/bakery-goods/baguette-v1.png"
+    ],
+    "referenceRole": "read-only visual style study; not attached to generation",
+    "normalization": "complete frame resized to 320x320; RGBA alpha preserved; WebP quality96"
+  },
+  {
+    "id": "lemonade",
+    "source": "docs/art/terrace-goods/lemonade-v1.png",
+    "prompt": "docs/art/terrace-goods/lemonade.prompt.txt",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceSha256": "926abd4bca475806f12a6baac769d54f5f960197225c8e4ffcb1c2561af5a536",
+    "runtime": "public/assets/lemonade.webp",
+    "runtimeSize": [
+      320,
+      320
+    ],
+    "mode": "RGBA",
+    "bytes": 32364,
+    "runtimeSha256": "ac36e10da7e55a9c553a9c241fb3d1cb78ef4b343dfbf397b2d9259810e0dc6d",
+    "generator": "built-in ImageGen",
+    "references": [
+      "public/assets/bread.webp",
+      "public/assets/juice.webp",
+      "docs/art/bakery-goods/baguette-v1.png"
+    ],
+    "referenceRole": "read-only visual style study; not attached to generation",
+    "normalization": "complete frame resized to 320x320; RGBA alpha preserved; WebP quality96"
+  }
+]

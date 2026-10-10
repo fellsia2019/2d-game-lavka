@@ -1,5 +1,5 @@
 {
-  "bytes": 68359156,
+  "bytes": 75093344,
   "files": [
     {
       "path": "dist/assets/hall-room-main-before.webp",
@@ -78,12 +78,24 @@
       "bytes": 547540
     },
     {
+      "path": "dist/assets/terrace-before.webp",
+      "bytes": 547300
+    },
+    {
+      "path": "dist/assets/terrace-before-v2.webp",
+      "bytes": 538898
+    },
+    {
       "path": "dist/assets/bakery-yard-before.webp",
       "bytes": 533934
     },
     {
       "path": "dist/assets/warehouse-room-map-walls.webp",
       "bytes": 529244
+    },
+    {
+      "path": "dist/assets/terrace-tidied.webp",
+      "bytes": 527656
     },
     {
       "path": "dist/assets/coastal-bakery-map-foundation.webp",
@@ -96,6 +108,10 @@
     {
       "path": "dist/assets/coastal-bakery-map-clear.webp",
       "bytes": 521976
+    },
+    {
+      "path": "dist/assets/worker-_YZCJZ5k.js",
+      "bytes": 520878
     },
     {
       "path": "dist/assets/coastal-bakery-map-roof.webp",
@@ -130,6 +146,10 @@
       "bytes": 503494
     },
     {
+      "path": "dist/assets/world-navigation-BagthG91.js",
+      "bytes": 501008
+    },
+    {
       "path": "dist/assets/bakery-yard-clear-2.webp",
       "bytes": 500288
     },
@@ -142,10 +162,6 @@
       "bytes": 486568
     },
     {
-      "path": "dist/assets/hall-canvas-Dn4TarPx.js",
-      "bytes": 472690
-    },
-    {
       "path": "dist/assets/warehouse-room-exterior-clean.webp",
       "bytes": 472530
     },
@@ -154,12 +170,12 @@
       "bytes": 470322
     },
     {
-      "path": "dist/assets/worker-VFztytQN.js",
-      "bytes": 466206
-    },
-    {
       "path": "dist/assets/warehouse-room-exterior-tool-cupboard-v8.webp",
       "bytes": 461764
+    },
+    {
+      "path": "dist/assets/terrace-level.webp",
+      "bytes": 458776
     },
     {
       "path": "dist/assets/bakery-shop-stock.webp",
@@ -196,6 +212,10 @@
     {
       "path": "dist/assets/bakery-shop-trays.webp",
       "bytes": 435598
+    },
+    {
+      "path": "dist/assets/content-D-n0dpsF.js",
+      "bytes": 435378
     },
     {
       "path": "dist/assets/warehouse-room-cold-master.webp",
@@ -274,6 +294,10 @@
       "bytes": 396148
     },
     {
+      "path": "dist/assets/terrace-foundation.webp",
+      "bytes": 395214
+    },
+    {
       "path": "dist/assets/stage-warehouse-yard-empty.webp",
       "bytes": 393306
     },
@@ -298,8 +322,8 @@
       "bytes": 387598
     },
     {
-      "path": "dist/assets/content-Cl-UoHqI.js",
-      "bytes": 387415
+      "path": "dist/assets/terrace-frame.webp",
+      "bytes": 387052
     },
     {
       "path": "dist/assets/bakery-yard-ready.webp",
@@ -308,6 +332,10 @@
     {
       "path": "dist/assets/fruit-room-market-table-stock-v2.webp",
       "bytes": 384290
+    },
+    {
+      "path": "dist/assets/terrace-master-v2.webp",
+      "bytes": 384172
     },
     {
       "path": "dist/assets/scene-prep-before.webp",
@@ -336,6 +364,10 @@
     {
       "path": "dist/assets/fruit-room-market-bare.webp",
       "bytes": 373264
+    },
+    {
+      "path": "dist/assets/terrace-furniture-full.webp",
+      "bytes": 372104
     },
     {
       "path": "dist/assets/fruit-room-market-table-empty-v2.webp",
@@ -398,12 +430,24 @@
       "bytes": 335300
     },
     {
+      "path": "dist/assets/terrace-furniture-bare.webp",
+      "bytes": 335166
+    },
+    {
+      "path": "dist/assets/terrace-tables-only-v2.webp",
+      "bytes": 335118
+    },
+    {
       "path": "dist/assets/warehouse-room-storage-dry-crates-bare.webp",
       "bytes": 334082
     },
     {
       "path": "dist/assets/fruit-yard-2-B6-8lDjF.json",
       "bytes": 333616
+    },
+    {
+      "path": "dist/assets/terrace-empty.webp",
+      "bytes": 330778
     },
     {
       "path": "dist/assets/fruit-room-hall-bare.webp",
@@ -590,12 +634,44 @@
       "bytes": 241470
     },
     {
+      "path": "dist/assets/coastal-terrace-map-foundation.webp",
+      "bytes": 238482
+    },
+    {
+      "path": "dist/assets/coastal-terrace-map-clear.webp",
+      "bytes": 237750
+    },
+    {
+      "path": "dist/assets/coastal-terrace-map-frame.webp",
+      "bytes": 236226
+    },
+    {
+      "path": "dist/assets/coastal-terrace-map-ready.webp",
+      "bytes": 232624
+    },
+    {
+      "path": "dist/assets/coastal-terrace-map-before.webp",
+      "bytes": 230542
+    },
+    {
+      "path": "dist/assets/coastal-terrace-map-final.webp",
+      "bytes": 230448
+    },
+    {
       "path": "dist/assets/warehouse-room-storage-inspection-table-bare.webp",
       "bytes": 229606
     },
     {
+      "path": "dist/assets/terrace-1-lXxmqoMN.json",
+      "bytes": 229559
+    },
+    {
       "path": "dist/assets/warehouse-room-storage-cans-bare.webp",
       "bytes": 225562
+    },
+    {
+      "path": "dist/assets/coastal-terrace-map-roof.webp",
+      "bytes": 223410
     },
     {
       "path": "dist/assets/warehouse-1-rbkNCrn2.json",
@@ -666,16 +742,16 @@
       "bytes": 130564
     },
     {
-      "path": "dist/assets/game-IFqUMlUd.js",
-      "bytes": 117520
-    },
-    {
       "path": "dist/assets/campaign-shelving.webp",
       "bytes": 116132
     },
     {
       "path": "dist/assets/hall-corner-left.webp",
       "bytes": 115928
+    },
+    {
+      "path": "dist/assets/game-CmGv5n2h.js",
+      "bytes": 114679
     },
     {
       "path": "dist/assets/hall-corner-right.webp",
@@ -786,6 +862,10 @@
       "bytes": 49964
     },
     {
+      "path": "dist/assets/pie.webp",
+      "bytes": 49002
+    },
+    {
       "path": "dist/assets/furniture-display-window.webp",
       "bytes": 48612
     },
@@ -830,8 +910,12 @@
       "bytes": 43596
     },
     {
-      "path": "dist/assets/browserAll-uTUoBkyd.js",
-      "bytes": 43518
+      "path": "dist/assets/browserAll-DKtCD_TO.js",
+      "bytes": 43523
+    },
+    {
+      "path": "dist/assets/bun.webp",
+      "bytes": 43432
     },
     {
       "path": "dist/assets/Filter-K5N_DjEv.js",
@@ -944,6 +1028,10 @@
     {
       "path": "dist/assets/furniture-tool-cupboard.webp",
       "bytes": 32534
+    },
+    {
+      "path": "dist/assets/lemonade.webp",
+      "bytes": 32364
     },
     {
       "path": "dist/assets/furniture-canopy.webp",
@@ -1242,8 +1330,8 @@
       "bytes": 16484
     },
     {
-      "path": "dist/assets/init-xsI8n59V.js",
-      "bytes": 14665
+      "path": "dist/assets/init-Cf2I7EGf.js",
+      "bytes": 14670
     },
     {
       "path": "dist/assets/furniture-terminal.webp",
@@ -1254,8 +1342,8 @@
       "bytes": 13824
     },
     {
-      "path": "dist/assets/campaign-B-tRPpsT.css",
-      "bytes": 12559
+      "path": "dist/assets/campaign-C8ExS794.css",
+      "bytes": 12648
     },
     {
       "path": "dist/assets/furniture-thermometer.webp",
@@ -1266,15 +1354,15 @@
       "bytes": 11358
     },
     {
-      "path": "dist/assets/campaign-V90GrYPR.js",
-      "bytes": 6674
+      "path": "dist/assets/campaign-DD7KqAd0.js",
+      "bytes": 6818
     },
     {
-      "path": "dist/assets/jobs-CrbjB6Xz.js",
+      "path": "dist/assets/jobs-DS-oxfC2.js",
       "bytes": 6671
     },
     {
-      "path": "dist/assets/author-Bpo_hi3Z.js",
+      "path": "dist/assets/author-C3wb-_yQ.js",
       "bytes": 6350
     },
     {
@@ -1282,8 +1370,16 @@
       "bytes": 6054
     },
     {
+      "path": "dist/assets/terrace-contact-chairs.svg",
+      "bytes": 2472
+    },
+    {
+      "path": "dist/assets/terrace-contact-tables.svg",
+      "bytes": 2218
+    },
+    {
       "path": "dist/index.html",
-      "bytes": 1998
+      "bytes": 2003
     },
     {
       "path": "dist/assets/author-bxatv301.css",
@@ -1295,7 +1391,7 @@
     },
     {
       "path": "dist/campaign.html",
-      "bytes": 1497
+      "bytes": 1502
     },
     {
       "path": "dist/assets/warehouse-shadow-storage-rack-v8.svg",
@@ -1316,6 +1412,14 @@
     {
       "path": "dist/assets/warehouse-shadow-cold-cabinet-v8.svg",
       "bytes": 920
+    },
+    {
+      "path": "dist/assets/terrace-contact-counter.svg",
+      "bytes": 900
+    },
+    {
+      "path": "dist/assets/terrace-contact-bench.svg",
+      "bytes": 898
     },
     {
       "path": "dist/assets/warehouse-shadow-storage-delivery-crate-v8.svg",
@@ -1364,6 +1468,26 @@
     {
       "path": "dist/assets/warehouse-shadow-exterior-tool-cupboard-v8.svg",
       "bytes": 703
+    },
+    {
+      "path": "dist/assets/terrace-contact-drinks.svg",
+      "bytes": 638
+    },
+    {
+      "path": "dist/assets/terrace-contact-returns.svg",
+      "bytes": 638
+    },
+    {
+      "path": "dist/assets/terrace-contact-cupboard.svg",
+      "bytes": 636
+    },
+    {
+      "path": "dist/assets/terrace-contact-sink.svg",
+      "bytes": 636
+    },
+    {
+      "path": "dist/assets/terrace-survey.svg",
+      "bytes": 626
     },
     {
       "path": "dist/assets/bakery-contact-bread-counter.svg",
@@ -1534,6 +1658,10 @@
       "bytes": 85
     },
     {
+      "path": "dist/assets/terrace-1-BhBw_Kjc.js",
+      "bytes": 83
+    },
+    {
       "path": "dist/assets/bakery-1-B_JzTuNZ.js",
       "bytes": 82
     },
@@ -1546,8 +1674,8 @@
       "bytes": 80
     },
     {
-      "path": "dist/assets/webworkerAll-Ca28I165.js",
-      "bytes": 61
+      "path": "dist/assets/webworkerAll-CBI5uGEB.js",
+      "bytes": 66
     }
   ]
 }

@@ -624,8 +624,8 @@
     "title": "Расчистить площадку и построить террасу",
     "orderTarget": 80,
     "taskTarget": 26,
-    "starTarget": 80,
-    "repairKitTarget": 0,
+    "starTarget": 48,
+    "repairKitTarget": 32,
     "taskIds": [
       "terrace-s1-t01",
       "terrace-s1-t02",

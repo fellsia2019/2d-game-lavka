@@ -192,7 +192,7 @@ test("Invalid state and unsafe currency reject atomically; adding currency alone
   assert.deepEqual(progress.campaign, before.campaign);
 });
 
-test("Debug controls show all seven projects with explicit edits and separate currency grants, without query flags", () => {
+test("Debug controls show all produced projects with explicit edits and separate currency grants, without query flags", () => {
   const html = debugSceneHTML(freshProgress());
   for (const id of PROJECT_IDS) assert.ok(html.includes(`value="${id}"`));
   for (const action of ["debug-scene-preset", "debug-scene-apply", "debug-scene-currency"]) assert.ok(html.includes(`data-action="${action}"`));

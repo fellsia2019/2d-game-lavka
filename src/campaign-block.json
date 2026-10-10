@@ -1754,5 +1754,311 @@
       "earningContext": "any-already-open-building",
       "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
     }
+  },
+  {
+    "id": "terrace-1",
+    "areaId": "terrace",
+    "stage": 1,
+    "globalStage": 4,
+    "title": "Расчистить площадку и построить террасу",
+    "result": "Появляется первое место для гостей и заказов на вынос",
+    "requiresCompletedPhases": [
+      "bakery-1"
+    ],
+    "plannedRequiresCompletedPhases": [
+      "shop-3",
+      "warehouse-3",
+      "fruit-yard-3",
+      "bakery-3"
+    ],
+    "runtimeDeliveryOverride": {
+      "requiresCompletedPhases": [
+        "bakery-1"
+      ],
+      "reason": "prototype-preview-after-bakery-1",
+      "completeGlobalStage3": false,
+      "completeGlobalStage4": false
+    },
+    "orderTarget": 80,
+    "taskTarget": 26,
+    "taskIds": [
+      "terrace-s1-t01",
+      "terrace-s1-t02",
+      "terrace-s1-t03",
+      "terrace-s1-t04",
+      "terrace-s1-t05",
+      "terrace-s1-t06",
+      "terrace-s1-t07",
+      "terrace-s1-t08",
+      "terrace-s1-t09",
+      "terrace-s1-t10",
+      "terrace-s1-t11",
+      "terrace-s1-t12",
+      "terrace-s1-t13",
+      "terrace-s1-t14",
+      "terrace-s1-t15",
+      "terrace-s1-t16",
+      "terrace-s1-t17",
+      "terrace-s1-t18",
+      "terrace-s1-t19",
+      "terrace-s1-t20",
+      "terrace-s1-t21",
+      "terrace-s1-t22",
+      "terrace-s1-t23",
+      "terrace-s1-t24",
+      "terrace-s1-t25",
+      "terrace-s1-t26"
+    ],
+    "tasks": [
+      {
+        "id": "terrace-s1-t01",
+        "name": "Вывезти мусор с участка",
+        "cost": 2,
+        "target": "terrace-s1-object-01",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t02",
+        "name": "Разобрать сгнившую перголу",
+        "cost": 2,
+        "target": "terrace-s1-object-02",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t03",
+        "name": "Вырубить кусты и заросшие лианы",
+        "cost": 3,
+        "target": "terrace-s1-object-03",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t04",
+        "name": "Убрать поваленные деревья и пни",
+        "cost": 3,
+        "target": "terrace-s1-object-04",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t05",
+        "name": "Дочистить и выровнять площадку",
+        "cost": 2,
+        "target": "terrace-s1-object-05",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t06",
+        "name": "Разметить контур постройки",
+        "cost": 2,
+        "target": "terrace-s1-object-06",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t07",
+        "name": "Заложить опоры и основание террасы",
+        "cost": 3,
+        "target": "terrace-s1-object-07",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t08",
+        "name": "Поставить каркас, перила и ветрозащиту",
+        "cost": 3,
+        "target": "terrace-s1-object-08",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t09",
+        "name": "Установить крышу гостевого навеса",
+        "cost": 3,
+        "target": "terrace-s1-object-09",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t10",
+        "name": "Подготовить ступени и безопасные проходы",
+        "cost": 3,
+        "target": "terrace-s1-object-10",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t11",
+        "name": "Уложить настил и отделать сервисную зону",
+        "cost": 3,
+        "target": "terrace-s1-object-11",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t12",
+        "name": "Провести освещение и подготовить безопасный вход",
+        "cost": 3,
+        "target": "terrace-s1-object-12",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "terrace-s1-t13",
+        "name": "Установить первые гостевые столы",
+        "cost": 3,
+        "target": "terrace-s1-object-13",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t14",
+        "name": "Добавить стулья",
+        "cost": 3,
+        "target": "terrace-s1-object-14",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t15",
+        "name": "Поставить стойку выдачи",
+        "cost": 3,
+        "target": "terrace-s1-object-15",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t16",
+        "name": "Добавить шкаф посуды",
+        "cost": 3,
+        "target": "terrace-s1-object-16",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t17",
+        "name": "Оборудовать возврат подносов",
+        "cost": 3,
+        "target": "terrace-s1-object-17",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t18",
+        "name": "Установить стол напитков",
+        "cost": 3,
+        "target": "terrace-s1-object-18",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t19",
+        "name": "Поставить секцию выпечки",
+        "cost": 4,
+        "target": "terrace-s1-object-19",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t20",
+        "name": "Добавить холодную выдачу",
+        "cost": 4,
+        "target": "terrace-s1-object-20",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t21",
+        "name": "Подготовить первые гостевые наборы",
+        "cost": 4,
+        "target": "terrace-s1-object-21",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t22",
+        "name": "Обустроить зону отдыха",
+        "cost": 3,
+        "target": "terrace-s1-object-22",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t23",
+        "name": "Установить сервисную мойку",
+        "cost": 4,
+        "target": "terrace-s1-object-23",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t24",
+        "name": "Обозначить гостевые проходы",
+        "cost": 4,
+        "target": "terrace-s1-object-24",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t25",
+        "name": "Подготовить первую встречу гостей",
+        "cost": 4,
+        "target": "terrace-s1-object-25",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "terrace-s1-t26",
+        "name": "Открыть гостевую террасу",
+        "cost": 3,
+        "target": "terrace-s1-object-26",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ],
+    "construction": {
+      "kind": "new-site",
+      "states": [
+        "abandoned",
+        "rubbish-removed",
+        "demolished",
+        "vegetation-cleared",
+        "stumps-removed",
+        "cleared",
+        "planned",
+        "foundation",
+        "walls",
+        "roof",
+        "enclosed",
+        "fitout",
+        "entry-ready",
+        "base-equipment",
+        "open"
+      ],
+      "taskIds": [
+        "terrace-s1-t01",
+        "terrace-s1-t02",
+        "terrace-s1-t03",
+        "terrace-s1-t04",
+        "terrace-s1-t05",
+        "terrace-s1-t06",
+        "terrace-s1-t07",
+        "terrace-s1-t08",
+        "terrace-s1-t09",
+        "terrace-s1-t10",
+        "terrace-s1-t11",
+        "terrace-s1-t12",
+        "terrace-s1-t13",
+        "terrace-s1-t14"
+      ],
+      "opensInteriorAfterTaskId": "terrace-s1-t14",
+      "projectOrders": 38,
+      "interiorOrders": 42,
+      "earningContext": "any-already-open-building",
+      "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
+    }
   }
 ]
