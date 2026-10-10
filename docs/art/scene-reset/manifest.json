@@ -1,0 +1,192 @@
+[
+  {
+    "name": "scene-main-master",
+    "source": "docs/art/concepts/scene-reset-finished-v3.png",
+    "sourceSha256": "8c89f02e376fe1641208e266821f19595b897a247493af691993ad526b8e02df",
+    "runtime": "public/assets/scene-main-master.webp",
+    "runtimeSha256": "659113a6863dfe834b8bdcd6f750701928be590e651ee47ddd32b59057eaeddb",
+    "bytes": 193348,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-main-empty",
+    "source": "docs/art/concepts/scene-reset-middle-v2.png",
+    "sourceSha256": "715655c345e8cf212a9d334d486ff971df00c3ed817de06964d4410fe4f2a785",
+    "runtime": "public/assets/scene-main-empty.webp",
+    "runtimeSha256": "97f059759a4609a3b26b9476a15f8e0ccc73ce061b88f254386a1c373437d917",
+    "bytes": 187326,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-main-before",
+    "source": "docs/art/concepts/scene-reset-before-v2.png",
+    "sourceSha256": "e8d38d211b57bab851a29bfcfb61495b975e7b3b4332c8f1922c93e2fac86dd9",
+    "runtime": "public/assets/scene-main-before.webp",
+    "runtimeSha256": "dd5cf884b8b111e62e42fbff7b7c2b1b6be8f9397b712b2b5c56adb7ceee0b3e",
+    "bytes": 247256,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-main-clean",
+    "source": "docs/art/scene-reset/main-clean.png",
+    "sourceSha256": "0c344f3aa9bd525d58cb77fb3a860380b3150bcd1b9016b56bb3c91509e68c3b",
+    "runtime": "public/assets/scene-main-clean.webp",
+    "runtimeSha256": "b9986a0b9adce22d100ab9e0a864ede405a46e20b3419e63418b62485bc4546e",
+    "bytes": 130564,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-main-light",
+    "source": "docs/art/scene-reset/main-light.png",
+    "sourceSha256": "93581dd9f3f3e9f9a0c7b71f2557b6235bb38b683dd235fc4d994536d1c3205d",
+    "runtime": "public/assets/scene-main-light.webp",
+    "runtimeSha256": "c3a917bfa59d79a81473784445600aa850577ba24a74bd8591349ba153b1756c",
+    "bytes": 190848,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-prep-master",
+    "source": "docs/art/scene-reset/prep-master-v2.png",
+    "sourceSha256": "3cc60ae4e751236aaccad56c32eb949044355bc65d3ef84ac86f44759b4cdade",
+    "runtime": "public/assets/scene-prep-master.webp",
+    "runtimeSha256": "a39113221a0cecac10645cb6ec624315b51fe6082e51d6c15a56e15806e0408a",
+    "bytes": 184518,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-prep-empty",
+    "source": "docs/art/scene-reset/prep-empty.png",
+    "sourceSha256": "56d96bf21664b115e7309bd40d14db64aeb0e1961abee2180276dda8b91d037d",
+    "runtime": "public/assets/scene-prep-empty.webp",
+    "runtimeSha256": "011e52c86e4797a3a5cd75a86d16485d75dcf498e8317f3207fecb8d7e6b2a82",
+    "bytes": 181970,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-prep-clean",
+    "source": "docs/art/scene-reset/prep-clean.png",
+    "sourceSha256": "280268c6a3141c3b3d1f377ebde735b723c39dd1664f0b5a7b98fb4eb8e9b368",
+    "runtime": "public/assets/scene-prep-clean.webp",
+    "runtimeSha256": "42962b534fb616baa4695de13e1dcd787fd513126395df53e726755f88da7f52",
+    "bytes": 103838,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-prep-before",
+    "source": "docs/art/scene-reset/prep-before.png",
+    "sourceSha256": "99320403dd23723766f3b0ba63850e1d5f0674df6dc6d994081ef74d4b7735cd",
+    "runtime": "public/assets/scene-prep-before.webp",
+    "runtimeSha256": "90396f72d93bafc6cf8e921c2169d68218e637f2f684d92023ab4fc41bc3e9c0",
+    "bytes": 381778,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "scene-prep-light",
+    "source": "docs/art/scene-reset/prep-light.png",
+    "sourceSha256": "71c7d8f3c30267e5d7ea112989b48e0b75a9df0f536ac39f45a9102ef5a0ab6e",
+    "runtime": "public/assets/scene-prep-light.webp",
+    "runtimeSha256": "72ca1e37e5e0e5252f8a3c39f01c6ff57d0520905b0abc665600408cf167f2fa",
+    "bytes": 199482,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "operation": "RGB WebP export only"
+  }
+]

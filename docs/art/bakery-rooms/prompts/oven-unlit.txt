@@ -1,0 +1,6 @@
+Use case: precise-object-edit.
+Asset type: registered full-frame bakery kitchen state before the lighting purchase, 1536x1024.
+Input image 1 is the EDIT TARGET: oven-clean.png, the accepted clean empty bakery room. It is the sole geometry reference.
+Change ONLY the two brass wall light fixtures: remove the large fixture above the left window at approximately (342,124), and the smaller fixture on the back wall at approximately (655,227), including their wall mounts, bulbs and local warm light halos. Restore matching continuous pale stone/plaster wall exactly where those fixtures were. Keep natural daylight and sunlight on the floor.
+Invariants: preserve exactly the camera, 1536x1024 frame, every wall corner, ceiling beam, open turquoise doorway, door leaf, handle, window frame and mullion, exterior sea/garden vista, two plants on the wooden window sill, floor-tile joints, sunlight patches, shadow direction and all room boundaries. Do not move, resize, add or remove an opening. The room remains empty of all furniture and the oven. No new objects, no building materials, no debris, no text or UI. This is the exact same room with two lamps removed, not a redesign or relighting of the entire image.
+Output: full-frame RGB image, no transparency, no borders, same aspect ratio and 1536x1024 resolution.

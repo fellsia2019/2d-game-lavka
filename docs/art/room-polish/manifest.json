@@ -1,0 +1,58 @@
+[
+  {
+    "source": "docs/art/room-polish/main-before.png",
+    "runtime": "public/assets/hall-polish-main-before.webp",
+    "sourceSha256": "9795d2951fec115af02782a844f065dd6fbc1c1f9fa6191ea3f560bf65c12183",
+    "runtimeSha256": "4f8d4887ee8695867df9b4cea32590ce5992cc007bb1646884fe21a2c2af168b",
+    "bytes": 593436,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "source": "docs/art/room-polish/main-counter.png",
+    "runtime": "public/assets/hall-polish-main-counter.webp",
+    "sourceSha256": "284f2fc0373e2ce8505ab89add0af59a2e8eec26e3d8c4d32ed2614b909ded96",
+    "runtimeSha256": "f265cf033eeda51ed7b6d8ce6c07247f94c8c045e48ce3bc9d78fdbf06039226",
+    "bytes": 396216,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "source": "docs/art/room-polish/main-lighting.png",
+    "runtime": "public/assets/hall-polish-main-lighting.webp",
+    "sourceSha256": "c992f7552fff9d5a237eb4aea46016e680cd81e209ef6110913f09ae4208e37a",
+    "runtimeSha256": "baf60fff86ceeb4b9926488729ac01145c8de434ed2dff894861428381bb987d",
+    "bytes": 363796,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "source": "docs/art/room-polish/prep-lighting.png",
+    "runtime": "public/assets/hall-polish-prep-lighting.webp",
+    "sourceSha256": "6f5426fe1b6800125702879431122b609e3d79a0c6414bf092f14754ce4b4a85",
+    "runtimeSha256": "5f5a0d27ed8dad9b142c9cd94305c1aa5302a874fb4c00e976db518c5a606b35",
+    "bytes": 246026,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  }
+]

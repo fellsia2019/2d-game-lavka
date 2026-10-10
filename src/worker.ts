@@ -1,4 +1,4 @@
-import { chapterLevel } from "./content";
+import { loadChapterLevel } from "./content";
 import { solve } from "./engine";
 import { compactHintPath } from "./hints";
 import { generate, mixVisible, type GenerationOptions } from "./generator";
@@ -14,12 +14,12 @@ type Request =
       options: GenerationOptions;
     }
   | { id: number; kind: "mix"; board: Board; seed: string };
-self.onmessage = (event: MessageEvent<Request>) => {
+self.onmessage = async (event: MessageEvent<Request>) => {
   const request = event.data;
   try {
     const value =
       request.kind === "level"
-        ? chapterLevel(request.number)
+        ? await loadChapterLevel(request.number)
         : request.kind === "generate"
           ? generate(request.seed, request.profile, 1, request.options)
           : request.kind === "hint"

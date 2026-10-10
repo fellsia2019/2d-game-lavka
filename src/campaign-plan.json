@@ -6,35 +6,24 @@
     "globalStage": 1,
     "title": "Первый полноценный торговый день",
     "orderTarget": 80,
-    "taskTarget": 26,
-    "starTarget": 80,
+    "taskTarget": 14,
+    "starTarget": 61,
+    "repairKitTarget": 19,
     "taskIds": [
-      "first-shelf",
-      "display-baskets",
-      "first-stock",
-      "order-counter",
-      "shop-opening",
-      "shop-s1-t06",
-      "shop-s1-t07",
-      "shop-s1-t08",
-      "shop-s1-t09",
-      "shop-s1-t10",
-      "shop-s1-t11",
-      "shop-s1-t12",
-      "shop-s1-t13",
-      "shop-s1-t14",
-      "shop-s1-t15",
-      "shop-s1-t16",
-      "shop-s1-t17",
-      "shop-s1-t18",
-      "shop-s1-t19",
-      "shop-s1-t20",
-      "shop-s1-t21",
-      "shop-s1-t22",
-      "shop-s1-t23",
-      "shop-s1-t24",
-      "shop-s1-t25",
-      "shop-s1-t26"
+      "shop-s1-r01",
+      "shop-s1-r02",
+      "shop-s1-r03",
+      "shop-s1-r04",
+      "shop-s1-r05",
+      "shop-s1-r06",
+      "shop-s1-r07",
+      "shop-s1-r08",
+      "shop-s1-r09",
+      "shop-s1-r10",
+      "shop-s1-r11",
+      "shop-s1-r12",
+      "shop-s1-r13",
+      "shop-s1-r14"
     ],
     "requiresCompletedPhases": []
   },
@@ -46,7 +35,8 @@
     "title": "Открыть заросший склад",
     "orderTarget": 80,
     "taskTarget": 26,
-    "starTarget": 80,
+    "starTarget": 48,
+    "repairKitTarget": 32,
     "taskIds": [
       "warehouse-s1-t01",
       "warehouse-s1-t02",
@@ -87,7 +77,8 @@
     "title": "Лавка постоянных покупателей",
     "orderTarget": 120,
     "taskTarget": 20,
-    "starTarget": 120,
+    "starTarget": 102,
+    "repairKitTarget": 18,
     "taskIds": [
       "shop-s2-t01",
       "shop-s2-t02",
@@ -123,7 +114,8 @@
     "title": "Сухая и холодная поставка",
     "orderTarget": 120,
     "taskTarget": 20,
-    "starTarget": 120,
+    "starTarget": 102,
+    "repairKitTarget": 18,
     "taskIds": [
       "warehouse-s2-t01",
       "warehouse-s2-t02",
@@ -159,7 +151,8 @@
     "title": "Расчистить и открыть фруктовый двор",
     "orderTarget": 80,
     "taskTarget": 26,
-    "starTarget": 80,
+    "starTarget": 48,
+    "repairKitTarget": 32,
     "taskIds": [
       "fruit-yard-s1-t01",
       "fruit-yard-s1-t02",
@@ -201,7 +194,8 @@
     "title": "Пристройка большой лавки",
     "orderTarget": 120,
     "taskTarget": 20,
-    "starTarget": 120,
+    "starTarget": 60,
+    "repairKitTarget": 60,
     "taskIds": [
       "fruit-yard-s2-t01",
       "fruit-yard-s2-t02",
@@ -239,6 +233,7 @@
     "orderTarget": 160,
     "taskTarget": 20,
     "starTarget": 160,
+    "repairKitTarget": 0,
     "taskIds": [
       "shop-s3-t01",
       "shop-s3-t02",
@@ -276,6 +271,7 @@
     "orderTarget": 160,
     "taskTarget": 20,
     "starTarget": 160,
+    "repairKitTarget": 0,
     "taskIds": [
       "warehouse-s3-t01",
       "warehouse-s3-t02",
@@ -313,6 +309,7 @@
     "orderTarget": 160,
     "taskTarget": 20,
     "starTarget": 160,
+    "repairKitTarget": 0,
     "taskIds": [
       "fruit-yard-s3-t01",
       "fruit-yard-s3-t02",
@@ -349,7 +346,8 @@
     "title": "Построить первую пекарню",
     "orderTarget": 80,
     "taskTarget": 26,
-    "starTarget": 80,
+    "starTarget": 48,
+    "repairKitTarget": 32,
     "taskIds": [
       "bakery-s1-t01",
       "bakery-s1-t02",
@@ -363,12 +361,6 @@
       "bakery-s1-t10",
       "bakery-s1-t11",
       "bakery-s1-t12",
-      "bakery-s1-t13",
-      "bakery-s1-t14",
-      "bakery-s1-t15",
-      "bakery-s1-t16",
-      "bakery-s1-t17",
-      "bakery-s1-t18",
       "bakery-s1-t19",
       "bakery-s1-t20",
       "bakery-s1-t21",
@@ -376,6 +368,12 @@
       "bakery-s1-t23",
       "bakery-s1-t24",
       "bakery-s1-t25",
+      "bakery-s1-t13",
+      "bakery-s1-t14",
+      "bakery-s1-t15",
+      "bakery-s1-t16",
+      "bakery-s1-t17",
+      "bakery-s1-t18",
       "bakery-s1-t26"
     ],
     "requiresCompletedPhases": [
@@ -393,6 +391,7 @@
     "orderTarget": 120,
     "taskTarget": 20,
     "starTarget": 120,
+    "repairKitTarget": 0,
     "taskIds": [
       "bakery-s2-t01",
       "bakery-s2-t02",
@@ -431,6 +430,7 @@
     "orderTarget": 160,
     "taskTarget": 20,
     "starTarget": 160,
+    "repairKitTarget": 0,
     "taskIds": [
       "bakery-s3-t01",
       "bakery-s3-t02",
@@ -469,6 +469,7 @@
     "orderTarget": 200,
     "taskTarget": 20,
     "starTarget": 200,
+    "repairKitTarget": 0,
     "taskIds": [
       "shop-s4-t01",
       "shop-s4-t02",
@@ -507,6 +508,7 @@
     "orderTarget": 200,
     "taskTarget": 20,
     "starTarget": 200,
+    "repairKitTarget": 0,
     "taskIds": [
       "warehouse-s4-t01",
       "warehouse-s4-t02",
@@ -545,6 +547,7 @@
     "orderTarget": 200,
     "taskTarget": 20,
     "starTarget": 200,
+    "repairKitTarget": 0,
     "taskIds": [
       "fruit-yard-s4-t01",
       "fruit-yard-s4-t02",
@@ -583,6 +586,7 @@
     "orderTarget": 200,
     "taskTarget": 20,
     "starTarget": 200,
+    "repairKitTarget": 0,
     "taskIds": [
       "bakery-s4-t01",
       "bakery-s4-t02",
@@ -621,6 +625,7 @@
     "orderTarget": 80,
     "taskTarget": 26,
     "starTarget": 80,
+    "repairKitTarget": 0,
     "taskIds": [
       "terrace-s1-t01",
       "terrace-s1-t02",
@@ -665,6 +670,7 @@
     "orderTarget": 120,
     "taskTarget": 20,
     "starTarget": 120,
+    "repairKitTarget": 0,
     "taskIds": [
       "terrace-s2-t01",
       "terrace-s2-t02",
@@ -704,6 +710,7 @@
     "orderTarget": 160,
     "taskTarget": 20,
     "starTarget": 160,
+    "repairKitTarget": 0,
     "taskIds": [
       "terrace-s3-t01",
       "terrace-s3-t02",
@@ -743,6 +750,7 @@
     "orderTarget": 200,
     "taskTarget": 20,
     "starTarget": 200,
+    "repairKitTarget": 0,
     "taskIds": [
       "terrace-s4-t01",
       "terrace-s4-t02",
@@ -782,6 +790,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "shop-s5-t01",
       "shop-s5-t02",
@@ -821,6 +830,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "warehouse-s5-t01",
       "warehouse-s5-t02",
@@ -860,6 +870,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "fruit-yard-s5-t01",
       "fruit-yard-s5-t02",
@@ -899,6 +910,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "bakery-s5-t01",
       "bakery-s5-t02",
@@ -938,6 +950,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "terrace-s5-t01",
       "terrace-s5-t02",
@@ -977,6 +990,7 @@
     "orderTarget": 80,
     "taskTarget": 26,
     "starTarget": 80,
+    "repairKitTarget": 0,
     "taskIds": [
       "restaurant-s1-t01",
       "restaurant-s1-t02",
@@ -1022,6 +1036,7 @@
     "orderTarget": 120,
     "taskTarget": 20,
     "starTarget": 120,
+    "repairKitTarget": 0,
     "taskIds": [
       "restaurant-s2-t01",
       "restaurant-s2-t02",
@@ -1062,6 +1077,7 @@
     "orderTarget": 160,
     "taskTarget": 20,
     "starTarget": 160,
+    "repairKitTarget": 0,
     "taskIds": [
       "restaurant-s3-t01",
       "restaurant-s3-t02",
@@ -1102,6 +1118,7 @@
     "orderTarget": 200,
     "taskTarget": 20,
     "starTarget": 200,
+    "repairKitTarget": 0,
     "taskIds": [
       "restaurant-s4-t01",
       "restaurant-s4-t02",
@@ -1142,6 +1159,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "restaurant-s5-t01",
       "restaurant-s5-t02",
@@ -1182,6 +1200,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "shop-s6-t01",
       "shop-s6-t02",
@@ -1222,6 +1241,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "warehouse-s6-t01",
       "warehouse-s6-t02",
@@ -1262,6 +1282,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "fruit-yard-s6-t01",
       "fruit-yard-s6-t02",
@@ -1302,6 +1323,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "bakery-s6-t01",
       "bakery-s6-t02",
@@ -1342,6 +1364,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "terrace-s6-t01",
       "terrace-s6-t02",
@@ -1382,6 +1405,7 @@
     "orderTarget": 220,
     "taskTarget": 20,
     "starTarget": 220,
+    "repairKitTarget": 0,
     "taskIds": [
       "restaurant-s6-t01",
       "restaurant-s6-t02",

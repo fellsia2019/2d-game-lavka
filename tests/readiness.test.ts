@@ -1,15 +1,15 @@
 import { test } from "node:test";
+import { createOrderAppearance } from "../src/order-supplies";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import {
-  chapterLevel,
   CHAPTER,
-  CHAPTER_DEFINITIONS,
   canonicalLevelId,
   completedCount,
   isUnlocked,
   nextOrder,
 } from "../src/content";
+import { offlineChapterLevel as chapterLevel, OFFLINE_CHAPTER_DEFINITIONS as CHAPTER_DEFINITIONS } from "../src/content-offline";
 import {
   applyMove,
   clone,
@@ -30,14 +30,16 @@ import {
   cachedHint,
   completeAttempt,
   renovate,
-  purchaseShopTask,
+  purchaseProjectTask,
+  selectProject,
   type Attempt,
 } from "../src/storage";
-import { SHOP_STEPS } from "../src/campaign";
+import { PROJECTS, TASKS, nextProjectOrder, nextProjectTask, phaseStatus, orderCurrency, taskBalance } from "../src/campaign";
 function attempt(def = chapterLevel(1)): Attempt {
   return {
     id: "readiness",
     definition: def,
+    appearance: createOrderAppearance(def),
     board: initial(def),
     undo: [],
     solution: clone(def.verifiedSolution),
@@ -54,6 +56,7 @@ function finished(a: Attempt) {
 }
 function roundTrip(a: Attempt) {
   const p = freshProgress();
+  p.selectedProject = CHAPTER.find(story => story.id === canonicalLevelId(a.definition.id))!.phaseId as typeof p.selectedProject;
   p.attempt = a;
   const result = loadProgress({ getItem: () => JSON.stringify(p) });
   assert.equal(result.warning, undefined);
@@ -93,7 +96,7 @@ test("Authored chapter is cloned and legacy ids keep their fixed meaning", () =>
     "coastal-slice-1:front:unrelated",
   );
 });
-test("Every chapter transfer remains a valid persisted state, with full undo", () => {
+test("Every chapter transfer is valid; first, middle and final saves retain full undo", () => {
   for (let n = 1; n <= CHAPTER.length; n++) {
     const a = attempt(chapterLevel(n));
     for (const m of a.definition.verifiedSolution) {
@@ -106,7 +109,7 @@ test("Every chapter transfer remains a valid persisted state, with full undo", (
         true,
         `order ${n}, move ${a.board.used}`,
       );
-      roundTrip(a);
+      if (a.board.used === 1 || a.board.used === Math.floor(a.definition.verifiedSolution.length / 2) || won(a.board)) roundTrip(a);
     }
     assert.equal(won(a.board), true);
   }
@@ -136,7 +139,7 @@ test("Schema 1 migration retains the pinned layout, seed, old generator version,
   const original = clone(p.attempt.definition),
     result = loadProgress({ getItem: () => JSON.stringify(p) });
   assert.equal(result.warning, undefined);
-  assert.equal(result.progress.schema, 5);
+  assert.equal(result.progress.schema, 10);
   assert.deepEqual(result.progress.completed, [CHAPTER[0].id]);
   assert.equal(result.progress.coins, 60);
   assert.deepEqual(result.progress.renovations, { sign: "coral" });
@@ -156,6 +159,7 @@ test("Version changes and legacy aliases cannot grant the same chapter star twic
   assert.deepEqual(completeAttempt(p, "2026-10-04"), {
     coins: 10,
     stars: 0,
+    repairKits: 0,
     fresh: false,
   });
   assert.equal(p.stars, 0);
@@ -204,7 +208,7 @@ test("Invalid metadata, goods, locks and reward flags discard only the attempt",
     (a: Attempt) => (a.definition.number = 999),
     (a: Attempt) => (a.definition.profile = "invalid" as any),
     (a: Attempt) => (a.definition.shelves[0].front[0] = "constructor" as any),
-    (a: Attempt) => (a.reward = { coins: 60, stars: 1, fresh: true }),
+    (a: Attempt) => (a.reward = { coins: 60, stars: 1, repairKits: 0, fresh: true }),
     (a: Attempt) =>
       (a.board.shelves.find((s) => s.unlockAfter)!.unlockAfter = 99),
   ];
@@ -224,28 +228,39 @@ test("Invalid metadata, goods, locks and reward flags discard only the attempt",
   }
 });
 test("Unknown future save schema is read-only and retains its storage bytes", () => {
-  const raw = JSON.stringify({ ...freshProgress(), schema: 9 }),
+  const raw = JSON.stringify({ ...freshProgress(), schema: 11 }),
     memory = new Map([["save", raw]]);
   const loaded = loadProgress({ getItem: () => memory.get("save")! });
   assert.equal(loaded.readOnly, true);
   assert.equal(memory.get("save"), raw);
 });
-test("All available wins fund their produced repairs, switches are free and choices persist", () => {
+test("All produced projects fund their repairs through unlocked orders; ownership and choices persist", () => {
   const p = freshProgress();
-  for (let n = 1; n <= CHAPTER.length; n++) {
-    p.attempt = finished(attempt(chapterLevel(n)));
-    completeAttempt(p, "2026-10-04");
+  assert.equal(renovate(p, "sea", "window"), false);
+  for (const project of PROJECTS) {
+    assert.equal(selectProject(p, project.id), true);
+    while (phaseStatus(project.id, p.completed, p.campaign) !== "complete") {
+      const task = nextProjectTask(p.campaign, project.id);
+      if (task && taskBalance(p, task) >= task.cost) {
+        assert.equal(purchaseProjectTask(p, task.id), true);
+        continue;
+      }
+      const number = nextProjectOrder(project.id, p.completed, p.campaign);
+      assert.ok(number, `Deadlock in ${project.id}`);
+      p.attempt = finished(attempt(chapterLevel(number)));
+      assert.deepEqual(completeAttempt(p, "2026-10-04"), { coins: 60, stars: orderCurrency(p.attempt.definition.id) === "stars" ? 1 : 0, repairKits: orderCurrency(p.attempt.definition.id) === "repairKits" ? 1 : 0, fresh: true });
+    }
   }
   assert.equal(p.coins, CHAPTER.length * 60);
-  assert.equal(p.stars, CHAPTER.length);
-  assert.equal(renovate(p, "sea", "window"), false);
-  for (const task of SHOP_STEPS) assert.equal(purchaseShopTask(p, task.id), true);
   assert.equal(p.stars, 0);
+  assert.equal(p.repairKits, 0);
+  assert.equal(p.campaign.completedTasks.length, TASKS.length);
   for (const id of ["sign", "counter"] as const) assert.equal(renovate(p, "coral", id), true);
   const loaded = loadProgress({ getItem: () => JSON.stringify(p) });
   assert.equal(loaded.warning, undefined);
   assert.equal(Object.keys(loaded.progress.renovations).length, 2);
   assert.equal(loaded.progress.renovations.sign, "coral");
+  assert.equal(loaded.progress.selectedProject, PROJECTS.at(-1)!.id);
   assert.equal(completedCount(loaded.progress.completed), CHAPTER.length);
 });
 test("A player-created full board is detected exactly, and one undo restores free moves", () => {

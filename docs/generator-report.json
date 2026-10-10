@@ -1,39 +1,54 @@
 {
-  "generatorVersion": "coastal-slice-3",
+  "generatorVersion": "coastal-slice-4",
   "sample": "audit-0 through audit-99, no exclusion history",
   "profiles": {
     "front": {
       "requested": 100,
       "verified": 100,
       "unknown": 0,
-      "distinctStructures": 42,
-      "maxRepetitions": 11,
+      "distinctStructures": 77,
+      "maxRepetitions": 6,
       "recipes": {
-        "front-four": 37,
-        "front-classic": 25,
-        "front-double": 38
+        "front-four": 18,
+        "front-five-triples": 19,
+        "front-wide": 12,
+        "front-classic": 13,
+        "front-two-pairs": 20,
+        "front-double": 18
       }
     },
     "layers": {
       "requested": 100,
       "verified": 100,
       "unknown": 0,
-      "distinctStructures": 99,
-      "maxRepetitions": 2,
+      "distinctStructures": 100,
+      "maxRepetitions": 1,
       "recipes": {
-        "layers-deep": 50,
-        "layers-classic": 50
+        "layers-long": 13,
+        "layers-four-kinds": 8,
+        "layers-balanced": 10,
+        "layers-deep-long": 11,
+        "layers-wide": 13,
+        "layers-light": 14,
+        "layers-classic": 7,
+        "layers-deep": 13,
+        "layers-staggered": 11
       }
     },
     "crate": {
       "requested": 100,
       "verified": 100,
       "unknown": 0,
-      "distinctStructures": 83,
-      "maxRepetitions": 4,
+      "distinctStructures": 85,
+      "maxRepetitions": 5,
       "recipes": {
-        "crate-room": 50,
-        "crate-classic": 50
+        "crate-five-triples": 14,
+        "crate-classic": 15,
+        "crate-room": 20,
+        "crate-twin-paired": 16,
+        "crate-paired": 8,
+        "crate-twin": 7,
+        "crate-small": 20
       }
     },
     "mixed": {
@@ -43,8 +58,18 @@
       "distinctStructures": 100,
       "maxRepetitions": 1,
       "recipes": {
-        "mixed-deep": 50,
-        "mixed-classic": 50
+        "mixed-deep": 8,
+        "mixed-staggered": 9,
+        "mixed-room": 6,
+        "mixed-twin-deep": 8,
+        "mixed-twin": 12,
+        "mixed-twin-long": 12,
+        "mixed-light": 6,
+        "mixed-ten-triples": 6,
+        "mixed-triple-crate": 8,
+        "mixed-deep-ten": 10,
+        "mixed-long": 10,
+        "mixed-classic": 5
       }
     }
   }

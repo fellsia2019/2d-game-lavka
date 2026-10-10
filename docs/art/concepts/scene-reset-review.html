@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Лавка — новое направление сцены</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5edde;color:#28585b;font:16px/1.4 'Trebuchet MS',sans-serif;min-height:100dvh;height:100dvh;display:grid;grid-template-rows:auto auto minmax(0,1fr) auto auto;gap:8px;padding:12px}
+header{display:flex;align-items:center;justify-content:space-between;max-width:1240px;width:100%;margin:auto;gap:12px}h1{font:700 26px Georgia,serif;margin:0}.tag{font-size:13px;background:#dce9e4;color:#30615d;padding:5px 10px;border-radius:20px;white-space:nowrap}
+nav{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}button{min-height:44px;padding:9px 16px;border:1px solid #d8bc92;border-radius:14px;background:#fff9ed;color:#496360;font:600 16px/1.2 'Trebuchet MS',sans-serif;cursor:pointer}button[aria-pressed=true]{background:#287e82;color:#fff8e8;border-color:#287e82}button:focus-visible{outline:3px solid #b7803e;outline-offset:2px}
+.room{width:100%;max-width:1240px;min-height:0;margin:auto;height:100%;overflow:hidden;border:1px solid #e2cfb1;border-radius:20px;background:#fffaf0}.room img{width:100%;height:100%;object-fit:contain;display:block}.room[data-zone]:not([data-zone=whole]) img{object-fit:cover;object-position:var(--focus,50% 50%)}
+footer{max-width:900px;margin:auto;text-align:center;font-size:14px;color:#7b705e}footer p{margin:0}.zone-label{font-size:14px;color:#7b705e}.zones button{font-size:14px;padding:8px 12px}
+@media(max-width:600px){body{padding:8px;gap:8px}h1{font-size:22px}.tag{font-size:12px;padding:5px 7px}.states{gap:6px}.states button{font-size:14px;flex:1;padding:9px 5px}.zones{gap:5px}.zones button{font-size:13px;padding:8px 10px}.zone-label{display:none}footer{font-size:13px}.room{border-radius:14px}.room[data-zone=display] img{transform:scale(1.25);transform-origin:78% 45%}.room[data-zone=window] img{transform:scale(1.2);transform-origin:22% 50%}.room[data-zone=counter] img{transform:scale(1.3);transform-origin:72% 74%}}
+@media(max-height:450px){body{height:auto;min-height:100dvh}.room{height:380px}header h1{font-size:22px}}
+</style>
+<header><h1>Лавка у моря</h1><span class="tag">Предложение · не в игре</span></header>
+<nav class="states" aria-label="Состояние комнаты">
+<button data-state="before" aria-pressed="false">До ремонта</button>
+<button data-state="middle" aria-pressed="false">Мебель</button>
+<button data-state="finished" aria-pressed="true">С товарами</button>
+</nav>
+<main class="room" data-zone="whole" aria-label="Концепт комнаты"><img id="scene" src="scene-reset-finished-v3.png" width="1536" height="1024" alt="Предложение: готовая лавка с витринами и кассовым прилавком"></main>
+<nav class="zones" aria-label="Кадр комнаты">
+<span class="zone-label">Кадр:</span>
+<button data-zone="whole" aria-pressed="true">Общий</button>
+<button data-zone="window" aria-pressed="false">У окна</button>
+<button data-zone="display" aria-pressed="false">Витрины</button>
+<button data-zone="counter" aria-pressed="false">Касса</button>
+</nav>
+<footer><p id="caption" role="status">Общая проекция комнаты. Это концепт; слои ещё не собраны в игре.</p></footer>
+<script>
+const scene=document.querySelector('#scene'),room=document.querySelector('.room'),caption=document.querySelector('#caption');
+const states={before:['scene-reset-before-v2.png','Помещение до ремонта'],middle:['scene-reset-middle-v2.png','После ремонта и установки мебели'],finished:['scene-reset-finished-v3.png','Готовая лавка с витринами и кассовым прилавком']};
+const zones={whole:['50% 50%','Общий вид'],window:['7% 50%','Витрина у окна'],display:['90% 50%','Основная витрина'],counter:['73% 90%','Кассовый прилавок']};
+let current='finished',zone=matchMedia('(max-width:600px)').matches?'display':'whole';
+function render(){scene.src=states[current][0];scene.alt='Предложение: '+states[current][1];room.dataset.zone=zone;room.style.setProperty('--focus',zones[zone][0]);caption.textContent=states[current][1]+'. '+zones[zone][1]+'. Концепт, ещё не в игре.';document.querySelectorAll('[data-state]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.state===current)));document.querySelectorAll('button[data-zone]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.zone===zone)))}
+document.querySelectorAll('[data-state]').forEach(b=>b.addEventListener('click',()=>{current=b.dataset.state;render()}));document.querySelectorAll('button[data-zone]').forEach(b=>b.addEventListener('click',()=>{zone=b.dataset.zone;render()}));
+render();
+</script>
+</html>

@@ -1,0 +1,17 @@
+{
+  "use_case": "precise-object-edit",
+  "mode": "built-in image_gen.imagegen",
+  "prompt": "Use case: precise-object-edit.\nAsset type: registered full-frame 1536×1024 donor for a layered 2D coastal warehouse game.\nInput images: Image 1 (storage-empty.png) is the edit target and exact geometry registration reference. Image 2 (storage-clean.png) is a supporting reference for the unobstructed terracotta floor only.\nPrimary request: remove ONLY the LARGE foreground open wooden delivery crate in the bottom-right/front of Image 1, approximately x1136–1474,y685–947. That crate is in front of and obscures the lower front corner of the RIGHTMOST of the three smaller empty wooden floor crates beside the shelving. Restore that rightmost smaller crate as a COMPLETE rectangular wooden crate, including its entire lower front plank, vertical corner posts and short wooden feet/supports which the foreground crate currently hides around x1260–1355,y688–726. No cut-off wood fragments, no partial crate in front of it.\nReconstruct the clean terracotta tiled floor and tiny soft contact immediately below the restored crate. Keep the three existing smaller floor crates at the shelving exactly in their current positions, their size, perspective, wood color, planks, rim heights and corner geometry. The rightmost small crate is roughly x1239–1437,y578–727; preserve its existing visible upper/front/side boards.\nInvariants: preserve the complete original 1536×1024 frame, camera and crop. Do not move, resize, turn, redesign or add any furniture. Preserve all shelving, pallet, teal cupboard by the window, scales table, packaging bench, milk cans, trolley, teal chest, door/window/walls/lamp, their positions and illumination. Change only the removed foreground crate area and the small previously hidden parts of the rightmost floor crate. Preserve everything elsewhere pixel-registration as closely as possible. Opaque full-frame output, no transparency, no UI, no captions, no watermark. Do not remove the three crates at the shelving; do not leave any remnants of the LARGE foreground crate.",
+  "inputs": [
+    {
+      "role": "edit target and geometry",
+      "path": "docs/art/warehouse-rooms/storage-empty.png"
+    },
+    {
+      "role": "unobstructed floor reference",
+      "path": "docs/art/warehouse-rooms/storage-clean.png"
+    }
+  ],
+  "output": "docs/art/warehouse-rooms/storage-dry-crates-bare.png",
+  "runtime": "public/assets/warehouse-room-storage-dry-crates-bare.webp"
+}

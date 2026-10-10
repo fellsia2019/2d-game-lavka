@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-06",
+  "useCase": "stylized-concept",
+  "tool": "built-in image_gen.imagegen",
+  "source": "docs/art/campaign-window-display-original.png",
+  "references": [
+    {
+      "path": "docs/art/campaign-shop-empty-original.png",
+      "role": "architecture and perspective reference"
+    },
+    {
+      "path": "docs/art/campaign-shelving-original.png",
+      "role": "materials and style reference"
+    }
+  ],
+  "prompt": "Use case: stylized-concept. Asset type: ONE transparent empty furniture sprite for a cosy seaside grocery game, not an atlas. Input image1 is architecture/perspective reference (empty room): this display goes below the left-hand window, with open door kept clear. Input image2 is materials/style reference (existing grocery shelving), preserve its honey oak wood and rich turquoise supports. Create a beautiful LOW and long two-tier grocery display sideboard, about2.8 times as wide as high, no taller than a windowsill. Both tiers empty, broad shallow open wooden display surfaces with small raised lips, turquoise structural supports and turquoise low plinth. No built-in wicker baskets: baskets and goods will be separately composited. The long axis of the sideboard recedes toward the RIGHT, tilted upward to the right about12 degrees, as a low cabinet running along the LEFT WINDOW WALL of a room. Viewer sees broad front faces of both shelves and their top surfaces, nearest left end slightly larger and lower, farther right end slightly smaller and higher. Low enough to retain full sea view and sunlight through the window above. Polished tactile dimensional Mediterranean casual game raster illustration, warm honey oak wood grain, cream edging, soft upper-left sunny light and tight contact shadow entirely contained around feet. Strong readable full silhouette. Isolated entire object with actual transparent alpha background and generous margin. No room, window, door, floor or scenery, no food goods, baskets, crates, counter, people, lettering, labels, UI or watermark. No tall upright backboard or upper shelf above the cabinet; keep low horizontal furniture proportions, no square front-on bookcase.",
+  "constraints": "One low empty shelf. Baskets and goods remain separate. Original reference and primary shelving are preserved."
+}

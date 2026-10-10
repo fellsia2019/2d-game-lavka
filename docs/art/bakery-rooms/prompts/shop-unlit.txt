@@ -1,0 +1,6 @@
+Use case: precise-object-edit.
+Asset type: registered full-frame empty bakery shop before lighting, exact 1536x1024.
+Input image 1 is the EDIT TARGET and sole geometry reference: shop-clean.png.
+Change ONLY the three brass wall light fixtures: remove the left fixture near (240,129), the middle fixture between large window and door near (1135,199), and the right fixture above the door near (1355,108), including mounts, bulbs and their local warm halos. Restore continuous matching pale wall at their locations. Keep all natural daylight and shadows.
+Strict invariants: exact camera, full frame, room geometry/corner, all floor tiles and sun patches, ceiling beams, all three turquoise openings and frame/mullion/handle details. In particular the doorway stays RIGHT, the large front window left of the door, and the small side window remains on the distinct left wall. Preserve plants on the small sill, exterior sea/garden views and the striped awning seen through the large window. Keep the room empty; do not add furniture, oven, lamps, rubble or construction materials. Do not move, resize, close or add an opening. No text, UI or borders.
+Output: opaque RGB1536x1024, identical 3:2 aspect. This is the same empty room minus three lamps, not a new perspective or global relighting.

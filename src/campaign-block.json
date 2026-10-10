@@ -1,0 +1,1758 @@
+[
+  {
+    "id": "shop-1",
+    "areaId": "shop",
+    "stage": 1,
+    "globalStage": 1,
+    "title": "Первый полноценный торговый день",
+    "result": "Лавка обслуживает ежедневные заказы; следующий проект — склад",
+    "requiresCompletedPhases": [],
+    "orderTarget": 80,
+    "taskTarget": 14,
+    "taskIds": [
+      "shop-s1-r01",
+      "shop-s1-r02",
+      "shop-s1-r03",
+      "shop-s1-r04",
+      "shop-s1-r05",
+      "shop-s1-r06",
+      "shop-s1-r07",
+      "shop-s1-r08",
+      "shop-s1-r09",
+      "shop-s1-r10",
+      "shop-s1-r11",
+      "shop-s1-r12",
+      "shop-s1-r13",
+      "shop-s1-r14"
+    ],
+    "tasks": [
+      {
+        "id": "shop-s1-r01",
+        "name": "Восстановить пол",
+        "cost": 6,
+        "target": "shop-s1-reset-object-01",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall",
+          "hall-prep"
+        ],
+        "sceneObjectId": "room-floor",
+        "focusZone": "whole",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "shop-s1-r02",
+        "name": "Восстановить стены",
+        "cost": 5,
+        "target": "shop-s1-reset-object-02",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall",
+          "hall-prep"
+        ],
+        "sceneObjectId": "room-walls",
+        "focusZone": "whole",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "shop-s1-r03",
+        "name": "Обновить дверь и окно",
+        "cost": 8,
+        "target": "shop-s1-reset-object-03",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall"
+        ],
+        "sceneObjectId": "room-entrance",
+        "focusZone": "whole",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "shop-s1-r04",
+        "name": "Поставить витрину у окна",
+        "cost": 4,
+        "target": "shop-s1-reset-object-04",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall"
+        ],
+        "sceneObjectId": "window-display",
+        "focusZone": "window",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r05",
+        "name": "Оборудовать выкладку у окна",
+        "cost": 7,
+        "target": "shop-s1-reset-object-05",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall"
+        ],
+        "sceneObjectId": "window-display",
+        "focusZone": "window",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r06",
+        "name": "Установить основной стеллаж",
+        "cost": 6,
+        "target": "shop-s1-reset-object-06",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall",
+          "hall-prep"
+        ],
+        "sceneObjectId": "main-display",
+        "focusZone": "display",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r07",
+        "name": "Наполнить основную витрину",
+        "cost": 7,
+        "target": "shop-s1-reset-object-07",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall",
+          "hall-prep"
+        ],
+        "sceneObjectId": "main-display",
+        "focusZone": "display",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r08",
+        "name": "Оборудовать хлебную секцию",
+        "cost": 5,
+        "target": "shop-s1-reset-object-08",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall",
+          "hall-prep"
+        ],
+        "sceneObjectId": "bread-section",
+        "focusZone": "display",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r09",
+        "name": "Собрать кассовый прилавок",
+        "cost": 6,
+        "target": "shop-s1-reset-object-09",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall"
+        ],
+        "sceneObjectId": "checkout-counter",
+        "focusZone": "counter",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r10",
+        "name": "Установить кассу",
+        "cost": 4,
+        "target": "shop-s1-reset-object-10",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall"
+        ],
+        "sceneObjectId": "checkout-counter",
+        "focusZone": "counter",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r11",
+        "name": "Оборудовать место упаковки",
+        "cost": 8,
+        "target": "shop-s1-reset-object-11",
+        "roomId": "shop-hall",
+        "primaryView": "hall-prep",
+        "visibleIn": [
+          "hall-prep"
+        ],
+        "sceneObjectId": "packing-station",
+        "focusZone": "packing",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r12",
+        "name": "Установить стеллаж заказов",
+        "cost": 5,
+        "target": "shop-s1-reset-object-12",
+        "roomId": "shop-hall",
+        "primaryView": "hall-prep",
+        "visibleIn": [
+          "hall-prep"
+        ],
+        "sceneObjectId": "order-rack",
+        "focusZone": "orders",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r13",
+        "name": "Подготовить готовые заказы",
+        "cost": 6,
+        "target": "shop-s1-reset-object-13",
+        "roomId": "shop-hall",
+        "primaryView": "hall-prep",
+        "visibleIn": [
+          "hall-prep"
+        ],
+        "sceneObjectId": "order-rack",
+        "focusZone": "orders",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s1-r14",
+        "name": "Завершить освещение лавки",
+        "cost": 3,
+        "target": "shop-s1-reset-object-14",
+        "roomId": "shop-hall",
+        "primaryView": "hall",
+        "visibleIn": [
+          "hall",
+          "hall-prep"
+        ],
+        "sceneObjectId": "room-lighting",
+        "focusZone": "whole",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ]
+  },
+  {
+    "id": "warehouse-1",
+    "areaId": "warehouse",
+    "stage": 1,
+    "globalStage": 1,
+    "title": "Открыть заросший склад",
+    "result": "Сухой склад принимает поставки и открывает второй этап лавки",
+    "requiresCompletedPhases": [
+      "shop-1"
+    ],
+    "orderTarget": 80,
+    "taskTarget": 26,
+    "taskIds": [
+      "warehouse-s1-t01",
+      "warehouse-s1-t02",
+      "warehouse-s1-t03",
+      "warehouse-s1-t04",
+      "warehouse-s1-t05",
+      "warehouse-s1-t06",
+      "warehouse-s1-t07",
+      "warehouse-s1-t08",
+      "warehouse-s1-t09",
+      "warehouse-s1-t10",
+      "warehouse-s1-t11",
+      "warehouse-s1-t12",
+      "warehouse-s1-t13",
+      "warehouse-s1-t14",
+      "warehouse-s1-t15",
+      "warehouse-s1-t16",
+      "warehouse-s1-t17",
+      "warehouse-s1-t18",
+      "warehouse-s1-t19",
+      "warehouse-s1-t20",
+      "warehouse-s1-t21",
+      "warehouse-s1-t22",
+      "warehouse-s1-t23",
+      "warehouse-s1-t24",
+      "warehouse-s1-t25",
+      "warehouse-s1-t26"
+    ],
+    "tasks": [
+      {
+        "id": "warehouse-s1-t01",
+        "name": "Вывезти мусор с участка",
+        "cost": 2,
+        "target": "warehouse-s1-object-01",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t02",
+        "name": "Разобрать старый сгнивший сарай",
+        "cost": 2,
+        "target": "warehouse-s1-object-02",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t03",
+        "name": "Вырубить кусты и заросшие лианы",
+        "cost": 3,
+        "target": "warehouse-s1-object-03",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t04",
+        "name": "Убрать поваленные деревья и пни",
+        "cost": 3,
+        "target": "warehouse-s1-object-04",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t05",
+        "name": "Дочистить и выровнять площадку",
+        "cost": 2,
+        "target": "warehouse-s1-object-05",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t06",
+        "name": "Разметить контур постройки",
+        "cost": 2,
+        "target": "warehouse-s1-object-06",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t07",
+        "name": "Залить фундамент нового склада",
+        "cost": 3,
+        "target": "warehouse-s1-object-07",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t08",
+        "name": "Возвести каркас и стены склада",
+        "cost": 3,
+        "target": "warehouse-s1-object-08",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t09",
+        "name": "Установить крышу склада",
+        "cost": 3,
+        "target": "warehouse-s1-object-09",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t10",
+        "name": "Установить дверь и окна",
+        "cost": 3,
+        "target": "warehouse-s1-object-10",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t11",
+        "name": "Подготовить пол и внутреннюю отделку",
+        "cost": 3,
+        "target": "warehouse-s1-object-11",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t12",
+        "name": "Провести освещение и подготовить безопасный вход",
+        "cost": 3,
+        "target": "warehouse-s1-object-12",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s1-t13",
+        "name": "Уложить паллеты первой приёмки",
+        "cost": 3,
+        "target": "warehouse-s1-object-13",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t14",
+        "name": "Установить первые стеллажи хранения",
+        "cost": 3,
+        "target": "warehouse-s1-object-14",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t15",
+        "name": "Обозначить секции товаров",
+        "cost": 3,
+        "target": "warehouse-s1-object-15",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t16",
+        "name": "Поставить ящики сухих продуктов",
+        "cost": 3,
+        "target": "warehouse-s1-object-16",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t17",
+        "name": "Подготовить место холодной поставки",
+        "cost": 3,
+        "target": "warehouse-s1-object-17",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t18",
+        "name": "Поставить стол проверки поставки",
+        "cost": 3,
+        "target": "warehouse-s1-object-18",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t19",
+        "name": "Установить ручную тележку",
+        "cost": 4,
+        "target": "warehouse-s1-object-19",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t20",
+        "name": "Нанести разметку разгрузки",
+        "cost": 4,
+        "target": "warehouse-s1-object-20",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t21",
+        "name": "Заполнить первую поставку",
+        "cost": 4,
+        "target": "warehouse-s1-object-21",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t22",
+        "name": "Поставить шкаф инвентаря",
+        "cost": 3,
+        "target": "warehouse-s1-object-22",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t23",
+        "name": "Организовать возвратную тару",
+        "cost": 4,
+        "target": "warehouse-s1-object-23",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t24",
+        "name": "Оборудовать комплектование лавки",
+        "cost": 4,
+        "target": "warehouse-s1-object-24",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t25",
+        "name": "Принять контрольную поставку",
+        "cost": 4,
+        "target": "warehouse-s1-object-25",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s1-t26",
+        "name": "Открыть ежедневное снабжение лавки",
+        "cost": 3,
+        "target": "warehouse-s1-object-26",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ],
+    "construction": {
+      "kind": "new-site",
+      "states": [
+        "abandoned",
+        "rubbish-removed",
+        "demolished",
+        "vegetation-cleared",
+        "stumps-removed",
+        "cleared",
+        "planned",
+        "foundation",
+        "walls",
+        "roof",
+        "enclosed",
+        "fitout",
+        "entry-ready",
+        "base-equipment",
+        "open"
+      ],
+      "taskIds": [
+        "warehouse-s1-t01",
+        "warehouse-s1-t02",
+        "warehouse-s1-t03",
+        "warehouse-s1-t04",
+        "warehouse-s1-t05",
+        "warehouse-s1-t06",
+        "warehouse-s1-t07",
+        "warehouse-s1-t08",
+        "warehouse-s1-t09",
+        "warehouse-s1-t10",
+        "warehouse-s1-t11",
+        "warehouse-s1-t12",
+        "warehouse-s1-t13",
+        "warehouse-s1-t14"
+      ],
+      "opensInteriorAfterTaskId": "warehouse-s1-t14",
+      "projectOrders": 38,
+      "interiorOrders": 42,
+      "earningContext": "any-already-open-building",
+      "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
+    }
+  },
+  {
+    "id": "shop-2",
+    "areaId": "shop",
+    "stage": 2,
+    "globalStage": 2,
+    "title": "Лавка постоянных покупателей",
+    "result": "Склад снабжает несколько отделов; появляется основание открыть фруктовый двор",
+    "requiresCompletedPhases": [
+      "shop-1",
+      "warehouse-1"
+    ],
+    "orderTarget": 120,
+    "taskTarget": 20,
+    "taskIds": [
+      "shop-s2-t01",
+      "shop-s2-t02",
+      "shop-s2-t03",
+      "shop-s2-t04",
+      "shop-s2-t05",
+      "shop-s2-t06",
+      "shop-s2-t07",
+      "shop-s2-t08",
+      "shop-s2-t09",
+      "shop-s2-t10",
+      "shop-s2-t11",
+      "shop-s2-t12",
+      "shop-s2-t13",
+      "shop-s2-t14",
+      "shop-s2-t15",
+      "shop-s2-t16",
+      "shop-s2-t17",
+      "shop-s2-t18",
+      "shop-s2-t19",
+      "shop-s2-t20"
+    ],
+    "tasks": [
+      {
+        "id": "shop-s2-t01",
+        "name": "Расчистить боковую нишу",
+        "cost": 6,
+        "target": "shop-s2-object-01",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "shop-s2-t02",
+        "name": "Отремонтировать пол в нише",
+        "cost": 6,
+        "target": "shop-s2-object-02",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "shop-s2-t03",
+        "name": "Облицевать стену нового отдела",
+        "cost": 6,
+        "target": "shop-s2-object-03",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "shop-s2-t04",
+        "name": "Установить секционный стеллаж",
+        "cost": 6,
+        "target": "shop-s2-object-04",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t05",
+        "name": "Добавить закрытые нижние шкафы",
+        "cost": 6,
+        "target": "shop-s2-object-05",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t06",
+        "name": "Поставить стойку бакалеи",
+        "cost": 6,
+        "target": "shop-s2-object-06",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t07",
+        "name": "Наполнить отдел круп и макарон",
+        "cost": 6,
+        "target": "shop-s2-object-07",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t08",
+        "name": "Установить полку чая и кофе",
+        "cost": 6,
+        "target": "shop-s2-object-08",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t09",
+        "name": "Наполнить чайный отдел",
+        "cost": 6,
+        "target": "shop-s2-object-09",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t10",
+        "name": "Установить подставку масла и мёда",
+        "cost": 6,
+        "target": "shop-s2-object-10",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t11",
+        "name": "Добавить дозатор пакетов",
+        "cost": 6,
+        "target": "shop-s2-object-11",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t12",
+        "name": "Установить кассовый терминал",
+        "cost": 6,
+        "target": "shop-s2-object-12",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t13",
+        "name": "Расширить поверхность прилавка",
+        "cost": 6,
+        "target": "shop-s2-object-13",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t14",
+        "name": "Добавить боковую секцию выдачи",
+        "cost": 6,
+        "target": "shop-s2-object-14",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t15",
+        "name": "Установить ящик возвратной тары",
+        "cost": 6,
+        "target": "shop-s2-object-15",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t16",
+        "name": "Оборудовать место тележки поставок",
+        "cost": 6,
+        "target": "shop-s2-object-16",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t17",
+        "name": "Поставить корзины покупателей",
+        "cost": 6,
+        "target": "shop-s2-object-17",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t18",
+        "name": "Добавить держатели ценников",
+        "cost": 6,
+        "target": "shop-s2-object-18",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t19",
+        "name": "Обновить оконную витрину",
+        "cost": 6,
+        "target": "shop-s2-object-19",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "shop-s2-t20",
+        "name": "Установить знак входа с набережной",
+        "cost": 6,
+        "target": "shop-s2-object-20",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ]
+  },
+  {
+    "id": "warehouse-2",
+    "areaId": "warehouse",
+    "stage": 2,
+    "globalStage": 2,
+    "title": "Сухая и холодная поставка",
+    "result": "Налажена приёмка продуктов для фруктового двора и пекарни",
+    "requiresCompletedPhases": [
+      "shop-1",
+      "warehouse-1"
+    ],
+    "orderTarget": 120,
+    "taskTarget": 20,
+    "taskIds": [
+      "warehouse-s2-t01",
+      "warehouse-s2-t02",
+      "warehouse-s2-t03",
+      "warehouse-s2-t04",
+      "warehouse-s2-t05",
+      "warehouse-s2-t06",
+      "warehouse-s2-t07",
+      "warehouse-s2-t08",
+      "warehouse-s2-t09",
+      "warehouse-s2-t10",
+      "warehouse-s2-t11",
+      "warehouse-s2-t12",
+      "warehouse-s2-t13",
+      "warehouse-s2-t14",
+      "warehouse-s2-t15",
+      "warehouse-s2-t16",
+      "warehouse-s2-t17",
+      "warehouse-s2-t18",
+      "warehouse-s2-t19",
+      "warehouse-s2-t20"
+    ],
+    "tasks": [
+      {
+        "id": "warehouse-s2-t01",
+        "name": "Подготовить свободную стену холодной зоны",
+        "cost": 6,
+        "target": "warehouse-s2-object-01",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s2-t02",
+        "name": "Установить теплоизоляционные панели",
+        "cost": 6,
+        "target": "warehouse-s2-object-02",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s2-t03",
+        "name": "Поставить холодильный модуль",
+        "cost": 6,
+        "target": "warehouse-s2-object-03",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "warehouse-s2-t04",
+        "name": "Добавить полки холодной зоны",
+        "cost": 6,
+        "target": "warehouse-s2-object-04",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t05",
+        "name": "Установить термометр холодной зоны",
+        "cost": 6,
+        "target": "warehouse-s2-object-05",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t06",
+        "name": "Заполнить молочную секцию",
+        "cost": 6,
+        "target": "warehouse-s2-object-06",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t07",
+        "name": "Установить стеллаж муки",
+        "cost": 6,
+        "target": "warehouse-s2-object-07",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t08",
+        "name": "Наполнить секцию муки",
+        "cost": 6,
+        "target": "warehouse-s2-object-08",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t09",
+        "name": "Установить закрытые контейнеры сахара",
+        "cost": 6,
+        "target": "warehouse-s2-object-09",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t10",
+        "name": "Наполнить контейнеры сахара",
+        "cost": 6,
+        "target": "warehouse-s2-object-10",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t11",
+        "name": "Поставить стеллаж фруктовых ящиков",
+        "cost": 6,
+        "target": "warehouse-s2-object-11",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t12",
+        "name": "Наполнить фруктовые ящики",
+        "cost": 6,
+        "target": "warehouse-s2-object-12",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t13",
+        "name": "Оборудовать полку возвратной тары",
+        "cost": 6,
+        "target": "warehouse-s2-object-13",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t14",
+        "name": "Добавить мойку тары",
+        "cost": 6,
+        "target": "warehouse-s2-object-14",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t15",
+        "name": "Установить сушильную решётку",
+        "cost": 6,
+        "target": "warehouse-s2-object-15",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t16",
+        "name": "Поставить шкаф инструментов",
+        "cost": 6,
+        "target": "warehouse-s2-object-16",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t17",
+        "name": "Установить защитный навес разгрузки",
+        "cost": 6,
+        "target": "warehouse-s2-object-17",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t18",
+        "name": "Добавить боковые экраны навеса",
+        "cost": 6,
+        "target": "warehouse-s2-object-18",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t19",
+        "name": "Осветить разгрузочную площадку",
+        "cost": 6,
+        "target": "warehouse-s2-object-19",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "warehouse-s2-t20",
+        "name": "Поставить указатель зон хранения",
+        "cost": 6,
+        "target": "warehouse-s2-object-20",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-1",
+    "areaId": "fruit-yard",
+    "stage": 1,
+    "globalStage": 2,
+    "title": "Расчистить и открыть фруктовый двор",
+    "result": "Открытая фруктовая торговля связывает лавку с новым участком",
+    "requiresCompletedPhases": [
+      "shop-1",
+      "warehouse-1"
+    ],
+    "orderTarget": 80,
+    "taskTarget": 26,
+    "taskIds": [
+      "fruit-yard-s1-t01",
+      "fruit-yard-s1-t02",
+      "fruit-yard-s1-t03",
+      "fruit-yard-s1-t04",
+      "fruit-yard-s1-t05",
+      "fruit-yard-s1-t06",
+      "fruit-yard-s1-t07",
+      "fruit-yard-s1-t08",
+      "fruit-yard-s1-t09",
+      "fruit-yard-s1-t10",
+      "fruit-yard-s1-t11",
+      "fruit-yard-s1-t12",
+      "fruit-yard-s1-t13",
+      "fruit-yard-s1-t14",
+      "fruit-yard-s1-t15",
+      "fruit-yard-s1-t16",
+      "fruit-yard-s1-t17",
+      "fruit-yard-s1-t18",
+      "fruit-yard-s1-t19",
+      "fruit-yard-s1-t20",
+      "fruit-yard-s1-t21",
+      "fruit-yard-s1-t22",
+      "fruit-yard-s1-t23",
+      "fruit-yard-s1-t24",
+      "fruit-yard-s1-t25",
+      "fruit-yard-s1-t26"
+    ],
+    "tasks": [
+      {
+        "id": "fruit-yard-s1-t01",
+        "name": "Вывезти мусор с участка",
+        "cost": 2,
+        "target": "fruit-yard-s1-object-01",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t02",
+        "name": "Разобрать сгнившие хозяйственные остатки",
+        "cost": 2,
+        "target": "fruit-yard-s1-object-02",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t03",
+        "name": "Вырубить кусты и заросшие лианы",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-03",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t04",
+        "name": "Убрать поваленные деревья и пни",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-04",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t05",
+        "name": "Дочистить и выровнять площадку",
+        "cost": 2,
+        "target": "fruit-yard-s1-object-05",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t06",
+        "name": "Разметить контур постройки",
+        "cost": 2,
+        "target": "fruit-yard-s1-object-06",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t07",
+        "name": "Залить фундамент",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-07",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t08",
+        "name": "Установить каркас и боковую защиту павильона",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-08",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t09",
+        "name": "Построить крышу фруктового павильона",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-09",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t10",
+        "name": "Подготовить вход и торговые проёмы",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-10",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t11",
+        "name": "Подготовить пол и внутреннюю отделку",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-11",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t12",
+        "name": "Провести освещение и подготовить безопасный вход",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-12",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t13",
+        "name": "Поставить первую фруктовую стойку",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-13",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t14",
+        "name": "Добавить корзины выкладки",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-14",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t15",
+        "name": "Разложить яблоки и груши",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-15",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t16",
+        "name": "Установить цитрусовый стеллаж",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-16",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t17",
+        "name": "Добавить секцию бананов",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-17",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t18",
+        "name": "Поставить стол упаковки",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-18",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t19",
+        "name": "Установить торговые весы",
+        "cost": 4,
+        "target": "fruit-yard-s1-object-19",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t20",
+        "name": "Обустроить проход покупателей",
+        "cost": 4,
+        "target": "fruit-yard-s1-object-20",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t21",
+        "name": "Наполнить фруктовый ассортимент",
+        "cost": 4,
+        "target": "fruit-yard-s1-object-21",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t22",
+        "name": "Добавить шкаф чистой упаковки",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-22",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t23",
+        "name": "Поставить корзины покупателей",
+        "cost": 4,
+        "target": "fruit-yard-s1-object-23",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t24",
+        "name": "Оборудовать выдачу наборов",
+        "cost": 4,
+        "target": "fruit-yard-s1-object-24",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t25",
+        "name": "Подготовить первую общую выкладку",
+        "cost": 4,
+        "target": "fruit-yard-s1-object-25",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s1-t26",
+        "name": "Открыть фруктовый павильон",
+        "cost": 3,
+        "target": "fruit-yard-s1-object-26",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ],
+    "construction": {
+      "kind": "new-site",
+      "states": [
+        "abandoned",
+        "rubbish-removed",
+        "demolished",
+        "vegetation-cleared",
+        "stumps-removed",
+        "cleared",
+        "planned",
+        "foundation",
+        "walls",
+        "roof",
+        "enclosed",
+        "fitout",
+        "entry-ready",
+        "base-equipment",
+        "open"
+      ],
+      "taskIds": [
+        "fruit-yard-s1-t01",
+        "fruit-yard-s1-t02",
+        "fruit-yard-s1-t03",
+        "fruit-yard-s1-t04",
+        "fruit-yard-s1-t05",
+        "fruit-yard-s1-t06",
+        "fruit-yard-s1-t07",
+        "fruit-yard-s1-t08",
+        "fruit-yard-s1-t09",
+        "fruit-yard-s1-t10",
+        "fruit-yard-s1-t11",
+        "fruit-yard-s1-t12",
+        "fruit-yard-s1-t13",
+        "fruit-yard-s1-t14"
+      ],
+      "opensInteriorAfterTaskId": "fruit-yard-s1-t14",
+      "projectOrders": 38,
+      "interiorOrders": 42,
+      "earningContext": "any-already-open-building",
+      "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
+    }
+  },
+  {
+    "id": "fruit-yard-2",
+    "areaId": "fruit-yard",
+    "stage": 2,
+    "globalStage": 2,
+    "title": "Пристройка большой лавки",
+    "result": "Торговый двор получает крытый зал с фруктовой витриной",
+    "requiresCompletedPhases": [
+      "shop-1",
+      "warehouse-1",
+      "fruit-yard-1"
+    ],
+    "orderTarget": 120,
+    "taskTarget": 20,
+    "taskIds": [
+      "fruit-yard-s2-t01",
+      "fruit-yard-s2-t02",
+      "fruit-yard-s2-t03",
+      "fruit-yard-s2-t04",
+      "fruit-yard-s2-t05",
+      "fruit-yard-s2-t06",
+      "fruit-yard-s2-t07",
+      "fruit-yard-s2-t08",
+      "fruit-yard-s2-t09",
+      "fruit-yard-s2-t10",
+      "fruit-yard-s2-t11",
+      "fruit-yard-s2-t12",
+      "fruit-yard-s2-t13",
+      "fruit-yard-s2-t14",
+      "fruit-yard-s2-t15",
+      "fruit-yard-s2-t16",
+      "fruit-yard-s2-t17",
+      "fruit-yard-s2-t18",
+      "fruit-yard-s2-t19",
+      "fruit-yard-s2-t20"
+    ],
+    "tasks": [
+      {
+        "id": "fruit-yard-s2-t01",
+        "name": "Расчистить площадку пристройки",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-01",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t02",
+        "name": "Подготовить цоколь пристройки",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-02",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t03",
+        "name": "Уложить фундамент торгового зала",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-03",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t04",
+        "name": "Поставить каркас пристройки",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-04",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t05",
+        "name": "Закрыть наружные стены",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-05",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t06",
+        "name": "Установить окна большого зала",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-06",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t07",
+        "name": "Построить крышу пристройки",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-07",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t08",
+        "name": "Установить входную дверь",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-08",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t09",
+        "name": "Соединить пристройку с лавкой",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-09",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t10",
+        "name": "Выложить пол нового зала",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-10",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t11",
+        "name": "Установить большой фруктовый стеллаж",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-11",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t12",
+        "name": "Добавить многоярусные корзины",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-12",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t13",
+        "name": "Наполнить расширенный ассортимент фруктов",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-13",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t14",
+        "name": "Поставить закрытую витрину ягод",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-14",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t15",
+        "name": "Наполнить ягодную витрину",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-15",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t16",
+        "name": "Установить кассовую стойку двора",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-16",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t17",
+        "name": "Добавить боковую выдачу",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-17",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t18",
+        "name": "Осветить торговый зал",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-18",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t19",
+        "name": "Поставить скамью под навесом",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-19",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "fruit-yard-s2-t20",
+        "name": "Установить вывеску большой лавки",
+        "cost": 6,
+        "target": "fruit-yard-s2-object-20",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ],
+    "construction": {
+      "kind": "extension",
+      "states": [
+        "abandoned",
+        "cleared",
+        "foundation",
+        "frame",
+        "walls",
+        "windows",
+        "roof",
+        "entrance",
+        "connected",
+        "fitout",
+        "entry-ready",
+        "base-equipment",
+        "open"
+      ],
+      "taskIds": [
+        "fruit-yard-s2-t01",
+        "fruit-yard-s2-t02",
+        "fruit-yard-s2-t03",
+        "fruit-yard-s2-t04",
+        "fruit-yard-s2-t05",
+        "fruit-yard-s2-t06",
+        "fruit-yard-s2-t07",
+        "fruit-yard-s2-t08",
+        "fruit-yard-s2-t09",
+        "fruit-yard-s2-t10",
+        "fruit-yard-s2-t11",
+        "fruit-yard-s2-t12"
+      ],
+      "opensInteriorAfterTaskId": "fruit-yard-s2-t12",
+      "projectOrders": 72,
+      "interiorOrders": 48,
+      "earningContext": "any-already-open-building",
+      "mapChanges": "Строительство крытой пристройки на отдельной площадке; уже работающий фруктовый павильон остаётся доступным."
+    }
+  },
+  {
+    "id": "bakery-1",
+    "areaId": "bakery",
+    "stage": 1,
+    "globalStage": 3,
+    "title": "Построить первую пекарню",
+    "result": "Появляется собственная выпечка; лавка получает новый хлебный отдел",
+    "requiresCompletedPhases": [
+      "shop-2",
+      "warehouse-2",
+      "fruit-yard-2"
+    ],
+    "orderTarget": 80,
+    "taskTarget": 26,
+    "taskIds": [
+      "bakery-s1-t01",
+      "bakery-s1-t02",
+      "bakery-s1-t03",
+      "bakery-s1-t04",
+      "bakery-s1-t05",
+      "bakery-s1-t06",
+      "bakery-s1-t07",
+      "bakery-s1-t08",
+      "bakery-s1-t09",
+      "bakery-s1-t10",
+      "bakery-s1-t11",
+      "bakery-s1-t12",
+      "bakery-s1-t19",
+      "bakery-s1-t20",
+      "bakery-s1-t21",
+      "bakery-s1-t22",
+      "bakery-s1-t23",
+      "bakery-s1-t24",
+      "bakery-s1-t25",
+      "bakery-s1-t13",
+      "bakery-s1-t14",
+      "bakery-s1-t15",
+      "bakery-s1-t16",
+      "bakery-s1-t17",
+      "bakery-s1-t18",
+      "bakery-s1-t26"
+    ],
+    "tasks": [
+      {
+        "id": "bakery-s1-t01",
+        "name": "Вывезти мусор с участка",
+        "cost": 2,
+        "target": "bakery-s1-object-01",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t02",
+        "name": "Разобрать сгнившие хозяйственные остатки",
+        "cost": 2,
+        "target": "bakery-s1-object-02",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t03",
+        "name": "Вырубить кусты и заросшие лианы",
+        "cost": 3,
+        "target": "bakery-s1-object-03",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t04",
+        "name": "Убрать поваленные деревья и пни",
+        "cost": 3,
+        "target": "bakery-s1-object-04",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t05",
+        "name": "Дочистить и выровнять площадку",
+        "cost": 2,
+        "target": "bakery-s1-object-05",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t06",
+        "name": "Разметить контур постройки",
+        "cost": 2,
+        "target": "bakery-s1-object-06",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t07",
+        "name": "Залить фундамент",
+        "cost": 3,
+        "target": "bakery-s1-object-07",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t08",
+        "name": "Возвести каркас и стены",
+        "cost": 3,
+        "target": "bakery-s1-object-08",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t09",
+        "name": "Установить крышу",
+        "cost": 3,
+        "target": "bakery-s1-object-09",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t10",
+        "name": "Установить дверь и окна",
+        "cost": 3,
+        "target": "bakery-s1-object-10",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t11",
+        "name": "Подготовить пол и внутреннюю отделку",
+        "cost": 3,
+        "target": "bakery-s1-object-11",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t12",
+        "name": "Провести освещение и подготовить безопасный вход",
+        "cost": 3,
+        "target": "bakery-s1-object-12",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "bakery-s1-t19",
+        "name": "Установить хлебную витрину",
+        "cost": 3,
+        "target": "bakery-s1-object-19",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t20",
+        "name": "Подготовить прилавок и лотки выпечки",
+        "cost": 3,
+        "target": "bakery-s1-object-20",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t21",
+        "name": "Наполнить хлебный ассортимент",
+        "cost": 3,
+        "target": "bakery-s1-object-21",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t22",
+        "name": "Поставить шкаф упаковки",
+        "cost": 3,
+        "target": "bakery-s1-object-22",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t23",
+        "name": "Оборудовать окно выдачи",
+        "cost": 3,
+        "target": "bakery-s1-object-23",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t24",
+        "name": "Добавить полку заказов лавки",
+        "cost": 3,
+        "target": "bakery-s1-object-24",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t25",
+        "name": "Подготовить первую поставку хлеба",
+        "cost": 4,
+        "target": "bakery-s1-object-25",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t13",
+        "name": "Установить первую печь",
+        "cost": 4,
+        "target": "bakery-s1-object-13",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t14",
+        "name": "Поставить стол замеса",
+        "cost": 4,
+        "target": "bakery-s1-object-14",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t15",
+        "name": "Добавить шкаф ингредиентов",
+        "cost": 3,
+        "target": "bakery-s1-object-15",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t16",
+        "name": "Установить стойку противней",
+        "cost": 4,
+        "target": "bakery-s1-object-16",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t17",
+        "name": "Подготовить место расстойки",
+        "cost": 4,
+        "target": "bakery-s1-object-17",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t18",
+        "name": "Поставить мойку инвентаря",
+        "cost": 4,
+        "target": "bakery-s1-object-18",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "bakery-s1-t26",
+        "name": "Открыть работающую пекарню",
+        "cost": 3,
+        "target": "bakery-s1-object-26",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ],
+    "construction": {
+      "kind": "new-site",
+      "states": [
+        "abandoned",
+        "rubbish-removed",
+        "demolished",
+        "vegetation-cleared",
+        "stumps-removed",
+        "cleared",
+        "planned",
+        "foundation",
+        "walls",
+        "roof",
+        "enclosed",
+        "fitout",
+        "entry-ready",
+        "base-equipment",
+        "open"
+      ],
+      "taskIds": [
+        "bakery-s1-t01",
+        "bakery-s1-t02",
+        "bakery-s1-t03",
+        "bakery-s1-t04",
+        "bakery-s1-t05",
+        "bakery-s1-t06",
+        "bakery-s1-t07",
+        "bakery-s1-t08",
+        "bakery-s1-t09",
+        "bakery-s1-t10",
+        "bakery-s1-t11",
+        "bakery-s1-t12",
+        "bakery-s1-t19",
+        "bakery-s1-t20"
+      ],
+      "opensInteriorAfterTaskId": "bakery-s1-t20",
+      "projectOrders": 38,
+      "interiorOrders": 42,
+      "earningContext": "any-already-open-building",
+      "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
+    }
+  }
+]

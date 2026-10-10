@@ -1,4 +1,6 @@
+import { TASKS } from "../src/campaign";
 import { test } from "node:test";
+import { createOrderAppearance } from "../src/order-supplies";
 import assert from "node:assert/strict";
 import {
   GOODS,
@@ -17,7 +19,8 @@ import {
   type Move,
   type Profile,
 } from "../src/engine";
-import { CHAPTER, chapterLevel } from "../src/content";
+import { CHAPTER } from "../src/content";
+import { offlineChapterLevel as chapterLevel } from "../src/content-offline";
 import { generate, mixVisible, structuralKey, VERSION } from "../src/generator";
 import {
   completeAttempt,
@@ -42,6 +45,7 @@ function attempt(def = chapterLevel(1)): Attempt {
   return {
     id: "test-attempt",
     definition: def,
+    appearance: createOrderAppearance(def),
     board: initial(def),
     undo: [],
     solution: clone(def.verifiedSolution),
@@ -180,7 +184,7 @@ test("All authored orders have replayed solutions and distinct structures", () =
     validateDefinition(def);
     assert.equal(replay(def, def.verifiedSolution), true);
     assert.deepEqual(chapterLevel(n), def);
-    assert.equal(def.generatorVersion, n <= 20 ? "coastal-slice-2" : VERSION);
+    assert.equal(def.generatorVersion, n <= 20 ? "coastal-slice-2" : n <= 30 ? "coastal-slice-3" : VERSION);
     const key = structuralKey(def);
     assert.equal(structures.has(key), false, `Duplicate at ${n}`);
     structures.add(key);
@@ -231,7 +235,7 @@ test("Project assortments introduce required goods while retaining replayed dete
   const options = { recipe: "front-double", goods: ["eg", "m"] as const, requireGoods: ["eg"] as const };
   const request = { ...options, goods: [...options.goods], requireGoods: [...options.requireGoods] };
   const d = generate("cold-introduction", "front", 21, request);
-  assert.equal(d.generatorVersion, "coastal-slice-3");
+  assert.equal(d.generatorVersion, VERSION);
   assert.deepEqual(Object.keys(initial(d).goals).sort(), ["eg", "m"]);
   assert.equal(replay(d, d.verifiedSolution), true);
   assert.deepEqual(generate("cold-introduction", "front", 21, request), d);
@@ -280,7 +284,7 @@ test("Atomic save and restore retain the pinned definition, attempt and undo", (
   saveProgress(storage, progress);
   assert.equal(loadProgress(storage).progress.attempt, null);
 });
-test("Rewards are idempotent, new orders give one star, repeats are capped at 10 a day", () => {
+test("Rewards are idempotent, repair orders give one kit, repeats are capped at 10 a day", () => {
   const progress = freshProgress();
   progress.attempt = attempt();
   assert.equal(completeAttempt(progress, "2026-10-04"), null);
@@ -291,7 +295,8 @@ test("Rewards are idempotent, new orders give one star, repeats are capped at 10
   completeAttempt(progress, "2026-10-04");
   completeAttempt(progress, "2026-10-04");
   assert.equal(progress.coins, 60);
-  assert.equal(progress.stars, 1);
+  assert.equal(progress.stars, 0);
+  assert.equal(progress.repairKits, 1);
   assert.equal(progress.completed.length, 1);
   for (let i = 0; i < 12; i++) {
     progress.attempt = attempt();
@@ -302,7 +307,8 @@ test("Rewards are idempotent, new orders give one star, repeats are capped at 10
     completeAttempt(progress, "2026-10-04");
   }
   assert.equal(progress.coins, 160);
-  assert.equal(progress.stars, 1);
+  assert.equal(progress.stars, 0);
+  assert.equal(progress.repairKits, 1);
   progress.attempt = attempt();
   progress.attempt.board = finish(
     progress.attempt.board,
@@ -317,6 +323,8 @@ test("Owned decoration colors are free; cosmetics cannot purchase campaign tasks
   progress.stars = 10;
   assert.equal(renovate(progress, "sea"), false);
   progress.renovations.sign = "sea";
+  assert.equal(renovate(progress, "coral"), false);
+  progress.campaign.completedTasks = TASKS.filter(task => task.phaseId === "shop-1").map(task => task.id);
   assert.equal(renovate(progress, "coral"), true);
   assert.equal(progress.stars, 10);
   assert.equal(progress.renovation, "coral");
@@ -341,4 +349,14 @@ test("Corrupted data and unavailable storage do not crash loading or saving", ()
     0,
   );
   assert.equal(STORAGE_KEY, "coastal-shop:progress:v1");
+});
+
+test("Version 4's implicit goods pool remains stable when new optional bakery goods are registered", () => {
+  const baselineGoods = ["j","m","b","p","h","l","eg","ch","ju","ap","or","ba","ri","te","oi","fl","su","co","ol","pa","ct","pe","gr","st"] as const;
+  for (const seed of ["compat-before-bakery-1", "compat-before-bakery-2"]) {
+    const implicit = generate(seed, "mixed", 77, {recipe: "mixed-classic"});
+    const explicit = generate(seed, "mixed", 77, {recipe: "mixed-classic", goods: [...baselineGoods]});
+    assert.deepEqual(implicit, explicit);
+    assert.equal(replay(implicit, implicit.verifiedSolution), true);
+  }
 });

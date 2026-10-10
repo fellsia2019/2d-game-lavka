@@ -1,0 +1,4 @@
+Use case: precise-object-edit.
+Image1 is the sole EDIT TARGET: registered full1536×1024 game world map.
+Change ONLY the INTERIOR CONTENT within the bakery's small right side window W2 around(1358,364)–(1380,411), inside its turquoise frame. Remove the tiny bread/shelf/potted-plant fragment and replace it with a calm empty cream interior wall with subtle natural shadow. This is an empty finished bakery, so no merchandise should appear in that little window. Preserve the window frame, glass appearance and sill exactly. Do not change anything in the front entrance or wide front window.
+Every other pixel and object stays visually unchanged: other buildings, front pergola, paths, lanterns, gardens, beach/sea, sky, roof where present, camera and sunlight. This is a tiny local correction, not redesign or rescaling. Output same full1536×1024 RGB, no labels/borders.

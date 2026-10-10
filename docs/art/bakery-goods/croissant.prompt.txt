@@ -1,0 +1,8 @@
+Use case: stylized-concept
+Asset type: one transparent bakery food sprite for a small mobile matching puzzle.
+Primary request: exactly ONE whole butter croissant with a strong crescent silhouette, a plump layered central roll and two intact tapered curved tips. It must be instantly distinct from a long baguette and round bread boule.
+Scene/backdrop: genuinely transparent background, RGBA cutout. No environment, no plate, no board, no basket, no wrapper.
+Style/medium: warm polished hand-painted semi-realistic casual-game food illustration, crisp clean silhouette, honey-gold flaky laminated crust, warm amber toasted ridges and softly highlighted folds. Match the visual language of an existing luminous golden round-bread game sprite: dimensional, appetizing, restrained highlights, no black outlines, not a photograph.
+Composition/framing: square image 1024x1024. One centered croissant, broad curved body oriented horizontally, gently curled tips pointing forward/down, slightly above three-quarter view so its layered depth is clear. Entire pastry visible, including both tips, with at least 8 percent transparent margin. Fills about 84 percent of image width. Bold readable crescent shape at 48 pixels.
+Lighting/mood: soft light from upper left, subtle volume shading. One small very soft translucent brown contact shadow immediately below the croissant, no long cast shadow.
+Constraints: exactly one indivisible croissant, no cut or bitten pieces, no loose crumbs, no sesame, no filling, no utensils, no extra food, no floor plane, no opaque background or checkerboard, no border, no text, no watermark, no UI. Keep all pastry and shadow inside the image. Preserve genuine alpha transparency.

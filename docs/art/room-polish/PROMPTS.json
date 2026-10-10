@@ -1,0 +1,20 @@
+{
+  "mode": "built-in image_gen.imagegen",
+  "prompts": [
+    {
+      "key": "damaged",
+      "prompt": "Use case: inpainting. Edit target is provided shop room image. Preserve entire native1536x1024 composition, exact camera, all wall/floor/seaview coordinates. This is the visibly unrepaired state. Make doorway and window convincingly in need of repair: turquoise door and window frames have large worn bare grey-wood paint patches, several small broken glass panes with cracked glass, rusted hinges, dusty glass cloudy and sea barely visible behind large dirty patches, striped window awning torn on several scallops, two modest old thin wooden repair boards across some window panes. The left entrance remains open and passable, do not add obstacles to floor. Keep existing wall and floor wear exactly in place. Strong clearly visible before vs polished restored turquoise windows/door. Same warm painted premium casual game style. Do not add furniture, products, text, UI. Do not move any architecture or change shapes.",
+      "reference": "docs/art/room-corners/main-before.png"
+    },
+    {
+      "key": "counter",
+      "prompt": "Use case: inpainting. Edit target is this empty shop furniture donor, native1536x1024. Preserve exact composition and all object footprints, camera, shelf geometry and pixel positions. Only change foreground checkout counter: the entire wooden top slab and rounded beveled rim are polished deep rich walnut brown, visibly much darker than warm golden oak floor, natural fine wood grain with satin highlights. Lower turquoise panels and ivory columns stay same. Add realistic soft strong contact shadows directly beneath and immediately behind all its feet/base and apron, stretching slightly right consistent upperleft sunshine, no hard cutout outlines. Keep all feet fully framed, no extra furniture, no cash register, no products. All shelves, empty baskets, walls, open sea door/window and floor remain unchanged. Same cozy detailed painted casualgame style.",
+      "reference": "docs/art/room-corners/main-empty.png"
+    },
+    {
+      "key": "lighting",
+      "prompt": "Use case: inpainting. Edit target empty room native1536x1024. Keep EXACT unchanged camera, architecture, window, door and floor. Add a restored brass lighting installation only: one large golden brass hanging pendant above centerback shop corner at image coordinate(865,50)-(915,270), with short suspension attached ceiling beam and broad friendly rounded domed shade, glowing ivory bulb visible underneath; two smaller brass wall sconces on cream right wall centered at(1115,185) and(1410,345), with curved brass brackets and small cream glass warm glowing shades. Lights installed visibly on walls/ceiling, substantial readable silhouettes. Gentle warm glows on surrounding wall only. No furniture/products/people/text/UI. Keep original entire1536x1024 frame exact, these fixtures are to be masked as independent game objects; no other edits.",
+      "reference": "docs/art/hall-v1-empty-original.png"
+    }
+  ]
+}

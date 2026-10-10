@@ -10,12 +10,16 @@ import {
   type Move,
 } from "./engine";
 import { GOOD_IDS, isGood } from "./catalog";
-import { CAMPAIGN_VERSION, freshCampaign, migrateCampaign, nextShopTask, validCampaign, validLegacyCampaign, validPreviousCampaign,
-  type CampaignProgress, type ShopTaskId } from "./campaign";
+import { CAMPAIGN_VERSION, freshCampaign, migrateCampaign, nextProjectTask, phaseStatus,
+  campaignWithLegacyOrder, isProjectId, validCampaign, validLegacyCampaign,
+  validPreviousCampaign, validSchemaFiveCampaign, validSchemaSixCampaign, validSchemaSevenCampaign, validSchemaEightCampaign, validSchemaNineCampaign, migrateShopCampaign,
+  orderCurrency, taskBalance, TASKS, type CampaignProgress, type ProjectId,
+  type ShopTaskId } from "./campaign";
 import {
   CHAPTER,
   canonicalLevelId,
   chapterNumber,
+  catalogNumber,
   CONTENT_VERSION,
 } from "./content";
 import {
@@ -23,6 +27,8 @@ import {
   type RenovationColor,
   type RenovationId,
 } from "./renovations";
+import { createOrderAppearance, validOrderAppearance, type OrderAppearance } from "./order-supplies";
+import { freshSceneDecor, validSceneDecor, type SceneDecor } from "./scene-shop";
 export type { RenovationColor } from "./renovations";
 export interface Settings {
   sound: boolean;
@@ -37,21 +43,28 @@ export interface Attempt {
   solution: Move[] | null;
   mixCount: number;
   hints: Record<string, Move[]>;
-  reward: { coins: number; stars: number; fresh: boolean } | null;
+  appearance?: OrderAppearance;
+  reward: { coins: number; stars: number; repairKits: number; fresh: boolean } | null;
 }
 export interface Progress {
-  schema: 5;
+  schema: 10;
   campaign: CampaignProgress;
   contentVersion: string;
   completed: string[];
   coins: number;
   stars: number;
+  repairKits: number;
   inventory: { hint: number; mix: number; reserve: number };
   renovation: RenovationColor | null;
   renovations: Partial<Record<RenovationId, RenovationColor>>;
+  /** Optional in earlier schema-8 saves; independent from campaign ownership. */
+  sceneDecor?: SceneDecor;
   tutorialSeen: string[];
   recentStructures: string[];
   settings: Settings;
+  selectedProject: ProjectId;
+  attempts: Partial<Record<ProjectId, Attempt>>;
+  // Active alias retained for the game controller. save/switch sync it to attempts.
   attempt: Attempt | null;
   repeatDay: string;
   repeatCount: number;
@@ -60,18 +73,22 @@ export interface Progress {
 export const STORAGE_KEY = "coastal-shop:progress:v1";
 export function freshProgress(): Progress {
   return {
-    schema: 5,
+    schema: 10,
     campaign: freshCampaign(),
     contentVersion: CONTENT_VERSION,
     completed: [],
     coins: 0,
     stars: 0,
+    repairKits: 0,
     inventory: { hint: 2, mix: 1, reserve: 1 },
     renovation: null,
     renovations: {},
+    sceneDecor: freshSceneDecor(),
     tutorialSeen: [],
     recentStructures: [],
     settings: { sound: true, music: false, reducedMotion: false },
+    selectedProject: "shop-1",
+    attempts: {},
     attempt: null,
     repeatDay: "",
     repeatCount: 0,
@@ -125,7 +142,7 @@ export function validateAttempt(attempt: Attempt): boolean {
     if (
       !number ||
       attempt.definition.number > 10000 ||
-      attempt.definition.number > CHAPTER.length ||
+      attempt.definition.number !== catalogNumber(attempt.definition.id) ||
       typeof attempt.id !== "string" ||
       !attempt.id ||
       !safe(attempt.mixCount) ||
@@ -135,6 +152,7 @@ export function validateAttempt(attempt: Attempt): boolean {
       Array.isArray(attempt.hints)
     )
       return false;
+    if (attempt.appearance !== undefined && !validOrderAppearance(attempt.appearance, attempt.definition)) return false;
     const goal = initial(attempt.definition).goals;
     const validateBoard = (board: Board) => {
       if (
@@ -252,14 +270,16 @@ export function validateAttempt(attempt: Attempt): boolean {
       return false;
     if (attempt.reward !== null) {
       const r = attempt.reward;
+      const currency = orderCurrency(attempt.definition.id);
       if (
         !won(attempt.board) ||
         typeof r.fresh !== "boolean" ||
         !safe(r.coins) ||
         !safe(r.stars) ||
+        !safe(r.repairKits) ||
         (r.fresh
-          ? r.coins !== 60 || r.stars !== 1
-          : r.stars !== 0 || ![0, 10].includes(r.coins))
+          ? r.coins !== 60 || r.stars !== (currency === "stars" ? 1 : 0) || r.repairKits !== (currency === "repairKits" ? 1 : 0)
+          : r.stars !== 0 || r.repairKits !== 0 || ![0, 10].includes(r.coins))
       )
         return false;
     }
@@ -267,6 +287,21 @@ export function validateAttempt(attempt: Attempt): boolean {
   } catch {
     return false;
   }
+}
+function migrateReward(value: unknown): void {
+  const attempt = value as Attempt | null;
+  const reward = attempt?.reward;
+  if (!reward || typeof attempt?.definition?.id !== "string" || typeof reward.fresh !== "boolean" ||
+    !safe(reward.coins) || !safe(reward.stars) || (reward.fresh
+      ? reward.coins !== 60 || reward.stars !== 1
+      : reward.stars !== 0 || ![0, 10].includes(reward.coins))) return;
+  const currency = orderCurrency(attempt.definition.id);
+  if (!currency) return;
+  // The payout is already in the legacy wallet/completed set. Convert its
+  // receipt only; replaying or recovering this attempt must not pay it again.
+  attempt.reward = { coins: reward.coins, fresh: reward.fresh,
+    stars: reward.fresh && currency === "stars" ? 1 : 0,
+    repairKits: reward.fresh && currency === "repairKits" ? 1 : 0 };
 }
 export function loadProgress(storage: Pick<Storage, "getItem">): {
   progress: Progress;
@@ -278,7 +313,7 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     const raw = storage.getItem(STORAGE_KEY);
     if (!raw) return { progress: freshProgress() };
     const p = JSON.parse(raw);
-    if (p && ![1, 2, 3, 4, 5].includes(p.schema))
+    if (p && ![1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(p.schema))
       return {
         progress: freshProgress(),
         readOnly: true,
@@ -289,9 +324,14 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     const oldRepairs = p.schema === 1 || p.schema === 2;
     const oldCampaign = p.schema === 3;
     const previousCampaign = p.schema === 4;
-    const migrated = oldRepairs || oldCampaign || previousCampaign;
-    if ((oldCampaign || previousCampaign || p.schema === 5) && typeof p.campaign?.version === "string" &&
-      p.campaign.version !== (oldCampaign ? "coastal-campaign-1" : previousCampaign ? "coastal-campaign-2" : CAMPAIGN_VERSION))
+    const schemaFive = p.schema === 5;
+    const beforeProjects = p.schema < 6;
+    const ownershipMigration = p.schema < 7;
+    const originalSchema = p.schema;
+    const currencyMigration = p.schema < 8;
+    const migrated = p.schema !== 10;
+    if ((oldCampaign || previousCampaign || schemaFive || p.schema >= 6) && typeof p.campaign?.version === "string" &&
+      p.campaign.version !== (oldCampaign ? "coastal-campaign-1" : previousCampaign ? "coastal-campaign-2" : schemaFive ? "coastal-campaign-3" : p.schema === 6 ? "coastal-campaign-4" : p.schema === 7 ? "coastal-campaign-5" : p.schema === 8 ? "coastal-campaign-6" : p.schema === 9 ? "coastal-campaign-7" : CAMPAIGN_VERSION))
       return { progress: freshProgress(), readOnly: true,
         warning: "Сохранение использует другую версию кампании. Обновите игру. Прогресс не изменён." };
     if (legacy) {
@@ -315,6 +355,7 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
         p.inventory?.reserve,
         p.repeatCount,
       ].every(safe) ||
+      (!currencyMigration && !safe(p.repairKits)) ||
       typeof p.contentVersion !== "string" ||
       typeof p.repeatDay !== "string" ||
       !/^$|^\d{4}-\d{2}-\d{2}$/.test(p.repeatDay) ||
@@ -348,36 +389,111 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     }
     if (oldCampaign) {
       if (!validLegacyCampaign(p.campaign)) throw new Error("Corrupted legacy campaign");
-      p.campaign.version = CAMPAIGN_VERSION;
+      p.campaign = campaignWithLegacyOrder(p.campaign.completedTasks);
     }
     if (previousCampaign) {
       if (!validPreviousCampaign(p.campaign)) throw new Error("Corrupted previous campaign");
-      p.campaign.version = CAMPAIGN_VERSION;
+      p.campaign = campaignWithLegacyOrder(p.campaign.completedTasks);
     }
-    if (migrated) p.schema = 5;
-    if (!validCampaign(p.campaign) ||
-      p.campaign.completedTasks.includes("shop-opening") !== !!p.renovations.sign ||
-      p.campaign.completedTasks.includes("order-counter") !== !!p.renovations.counter)
-      throw new Error("Corrupted campaign");
+    if (schemaFive) {
+      if (!validSchemaFiveCampaign(p.campaign)) throw new Error("Corrupted schema-five campaign");
+      p.campaign = campaignWithLegacyOrder(p.campaign.completedTasks);
+    }
+    if (beforeProjects) {
+      p.selectedProject = "shop-1";
+      p.attempts = {};
+    }
+    if (ownershipMigration) {
+      if (!validSchemaSixCampaign(p.campaign) ||
+        p.campaign.completedTasks.includes("shop-opening") !== !!p.renovations.sign ||
+        p.campaign.completedTasks.includes("order-counter") !== !!p.renovations.counter)
+        throw new Error("Corrupted legacy campaign");
+      const conversion = migrateShopCampaign(p.campaign);
+      if (!safe(p.stars + conversion.refund)) return {
+        progress: freshProgress(), readOnly: true,
+        warning: "Не удалось безопасно перенести звёзды сохранения. Прогресс не изменён.",
+      };
+      p.campaign = conversion.campaign;
+      p.stars += conversion.refund;
+    }
+    if (migrated) {
+      if (!ownershipMigration) {
+        const valid = originalSchema === 9 ? validSchemaNineCampaign(p.campaign)
+          : originalSchema === 8 ? validSchemaEightCampaign(p.campaign) : validSchemaSevenCampaign(p.campaign);
+        if (!valid) throw new Error("Corrupted previous campaign");
+        if (originalSchema === 9) {
+          const oldPrefix = p.campaign.completedTasks.filter((id: string) => /^bakery-s1-t\d{2}$/.test(id)).length;
+          if (oldPrefix >= 13 && oldPrefix <= 25) p.campaign.bakeryLegacyPrefix = oldPrefix;
+        }
+        p.campaign.version = CAMPAIGN_VERSION;
+      }
+      // Reclassify only unspent credit. Old cross-funded ownership never becomes
+      // a debt or causes another payment for a result the player already owns.
+      if (currencyMigration) {
+        const earnedRepair = p.completed.filter((id: string) => orderCurrency(id) === "repairKits").length;
+        const spentRepair = TASKS.filter(task => task.currency === "repairKits" && p.campaign.completedTasks.includes(task.id))
+          .reduce((sum, task) => sum + task.cost, 0);
+        p.repairKits = Math.min(p.stars, Math.max(0, earnedRepair - spentRepair));
+        p.stars -= p.repairKits;
+        const attempts: unknown[] = p.attempts && typeof p.attempts === "object" && !Array.isArray(p.attempts)
+          ? Object.values(p.attempts) : [];
+        if (p.attempt) attempts.push(p.attempt);
+        for (const value of attempts) migrateReward(value);
+      }
+      p.schema = 10;
+    }
+    if (!validCampaign(p.campaign)) throw new Error("Corrupted campaign");
     p.renovation = p.renovations.sign ?? null;
     p.contentVersion = CONTENT_VERSION;
+    if (!isProjectId(p.selectedProject) || !p.attempts || typeof p.attempts !== "object" ||
+      Array.isArray(p.attempts) || Object.keys(p.attempts).some(key => !isProjectId(key)))
+      throw new Error("Corrupted project selection");
     const typed = p as Progress;
-    if (p.attempt && !validateAttempt(p.attempt)) {
-      typed.attempt = null;
-      return {
-        progress: typed,
-        migrated,
-        warning:
-          "Не удалось восстановить текущий заказ. Ремонт и награды сохранены.",
-      };
+    const decorInitialized = typed.sceneDecor === undefined;
+    const invalidDecor = !decorInitialized && !validSceneDecor(typed.sceneDecor);
+    if (decorInitialized || invalidDecor) typed.sceneDecor = freshSceneDecor();
+    let invalidAttempt = false;
+    let appearanceInitialized = false;
+    const pinAppearance = (attempt: Attempt) => {
+      if (attempt.appearance !== undefined) return;
+      attempt.appearance = createOrderAppearance(attempt.definition);
+      appearanceInitialized = true;
+    };
+    for (const [projectId, attempt] of Object.entries(typed.attempts)) {
+      const number = chapterNumber(attempt?.definition?.id);
+      if (!validateAttempt(attempt) || !number || CHAPTER[number - 1].phaseId !== projectId) {
+        delete typed.attempts[projectId as ProjectId];
+        invalidAttempt = true;
+      } else {
+        attempt.definition.id = canonicalLevelId(attempt.definition.id);
+        pinAppearance(attempt);
+      }
     }
-    if (p.attempt)
-      p.attempt.definition.id = canonicalLevelId(p.attempt.definition.id);
+    if (p.attempt) {
+      const number = chapterNumber(p.attempt.definition?.id);
+      if (!validateAttempt(p.attempt) || !number || CHAPTER[number - 1].phaseId !== typed.selectedProject) {
+        typed.attempt = null;
+        delete typed.attempts[typed.selectedProject];
+        invalidAttempt = true;
+      } else {
+        p.attempt.definition.id = canonicalLevelId(p.attempt.definition.id);
+        pinAppearance(p.attempt);
+        typed.attempts[typed.selectedProject] = p.attempt;
+      }
+    } else typed.attempt = typed.attempts[typed.selectedProject] ?? null;
     // Schema 1 did not record whether its cached path had already been shown.
     // Preserve that valid path for free instead of charging an old hint twice.
     if (legacy && typed.attempt?.solution?.length)
       rememberHint(typed.attempt, typed.attempt.solution);
-    return { progress: typed, migrated };
+    if (invalidAttempt) return {
+      progress: typed, migrated: migrated || appearanceInitialized || decorInitialized || invalidDecor,
+      warning: "Не удалось восстановить один из заказов. Остальные попытки, работы и награды сохранены.",
+    };
+    if (invalidDecor) return {
+      progress: typed, migrated: true,
+      warning: "Не удалось восстановить дополнительное оформление. Заказы, работы и кошелёк сохранены.",
+    };
+    return { progress: typed, migrated: migrated || appearanceInitialized || decorInitialized };
   } catch {
     return {
       progress: freshProgress(),
@@ -390,6 +506,7 @@ export function saveProgress(
   progress: Progress,
 ): boolean {
   try {
+    syncProjectAttempt(progress);
     storage.setItem(STORAGE_KEY, JSON.stringify(progress));
     return true;
   } catch {
@@ -414,10 +531,13 @@ export function completeAttempt(
   const coins = fresh ? 60 : progress.repeatCount < 10 ? 10 : 0;
   if (fresh) progress.completed.push(id);
   else if (coins) progress.repeatCount++;
-  const stars = fresh ? 1 : 0;
+  const currency = orderCurrency(id);
+  const stars = fresh && currency === "stars" ? 1 : 0;
+  const repairKits = fresh && currency === "repairKits" ? 1 : 0;
   progress.coins += coins;
   progress.stars += stars;
-  attempt.reward = { coins, stars, fresh };
+  progress.repairKits += repairKits;
+  attempt.reward = { coins, stars, repairKits, fresh };
   attempt.undo = [];
   return clone(attempt.reward);
 }
@@ -429,20 +549,41 @@ export function renovate(
   const node = RENOVATIONS.find((r) => r.id === id);
   if (!node || !colors.slice(1).includes(color)) return false;
   // Cosmetics cannot buy obsolete repairs or bypass the campaign task graph.
-  if (!progress.renovations[id]) return false;
+  if (!renovationOwned(progress, id)) return false;
   progress.renovations[id] = color;
   progress.renovation = progress.renovations.sign ?? null;
   return true;
 }
-export function purchaseShopTask(progress: Progress, id: ShopTaskId): boolean {
-  const task = nextShopTask(progress.campaign);
-  if (!task || task.id !== id || progress.stars < task.cost) return false;
-  progress.stars -= task.cost;
-  progress.campaign.completedTasks.push(task.id);
-  if (task.id === "shop-opening") {
-    progress.renovations.sign = "sea";
-    progress.renovation = "sea";
-  }
-  if (task.id === "order-counter") progress.renovations.counter = "sea";
+export function renovationOwned(progress: Progress, id: RenovationId): boolean {
+  const job = { sign: "shop-s1-r14", counter: "shop-s1-r09", window: "shop-s1-r03" }[id];
+  return progress.campaign.completedTasks.includes(job);
+}
+export function syncProjectAttempt(progress: Progress): void {
+  if (progress.attempt) progress.attempts[progress.selectedProject] = progress.attempt;
+  else delete progress.attempts[progress.selectedProject];
+}
+export function selectProject(progress: Progress, id: ProjectId): boolean {
+  if (!isProjectId(id)) return false;
+  const status = phaseStatus(id, progress.completed, progress.campaign);
+  if (status !== "available" && status !== "complete") return false;
+  syncProjectAttempt(progress);
+  progress.selectedProject = id;
+  progress.attempt = progress.attempts[id] ?? null;
   return true;
+}
+export function purchaseProjectTask(progress: Progress, id: string): boolean {
+  if (phaseStatus(progress.selectedProject, progress.completed, progress.campaign) !== "available") return false;
+  const task = nextProjectTask(progress.campaign, progress.selectedProject);
+  if (!task || task.id !== id || taskBalance(progress, task) < task.cost) return false;
+  progress[task.currency] -= task.cost;
+  progress.campaign.completedTasks.push(task.id);
+  if (task.id === "shop-s1-r14") {
+    progress.renovations.sign ??= "sea";
+    progress.renovation = progress.renovations.sign;
+  }
+  if (task.id === "shop-s1-r09") progress.renovations.counter ??= "sea";
+  return true;
+}
+export function purchaseShopTask(progress: Progress, id: ShopTaskId): boolean {
+  return progress.selectedProject === "shop-1" && purchaseProjectTask(progress, id);
 }

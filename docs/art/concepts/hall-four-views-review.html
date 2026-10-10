@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Торговый зал — четыре концепта</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #215b60; background: #f7eddc; font: 16px/1.5 system-ui, sans-serif; }
+    main { max-width: 1300px; margin: auto; padding: 24px; }
+    h1 { margin: 0 0 4px; font: 700 clamp(24px, 4vw, 38px)/1.2 Georgia, serif; }
+    p { margin: 0 0 16px; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 16px; }
+    button { min-height: 48px; min-width: 48px; padding: 10px 16px; border: 1px solid #bca77f; border-radius: 14px; background: #fff9ec; color: #215b60; font: inherit; cursor: pointer; }
+    button[aria-pressed="true"] { background: #147b80; border-color: #147b80; color: #fff9ec; }
+    button:focus-visible, a:focus-visible { outline: 3px solid #d99520; outline-offset: 3px; }
+    figure { margin: 0; overflow: hidden; border-radius: 18px; border: 1px solid #d5bd94; background: #fff9ec; }
+    figure img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
+    figcaption { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; }
+    figcaption strong { font-size: 18px; }
+    figcaption a { color: #215b60; padding: 8px 0; flex-shrink: 0; }
+    #views.overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    #views figure[hidden] { display: none; }
+    footer { margin-top: 18px; font-size: 14px; color: #6b6557; }
+    @media (max-width: 650px) {
+      main { padding: 16px 10px; }
+      nav { gap: 6px; }
+      #views.overview { grid-template-columns: 1fr; }
+      figcaption { padding: 8px 10px; }
+      figcaption strong { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Торговый зал</h1>
+  <p>Пользователь выбрал виды 1 и 2 для игры. Виды 3 и 4 сохранены как архив предложения.</p>
+  <nav aria-label="Выбор ракурса">
+    <button type="button" data-view="1" aria-label="1. Вход и витрины" aria-pressed="true">1</button>
+    <button type="button" data-view="2" aria-label="2. Подготовка заказов" aria-pressed="false">2</button>
+    <button type="button" data-view="3" aria-label="3. Касса и выдача" aria-pressed="false">3</button>
+    <button type="button" data-view="4" aria-label="4. Вход и ожидание" aria-pressed="false">4</button>
+    <button type="button" data-view="all" aria-pressed="false">Все четыре</button>
+  </nav>
+  <section id="views" aria-label="Концепты торгового зала">
+    <figure data-view="1">
+      <img src="hall-four-view-1.png" alt="Северо-западный угол: открытый вход, окно, две витрины вдоль стен и кассовый прилавок">
+      <figcaption><strong>1 · Вход и витрины</strong><a href="hall-four-view-1.png" target="_blank">Оригинал</a></figcaption>
+    </figure>
+    <figure data-view="2" hidden>
+      <img src="hall-four-view-2.png" alt="Северо-восточный угол: витрина, стол упаковки, стеллаж заказов и шкаф расходников">
+      <figcaption><strong>2 · Подготовка заказов</strong><a href="hall-four-view-2.png" target="_blank">Оригинал</a></figcaption>
+    </figure>
+    <figure data-view="3" hidden>
+      <img src="hall-four-view-3.png" alt="Юго-восточный угол: упаковка и хранение слева, касса и скамья вдоль правой стены">
+      <figcaption><strong>3 · Касса и выдача</strong><a href="hall-four-view-3.png" target="_blank">Оригинал</a></figcaption>
+    </figure>
+    <figure data-view="4" hidden>
+      <img src="hall-four-view-4.png" alt="Юго-западный угол: прилавок и скамья вдоль левой стены, вход, корзинки и витрина у окна справа">
+      <figcaption><strong>4 · Вход и ожидание</strong><a href="hall-four-view-4.png" target="_blank">Оригинал</a></figcaption>
+    </figure>
+  </section>
+  <footer>В игре два угла одной комнаты, общие покупки и отдельные слои товаров, мебели и интерфейса. Виды 3 и 4 в игру не подключены.</footer>
+</main>
+<script>
+  const buttons = [...document.querySelectorAll('button[data-view]')];
+  const figures = [...document.querySelectorAll('figure[data-view]')];
+  const views = document.querySelector('#views');
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const selected = button.dataset.view;
+    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    figures.forEach(figure => { figure.hidden = selected !== 'all' && figure.dataset.view !== selected; });
+    views.classList.toggle('overview', selected === 'all');
+  }));
+</script>
+</body>
+</html>

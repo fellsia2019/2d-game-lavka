@@ -1,168 +1,221 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { CAMPAIGN_AREAS, CAMPAIGN_CHAPTERS, CAMPAIGN_PHASES, FIRST_SHOP_PHASE, SHOP_STEPS, areaStatus, nextShopTask, shopComplete, phaseStatus } from "../src/campaign";
-import { CHAPTER, chapterLevel, nextOrder } from "../src/content";
-import { initial, applyMove, clone } from "../src/engine";
-import { freshProgress, loadProgress, saveProgress, purchaseShopTask, completeAttempt, type Attempt } from "../src/storage";
-import { shopSceneHTML } from "../src/campaign-scene";
+import { readFileSync } from "node:fs";
+import {
+  CAMPAIGN_CHAPTERS, CAMPAIGN_PHASES, FIRST_SHOP_PHASE, PROJECTS, TASKS, SHOP_STEPS,
+  areaStatus, availableProjects, blockComplete, constructionState, currentGlobalStage,
+  freshCampaign, interiorOpen, isProjectOrderUnlocked, nextProjectOrder, nextProjectTask,
+  phaseStatus, projectOrders, projectStatus, projectTasks, orderCurrency, repairOrderCount, taskBalance, validCampaign, type ProjectId,
+} from "../src/campaign";
+import { CHAPTER } from "../src/content";
+import { freshProgress, purchaseProjectTask, selectProject, type Progress } from "../src/storage";
 
-function oldSave(repairs: number, wins: number) {
-  const p: any = freshProgress();
-  p.schema = 2;
-  delete p.campaign;
-  p.completed = CHAPTER.slice(0, wins).map(order => order.id);
-  p.coins = 73 + wins * 60;
-  p.stars = wins - [0, 3, 6, 10][repairs];
-  p.renovations = repairs === 0 ? {} : repairs === 1 ? { sign: "coral" }
-    : repairs === 2 ? { sign: "coral", counter: "honey" }
-    : { sign: "coral", counter: "honey", window: "sea" };
-  p.renovation = p.renovations.sign ?? null;
-  const definition = chapterLevel(Math.min(10, wins + 1));
-  const board = initial(definition);
-  p.attempt = { id: "active-old-attempt", definition, board: applyMove(board, ...definition.verifiedSolution[0])!,
-    undo: [board], solution: definition.verifiedSolution.slice(1), mixCount: 0, hints: {}, reward: null } satisfies Attempt;
-  p.tutorialSeen = ["spotlight-transfer", "spotlight-rear"];
-  p.inventory = { hint: 1, mix: 0, reserve: 2 };
-  return p;
+function buyAffordable(p: Progress) {
+  let task;
+  while ((task = nextProjectTask(p.campaign, p.selectedProject)) && taskBalance(p, task) >= task.cost)
+    assert.equal(purchaseProjectTask(p, task.id), true);
 }
-test("Every valid legacy repair prefix migrates without changing any currency or active task and can afford the remaining chain", () => {
-  for (let repairs = 0; repairs <= 3; repairs++) {
-    for (let wins = [0, 3, 6, 10][repairs]; wins <= 10; wins++) {
-      const old = oldSave(repairs, wins), original = clone(old);
-      const result = loadProgress({ getItem: () => JSON.stringify(old) });
-      assert.equal(result.warning, undefined);
-      assert.equal(result.migrated, true);
-      const p = result.progress;
-      assert.equal(p.schema, 5);
-      for (const key of ["coins", "stars", "inventory", "completed", "renovations", "tutorialSeen", "attempt", "settings", "repeatDay", "repeatCount"] as const)
-        assert.deepEqual(p[key], original[key], `${repairs} repairs / ${wins} wins: ${key}`);
-      const credited = SHOP_STEPS.filter(task => p.campaign.completedTasks.includes(task.id)).reduce((sum, task) => sum + task.cost, 0);
-      assert.equal(credited, [0, 3, 6, 10][repairs]);
-      p.stars += CHAPTER.length - wins; // Remaining new wins, never repeats or a migration bonus.
-      let next;
-      while ((next = nextShopTask(p.campaign))) assert.equal(purchaseShopTask(p, next.id), true);
-      assert.equal(p.stars, 0);
+function earnOrder(p: Progress, number: number) {
+  const order = CHAPTER[number - 1];
+  assert.equal(isProjectOrderUnlocked(p.completed, p.campaign, number, p.selectedProject), true);
+  assert.equal(p.completed.includes(order.id), false);
+  p.completed.push(order.id);
+  p[orderCurrency(order.id)!]++;
+  p.coins += 60;
+}
+function finishProject(p: Progress, id: ProjectId, delayed = false) {
+  assert.equal(selectProject(p, id), true, `select ${id}`);
+  let guard = 0;
+  while (phaseStatus(id, p.completed, p.campaign) !== "complete") {
+    assert.ok(++guard < 250, `progress ${id}`);
+    const number = nextProjectOrder(id, p.completed, p.campaign);
+    if (number !== null) {
+      earnOrder(p, number);
+      if (!delayed) buyAffordable(p);
+    } else {
+      const before = p.campaign.completedTasks.length;
+      buyAffordable(p);
+      assert.ok(p.campaign.completedTasks.length > before, `gate ${id} must be financeable`);
     }
   }
-});
-test("Migration is one-time and preserves completed demo ownership and colors after persistence", () => {
-  const old = oldSave(3, 10);
-  const p = loadProgress({ getItem: () => JSON.stringify(old) }).progress;
-  assert.equal(shopComplete(p.completed, p.campaign), false);
-  assert.equal(nextOrder(p.completed), 11);
-  assert.equal(nextShopTask(p.campaign)?.id, "shop-s1-t06");
-  let raw = "";
-  saveProgress({ setItem: (_, value) => { raw = value; } }, p);
-  const again = loadProgress({ getItem: () => raw });
-  assert.equal(again.migrated, false);
-  assert.deepEqual(again.progress, p);
-  assert.equal(purchaseShopTask(again.progress, "shop-opening"), false);
-  assert.equal(again.progress.stars, 0);
-  const html = shopSceneHTML(p.campaign.completedTasks, "assets/", p.renovations);
-  assert.match(html, /scene-sign coral/);
-  assert.match(html, /scene-counter honey/);
-  assert.match(html, /scene-garden sea/);
-});
-test("Purchases require order, funds and a new task; each adds a distinct permanent scene layer", () => {
+}
+function completedStageOne() {
   const p = freshProgress();
-  assert.equal(purchaseShopTask(p, "first-shelf"), false);
-  p.stars = CHAPTER.length;
-  assert.equal(purchaseShopTask(p, "shop-opening"), false);
-  let before = shopSceneHTML(p.campaign.completedTasks, "assets/");
-  for (const task of SHOP_STEPS) {
-    assert.equal(purchaseShopTask(p, task.id), true);
-    const after = shopSceneHTML(p.campaign.completedTasks, "assets/", p.renovations);
-    assert.notEqual(after, before);
-    assert.equal(purchaseShopTask(p, task.id), false);
-    before = after;
-  }
-  assert.equal(p.stars, 0);
-  assert.equal(shopComplete([], p.campaign), false);
-  p.completed = CHAPTER.map(order => order.id);
-  assert.equal(shopComplete(p.completed, p.campaign), false);
-  for (const area of CAMPAIGN_AREAS.slice(1)) assert.equal(areaStatus(area.id, p.completed, p.campaign), "planned");
-  assert.deepEqual(CAMPAIGN_CHAPTERS.slice(1).map(c => [c.orderIds, c.taskIds]), Array(5).fill([[], []]));
-});
-test("Schema 3 keeps every old task prefix and a pinned active order; old finale continues at eleven", () => {
-  for (let prefix = 0; prefix <= 5; prefix++) {
-    const old: any = freshProgress();
-    old.schema = 3;
-    old.campaign.version = "coastal-campaign-1";
-    old.campaign.completedTasks = SHOP_STEPS.slice(0, prefix).map(task => task.id);
-    old.completed = CHAPTER.slice(0, 10).map(order => order.id);
-    old.coins = 600;
-    old.stars = 10 - SHOP_STEPS.slice(0, prefix).reduce((sum, task) => sum + task.cost, 0);
-    if (prefix >= 4) old.renovations.counter = "honey";
-    if (prefix >= 5) old.renovations.sign = old.renovation = "coral";
-    const definition = chapterLevel(10), board = initial(definition);
-    old.attempt = { id: "schema-three-pinned", definition, board: applyMove(board, ...definition.verifiedSolution[0]),
-      undo: [board], solution: definition.verifiedSolution.slice(1), mixCount: 0, hints: {}, reward: null };
-    const result = loadProgress({ getItem: () => JSON.stringify(old) });
-    assert.equal(result.warning, undefined);
-    assert.equal(result.migrated, true);
-    assert.equal(result.progress.schema, 5);
-    for (const key of ["coins", "stars", "inventory", "completed", "renovations", "attempt"] as const)
-      assert.deepEqual(result.progress[key], old[key]);
-    assert.deepEqual(result.progress.campaign.completedTasks, old.campaign.completedTasks);
-    assert.equal(nextOrder(result.progress.completed), 11);
-  }
-});
-test("Available content cannot masquerade as the eighty-order phase or unlock later projects", () => {
-  const p = freshProgress();
-  p.completed = CHAPTER.map(order => order.id);
-  p.campaign.completedTasks = SHOP_STEPS.map(task => task.id);
+  finishProject(p, "shop-1");
+  finishProject(p, "warehouse-1");
+  return p;
+}
+
+test("The produced block contains Stage 1–2 and the first bakery, with exact planned works", () => {
+  const plan = JSON.parse(readFileSync(new URL("../docs/content/full-product-plan.json", import.meta.url), "utf8"));
+  assert.equal(CHAPTER.length, 680);
+  assert.equal(TASKS.length, 152);
+  assert.equal(PROJECTS.length, 7);
   assert.equal(FIRST_SHOP_PHASE.orderTarget, 80);
-  assert.equal(FIRST_SHOP_PHASE.taskTarget, 26);
+  assert.equal(FIRST_SHOP_PHASE.taskTarget, 14);
+  for (const project of PROJECTS) {
+    const planned = plan.phases.find((phase: any) => phase.id === project.id);
+    assert.deepEqual(projectTasks(project.id).map(({ id, name, cost, target }) => ({ id, name, cost, target })),
+      planned.tasks.map(({ id, name, cost, target }: any) => ({ id, name, cost, target })));
+    assert.equal(projectOrders(project.id).length, project.orderTarget);
+    assert.equal(projectTasks(project.id).reduce((sum, task) => sum + task.cost, 0), project.orderTarget);
+  }
+  assert.deepEqual(TASKS.slice(0, 14).map(({ id, cost }) => ({ id, cost })), SHOP_STEPS.map(({ id, cost }) => ({ id, cost })));
   assert.equal(CAMPAIGN_PHASES.length, 36);
   assert.equal(CAMPAIGN_PHASES.reduce((sum, phase) => sum + phase.orderTarget, 0), 6000);
-  assert.deepEqual(CAMPAIGN_CHAPTERS.map(chapter => [chapter.orderTarget, chapter.taskTarget]), Array(6).fill([1000, 126]));
+  assert.deepEqual(CAMPAIGN_CHAPTERS.map(chapter => [chapter.orderTarget, chapter.taskTarget]), [[1000, 114], ...Array(5).fill([1000, 126])]);
+});
+test("Completion includes every local order and work; 30 published victories never open the warehouse", () => {
+  const p = freshProgress();
+  p.completed = CHAPTER.slice(0, 30).map(order => order.id);
+  p.campaign.completedTasks = SHOP_STEPS.slice(0, 10).map(task => task.id);
   assert.equal(phaseStatus("shop-1", p.completed, p.campaign), "available");
-  for (const phase of CAMPAIGN_PHASES.slice(1)) assert.equal(phaseStatus(phase.id, p.completed, p.campaign), "planned");
-  assert.equal(shopComplete(p.completed, p.campaign), false);
+  assert.equal(phaseStatus("warehouse-1", p.completed, p.campaign), "locked");
+  assert.equal(currentGlobalStage(p.completed, p.campaign), 1);
+  p.completed = projectOrders("shop-1").map(order => order.id);
+  assert.equal(phaseStatus("shop-1", p.completed, p.campaign), "available");
+  p.campaign.completedTasks = projectTasks("shop-1").map(task => task.id);
+  assert.equal(phaseStatus("shop-1", p.completed, p.campaign), "complete");
+  assert.equal(projectStatus("warehouse-1", p.completed, p.campaign), "site-available");
+  assert.equal(phaseStatus("shop-2", p.completed, p.campaign), "locked");
+  assert.equal(areaStatus("bakery", p.completed, p.campaign), "locked");
 });
-test("Schema 4 completed displays open the cold department without resetting balances or pinned attempts", () => {
-  const old: any = freshProgress();
-  old.schema = 4;
-  old.campaign.version = "coastal-campaign-2";
-  old.campaign.completedTasks = SHOP_STEPS.slice(0, 8).map(task => task.id);
-  old.completed = CHAPTER.slice(0, 20).map(order => order.id);
-  old.coins = 1200;
-  old.renovations = { sign: "coral", counter: "honey" };
-  old.renovation = "coral";
-  const definition = chapterLevel(20), board = initial(definition);
-  old.attempt = { id: "old-display-attempt", definition, board: applyMove(board, ...definition.verifiedSolution[0]),
-    undo: [board], solution: definition.verifiedSolution.slice(1), mixCount: 0, hints: {}, reward: null };
-  const migrated = loadProgress({ getItem: () => JSON.stringify(old) });
-  assert.equal(migrated.warning, undefined);
-  assert.equal(migrated.migrated, true);
-  assert.equal(migrated.progress.schema, 5);
-  for (const key of ["coins", "stars", "inventory", "renovations", "completed", "attempt"] as const)
-    assert.deepEqual(migrated.progress[key], old[key]);
-  assert.equal(nextOrder(migrated.progress.completed), 21);
-  assert.equal(nextShopTask(migrated.progress.campaign)?.id, "shop-s1-t09");
-});
-test("An in-flight old victory retains its exact proof and grants its new reward once after migration", () => {
-  const old = oldSave(1, 3);
-  const p = loadProgress({ getItem: () => JSON.stringify(old) }).progress;
-  const pinned = clone(p.attempt!.definition);
-  for (const move of p.attempt!.solution!) p.attempt!.board = applyMove(p.attempt!.board, ...move)!;
-  p.attempt!.solution = [];
-  assert.deepEqual(completeAttempt(p, "2026-10-05"), { coins: 60, stars: 1, fresh: true });
-  const paid = clone(p);
-  completeAttempt(p, "2026-10-05");
-  assert.deepEqual(p, paid);
-  assert.deepEqual(p.attempt!.definition, pinned);
-});
-test("Unknown campaign versions stay read-only; malformed tasks cannot be silently credited", () => {
-  const future = freshProgress();
-  (future.campaign.version as string) = "coastal-campaign-99";
-  const raw = JSON.stringify(future);
-  const result = loadProgress({ getItem: () => raw });
-  assert.equal(result.readOnly, true);
-  assert.equal(result.migrated, undefined);
-  for (const tasks of [["unknown"], ["first-shelf", "first-shelf"], ["shop-opening"], ["shop-s1-t06"], ["shop-s1-t08"]]) {
+test("Construction workflows pay repair kits then food stars in an open building and gate interior until all base equipment is owned", () => {
+  for (const [id, projectCount, gateCount] of [["warehouse-1", 38, 14], ["fruit-yard-1", 38, 14], ["fruit-yard-2", 72, 12], ["bakery-1", 38, 14]] as const) {
     const p = freshProgress();
-    (p.campaign.completedTasks as string[]) = tasks;
-    assert.match(loadProgress({ getItem: () => JSON.stringify(p) }).warning!, /повреждено/);
+    finishProject(p, "shop-1");
+    if (id !== "warehouse-1") finishProject(p, "warehouse-1");
+    if (id === "fruit-yard-2") finishProject(p, "fruit-yard-1");
+    if (id === "bakery-1") for (const prerequisite of ["shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2"] as const)
+      finishProject(p, prerequisite);
+    assert.equal(selectProject(p, id), true);
+    assert.equal(constructionState(id, p.campaign), "abandoned");
+    for (let i = 0; i < projectCount; i++) earnOrder(p, nextProjectOrder(id, p.completed, p.campaign)!);
+    assert.equal(nextProjectOrder(id, p.completed, p.campaign), null);
+    assert.equal(interiorOpen(id, p.campaign), false);
+    const firstInterior = CHAPTER.findIndex(order => order.id === projectOrders(id)[projectCount].id) + 1;
+    assert.equal(isProjectOrderUnlocked(p.completed, p.campaign, firstInterior), false);
+    for (let step = 0; step < gateCount; step++) {
+      const task = nextProjectTask(p.campaign, id)!;
+      assert.equal(purchaseProjectTask(p, task.id), true);
+      assert.equal(interiorOpen(id, p.campaign), step === gateCount - 1);
+      assert.equal(nextProjectOrder(id, p.completed, p.campaign), step === gateCount - 1 ? firstInterior : null);
+    }
+    assert.equal(p.stars, 0);
+    assert.equal(p.repairKits, 0);
+    assert.equal(projectStatus(id, p.completed, p.campaign), "open");
+    assert.equal(constructionState(id, p.campaign), "open");
   }
+});
+test("All six independent Stage 2 routes remain affordable with immediate or delayed purchases", () => {
+  const permutations: ProjectId[][] = [
+    ["shop-2", "warehouse-2", "fruit-yard-1"], ["shop-2", "fruit-yard-1", "warehouse-2"],
+    ["warehouse-2", "shop-2", "fruit-yard-1"], ["warehouse-2", "fruit-yard-1", "shop-2"],
+    ["fruit-yard-1", "shop-2", "warehouse-2"], ["fruit-yard-1", "warehouse-2", "shop-2"],
+  ];
+  for (const delayed of [false, true]) for (const route of permutations) {
+    const p = freshProgress();
+    finishProject(p, "shop-1", delayed);
+    finishProject(p, "warehouse-1", delayed);
+    assert.equal(currentGlobalStage(p.completed, p.campaign), 2);
+    assert.deepEqual(availableProjects(p.completed, p.campaign).filter(project => phaseStatus(project.id, p.completed, p.campaign) === "available").map(project => project.id),
+      ["shop-2", "warehouse-2", "fruit-yard-1"]);
+    for (const id of route) {
+      finishProject(p, id, delayed);
+      if (id === "fruit-yard-1") finishProject(p, "fruit-yard-2", delayed);
+    }
+    assert.equal(p.completed.length, 600);
+    assert.equal(p.campaign.completedTasks.length, 126);
+    assert.equal(p.stars, 0);
+    assert.equal(p.repairKits, 0);
+    assert.equal(p.coins, 36000);
+    assert.equal(blockComplete(p.completed, p.campaign), false);
+    assert.equal(phaseStatus("bakery-1", p.completed, p.campaign), "available");
+    assert.equal(currentGlobalStage(p.completed, p.campaign), 3);
+    assert.equal(phaseStatus("shop-3", p.completed, p.campaign), "planned");
+    assert.equal(validCampaign(p.campaign), true);
+  }
+});
+test("Delayed works may spend a shared wallet across branches without imposing catalog order", () => {
+  const p = completedStageOne();
+  assert.equal(selectProject(p, "warehouse-2"), true);
+  for (let i = 0; i < 120; i++) earnOrder(p, nextProjectOrder("warehouse-2", p.completed, p.campaign)!);
+  assert.equal(phaseStatus("warehouse-2", p.completed, p.campaign), "available");
+  assert.equal(selectProject(p, "fruit-yard-1"), true);
+  for (let i = 0; i < 38; i++) earnOrder(p, nextProjectOrder("fruit-yard-1", p.completed, p.campaign)!);
+  buyAffordable(p);
+  finishProject(p, "fruit-yard-1", true);
+  assert.equal(phaseStatus("fruit-yard-2", p.completed, p.campaign), "available");
+  assert.equal(nextProjectOrder("shop-2", p.completed, p.campaign), 161);
+  assert.equal(nextProjectOrder("fruit-yard-2", p.completed, p.campaign), 481);
+  finishProject(p, "fruit-yard-2", true);
+  finishProject(p, "shop-2", true);
+  finishProject(p, "warehouse-2", true);
+  assert.equal(p.stars, 0);
+  assert.equal(p.repairKits, 0);
+  assert.equal(blockComplete(p.completed, p.campaign), false);
+  assert.equal(phaseStatus("bakery-1", p.completed, p.campaign), "available");
+});
+test("Purchases require selected available project, local sequence, sufficient funds and unique ownership", () => {
+  const p = freshProgress();
+  assert.equal(selectProject(p, "warehouse-1"), false);
+  p.stars = 1000;
+  assert.equal(purchaseProjectTask(p, "warehouse-s1-t01"), false);
+  assert.equal(purchaseProjectTask(p, "shop-s1-r14"), false);
+  assert.equal(purchaseProjectTask(p, "shop-s1-r01"), false, "stars cannot buy a repair");
+  p.repairKits = 1000;
+  assert.equal(purchaseProjectTask(p, "shop-s1-r01"), true);
+  assert.equal(p.stars, 1000);
+  assert.equal(purchaseProjectTask(p, "shop-s1-r01"), false);
+  p.repairKits = 1;
+  assert.equal(purchaseProjectTask(p, "shop-s1-r02"), false);
+  assert.equal(p.stars, 1000);
+  assert.equal(p.repairKits, 1);
+  assert.equal(validCampaign({ ...freshCampaign(), completedTasks: ["warehouse-s2-t02"] }), false);
+  assert.equal(validCampaign({ ...freshCampaign(), completedTasks: ["shop-s1-r01", "shop-s1-r01"] }), false);
+  assert.equal(validCampaign({ ...freshCampaign(), completedTasks: ["shop-s1-r14"] }), false);
+  assert.equal(validCampaign({ ...freshCampaign(), completedTasks: ["shop-s1-r14"], legacyTaskOrder: true }), false);
+  assert.equal(validCampaign({ ...freshCampaign(), completedTasks: ["shop-s1-r06"], legacyTaskOrder: true }), false);
+});
+
+
+test("Produced budgets keep the old 179/421 and add exactly the bakery's 32/48, independent of construction gates", () => {
+  const expected = [
+    ["shop-1", 3, 19], ["warehouse-1", 12, 32], ["fruit-yard-1", 12, 32],
+    ["shop-2", 3, 18], ["warehouse-2", 3, 18], ["fruit-yard-2", 10, 60], ["bakery-1", 12, 32],
+  ] as const;
+  for (const [id, prefix, units] of expected) {
+    const tasks = projectTasks(id), orders = projectOrders(id);
+    assert.deepEqual(tasks.map(task => task.currency), tasks.map((_, index) => index < prefix ? "repairKits" : "stars"));
+    assert.equal(repairOrderCount(id), units);
+    assert.deepEqual(orders.map(order => orderCurrency(order.id)), orders.map((_, index) => index < units ? "repairKits" : "stars"));
+  }
+  const baselineTasks = TASKS.filter(task => task.phaseId !== "bakery-1");
+  const baselineOrders = CHAPTER.filter(order => order.phaseId !== "bakery-1");
+  assert.equal(baselineTasks.length, 126);
+  assert.equal(baselineOrders.length, 600);
+  assert.equal(baselineTasks.filter(task => task.currency === "repairKits").reduce((sum, task) => sum + task.cost, 0), 179);
+  assert.equal(baselineTasks.filter(task => task.currency === "stars").reduce((sum, task) => sum + task.cost, 0), 421);
+  assert.equal(baselineOrders.filter(order => orderCurrency(order.id) === "repairKits").length, 179);
+  assert.equal(baselineOrders.filter(order => orderCurrency(order.id) === "stars").length, 421);
+  assert.equal(TASKS.filter(task => task.currency === "repairKits").reduce((sum, task) => sum + task.cost, 0), 211);
+  assert.equal(TASKS.filter(task => task.currency === "stars").reduce((sum, task) => sum + task.cost, 0), 469);
+  assert.equal(CHAPTER.filter(order => orderCurrency(order.id) === "repairKits").length, 211);
+  assert.equal(CHAPTER.filter(order => orderCurrency(order.id) === "stars").length, 469);
+  assert.equal(orderCurrency("coastal-slice-1:tutorial:1"), "repairKits");
+  assert.equal(orderCurrency("missing-order"), undefined);
+});
+
+test("Cosmetic work cannot spend kits, and an unsuccessful purchase leaves both wallets and ownership exact", () => {
+  const p = freshProgress();
+  p.campaign.completedTasks = SHOP_STEPS.slice(0, 3).map(task => task.id);
+  p.repairKits = 100;
+  p.stars = 3;
+  const before = structuredClone(p);
+  assert.equal(purchaseProjectTask(p, "shop-s1-r04"), false);
+  assert.deepEqual(p, before);
+  p.stars = 4;
+  assert.equal(purchaseProjectTask(p, "shop-s1-r04"), true);
+  assert.equal(p.repairKits, 100);
+  assert.equal(p.stars, 0);
 });

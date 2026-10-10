@@ -1,5 +1,5 @@
 #app.tool-shop-screen { overflow: hidden; color: #24575a; background: #e9c694; }
-.tool-shop { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: linear-gradient(#f9edcfe8, #efc68adb), url("/assets/campaign-shop-empty.webp") center/cover; }
+.tool-shop { height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: linear-gradient(#f9edcfe8, #efc68adb), url("/assets/hall-corner-empty.webp") center/cover; }
 .tool-shop-header { display: flex; align-items: center; justify-content: center; gap: 24px; padding: 12px max(16px, env(safe-area-inset-right)) 12px max(16px, env(safe-area-inset-left)); }
 .tool-shop-header h1 { margin: 0; font: bold 28px/1.15 Georgia, serif; }
 .tool-shop-header .round { width: 44px; height: 44px; flex: none; }

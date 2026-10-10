@@ -2,10 +2,11 @@
 
 /* The shop is a game viewport: scenery, in-world goal, HUD, one main action. */
 #app.campaign-screen { overflow: hidden; color: #24575a; background: #d8ba8c; }
-.world { --world-hud: 68px; --world-dock: calc(152px + env(safe-area-inset-bottom)); position: relative; height: 100%; display: grid; grid-template-rows: var(--world-hud) minmax(0, 1fr) var(--world-dock); isolation: isolate; overflow: hidden; }
-.world::before { content: ""; position: absolute; z-index: -2; inset: -28px; background: url("/assets/campaign-shop-empty.webp") center/cover; filter: blur(18px); }
+.world { --world-hud: 68px; --world-dock: calc(152px + env(safe-area-inset-bottom)); position: relative; height: 100%; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: var(--world-hud) minmax(0, 1fr) var(--world-dock); isolation: isolate; overflow: hidden; }
+.world::before { content: ""; position: absolute; z-index: -2; inset: -28px; background: url("/assets/hall-v1-empty.webp") center/cover; filter: blur(18px); }
+.world:has(.world-scene > .hall-angle-2)::before { background-image:url("/assets/hall-v2-empty.webp"); }
 .world::after { content: ""; position: absolute; z-index: -1; inset: 0; background: linear-gradient(#fbe8c666, transparent 35%, #6d402333); }
-.world.on-map::before { background-image: url("/assets/campaign-map.webp"); }
+.world.on-map::before { background-image: url("/assets/coastal-map-cleared-v1.webp"); }
 .world-hud { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 8px max(12px, env(safe-area-inset-left)); z-index: 3; }
 .world-round { width: 48px; height: 48px; flex: none; display: grid; place-items: center; border: 3px solid #fff0c2; outline: 1px solid #aa7e46; border-radius: 50%; background: linear-gradient(#fef6dc, #eec791); box-shadow: inset 0 -3px #cf9e5b, 0 4px 8px #513c3540; color: #17686d; }
 .world-round .icon { width: 25px; height: 25px; }
@@ -54,7 +55,6 @@
 .task-sign { width: 38px; height: 29px; display: grid; place-items: center; border: 2px solid #e9c074; background: #0b8a93; border-radius: 5px; color: #fff0ba; }
 .task-sign .icon { width: 23px; height: 23px; }
 .world-edit { position: absolute; z-index: 2; width: 44px; height: 44px; display: grid; place-items: center; transform: translate(-50%, -50%); border: 3px solid #fff1c5; border-radius: 50%; background: #fcdb91; color: #845520; box-shadow: 0 3px 0 #a97536; }
-.world-appearance { position: absolute; right: 8px; bottom: calc(100% + 12px); }
 .world-map { border-radius: 0; }
 .world-pin { position: absolute; z-index: 2; transform: translate(-50%, -50%); background: transparent; display: grid; justify-items: center; color: #fdf2d8; padding: 0; }
 .world-pin > span { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; border: 4px solid #ffefd1; background: linear-gradient(#c6b9a0, #887b66); box-shadow: 0 4px #635340, 0 5px 10px #3d3b3155; }
@@ -66,9 +66,6 @@
 .world-map-status { grid-column: 1 / -1; text-align: center; color: #746048; font-size: 16px; align-self: center; }
 .world-victory { position: absolute; z-index: 2; top: 58px; display: flex; gap: 12px; color: #bf8218; }
 .world-victory .icon { width: 30px; height: 30px; fill: #ffdc70; filter: drop-shadow(0 2px #fff0b5); }
-.result-goal { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 20px 0 4px; font-size: 20px; font-weight: bold; }
-.result-goal-art { width: 84px; height: 66px; display: grid; place-items: center; }
-.result-goal-art img { width: 100%; height: 100%; object-fit: contain; }
 .puzzle-build-goal { display: inline-grid; place-items: center; width: 50px; height: 38px; }
 .puzzle-build-goal img { width: 100%; height: 100%; object-fit: contain; }
 .modal-renovation .preview-counter.honey img, .modal-renovation .preview-window.honey img { filter: sepia(.28) saturate(1.15); }
@@ -128,7 +125,6 @@
   .world-progress { flex-wrap: wrap; gap: 8px 10px; }
   .world-step { width: 34px; height: 26px; }
   .world-map-status { font-size: 16px; }
-  .world-appearance { right: auto; left: -54px; bottom: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .world-target, .target-hand, .scene-built-pop { animation: none; }
@@ -159,4 +155,133 @@
 .world-step .task-sign .icon { width: min(23px, 100%); height: min(23px, 100%); }
 @media (min-width: 600px) and (max-height: 500px) {
   .world-dock { padding: 12px 12px calc(28px + env(safe-area-inset-bottom)); gap: 10px; }
+}
+
+/* Project and camera choices share a compact strip in the dock. */
+.world-view-selector { overflow-x: auto; justify-content: flex-start; scrollbar-width: thin; }
+.world-view-selector button { flex: 0 0 auto; min-width: 72px; white-space: nowrap; }
+.world-mission h2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.world-heading { white-space: normal; width: max-content; }
+.world.on-map .world-map-status { grid-row: 3; }
+.world-project-selector:empty { display: none; }
+@media (min-width: 600px) and (max-height: 500px) {
+ .world-view-selector { justify-content: flex-start; }
+ .world-view-selector button { flex: 0 0 auto; min-width: 64px; }
+ .world.on-map .world-dock { gap: 8px; }
+}
+@media (min-width: 600px) and (max-height: 500px) { .world-view-selector > button { flex: 1 1 0; min-width: 0; } }
+.world-block-finale { grid-row: 2 / 4 !important; white-space: normal; line-height: 1.5; }
+.world-block-finale div { color: #24575a; }
+.world-pin > span > img { width: 28px; height: 28px; object-fit: contain; }
+.world-mission h2 { margin-bottom: 2px; line-height: 1.1; }
+
+/* Wallet growth must not widen the entire phone viewport. */
+.world-hud, .world-wallet { min-width: 0; }
+.world-currency b { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 600px) {
+ .world-hud { gap: 4px; padding-inline: 6px; }
+ .world-wallet { gap: 4px; }
+ .world-currency { min-width: 0; padding-inline: 4px; }
+}
+
+/* Room changes use a game control and illustrated choices. */
+.world-view-selector.world-room-selector { justify-content: center; overflow: visible; }
+.world-view-selector .world-room-switch { display: flex; align-items: center; gap: 9px; width: 100%; max-width: 320px; min-width: 0; height: 44px; padding: 4px 12px 4px 6px; border-radius: 24px; border: 2px solid #c69e63; background: linear-gradient(#fff8df, #f6dcaa); box-shadow: inset 0 1px #fffef1, inset 0 -2px #d7b378, 0 2px 5px #815d2926; color: #24575a; }
+.room-switch-icon { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; color: #fff8df; background: linear-gradient(#3aafb0, #127b80); border: 1px solid #107478; }
+.room-switch-icon .icon { width: 20px; height: 20px; }
+.room-switch-label { flex: 1; min-width: 0; white-space: normal; line-height: 1.1; font-size: 16px; font-weight: bold; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.world-room-switch .room-switch-arrow { width: 18px; height: 18px; }
+/* The two hall cameras share one room control and never become separate rooms. */
+.world-view-selector.world-room-selector.has-hall-cameras { gap: 8px; }
+.has-hall-cameras .world-room-switch { flex: 0 1 200px; width: auto; }
+.world-hall-views { display: flex; flex: 0 1 300px; gap: 6px; min-width: 0; }
+.world-view-selector .world-hall-view { display: flex; align-items: center; justify-content: center; flex: 1 1 0; gap: 6px; min-width: 0; min-height: 44px; padding: 4px 8px; border: 2px solid #c69e63; border-radius: 14px; background: linear-gradient(#fff8df, #f6dcaa); box-shadow: inset 0 -2px #d7b378, 0 2px 4px #815d2926; color: #24575a; }
+.world-view-selector .world-hall-view[aria-pressed="true"] { border-color: #106f75; background: linear-gradient(#279da4, #117a82); box-shadow: inset 0 -2px #095e68, 0 2px 4px #815d2926; color: #fff8df; }
+.hall-view-number { display: grid; place-items: center; flex: none; width: 22px; height: 22px; border-radius: 50%; background: #e4c591; color: #24575a; font-size: 16px; font-weight: bold; line-height: 1; }
+[aria-pressed="true"] > .hall-view-number { background: #fff0c5; color: #106f75; }
+.hall-view-label { min-width: 0; font-size: 16px; font-weight: bold; line-height: 1.1; }
+.hall-view-label-short { display: none; }
+/* General styling stays in navigation, clear of object goals in the room. */
+.world-room-selector .world-appearance { position: static; flex: 0 0 44px; min-width: 44px; width: 44px; height: 44px; padding: 0; border: 3px solid #fff0c2; border-radius: 50%; background: linear-gradient(#fef6dc, #eec791); color: #17686d; }
+@media (max-width: 600px) {
+ .has-hall-cameras .world-room-switch { flex: 0 0 100px; padding-inline: 4px; gap: 0; }
+ .has-hall-cameras .room-switch-icon, .has-hall-cameras .room-switch-arrow { display: none; }
+ .world-hall-views { flex: 1 1 0; gap: 5px; }
+ .world-view-selector .world-hall-view { gap: 4px; padding-inline: 4px; }
+ .hall-view-number { width: 18px; height: 18px; }
+ .has-room-appearance .world-hall-view { gap: 2px; padding-inline: 2px; }
+ .has-room-appearance .hall-view-label { font-size: 15px; }
+ .has-room-appearance .hall-view-label-long { display: none; }
+ .has-room-appearance .hall-view-label-short { display: inline; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+ .world-view-selector.world-room-selector.has-hall-cameras { flex-direction: column; gap: 6px; }
+ .world.has-hall-views .world-dock { gap: 6px; padding-bottom: calc(26px + env(safe-area-inset-bottom)); }
+ .world.has-hall-views .world-main-action { margin-bottom: 8px; }
+ .world.has-hall-views .world-mission > div:last-child { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px; align-items: center; width: 100%; }
+ .world.has-hall-views .world-mission h2 { margin: 0; }
+ .world.has-hall-views .world-progress { flex-shrink: 0; }
+ .world.has-hall-views.world-finale .world-mission > div:last-child { grid-template-columns: minmax(0, 1fr); }
+ .world.has-hall-views.world-finale .world-mission-cost { display: none; }
+ .has-hall-cameras .world-room-switch { flex: none; width: 100%; max-width: none; }
+ .world-hall-views { flex: none; width: 100%; }
+ .world-view-selector .world-hall-view { flex-direction: column; gap: 1px; height: 44px; padding: 2px; }
+ .hall-view-number { width: 18px; height: 18px; }
+ .hall-view-label-long { display: none; }
+ .hall-view-label-short { display: inline; }
+ .world-view-selector.world-room-selector.has-room-appearance { display: grid; grid-template-columns: minmax(0, 1fr) 44px; }
+ .has-room-appearance .world-room-switch { width: 100%; min-width: 0; gap: 0; }
+ .has-room-appearance .room-switch-icon { display: none; }
+ .has-room-appearance .world-hall-views { grid-column: 1 / -1; }
+}
+.modal-rooms { width: min(100%, 540px); padding: 26px 20px 22px; display: flex; flex-direction: column; overflow: hidden; }
+.modal-rooms h2 { padding: 0 42px; }
+.modal-rooms .modal-close { width: 44px; height: 44px; top: 12px; right: 12px; }
+.room-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: max-content; align-content: start; gap: 12px; margin-top: 22px; min-height: 0; max-height: calc(100dvh - 150px); overflow-y: auto; padding-bottom: 4px; }
+.room-choice { position: relative; min-width: 0; min-height: 44px; padding: 0; border: 2px solid #d5b684; border-radius: 16px; background: #fff1d7; overflow: hidden; box-shadow: 0 3px 0 #d9bd91; }
+.room-choices > .room-choice:only-child:is([data-view="hall"], [data-view="hall-prep"]) { grid-column: 1 / -1; }
+.room-choice[aria-pressed="true"] { border-color: #16878b; background: #e0f1e6; box-shadow: 0 3px 0 #137b7f; }
+.room-choice:hover { border-color: #16878b; }
+.room-preview { display: block; pointer-events: none; }
+.room-preview .shop-composition { border-radius: 0; }
+.room-preview .shop-composition .scene-sign { font-size: 9px; padding: 2px; border-width: 1px; }
+.room-choice-name { display: block; min-height: 48px; padding: 8px; font-size: 16px; line-height: 1.2; color: #24575a; }
+.room-choice-name .icon { position: absolute; top: 8px; right: 8px; width: 24px; height: 24px; padding: 3px; color: #fff7d7; background: #16878b; border-radius: 50%; }
+@media (min-width: 600px) and (max-height: 500px) {
+ .world-view-selector .world-room-switch { padding: 5px 8px; gap: 8px; }
+ .room-switch-icon { width: 26px; height: 26px; }
+ .world-room-switch .room-switch-arrow { display: none; }
+ .room-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+ .room-choice { display: grid; grid-template-columns: 78px minmax(0, 1fr); align-items: center; }
+ .room-preview { height: 52px; overflow: hidden; }
+ .room-preview .shop-composition { width: 78px; }
+ .room-choice-name { min-height: 56px; padding: 6px; display: grid; place-items: center; }
+ .room-choice-name .icon { left: 49px; right: auto; top: 6px; }
+}
+
+/* Give the main action its own clear gap before progress or the room control.
+   The fixed dock tracks still fit the smallest portrait and landscape windows. */
+.world-dock { grid-template-rows: 62px 28px; row-gap: 18px; padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+.has-shop-views .world-dock { grid-template-rows: 62px 44px 28px; }
+.world .world-main-action { align-self: start; }
+.world-progress { min-height: 28px; align-self: center; }
+.world-view-selector.world-room-selector { min-height: 44px; align-self: center; }
+/* Reserve a title band instead of letting the heading cover wall art or stock. */
+.world:not(.on-map) .world-stage { padding-top: 60px; }
+.world:not(.on-map) .world-scene { width: min(100%, calc((100dvh - var(--world-hud) - var(--world-dock) - 60px) * 1.5)); }
+@media (max-height: 500px) {
+  .world-dock { grid-template-rows: 52px 28px; row-gap: 16px; padding: 8px 14px calc(24px + env(safe-area-inset-bottom)); }
+  .has-shop-views .world-dock { grid-template-rows: 52px 44px 28px; }
+  .world:not(.on-map) .world-stage { padding-top: 0; }
+  .world:not(.on-map) .world-scene { width: min(100%, calc((100dvh - var(--world-hud) - var(--world-dock)) * 1.5)); }
+  .world-store > span { display: none; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .world-dock { padding: 12px 12px calc(24px + env(safe-area-inset-bottom)); gap: 14px; }
+  .world.has-shop-views .world-dock { padding-left: 10px; padding-right: 10px; }
+  .world .world-main-action { min-height: 54px; }
+  .world:not(.on-map) .world-scene { width: min(100%, calc((100dvh - 56px) * 1.5)); }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .world.on-map .world-dock { gap: 14px; }
 }

@@ -1,0 +1,5 @@
+Use case: precise-object-edit.
+Asset type: registered full-frame bakery clearing step 3, RGB 1536×1024.
+Image 1 is the sole EDIT TARGET, the state after rubbish and ruin removal.
+Remove ONLY the temporary thorny bramble/weed heap on the right side of the bare site around x1075..1488,y530..788, including its twigs, cut-looking branches and loose rocks at its base. Restore the same slightly uneven dusty dirt and a few sparse short grass tufts under it. Do not remove the permanent colorful flowering garden behind the stone boundary wall or the distant trees.
+Keep the LEFT tree stump and fallen log intact around x490..740,y530..650; those are still awaiting task4. Keep the cleared central site, no rubbish or shelter returns. Preserve exact camera, image framing, permanent garden walls/flowers/trees, sea/sky/village, original paving/steps, lantern, blurred foreground and sunlight. No new objects, foundation, buildings, tiling or artificial smooth pad. Ground remains unlevelled. No text or borders.

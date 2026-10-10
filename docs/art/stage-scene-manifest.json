@@ -1,0 +1,3152 @@
+[
+  {
+    "id": "first-shelf",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "hall-v1-north-display",
+    "anchor": {
+      "x": 73,
+      "y": 32
+    },
+    "layers": []
+  },
+  {
+    "id": "display-baskets",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "hall-tray-right",
+    "anchor": {
+      "x": 66,
+      "y": 42
+    },
+    "layers": []
+  },
+  {
+    "id": "first-stock",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "milk",
+    "anchor": {
+      "x": 70,
+      "y": 27
+    },
+    "layers": []
+  },
+  {
+    "id": "order-counter",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "hall-v1-counter",
+    "anchor": {
+      "x": 77,
+      "y": 78
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-opening",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "furniture-opening-sign",
+    "anchor": {
+      "x": 80,
+      "y": 8
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t06",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "hall-v1-west-display",
+    "anchor": {
+      "x": 38,
+      "y": 34
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t07",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "hall-tray-left",
+    "anchor": {
+      "x": 39,
+      "y": 45
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t08",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "pear",
+    "anchor": {
+      "x": 41,
+      "y": 34
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t09",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-v2-order-rack",
+    "anchor": {
+      "x": 73,
+      "y": 46
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t10",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-tray-right",
+    "anchor": {
+      "x": 73,
+      "y": 56
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t11",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-order-parcel",
+    "anchor": {
+      "x": 72,
+      "y": 35
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t12",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "furniture-category-boards",
+    "anchor": {
+      "x": 79,
+      "y": 47
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t13",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "hall-tray-right",
+    "anchor": {
+      "x": 78,
+      "y": 46
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t14",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "bread",
+    "anchor": {
+      "x": 79,
+      "y": 45
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t15",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-v2-packing-table",
+    "anchor": {
+      "x": 52,
+      "y": 56
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t16",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-balance-scale",
+    "anchor": {
+      "x": 46,
+      "y": 38
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t17",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-v2-cupboard",
+    "anchor": {
+      "x": 91,
+      "y": 55
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t18",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "furniture-floor-new",
+    "anchor": {
+      "x": 15,
+      "y": 73
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t19",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "furniture-awning",
+    "anchor": {
+      "x": 9,
+      "y": 16
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t20",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "furniture-lantern-right",
+    "anchor": {
+      "x": 90,
+      "y": 16
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t21",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-order-parcel",
+    "anchor": {
+      "x": 75,
+      "y": 53
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t22",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-packing-wall-shelf",
+    "anchor": {
+      "x": 53,
+      "y": 22
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t23",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "furniture-shopping-baskets",
+    "anchor": {
+      "x": 24,
+      "y": 63
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t24",
+    "phaseId": "shop-1",
+    "view": "hall",
+    "artwork": "furniture-price-holders",
+    "anchor": {
+      "x": 73,
+      "y": 37
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t25",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "hall-order-parcel",
+    "anchor": {
+      "x": 76,
+      "y": 60
+    },
+    "layers": []
+  },
+  {
+    "id": "shop-s1-t26",
+    "phaseId": "shop-1",
+    "view": "hall-prep",
+    "artwork": "furniture-crates",
+    "anchor": {
+      "x": 54,
+      "y": 72
+    },
+    "layers": []
+  },
+  {
+    "id": "warehouse-s1-t01",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-rubbish",
+    "anchor": {
+      "x": 32,
+      "y": 69
+    },
+    "layers": [],
+    "remove": [
+      "site-rubbish"
+    ]
+  },
+  {
+    "id": "warehouse-s1-t02",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-ruins",
+    "anchor": {
+      "x": 54,
+      "y": 50
+    },
+    "layers": [],
+    "remove": [
+      "site-ruins"
+    ]
+  },
+  {
+    "id": "warehouse-s1-t03",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-vines",
+    "anchor": {
+      "x": 74,
+      "y": 65
+    },
+    "layers": [],
+    "remove": [
+      "site-vines"
+    ]
+  },
+  {
+    "id": "warehouse-s1-t04",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-stumps",
+    "anchor": {
+      "x": 43,
+      "y": 78
+    },
+    "layers": [],
+    "remove": [
+      "site-stumps"
+    ]
+  },
+  {
+    "id": "warehouse-s1-t05",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-rough-ground",
+    "anchor": {
+      "x": 55,
+      "y": 78
+    },
+    "layers": [],
+    "remove": [
+      "site-rough-ground"
+    ]
+  },
+  {
+    "id": "warehouse-s1-t06",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-outline",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "site-outline",
+        "x": 53,
+        "y": 78,
+        "w": 63,
+        "h": 31,
+        "z": 2
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t07",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-foundation",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "site-foundation",
+        "x": 53,
+        "y": 78,
+        "w": 63,
+        "h": 31,
+        "z": 2
+      }
+    ],
+    "remove": [
+      "site-outline"
+    ]
+  },
+  {
+    "id": "warehouse-s1-t08",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-walls",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "site-walls",
+        "x": 53,
+        "y": 61,
+        "w": 63,
+        "h": 58,
+        "z": 50
+      }
+    ],
+    "remove": [
+      "site-foundation"
+    ]
+  },
+  {
+    "id": "warehouse-s1-t09",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-roof",
+    "anchor": {
+      "x": 53,
+      "y": 34
+    },
+    "layers": [
+      {
+        "asset": "site-roof",
+        "x": 53,
+        "y": 32,
+        "w": 80,
+        "h": 52,
+        "z": 51
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t10",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "site-windows-door",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "site-windows-door",
+        "x": 45,
+        "y": 64,
+        "w": 31,
+        "h": 31,
+        "z": 70
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t11",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "furniture-floor-new",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "furniture-floor-new",
+        "x": 53,
+        "y": 87,
+        "w": 63,
+        "h": 12,
+        "z": 2
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t12",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "furniture-lanterns",
+    "anchor": {
+      "x": 53,
+      "y": 56
+    },
+    "layers": [
+      {
+        "asset": "furniture-lanterns",
+        "x": 53,
+        "y": 56,
+        "w": 60,
+        "h": 21,
+        "z": 56
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t13",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "furniture-pallet",
+    "anchor": {
+      "x": 31,
+      "y": 86
+    },
+    "layers": [
+      {
+        "asset": "furniture-pallet",
+        "x": 31,
+        "y": 86,
+        "w": 30,
+        "h": 16,
+        "z": 86
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t14",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-yard",
+    "artwork": "furniture-modular-shelf",
+    "anchor": {
+      "x": 74,
+      "y": 73
+    },
+    "layers": [
+      {
+        "asset": "furniture-modular-shelf",
+        "x": 74,
+        "y": 73,
+        "w": 19,
+        "h": 30,
+        "z": 73
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t15",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-category-boards",
+    "anchor": {
+      "x": 70,
+      "y": 21
+    },
+    "layers": [
+      {
+        "asset": "furniture-category-boards",
+        "x": 70,
+        "y": 21,
+        "w": 28,
+        "h": 13,
+        "z": 21
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t16",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-sacks",
+    "anchor": {
+      "x": 83,
+      "y": 76
+    },
+    "layers": [
+      {
+        "asset": "furniture-sacks",
+        "x": 83,
+        "y": 76,
+        "w": 22,
+        "h": 26,
+        "z": 76
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t17",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-ice-chest",
+    "anchor": {
+      "x": 33,
+      "y": 78
+    },
+    "layers": [
+      {
+        "asset": "furniture-ice-chest",
+        "x": 33,
+        "y": 78,
+        "w": 29,
+        "h": 23,
+        "z": 78
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t18",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-inspection-table",
+    "anchor": {
+      "x": 56,
+      "y": 83
+    },
+    "layers": [
+      {
+        "asset": "furniture-inspection-table",
+        "x": 56,
+        "y": 83,
+        "w": 34,
+        "h": 27,
+        "z": 83
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t19",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-trolley",
+    "anchor": {
+      "x": 15,
+      "y": 83
+    },
+    "layers": [
+      {
+        "asset": "furniture-trolley",
+        "x": 15,
+        "y": 83,
+        "w": 26,
+        "h": 25,
+        "z": 83
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t20",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-walkway",
+    "anchor": {
+      "x": 47,
+      "y": 76
+    },
+    "layers": [
+      {
+        "asset": "furniture-walkway",
+        "x": 47,
+        "y": 76,
+        "w": 48,
+        "h": 33,
+        "z": 1
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t21",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "flour",
+    "anchor": {
+      "x": 72,
+      "y": 45
+    },
+    "layers": [
+      {
+        "asset": "flour",
+        "x": 63,
+        "y": 33,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "sugar",
+        "x": 72,
+        "y": 33,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "jam",
+        "x": 81,
+        "y": 33,
+        "w": 7,
+        "h": 10,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "flour",
+        "x": 63,
+        "y": 57,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "honey",
+        "x": 72,
+        "y": 57,
+        "w": 7,
+        "h": 10,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "bread",
+        "x": 81,
+        "y": 57,
+        "w": 7,
+        "h": 9,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t22",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-tool-cupboard",
+    "anchor": {
+      "x": 40,
+      "y": 42
+    },
+    "layers": [
+      {
+        "asset": "furniture-tool-cupboard",
+        "x": 40,
+        "y": 42,
+        "w": 21,
+        "h": 35,
+        "z": 42
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t23",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-metal-bins",
+    "anchor": {
+      "x": 16,
+      "y": 67
+    },
+    "layers": [
+      {
+        "asset": "furniture-metal-bins",
+        "x": 16,
+        "y": 67,
+        "w": 18,
+        "h": 21,
+        "z": 67
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t24",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-packing-station",
+    "anchor": {
+      "x": 53,
+      "y": 68
+    },
+    "layers": [
+      {
+        "asset": "furniture-packing-station",
+        "x": 53,
+        "y": 68,
+        "w": 30,
+        "h": 23,
+        "z": 68
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t25",
+    "phaseId": "warehouse-1",
+    "view": "warehouse",
+    "artwork": "furniture-crates",
+    "anchor": {
+      "x": 76,
+      "y": 89
+    },
+    "layers": [
+      {
+        "asset": "furniture-crates",
+        "x": 76,
+        "y": 88,
+        "w": 28,
+        "h": 20,
+        "z": 89
+      },
+      {
+        "asset": "jam",
+        "x": 71,
+        "y": 81.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "honey",
+        "x": 78,
+        "y": 81.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "bread",
+        "x": 85,
+        "y": 81.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s1-t26",
+    "phaseId": "warehouse-1",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-supply-bell",
+    "anchor": {
+      "x": 83,
+      "y": 67
+    },
+    "layers": [
+      {
+        "asset": "furniture-supply-bell",
+        "x": 83,
+        "y": 67,
+        "w": 12,
+        "h": 38,
+        "z": 67
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t01",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "site-rubbish",
+    "anchor": {
+      "x": 53,
+      "y": 71
+    },
+    "layers": [],
+    "remove": [
+      "site-rubbish"
+    ]
+  },
+  {
+    "id": "shop-s2-t02",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-floor-new",
+    "anchor": {
+      "x": 52,
+      "y": 83
+    },
+    "layers": [
+      {
+        "asset": "furniture-floor-new",
+        "x": 52,
+        "y": 86,
+        "w": 62,
+        "h": 17,
+        "z": 2
+      }
+    ],
+    "remove": [
+      "furniture-floor-broken"
+    ]
+  },
+  {
+    "id": "shop-s2-t03",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-wall-panel",
+    "anchor": {
+      "x": 51,
+      "y": 38
+    },
+    "layers": [
+      {
+        "asset": "furniture-wall-panel",
+        "x": 51,
+        "y": 38,
+        "w": 58,
+        "h": 48,
+        "z": 38
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t04",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-modular-shelf",
+    "anchor": {
+      "x": 65,
+      "y": 49
+    },
+    "layers": [
+      {
+        "asset": "furniture-modular-shelf",
+        "x": 65,
+        "y": 49,
+        "w": 33,
+        "h": 61,
+        "z": 49
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t05",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-base-cabinet",
+    "anchor": {
+      "x": 65,
+      "y": 81
+    },
+    "layers": [
+      {
+        "asset": "furniture-base-cabinet",
+        "x": 65,
+        "y": 81,
+        "w": 35,
+        "h": 23,
+        "z": 81
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t06",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-groceries-stand",
+    "anchor": {
+      "x": 25,
+      "y": 80
+    },
+    "layers": [
+      {
+        "asset": "furniture-groceries-stand",
+        "x": 25,
+        "y": 80,
+        "w": 31,
+        "h": 26,
+        "z": 80
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t07",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "rice",
+    "anchor": {
+      "x": 18,
+      "y": 70
+    },
+    "layers": [
+      {
+        "asset": "rice",
+        "x": 18,
+        "y": 76.5,
+        "w": 8,
+        "h": 13,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "pasta",
+        "x": 27,
+        "y": 76,
+        "w": 8,
+        "h": 12,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "rice",
+        "x": 36,
+        "y": 76,
+        "w": 8,
+        "h": 12,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "rice",
+        "x": 58,
+        "y": 59,
+        "w": 8,
+        "h": 12,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "pasta",
+        "x": 66,
+        "y": 59,
+        "w": 8,
+        "h": 12,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "canned-tomatoes",
+        "x": 74,
+        "y": 59,
+        "w": 8,
+        "h": 12,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t08",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-tea-shelf",
+    "anchor": {
+      "x": 26,
+      "y": 35
+    },
+    "layers": [
+      {
+        "asset": "furniture-tea-shelf",
+        "x": 26,
+        "y": 35,
+        "w": 32,
+        "h": 28,
+        "z": 35
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t09",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "tea",
+    "anchor": {
+      "x": 19,
+      "y": 24
+    },
+    "layers": [
+      {
+        "asset": "tea",
+        "x": 19,
+        "y": 29,
+        "w": 7,
+        "h": 10,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "coffee",
+        "x": 27,
+        "y": 29.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "tea",
+        "x": 35,
+        "y": 29.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "tea",
+        "x": 22,
+        "y": 43.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "coffee",
+        "x": 31,
+        "y": 43.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t10",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-condiment-stand",
+    "anchor": {
+      "x": 86,
+      "y": 77
+    },
+    "layers": [
+      {
+        "asset": "furniture-condiment-stand",
+        "x": 86,
+        "y": 77,
+        "w": 19,
+        "h": 26,
+        "z": 77
+      },
+      {
+        "asset": "olive-oil",
+        "x": 82,
+        "y": 67.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "honey",
+        "x": 90,
+        "y": 67.25,
+        "w": 7,
+        "h": 10.5,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t11",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-bag-roll",
+    "anchor": {
+      "x": 44,
+      "y": 55
+    },
+    "layers": [
+      {
+        "asset": "furniture-bag-roll",
+        "x": 44,
+        "y": 55,
+        "w": 16,
+        "h": 16,
+        "z": 55
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t12",
+    "phaseId": "shop-2",
+    "view": "shop-service",
+    "artwork": "furniture-terminal",
+    "anchor": {
+      "x": 56,
+      "y": 59
+    },
+    "layers": [
+      {
+        "asset": "furniture-terminal",
+        "x": 56,
+        "y": 59,
+        "w": 12,
+        "h": 16,
+        "z": 59
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t13",
+    "phaseId": "shop-2",
+    "view": "shop-service",
+    "artwork": "furniture-counter-extension",
+    "anchor": {
+      "x": 58,
+      "y": 72
+    },
+    "layers": [
+      {
+        "asset": "furniture-counter-extension",
+        "x": 58,
+        "y": 72,
+        "w": 46,
+        "h": 22,
+        "z": 72
+      }
+    ],
+    "remove": [
+      "furniture-pickup-counter"
+    ]
+  },
+  {
+    "id": "shop-s2-t14",
+    "phaseId": "shop-2",
+    "view": "shop-service",
+    "artwork": "furniture-side-counter",
+    "anchor": {
+      "x": 77,
+      "y": 82
+    },
+    "layers": [
+      {
+        "asset": "furniture-side-counter",
+        "x": 77,
+        "y": 82,
+        "w": 19,
+        "h": 24,
+        "z": 82
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t15",
+    "phaseId": "shop-2",
+    "view": "shop-service",
+    "artwork": "furniture-return-bin",
+    "anchor": {
+      "x": 29,
+      "y": 87
+    },
+    "layers": [
+      {
+        "asset": "furniture-return-bin",
+        "x": 29,
+        "y": 87,
+        "w": 18,
+        "h": 22,
+        "z": 87
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t16",
+    "phaseId": "shop-2",
+    "view": "shop-service",
+    "artwork": "furniture-trolley",
+    "anchor": {
+      "x": 14,
+      "y": 90
+    },
+    "layers": [
+      {
+        "asset": "furniture-trolley",
+        "x": 14,
+        "y": 87,
+        "w": 24,
+        "h": 22,
+        "z": 90
+      }
+    ],
+    "remove": [
+      "furniture-pallet",
+      "furniture-crates"
+    ]
+  },
+  {
+    "id": "shop-s2-t17",
+    "phaseId": "shop-2",
+    "view": "shop-service",
+    "artwork": "furniture-shopping-baskets",
+    "anchor": {
+      "x": 91,
+      "y": 87
+    },
+    "layers": [
+      {
+        "asset": "furniture-shopping-baskets",
+        "x": 90.5,
+        "y": 86.5,
+        "w": 15,
+        "h": 23,
+        "z": 87
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t18",
+    "phaseId": "shop-2",
+    "view": "shop-grocery",
+    "artwork": "furniture-price-holders",
+    "anchor": {
+      "x": 67,
+      "y": 67
+    },
+    "layers": [
+      {
+        "asset": "furniture-price-holders",
+        "x": 67,
+        "y": 67,
+        "w": 24,
+        "h": 9,
+        "z": 67
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t19",
+    "phaseId": "shop-2",
+    "view": "shop-front",
+    "artwork": "furniture-display-window",
+    "anchor": {
+      "x": 76.5,
+      "y": 50.5
+    },
+    "layers": [
+      {
+        "asset": "furniture-display-window",
+        "x": 76.5,
+        "y": 50.5,
+        "w": 36,
+        "h": 37,
+        "z": 51
+      },
+      {
+        "asset": "jam",
+        "x": 69.5,
+        "y": 62,
+        "w": 6,
+        "h": 10,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "bread",
+        "x": 76.5,
+        "y": 62,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "honey",
+        "x": 83.5,
+        "y": 62,
+        "w": 6,
+        "h": 10,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "shop-s2-t20",
+    "phaseId": "shop-2",
+    "view": "shop-front",
+    "artwork": "furniture-direction-post",
+    "anchor": {
+      "x": 15,
+      "y": 76
+    },
+    "layers": [
+      {
+        "asset": "furniture-direction-post",
+        "x": 15,
+        "y": 76,
+        "w": 15,
+        "h": 31,
+        "z": 76
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t01",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "site-rubbish",
+    "anchor": {
+      "x": 25,
+      "y": 54
+    },
+    "layers": [],
+    "remove": [
+      "site-rubbish"
+    ]
+  },
+  {
+    "id": "warehouse-s2-t02",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "furniture-insulation",
+    "anchor": {
+      "x": 27,
+      "y": 43
+    },
+    "layers": [
+      {
+        "asset": "furniture-insulation",
+        "x": 27,
+        "y": 43,
+        "w": 38,
+        "h": 48,
+        "z": 43
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t03",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "furniture-cold-cabinet",
+    "anchor": {
+      "x": 26,
+      "y": 53
+    },
+    "layers": [
+      {
+        "asset": "furniture-cold-cabinet",
+        "x": 26,
+        "y": 53,
+        "w": 32,
+        "h": 61,
+        "z": 53
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t04",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "furniture-wire-shelves",
+    "anchor": {
+      "x": 26,
+      "y": 53
+    },
+    "layers": [
+      {
+        "asset": "furniture-wire-shelves",
+        "x": 26,
+        "y": 53,
+        "w": 24,
+        "h": 34,
+        "z": 53
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t05",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "furniture-thermometer",
+    "anchor": {
+      "x": 48,
+      "y": 43
+    },
+    "layers": [
+      {
+        "asset": "furniture-thermometer",
+        "x": 48,
+        "y": 43,
+        "w": 5,
+        "h": 22,
+        "z": 43
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t06",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "milk",
+    "anchor": {
+      "x": 26,
+      "y": 53
+    },
+    "layers": [
+      {
+        "asset": "milk",
+        "x": 18,
+        "y": 52,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "milk",
+        "x": 26,
+        "y": 52,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "eggs",
+        "x": 34,
+        "y": 52,
+        "w": 7,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "cheese",
+        "x": 18,
+        "y": 68,
+        "w": 7,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "milk",
+        "x": 26,
+        "y": 68,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "juice",
+        "x": 34,
+        "y": 68,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t07",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "furniture-flour-rack",
+    "anchor": {
+      "x": 70,
+      "y": 46
+    },
+    "layers": [
+      {
+        "asset": "furniture-flour-rack",
+        "x": 70,
+        "y": 46,
+        "w": 30,
+        "h": 47,
+        "z": 46
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t08",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "flour",
+    "anchor": {
+      "x": 70,
+      "y": 46
+    },
+    "layers": [
+      {
+        "asset": "flour",
+        "x": 62,
+        "y": 38,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "flour",
+        "x": 70,
+        "y": 38,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "flour",
+        "x": 78,
+        "y": 38,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "flour",
+        "x": 62,
+        "y": 59,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "flour",
+        "x": 70,
+        "y": 59,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "flour",
+        "x": 78,
+        "y": 59,
+        "w": 7,
+        "h": 11,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t09",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "furniture-sugar-containers",
+    "anchor": {
+      "x": 63,
+      "y": 83
+    },
+    "layers": [
+      {
+        "asset": "furniture-sugar-containers",
+        "x": 63,
+        "y": 83,
+        "w": 28,
+        "h": 23,
+        "z": 83
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t10",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "sugar",
+    "anchor": {
+      "x": 58,
+      "y": 66
+    },
+    "layers": [
+      {
+        "asset": "sugar",
+        "x": 58,
+        "y": 73.5,
+        "w": 9,
+        "h": 15,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "sugar",
+        "x": 68,
+        "y": 72,
+        "w": 8,
+        "h": 12,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "sugar",
+        "x": 77,
+        "y": 72,
+        "w": 8,
+        "h": 12,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t11",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "furniture-fruit-stand",
+    "anchor": {
+      "x": 90,
+      "y": 75
+    },
+    "layers": [
+      {
+        "asset": "furniture-fruit-stand",
+        "x": 89,
+        "y": 75,
+        "w": 18,
+        "h": 26,
+        "z": 75
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t12",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-cold",
+    "artwork": "apple",
+    "anchor": {
+      "x": 86,
+      "y": 67
+    },
+    "layers": [
+      {
+        "asset": "apple",
+        "x": 86,
+        "y": 70.5,
+        "w": 5,
+        "h": 7,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "orange",
+        "x": 91,
+        "y": 70.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "pear",
+        "x": 95.5,
+        "y": 70.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "apple",
+        "x": 84,
+        "y": 81.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "orange",
+        "x": 89,
+        "y": 81.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "banana",
+        "x": 94,
+        "y": 81.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t13",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-order-rack",
+    "anchor": {
+      "x": 26,
+      "y": 51
+    },
+    "layers": [
+      {
+        "asset": "furniture-order-rack",
+        "x": 26,
+        "y": 51,
+        "w": 28,
+        "h": 31,
+        "z": 51
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t14",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-wash-basin",
+    "anchor": {
+      "x": 52,
+      "y": 73
+    },
+    "layers": [
+      {
+        "asset": "furniture-wash-basin",
+        "x": 52,
+        "y": 73,
+        "w": 28,
+        "h": 34,
+        "z": 73
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t15",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-drying-rack",
+    "anchor": {
+      "x": 55,
+      "y": 52
+    },
+    "layers": [
+      {
+        "asset": "furniture-drying-rack",
+        "x": 55,
+        "y": 52,
+        "w": 22,
+        "h": 17,
+        "z": 52
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t16",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-tool-cupboard",
+    "anchor": {
+      "x": 86,
+      "y": 45
+    },
+    "layers": [
+      {
+        "asset": "furniture-tool-cupboard",
+        "x": 86,
+        "y": 45,
+        "w": 19,
+        "h": 34,
+        "z": 45
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t17",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-canopy",
+    "anchor": {
+      "x": 50,
+      "y": 30
+    },
+    "layers": [
+      {
+        "asset": "furniture-canopy",
+        "x": 50,
+        "y": 30,
+        "w": 65,
+        "h": 40,
+        "z": 30
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t18",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-wind-screens",
+    "anchor": {
+      "x": 81,
+      "y": 58
+    },
+    "layers": [
+      {
+        "asset": "furniture-wind-screens",
+        "x": 81,
+        "y": 58,
+        "w": 27,
+        "h": 35,
+        "z": 58
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t19",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-spotlight",
+    "anchor": {
+      "x": 70,
+      "y": 29
+    },
+    "layers": [
+      {
+        "asset": "furniture-spotlight",
+        "x": 70,
+        "y": 29,
+        "w": 13,
+        "h": 15,
+        "z": 29
+      }
+    ]
+  },
+  {
+    "id": "warehouse-s2-t20",
+    "phaseId": "warehouse-2",
+    "view": "warehouse-receiving",
+    "artwork": "furniture-direction-post",
+    "anchor": {
+      "x": 11,
+      "y": 70
+    },
+    "layers": [
+      {
+        "asset": "furniture-direction-post",
+        "x": 11,
+        "y": 70,
+        "w": 16,
+        "h": 43,
+        "z": 70
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t01",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-rubbish",
+    "anchor": {
+      "x": 32,
+      "y": 69
+    },
+    "layers": [],
+    "remove": [
+      "site-rubbish"
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t02",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-ruins",
+    "anchor": {
+      "x": 54,
+      "y": 50
+    },
+    "layers": [],
+    "remove": [
+      "site-ruins"
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t03",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-vines",
+    "anchor": {
+      "x": 74,
+      "y": 65
+    },
+    "layers": [],
+    "remove": [
+      "site-vines"
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t04",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-stumps",
+    "anchor": {
+      "x": 43,
+      "y": 78
+    },
+    "layers": [],
+    "remove": [
+      "site-stumps"
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t05",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-rough-ground",
+    "anchor": {
+      "x": 55,
+      "y": 78
+    },
+    "layers": [],
+    "remove": [
+      "site-rough-ground"
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t06",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-outline",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "site-outline",
+        "x": 53,
+        "y": 78,
+        "w": 63,
+        "h": 31,
+        "z": 2
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t07",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-foundation",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "site-foundation",
+        "x": 53,
+        "y": 78,
+        "w": 63,
+        "h": 31,
+        "z": 2
+      }
+    ],
+    "remove": [
+      "site-outline"
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t08",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-frame",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "site-frame",
+        "x": 53,
+        "y": 64,
+        "w": 63,
+        "h": 65,
+        "z": 64
+      },
+      {
+        "asset": "furniture-wind-screens",
+        "x": 70,
+        "y": 62,
+        "w": 28,
+        "h": 40,
+        "z": 62
+      }
+    ],
+    "remove": [
+      "site-foundation"
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t09",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-pavilion-roof",
+    "anchor": {
+      "x": 53,
+      "y": 34
+    },
+    "layers": [
+      {
+        "asset": "site-pavilion-roof",
+        "x": 53,
+        "y": 34,
+        "w": 65,
+        "h": 40,
+        "z": 53
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t10",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "site-windows-door",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "site-windows-door",
+        "x": 45,
+        "y": 64,
+        "w": 31,
+        "h": 31,
+        "z": 70
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t11",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "furniture-floor-new",
+    "anchor": {
+      "x": 53,
+      "y": 64
+    },
+    "layers": [
+      {
+        "asset": "furniture-floor-new",
+        "x": 53,
+        "y": 87,
+        "w": 63,
+        "h": 12,
+        "z": 2
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t12",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "furniture-lanterns",
+    "anchor": {
+      "x": 53,
+      "y": 56
+    },
+    "layers": [
+      {
+        "asset": "furniture-lanterns",
+        "x": 53,
+        "y": 56,
+        "w": 60,
+        "h": 21,
+        "z": 56
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t13",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "furniture-fruit-stand",
+    "anchor": {
+      "x": 53,
+      "y": 72
+    },
+    "layers": [
+      {
+        "asset": "furniture-fruit-stand",
+        "x": 53,
+        "y": 72,
+        "w": 39,
+        "h": 38,
+        "z": 72
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t14",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-yard",
+    "artwork": "furniture-fruit-baskets",
+    "anchor": {
+      "x": 53,
+      "y": 72
+    },
+    "layers": [
+      {
+        "asset": "furniture-fruit-baskets",
+        "x": 53,
+        "y": 72,
+        "w": 32,
+        "h": 21,
+        "z": 72
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t15",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "apple",
+    "anchor": {
+      "x": 63,
+      "y": 55
+    },
+    "layers": [
+      {
+        "asset": "apple",
+        "x": 54,
+        "y": 47,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "pear",
+        "x": 63,
+        "y": 47,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "apple",
+        "x": 72,
+        "y": 47,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "apple",
+        "x": 54,
+        "y": 60,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "pear",
+        "x": 63,
+        "y": 60,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "apple",
+        "x": 72,
+        "y": 60,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t16",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-citrus-stand",
+    "anchor": {
+      "x": 27,
+      "y": 55
+    },
+    "layers": [
+      {
+        "asset": "furniture-citrus-stand",
+        "x": 27,
+        "y": 55,
+        "w": 27,
+        "h": 47,
+        "z": 55
+      },
+      {
+        "asset": "orange",
+        "x": 23,
+        "y": 46,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "lemon",
+        "x": 31,
+        "y": 46,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t17",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-banana-bar",
+    "anchor": {
+      "x": 84,
+      "y": 60
+    },
+    "layers": [
+      {
+        "asset": "furniture-banana-bar",
+        "x": 84,
+        "y": 60,
+        "w": 26,
+        "h": 31,
+        "z": 60
+      },
+      {
+        "asset": "banana",
+        "x": 78,
+        "y": 64.75,
+        "w": 9,
+        "h": 13.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "banana",
+        "x": 87,
+        "y": 64.75,
+        "w": 9,
+        "h": 13.5,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t18",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-packing-table",
+    "anchor": {
+      "x": 45,
+      "y": 85
+    },
+    "layers": [
+      {
+        "asset": "furniture-packing-table",
+        "x": 45,
+        "y": 84.5,
+        "w": 35,
+        "h": 27,
+        "z": 85
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t19",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-scale",
+    "anchor": {
+      "x": 45,
+      "y": 68
+    },
+    "layers": [
+      {
+        "asset": "furniture-scale",
+        "x": 45,
+        "y": 68,
+        "w": 12,
+        "h": 18,
+        "z": 68
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t20",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-walkway",
+    "anchor": {
+      "x": 19,
+      "y": 88
+    },
+    "layers": [
+      {
+        "asset": "furniture-walkway",
+        "x": 19,
+        "y": 88,
+        "w": 28,
+        "h": 18,
+        "z": 1
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t21",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "peach",
+    "anchor": {
+      "x": 63,
+      "y": 69
+    },
+    "layers": [
+      {
+        "asset": "peach",
+        "x": 23,
+        "y": 58,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "grape",
+        "x": 31,
+        "y": 58,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "orange",
+        "x": 23,
+        "y": 71,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "grape",
+        "x": 31,
+        "y": 71,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "banana",
+        "x": 54,
+        "y": 73,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "peach",
+        "x": 63,
+        "y": 73,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "grape",
+        "x": 72,
+        "y": 73,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t22",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-packaging-cupboard",
+    "anchor": {
+      "x": 12,
+      "y": 55
+    },
+    "layers": [
+      {
+        "asset": "furniture-packaging-cupboard",
+        "x": 12.5,
+        "y": 55,
+        "w": 21,
+        "h": 33,
+        "z": 55
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t23",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-shopping-baskets",
+    "anchor": {
+      "x": 86,
+      "y": 89
+    },
+    "layers": [
+      {
+        "asset": "furniture-shopping-baskets",
+        "x": 86,
+        "y": 86,
+        "w": 16,
+        "h": 24,
+        "z": 89
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t24",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-hamper-counter",
+    "anchor": {
+      "x": 72,
+      "y": 87
+    },
+    "layers": [
+      {
+        "asset": "furniture-hamper-counter",
+        "x": 72,
+        "y": 85,
+        "w": 29,
+        "h": 26,
+        "z": 87
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t25",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-tiered-baskets",
+    "anchor": {
+      "x": 89,
+      "y": 55
+    },
+    "layers": [
+      {
+        "asset": "furniture-tiered-baskets",
+        "x": 89,
+        "y": 55,
+        "w": 14,
+        "h": 30,
+        "z": 55
+      },
+      {
+        "asset": "apple",
+        "x": 88,
+        "y": 48.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "pear",
+        "x": 92,
+        "y": 48.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "lemon",
+        "x": 88,
+        "y": 59.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "orange",
+        "x": 92,
+        "y": 59.75,
+        "w": 5,
+        "h": 7.5,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s1-t26",
+    "phaseId": "fruit-yard-1",
+    "view": "fruit-market",
+    "artwork": "furniture-opening-sign",
+    "anchor": {
+      "x": 60,
+      "y": 22
+    },
+    "layers": [
+      {
+        "asset": "furniture-opening-sign",
+        "x": 60,
+        "y": 22,
+        "w": 26,
+        "h": 19,
+        "z": 22
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t01",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "site-rubbish",
+    "anchor": {
+      "x": 52,
+      "y": 62
+    },
+    "layers": [],
+    "remove": [
+      "site-rubbish",
+      "site-ruins",
+      "site-vines",
+      "site-stumps"
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t02",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "site-clear-ground",
+    "anchor": {
+      "x": 52,
+      "y": 70
+    },
+    "layers": [
+      {
+        "asset": "site-clear-ground",
+        "x": 52,
+        "y": 70,
+        "w": 65,
+        "h": 43,
+        "z": 70
+      }
+    ],
+    "remove": [
+      "site-rough-ground"
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t03",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "site-foundation",
+    "anchor": {
+      "x": 52,
+      "y": 69
+    },
+    "layers": [
+      {
+        "asset": "site-foundation",
+        "x": 53,
+        "y": 78,
+        "w": 63,
+        "h": 31,
+        "z": 2
+      }
+    ],
+    "remove": [
+      "site-clear-ground"
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t04",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "site-frame",
+    "anchor": {
+      "x": 52,
+      "y": 54
+    },
+    "layers": [
+      {
+        "asset": "site-frame",
+        "x": 52,
+        "y": 54,
+        "w": 66,
+        "h": 66,
+        "z": 54
+      }
+    ],
+    "remove": [
+      "site-foundation"
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t05",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "site-walls",
+    "anchor": {
+      "x": 52,
+      "y": 59
+    },
+    "layers": [
+      {
+        "asset": "site-walls",
+        "x": 52,
+        "y": 59,
+        "w": 67,
+        "h": 56,
+        "z": 59
+      }
+    ],
+    "remove": [
+      "site-frame"
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t06",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "site-windows-door",
+    "anchor": {
+      "x": 58,
+      "y": 61
+    },
+    "layers": [
+      {
+        "asset": "site-windows-door",
+        "x": 45,
+        "y": 64,
+        "w": 31,
+        "h": 31,
+        "z": 70
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t07",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "site-roof",
+    "anchor": {
+      "x": 53,
+      "y": 35
+    },
+    "layers": [
+      {
+        "asset": "site-roof",
+        "x": 53,
+        "y": 32,
+        "w": 80,
+        "h": 52,
+        "z": 51
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t08",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "furniture-door",
+    "anchor": {
+      "x": 36,
+      "y": 69
+    },
+    "layers": [
+      {
+        "asset": "furniture-door",
+        "x": 36,
+        "y": 69,
+        "w": 14,
+        "h": 31,
+        "z": 69
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t09",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "furniture-walkway",
+    "anchor": {
+      "x": 23,
+      "y": 83
+    },
+    "layers": [
+      {
+        "asset": "furniture-walkway",
+        "x": 23,
+        "y": 83,
+        "w": 33,
+        "h": 23,
+        "z": 1
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t10",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "furniture-floor-new",
+    "anchor": {
+      "x": 55,
+      "y": 78
+    },
+    "layers": [
+      {
+        "asset": "furniture-floor-new",
+        "x": 55,
+        "y": 87,
+        "w": 47,
+        "h": 12,
+        "z": 2
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t11",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "furniture-fruit-island",
+    "anchor": {
+      "x": 59,
+      "y": 67
+    },
+    "layers": [
+      {
+        "asset": "furniture-fruit-island",
+        "x": 59,
+        "y": 67,
+        "w": 35,
+        "h": 38,
+        "z": 67
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t12",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension-site",
+    "artwork": "furniture-tiered-baskets",
+    "anchor": {
+      "x": 67,
+      "y": 65
+    },
+    "layers": [
+      {
+        "asset": "furniture-tiered-baskets",
+        "x": 67,
+        "y": 65,
+        "w": 16,
+        "h": 31,
+        "z": 65
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t13",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension",
+    "artwork": "apple",
+    "anchor": {
+      "x": 65,
+      "y": 48
+    },
+    "layers": [
+      {
+        "asset": "apple",
+        "x": 60,
+        "y": 36,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "pear",
+        "x": 66,
+        "y": 34,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "peach",
+        "x": 73,
+        "y": 32,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "orange",
+        "x": 61,
+        "y": 48,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "grape",
+        "x": 69,
+        "y": 45,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "apple",
+        "x": 76,
+        "y": 42,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "banana",
+        "x": 62,
+        "y": 60,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "pear",
+        "x": 70,
+        "y": 55,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "lemon",
+        "x": 77,
+        "y": 50,
+        "w": 6,
+        "h": 8,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t14",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension",
+    "artwork": "furniture-berry-case",
+    "anchor": {
+      "x": 25,
+      "y": 76
+    },
+    "layers": [
+      {
+        "asset": "furniture-berry-case",
+        "x": 25,
+        "y": 76,
+        "w": 31,
+        "h": 27,
+        "z": 76
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t15",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension",
+    "artwork": "strawberry",
+    "anchor": {
+      "x": 25,
+      "y": 77
+    },
+    "layers": [
+      {
+        "asset": "strawberry",
+        "x": 20,
+        "y": 78,
+        "w": 4,
+        "h": 6,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "grape",
+        "x": 25,
+        "y": 80,
+        "w": 4,
+        "h": 6,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "strawberry",
+        "x": 30,
+        "y": 82,
+        "w": 4,
+        "h": 6,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "strawberry",
+        "x": 22,
+        "y": 80,
+        "w": 4,
+        "h": 6,
+        "z": 80,
+        "foot": true
+      },
+      {
+        "asset": "strawberry",
+        "x": 27,
+        "y": 82,
+        "w": 4,
+        "h": 6,
+        "z": 80,
+        "foot": true
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t16",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension",
+    "artwork": "furniture-pickup-counter",
+    "anchor": {
+      "x": 57,
+      "y": 85
+    },
+    "layers": [
+      {
+        "asset": "furniture-pickup-counter",
+        "x": 57,
+        "y": 85,
+        "w": 32,
+        "h": 25,
+        "z": 85
+      },
+      {
+        "asset": "furniture-terminal",
+        "x": 63,
+        "y": 68,
+        "w": 10,
+        "h": 13,
+        "z": 68
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t17",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension",
+    "artwork": "furniture-side-counter",
+    "anchor": {
+      "x": 78,
+      "y": 83
+    },
+    "layers": [
+      {
+        "asset": "furniture-side-counter",
+        "x": 78,
+        "y": 83,
+        "w": 18,
+        "h": 24,
+        "z": 83
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t18",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension",
+    "artwork": "furniture-lanterns",
+    "anchor": {
+      "x": 56,
+      "y": 19
+    },
+    "layers": [
+      {
+        "asset": "furniture-lanterns",
+        "x": 56,
+        "y": 19,
+        "w": 55,
+        "h": 17,
+        "z": 19
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t19",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-market",
+    "artwork": "furniture-bench",
+    "anchor": {
+      "x": 14.5,
+      "y": 84
+    },
+    "layers": [
+      {
+        "asset": "furniture-bench",
+        "x": 14.5,
+        "y": 84,
+        "w": 25,
+        "h": 21,
+        "z": 84
+      },
+      {
+        "asset": "furniture-awning",
+        "x": 14.5,
+        "y": 35,
+        "w": 25,
+        "h": 18,
+        "z": 35
+      }
+    ]
+  },
+  {
+    "id": "fruit-yard-s2-t20",
+    "phaseId": "fruit-yard-2",
+    "view": "fruit-extension",
+    "artwork": "furniture-large-sign",
+    "anchor": {
+      "x": 58,
+      "y": 23
+    },
+    "layers": [
+      {
+        "asset": "furniture-large-sign",
+        "x": 58,
+        "y": 23,
+        "w": 31,
+        "h": 22,
+        "z": 23
+      }
+    ]
+  }
+]

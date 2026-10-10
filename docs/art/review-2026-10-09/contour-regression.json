@@ -1,0 +1,272 @@
+[
+  {
+    "id": "table-front-foot",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 96.68864468864469,
+    "after": 1.1556776556776556,
+    "tolerance": 15
+  },
+  {
+    "id": "table-apron",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 46.31087719298245,
+    "after": 11.025263157894736,
+    "tolerance": 15
+  },
+  {
+    "id": "banana-upright",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 111.375,
+    "after": 3.808333333333333,
+    "tolerance": 15
+  },
+  {
+    "id": "mixed-upright",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 155.42666666666668,
+    "after": 2.013333333333333,
+    "tolerance": 15
+  },
+  {
+    "id": "empty-basket-upright",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 98.18864468864469,
+    "after": 4.902930402930403,
+    "tolerance": 15
+  },
+  {
+    "id": "stock-basket-upright",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 98.01666666666667,
+    "after": 4.95,
+    "tolerance": 15
+  },
+  {
+    "id": "bottle-neck-a",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 48.595238095238095,
+    "after": 5.984126984126984,
+    "tolerance": 15
+  },
+  {
+    "id": "bottle-neck-b",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 31.421768707482993,
+    "after": 3.7210884353741496,
+    "tolerance": 15
+  },
+  {
+    "id": "bottle-neck-c",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 27.44047619047619,
+    "after": 4.833333333333333,
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-arch-a",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 22.074603174603176,
+    "after": 0.8013227513227513,
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-arch-b",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 28.31604938271605,
+    "after": 1.010185185185185,
+    "tolerance": 15
+  },
+  {
+    "id": "tea-band",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 23.939393939393938,
+    "after": 2.008417508417508,
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-upright",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 44.26962962962963,
+    "after": 1.2540740740740741,
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-front-foot",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 19.165289256198346,
+    "after": 1.0819559228650137,
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-side-foot",
+    "beforeDimensions": [
+      1042,
+      694
+    ],
+    "afterDimensions": [
+      1042,
+      694
+    ],
+    "referenceDimensions": [
+      1042,
+      694
+    ],
+    "before": 3.4661654135338344,
+    "after": 0.783625730994152,
+    "tolerance": 15
+  }
+]

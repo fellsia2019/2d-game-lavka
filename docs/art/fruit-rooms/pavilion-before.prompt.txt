@@ -1,0 +1,7 @@
+Use case: precise-object-edit. Make this exact1536x1024 empty seaside lot an abandoned site BEFORE cleanup. Keep original camera, terrain shape, background sea/town, sky, border foliage and path exactly. Add FIVE distinct non-overlapping cleanup groups in the empty lot:
+1 At x130..390,y560..710 a small mound of discarded sacks, cans and broken terracotta, recognizable rubbish.
+2 At x580..880,y405..625 remnants of rotten low wooden lean-to, collapsed planks and two broken uprights, NOT a huge building.
+3 At x1140..1430,y465..690 thick overgrown bushes and tangled creeping vines occupying rightpart of site, no overlap with othergroups.
+4 At x780..1120,y725..830 a fallen small trunk and stump with visible roots, distinct from everythingelse.
+5 At x450..650,y600..710 scattered stones and small uneven mounds for final leveling.
+No other clutter. Each group separately readable and separated by clean ground margins. None obscures the next, no debris extending to image edges. Keep outside elements unchanged and warm clean stylized game illustration. This is same place and same camera before building, no outline or foundation.

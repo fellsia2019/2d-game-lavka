@@ -1,0 +1,122 @@
+[
+  {
+    "name": "hall-room-main-master",
+    "source": "docs/art/room-corners/main-master.png",
+    "sourceSha256": "c51c871c65d4f24c8de596ed43371fa5529b0370b7400fe32d56a14e152c8116",
+    "runtime": "public/assets/hall-room-main-master.webp",
+    "runtimeSha256": "4ecae5047ccc9a55ca8ef6664f558de04dcf93ff13dbdc0227522a3511dafa54",
+    "bytes": 486568,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-room-main-empty",
+    "source": "docs/art/room-corners/main-empty.png",
+    "sourceSha256": "3c9f51e2fd233005260b6e0568fefb43f5c3ffae2c25062e674e7fb873d62474",
+    "runtime": "public/assets/hall-room-main-empty.webp",
+    "runtimeSha256": "014501c6cd587cdb465b990666d30ad91cdb031f945de733df5316d6bf8df61c",
+    "bytes": 419640,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-room-main-clean",
+    "source": "docs/art/hall-v1-empty-original.png",
+    "sourceSha256": "3562d59be49a45484e0dbec6ab6679bbd4f5ff336f18a20bfa2330ae14a238d7",
+    "runtime": "public/assets/hall-room-main-clean.webp",
+    "runtimeSha256": "06f8c1a8c6341bf7e1894eafe3e133107c865241e19bb1b0d1b67cfda39199d8",
+    "bytes": 376360,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-room-main-before",
+    "source": "docs/art/room-corners/main-before.png",
+    "sourceSha256": "31660721da820bb255b77470b8941f85206a86e742fc8ceb888396ee31aa4585",
+    "runtime": "public/assets/hall-room-main-before.webp",
+    "runtimeSha256": "0e4fa985edb690ac1b361886ae51be378d6b9144fd46402d4508df0bb52ea812",
+    "bytes": 659348,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-room-prep-master",
+    "source": "docs/art/concepts/hall-four-view-2.png",
+    "sourceSha256": "2efd15db8041036a78b96e30695dc8ff1037a11301c9b99c5f348602463272f0",
+    "runtime": "public/assets/hall-room-prep-master.webp",
+    "runtimeSha256": "b95db94180ef55facf01d522549c5b585f06d064e5d7fb2c60141c8e187b007d",
+    "bytes": 470322,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-room-prep-empty",
+    "source": "docs/art/room-corners/prep-empty.png",
+    "sourceSha256": "090ecf7d2641266579ec364a9cec832d03b345b32e4011f4c11e395c6d591a32",
+    "runtime": "public/assets/hall-room-prep-empty.webp",
+    "runtimeSha256": "46ea2e639b73521698dc6bc45ea0ba4852882278640d19e56cd085d60e1b76e7",
+    "bytes": 378636,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-room-prep-clean",
+    "source": "docs/art/hall-v2-empty-original.png",
+    "sourceSha256": "574df140478770f2b2b9e0683313311196860df1261803f3c2cf08c8d9814846",
+    "runtime": "public/assets/hall-room-prep-clean.webp",
+    "runtimeSha256": "d2274c5535f3f73d5e25f102f36e92d2a2870b8479d37aa853c069c88581ea16",
+    "bytes": 279614,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-room-prep-before",
+    "source": "docs/art/room-corners/prep-before.png",
+    "sourceSha256": "0714807227148b2d396b9d4d24878422b7c1635ac46537f4621e89efd530acad",
+    "runtime": "public/assets/hall-room-prep-before.webp",
+    "runtimeSha256": "2ebb511506e491b27febbc1d5cf591df5c7faff1880189e8536a1ac87ddacdf1",
+    "bytes": 596552,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  }
+]

@@ -1,0 +1,831 @@
+[
+  {
+    "name": "storage-pallet",
+    "runtime": "public/assets/warehouse-shadow-storage-pallet-v8.svg",
+    "bytes": 820,
+    "sha256": "ad3a86edb89be526a68d8e4108cf2bd07bca5ad664d25dbcefefc119a4e6906d",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        790,
+        610,
+        16,
+        4,
+        0.34,
+        10
+      ],
+      [
+        852,
+        635,
+        17,
+        4,
+        0.34,
+        10
+      ],
+      [
+        943,
+        653,
+        18,
+        4,
+        0.34,
+        10
+      ],
+      [
+        1025,
+        623,
+        14,
+        4,
+        0.32,
+        10
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-rack",
+    "runtime": "public/assets/warehouse-shadow-storage-rack-v8.svg",
+    "bytes": 1147,
+    "sha256": "a8e8011bf58d80da9ca0cf080f946c39cf5ccf0e358c7c22400bcbabe7badd01",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        846,
+        558,
+        16,
+        4,
+        0.3,
+        0
+      ],
+      [
+        1024,
+        599,
+        17,
+        4,
+        0.3,
+        0
+      ],
+      [
+        1239,
+        643,
+        19,
+        4,
+        0.3,
+        0
+      ],
+      [
+        1504,
+        684,
+        20,
+        4,
+        0.3,
+        0
+      ],
+      [
+        877,
+        552,
+        11,
+        3,
+        0.24,
+        0
+      ],
+      [
+        1058,
+        589,
+        11,
+        3,
+        0.24,
+        0
+      ],
+      [
+        1269,
+        632,
+        11,
+        3,
+        0.24,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-crates",
+    "runtime": "public/assets/warehouse-shadow-storage-crates-v8.svg",
+    "bytes": 1040,
+    "sha256": "f6fb161cc7ef81b2ed9a487389beb3a11b289c39eff87da523b8b63c7e844993",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        1035,
+        650,
+        14,
+        3,
+        0.3,
+        0
+      ],
+      [
+        1112,
+        671,
+        15,
+        4,
+        0.3,
+        0
+      ],
+      [
+        1211,
+        703,
+        15,
+        4,
+        0.3,
+        0
+      ],
+      [
+        1240,
+        709,
+        15,
+        4,
+        0.3,
+        0
+      ],
+      [
+        1328,
+        737,
+        18,
+        4,
+        0.32,
+        0
+      ],
+      [
+        1424,
+        698,
+        14,
+        4,
+        0.28,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-chest",
+    "runtime": "public/assets/warehouse-shadow-storage-chest-v8.svg",
+    "bytes": 706,
+    "sha256": "3e00716d5b541ebf270efdeb0cccb777e9a236ed9d3d77d45e024cb8bfd5cf17",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        152,
+        865,
+        22,
+        5,
+        0.34,
+        -10
+      ],
+      [
+        86,
+        824,
+        18,
+        4,
+        0.3,
+        10
+      ],
+      [
+        280,
+        826,
+        18,
+        4,
+        0.3,
+        -10
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-inspection-table",
+    "runtime": "public/assets/warehouse-shadow-storage-inspection-table-v8.svg",
+    "bytes": 818,
+    "sha256": "a47791978876c6bcabceed75ed8ff28202ccb5aafb142c9ae3460be9ea7bd94e",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        411,
+        561,
+        12,
+        2.5,
+        0.3,
+        0
+      ],
+      [
+        479,
+        594,
+        13,
+        2.5,
+        0.32,
+        0
+      ],
+      [
+        639,
+        555,
+        12,
+        2.5,
+        0.3,
+        0
+      ],
+      [
+        568,
+        530,
+        10,
+        2,
+        0.26,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-trolley",
+    "runtime": "public/assets/warehouse-shadow-storage-trolley-v8.svg",
+    "bytes": 706,
+    "sha256": "c84d7d0e943e444ea488e10d1503a56f8604604e5db88d39dcab10aeed5170c9",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        316,
+        858,
+        28,
+        5,
+        0.34,
+        0
+      ],
+      [
+        446,
+        813,
+        18,
+        4,
+        0.3,
+        0
+      ],
+      [
+        404,
+        869,
+        44,
+        5,
+        0.28,
+        -12
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-cupboard",
+    "runtime": "public/assets/warehouse-shadow-storage-cupboard-v8.svg",
+    "bytes": 596,
+    "sha256": "cb10af5a4c4debadfc5ce79a893153ef91e4c1adb950e16b05d7503a7971417a",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        291,
+        579,
+        16,
+        4,
+        0.32,
+        0
+      ],
+      [
+        391,
+        569,
+        16,
+        4,
+        0.32,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-cans",
+    "runtime": "public/assets/warehouse-shadow-storage-cans-v8.svg",
+    "bytes": 707,
+    "sha256": "51a1aaa2acaa1f1595dc276095ea1f213835a0fe1b3a249a2989e511b5e7b997",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        465,
+        569,
+        32,
+        2.5,
+        0.3,
+        0
+      ],
+      [
+        531,
+        568,
+        29,
+        2.5,
+        0.3,
+        0
+      ],
+      [
+        584,
+        558,
+        22,
+        2,
+        0.28,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-packing-bench",
+    "runtime": "public/assets/warehouse-shadow-storage-packing-bench-v8.svg",
+    "bytes": 710,
+    "sha256": "f6c30810028f560a40d790a4c8ff31cd132b5d9070e9dbdc044f5b6d7525d206",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        620,
+        491,
+        12,
+        2.5,
+        0.28,
+        0
+      ],
+      [
+        715,
+        514,
+        13,
+        2.5,
+        0.3,
+        0
+      ],
+      [
+        797,
+        493,
+        12,
+        2.5,
+        0.28,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "storage-delivery-crate",
+    "runtime": "public/assets/warehouse-shadow-storage-delivery-crate-v8.svg",
+    "bytes": 820,
+    "sha256": "25f7381494e6bdc7f2abb675a5daa34273bce63572220769ef4becfefd773b36",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        1457,
+        871,
+        14,
+        3,
+        0.3,
+        0
+      ],
+      [
+        1154,
+        863,
+        14,
+        3,
+        0.3,
+        0
+      ],
+      [
+        1226,
+        895,
+        12,
+        3,
+        0.28,
+        0
+      ],
+      [
+        1323,
+        945,
+        20,
+        4,
+        0.34,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "cold-cabinet",
+    "runtime": "public/assets/warehouse-shadow-cold-cabinet-v8.svg",
+    "bytes": 920,
+    "sha256": "f89653bc52c2a21e591736c0d50b6cbc10be5e0932de3730814325bdc80e9a36",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        351,
+        718,
+        16,
+        4,
+        0.34,
+        0
+      ],
+      [
+        476,
+        689,
+        17,
+        4,
+        0.32,
+        0
+      ],
+      [
+        575,
+        668,
+        15,
+        4,
+        0.3,
+        0
+      ],
+      [
+        652,
+        651,
+        15,
+        4,
+        0.3,
+        0
+      ],
+      [
+        294,
+        704,
+        15,
+        4,
+        0.3,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "cold-rack",
+    "runtime": "public/assets/warehouse-shadow-cold-rack-v8.svg",
+    "bytes": 1033,
+    "sha256": "d0c36069206088a164dc3f32f8a29b6422100a9d66e244df65e416a887f975d9",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        725,
+        667,
+        13,
+        3,
+        0.32,
+        0
+      ],
+      [
+        780,
+        655,
+        11,
+        3,
+        0.3,
+        0
+      ],
+      [
+        914,
+        709,
+        14,
+        3,
+        0.32,
+        0
+      ],
+      [
+        973,
+        690,
+        12,
+        3,
+        0.3,
+        0
+      ],
+      [
+        1155,
+        757,
+        17,
+        3,
+        0.34,
+        0
+      ],
+      [
+        1219,
+        734,
+        14,
+        3,
+        0.3,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "cold-bins",
+    "runtime": "public/assets/warehouse-shadow-cold-bins-v8.svg",
+    "bytes": 816,
+    "sha256": "bc9ca208704d86ffec83c8c3acb6f1bca81f5828c4b836dc598a20907dbf9ab3",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        692,
+        680,
+        16,
+        4,
+        0.32,
+        0
+      ],
+      [
+        807,
+        705,
+        18,
+        4,
+        0.32,
+        0
+      ],
+      [
+        938,
+        737,
+        18,
+        4,
+        0.32,
+        0
+      ],
+      [
+        1104,
+        776,
+        19,
+        4,
+        0.34,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "cold-fruit",
+    "runtime": "public/assets/warehouse-shadow-cold-fruit-v8.svg",
+    "bytes": 710,
+    "sha256": "f471f0e7fc60832e1a0b54dbfe416700b4ea6e3a44a33ff0753a3e6346913de0",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        1216,
+        795,
+        18,
+        4,
+        0.32,
+        0
+      ],
+      [
+        1450,
+        853,
+        21,
+        4,
+        0.34,
+        0
+      ],
+      [
+        1510,
+        810,
+        18,
+        4,
+        0.3,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "exterior-returns-rack",
+    "runtime": "public/assets/warehouse-shadow-exterior-returns-rack-v8.svg",
+    "bytes": 596,
+    "sha256": "0bc7bc4be692acb1fed053fab01a468590493258fa2fd795da77396a336adbfb",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        987,
+        650,
+        13,
+        3,
+        0.3,
+        0
+      ],
+      [
+        1149,
+        646,
+        13,
+        3,
+        0.3,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "exterior-wash-basin",
+    "runtime": "public/assets/warehouse-shadow-exterior-wash-basin-v8.svg",
+    "bytes": 709,
+    "sha256": "71854d234984ce792792e8d6e1371572e6c4d0b14ddcd491d12b01d579b78b9f",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        1190,
+        628,
+        11,
+        3,
+        0.3,
+        0
+      ],
+      [
+        1257,
+        626,
+        11,
+        3,
+        0.3,
+        0
+      ],
+      [
+        1227,
+        626,
+        17,
+        3,
+        0.32,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "exterior-tool-cupboard",
+    "runtime": "public/assets/warehouse-shadow-exterior-tool-cupboard-v8.svg",
+    "bytes": 703,
+    "sha256": "c502ff79c99f08df5b3d8f310396b12660a25c27dae7b56b0b8e9672aa22a1fc",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        392,
+        662,
+        12,
+        3,
+        0.3,
+        0
+      ],
+      [
+        517,
+        657,
+        12,
+        3,
+        0.3,
+        0
+      ],
+      [
+        353,
+        665,
+        17,
+        3,
+        0.25,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "exterior-awning",
+    "runtime": "public/assets/warehouse-shadow-exterior-awning-v8.svg",
+    "bytes": 598,
+    "sha256": "e35558b0bcbdb7f8a27a4c54c126bf4bd30a1a360296c208724a1b00d21bec1f",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        961,
+        642,
+        14,
+        4,
+        0.28,
+        0
+      ],
+      [
+        1497,
+        627,
+        14,
+        4,
+        0.28,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  },
+  {
+    "name": "exterior-direction-post",
+    "runtime": "public/assets/warehouse-shadow-exterior-direction-post-v8.svg",
+    "bytes": 484,
+    "sha256": "442790fe5b6d6647de0583365920378836440b97b4838af5be7b089e6d724ca0",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "ellipses": [
+      [
+        48,
+        823,
+        21,
+        4,
+        0.3,
+        0
+      ]
+    ],
+    "operation": "native transparent radial-gradient effect"
+  }
+]

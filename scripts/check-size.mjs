@@ -22,7 +22,7 @@ await writeFile(
     2,
   ),
 );
-if (bytes > 80_000_000) {
+if (bytes >= 80_000_000) {
   console.error("Внутренний бюджет сборки превышен.");
   process.exitCode = 1;
 }

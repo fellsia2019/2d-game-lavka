@@ -1,0 +1,137 @@
+[
+  {
+    "name": "dormant-v1",
+    "source": "docs/art/coastal-map/dormant-v1.png",
+    "sourceSha256": "f5c346e88c66d7b291a92f089d9e11a2c4bcd7c936a8e7e926f830086931f66f",
+    "runtime": "public/assets/coastal-map-dormant-v1.webp",
+    "bytes": 621826,
+    "runtimeSha256": "a445a7cc2d52ea638802948819241045f57b4e81ead0cfd5d1fdae758ee4b3f9",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "tidied-v1",
+    "source": "docs/art/coastal-map/tidied-v1.png",
+    "sourceSha256": "f87c731778e1bbd35b8bee1668d51dbd9f76b25c8dbe855fe5e532eeebe478af",
+    "runtime": "public/assets/coastal-map-tidied-v1.webp",
+    "bytes": 590718,
+    "runtimeSha256": "07ebc491eae8241c9ca083f377d1dac1b5b0c9849e57b6fa8c14be00c5bd9a8b",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "rough-v1",
+    "source": "docs/art/coastal-map/rough-v1.png",
+    "sourceSha256": "e6a9ba743f834cb6fc55be413ea532e70f5532077b4b513053e865cec2d0190d",
+    "runtime": "public/assets/coastal-map-rough-v1.webp",
+    "bytes": 551606,
+    "runtimeSha256": "478d7f29b2c3294c6399b4aae97d226d6625065afa7db71473816961b69a36aa",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "cleared-v1",
+    "source": "docs/art/coastal-map/cleared-v1.png",
+    "sourceSha256": "4db3946380c58730b50d134983c6a53275d6496655b8404e8e360f1061994384",
+    "runtime": "public/assets/coastal-map-cleared-v1.webp",
+    "bytes": 573176,
+    "runtimeSha256": "05d8e1030181af23e2b726140fa8749743ae143db2ec2864400749e22ec34a3b",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "foundation-v1",
+    "source": "docs/art/coastal-map/foundation-v1.png",
+    "sourceSha256": "026f74ff363ab02d902b47a55976eafac0d4ac548f1d43e651076fee11941890",
+    "runtime": "public/assets/coastal-map-foundation-v1.webp",
+    "bytes": 555620,
+    "runtimeSha256": "238b16f83063ed3cdcd4e5e5e61b0f2a1c378ece6873351dd88b019e6b151597",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "structure-v1",
+    "source": "docs/art/coastal-map/structure-v1.png",
+    "sourceSha256": "edfb33923018f0e65ae85103006ca66ec96305b2c69f880d22f24249d8195caa",
+    "runtime": "public/assets/coastal-map-structure-v1.webp",
+    "bytes": 568100,
+    "runtimeSha256": "4d65aca4d0472e1d6d170b8323b7d3d32aac5c7f71cb80c46ac9004f78a329c7",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "roofed-v1",
+    "source": "docs/art/coastal-map/roofed-v1.png",
+    "sourceSha256": "82cd8ec0c95c207768317ec68f8737f8e3b6a44c79db74ac57b9ecd374efaab1",
+    "runtime": "public/assets/coastal-map-roofed-v1.webp",
+    "bytes": 567446,
+    "runtimeSha256": "76a09f31dcb99ebe58ea12e889a6eb58b8864bb30b23b9f9c80260cf78852737",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "ready-v1",
+    "source": "docs/art/coastal-map/ready-v1.png",
+    "sourceSha256": "ca9955a700799380cecde45d9cf70e5aec9b7a106fad723af093764fb249149a",
+    "runtime": "public/assets/coastal-map-ready-v1.webp",
+    "bytes": 562644,
+    "runtimeSha256": "be76c8b7dde28c320133892e1d9f368bfd56d394ece1c903c764b6fb611fae1b",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "complete-v1",
+    "source": "docs/art/coastal-map/complete-v1.png",
+    "sourceSha256": "86e3b67ac81d26b9b744dddd6dec0413a181dc37541619d1647a4ff82a30432a",
+    "runtime": "public/assets/coastal-map-complete-v1.webp",
+    "bytes": 598198,
+    "runtimeSha256": "d7efade663bc3a0cf015d16366c6be367aa1c5ed6cda60bf19371fad3d3dc30a",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  }
+]

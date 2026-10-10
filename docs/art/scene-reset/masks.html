@@ -1,0 +1,10 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Регистрация масок</title><style>body{margin:0;background:#fff;}svg{width:100vw;height:calc(100vh - 40px);display:block}header{height:40px;font:16px system-ui;display:flex;gap:12px;align-items:center}button{min-height:36px}</style><header><span id="point">1536×1024</span><button id="toggle">Контуры</button><select id="mask"></select></header><svg viewBox="0 0 1536 1024"><image href="/assets/scene-main-empty.webp" width="1536" height="1024"/><g id="lines"></g></svg><script type="module">
+import {MAIN_LAYERS,PREP_LAYERS} from '/src/hall-scene-layers.ts';
+const prep=new URLSearchParams(location.search).has('prep'), layers=prep?PREP_LAYERS:MAIN_LAYERS;
+document.querySelector('image').setAttribute('href',prep?'/assets/scene-prep-master.webp':'/assets/scene-main-empty.webp');
+const lines=document.querySelector('#lines'),select=document.querySelector('#mask');
+select.innerHTML='<option value="">Все</option>'+layers.map(l=>`<option value="${l.id}">${l.id}</option>`).join('');
+function draw(){lines.innerHTML=layers.filter(l=>!select.value||l.id===select.value).map(l=>`<path d="${l.path}" stroke="${l.kind==='goods'?'#b700ba':'#0085ff'}" stroke-width="2" fill="none"/>`).join('');}
+select.onchange=draw;draw();document.querySelector('#toggle').onclick=()=>lines.style.display=lines.style.display==='none'?'':'none';
+document.querySelector('svg').addEventListener('pointermove',e=>{const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(e.currentTarget.getScreenCTM().inverse());document.querySelector('#point').textContent=`${p.x.toFixed(0)}, ${p.y.toFixed(0)}`;});
+</script></html>

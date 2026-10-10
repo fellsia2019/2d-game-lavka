@@ -2242,6 +2242,7 @@ p {
 #coach { position: fixed; inset: 0; z-index: 30; pointer-events: none; }
 .coach-spotlight {
   position: fixed;
+  clip-path: polygon(-100vmax var(--coach-shade-top), 100vmax var(--coach-shade-top), 100vmax 100vmax, -100vmax 100vmax);
   border: 3px solid #fff4a3;
   border-radius: 12px;
   box-shadow: 0 0 0 100vmax #071b22c9, 0 0 20px 4px #ffdb7180;
@@ -2446,7 +2447,7 @@ p {
 .shelf-footer .rear-preview { position: static; inset: auto; display: flex; flex: 1; min-width: 0; height: 22px; padding: 0 3px; gap: 3px; }
 .rear-stock { flex: 1; gap: 2px; line-height: 20px; }
 .shelf-footer .rear-preview .rear-stock .good { width: 22px; height: 20px; opacity: 1; }
-.rear-badge { flex: none; height: 22px; padding: 0 3px; gap: 3px; }
+.rear-badge { flex: none; height: 22px; padding: 1px 6px; gap: 6px; }
 .rear-badge .icon { width: 18px; height: 18px; }
 .slot.occupied:hover > .good, .slot.selected > .good { transform: none; filter: drop-shadow(0 3px 2px #432a2630); }
 .shelf .slot:active { transform: none; }
@@ -2460,7 +2461,7 @@ p {
   .shelf-footer .rear-preview .rear-stock .good { width: 18px; }
   .shelf-footer .rear-preview:has(.rear-stock:nth-child(4)) .good { width: 16px; }
   .rear-badge .stock-label { display: none; }
-  .rear-badge { padding: 0 2px; gap: 2px; }
+  .rear-badge { padding: 1px 4px; gap: 4px; }
   .rear-badge .icon { width: 16px; height: 16px; }
   .stock-times { display: none; }
 }
@@ -2507,3 +2508,11 @@ p {
   .tools { grid-column: 2; grid-row: 1 / 4; justify-content: center; }
   .utility-bar { grid-column: 1; grid-row: 3; }
 }
+
+/* Expanded recipe names stay within the existing two-line header. */
+.game-topbar .level-title { flex: 1; min-width: 0; overflow: hidden; }
+.level-title > span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.level-title h1 { max-width: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.game-screen { grid-template-columns: minmax(0, 1fr); }
+.game-topbar { min-width: 0; }
+.game-topbar > .round, .game-topbar .top-actions { flex: none; }

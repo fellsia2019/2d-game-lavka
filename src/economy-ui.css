@@ -1,0 +1,35 @@
+/* Imported after the scene styles. Wallet layout does not transform room art. */
+.icon.currency-icon-repair,
+.world-currency.currency-repair .icon,
+.currency.currency-repair .icon { color: #a84b31; fill: #f3bd85; }
+.world-currency.currency-repair,
+.currency.currency-repair { background: #ffe8d1; }
+.world-wallet { gap: 8px; margin-inline: 10px; }
+.world-currency b { font-variant-numeric: tabular-nums; }
+
+@media (max-width: 600px) {
+  .world, .world.hall-game-world { --world-hud: 56px; }
+  .world-hud {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) repeat(3, 44px);
+    gap: 4px;
+    padding: 6px max(6px, env(safe-area-inset-right)) 6px max(6px, env(safe-area-inset-left));
+    align-items: center;
+  }
+  .world-hud > .world-round { width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
+  .world-hud .world-store > span { display: none; }
+  .world-wallet { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; margin: 0; }
+  .world-currency { width: 100%; min-width: 0; height: 34px; padding: 1px; gap: 1px; border-width: 1px; font-size: 14px; }
+  .world-currency .icon { flex: 0 0 14px; width: 14px; height: 14px; }
+  .world-currency b { overflow: visible; text-overflow: clip; }
+}
+
+.level-entry > span:nth-child(2) { min-width: 0; }
+.level-entry strong { overflow-wrap: anywhere; }
+.level-entry small { display: flex; align-items: center; gap: 5px; color: #6b6653; line-height: 1.3; }
+.level-entry small .icon { flex: 0 0 17px; }
+.level-entry small .currency-icon-repair { color: #a84b31; }
+.level-block-heading { margin: 14px 0 3px; color: #24575a; font-size: 18px; }
+.order-brief { margin-top: 12px; line-height: 1.45; text-align: left; }
+.order-reward { display: flex; align-items: center; gap: 8px; margin-top: 12px; padding: 10px 12px; border-radius: 12px; background: #fff0d4; line-height: 1.4; text-align: left; }
+.order-reward .icon { flex: 0 0 24px; }

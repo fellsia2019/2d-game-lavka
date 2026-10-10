@@ -1,0 +1,338 @@
+[
+  {
+    "source": "docs/art/hall-v1-empty-original.png",
+    "runtime": "public/assets/hall-v1-empty.webp",
+    "sourceSha256": "3562d59be49a45484e0dbec6ab6679bbd4f5ff336f18a20bfa2330ae14a238d7",
+    "runtimeSha256": "5c96716ca3629adc705f71db4a4dde18f979bbb5b4918d6d36e49b86bf69b0e3",
+    "bytes": 261464,
+    "alpha": false,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "source": "docs/art/hall-v2-empty-original.png",
+    "runtime": "public/assets/hall-v2-empty.webp",
+    "sourceSha256": "574df140478770f2b2b9e0683313311196860df1261803f3c2cf08c8d9814846",
+    "runtimeSha256": "0fb4f9b7c429c56c01e602b74b645a853aa16c347671f27c40fbf3d5c6c42dc9",
+    "bytes": 174154,
+    "alpha": false,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "source": "docs/art/hall-v1-displays-original.png",
+    "runtime": "public/assets/hall-v1-west-display.webp",
+    "sourceSha256": "61ea4e87fd2df4feebfae36bb2dc5af6525dba47cefbf49744fe171b41afaed6",
+    "runtimeSha256": "e9d5c2d825a4cb5d44c5104da7739df79d572160e35de772ee4b00c44698e6aa",
+    "bytes": 59290,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      843,
+      1024
+    ],
+    "sourceCrop": [
+      371,
+      75,
+      843,
+      631
+    ],
+    "size": [
+      472,
+      556
+    ]
+  },
+  {
+    "source": "docs/art/hall-v1-displays-original.png",
+    "runtime": "public/assets/hall-v1-north-display.webp",
+    "sourceSha256": "61ea4e87fd2df4feebfae36bb2dc5af6525dba47cefbf49744fe171b41afaed6",
+    "runtimeSha256": "771b2636981fd274fb48ea8ab0c66d13058c3762c671def17559b738e6704cfd",
+    "bytes": 77328,
+    "alpha": true,
+    "sourceCell": [
+      843,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      843,
+      75,
+      1445,
+      673
+    ],
+    "size": [
+      602,
+      598
+    ]
+  },
+  {
+    "source": "docs/art/hall-v1-counter-original.png",
+    "runtime": "public/assets/hall-v1-counter.webp",
+    "sourceSha256": "1244d9a5ae5a5de7dfa98c15940c181621eb4cd3727232ac7c1db78508ed3ff1",
+    "runtimeSha256": "9302e2c0e06a64e1dc122040f32a19eba98d04e7550f89d7b996617416b0740b",
+    "bytes": 86118,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      730,
+      407,
+      1481,
+      993
+    ],
+    "size": [
+      751,
+      586
+    ]
+  },
+  {
+    "source": "docs/art/hall-v2-north-display-original.png",
+    "runtime": "public/assets/hall-v2-north-display.webp",
+    "sourceSha256": "d3b875e0bbb51a5ed882672c8c1b2c9ea38fc650b2886b7c3e1e1b0a462f2f0a",
+    "runtimeSha256": "430cb3609db203f070ce6b9465dcbc7841fd0546adc8d9869954c571a46d09bf",
+    "bytes": 81458,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      14,
+      158,
+      538,
+      804
+    ],
+    "size": [
+      524,
+      646
+    ]
+  },
+  {
+    "source": "docs/art/hall-v2-packing-table-original.png",
+    "runtime": "public/assets/hall-v2-packing-table.webp",
+    "sourceSha256": "ead8e4c5596f34c496ac7b3dda792f781f8beedad696b05ad96ad75c7529fa92",
+    "runtimeSha256": "5e4ed77595c44bf09528002e65d1bcb81020741374d78829e0d7a373dc21c091",
+    "bytes": 49964,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      471,
+      306,
+      1096,
+      793
+    ],
+    "size": [
+      625,
+      487
+    ]
+  },
+  {
+    "source": "docs/art/hall-v2-order-rack-original.png",
+    "runtime": "public/assets/hall-v2-order-rack.webp",
+    "sourceSha256": "9d7467bb58268952521b00dffe1b98b00147ac5f5eb2ce340f1c035f975b40a6",
+    "runtimeSha256": "a2c0c794aca9be2c1a2f70f22e867186a76a1fb67c46343659de076b33bc4170",
+    "bytes": 61376,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      969,
+      181,
+      1371,
+      816
+    ],
+    "size": [
+      402,
+      635
+    ]
+  },
+  {
+    "source": "docs/art/hall-v2-cupboard-original.png",
+    "runtime": "public/assets/hall-v2-cupboard.webp",
+    "sourceSha256": "10ef8d6203def735160f3a7e81cd18b1a46ae90fc2bdc7d204e87d2098c2feec",
+    "runtimeSha256": "dcae0ab4401c8e405bb02fdff3fd4e664e0b00157f80a95fbfa1e72ffe9ec58c",
+    "bytes": 30314,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      1239,
+      224,
+      1535,
+      902
+    ],
+    "size": [
+      296,
+      678
+    ]
+  },
+  {
+    "source": "docs/art/hall-basket-left-original.png",
+    "runtime": "public/assets/hall-tray-left.webp",
+    "sourceSha256": "0fb530b6ebf1cf4c822bbed9582a73515d27967f231d92c510cfb398d1b049ef",
+    "runtimeSha256": "20eb8bc8ce42519d910d819a0aa3a202609644f3f0399fb4530194422c9508aa",
+    "bytes": 81094,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      87,
+      175,
+      1484,
+      920
+    ],
+    "size": [
+      640,
+      341
+    ]
+  },
+  {
+    "source": "docs/art/hall-basket-right-original.png",
+    "runtime": "public/assets/hall-tray-right.webp",
+    "sourceSha256": "a949a6fbf4deabd2e53c70d48d8ec2dba367e56b36566b94459135779be041e0",
+    "runtimeSha256": "02c468ffb13a26a14c9d63383aeb258aa855b18491b07a67c9cd0721a2f89265",
+    "bytes": 82476,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      110,
+      152,
+      1441,
+      934
+    ],
+    "size": [
+      640,
+      376
+    ]
+  },
+  {
+    "source": "docs/art/hall-order-parcel-original.png",
+    "runtime": "public/assets/hall-order-parcel.webp",
+    "sourceSha256": "d6e6fa2f978eb0638bbdac46ebb21a5188e23a060795d8f3a02a2dd54c84be7c",
+    "runtimeSha256": "fbc5ce057d8e0d7e17565a5d2a5ca752e55534937d0b3795fe29310527e5eb3a",
+    "bytes": 47538,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "sourceCrop": [
+      249,
+      251,
+      1005,
+      1038
+    ],
+    "size": [
+      400,
+      416
+    ]
+  },
+  {
+    "source": "docs/art/hall-packing-wall-shelf-original.png",
+    "runtime": "public/assets/hall-packing-wall-shelf.webp",
+    "sourceSha256": "b664bf26c204beee217749a31342cd75bb7f490f793147442304eab629fd32aa",
+    "runtimeSha256": "0ce40ee939bcdc649030813a94273d40de7516645d0ce78c8f9a8b0ea35a6973",
+    "bytes": 111744,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1254,
+      1254
+    ],
+    "sourceCrop": [
+      33,
+      60,
+      1234,
+      1213
+    ],
+    "size": [
+      700,
+      672
+    ]
+  },
+  {
+    "source": "docs/art/hall-balance-scale-original.png",
+    "runtime": "public/assets/hall-balance-scale.webp",
+    "sourceSha256": "0f39f37640ba949ee4ceadf5d1109fa871c884510888480ea2be34d4e59fa082",
+    "runtimeSha256": "fbbe74362354821e70d43038bd59b79b7947540947ff4a860518651f7d4aa706",
+    "bytes": 63732,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      295,
+      108,
+      1252,
+      943
+    ],
+    "size": [
+      500,
+      436
+    ]
+  }
+]

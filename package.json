@@ -1,6 +1,6 @@
 {
   "name": "lavka-u-morya",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,9 @@
     "content:check": "tsx scripts/check-content.ts",
     "content:plan": "node scripts/check-content-plan.mjs",
     "content:produce-shop": "tsx scripts/produce-shop-expansion.ts",
-    "content:audit": "tsx scripts/audit-generator.ts"
+    "content:audit": "tsx scripts/audit-generator.ts",
+    "content:produce-stage-block": "tsx scripts/produce-stage-block.ts",
+    "content:produce-bakery": "tsx scripts/produce-bakery.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
@@ -20,5 +22,8 @@
     "tsx": "4.23.15",
     "typescript": "~5.9.3",
     "vite": "8.3.2"
+  },
+  "dependencies": {
+    "pixi.js": "^8.22.0"
   }
 }

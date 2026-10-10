@@ -1,0 +1,88 @@
+[
+  {
+    "id": "table-front-foot",
+    "projectId": "fruit-yard-1",
+    "works": 18,
+    "view": "fruit-market",
+    "source": "fruit-room-market-table-empty-v2.webp",
+    "box": [
+      1321,
+      575,
+      13,
+      14
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "table-apron",
+    "projectId": "fruit-yard-1",
+    "works": 19,
+    "view": "fruit-market",
+    "source": "fruit-room-market-table-empty-v2.webp",
+    "box": [
+      1134,
+      481,
+      95,
+      5
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "banana-upright",
+    "projectId": "fruit-yard-1",
+    "works": 17,
+    "view": "fruit-market",
+    "source": "fruit-room-market-supported.webp",
+    "box": [
+      200,
+      548,
+      5,
+      16
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "mixed-upright",
+    "projectId": "fruit-yard-1",
+    "works": 25,
+    "view": "fruit-market",
+    "source": "fruit-room-market-master.webp",
+    "box": [
+      258,
+      698,
+      10,
+      5
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "empty-basket-upright",
+    "projectId": "fruit-yard-2",
+    "works": 12,
+    "view": "fruit-extension",
+    "source": "fruit-room-hall-left-empty-v2.webp",
+    "blendSource": "fruit-room-hall-left-stock-v2.webp",
+    "blendAlpha": 0.27,
+    "box": [
+      199,
+      562,
+      7,
+      26
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "stock-basket-upright",
+    "projectId": "fruit-yard-2",
+    "works": 13,
+    "view": "fruit-extension",
+    "source": "fruit-room-hall-left-stock-v2.webp",
+    "box": [
+      201,
+      571,
+      8,
+      20
+    ],
+    "tolerance": 15
+  }
+]

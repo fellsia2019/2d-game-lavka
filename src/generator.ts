@@ -9,8 +9,12 @@ import {
   type Good,
   type Profile,
 } from "./engine";
-import { GOOD_IDS, isGood } from "./catalog";
-export const VERSION = "coastal-slice-3";
+import { isGood } from "./catalog";
+export const VERSION = "coastal-slice-4";
+const DEFAULT_GOODS: readonly Good[] = [
+  "j", "m", "b", "p", "h", "l", "eg", "ch", "ju", "ap", "or", "ba",
+  "ri", "te", "oi", "fl", "su", "co", "ol", "pa", "ct", "pe", "gr", "st",
+];
 export function hash(s: string): number {
   let h = 2166136261;
   for (let i = 0; i < s.length; i++) {
@@ -82,7 +86,20 @@ export const PROFILES = {
     attempts: 40,
   },
 } as const;
-export const RECIPES = [
+export interface Recipe {
+  id: string;
+  profile: Profile;
+  label: string;
+  shelves: number;
+  kinds: number;
+  each: number;
+  front: number;
+  rear: number;
+  deep?: boolean;
+  counts?: readonly number[];
+  locks?: number;
+}
+export const RECIPES: readonly Recipe[] = [
   {
     id: "front-classic",
     profile: "front",
@@ -175,7 +192,32 @@ export const RECIPES = [
     rear: 4,
     deep: true,
   },
-] as const;
+  { id: "front-wide", profile: "front", label: "Свободная выкладка", shelves: 6, kinds: 4, each: 3, front: 12, rear: 0 },
+  { id: "front-five-triples", profile: "front", label: "Пять отправок", shelves: 6, kinds: 4, each: 3, counts: [6, 3, 3, 3], front: 15, rear: 0 },
+  { id: "front-two-pairs", profile: "front", label: "Два двойных заказа", shelves: 6, kinds: 3, each: 3, counts: [6, 6, 3], front: 15, rear: 0 },
+  { id: "layers-light", profile: "layers", label: "Один задний ряд", shelves: 5, kinds: 3, each: 3, counts: [6, 3, 3], front: 9, rear: 1 },
+  { id: "layers-four-kinds", profile: "layers", label: "Четыре товара за первым рядом", shelves: 5, kinds: 4, each: 3, counts: [6, 6, 3, 3], front: 12, rear: 2 },
+  { id: "layers-staggered", profile: "layers", label: "Последовательное раскрытие", shelves: 5, kinds: 4, each: 3, counts: [9, 6, 3, 3], front: 9, rear: 4, deep: true },
+  { id: "layers-wide", profile: "layers", label: "Широкая приёмка", shelves: 6, kinds: 4, each: 3, counts: [6, 6, 3, 3], front: 12, rear: 2 },
+  { id: "layers-balanced", profile: "layers", label: "Два ряда каждого товара", shelves: 6, kinds: 4, each: 6, front: 15, rear: 3 },
+  { id: "layers-long", profile: "layers", label: "Девять отправок", shelves: 6, kinds: 4, each: 3, counts: [9, 6, 6, 6], front: 12, rear: 5 },
+  { id: "layers-deep-long", profile: "layers", label: "Глубокая приёмка", shelves: 6, kinds: 4, each: 3, counts: [9, 9, 6, 3], front: 12, rear: 5, deep: true },
+  { id: "crate-small", profile: "crate", label: "Небольшая посылка", shelves: 5, kinds: 3, each: 3, front: 9, rear: 0 },
+  { id: "crate-paired", profile: "crate", label: "Поставка для двух отправок", shelves: 5, kinds: 3, each: 3, counts: [6, 3, 3], front: 12, rear: 0 },
+  { id: "crate-five-triples", profile: "crate", label: "Пять отправок с поставкой", shelves: 6, kinds: 4, each: 3, counts: [6, 3, 3, 3], front: 15, rear: 0 },
+  { id: "crate-twin", profile: "crate", label: "Две поставки", shelves: 6, kinds: 4, each: 3, front: 12, rear: 0, locks: 2 },
+  { id: "crate-twin-paired", profile: "crate", label: "Две поставки для большого заказа", shelves: 6, kinds: 3, each: 3, counts: [6, 6, 3], front: 15, rear: 0, locks: 2 },
+  { id: "mixed-light", profile: "mixed", label: "Посылка за задним рядом", shelves: 5, kinds: 4, each: 3, counts: [6, 3, 3, 3], front: 9, rear: 2 },
+  { id: "mixed-room", profile: "mixed", label: "Место для приёмки", shelves: 6, kinds: 4, each: 3, counts: [6, 6, 3, 3], front: 9, rear: 3 },
+  { id: "mixed-staggered", profile: "mixed", label: "Поставка и глубокий ряд", shelves: 6, kinds: 4, each: 3, counts: [9, 6, 3, 3], front: 12, rear: 3, deep: true },
+  { id: "mixed-twin", profile: "mixed", label: "Две поставки и задние ряды", shelves: 6, kinds: 4, each: 3, counts: [6, 6, 3, 3], front: 12, rear: 2, locks: 2 },
+  { id: "mixed-twin-deep", profile: "mixed", label: "Двойная глубокая поставка", shelves: 6, kinds: 4, each: 6, front: 12, rear: 4, deep: true, locks: 2 },
+  { id: "mixed-long", profile: "mixed", label: "Длинная цепочка отправок", shelves: 6, kinds: 4, each: 3, counts: [9, 6, 6, 6], front: 12, rear: 5 },
+  { id: "mixed-twin-long", profile: "mixed", label: "Две партии большого заказа", shelves: 6, kinds: 4, each: 3, counts: [9, 6, 6, 6], front: 12, rear: 5, locks: 2 },
+  { id: "mixed-ten-triples", profile: "mixed", label: "Десять отправок", shelves: 6, kinds: 4, each: 3, counts: [9, 9, 6, 6], front: 15, rear: 5 },
+  { id: "mixed-deep-ten", profile: "mixed", label: "Глубокая большая партия", shelves: 6, kinds: 4, each: 3, counts: [9, 9, 6, 6], front: 12, rear: 6, deep: true },
+  { id: "mixed-triple-crate", profile: "mixed", label: "Три последовательные поставки", shelves: 6, kinds: 4, each: 3, counts: [9, 6, 6, 6], front: 15, rear: 4, locks: 3 },
+];
 export interface GenerationOptions {
   recipe?: string;
   avoidStructures?: string[];
@@ -238,7 +280,9 @@ export function generate(
   if (!candidates.length)
     throw new Error("Этот рецепт недоступен для выбранного профиля.");
   const recipe = candidates[hash(`${seed}|recipe`) % candidates.length];
-  const pool = options.goods ?? GOOD_IDS;
+  // Version 4's implicit pool is frozen. New catalog goods are opt-in so old
+  // seeds/options retain their original meaning after a content expansion.
+  const pool = options.goods ?? DEFAULT_GOODS;
   const required = options.requireGoods ?? [];
   if (!Array.isArray(pool) || pool.length < recipe.kinds || !pool.every(isGood) || new Set(pool).size !== pool.length ||
     !Array.isArray(required) || required.length > recipe.kinds || new Set(required).size !== required.length ||
@@ -247,13 +291,14 @@ export function generate(
     ...PROFILES[profile],
     ...recipe,
     nodes: Math.max(PROFILES[profile].nodes, 6000),
+    depth: Math.max(PROFILES[profile].depth, (recipe.counts?.reduce((sum, n) => sum + n, 0) ?? recipe.each * recipe.kinds) * 2),
     attempts: 64,
   };
   for (let attempt = 0; attempt < p.attempts; attempt++) {
     const rng = random(hash(`${VERSION}|${profile}|${seed}|${attempt}`));
     const kinds = [...required, ...shuffle(pool.filter(good => !required.includes(good)), rng).slice(0, p.kinds - required.length)];
     const bag = shuffle(
-      kinds.flatMap((k) => Array<Good>(p.each).fill(k)),
+      kinds.flatMap((k, i) => Array<Good>(recipe.counts?.[i] ?? p.each).fill(k)),
       rng,
     );
     const fronts = shuffle(
@@ -283,9 +328,12 @@ export function generate(
       const full = shelves
         .map((s, i) => (s.front.every(Boolean) ? i : -1))
         .filter((i) => i >= 0);
-      if (!full.length) continue;
-      shelves[full[Math.floor(rng() * full.length)]].unlockAfter =
-        1 + Math.floor(rng() * 2);
+      const lockCount = recipe.locks ?? 1;
+      if (full.length < lockCount) continue;
+      const locked = shuffle(full, rng).slice(0, lockCount);
+      locked.forEach((index, i) => {
+        shelves[index].unlockAfter = lockCount === 1 ? 1 + Math.floor(rng() * 2) : i + 1;
+      });
     }
     const def: Definition = {
       id: `${VERSION}:${profile}:${seed}`,

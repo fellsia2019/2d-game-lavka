@@ -1,0 +1,13 @@
+.hall-composition.scene-reset { background: transparent; }
+.hall-world-stage { width: 100%; aspect-ratio: 3 / 2; position: relative; }
+.hall-loading-frame, .hall-canvas-surface { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+.hall-canvas-surface { visibility: hidden; }
+.hall-composition[data-scene-ready="true"] .hall-canvas-surface { visibility: visible; }
+.hall-composition[data-scene-ready="true"] .hall-loading-frame { visibility: hidden; }
+.hall-goal-layer { position: absolute; inset: 0; pointer-events: none; }
+.hall-goal-layer > button { pointer-events: auto; }
+.hall-registered-layer.hall-color-honey { filter: hue-rotate(220deg) saturate(.7); }
+.hall-registered-layer.hall-color-coral { filter: hue-rotate(166deg) saturate(.75); }
+.hall-task-artwork { display: block; width: 100%; height: 100%; }
+
+.hall-surface-effects { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }

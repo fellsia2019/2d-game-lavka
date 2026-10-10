@@ -1,0 +1,5 @@
+Use case: precise-object-edit.
+Asset type: full-frame registered bakery construction scene, RGB1536×1024.
+Image 1 is the sole EDIT TARGET. This is clearing step 1 of 4.
+Remove ONLY the foreground rubbish heap: rusty bucket, broken terracotta pots, debris stones and fragments around x420..775,y640..755. Restore ordinary slightly uneven dusty earth beneath it with a few tiny natural grass tufts, continuous with the surrounding unlevelled dirt. Do not create paving, foundation, a smoothed site or other objects.
+Keep EXACTLY all other scene elements: central rotten wooden shelter and low ruined masonry, left stump and fallen log, the right thorny bush, all permanent rear garden walls/flowers/trees, water/sky/background buildings, foreground lantern, paving/path/steps, blurred foreground foliage, sunlight and camera. Do not remove the stump, shelter or right bush yet. Only the local rubbish is cleared. Preserve the full 1536×1024 original composition and warm painted coastal game style. No text or borders.

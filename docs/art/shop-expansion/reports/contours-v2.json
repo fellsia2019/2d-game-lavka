@@ -1,0 +1,128 @@
+[
+  {
+    "id": "bottle-neck-a",
+    "projectId": "shop-2",
+    "works": 15,
+    "view": "shop-service",
+    "source": "shop-expansion-service-master.webp",
+    "box": [
+      916,
+      412,
+      7,
+      6
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "bottle-neck-b",
+    "projectId": "shop-2",
+    "works": 15,
+    "view": "shop-service",
+    "source": "shop-expansion-service-master.webp",
+    "box": [
+      939,
+      412,
+      7,
+      7
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "bottle-neck-c",
+    "projectId": "shop-2",
+    "works": 15,
+    "view": "shop-service",
+    "source": "shop-expansion-service-master.webp",
+    "box": [
+      961,
+      412,
+      7,
+      8
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-arch-a",
+    "projectId": "shop-2",
+    "works": 7,
+    "view": "shop-grocery",
+    "source": "shop-expansion-grocery-stocked-rack-v2.webp",
+    "box": [
+      1180,
+      115,
+      70,
+      18
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-arch-b",
+    "projectId": "shop-2",
+    "works": 7,
+    "view": "shop-grocery",
+    "source": "shop-expansion-grocery-stocked-rack-v2.webp",
+    "box": [
+      970,
+      134,
+      60,
+      18
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "tea-band",
+    "projectId": "shop-2",
+    "works": 9,
+    "view": "shop-grocery",
+    "source": "shop-expansion-grocery-stocked-v2.webp",
+    "box": [
+      679,
+      447,
+      22,
+      9
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-upright",
+    "projectId": "shop-2",
+    "works": 6,
+    "view": "shop-grocery",
+    "source": "shop-expansion-grocery-stocked-rack-v2.webp",
+    "box": [
+      1295,
+      621,
+      10,
+      45
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-front-foot",
+    "projectId": "shop-2",
+    "works": 6,
+    "view": "shop-grocery",
+    "source": "shop-expansion-grocery-stocked-rack-v2.webp",
+    "box": [
+      1302,
+      679,
+      22,
+      22
+    ],
+    "tolerance": 15
+  },
+  {
+    "id": "grocery-side-foot",
+    "projectId": "shop-2",
+    "works": 6,
+    "view": "shop-grocery",
+    "source": "shop-expansion-grocery-stocked-rack-v2.webp",
+    "box": [
+      1334,
+      662,
+      21,
+      19
+    ],
+    "tolerance": 15
+  }
+]

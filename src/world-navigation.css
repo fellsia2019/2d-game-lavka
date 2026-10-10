@@ -1,0 +1,234 @@
+/* Unified navigation changes controls and available room space, never the art projection. */
+.world.world-unified-navigation { --world-dock: calc(142px + env(safe-area-inset-bottom)); }
+.world.world-unified-navigation .world-dock {
+  grid-template-rows: 62px 28px;
+  row-gap: 14px;
+  padding: 10px 18px calc(24px + env(safe-area-inset-bottom));
+}
+.world-unified-navigation .world-progress,
+.world.world-unified-navigation.on-map .world-map-status { grid-row: 2; grid-column: 1 / -1; }
+.world-unified-navigation .world-mission h2 { font-size: 18px; line-height: 1.2; }
+.world-unified-navigation .world-main-action { min-height: 52px; line-height: 1.15; }
+.world-unified-navigation .world-heading { max-width: calc(100% - 160px); }
+.world-globe { position: relative; }
+.world-globe.has-destination { box-shadow: inset 0 -3px #cf9e5b, 0 0 0 3px #f7d371, 0 4px 8px #513c3540; }
+.navigation-dot { position: absolute; right: -2px; top: -2px; width: 12px; height: 12px; border: 2px solid #fff3d9; border-radius: 50%; background: #d7683f; }
+.world-scene-back, .world-room-appearance { position: absolute; top: 10px; z-index: 5; }
+.world-scene-back {
+  left: max(10px, env(safe-area-inset-left));
+  display: inline-flex; align-items: center; gap: 6px;
+  min-width: 44px; min-height: 44px; padding: 8px 12px;
+  border: 2px solid #fff0c2; border-radius: 24px;
+  color: #17686d; background: #fff0d5; box-shadow: 0 3px 8px #513c3538;
+  font-size: 16px; font-weight: bold;
+}
+.world-scene-back .icon { flex: 0 0 22px; width: 22px; height: 22px; }
+.world-room-appearance { right: max(10px, env(safe-area-inset-right)); width: 44px; height: 44px; }
+.world-unified-navigation .world-pin.current-area > span { border-color: #fff8e5; box-shadow: 0 0 0 3px #166c72, 0 5px 10px #3d3b3155; }
+.world-pin-badge { position: absolute; top: -14px; right: -20px; padding: 3px 7px; border-radius: 12px; background: #fff0b9; color: #5b4d2c; font-size: 14px; line-height: 18px; font-style: normal; font-weight: bold; white-space: nowrap; box-shadow: 0 2px 5px #513c3538; }
+.current-area .world-pin-badge { background: #176e73; color: #fff7df; }
+.world-pin-hint { margin-top: 4px; padding: 2px 6px; border-radius: 8px; background: #fff2dce8; color: #385b56; font-size: 16px; line-height: 1.15; white-space: nowrap; }
+
+.modal-navigation { width: min(720px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow: auto; }
+.navigation-breadcrumb { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin: 12px 0; color: #496c69; font-size: 16px; }
+.navigation-breadcrumb .icon { width: 18px; height: 18px; }
+.navigation-up { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 68px; padding: 10px; border: 2px solid #c0ddd0; border-radius: 16px; color: #24575a; background: #ecf2d8; text-align: left; }
+.navigation-up > img, .navigation-map-thumbnail { width: 96px; height: 64px; object-fit: cover; flex: 0 0 96px; border-radius: 9px; }
+.navigation-up > span { display: grid; gap: 5px; min-width: 0; }
+.navigation-up strong { font-size: 18px; }
+.navigation-up small { font-size: 16px; line-height: 1.2; }
+.navigation-view-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.navigation-view-card { display: grid; grid-template-rows: auto minmax(44px, auto); min-width: 0; min-height: 44px; padding: 0; overflow: hidden; border: 3px solid #e0c29a; border-radius: 14px; background: #fff0d6; color: #24575a; text-align: left; }
+.navigation-view-card[aria-pressed="true"] { border-color: #10838b; box-shadow: 0 0 0 2px #99d9d3; }
+.navigation-view-card > img, .navigation-view-preview { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; overflow: hidden; pointer-events: none; }
+.navigation-view-preview .shop-composition { width: 100%; border-radius: 0; }
+.navigation-view-card > span:last-child, .navigation-view-label { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 10px; min-height: 44px; font-size: 16px; font-weight: bold; line-height: 1.2; }
+.navigation-view-card .icon { flex: 0 0 20px; width: 20px; height: 20px; }
+.modal-navigation button { min-height: 44px; }
+
+@media (max-width: 700px) {
+  .world.world-unified-navigation { --world-dock: calc(132px + env(safe-area-inset-bottom)); }
+  .world.world-unified-navigation .world-dock { grid-template-rows: 52px 28px; column-gap: 12px; padding-inline: 12px; }
+  .world-unified-navigation .world-mission-art { display: none; }
+  .world-unified-navigation .world-mission h2 { font-size: 17px; }
+  .world.world-unified-navigation .world-main-action { height: 52px; min-height: 52px; font-size: 17px; }
+  .world-unified-navigation .world-progress { font-size: 16px; gap: 10px; }
+  .world-scene-back { padding: 9px; width: 44px; height: 44px; }
+  .world-scene-back > span { display: none; }
+  .world-pin-hint { display: none; }
+  .world-pin-badge { right: -18px; top: -12px; padding: 2px 5px; }
+  .navigation-up { gap: 10px; }
+  .navigation-up > img, .navigation-map-thumbnail { width: 72px; height: 54px; flex-basis: 72px; }
+  .navigation-view-grid { gap: 8px; }
+  .navigation-view-card > span:last-child, .navigation-view-label { padding: 8px; }
+}
+@media (max-width: 599px) and (max-height: 500px) {
+  .world.world-unified-navigation .world-progress { position: static; width: auto; height: auto; min-height: 28px; margin: 0; padding: 0; clip-path: none; overflow: visible; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .world.world-unified-navigation .world-dock { display: flex; flex-direction: column; gap: 14px; padding: 12px 10px calc(24px + env(safe-area-inset-bottom)); }
+  .world-unified-navigation .world-progress { flex-direction: column; white-space: normal; text-align: center; gap: 8px; }
+  .world-scene-back { padding: 9px; width: 44px; height: 44px; }
+  .world-scene-back > span { display: none; }
+}
+.navigation-up-copy { display: grid; gap: 5px; min-width: 0; }
+.navigation-up-copy > span { font-size: 16px; line-height: 1.25; }
+.navigation-view-card { grid-template-rows: auto auto auto; }
+.navigation-view-card > strong { display: block; min-height: 32px; padding: 10px 10px 2px; font-size: 16px; line-height: 1.2; }
+.navigation-view-card > small { display: block; min-height: 26px; padding: 2px 10px 10px; font-size: 16px; color: #5b7469; line-height: 1.2; }
+.navigation-current { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px; border-radius: 12px; color: #fff7de; background: #167f83; font-size: 16px; }
+
+.world.world-unified-navigation.has-map-stages { --world-dock: calc(194px + env(safe-area-inset-bottom)); }
+.world.world-unified-navigation.has-map-stages .world-dock { grid-template-rows: 62px 44px 28px; row-gap: 11px; }
+.world-map-stages { grid-column: 1 / -1; grid-row: 2; display: flex; justify-content: center; gap: 8px; }
+.world-map-stages > button { min-height: 44px; padding: 8px 18px; border-radius: 14px; border: 2px solid #e5c69a; background: #fff1d8; color: #24575a; font-size: 16px; }
+.world-map-stages > button[aria-pressed="true"] { border-color: #187a80; background: #d9eeDF; }
+.world.world-unified-navigation.on-map.has-map-stages .world-map-status { grid-row: 3; }
+@media (max-width: 700px) {
+  .world.world-unified-navigation.has-map-stages { --world-dock: calc(184px + env(safe-area-inset-bottom)); }
+  .world.world-unified-navigation.has-map-stages .world-dock { grid-template-rows: 52px 44px 28px; }
+}
+.navigation-room-heading { margin: 18px 0 8px; text-align: left; color: #24575a; font-size: 18px; line-height: 1.2; }
+.navigation-room-description { margin: 0 0 12px; text-align: left; color: #62716a; font-size: 16px; }
+
+
+.navigation-notice { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 64px; margin-top: 12px; padding: 12px; border: 2px solid #e0bb7b; border-radius: 14px; background: #fff0cd; color: #684e2f; text-align: left; }
+.navigation-notice > .icon { flex: 0 0 28px; width: 28px; height: 28px; }
+.navigation-notice > span { display: grid; gap: 5px; min-width: 0; }
+.navigation-notice strong { font-size: 17px; }
+.navigation-notice span span { font-size: 16px; line-height: 1.35; }
+.result-next-step { width: 100%; margin: 12px 0; padding: 10px 12px; border-radius: 12px; background: #fff0d4; font-size: 16px; line-height: 1.4; text-align: center; }
+
+.world.world-unified-navigation.has-map-notice { --world-dock: calc(182px + env(safe-area-inset-bottom)); }
+.world.world-unified-navigation.has-map-notice .world-dock { grid-template-rows: 62px 68px; }
+.world-unified-navigation.has-map-notice .world-map-status { white-space: normal; overflow: visible; text-align: center; font-size: 16px; line-height: 1.3; align-self: center; }
+@media (max-width: 700px) {
+  .world.world-unified-navigation.has-map-notice { --world-dock: calc(172px + env(safe-area-inset-bottom)); }
+  .world.world-unified-navigation.has-map-notice .world-dock { grid-template-rows: 52px 68px; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .world.world-unified-navigation.has-map-stages .world-dock { gap: 14px; }
+}
+
+.world.world-unified-navigation .world-main-action.next-destination { border-color: #ffe19a; box-shadow: inset 0 -4px #06737f, 0 0 0 3px #f7d37188, 0 4px #064f5b, 0 7px 13px #51453140; }
+.world.world-unified-navigation.world-block-complete { --world-dock: calc(170px + env(safe-area-inset-bottom)); }
+.world.world-unified-navigation.world-block-complete .world-dock { grid-template-rows: 62px 56px; }
+.world.world-unified-navigation .world-block-finale { grid-row: 2 !important; }
+@media (max-width: 700px) {
+  .world.world-unified-navigation.world-block-complete { --world-dock: calc(160px + env(safe-area-inset-bottom)); }
+  .world.world-unified-navigation.world-block-complete .world-dock { grid-template-rows: 52px 56px; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .world.world-unified-navigation.world-block-complete .world-mission-art { display: none; }
+}
+/* Building names remain visible on phones; only the optional action hints collapse. */
+@media (max-width: 700px), (max-height: 500px) {
+  .world.world-unified-navigation .world-pin > b { display: block; margin-top: 6px; padding: 2px 6px; font-size: 16px; line-height: 18px; }
+  .world.world-unified-navigation .world-pin-hint { display: none; }
+  .world.world-unified-navigation .world-pin-badge { top: 30px; right: 50%; transform: translateX(50%); padding: 1px 5px; font-size: 14px; line-height: 16px; }
+}
+/* A short portrait window uses six compact navigation cards over the complete map.
+   These are UI positions; the source image and its projection do not change. */
+@media (max-width: 599px) and (max-height: 500px) {
+  .world.world-unified-navigation .world-pin { display: grid; grid-template-columns: 44px minmax(0, 1fr); grid-template-rows: 44px; column-gap: 4px; align-items: center; width: 124px; min-height: 44px; }
+  .world.world-unified-navigation .world-pin > span { grid-column: 1; grid-row: 1 / -1; }
+  .world.world-unified-navigation .world-pin > b { grid-column: 2; grid-row: 1; margin: 0; padding: 3px 4px; }
+  .world.world-unified-navigation .world-pin:has(.world-pin-badge) { grid-template-rows: 22px 22px; }
+  .world.world-unified-navigation .world-pin:has(.world-pin-badge) > b { align-self: end; padding-block: 0; }
+  .world.world-unified-navigation .world-pin-badge { position: static; grid-column: 2; grid-row: 2; transform: none; padding: 1px 4px; }
+  .world.world-unified-navigation .world-pin[data-area="restaurant"],
+  .world.world-unified-navigation .world-pin[data-area="shop"],
+  .world.world-unified-navigation .world-pin[data-area="fruit-yard"] { left: calc(50% - 58px) !important; }
+  .world.world-unified-navigation .world-pin[data-area="warehouse"],
+  .world.world-unified-navigation .world-pin[data-area="bakery"],
+  .world.world-unified-navigation .world-pin[data-area="terrace"] { left: calc(50% + 76px) !important; }
+  .world.world-unified-navigation .world-pin[data-area="restaurant"],
+  .world.world-unified-navigation .world-pin[data-area="warehouse"] { top: 20% !important; }
+  .world.world-unified-navigation .world-pin[data-area="shop"],
+  .world.world-unified-navigation .world-pin[data-area="bakery"] { top: 50% !important; }
+  .world.world-unified-navigation .world-pin[data-area="fruit-yard"],
+  .world.world-unified-navigation .world-pin[data-area="terrace"] { top: 80% !important; }
+}
+
+/* A fixed map space: stage buttons and lock requirements use the same footer. */
+.world.world-unified-navigation.on-map { --world-dock: calc(182px + env(safe-area-inset-bottom)); }
+.world.world-unified-navigation.on-map .world-dock { grid-template-rows: 62px 68px; row-gap: 14px; }
+.world.world-unified-navigation.on-map .world-mission { grid-column: 1; grid-row: 1; }
+.world.world-unified-navigation.on-map .world-map-stages { grid-column: 2; grid-row: 1; justify-content: flex-end; align-self: center; }
+.world.world-unified-navigation.on-map .world-map-stages > button { padding-inline: 8px; }
+.world.world-unified-navigation.on-map .world-dock .world-map-status { grid-column: 1 / -1; grid-row: 2; min-height: 0; white-space: normal; overflow: auto; font-size: 16px; line-height: 1.3; }
+@media (max-width: 700px) {
+  .world.world-unified-navigation.on-map { --world-dock: calc(172px + env(safe-area-inset-bottom)); }
+  .world.world-unified-navigation.on-map .world-dock { grid-template-rows: 52px 68px; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .world.world-unified-navigation.on-map .world-dock { display: flex; gap: 14px; }
+  .world.world-unified-navigation.on-map .world-map-stages { justify-content: center; align-self: stretch; flex-wrap: wrap; }
+}
+@media (min-width: 701px) and (min-height: 501px) {
+  .world.world-unified-navigation .world-pin[data-area="restaurant"] { top: max(60px, 12%) !important; }
+}
+
+
+/* One visual language for the next action across the yard and result dialog.
+   Only the light changes: controls, artwork and pointer hit boxes stay still. */
+.game-guidance:not(.world-pin):not(.world-target),
+.world-pin.game-guidance > span { position: relative; }
+.game-guidance:not(.world-pin)::after,
+.world-pin.game-guidance > span::after {
+  content: ""; position: absolute; inset: -5px; border: 3px solid #ffe49a;
+  border-radius: inherit; box-shadow: 0 0 12px 3px #ffd56c88;
+  opacity: .8; pointer-events: none; animation: guidance-light 2.4s ease-in-out infinite;
+}
+@keyframes guidance-light {
+  0%, 100% { opacity: .4; }
+  50% { opacity: 1; }
+}
+/* Unfunded furniture is a preview. Play is the next action, so it has the light. */
+.world-unified-navigation .world-target { animation: none; }
+.world-unified-navigation .world-target.game-guidance .target-hand {
+  animation: guidance-hand 2.4s ease-in-out infinite;
+}
+@keyframes guidance-hand { 0%, 100% { opacity: .65; } 50% { opacity: 1; } }
+/* Native/programmatic focus belongs to the round marker, never the label rectangle. */
+.world.world-unified-navigation .world-pin:focus { outline: none; box-shadow: none; }
+.world.world-unified-navigation .world-pin:focus-visible > span {
+  outline: 3px solid #fffbe7; outline-offset: 4px; box-shadow: 0 0 0 7px #087f89;
+}
+.reduced-motion .game-guidance:not(.world-pin)::after,
+.reduced-motion .world-pin.game-guidance > span::after,
+.reduced-motion .world-target.game-guidance .target-hand { animation: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .game-guidance:not(.world-pin)::after,
+  .world-pin.game-guidance > span::after,
+  .world-target.game-guidance .target-hand { animation: none; opacity: 1; }
+}
+
+/* Small visible map marks keep the underlying architecture readable. */
+.world.world-unified-navigation .world-pin { min-width:44px; min-height:44px; }
+.world.world-unified-navigation .world-pin > span { width:42px; height:42px; border-width:3px; }
+.world.world-unified-navigation .world-pin.locked > span { width:28px; height:28px; border-width:2px; }
+.world.world-unified-navigation .world-pin.locked > span .icon { width:17px; height:17px; }
+.world.world-unified-navigation .world-pin > b { padding:0 4px; margin-top:2px; line-height:18px; font-size:16px; }
+.world.world-unified-navigation .world-pin-hint { display:none; }
+@media (max-width:700px) and (min-height:501px) {
+  .world.world-unified-navigation .world-pin > span { width:28px; height:28px; border-width:2px; }
+  .world.world-unified-navigation .world-pin > span .icon { width:17px; height:17px; }
+  .world.world-unified-navigation .world-pin > span > img { width:20px; height:20px; }
+  .world.world-unified-navigation .world-pin-badge { top:-10px; right:-16px; transform:none; font-size:12px; line-height:14px; }
+  .world.world-unified-navigation .world-pin[data-area="warehouse"] { top:17% !important; }
+  .world.world-unified-navigation .world-pin[data-area="fruit-yard"] { left:20% !important; }
+  .world.world-unified-navigation .world-pin[data-area="terrace"] { top:62% !important; }
+}
+@media (max-height:500px) {
+  .world.world-unified-navigation .world-pin > span { width:28px; height:28px; border-width:2px; }
+  .world.world-unified-navigation .world-pin > span .icon { width:17px; height:17px; }
+  .world.world-unified-navigation .world-pin > span > img { width:20px; height:20px; }
+}
+@media (min-width:600px) and (max-height:500px) {
+  .world.world-unified-navigation .world-pin-badge { top:-10px; right:-16px; transform:none; font-size:12px; line-height:14px; }
+}
+.world.hall-game-world:has(.fruit-composition[data-scene-view="fruit-yard"])::before { background-image:url('/assets/fruit-room-pavilion-clear.webp'); }
+.world.hall-game-world:has(.fruit-composition[data-scene-view="fruit-market"])::before { background-image:url('/assets/fruit-room-market-empty-v2.webp'); }
+.world.hall-game-world:has(.fruit-composition[data-scene-view="fruit-extension-site"])::before { background-image:url('/assets/fruit-room-extension-clear.webp'); }
+.world.hall-game-world:has(.fruit-composition[data-scene-view="fruit-extension"])::before { background-image:url('/assets/fruit-room-hall-empty.webp'); }

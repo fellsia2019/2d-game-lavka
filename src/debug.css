@@ -1,0 +1,10 @@
+/* The prototype's debug actions are available from an ordinary in-game button. */
+.debug-launch { flex:none; min-width:66px; min-height:44px; padding:8px; border:2px solid #fff0ca; border-radius:14px; background:linear-gradient(#fff8e2,#f3d9aa); color:#24575a; font:600 16px/1.2 "Trebuchet MS",sans-serif; box-shadow:0 2px 0 #cda977; }
+.debug-launch:focus-visible { outline:3px solid #16878b; outline-offset:2px; }
+.world-debug-control { position:absolute; left:max(10px,env(safe-area-inset-left)); bottom:10px; z-index:5; }
+.debug-menu { display: grid; gap: 12px; }
+.debug-menu p { margin: 0; font-size: 16px; line-height: 1.4; }
+.debug-menu button { min-height: 44px; font-size: 16px; }
+.debug-menu .debug-status { color: #24575a; }
+.debug-run-control { position: fixed; z-index: 18; right: 8px; top: calc(72px + env(safe-area-inset-top)); max-width: calc(100% - 24px); min-height: 44px; padding: 10px 16px; border: 2px solid #fff0ca; border-radius: 16px; background: #fff2d6; color: #24575a; font-size: 16px; box-shadow: 0 3px 10px #51453140; }
+.debug-run-control[hidden] { display: none; }

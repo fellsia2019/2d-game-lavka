@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-09",
+  "generator": "built-in image_gen.imagegen",
+  "author_role": "GPT-6 Astra visual direction",
+  "status": "Concepts only; user approval pending. No runtime integration.",
+  "selected": [
+    "exterior-v2.png",
+    "bakehouse-v3.png",
+    "retail-v6.png"
+  ],
+  "images": [
+    {
+      "file": "exterior-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "fa975a66206605282a5c8a8ca81386ab678c5645a53bfd19a1efee4427b04e7c",
+      "status": "intermediate: oven visible through front retail window, spatial ambiguity",
+      "prompt_file": "exterior-v1.prompt.txt",
+      "prompt": "Use case: stylized-concept.\nCreate one polished game concept illustration, landscape 1536x1024, for the completed first coastal bakery in “Lavka by the Sea”. This is a concept for user approval, not a map screenshot.\nReference roles: image 1 (coastal-map complete) supplies setting and the bakery identity: the modest ruined plot at middle right contains a pale masonry dome oven with a red brick arched mouth and chimney; preserve that architectural lineage. Image 2 (grocery interior) supplies the accepted warm hand-painted 3D-like 2D game illustration style, rounded readable forms and teal/oak materials. Image 3 (fruit extension exterior) supplies camera distance, quality and proportions, not its exact building.\nShow a small complete single-storey cream limestone/stucco bakery on its own repaired rectangular stone footprint in the same Mediterranean coastal courtyard. Warm terracotta roof, one distinctive red-brick oven chimney rising above the RIGHT part of the roof, where the old stone oven has been restored inside. A hint of the pale oven dome and brick arch is visible through a right-side bakery work window, making its purpose unmistakable. The street-facing facade has an open teal entrance on the left and a broad inviting bread display / serving window on the right with a modest cream-and-teal fabric canopy. Whole rounded loaves, baguettes and croissants inside the window. No outdoor cafe seating: the separate terrace comes later. A modest wall-mounted wheat/bread pictogram can identify the bakery, with NO written letters. One warm brass wall lamp, two small restrained flowerpots beside the facade but not in the doorway. Clear stone path to the entrance and to the serving window. Quiet sea glimpses and Mediterranean vegetation beyond the low courtyard wall.\nFraming: full building, full roof, full chimney and all footprint corners comfortably inside the frame, 8% clear air above the chimney and 12% visible pavement below. Mild elevated three-quarter frontal camera, coherent perspective; no cutaway, no dollhouse, no white void. The building fills about 65% of frame width. Strong sunny warmth with soft readable local contact shadows exactly at the base of masonry and pots. Do not paint any second silhouette or large dark furniture-shaped shadow.\nNo people, no text, no numbers, no logos, no UI, no labels, no watermark. No floating pots, severed bases, blocked doorway, warped roof, clutter piles, duplicate oven, modern industrial machinery. A beautiful working small bakery, not a palace or restaurant.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/complete-v1.png",
+          "role": "reference: coastal setting and dormant bakery oven/chimney identity"
+        },
+        {
+          "path": "docs/art/shop-expansion/grocery-stocked-v2.png",
+          "role": "reference: accepted game illustration and materials"
+        },
+        {
+          "path": "docs/art/fruit-rooms/extension-master.png",
+          "role": "reference: exterior camera and building scale"
+        }
+      ]
+    },
+    {
+      "file": "bakehouse-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "9baaecafad94ce501c50bbd804552e0e4d8ce6d89b3a828571d5d124b2b3d5de",
+      "status": "intermediate: lacked sink and true ingredient cabinet",
+      "prompt_file": "bakehouse-v1.prompt.txt",
+      "prompt": "Use case: stylized-concept.\nCreate one high-quality finished game concept, landscape 1536x1024, showing the WORKING BAKEHOUSE ROOM inside the first small Mediterranean coastal bakery. This is a separate real full room, not a zoomed facade or a dollhouse.\nReferences: image 1 bakery exterior is the architectural identity to keep: cream limestone and stucco, terracotta/red brick dome oven and chimney on the right, teal window/door frames, golden oak. Image 2 grocery interior supplies the accepted polished hand-painted 3D-like 2D game illustration style and warm sunlight. Follow these materials and coherent camera perspective, but invent this distinct bakery production room.\nView a complete two-wall room from the front-left at modest raised eye height. Along the BACK-RIGHT wall, one full cream masonry domed bread oven with red brick arch and proper flue rising to the ceiling; a dark iron door is open at one side of its glowing mouth. Whole hearth slab and full solid stone base visible and grounded; beneath it a modest complete recessed log cubby. A pair of long wooden bread peels hang on hooks alongside the oven, not across the opening. To the LEFT of the oven, along the back wall, a sturdy straight oak kneading bench with pale work surface, all four legs structurally complete, a bowl of dough, wooden rolling pin and a little flour. Its edges are parallel to the wall. Above it a small shelf of intact ceramic ingredient jars with simple pictograms but no writing. At far LEFT a broad teal-framed daylight window and a clear open teal doorway to the courtyard. Below the window a short low enclosed storage cabinet with complete flour sacks and covered bins, away from the door. Between the bench and oven a modest narrow open rack with evenly spaced baking trays and proofing dough, stable full vertical supports and four visible feet or natural occlusion. Do not crowd the room: generously open clean foreground stone-tile floor and unblocked route from doorway to every workstation. No island table in foreground, no customer counter, no bread shop display.\nGrounding: all contact points clearly meet the floor; only short soft local shadows at feet and bases, no ghost silhouettes or long duplicate furniture-shaped shadows. Gentle sunny left daylight, warm small oven glow, cream stone-tile floor distinct from the shop's wood floor. Readable whole objects; full cabinet/rack/bench feet and full oven base inside frame with generous visible floor beneath. All jars have whole rims and bottoms; dough trays have intact front edges. Furniture strictly aligned parallel to supporting walls, no diagonally twisted surfaces or bent shelves.\nNo people, no text, no logos, no UI, no labels, no watermark. No modern giant industrial equipment, no pizza imagery, no cluttered floating objects. Premium cozy renovation-game art, beautifully constructed small bread bakery.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/exterior-v1.png",
+          "role": "reference: bakery architecture"
+        },
+        {
+          "path": "docs/art/shop-expansion/grocery-stocked-v2.png",
+          "role": "reference: interior art style"
+        }
+      ]
+    },
+    {
+      "file": "bakehouse-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "e880a0efcfcac4fcd2d3126938dd1d11a7549eb5b06050efab538bc68889903d",
+      "status": "intermediate: sink added, ingredient shelf not yet cabinet",
+      "prompt_file": "bakehouse-v2.prompt.txt",
+      "prompt": "Use case: precise-object-edit.\nEdit ONLY the top and immediate wall area of the SMALL TEAL STORAGE CABINET UNDER THE LEFT WINDOW in this bakery bakehouse image. Keep the 1536x1024 canvas and every other pixel/composition element as stable as possible: oven on right, kneading bench in center, rack, all legs, door, windows, floor, light and peels stay in their exact positions.\nThis working bakery needs a clearly visible compact utensil-washing sink. Replace the ingredient sacks/jars and flowerpots standing on that left cabinet's worktop with one modest inset pale ceramic or brushed steel rectangular sink basin and a simple complete curved brass faucet rising just below the window sill. The basin must fit fully in the existing cabinet and stay within its straight rectangular countertop, with a legible whole rim and natural depth. Add a small plain folded cloth hanging from a short side rail beside the sink, without covering a cabinet foot or doorway. Keep the existing teal cabinet body, doors and complete base exactly unchanged. The window sill's flowerpots can remain if separate from the sink. Other ingredient jars on the central wall shelf remain intact. Leave the doorway and path entirely clear.\nMatch the warm coastal hand-painted game art, correct wall-parallel perspective and subtle local shading. No new extra furniture, no giant industrial sink, no text, no labels, no people, no UI. No changes to the oven, long wooden peels, rack supports or any image boundaries.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/bakehouse-v1.png",
+          "role": "edit target: add sink only"
+        }
+      ]
+    },
+    {
+      "file": "bakehouse-v3.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "ce736cbf091311c6ae7573e3b8177f02702285ca38c364426ff63c778a68472f",
+      "status": "selected-for-user-review",
+      "prompt_file": "bakehouse-v3.prompt.txt",
+      "prompt": "Use case: precise-object-edit.\nMake one precise edit to this 1536x1024 bakery bakehouse concept: replace ONLY the simple open ingredient-jar shelf above the central kneading bench with a modest shallow WALL-MOUNTED INGREDIENT CABINET in the same footprint and style. Use warm oak frame and restrained teal trim, two simple clear glass-front doors, whole ceramic flour/sugar jars clearly visible inside. The cabinet is attached to the back wall, parallel to it; its lowest edge is above the worktop, all corners complete. Keep a modest herb plant on top if it fits, not across the door. This must visibly be a cabinet for ingredients, not just a shelf.\nEverything else stays unchanged in place and appearance: newly installed sink and brass faucet under the left window, sink cabinet and cloth, doorway, kneading bench with all legs, proofing/tray rack, oven, wooden peels, stone floor, sunlight and camera framing. Do not add furniture, do not enlarge the cabinet across the bench or rack, do not move or hide the dough bowl. Preserve warm high-quality coastal game illustration. No words, numbers, labels, logos, UI or people.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/bakehouse-v2.png",
+          "role": "edit target: ingredient cabinet"
+        }
+      ]
+    },
+    {
+      "file": "retail-draft-v1.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "54d89e802665c11e07ea1ab6fd4404d39ba3bb974d05577bdecb4116b765b133",
+      "status": "rejected: foreground counter/basket and cabinet clipped by image boundary",
+      "prompt_file": "retail-v1.prompt.txt",
+      "prompt": "Use case: stylized-concept.\nCreate one polished game concept illustration, landscape 1536x1024: the BREAD SHOP AND PICKUP ROOM inside the same small coastal bakery. This is a second independent interior room, NOT a zoom of the bakehouse, NOT a second oven room.\nReference roles: image 1 bakery exterior supplies identity (cream stone/stucco, terracotta, teal frames, golden oak, striped canopy); image 2 working bakehouse supplies material/light/style continuity only; image 3 grocery game room supplies accepted 2D hand-painted polished 3D-like illustrative quality, clean object silhouettes and readable merchandise.\nComposition: a generously framed whole small retail room in mild elevated frontal three-quarter view. The LEFT wall has an open teal double entrance with clear threshold and a sea/courtyard view; the whole doorway opening remains unblocked. The BACK wall has a wide teal-framed service/display window onto the courtyard, with the cream-and-teal canopy visible outside. On the RIGHT half of the room a beautiful low golden-oak bread counter with teal panelled base and a restrained clear glass top displays distinct whole round loaves and croissants on intact trays. Its straight long edges are parallel to the right wall. A complete narrow upright baguette basket rests at the counter's near end on a grounded base, safely inside frame. Leave an obvious staff aisle between the counter and the right wall. Behind it, a simple wall-aligned bread shelving cabinet carries separate orderly rows of round loaves, baguettes and buns. A small packing surface beside the window holds a tidy paper roll, folded plain bags, baker's twine and a small mechanical scale, all fully supported. A single modest payment terminal at the rear end of the counter faces the clear staff aisle. Small brass wall lamps and one pot of herbs keep the room welcoming but not cluttered.\nMake the bakery's TWO ROOMS distinct: no masonry oven, no chimney, no kneading table or flour sacks in this retail image. The focus is fresh bread display, customer pickup and packaging. Clean cream-stone tile floor links it to the bakehouse; sunlit warm oak and teal furniture. Open foreground occupies about one third of the image and leads to the entrance and service window. Counter, baguette basket, shelves and all supports fit fully inside frame with visible floor beneath them. Correct coherent wall-aligned geometry; intact glass corners and tray edges. No skewed giant island, no impossible shelves, no cut-off legs, no goods clipped through glass or wood. All bread should be individually readable and naturally overlap, never fragmented crumbs of an object.\nShort soft contact shadows directly under feet and cabinet bases only; natural daylight can illuminate the floor but do not paint a second furniture silhouette or broad duplicate shadow. No people, no text or numbers, no price tags, no logos, no UI, no watermark. Keep the working door and both customer and staff approaches clear. This is a beautiful modest first bakery, not a cafe or restaurant.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/exterior-v1.png",
+          "role": "reference: architecture"
+        },
+        {
+          "path": "docs/art/bakery-concepts/bakehouse-v1.png",
+          "role": "reference: materials and light"
+        },
+        {
+          "path": "docs/art/shop-expansion/grocery-stocked-v2.png",
+          "role": "reference: game art quality"
+        }
+      ]
+    },
+    {
+      "file": "retail-draft-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "74de894e4ede29ab55409fa4dc8cd3179bd59ceee4cc14fe125d686a93e65e17",
+      "status": "intermediate: complete framing; later angle reasoning was unreliable",
+      "prompt_file": "retail-v2.prompt.txt",
+      "prompt": "Use case: precise-object-edit.\nEdit the supplied bakery retail concept. Preserve the warm coastal style, cream stone floor/walls, teal doors, all bread and packaging identities, the left open doorway, center serving window, and the simple right-wall shop arrangement.\nFix ONLY the framing and spacing: pull the camera back enough and widen the visible room so the ENTIRE foreground teal bread counter, ENTIRE tall baguette basket, and ENTIRE back-wall bread cabinet are visible inside the image. The current counter and basket are wrongly CUT OFF at the bottom and the wall cabinet is CUT OFF at the right edge; reconstruct their full grounded bases and leave at least 100 image pixels of clean stone floor below the lowest basket/counter contact, and at least 60 image pixels of wall/floor to the right of the cabinet. Make the composition feel like a full room instead of a close-up. Keep the counter at modest scale; leave a clear staff aisle between its rear and the cabinet. Keep the whole open doorway and customer route clear. Counter and cabinet long edges remain parallel to the same right wall, no warped perspective. Restore every complete leg and base visible, with short soft contact shadows directly under them, no broad silhouette shadows. Do not add any furniture, merchandise or decor.\nCanvas remains landscape 1536x1024. No people, no UI, no text, no labels, no watermark. Existing fine mechanical scale tick marks may remain. This one correction is mandatory: no cabinet, counter, basket or support touches or crosses any image edge.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/retail-draft-v1.png",
+          "role": "edit target: complete framing"
+        }
+      ]
+    },
+    {
+      "file": "retail-v3.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "0ab518000fe42d1dc6552e4cd31856ae24425c7de2887bae087cbb1f8d86447b",
+      "status": "rejected after independent review: counter lower edge has opposite convergence to wall cabinet",
+      "prompt_file": "retail-v3.prompt.txt",
+      "prompt": "Use case: precise-object-edit.\nEdit only the foreground bread counter and its adjacent tall baguette basket in this bakery room; keep the entire existing room shell, doorway, back window, packaging bench, wall cabinet, bread styling, daylight and 1536x1024 canvas unchanged.\nThere is one remaining perspective problem: the counter's long edges currently slope DOWN toward the right, while the long edges of the bread cabinet behind it slope UP toward the right. Correct the counter so it is physically parallel to the wall cabinet, with a clearly visible usable staff aisle between them. Its long oak top, teal plinth and glass rim must all converge toward the SAME vanishing point as the long horizontal shelves of the back-wall bread cabinet. In the image these long counter edges should slope gently UP toward the right, matching the cabinet shelf orientation; do not retain the old down-right diagonal. Rebuild the whole counter as a simple modest freestanding rectangular counter aligned with that right wall, large front display visible to the customer. The clear staff aisle should connect at its left end to the packing bench. Move the complete narrow baguette basket to the counter's near LEFT end if needed to keep the passage and full silhouettes legible.\nAll loaves, croissants, glass corners, solid teal base and basket feet must remain complete and grounded. Entire counter and basket well inside frame with clean floor below; no object touches an image edge. Short soft shadows directly below bases only. Preserve beautiful warm coastal game art. No new objects, no labels, no people, no text, no UI.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/retail-draft-v2.png",
+          "role": "edit target: parallel counter perspective"
+        }
+      ]
+    },
+    {
+      "file": "retail-v4.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "db70b21ae74b491dfaac99db2a82cf5a6c66a08bc8ae7832b401823d8cee656c",
+      "status": "rejected after independent review: task coverage present but counter rotated relative to wall cabinet",
+      "prompt_file": "retail-v4.prompt.txt",
+      "prompt": "Use case: precise-object-edit.\nMake THREE small functional corrections to this bakery retail-room concept, preserving the exact 1536x1024 composition, furniture geometry, newly correct parallel counter orientation, full basket feet, doorway, lighting, bread display and everything else.\n1. The packing furniture directly below the back window must be a real PACKAGING CABINET. Keep its existing oak top, two drawers, scale, paper roll, bags and all four grounded corner supports. In only the lower storage area, add simple oak cabinet doors: one closed and one partly open, revealing the neatly stacked paper bags and flat wrapping sheets inside. No dark rectangular patch; coherent integrated carpentry, complete door hinge/edge, no protrusion into doorway. Do not move the countertop or legs.\n2. The small wall shelf between the serving window and large bread cabinet currently holds two ceramic jars. Replace ONLY those two jars with two complete small paper takeaway bags and one short wrapped bread parcel tied with plain twine. This is a visibly dedicated shelf of ready orders. Keep the upper herb plant/shelf unchanged. No written labels on bags.\n3. The existing little wooden transport crate behind the payment terminal at the left end of the counter is empty. Fill that SAME crate with three whole fresh loaves for the first bread delivery, with cloth lining. Preserve its position and dimensions, naturally occluded by the counter where already hidden. No extra floor crate.\nKeep the entire foreground counter and its glass/trays/bread unchanged. Keep floor and staff/customer passage free. Same warm cream stone, teal, oak coastal illustration; short local contact shading only. No other new objects, no people, no text, no UI.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/retail-v3.png",
+          "role": "edit target: packaging cabinet, ready-order shelf, delivery crate"
+        }
+      ]
+    },
+    {
+      "file": "retail-v5.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "145b9a108d277990d3598ff908a46f801f2a5c0dfa2e108afb0346bfb965d7df",
+      "status": "intermediate: coherent frontal geometry; basket obscured staff approach",
+      "prompt_file": "retail-v5.prompt.txt",
+      "prompt": "Use case: precise-object-edit / camera and perspective correction.\nRecompose this bakery retail concept as a coherent, simpler near-FRONTAL ROOM VIEW. Preserve the bakery's identities, colors, objects and functions, but replace the incorrect angled counter/cabinet arrangement.\nCRITICAL GEOMETRY: We are looking straight toward ONE FLAT BACK WALL, with only shallow side-wall strips visible. The back-wall bread cabinet's long top and lower plinth are HORIZONTAL in the image. The freestanding bread counter stands physically PARALLEL to that same back wall and cabinet; its long front top edge, bottom plinth, glass rim and tray edges are also HORIZONTAL in the image. Their upright posts are vertical. Use a single consistent one-point perspective for depth, so cabinet and counter share the same wall-aligned axes. Do NOT tilt either item diagonally across the floor. Do NOT simply copy the incorrect counter angle from the input. A clear staff aisle separates counter from wall cabinet, with an open approach at the counter's left end.\nRoom layout: open teal double entrance at the far LEFT, fully clear doorway and threshold; a broad teal-framed courtyard serving window near CENTER-LEFT with cream/teal canopy outside. Below that window, the complete oak packaging cabinet with two drawers, one partly open lower door, stacked paper bags and wrapping paper, paper roll, twine, scissors and mechanical scale. A small ready-order wall shelf beside the window holds plain paper bags and a tied bread parcel. On the RIGHT back wall, the complete oak-and-teal bread cabinet with round loaves, baguettes and buns. In front of its right half, the modest whole teal glass-topped bread counter with individually readable loaves/croissants on intact wooden trays. A narrow whole baguette basket with complete feet stands at the counter's left end without blocking the entrance or staff aisle. The same small cloth-lined wooden delivery crate containing loaves and small payment terminal remain near the back of the counter, visibly supported.\nFraming: landscape 1536x1024, full room, all furniture inside frame, 80+ pixels of floor below every lowest base, full counter, full bread cabinet, full basket feet and full doorway. Keep ample open customer floor in the lower left and a legible staff passage. No objects cut off by the bottom or right edge. No added furniture, no oven or cafe seating.\nRetain the accepted beautiful warm polished hand-painted 3D-like coastal game illustration: cream stone tiles and stucco, honey oak, teal joinery, brass lamps, sunny seaside view. Natural small contact shadows right under supports only. No pasted dark zones or duplicate furniture silhouettes. No people, text, labels, logos, UI or watermark. This is still the same modest bread shop, with a physically simple and visibly correct front-on layout.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/retail-v4.png",
+          "role": "edit target: replace camera with coherent frontal layout"
+        }
+      ]
+    },
+    {
+      "file": "retail-v6.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "94bcdcb8a77391b9a2021340c564f78090e2968a01c5932ea6c4dd6460496f2d",
+      "status": "selected-for-user-review",
+      "prompt_file": "retail-v6.prompt.txt",
+      "prompt": "Use case: precise-object-edit.\nMake ONLY ONE local change to this 1536x1024 front-facing bakery room: move the complete narrow freestanding BAGUETTE BASKET from the LEFT end of the bread counter to the RIGHT FRONT CORNER of that same counter. The basket should stand slightly in front of the counter's rightmost teal panel, NOT outside the right edge of the frame. Keep it entirely inside approximately x=1270..1420, y=560..860, with every foot and its short contact shadow visible and at least 80 pixels of floor below. Preserve its current height, whole baguettes and woven/open wood construction, with the same front-on perspective.\nWhere the basket originally stood (roughly x=603..727, y=537..830), reveal the clean existing stone floor and complete left counter base, leaving an obvious clear approach from the open customer floor into the staff aisle between the packing cabinet and left counter end. Do not add a floor patch, no dark rectangle; continue the original stone tiling naturally.\nPreserve EVERYTHING ELSE unchanged: camera, room framing, horizontal long edges of both counter and back-wall bread cabinet, vertical posts, door, window, cabinet packaging doors/paper, shelf of ready bags, small delivery bread crate and payment terminal, all trays/loaves/glass, lights and wall art. Do not rotate or move the counter or cabinet. No new objects, no text, no people, no UI. Only relocate the basket cleanly and keep the entrance and staff approach free.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/retail-v5.png",
+          "role": "edit target: move basket to right front corner"
+        }
+      ]
+    },
+    {
+      "file": "exterior-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "1c627f064964622a2342a445bf4467ebb7d76c0f2250fa2df78b404dce30ef52",
+      "status": "selected-for-user-review",
+      "prompt_file": "exterior-v2.prompt.txt",
+      "prompt": "Use case: precise-object-edit.\nEdit ONLY the visible interior behind the bakery's front serving window and open front doorway in image 1. Image 1 is the EDIT TARGET; image 2 is a SUPPORTING REFERENCE for the approved retail room's bread shelving and stone floor, not a replacement composition.\nArchitectural correction: the facade opens into the FRONT BREAD SHOP. The oven is in a separate back bakehouse room and connects to the existing roof chimney, so the oven MUST NOT be visible in the large front bread-serving window.\nRemove the small cream masonry oven dome, brick mouth and flame currently visible at the RIGHT inside the large front window. In exactly that area behind the existing foreground bread trays, restore a plausible oak-and-teal retail bread shelving cabinet / shelves matching image 2, with a few whole loaves. Keep the foreground window bread, baguette basket, counter sill, canopy and all framing unchanged. Through the LEFT open entrance, make any visible interior floor light cream stone tiles matching the retail reference, not wood planks. Keep the entry fully open.\nPreserve EVERYTHING OUTSIDE those two interior glimpses: entire facade masonry, roof, chimney shape and position, teal front doors and hinges, right-side small window, brass lamp, wheat pictogram sign, every flowerpot, footprint, paving, sea and vegetation, framing and perspective. The chimney must remain because it serves the rear kitchen. Do not add a second oven, new doorway or new window. No labels, people, text, UI. Same 1536x1024 landscape illustration and warm coastal art style.",
+      "references": [
+        {
+          "path": "docs/art/bakery-concepts/exterior-v1.png",
+          "role": "edit target: remove oven from front retail window; stone interior floor"
+        },
+        {
+          "path": "docs/art/bakery-concepts/retail-v6.png",
+          "role": "supporting reference: bread cabinet and stone floor"
+        }
+      ]
+    }
+  ],
+  "spatial_contract": {
+    "front": "retail room behind facade entry and serving window",
+    "rear": "bakehouse with separate service door and courtyard window",
+    "chimney": "serves rear bakehouse",
+    "connection": "internal passage outside chosen camera frames",
+    "limitation": "Conceptual spatial direction, not a measured architectural plan or registered runtime donor set."
+  }
+}

@@ -1,0 +1,527 @@
+[
+  {
+    "name": "market-table-stock-v2",
+    "source": "docs/art/fruit-rooms/market-table-stock-v2.png",
+    "runtime": "public/assets/fruit-room-market-table-stock-v2.webp",
+    "bytes": 384290,
+    "sourceSha256": "7b4817b8cef5d556c50fac17e6bb1d985e2fef88a3321f351a57a16661f49c69",
+    "runtimeSha256": "f32eaa4c8bb9c1cb46f4943291ad06948a065d4296ee6144cba6d729cbcf88d9",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "market-table-empty-v2",
+    "source": "docs/art/fruit-rooms/market-table-empty-v2.png",
+    "runtime": "public/assets/fruit-room-market-table-empty-v2.webp",
+    "bytes": 367886,
+    "sourceSha256": "473902e3539abd4a1577057dd592cd64c5d3fbf8be7f62128a6eeb89bad93bfa",
+    "runtimeSha256": "9d757efa58431d209caa6daec12c98bc4fd691c812b49c99ac7863746784522a",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-left-stock-v2",
+    "source": "docs/art/fruit-rooms/hall-left-stock-v2.png",
+    "runtime": "public/assets/fruit-room-hall-left-stock-v2.webp",
+    "bytes": 347924,
+    "sourceSha256": "a8abd1e53117d5b3c0546164b2556802b91a018454cf1a91ed22e93385d86933",
+    "runtimeSha256": "bc5b9418df4b96895d3c3b39e16129b0fb83708077a94469a4010d04a229b197",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-left-empty-v2",
+    "source": "docs/art/fruit-rooms/hall-left-empty-v2.png",
+    "runtime": "public/assets/fruit-room-hall-left-empty-v2.webp",
+    "bytes": 326578,
+    "sourceSha256": "7ddd81d1cb5e4144e10b21d9ba98de923db2fa2290cca21627e5bb1937cbec74",
+    "runtimeSha256": "62f236b38f800400483533c022d12fbd311bcb83b139a4fba05c38a13ef17853",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-rack-only-v2",
+    "source": "docs/art/fruit-rooms/hall-rack-only-v2.png",
+    "runtime": "public/assets/fruit-room-hall-rack-only-v2.webp",
+    "bytes": 315630,
+    "sourceSha256": "759a57ecd140e1753c77f8a4c4a07b804bf9deb60c047b13167eaeb37fd4c91d",
+    "runtimeSha256": "e7ee45cff876b2a5ab07a8755d2b6949f0f55a38f478baf6a0193c90246cebe4",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-master",
+    "source": "docs/art/fruit-rooms/pavilion-master.png",
+    "runtime": "public/assets/fruit-room-pavilion-master.webp",
+    "bytes": 267326,
+    "sourceSha256": "c9e70553bfcf9a203192a7add73906a60e25c5f1bb617cd0f80d272f12e99a33",
+    "runtimeSha256": "2b927189173f4ea293c79aa9905f8b6a11de1a41808bdcb502a924306166c8cb",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-roof",
+    "source": "docs/art/fruit-rooms/pavilion-roof.png",
+    "runtime": "public/assets/fruit-room-pavilion-roof.webp",
+    "bytes": 328974,
+    "sourceSha256": "4b8e5899fbfb5a5934fde1b114aa66090978d99f07285239c099b921f90aa3bc",
+    "runtimeSha256": "7f87e41ba8fdd182ef5aa7e50eebfb0bc08782c6c55bfcbf66c2a50a530cc827",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-frame",
+    "source": "docs/art/fruit-rooms/pavilion-frame.png",
+    "runtime": "public/assets/fruit-room-pavilion-frame.webp",
+    "bytes": 295256,
+    "sourceSha256": "65ffe6c0db75385bebe79fa94e521d9319133c6d0221635e4d3c66b6c430fc32",
+    "runtimeSha256": "e4912b1952bec204202c7bbd850f72440c05288fa59bc45a7ff108ac9e388602",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-foundation",
+    "source": "docs/art/fruit-rooms/pavilion-foundation.png",
+    "runtime": "public/assets/fruit-room-pavilion-foundation.webp",
+    "bytes": 262868,
+    "sourceSha256": "bd62e501395b2c3e06bc2fee2fd8890dbbf01f6aa87fb3e69826f353353e7ba0",
+    "runtimeSha256": "77a972506ac20f29a9d6d78ee4fa420f9f5ca3398ca79f0a530a7583b9f26473",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-clear",
+    "source": "docs/art/fruit-rooms/pavilion-clear.png",
+    "runtime": "public/assets/fruit-room-pavilion-clear.webp",
+    "bytes": 258446,
+    "sourceSha256": "350f4ef766c2c9ca97da5a7f0a9eda089826867b60e5d4f4723b4859010ffd12",
+    "runtimeSha256": "43703739736031d0a03f0b92abf4efcdca1aaecfd3bf35053ecf7a695cc6dc2a",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-before",
+    "source": "docs/art/fruit-rooms/pavilion-before.png",
+    "runtime": "public/assets/fruit-room-pavilion-before.webp",
+    "bytes": 440366,
+    "sourceSha256": "8e03d42b09bb8894bfd21eec69ead698eeb8b94f5989916bccb304b4277503eb",
+    "runtimeSha256": "830475e280233a5fbc73f71e16709be30555a6aeb71a1701edc454f874ee4542",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-cleared-1",
+    "source": "docs/art/fruit-rooms/pavilion-cleared-1.png",
+    "runtime": "public/assets/fruit-room-pavilion-cleared-1.webp",
+    "bytes": 416538,
+    "sourceSha256": "9cc6e5445dcce777bcbc1c40a9731e44313737cb75f7c92268073e623f23844d",
+    "runtimeSha256": "165007b40320087ae37168f2aa72e0800880b55850989094e155e1ffdd5f797d",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-cleared-2",
+    "source": "docs/art/fruit-rooms/pavilion-cleared-2.png",
+    "runtime": "public/assets/fruit-room-pavilion-cleared-2.webp",
+    "bytes": 390468,
+    "sourceSha256": "458f923308ef9933de661a17a5e34c8befb15e0ec02cbacd2762fbdc5a64719c",
+    "runtimeSha256": "1d7299c1b98df030e0a453b8ee9ae43ade2b110820a03e7ba2554243da5be0b3",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-cleared-3",
+    "source": "docs/art/fruit-rooms/pavilion-cleared-3.png",
+    "runtime": "public/assets/fruit-room-pavilion-cleared-3.webp",
+    "bytes": 377186,
+    "sourceSha256": "5b77b05e89e4661c1488e4d5008e90795604e779e0cf443a524f8d3e1b2fafcf",
+    "runtimeSha256": "15d73e1f4446a2886b624f2e85618dd1866a1e1f0de9b9c682ecd304cdd182e1",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "pavilion-cleared-4",
+    "source": "docs/art/fruit-rooms/pavilion-cleared-4.png",
+    "runtime": "public/assets/fruit-room-pavilion-cleared-4.webp",
+    "bytes": 335300,
+    "sourceSha256": "5db661bd9e6f6d4e29aa04f1fe7278d00cd83ddff2ce77a7ece8c7de118e0d41",
+    "runtimeSha256": "d07166575a3bdad961b994a84ca47901255b5cd3dc22cde4c6292257439ad9bb",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "market-master",
+    "source": "docs/art/fruit-rooms/market-master.png",
+    "runtime": "public/assets/fruit-room-market-master.webp",
+    "bytes": 432604,
+    "sourceSha256": "a92b39a771dca00ce25754e50913d82145f1784fd305eed0eba7ba0acc1bc839",
+    "runtimeSha256": "a1f53e3209f2742e492582d89f7dab19272ad33c7b2d56a8f2cd26e0fddcc489",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "market-supported",
+    "source": "docs/art/fruit-rooms/market-supported.png",
+    "runtime": "public/assets/fruit-room-market-supported.webp",
+    "bytes": 411060,
+    "sourceSha256": "e0698f84bdef5491fe9acf42cd4e1e6d8c87989b1d511b76e3d58603700a88a8",
+    "runtimeSha256": "77daa98902106492e2f30790f20e876c5dae3b6b2c481d64a71909c098807ecc",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "market-bare",
+    "source": "docs/art/fruit-rooms/market-bare.png",
+    "runtime": "public/assets/fruit-room-market-bare.webp",
+    "bytes": 373264,
+    "sourceSha256": "ad5e7482aa52e9e83fed0a579b5017131cd7e0bae5c4cdef91faf1380845aa5d",
+    "runtimeSha256": "64299ed50a34b247585325ba2ee5677620cb21e7293306f034d90fb9abdccc2e",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "market-structure",
+    "source": "docs/art/fruit-rooms/market-structure.png",
+    "runtime": "public/assets/fruit-room-market-structure.webp",
+    "bytes": 298022,
+    "sourceSha256": "b43e3aac8c25c44751f743ddfb202cca509a960ceecd90450b191a67b227f559",
+    "runtimeSha256": "0563d19ff39b6984ab36793c770358da34db378abb08cdee0172015cb7d54c4c",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "market-empty-v2",
+    "source": "docs/art/fruit-rooms/market-empty-v2.png",
+    "runtime": "public/assets/fruit-room-market-empty-v2.webp",
+    "bytes": 326644,
+    "sourceSha256": "7d23701d4716411c0b9e2c542efe32876c80b6741a3eeeb6c98b74e83037d295",
+    "runtimeSha256": "77518b358e6ca5060b330a1c1b0cc6d1e642d3ce60253283f0df2d3d6be587b4",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "market-before-v2",
+    "source": "docs/art/fruit-rooms/market-before-v2.png",
+    "runtime": "public/assets/fruit-room-market-before-v2.webp",
+    "bytes": 444168,
+    "sourceSha256": "a5719546a6aadf5de7eb6ec169cd16ed6f102447f84b081b14be889eda013a1a",
+    "runtimeSha256": "de4d2ac2af1526f37099c3358e07ee70e2ae454e7f10c287506007e68b6f5528",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-master",
+    "source": "docs/art/fruit-rooms/extension-master.png",
+    "runtime": "public/assets/fruit-room-extension-master.webp",
+    "bytes": 284520,
+    "sourceSha256": "f2cb11f4af8d615dcbeed32754d9085c1287f7c0d7d1e4f8f8a1b029aabcfba7",
+    "runtimeSha256": "c08d8a4df83e7f63a7472332a8ed346bcd45a02ae9c00017087d048c0cad24ff",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-roof",
+    "source": "docs/art/fruit-rooms/extension-roof.png",
+    "runtime": "public/assets/fruit-room-extension-roof.webp",
+    "bytes": 268694,
+    "sourceSha256": "e5badf0f6f70bdca7d3f66691cc823c1f0f3e87b2d9fc16176c135be16c31a61",
+    "runtimeSha256": "dfd933d84f50714b8b84c294a5d767f1bc82d3504a6f31478130636c76f2b26b",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-unlit",
+    "source": "docs/art/fruit-rooms/extension-unlit.png",
+    "runtime": "public/assets/fruit-room-extension-unlit.webp",
+    "bytes": 273716,
+    "sourceSha256": "2cf9ba98b3113f49eea2b083f3942ea947601bc03eae39ff910c9dc6e5c045e7",
+    "runtimeSha256": "2a3ff6a5e26b725ba1f10b05a6be46c1b227537f3a8666a99bdb4cc433ce1208",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-frame",
+    "source": "docs/art/fruit-rooms/extension-frame.png",
+    "runtime": "public/assets/fruit-room-extension-frame.webp",
+    "bytes": 307802,
+    "sourceSha256": "482009bca822ab92f783f075cdabf6228c7cc96b523ba01904aa5a66e3316a7b",
+    "runtimeSha256": "38efbc4ad19ce35a974823239f7e23aab78a109e9cdb2106f7657476ae0b3adb",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-walls",
+    "source": "docs/art/fruit-rooms/extension-walls.png",
+    "runtime": "public/assets/fruit-room-extension-walls.webp",
+    "bytes": 314260,
+    "sourceSha256": "46482402e11c3e743fa8c7b76a307cbcd1a7dfc1f4cba855de64311124af7af1",
+    "runtimeSha256": "040f3c05b86f01f47632e0d584d8f1315ba345025fcc6a13cd92e0ee1a30f870",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-foundation",
+    "source": "docs/art/fruit-rooms/extension-foundation.png",
+    "runtime": "public/assets/fruit-room-extension-foundation.webp",
+    "bytes": 261514,
+    "sourceSha256": "faa898ec6e11547c6cc1546b25ad5572f4317e30dbbd2c89abee07e8122ce2d4",
+    "runtimeSha256": "d9b635faf2a1a64da869948f52713b2724e3e7081ff1ab6af96ed42110def6c1",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-plinth",
+    "source": "docs/art/fruit-rooms/extension-plinth.png",
+    "runtime": "public/assets/fruit-room-extension-plinth.webp",
+    "bytes": 273664,
+    "sourceSha256": "1bfd6b913dff543456071d5b3be2be1020e1ed0354e5a7199c9b2d2df87d1117",
+    "runtimeSha256": "40a01b42a2ba61895ba62a59cc0f168e409a573fe64f13ba11ba94ed3cf83b09",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-clear",
+    "source": "docs/art/fruit-rooms/extension-clear.png",
+    "runtime": "public/assets/fruit-room-extension-clear.webp",
+    "bytes": 275020,
+    "sourceSha256": "09f53acd071b5adc8bc691b7baf7806d8dd8eec5a252d5008ce79a17219e55a9",
+    "runtimeSha256": "5c7e847df3d08797da3a57512600500dbcc64b63f61ea02bbecca32a54833878",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "extension-before",
+    "source": "docs/art/fruit-rooms/extension-before.png",
+    "runtime": "public/assets/fruit-room-extension-before.webp",
+    "bytes": 388522,
+    "sourceSha256": "0ce5359a95d1ba76ccec1bc7ad25a97d64fb634dfeb7b74c6421cdb74a8b54f4",
+    "runtimeSha256": "4017f1025c959aaf9a279ea28ea63672f903fdf6e553483b7a42974fbb25ff0e",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-master",
+    "source": "docs/art/fruit-rooms/hall-master.png",
+    "runtime": "public/assets/fruit-room-hall-master.webp",
+    "bytes": 387598,
+    "sourceSha256": "fd031f88431263b4898f14b28df671622be8ff6b60ea2694f32569acc4b6d207",
+    "runtimeSha256": "72e3ed94ffc658d14c7d873acc491e03c6c3168b34fa23fc7a7c571e1adadac9",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-bare",
+    "source": "docs/art/fruit-rooms/hall-bare.png",
+    "runtime": "public/assets/fruit-room-hall-bare.webp",
+    "bytes": 330584,
+    "sourceSha256": "668caca08c9627785c16adbb45ec108c32415c5837b8ee87f1a07cdbf4bc42b7",
+    "runtimeSha256": "2500d19d60045694b0a73be7d52fa88ff6b65f2a9c3533bf83d59ab34d680a81",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-structure",
+    "source": "docs/art/fruit-rooms/hall-structure.png",
+    "runtime": "public/assets/fruit-room-hall-structure.webp",
+    "bytes": 327830,
+    "sourceSha256": "20e118dca85e66ce27926dd6f24c959d1a96c9c208c98e7c6f7f043d61c1165a",
+    "runtimeSha256": "29f52a08dad7630252c38ddacee64b94c396f20fe3eb692cd90e42faccf77b13",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-empty",
+    "source": "docs/art/fruit-rooms/hall-empty.png",
+    "runtime": "public/assets/fruit-room-hall-empty.webp",
+    "bytes": 290612,
+    "sourceSha256": "0efcc45fffb82677ae98a43a02d32fe815e03d8ceb8ee5927afa8faee39ef75e",
+    "runtimeSha256": "3d1acaa364c8237634f0001a6df68635898deed8b771f0cb5f4de8b3927ac46e",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "hall-before",
+    "source": "docs/art/fruit-rooms/hall-before.png",
+    "runtime": "public/assets/fruit-room-hall-before.webp",
+    "bytes": 403068,
+    "sourceSha256": "7c0d9e825a7f18febb943de6d2e0003ae449d72de8834dac38d5888711926097",
+    "runtimeSha256": "1156230c0a288e396d8429b7d92f29d8cce8aa3a656118cc2ba785c428359b96",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  }
+]

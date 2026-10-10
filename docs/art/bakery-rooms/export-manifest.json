@@ -1,0 +1,512 @@
+[
+  {
+    "name": "oven-bare",
+    "source": "docs/art/bakery-rooms/oven-bare.png",
+    "runtime": "public/assets/bakery-oven-bare.webp",
+    "bytes": 350590,
+    "sourceSha256": "9a403d33da3999f40ca428c8dd1405e2dc89e7b2587c80a2b00997b944fa94b9",
+    "runtimeSha256": "b48ce349e56254e555fa8338ef3dbd913de2230b940747fa2a0e7456508b28a4",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "oven-clean",
+    "source": "docs/art/bakery-rooms/oven-clean.png",
+    "runtime": "public/assets/bakery-oven-clean.webp",
+    "bytes": 360954,
+    "sourceSha256": "23827c6ddf30e218735d9e70cf3b316cd546cf8ea60a177461d9a3609c20211c",
+    "runtimeSha256": "16b791388996e753180b77ce8b4bb9cfeef0f6bf54cd5fd70652e49dedae32aa",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "oven-master",
+    "source": "docs/art/bakery-rooms/oven-master.png",
+    "runtime": "public/assets/bakery-oven-master.webp",
+    "bytes": 364716,
+    "sourceSha256": "ce736cbf091311c6ae7573e3b8177f02702285ca38c364426ff63c778a68472f",
+    "runtimeSha256": "2aba2d0043ba3305b5f14c232fb26903c4d703464243ab1aff8642536dad554b",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "oven-rough",
+    "source": "docs/art/bakery-rooms/oven-rough.png",
+    "runtime": "public/assets/bakery-oven-rough.webp",
+    "bytes": 414416,
+    "sourceSha256": "76a7e5ad786a40f2a77844c293c1d0e7f2818d1a78db6e03564f4d37033177af",
+    "runtimeSha256": "5d2599065fba71fc4e472d3522b08d1ad4c9a1bf60115b616c80ee02436720c3",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "oven-unlit",
+    "source": "docs/art/bakery-rooms/oven-unlit.png",
+    "runtime": "public/assets/bakery-oven-unlit.webp",
+    "bytes": 347218,
+    "sourceSha256": "a2775085bbc0392b4ce366c30d4be6a7fbf2210b8dfbba26736f0767824fdee1",
+    "runtimeSha256": "c4a2ad0fca894f9230da6c0ad419618dcc3f011255d039a52e6d69ccb5418526",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-bare",
+    "source": "docs/art/bakery-rooms/shop-bare.png",
+    "runtime": "public/assets/bakery-shop-bare.webp",
+    "bytes": 412840,
+    "sourceSha256": "8eb65fcd498bede8a85a69ea83d6e46bd483d22c3d99e2208ae8384253e8b3f9",
+    "runtimeSha256": "dc9bf11135eb1953b40d5503d5e1f8af783debe7d6bcb5999496d65faf9e5faa",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-clean",
+    "source": "docs/art/bakery-rooms/shop-clean.png",
+    "runtime": "public/assets/bakery-shop-clean.webp",
+    "bytes": 442638,
+    "sourceSha256": "5589e18a1e44e3098a369e4119de8adfde265865586e101e3ef4ade946edaf10",
+    "runtimeSha256": "d14fbb7c3df46e2395023b86121ed3bbec738aa626bdd5e1edfba11ac182152c",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-furniture",
+    "source": "docs/art/bakery-rooms/shop-furniture.png",
+    "runtime": "public/assets/bakery-shop-furniture.webp",
+    "bytes": 391508,
+    "sourceSha256": "e257651ebb8dfd9ad2c9eb9f94cea6fff746057a07307bffe425a9dd28c162b0",
+    "runtimeSha256": "6339d23df07069152f4627eba35d4885119a122d6ce92eb1c81f66414036e73f",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-master",
+    "source": "docs/art/bakery-rooms/shop-master.png",
+    "runtime": "public/assets/bakery-shop-master.webp",
+    "bytes": 510112,
+    "sourceSha256": "ca2963c4436e2b59cffec4c480b1ed44ef19af5748c6f128b8179f32cb8e31d4",
+    "runtimeSha256": "8b0c47960d03ef7eebc4b463facdf01053ce51de42c7f41a9f02978e019cb9e9",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-rough",
+    "source": "docs/art/bakery-rooms/shop-rough.png",
+    "runtime": "public/assets/bakery-shop-rough.webp",
+    "bytes": 319394,
+    "sourceSha256": "b4e55249a6fa4d76046ecbec92b36141ec67119a5148741b1e57b532a0bee5ab",
+    "runtimeSha256": "c7b822d5149ee2d219b4b63b6c6c95297a8a0f63757db93a1d219bca48c97e63",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-stock",
+    "source": "docs/art/bakery-rooms/shop-stock.png",
+    "runtime": "public/assets/bakery-shop-stock.webp",
+    "bytes": 458672,
+    "sourceSha256": "f520e74158ea26274d2ba3bfab9e573e78bd28001a5284e34aacab0b4896eed4",
+    "runtimeSha256": "7117e0c0c7b46b007fbb68affabddad138f09cc1e190f6bb5524a8781059d852",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-trays-clean",
+    "source": "docs/art/bakery-rooms/shop-trays-clean.png",
+    "runtime": "public/assets/bakery-shop-trays-clean.webp",
+    "bytes": 404528,
+    "sourceSha256": "f71cdd103be389a81a80391b721870958de1c594f9a48b819898e9a91d76ce51",
+    "runtimeSha256": "dc562699b7e1d8085d13675e3abdd0d959ffcae6ba769147adf9357de27a0b8e",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-trays",
+    "source": "docs/art/bakery-rooms/shop-trays.png",
+    "runtime": "public/assets/bakery-shop-trays.webp",
+    "bytes": 435598,
+    "sourceSha256": "59e9a198eaebd7c911a5d7ce081a1323315b53c96a00ad7ff50d975d8d3e7995",
+    "runtimeSha256": "5356dcef9166b7ba76c6ad7a91c52ac598c44d77be128df9ed4da662f0a78a63",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "shop-unlit",
+    "source": "docs/art/bakery-rooms/shop-unlit.png",
+    "runtime": "public/assets/bakery-shop-unlit.webp",
+    "bytes": 401434,
+    "sourceSha256": "49a56396e24000622dde8379c92fba3f97e2b163c7fd175c0748591f92cb872b",
+    "runtimeSha256": "860bd853524b4ec0768f379f06b699f1f6f1ff04ef8a1507b561039d2e394037",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-awning-bare",
+    "source": "docs/art/bakery-rooms/yard-awning-bare.png",
+    "runtime": "public/assets/bakery-yard-awning-bare.webp",
+    "bytes": 396148,
+    "sourceSha256": "0ac52c2deda5ede2de8fa2df58a210493fc2ca66ebad87051b8e213cc8840ed7",
+    "runtimeSha256": "d1825ba83f8b70dbf0f2b31e8715ad4e017dfda666c5a7064b5c390f817ba7de",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-before",
+    "source": "docs/art/bakery-rooms/yard-before.png",
+    "runtime": "public/assets/bakery-yard-before.webp",
+    "bytes": 533934,
+    "sourceSha256": "eb0ae9cc241155604e7b36f4cfcd99abc22737878473decf1e03f8f0fda7321f",
+    "runtimeSha256": "79b89bfe8daacb5baa1e80fc58d1910db35155c120f16a286ec5c9b10c1e2668",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-clear-1",
+    "source": "docs/art/bakery-rooms/yard-clear-1.png",
+    "runtime": "public/assets/bakery-yard-clear-1.webp",
+    "bytes": 492550,
+    "sourceSha256": "2e7eb17752f361ba55cb84ff547ad3d3b2a80ab6ae238a3dacb1f1fab1806eaf",
+    "runtimeSha256": "9058c99182ac0891221848ce972e642c2dfc624d1cc0dcf4e0d144ca58fdc985",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-clear-2",
+    "source": "docs/art/bakery-rooms/yard-clear-2.png",
+    "runtime": "public/assets/bakery-yard-clear-2.webp",
+    "bytes": 500288,
+    "sourceSha256": "a133ca0081cf53a3e01716cc93ce00b6eac16ba37e3fcaec0efffe0d585e34a9",
+    "runtimeSha256": "41cbba81cc9cf7cb71f3144ef5d4d2d2d4d83e826da9b3c98acfefc4401fc293",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-clear-3",
+    "source": "docs/art/bakery-rooms/yard-clear-3.png",
+    "runtime": "public/assets/bakery-yard-clear-3.webp",
+    "bytes": 506332,
+    "sourceSha256": "175a8f326fea43b4a0720ab71e873cbe3e1a383f794fa092a546172fa2d5fb82",
+    "runtimeSha256": "8e180f9308f35927d8301c4e3887d319d8ca64246beac63c633c6551c95466ca",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-clear-4",
+    "source": "docs/art/bakery-rooms/yard-clear-4.png",
+    "runtime": "public/assets/bakery-yard-clear-4.webp",
+    "bytes": 514550,
+    "sourceSha256": "7e9ec62f10ee16ba040cd98b998c8b695d5be01f16bd1d276cf931be718874f5",
+    "runtimeSha256": "3a69c291e7942e7fc39c2a480d983c7f742e5943604b17205be9d26b3559b30f",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-cleared",
+    "source": "docs/art/bakery-rooms/yard-cleared.png",
+    "runtime": "public/assets/bakery-yard-cleared.webp",
+    "bytes": 452754,
+    "sourceSha256": "630902298da5476bc3d728ebdae89787a9b0bfa43de65ad5ab1257607ec8f84e",
+    "runtimeSha256": "e67217cfb5b5d8159b319296a1ffcc10ddd28af52a7c56987624d624d4383458",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-finished-v2",
+    "source": "docs/art/bakery-rooms/yard-finished-v2.png",
+    "runtime": "public/assets/bakery-yard-finished-v2.webp",
+    "bytes": 399646,
+    "sourceSha256": "05f50e00a7d18328d71b1ee64fbe97df4c610d12447adf7e1219054b8bff01b2",
+    "runtimeSha256": "511ce1aebd51b24589e01d827a91a3534a66461b9824ff825dd9ba0f72f9bb60",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-foundation-v2",
+    "source": "docs/art/bakery-rooms/yard-foundation-v2.png",
+    "runtime": "public/assets/bakery-yard-foundation-v2.webp",
+    "bytes": 441780,
+    "sourceSha256": "e00bad4b316ba5d35dfaac68118e7e186b5efecc20bd7ec59e972ddf6aa832b5",
+    "runtimeSha256": "54021ca3ea514ef92b884fe9616a6d2e4442679a8838cd453638259e39421d45",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-master-v2",
+    "source": "docs/art/bakery-rooms/yard-master-v2.png",
+    "runtime": "public/assets/bakery-yard-master-v2.webp",
+    "bytes": 397292,
+    "sourceSha256": "b10423bfc2fbe616f3fe9dbd43364d724d7c4f63824de61b5dfa8572138de076",
+    "runtimeSha256": "374d3314ccde8fcbf0c4b4d79f85bff2cd325aa6e1675d7e03f51d6cde3c92b3",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-ready",
+    "source": "docs/art/bakery-rooms/yard-ready.png",
+    "runtime": "public/assets/bakery-yard-ready.webp",
+    "bytes": 384638,
+    "sourceSha256": "9fdebcf3390e9f1669372e68eb573b81a48debdbc77bfc5eafdb164c7199bfd8",
+    "runtimeSha256": "a01c540fbf0b19238ed403f9cc7f0d42597e6b928829964fcbfa01894657416b",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-roof",
+    "source": "docs/art/bakery-rooms/yard-roof.png",
+    "runtime": "public/assets/bakery-yard-roof.webp",
+    "bytes": 388452,
+    "sourceSha256": "5ecfe9bc2d3996751f23639b7967b800d23f0e1e018a95e34574207574f48336",
+    "runtimeSha256": "6d3521141e3b188648f1da74465f3a1aefc3f371b732bae988393f2f214a3812",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "yard-walls-v2",
+    "source": "docs/art/bakery-rooms/yard-walls-v2.png",
+    "runtime": "public/assets/bakery-yard-walls-v2.webp",
+    "bytes": 429910,
+    "sourceSha256": "174688da8c82560baba1b3f34c876a762bc3bc2cc28c560e278512f33822ef83",
+    "runtimeSha256": "f80174cdc127dc802cd14db0bfe4c176ee1ea125e30562f45496677c8a7f4c07",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "before",
+    "source": "docs/art/bakery-map/before.png",
+    "runtime": "public/assets/coastal-bakery-map-before.webp",
+    "bytes": 547540,
+    "sourceSha256": "0c6ae5b68eb1e9c378f81d13d85c4a5d48ce075e98ab66908d0ae5c7a08aacc8",
+    "runtimeSha256": "5df526d09647a8ef6d8522f25e28d5ee60a2118fe556dc279f99b85b1377ff09",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "clear",
+    "source": "docs/art/bakery-map/clear.png",
+    "runtime": "public/assets/coastal-bakery-map-clear.webp",
+    "bytes": 521976,
+    "sourceSha256": "4a0465b9d694a5e28d50d8e15f0e15605dceb888684bcc2f0be5c2a6f213fa9a",
+    "runtimeSha256": "c78e767a9ad3baf08ff8d738f321357529ce11a81c1559d4875e1893a47e759a",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "final",
+    "source": "docs/art/bakery-map/final.png",
+    "runtime": "public/assets/coastal-bakery-map-final.webp",
+    "bytes": 503582,
+    "sourceSha256": "53abec96af87b0ddba26b32aac2cab971dc8f08e84fc5087513f7c223d32e03f",
+    "runtimeSha256": "fbf5981b3618850e57f094fe5221d66a491dcc814d5f8e0fe4c09709783ab47a",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "foundation",
+    "source": "docs/art/bakery-map/foundation.png",
+    "runtime": "public/assets/coastal-bakery-map-foundation.webp",
+    "bytes": 526810,
+    "sourceSha256": "ce3de042e1784f17e2977b0d58ff31587ae552736cccf194446c756224a34c33",
+    "runtimeSha256": "11e55871a727b0075046e585bc23a7aa0dc17e3f58887cc44571059313e622bf",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "ready",
+    "source": "docs/art/bakery-map/ready.png",
+    "runtime": "public/assets/coastal-bakery-map-ready.webp",
+    "bytes": 503494,
+    "sourceSha256": "114e1fdadddba818e48c7894b2320977770455207769ba424281ca9f6cacc51c",
+    "runtimeSha256": "d7afb555c55b2d476600c4a3b83e24924765ffc807a92f815bd732b78739e77b",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "roof",
+    "source": "docs/art/bakery-map/roof.png",
+    "runtime": "public/assets/coastal-bakery-map-roof.webp",
+    "bytes": 519534,
+    "sourceSha256": "5b14560d0e3ae999a67c5b5bd85878b036cdad789e24e0c17ddcfcb80084d138",
+    "runtimeSha256": "ebd80cc124be3c005a4bfc30a7d2d833dd9793541889f154819e4846c21691aa",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "walls",
+    "source": "docs/art/bakery-map/walls.png",
+    "runtime": "public/assets/coastal-bakery-map-walls.webp",
+    "bytes": 453512,
+    "sourceSha256": "0fadb16a4759fb547c5e55d13455770895ce6bc82d48db25af820fd9ba307b30",
+    "runtimeSha256": "2c863269cc2df0a5df98ffebe950b5feb7cedb28bd958770fe6fe7e642b6c627",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  }
+]

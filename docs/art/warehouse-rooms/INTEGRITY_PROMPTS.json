@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-08",
+  "purpose": "Independent complete furniture in every warehouse intermediate state",
+  "edits": [
+    {
+      "key": "storage-rack-bare",
+      "source": "docs/art/warehouse-rooms/storage-empty.png",
+      "tool": "image_gen.imagegen (built-in)",
+      "prompt": "Use case: precise-object-edit.\nAsset type: pixel-registered 1536x1024 game furniture donor plate.\nInput image: storage-empty.png is the EDIT TARGET. Keep exact same image, fixed camera, perspective, composition, furniture scale and pixel coordinates.\nPrimary request: REMOVE ONLY all wooden crates/boxes and the floor pallet around and inside the THREE tall turquoise shelving bays at the RIGHT side of the room. Specifically remove the two small closed wood boxes on the lowest level of the left bay near x860..1010,y480..570; the closed wooden box on bottom shelf of right bay near x1260..1385,y430..512; all three open floor wooden crates near x1025..1438,y530..730; and the pallet near x780..1030,y545..655. Restore the FULL formerly occluded teal side panels, vertical posts, horizontal shelves and complete lower feet of those 3 shelves; smooth uninterrupted surfaces, no fragments of crates anywhere. Floor and back wall revealed by removal continue original tile/plaster perspective.\nInvariants: Absolutely preserve outer contour and every visible shelf plank/post at its existing pixel coordinates. The tall shelves remain EMPTY, with no goods or crates at all. Keep ALL other furniture (cupboard, inspection table, scales, bench, wall utensils, cans, chest, trolley, large foreground delivery crate), the left doorway/window, sea, wall corner, ceiling beams, hanging light, room floor and sunlight unchanged. Do not move or redesign furniture; do not recolor or relight; no added items, no labels, no text. Opaque full frame 1536x1024.",
+      "output": "docs/art/warehouse-rooms/storage-rack-bare.png"
+    },
+    {
+      "key": "cold-rack-bare",
+      "source": "docs/art/warehouse-rooms/cold-empty.png",
+      "tool": "image_gen.imagegen (built-in)",
+      "prompt": "Use case: precise-object-edit.\nAsset type: registered full-frame 1536x1024 furniture donor for a 2D game.\nInput image cold-empty.png is the EDIT TARGET. Keep the room and furniture at exactly the same pixel positions and exact perspective.\nRemove ONLY all THREE low open wooden bulk-food bins below the tall center turquoise shelving (x684..1148,y516..780), and the separate TWO-TIER wooden produce stand beneath the right window (x1208..1527,y473..855). Restore wall and tile floor exposed by these removals. Preserve ALL tall central shelving and recover its COMPLETE continuous vertical turquoise posts and feet formerly hidden behind bins, down to the tile floor. Left front post around x712..746 should continue to floor contact near y665, middle front post around x897..931 to y710, right front post around x1137..1172 to y757. Preserve right rear post around x1213..1234 to its original bottom around y741. The existing floor perspective determines proper feet; absolutely no floating cut off posts, no bin wood or bin teal fragments, no new shelves or added objects. Keep shelf planks and visible post portions EXACTLY unchanged, complete only formerly hidden parts. Keep the existing rack empty.\nKeep refrigerator, wall thermometer, cooling unit, doorway, right window, beams, sea, plaster, terracotta tiles, sunlight and ALL outside removed bin areas unchanged. No text or labels. Full opaque 1536x1024 registered frame, same camera and composition.",
+      "output": "docs/art/warehouse-rooms/cold-rack-bare.png"
+    },
+    {
+      "key": "cold-ventilation",
+      "source": "docs/art/warehouse-rooms/cold-empty.png",
+      "tool": "image_gen.imagegen (built-in)",
+      "prompt": "Use case: precise-object-edit.\nAsset type: 1536x1024 pixel-registered donor for an independent wall cooling/insulation improvement in a 2D game.\nInput cold-empty.png is EDIT TARGET. Remove ONLY the large turquoise THREE-DOOR refrigerator CABINET (roughly x283..670,y177..722), including its glass doors, interior shelves, cabinet top edge, handles, turquoise side/body and base feet. Keep its separate light grey wall ventilation/insulation/cooling assembly ABOVE it in place: pale insulation panel at x288..624,y124..229; vent-fan at x455..566,y150..215; pipe at x590..608,y98..219. Reconstruct the COMPLETE lower edge of that pale wall-mounted ventilation assembly, formerly hidden by the removed fridge, approximately following original bottom plane x288,y190 to x624,y240. Retain existing visible panel/fan/pipe EXACT coordinates and appearance. No turquoise fridge fragments should remain. Reveal bare cream wall and original tile floor behind cabinet.\nEverything else stays exactly unchanged: wall thermometer, doorway and door, window, tall shelving with empty wooden bins, fruit stand, floor tile perspective, beams, sea, sunlight, shadows and camera. Do NOT move or resize anything; no new furniture or labels. Full opaque1536x1024 frame. This image must align precisely with original so only the complete wall-mounted cooling assembly is extracted as a layer.",
+      "output": "docs/art/warehouse-rooms/cold-ventilation.png"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Warehouse layer review</title>
+<style>body{margin:0;background:#30363a;color:white;font:16px sans-serif}canvas{display:block;width:1536px;height:1024px}label{display:block;padding:8px}</style>
+<label>Registered warehouse diagnostic. ?cold selects cold; &step=N limits tasks; &outline draws mask edges.</label><canvas width="1536" height="1024"></canvas>
+<script type="module">
+import {STORAGE_LAYERS,COLD_LAYERS} from '/src/warehouse-layers.ts';
+const q=new URLSearchParams(location.search),cold=q.has('cold'),room=cold?'cold':'storage',step=Number(q.get('step')??99);
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');
+const cache=new Map();
+async function img(name){if(cache.has(name))return cache.get(name);const i=new Image();i.src=`./${name}.png`;await i.decode().catch(async()=>{if(name==='cold-cabinet-bare'){i.src='./cold-empty.png';await i.decode();}else throw Error(name)});cache.set(name,i);return i;}
+ctx.drawImage(await img(`${room}-clean`),0,0);
+for(const l of cold?COLD_LAYERS:STORAGE_LAYERS){if(Number(l.task.split('-t')[1])>step||l.brightness)continue;const source=await img(l.source.replace('warehouse-room-',''));ctx.save();ctx.clip(new Path2D(l.path));ctx.drawImage(source,0,0);ctx.restore();if(q.has('outline')){ctx.strokeStyle=l.kind==='goods'?'#ff2050':'#00eaff';ctx.lineWidth=1;ctx.stroke(new Path2D(l.path));}}
+document.documentElement.dataset.ready='true';
+</script>

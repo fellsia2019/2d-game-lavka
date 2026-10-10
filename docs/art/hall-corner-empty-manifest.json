@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-06",
+  "reference": "docs/art/concepts/hall-corner-fuller.png",
+  "referenceSha256": "bc84c3694b8447fc0e22c85be2c90b53c6543bfde6aa230aec868b8a0c8a0563",
+  "source": "docs/art/hall-corner-empty-original.png",
+  "sourceSha256": "8002eef1970f5d6c6ac78acffd6a8cf5b4b4fab000b01bc33eea3fcaca14f018",
+  "sourceBytes": 2323806,
+  "sourceSize": [
+    1536,
+    1024
+  ],
+  "runtime": "public/assets/hall-corner-empty.webp",
+  "runtimeSha256": "736361e943e9b0a52919c25617d101200e6d315423924992f32ddc5d9ed74011",
+  "runtimeSize": [
+    1536,
+    1024
+  ],
+  "bytes": 320580,
+  "alpha": false,
+  "crop": null,
+  "packaging": "RGB WebP quality 92, method 6. No resizing or cropping."
+}

@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-08",
+  "tool": "image_gen.imagegen (built-in)",
+  "inputs": [
+    "docs/art/warehouse-rooms/storage-empty.png",
+    "docs/art/warehouse-rooms/storage-clean.png"
+  ],
+  "prompt": "Use case: precise-object-edit.\nAsset type: registered pallet-only donor plate for a 2D game, exact 1536x1024 full frame.\nInput image 1 storage-empty.png is the EDIT TARGET and geometry reference for the wood PALLET. Input image 2 storage-clean.png is the exact empty ROOM BACKGROUND reference, not a new camera.\nPrimary request: create that empty clean room with ONLY the small low wood shipping PALLET preserved at its EXACT original location, size, shape, perspective and lighting. In the input, the pallet is near x782..1027,y546..655 on the original1536x1024canvas, in front of the left shelving bay. Keep the pallet body at those same coordinates, never center it or enlarge it. Restore the COMPLETE rear deck boards/corners that were partly hidden by closed crates behind it. It should be a single whole sturdy wood pallet with intact continuous deck slats, intact corner/center supporting blocks, natural forklift openings under the deck, complete feet and a soft small contact shadow. No fragments of adjacent boxes or posts may be attached to the pallet.\nRemove all OTHER furniture/equipment, especially every closed crate behind/above the pallet, every rack beam/post, all open crates, table/cabinet/trolley/chest/lamp/products. Outside the pallet and its contact shadow, use exactly the clean empty room from input2, preserving background floor tile lines, sunlight bands, plaster, doorway/door/window/ocean/ceiling and fixed camera. No new items, no labels, no text. The output is an opaque FULL1536x1024frame aligned precisely with both inputs; the pallet should occupy only its small original249x109approx bounding box. Do not transform or recenter the pallet; do not alter or redraw its established visible boards.",
+  "output": "docs/art/warehouse-rooms/storage-pallet-only.png"
+}

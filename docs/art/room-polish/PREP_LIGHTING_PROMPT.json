@@ -1,0 +1,5 @@
+{
+  "mode": "built-in image_gen.imagegen",
+  "prompt": "Use case: inpainting. Edit target this empty opposite-corner room, exact1536x1024 camera/geometry unchanged. Add restored brass lighting installation only, in same warm coastal paintedgame style: large golden brass pendant hangs at the room corner, center(610,115), thin suspension from(610,8) and domed shade between(535,100)-(685,165), glowing ivory underside; two small brass wall sconces centered(150,220) on left wall and(1080,130) on rightwall, curved brackets with small warm glass shades. Keep furniture absent. Architecture, wooden floor, sunlit patches and wall contact lines unchanged. Whole-frame independent donor for mask extraction; no UI, text, products or other modifications.",
+  "reference": "docs/art/hall-v2-empty-original.png"
+}

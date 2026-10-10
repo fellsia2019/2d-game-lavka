@@ -1,0 +1,78 @@
+[
+  {
+    "name": "grocery-stocked-v2",
+    "status": "accepted",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. Asset: registered 1536x1024 game room source. Image 1 is the EDIT TARGET grocery master. Change ONLY the small cream price labels on shelf edges: remove ALL cream rectangular price tags from every grocery shelf (large right cabinet, low left cabinet, three small tea/coffee shelves, small right oil/honey cabinet). Restore smooth continuous original warm golden wooden shelf lip behind each removed tag. Keep all jars, bags, cans, bottles, their exact sizes/positions and transparent packaging unchanged. Preserve all cabinet geometry, feet, shelves, doors, room, perspective, camera, lighting and 1536x1024 composition. Do not move anything, do not crop, do not redesign. No new objects or markings. Result must be a fully stocked room with no price tags, useful for independently revealing labels later.",
+    "references": [
+      {
+        "path": "docs/art/shop-expansion/grocery-master.png",
+        "role": "edit target"
+      }
+    ]
+  },
+  {
+    "name": "grocery-stocked-rack-v2",
+    "status": "accepted",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. Image 1 is the edit target: registered 1536x1024 stocked game shop. Remove ONLY the small oil-and-honey cabinet standing at the far right, including the three oil bottles and honey jars on it, and remove its small wall-mounted paper-bag dispenser. Restore the exposed right support and lower-right foot of the BIG grocery cabinet completely, matching its other sturdy teal feet and golden trim, plus the underlying beige wall, teal baseboard and wooden floor. Do NOT remove or change any of the 27+ bags in the large cabinet, do not change the low grocery rack or tea shelves. Preserve exact 1536x1024 frame, perspective, positions, no price tags, all other furniture, room and light. We need a full stocked big cabinet with unobstructed whole right post and foot. No new objects.",
+    "references": [
+      {
+        "path": "docs/art/shop-expansion/grocery-stocked-v2.png",
+        "role": "edit target"
+      }
+    ]
+  },
+  {
+    "name": "grocery-open-base-v2",
+    "status": "accepted intermediate donor, not exported to runtime",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. Image1 is EDIT TARGET registered 1536x1024 grocery room. Change ONLY the THREE lower cabinet compartments under the tall right grocery shelf: REMOVE their teal door panels and all six brass knobs, revealing three empty open compartments with warm wooden backs and floors. Keep the outer teal frame, three dividers, lower rails, and every supporting foot including the complete far-right foot EXACTLY in place with identical geometry and silhouette. Do not touch the 3 upper product rows, any shelf, low left furniture, tea shelves, walls, floor, light or camera. No side oil cabinet. Same 1536x1024 composition. The result is an open-base variant of precisely this same cabinet, not a redesigned cabinet.",
+    "references": [
+      {
+        "path": "docs/art/shop-expansion/grocery-stocked-rack-v2.png",
+        "role": "edit target"
+      }
+    ]
+  },
+  {
+    "name": "service-bottles-cutout-draft-v2",
+    "status": "rejected: changed scale, position and bottle count; no runtime use",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: background-extraction. Image 1 is the edit target, a registered 1536x1024 game shop interior. Isolate ONLY the small wooden return-bottle crate between the window cabinet and cashier counter, original bounds approximately x878..985 y401..506. Keep its exact original position and scale in the full 1536x1024 canvas. Keep ALL SIX empty glass bottles with complete round lips, necks, shoulders and bodies naturally occluded by the wooden slats; do not simplify their count or crop necks. Make EVERYTHING else truly transparent, including all walls, floor and other furniture, and clear space between bottle necks. No shadow patch or floor rectangle. Preserve warm painted illustration, crisp small highlights and the crate geometry. Output genuine RGBA transparency, 1536x1024, no white backdrop. This is a registered cutout, not a centered resized product photo.",
+    "references": [
+      {
+        "path": "docs/art/shop-expansion/service-master.png",
+        "role": "edit target"
+      }
+    ]
+  },
+  {
+    "name": "service-bottles-registration-draft-v2",
+    "status": "rejected: placed crate 80px too far right; no runtime use",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. Image 1 is the EDIT TARGET, an empty shop interior with a small teal checkout counter on the right. Image 2 is only a reference for the small wooden return-bottle crate at x878..985 y401..506. Add exactly that small crate with SIX empty glass bottles to Image 1, at the SAME ORIGINAL PIXEL POSITION x878..985 y401..506 (not enlarged, not centered). It should rest on the floor against the back wall, immediately to the left of where the extended counter will later stand. Six intact round lips, thin necks, shoulders, continuous glass bodies behind wooden slats. Warm clear glass, gentle highlights, no cut necks, no floating bottle fragments. Match the target beige wall naturally through the glass. Keep EVERYTHING else in Image1 exactly unchanged, including all wall and floor pixels outside the small crate, the small counter, empty window, door, camera, proportions and 1536x1024 composition. DO NOT add any other furniture or objects from image2. Output full room RGB plate, NOT transparency or product cutout.",
+    "references": [
+      {
+        "path": "docs/art/shop-expansion/service-base.png",
+        "role": "edit target"
+      },
+      {
+        "path": "docs/art/shop-expansion/service-master.png",
+        "role": "reference crate only"
+      }
+    ]
+  },
+  {
+    "name": "grocery-empty-rack-v2",
+    "status": "accepted; runtime t04 and thumbnail",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. Image1 is the registered 1536x1024 EDIT TARGET. Remove ONLY all food packages from the THREE UPPER ROWS of the BIG right-hand grocery cabinet. Reveal continuous natural warm wooden back panels and empty shelves. Keep the outer frame, teal curved headers, golden shelf lips, dividers, the three OPEN lower compartments, base rails, and all feet absolutely identical in position and geometry. Do not change the floor, walls, room, camera, low left grocery stand or tea shelves. No price labels. No side oil cabinet. This is the empty variant of the exact same large cabinet, not a new design. Full 1536x1024 frame unchanged.",
+    "references": [
+      {
+        "path": "docs/art/shop-expansion/grocery-open-base-v2.png",
+        "role": "edit target"
+      }
+    ]
+  }
+]

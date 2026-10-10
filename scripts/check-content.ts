@@ -1,26 +1,27 @@
 import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import {
   CHAPTER,
-  CHAPTER_DEFINITIONS,
-  chapterLevel,
   CONTENT_VERSION,
 } from "../src/content";
+import { OFFLINE_CHAPTER_DEFINITIONS as CHAPTER_DEFINITIONS, offlineChapterLevel as chapterLevel } from "../src/content-offline";
 import { validateDefinition, replay } from "../src/engine";
 import { describeStructure, VERSION } from "../src/generator";
 import { RENOVATIONS } from "../src/renovations";
 import { GOODS, GOOD_IDS } from "../src/catalog";
-import { CAMPAIGN_CHAPTERS, CAMPAIGN_PHASES, FIRST_SHOP_PHASE, SHOP_STEPS, CAMPAIGN_VERSION } from "../src/campaign";
+import { CAMPAIGN_CHAPTERS, CAMPAIGN_PHASES, FIRST_SHOP_PHASE, TASKS, PROJECTS, CAMPAIGN_VERSION, orderCurrency } from "../src/campaign";
 import { SCENE_ASSETS } from "../src/campaign-scene";
+import { MATERIALS } from "../src/order-supplies";
 for (const file of [
-  ...Object.values(GOODS).map((g) => g.file),
-  "shelf",
-  "shop",
-  "counter",
-  "garden",
-  ...SCENE_ASSETS.map(file => file.replace(/\.webp$/, "")),
+  ...Object.values(GOODS).map((g) => `${g.file}.webp`),
+  ...Object.values(MATERIALS).map((material) => `${material.file}.webp`),
+  "shelf.webp",
+  "shop.webp",
+  "counter.webp",
+  "garden.webp",
+  ...SCENE_ASSETS,
 ]) {
-  const path = `public/assets/${file}.webp`;
-  if (!/^[a-z0-9-]+$/.test(file) || !existsSync(path) || !statSync(path).size)
+  const path = `public/assets/${file}`;
+  if (!/^[a-z0-9-]+\.(webp|svg)$/.test(file) || !existsSync(path) || !statSync(path).size)
     throw new Error(`Missing runtime asset: ${path}`);
 }
 const structures = new Set<string>(),
@@ -44,20 +45,24 @@ const levels = CHAPTER.map((story, i) => {
   structures.add(info.key);
   return { id: d.id, name: story.name, seed: d.seed, ...info };
 });
-const cost = SHOP_STEPS.reduce((n, r) => n + r.cost, 0);
+const cost = TASKS.reduce((n, r) => n + r.cost, 0);
 if (cost > CHAPTER.length)
-  throw new Error("Not enough chapter stars for repairs");
+  throw new Error("Not enough chapter rewards for tasks");
+const currencies = ["stars", "repairKits"] as const;
+const earned = Object.fromEntries(currencies.map(currency => [currency, CHAPTER.filter(order => orderCurrency(order.id) === currency).length]));
+const spent = Object.fromEntries(currencies.map(currency => [currency, TASKS.filter(task => task.currency === currency).reduce((sum, task) => sum + task.cost, 0)]));
+for (const currency of currencies) if (earned[currency] !== spent[currency]) throw new Error(`Unbalanced ${currency}`);
 for (const phase of CAMPAIGN_PHASES) {
   const producedOrders = CHAPTER.filter(order => order.phaseId === phase.id);
-  const producedTasks = SHOP_STEPS.filter(task => phase.taskIds.includes(task.id));
+  const producedTasks = TASKS.filter(task => phase.taskIds.includes(task.id));
   if (producedOrders.length > phase.orderTarget || producedTasks.length > phase.taskTarget ||
     producedTasks.reduce((sum, task) => sum + task.cost, 0) > producedOrders.length)
     throw new Error(`Produced phase budget mismatch ${phase.id}`);
 }
-if (new Set(SHOP_STEPS.map(task => task.id)).size !== SHOP_STEPS.length ||
+if (new Set(TASKS.map(task => task.id)).size !== TASKS.length ||
   CAMPAIGN_CHAPTERS.some(chapter => chapter.orderIds.join() !== CHAPTER.filter(order =>
     CAMPAIGN_PHASES.some(phase => phase.areaId === chapter.areaId && phase.id === order.phaseId)).map(order => order.id).join()) ||
-  CAMPAIGN_CHAPTERS.flatMap(chapter => chapter.taskIds).length !== SHOP_STEPS.length)
+  CAMPAIGN_CHAPTERS.flatMap(chapter => chapter.taskIds).length !== TASKS.length)
   throw new Error("Invalid playable campaign catalog");
 const plan = JSON.parse(readFileSync("docs/content/full-product-plan.json", "utf8"));
 const producedGoods = plan.goods.filter((good: { status: string }) => good.status !== "planned");
@@ -66,10 +71,10 @@ if (producedGoods.map((good: { id: string }) => good.id).sort().join() !== [...G
 const producedTasks = plan.phases.flatMap((phase: { tasks: { id: string; cost: number; status: string }[] }) => phase.tasks)
   .filter((task: { status: string }) => task.status !== "planned");
 if (producedTasks.map((task: { id: string; cost: number }) => `${task.id}:${task.cost}`).join() !==
-  SHOP_STEPS.map(task => `${task.id}:${task.cost}`).join()) throw new Error("Plan task production status mismatch");
+  TASKS.map(task => `${task.id}:${task.cost}`).join()) throw new Error("Plan task production status mismatch");
 for (const [index, story] of CHAPTER.entries()) {
   const slot = plan.orderSlots.find((s: { id: string }) => s.id === story.id);
-  if (!slot || slot.status === "planned-no-definition" || slot.phaseId !== story.phaseId || slot.globalNumber !== index + 1)
+  if (!slot || slot.status === "planned-no-definition" || slot.phaseId !== story.phaseId || slot.globalNumber !== (story.catalogNumber ?? index + 1))
     throw new Error(`Plan order production status mismatch ${story.id}`);
 }
 writeFileSync(
@@ -83,15 +88,18 @@ writeFileSync(
       campaignVersion: CAMPAIGN_VERSION,
       campaignChapters: CAMPAIGN_CHAPTERS,
       campaignPhases: CAMPAIGN_PHASES,
-      shopTasks: SHOP_STEPS,
-      starsAvailable: CHAPTER.length,
-      starsRequired: cost,
-      currentPhaseTarget: { orders: FIRST_SHOP_PHASE.orderTarget, tasks: FIRST_SHOP_PHASE.taskTarget, stars: FIRST_SHOP_PHASE.starTarget },
+      projects: PROJECTS,
+      campaignTasks: TASKS,
+      starsAvailable: earned.stars,
+      starsRequired: spent.stars,
+      repairKitsAvailable: earned.repairKits,
+      repairKitsRequired: spent.repairKits,
+      currentPhaseTarget: { orders: FIRST_SHOP_PHASE.orderTarget, tasks: FIRST_SHOP_PHASE.taskTarget, stars: FIRST_SHOP_PHASE.starTarget, repairKits: FIRST_SHOP_PHASE.repairKitTarget },
     },
     null,
     2,
   ) + "\n",
 );
 console.log(
-  `Контент: ${levels.length} решений воспроизведены, структуры различны; ремонт ${cost}/${CHAPTER.length} звёзд.`,
+  `Контент: ${levels.length} решений воспроизведены, структуры различны; задачи ${spent.stars}/${earned.stars} звёзд и ${spent.repairKits}/${earned.repairKits} ремкомплектов.`,
 );

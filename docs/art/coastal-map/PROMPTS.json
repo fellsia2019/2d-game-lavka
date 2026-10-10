@@ -1,0 +1,116 @@
+{
+  "version": "coastal-map-1",
+  "frame": [
+    1536,
+    1024
+  ],
+  "method": "Built-in image_gen; original PNG copied into repository; WebP export only",
+  "images": [
+    {
+      "name": "dormant-v1",
+      "prompt": "Use case: precise-object-edit. Asset: registered illustrated game campaign map, exactly 1536x1024. Image1 is the EDIT TARGET: keep its coastal courtyard, central shop, all paved paths, stone plot borders, sea, distant village, trees, flowers, benches and camera precisely unchanged. Image2 is architecture reference only for the future WIDE warehouse, not composition.\nReplace ONLY the empty five dirt plots and the bare roof terrace of central shop with distinct recognizable abandoned structures, all complete and inside their own plot. Painterly polished 2D casual game art matching target, warm sunlight, restrained small natural ground contact.\nTOP RIGHT plot x1010..1430 y120..280: a low WIDE ruined masonry storehouse, cream stone walls, broad teal double-door opening, broken terracotta roof with missing tiles. Horizontal broad footprint, not a little shed. Fit whole building within x1020..1430 y52..274.\nTOP LEFT narrow plot x210..480 y140..305 behind shop: a modest derelict cream masonry produce-preparation room with two dark window openings, broken low terracotta roof, walls following plot perspective. Whole building x228..474 y110..292, do not overlap central shop.\nBOTTOM LEFT plot x145..653 y424..587: clearly OPEN ruined fruit pavilion: four sturdy aged teal timber posts, broken open overhead awning ribs, a few faded cream canvas tatters, low empty display benches, no solid cabin walls, no door. Fit x180..615 y340..567, paths unobstructed.\nMIDDLE RIGHT plot x1008..1415 y285..460: ruined bakery foundations and distinctive old rounded masonry baking oven with arched black mouth and a squat brick chimney, partial low cream wall, a few loose bricks; definitely a bakery ruin not an operating business. Fit x1030..1395 y277..446, below warehouse.\nBOTTOM RIGHT plot x785..1400 y480..656: abandoned seaside terrace, low weathered raised timber decking, broken open pergola beams, incomplete low railings, climbing vines. Fit x850..1355 y461..636, no enclosed building, beach walkway clear.\nSHOP ROOF x510..860 y145..204: subtle abandoned upper-floor preparation, short low broken parapet, two fallen rafters and small vine; no separate restaurant building, shop itself remains intact.\nEach dormant site visibly different through architecture, not repeating rubbish piles. Tiny restrained local debris/weeds only. All contours and feet complete, no broad dark shadow blobs. No text, labels, locks, UI, people added. Do not modify anything outside specified sites. Output one full finished map, no collage.",
+      "references": [
+        {
+          "path": "docs/art/campaign-map-cleared-original.png",
+          "role": "edit target; coastal layout and central shop"
+        },
+        {
+          "path": "docs/art/warehouse-rooms/exterior-master.png",
+          "role": "warehouse architecture only"
+        }
+      ]
+    },
+    {
+      "name": "cleared-v1",
+      "prompt": "Use case: precise-object-edit. Registered game map exactly1536x1024. Image1 is EDIT TARGET. Preserve every pixel possible, same camera, lighting, central shop including its roof ruins, all distant landscape/trees/paths/borders/beach. Change ONLY THREE SITES by clearing them to bare level warm sandy dirt: (1) wide ruined warehouse TOP RIGHT x980..1453 y50..270; remove building, all its contents, debris and weeds, restore unobstructed back stone wall and plants where roof was, keep stone plot border. (2) ruined two-window masonry room TOP LEFT x270..522 y89..277; remove whole room, debris and weeds; restore empty plot and distant background where roof was; central shop silhouette untouched. (3) ruined fruit pavilion LOWER LEFT x170..630 y378..571; remove every post, bench, cloth, loose board and weed from inside its plot, leaving level bare dirt. Do not alter stone paths or border edges. Keep the bakery ruin at middle right and abandoned terrace at lower right completely intact; do not repair or clear them. Keep rooftop ruin on central shop intact. No buildings remain on those three cleared sites; no outlines/foundations/construction yet. No new text or UI. One full map, no collage.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/dormant-v1.png",
+          "role": "edit target; clear only three implemented sites"
+        }
+      ]
+    },
+    {
+      "name": "complete-v1",
+      "prompt": "Use case: precise-object-edit. Registered game map exactly1536x1024. Image1 is EDIT TARGET; image2 is architectural reference ONLY for completed warehouse. Keep central shop and its ruined upper terrace, distant scenery, pavedpaths, borderstones, sea and all trees unchanged. Keep middle-right ruined bakery and lower-right abandoned terrace EXACTLY unchanged: future sites stay dormant. Rebuild only THREE sites in exactly their existing footprints and perspective:\nTOP RIGHT ruined warehouse x990..1445 y50..268 becomes a broad finished single-storey cream masonry storehouse, low terracotta gable roof, broad teal double entrance with both door leaves open to dark storage, small side service window, lantern above doorway, tiny loading pallet. Match architectural language of reference2, but fit existing map footprint; do not enlarge or shift it. Keep entire roof and feet inside frame.\nTOP LEFT ruinedroom x290..523 y88..265 becomes modest cream stone produce preparation annex: low terracotta gable roof, two wide teal-framed windows, open teal side door, small clean stone threshold. Simple room, distinctly narrower than warehouse. Keep it behind the unchanged central shop, no overlap with shop or pathway.\nLOWER LEFT ruined pavilion x200..616 y380..562 becomes a light OPEN rectangular fruit pavilion with warm oak posts, low cream/teal striped two-slope canvas roof, low teal rear and side wind screens, broad open front, complete simple warm wood fruit display benches holding a little colourful produce, smooth pale rectangular stone platform. Same footprint, fit full roof roughly x205..621 y322..466, all post feet within existing dirtplot. NO solid cabin walls, no door, no enclosed shop.\nRestrained small natural grounding shadows. Complete uncut architectural silhouettes, no floating feet. Consistent painterly casualgame style, sunny coastal palette. No signage, words, UI, people or logos. Only rebuild these three sites; future bakery, terrace and rooftop remain abandoned.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/dormant-v1.png",
+          "role": "edit target; restore only three implemented sites"
+        },
+        {
+          "path": "docs/art/warehouse-rooms/exterior-master.png",
+          "role": "warehouse architecture only"
+        }
+      ]
+    },
+    {
+      "name": "foundation-v1",
+      "prompt": "Use case: precise-object-edit. Asset: registered game construction map 1536x1024. Image1 EDIT TARGET is the completed map. Rewind ONLY three implemented buildings to their just-completed FOUNDATION stage. Remove all roofs, high walls, posts, doors, windows, lamps, furnishings, plants in pots associated with these3buildings. Keep their ground footprints fixed and perspective identical. TOP RIGHT warehouse: at the exact base of existing warehouse, a wide low cream-stone foundation ring only 15px high with bare flat interior and recessed broad entrance front; no walls higher than the knee of a person. TOP LEFT small annex: same small rectangular foundation ring at original room base, behind central shop, no posts/highwalls/roof. LOWER LEFT pavilion: only its exact clean pale rectangular raised stone platform with front central step; no posts, roof, screens, stalls orgoods. No construction tools ornewdebris. Keep central shop and roofruins exactly unchanged; keep middle-right bakeryruin and lower-right ruinedpergola unchanged; preserve all paths, borders, sea, trees and camera. Restore background where upperbuildings were removed. Image2 is supporting empty map reference for exposed background. Whole contours, no cropped foundation corners. One fullmap, noUI/text.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/complete-v1.png",
+          "role": "edit target"
+        },
+        {
+          "path": "docs/art/coastal-map/cleared-v1.png",
+          "role": "supporting registered background"
+        }
+      ]
+    },
+    {
+      "name": "structure-v1",
+      "prompt": "Use case: precise-object-edit. Asset: registered game construction map 1536x1024. Image1 EDIT TARGET is completed map. Rewind ONLY three implementedbuildings to their erected STRUCTURE stage, before roofs/windows/doors/finish/equipment. Keep exact footprint, wall positions, heights and registration of their completed counterparts.\nTOP RIGHT wide warehouse: preserve full cream masonry walls up to eaves and triangular gable ends, but remove ALL terracotta roof leaving open building top with a few continuous bare timber roofrafters. Broad double-door opening must be empty dark rectangular opening without doors; empty small window apertures. Remove lantern, pallet, boxes, pots, all loose equipment. Unfinished cream stone inside, no goods.\nTOP LEFT annex: retain exact full cream walls and gable ends of small room; remove tiledroof leaving bare simple timberrafters, windowsanddoor empty darkapertures with NO tealframes/shutters; remove pots/produce/lantern.\nLOWER LEFT pavilion: retain same complete pale stone platform and all warm oak posts with beams and bare simple overhead roof rafters, no canvasroof, no tealwindscreens, no hanginglights, no furniture/produce/barrels/pots. Every oakpost continuous to its original base.\nAll structures grounded with short restrained natural contact. Keep central shop and its roofruins unchanged. Future bakery ruin and ruined terrace MUST remain unchanged. All borders, paths, sea, trees, camera unchanged. One fullmap noUI/text.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/complete-v1.png",
+          "role": "edit target"
+        }
+      ]
+    },
+    {
+      "name": "tidied-v1",
+      "prompt": "Use case: precise-object-edit. Registered game map 1536x1024. Image1 EDIT TARGET. Change only the three implemented abandoned sites: TOP RIGHT wide ruined warehouse, TOP LEFT ruined small windowed annex, LOWER LEFT ruined open fruit pavilion. Perform first cleanup: remove all loose wooden crates, barrels, fallen detached boards, waste, scattered bricks and abandoned benches from ONLY these3sites. Retain their entire original ruined BUILDING architecture including broken roof/doors/posts; retain climbing weeds and bushes and rough ground. Restore any wall/floor previously hidden behind removed objects, no holes or cut furniture scraps. For pavilion remove both low freestanding display benches, preserve full four upright supports and awning ribs. Keep ruined bakery at middle right, abandoned lower right pergola, roofruins of centralshop completely unchanged. All surroundings paths borders sea centralshop and camera remain pixel-registered. No newtext/UI, no repair of architecture yet.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/dormant-v1.png",
+          "role": "edit target"
+        }
+      ]
+    },
+    {
+      "name": "rough-v1",
+      "prompt": "Use case: precise-object-edit. Registered game map 1536x1024. Image1 EDIT TARGET is empty map. Image2 is supporting original abandoned map. Change ONLY bare dirt inside three implemented sites (topright warehouse, topleft annex, lowerleft pavilion): make them demolition ground with uneven ruts, small moundsofdirt and only a few isolated natural weedtufts and one short old tree stump on each plot. NO buildings or posts or footings, NO wooden crates or boards or tools; masonryruinsalreadycleared. Keep weeds and stump confined to frontground areas for independent later cleanup: warehouse mainly x1040..1120 y222..249 and x1370..1420 y237..262; annex x298..354 y263..280; pavilion x230..300 y505..548 and x540..591 y536..561. Ground remains warm sandycoastal dirt, no giant darkholes. Future bakery/pergola and roof ruins untouched. Entire rest of target includingcentralshop, borders, paths, background/sea remain registered and unchanged. NoUI/text.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/cleared-v1.png",
+          "role": "edit target"
+        },
+        {
+          "path": "docs/art/coastal-map/dormant-v1.png",
+          "role": "supporting registered background"
+        }
+      ]
+    },
+    {
+      "name": "roofed-v1",
+      "prompt": "Use case: precise-object-edit. Exactly1536x1024 registeredgame map. Image1 EDIT TARGET. ONLY change the three restored sites: top-right warehouse, top-left annex and lower-left pavilion. Preserve their exact roof silhouettes, wall planes, post locations and whole footprints. Remove all furniture, goods, barrels, pallets, crates, plantsinpots, all wall/hanging lanterns, restore complete empty architecture behind them. The pavilion must be wholly empty under its canopy, all oakposts including middlepost kept exactly in place, remove low teal side/rear windscreen panels leaving open posts. For warehouse andannex, remove teal doorleaves/windowframes/awnings leaving empty dark apertures exactly in the SAME LOCATIONS and sameSIZES: do not move a door to anotherwall orturn windowinto doorway. Warehouse broadentrance frontcenter, frontsmallwindowright; annex has TWOfrontwindows and broaddoor onRIGHTSIDE wall. Keep finished roofs and creamwalls, but no doors/windows/equipment yet. All otherpixels—including shop, itsroofruins, futurebakery, futurepergola, paths, surroundings and sea—unchanged. NoUI/text.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/complete-v1.png",
+          "role": "edit target"
+        }
+      ]
+    },
+    {
+      "name": "ready-v1",
+      "prompt": "Use case: precise-object-edit. Exactly1536x1024 registeredgame map. Image1 EDIT TARGET. ONLY remove furniture/goods/loose props from three restored sites (topright warehouse, topleft annex, lowerleft fruitpavilion). Keep their entire finished architecture exactly unchanged: roofs, every wall, doors/windows, complete oakpost locations, teal pavilion windscreens, flooring. Empty buildings ready for equipment. Remove ALL benches, produce, pallets, barrels, freestanding crates, plantpots/flowers and wall/hanging lamps from these3sites; reconstruct complete empty flooring, teal screens and posts behind removed contents. No cuttable legs or residualfruit. Do not touch central shop and its rooftopruins, middle-right bakeryruin, lower-right terrace ruin, paths/trees/sea. No camera or architecture changes, noUI/text. Especially keep pavilion middle-front oakpost at its original position, and annex TWO frontwindows with rightSIDE doorway.",
+      "references": [
+        {
+          "path": "docs/art/coastal-map/complete-v1.png",
+          "role": "edit target"
+        }
+      ]
+    }
+  ]
+}

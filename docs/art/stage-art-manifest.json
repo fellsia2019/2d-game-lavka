@@ -1,0 +1,1681 @@
+{
+  "date": "2026-10-06",
+  "assets": [
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-rubbish.webp",
+      "size": [
+        359,
+        290
+      ],
+      "bytes": 50902,
+      "alpha": true,
+      "sourceCrop": [
+        11,
+        92,
+        370,
+        382
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-ruins.webp",
+      "size": [
+        332,
+        317
+      ],
+      "bytes": 58306,
+      "alpha": true,
+      "sourceCrop": [
+        383,
+        62,
+        715,
+        379
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-vines.webp",
+      "size": [
+        356,
+        311
+      ],
+      "bytes": 65502,
+      "alpha": true,
+      "sourceCrop": [
+        722,
+        80,
+        1078,
+        391
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-stumps.webp",
+      "size": [
+        356,
+        239
+      ],
+      "bytes": 47714,
+      "alpha": true,
+      "sourceCrop": [
+        1079,
+        143,
+        1435,
+        382
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-rough-ground.webp",
+      "size": [
+        356,
+        233
+      ],
+      "bytes": 44580,
+      "alpha": true,
+      "sourceCrop": [
+        5,
+        449,
+        361,
+        682
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-clear-ground.webp",
+      "size": [
+        365,
+        227
+      ],
+      "bytes": 35132,
+      "alpha": true,
+      "sourceCrop": [
+        362,
+        464,
+        727,
+        691
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-outline.webp",
+      "size": [
+        362,
+        232
+      ],
+      "bytes": 35228,
+      "alpha": true,
+      "sourceCrop": [
+        719,
+        455,
+        1081,
+        687
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-foundation.webp",
+      "size": [
+        359,
+        218
+      ],
+      "bytes": 31682,
+      "alpha": true,
+      "sourceCrop": [
+        1085,
+        467,
+        1444,
+        685
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-frame.webp",
+      "size": [
+        344,
+        334
+      ],
+      "bytes": 57210,
+      "alpha": true,
+      "sourceCrop": [
+        14,
+        708,
+        358,
+        1042
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-walls.webp",
+      "size": [
+        353,
+        278
+      ],
+      "bytes": 33760,
+      "alpha": true,
+      "sourceCrop": [
+        377,
+        761,
+        730,
+        1039
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-roof.webp",
+      "size": [
+        347,
+        224
+      ],
+      "bytes": 25562,
+      "alpha": true,
+      "sourceCrop": [
+        731,
+        776,
+        1078,
+        1000
+      ]
+    },
+    {
+      "source": "docs/art/stage-construction-atlas-original.png",
+      "sourceSha256": "9e6315e724406a745799a9bb21990f3dbb7370f24f064289854e6d9b4d8fca9a",
+      "runtime": "public/assets/site-windows-door.webp",
+      "size": [
+        356,
+        269
+      ],
+      "bytes": 38806,
+      "alpha": true,
+      "sourceCrop": [
+        1076,
+        764,
+        1432,
+        1033
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-bread-stand.webp",
+      "size": [
+        248,
+        344
+      ],
+      "bytes": 30754,
+      "alpha": true,
+      "sourceCrop": [
+        35,
+        8,
+        283,
+        352
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-bread-trays.webp",
+      "size": [
+        248,
+        317
+      ],
+      "bytes": 45032,
+      "alpha": true,
+      "sourceCrop": [
+        323,
+        32,
+        571,
+        349
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-packing-table.webp",
+      "size": [
+        356,
+        281
+      ],
+      "bytes": 36118,
+      "alpha": true,
+      "sourceCrop": [
+        599,
+        59,
+        955,
+        340
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-scale.webp",
+      "size": [
+        224,
+        269
+      ],
+      "bytes": 25970,
+      "alpha": true,
+      "sourceCrop": [
+        986,
+        71,
+        1210,
+        340
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-order-rack.webp",
+      "size": [
+        254,
+        302
+      ],
+      "bytes": 26434,
+      "alpha": true,
+      "sourceCrop": [
+        38,
+        356,
+        292,
+        658
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-door.webp",
+      "size": [
+        251,
+        332
+      ],
+      "bytes": 26940,
+      "alpha": true,
+      "sourceCrop": [
+        326,
+        341,
+        577,
+        673
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-awning.webp",
+      "size": [
+        335,
+        233
+      ],
+      "bytes": 23298,
+      "alpha": true,
+      "sourceCrop": [
+        593,
+        401,
+        928,
+        634
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-lanterns.webp",
+      "size": [
+        294,
+        254
+      ],
+      "bytes": 32768,
+      "alpha": true,
+      "sourceCrop": [
+        945,
+        374,
+        1239,
+        628
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-bag-stand.webp",
+      "size": [
+        194,
+        311
+      ],
+      "bytes": 22018,
+      "alpha": true,
+      "sourceCrop": [
+        50,
+        641,
+        244,
+        952
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-bench.webp",
+      "size": [
+        335,
+        248
+      ],
+      "bytes": 35506,
+      "alpha": true,
+      "sourceCrop": [
+        287,
+        698,
+        622,
+        946
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-directions.webp",
+      "size": [
+        218,
+        314
+      ],
+      "bytes": 22190,
+      "alpha": true,
+      "sourceCrop": [
+        641,
+        641,
+        859,
+        955
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-pickup-counter.webp",
+      "size": [
+        368,
+        251
+      ],
+      "bytes": 26702,
+      "alpha": true,
+      "sourceCrop": [
+        872,
+        701,
+        1240,
+        952
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-trolley.webp",
+      "size": [
+        287,
+        272
+      ],
+      "bytes": 27026,
+      "alpha": true,
+      "sourceCrop": [
+        23,
+        956,
+        310,
+        1228
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-cupboard.webp",
+      "size": [
+        287,
+        278
+      ],
+      "bytes": 24674,
+      "alpha": true,
+      "sourceCrop": [
+        320,
+        941,
+        607,
+        1219
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-crates.webp",
+      "size": [
+        302,
+        266
+      ],
+      "bytes": 31898,
+      "alpha": true,
+      "sourceCrop": [
+        620,
+        959,
+        922,
+        1225
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-pallet.webp",
+      "size": [
+        320,
+        176
+      ],
+      "bytes": 23240,
+      "alpha": true,
+      "sourceCrop": [
+        920,
+        1043,
+        1240,
+        1219
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-floor-broken.webp",
+      "size": [
+        314,
+        185
+      ],
+      "bytes": 29186,
+      "alpha": true,
+      "sourceCrop": [
+        17,
+        140,
+        331,
+        325
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-floor-new.webp",
+      "size": [
+        296,
+        185
+      ],
+      "bytes": 20700,
+      "alpha": true,
+      "sourceCrop": [
+        326,
+        140,
+        622,
+        325
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-wall-panel.webp",
+      "size": [
+        269,
+        269
+      ],
+      "bytes": 24836,
+      "alpha": true,
+      "sourceCrop": [
+        635,
+        62,
+        904,
+        331
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-modular-shelf.webp",
+      "size": [
+        275,
+        347
+      ],
+      "bytes": 27790,
+      "alpha": true,
+      "sourceCrop": [
+        935,
+        14,
+        1210,
+        361
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-base-cabinet.webp",
+      "size": [
+        296,
+        220
+      ],
+      "bytes": 16484,
+      "alpha": true,
+      "sourceCrop": [
+        29,
+        401,
+        325,
+        621
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-groceries-stand.webp",
+      "size": [
+        302,
+        236
+      ],
+      "bytes": 21586,
+      "alpha": true,
+      "sourceCrop": [
+        332,
+        392,
+        634,
+        628
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-tea-shelf.webp",
+      "size": [
+        290,
+        206
+      ],
+      "bytes": 22694,
+      "alpha": true,
+      "sourceCrop": [
+        635,
+        395,
+        925,
+        601
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-condiment-stand.webp",
+      "size": [
+        218,
+        272
+      ],
+      "bytes": 22300,
+      "alpha": true,
+      "sourceCrop": [
+        968,
+        368,
+        1186,
+        640
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-bag-roll.webp",
+      "size": [
+        326,
+        233
+      ],
+      "bytes": 24028,
+      "alpha": true,
+      "sourceCrop": [
+        23,
+        659,
+        349,
+        892
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-terminal.webp",
+      "size": [
+        191,
+        203
+      ],
+      "bytes": 14200,
+      "alpha": true,
+      "sourceCrop": [
+        356,
+        686,
+        547,
+        889
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-counter-extension.webp",
+      "size": [
+        455,
+        242
+      ],
+      "bytes": 22446,
+      "alpha": true,
+      "sourceCrop": [
+        551,
+        677,
+        1006,
+        919
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-side-counter.webp",
+      "size": [
+        209,
+        277
+      ],
+      "bytes": 17724,
+      "alpha": true,
+      "sourceCrop": [
+        1001,
+        645,
+        1210,
+        922
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-return-bin.webp",
+      "size": [
+        284,
+        287
+      ],
+      "bytes": 23454,
+      "alpha": true,
+      "sourceCrop": [
+        26,
+        932,
+        310,
+        1219
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-shopping-baskets.webp",
+      "size": [
+        251,
+        302
+      ],
+      "bytes": 38780,
+      "alpha": true,
+      "sourceCrop": [
+        320,
+        911,
+        571,
+        1213
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-price-holders.webp",
+      "size": [
+        266,
+        236
+      ],
+      "bytes": 21918,
+      "alpha": true,
+      "sourceCrop": [
+        593,
+        923,
+        859,
+        1159
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-atlas-original.png",
+      "sourceSha256": "7d0c926321c09f839eeb16b4c251aa6e5f6d78b724956603c77aeb77efb43d78",
+      "runtime": "public/assets/furniture-window-display.webp",
+      "size": [
+        344,
+        260
+      ],
+      "bytes": 33024,
+      "alpha": true,
+      "sourceCrop": [
+        869,
+        956,
+        1213,
+        1216
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-category-boards.webp",
+      "size": [
+        302,
+        304
+      ],
+      "bytes": 33110,
+      "alpha": true,
+      "sourceCrop": [
+        23,
+        9,
+        325,
+        313
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-sacks.webp",
+      "size": [
+        284,
+        254
+      ],
+      "bytes": 33174,
+      "alpha": true,
+      "sourceCrop": [
+        338,
+        47,
+        622,
+        301
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-ice-chest.webp",
+      "size": [
+        281,
+        224
+      ],
+      "bytes": 19370,
+      "alpha": true,
+      "sourceCrop": [
+        632,
+        74,
+        913,
+        298
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-inspection-table.webp",
+      "size": [
+        317,
+        319
+      ],
+      "bytes": 33512,
+      "alpha": true,
+      "sourceCrop": [
+        920,
+        0,
+        1237,
+        319
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-tool-cupboard.webp",
+      "size": [
+        302,
+        311
+      ],
+      "bytes": 32534,
+      "alpha": true,
+      "sourceCrop": [
+        23,
+        317,
+        325,
+        628
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-metal-bins.webp",
+      "size": [
+        227,
+        281
+      ],
+      "bytes": 25390,
+      "alpha": true,
+      "sourceCrop": [
+        371,
+        332,
+        598,
+        613
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-packing-station.webp",
+      "size": [
+        320,
+        275
+      ],
+      "bytes": 25904,
+      "alpha": true,
+      "sourceCrop": [
+        626,
+        341,
+        946,
+        616
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-supply-bell.webp",
+      "size": [
+        194,
+        290
+      ],
+      "bytes": 21418,
+      "alpha": true,
+      "sourceCrop": [
+        1007,
+        329,
+        1201,
+        619
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-insulation.webp",
+      "size": [
+        293,
+        260
+      ],
+      "bytes": 33852,
+      "alpha": true,
+      "sourceCrop": [
+        38,
+        629,
+        331,
+        889
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-cold-cabinet.webp",
+      "size": [
+        272,
+        311
+      ],
+      "bytes": 27106,
+      "alpha": true,
+      "sourceCrop": [
+        368,
+        611,
+        640,
+        922
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-wire-shelves.webp",
+      "size": [
+        290,
+        245
+      ],
+      "bytes": 43596,
+      "alpha": true,
+      "sourceCrop": [
+        659,
+        653,
+        949,
+        898
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-thermometer.webp",
+      "size": [
+        125,
+        281
+      ],
+      "bytes": 11970,
+      "alpha": true,
+      "sourceCrop": [
+        1049,
+        626,
+        1174,
+        907
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-flour-rack.webp",
+      "size": [
+        278,
+        335
+      ],
+      "bytes": 35864,
+      "alpha": true,
+      "sourceCrop": [
+        32,
+        887,
+        310,
+        1222
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-sugar-containers.webp",
+      "size": [
+        353,
+        236
+      ],
+      "bytes": 26436,
+      "alpha": true,
+      "sourceCrop": [
+        320,
+        980,
+        673,
+        1216
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-wash-basin.webp",
+      "size": [
+        265,
+        314
+      ],
+      "bytes": 29722,
+      "alpha": true,
+      "sourceCrop": [
+        680,
+        902,
+        945,
+        1216
+      ]
+    },
+    {
+      "source": "docs/art/stage-warehouse-furniture-atlas-original.png",
+      "sourceSha256": "14fab717b640fb0c12355032d11f5207db84b0eb435fd857d9bf4c6039282855",
+      "runtime": "public/assets/furniture-drying-rack.webp",
+      "size": [
+        275,
+        269
+      ],
+      "bytes": 56996,
+      "alpha": true,
+      "sourceCrop": [
+        950,
+        953,
+        1225,
+        1222
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-canopy.webp",
+      "size": [
+        377,
+        326
+      ],
+      "bytes": 32178,
+      "alpha": true,
+      "sourceCrop": [
+        14,
+        8,
+        391,
+        334
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-wind-screens.webp",
+      "size": [
+        143,
+        261
+      ],
+      "bytes": 13824,
+      "alpha": true,
+      "sourceCrop": [
+        407,
+        62,
+        550,
+        323
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-spotlight.webp",
+      "size": [
+        416,
+        260
+      ],
+      "bytes": 32838,
+      "alpha": true,
+      "sourceCrop": [
+        557,
+        65,
+        973,
+        325
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-direction-post.webp",
+      "size": [
+        227,
+        308
+      ],
+      "bytes": 23416,
+      "alpha": true,
+      "sourceCrop": [
+        995,
+        32,
+        1222,
+        340
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-fruit-stand.webp",
+      "size": [
+        320,
+        302
+      ],
+      "bytes": 33578,
+      "alpha": true,
+      "sourceCrop": [
+        8,
+        344,
+        328,
+        646
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-fruit-baskets.webp",
+      "size": [
+        329,
+        212
+      ],
+      "bytes": 36874,
+      "alpha": true,
+      "sourceCrop": [
+        335,
+        398,
+        664,
+        610
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-citrus-stand.webp",
+      "size": [
+        224,
+        305
+      ],
+      "bytes": 24596,
+      "alpha": true,
+      "sourceCrop": [
+        662,
+        344,
+        886,
+        649
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-banana-bar.webp",
+      "size": [
+        311,
+        287
+      ],
+      "bytes": 29662,
+      "alpha": true,
+      "sourceCrop": [
+        911,
+        362,
+        1222,
+        649
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-walkway.webp",
+      "size": [
+        338,
+        182
+      ],
+      "bytes": 29570,
+      "alpha": true,
+      "sourceCrop": [
+        5,
+        704,
+        343,
+        886
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-packaging-cupboard.webp",
+      "size": [
+        287,
+        236
+      ],
+      "bytes": 22206,
+      "alpha": true,
+      "sourceCrop": [
+        344,
+        656,
+        631,
+        892
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-hamper-counter.webp",
+      "size": [
+        320,
+        215
+      ],
+      "bytes": 28280,
+      "alpha": true,
+      "sourceCrop": [
+        620,
+        689,
+        940,
+        904
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-opening-sign.webp",
+      "size": [
+        276,
+        247
+      ],
+      "bytes": 30210,
+      "alpha": true,
+      "sourceCrop": [
+        947,
+        669,
+        1223,
+        916
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-fruit-island.webp",
+      "size": [
+        365,
+        334
+      ],
+      "bytes": 40022,
+      "alpha": true,
+      "sourceCrop": [
+        5,
+        911,
+        370,
+        1245
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-tiered-baskets.webp",
+      "size": [
+        230,
+        314
+      ],
+      "bytes": 37436,
+      "alpha": true,
+      "sourceCrop": [
+        356,
+        914,
+        586,
+        1228
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-berry-case.webp",
+      "size": [
+        341,
+        299
+      ],
+      "bytes": 36522,
+      "alpha": true,
+      "sourceCrop": [
+        569,
+        935,
+        910,
+        1234
+      ]
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/furniture-large-sign.webp",
+      "size": [
+        299,
+        248
+      ],
+      "bytes": 29120,
+      "alpha": true,
+      "sourceCrop": [
+        914,
+        962,
+        1213,
+        1210
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/apple.webp",
+      "size": [
+        260,
+        281
+      ],
+      "bytes": 29928,
+      "alpha": true,
+      "sourceCrop": [
+        47,
+        44,
+        307,
+        325
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/orange.webp",
+      "size": [
+        269,
+        266
+      ],
+      "bytes": 30630,
+      "alpha": true,
+      "sourceCrop": [
+        368,
+        59,
+        637,
+        325
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/banana.webp",
+      "size": [
+        305,
+        278
+      ],
+      "bytes": 22004,
+      "alpha": true,
+      "sourceCrop": [
+        656,
+        47,
+        961,
+        325
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/rice.webp",
+      "size": [
+        314,
+        287
+      ],
+      "bytes": 34342,
+      "alpha": true,
+      "sourceCrop": [
+        995,
+        38,
+        1309,
+        325
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/tea.webp",
+      "size": [
+        251,
+        266
+      ],
+      "bytes": 21476,
+      "alpha": true,
+      "sourceCrop": [
+        1343,
+        56,
+        1594,
+        322
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/olive-oil.webp",
+      "size": [
+        230,
+        314
+      ],
+      "bytes": 29556,
+      "alpha": true,
+      "sourceCrop": [
+        59,
+        326,
+        289,
+        640
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/flour.webp",
+      "size": [
+        287,
+        296
+      ],
+      "bytes": 28564,
+      "alpha": true,
+      "sourceCrop": [
+        362,
+        344,
+        649,
+        640
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/sugar.webp",
+      "size": [
+        296,
+        308
+      ],
+      "bytes": 30186,
+      "alpha": true,
+      "sourceCrop": [
+        674,
+        338,
+        970,
+        646
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/coffee.webp",
+      "size": [
+        290,
+        296
+      ],
+      "bytes": 29124,
+      "alpha": true,
+      "sourceCrop": [
+        1013,
+        344,
+        1303,
+        640
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/olives.webp",
+      "size": [
+        254,
+        296
+      ],
+      "bytes": 29314,
+      "alpha": true,
+      "sourceCrop": [
+        1343,
+        350,
+        1597,
+        646
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/pasta.webp",
+      "size": [
+        296,
+        289
+      ],
+      "bytes": 35934,
+      "alpha": true,
+      "sourceCrop": [
+        41,
+        642,
+        337,
+        931
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/canned-tomatoes.webp",
+      "size": [
+        251,
+        278
+      ],
+      "bytes": 28774,
+      "alpha": true,
+      "sourceCrop": [
+        380,
+        650,
+        631,
+        928
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/peach.webp",
+      "size": [
+        277,
+        271
+      ],
+      "bytes": 30624,
+      "alpha": true,
+      "sourceCrop": [
+        659,
+        657,
+        936,
+        928
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/grape.webp",
+      "size": [
+        263,
+        284
+      ],
+      "bytes": 32750,
+      "alpha": true,
+      "sourceCrop": [
+        1007,
+        647,
+        1270,
+        931
+      ]
+    },
+    {
+      "source": "docs/art/stage-goods-atlas-original.png",
+      "sourceSha256": "785a257deb34d5431956a97b83cfdd2d202bc83847f31dafbfae068279fc149c",
+      "runtime": "public/assets/strawberry.webp",
+      "size": [
+        230,
+        269
+      ],
+      "bytes": 28968,
+      "alpha": true,
+      "sourceCrop": [
+        1352,
+        659,
+        1582,
+        928
+      ]
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-lantern-left.webp",
+      "size": [
+        143,
+        240
+      ],
+      "bytes": 16722,
+      "alpha": true,
+      "sourceCrop": null,
+      "derivedFrom": "furniture-lanterns"
+    },
+    {
+      "source": "docs/art/stage-shop-furniture-atlas-original.png",
+      "sourceSha256": "2833b34ccce069223630ac9a772c2ecf08fe15500af6d3bfb653511b8ad72346",
+      "runtime": "public/assets/furniture-lantern-right.webp",
+      "size": [
+        143,
+        243
+      ],
+      "bytes": 16972,
+      "alpha": true,
+      "sourceCrop": null,
+      "derivedFrom": "furniture-lanterns"
+    },
+    {
+      "source": "docs/art/stage-fruit-furniture-atlas-original.png",
+      "sourceSha256": "5d552fe4b672f584d39db3117bcabe799baddb707814c5e2fcf7d8d26f6dc406",
+      "runtime": "public/assets/site-pavilion-roof.webp",
+      "size": [
+        377,
+        170
+      ],
+      "bytes": 22194,
+      "alpha": true,
+      "sourceCrop": null,
+      "derivedFrom": "furniture-canopy, upper 52%"
+    },
+    {
+      "source": "docs/art/stage-warehouse-empty-original.png",
+      "sourceSha256": "3f88d0a53d67b739a7bec750f41351a1751286b9cd55a68ca3463c699eb0ecd9",
+      "runtime": "public/assets/stage-warehouse-empty.webp",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 266956,
+      "alpha": false,
+      "sourceCrop": null
+    },
+    {
+      "source": "docs/art/stage-shop-expansion-empty-original.png",
+      "sourceSha256": "3161adda0906ca2c45d31bfb52a317f9281bcd0d01b58db197d9154147316322",
+      "runtime": "public/assets/stage-shop-expansion-empty.webp",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 244258,
+      "alpha": false,
+      "sourceCrop": null
+    },
+    {
+      "source": "docs/art/stage-fruit-market-empty-original.png",
+      "sourceSha256": "1fdd90be074fd6c015472eb7d87518e6c9b44815276325bc680342bd268714db",
+      "runtime": "public/assets/stage-fruit-market-empty.webp",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 323406,
+      "alpha": false,
+      "sourceCrop": null
+    },
+    {
+      "source": "docs/art/stage-shop-front-empty-original.png",
+      "sourceSha256": "e4bfde771e0c33c1fb4a56cab15d9c6b53467604ec5504d22092ea09fd79a0f0",
+      "runtime": "public/assets/stage-shop-front-empty.webp",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 252742,
+      "alpha": false,
+      "sourceCrop": null
+    },
+    {
+      "source": "docs/art/stage-warehouse-yard-empty-original.png",
+      "sourceSha256": "48c7f2c422ce85743563eb6fc8fee857fa59a57272b4332228d5cf817c463b02",
+      "runtime": "public/assets/stage-warehouse-yard-empty.webp",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 393306,
+      "alpha": false,
+      "sourceCrop": null
+    },
+    {
+      "source": "docs/art/campaign-map-cleared-original.png",
+      "sourceSha256": "335280c6c9f92ee3a7694074dfa8b5369af5b5659c2916c0591019034cb22340",
+      "runtime": "public/assets/campaign-map.webp",
+      "size": [
+        1536,
+        1024
+      ],
+      "bytes": 504686,
+      "alpha": false,
+      "sourceCrop": null
+    },
+    {
+      "source": "docs/art/stage-display-window-original.png",
+      "sourceSha256": "63038fc755af0ee76ac25e358cecc4955d15af1d8f732d0f30cf3f2968651195",
+      "runtime": "public/assets/furniture-display-window.webp",
+      "size": [
+        640,
+        354
+      ],
+      "bytes": 48612,
+      "alpha": true,
+      "sourceCrop": [
+        31,
+        85,
+        1554,
+        927
+      ]
+    }
+  ],
+  "bytes": 4868416
+}

@@ -1,17 +1,653 @@
 {
-  "bytes": 2402532,
+  "bytes": 68359156,
   "files": [
     {
+      "path": "dist/assets/hall-room-main-before.webp",
+      "bytes": 659348
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-cleared.webp",
+      "bytes": 626216
+    },
+    {
+      "path": "dist/assets/coastal-map-dormant-v1.webp",
+      "bytes": 621826
+    },
+    {
+      "path": "dist/assets/coastal-map-complete-v1.webp",
+      "bytes": 598198
+    },
+    {
+      "path": "dist/assets/hall-room-prep-before.webp",
+      "bytes": 596552
+    },
+    {
+      "path": "dist/assets/hall-polish-main-before.webp",
+      "bytes": 593436
+    },
+    {
+      "path": "dist/assets/coastal-map-tidied-v1.webp",
+      "bytes": 590718
+    },
+    {
+      "path": "dist/assets/warehouse-room-site-before.webp",
+      "bytes": 587728
+    },
+    {
+      "path": "dist/assets/warehouse-room-map-foundation.webp",
+      "bytes": 583148
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-before.webp",
+      "bytes": 581124
+    },
+    {
+      "path": "dist/assets/coastal-map-cleared-v1.webp",
+      "bytes": 573176
+    },
+    {
+      "path": "dist/assets/warehouse-room-map-master.webp",
+      "bytes": 569186
+    },
+    {
+      "path": "dist/assets/coastal-map-structure-v1.webp",
+      "bytes": 568100
+    },
+    {
+      "path": "dist/assets/coastal-map-roofed-v1.webp",
+      "bytes": 567446
+    },
+    {
+      "path": "dist/assets/warehouse-room-site-clear.webp",
+      "bytes": 564658
+    },
+    {
+      "path": "dist/assets/coastal-map-ready-v1.webp",
+      "bytes": 562644
+    },
+    {
+      "path": "dist/assets/coastal-map-foundation-v1.webp",
+      "bytes": 555620
+    },
+    {
+      "path": "dist/assets/coastal-map-rough-v1.webp",
+      "bytes": 551606
+    },
+    {
+      "path": "dist/assets/coastal-bakery-map-before.webp",
+      "bytes": 547540
+    },
+    {
+      "path": "dist/assets/bakery-yard-before.webp",
+      "bytes": 533934
+    },
+    {
+      "path": "dist/assets/warehouse-room-map-walls.webp",
+      "bytes": 529244
+    },
+    {
+      "path": "dist/assets/coastal-bakery-map-foundation.webp",
+      "bytes": 526810
+    },
+    {
+      "path": "dist/assets/warehouse-room-site-foundation.webp",
+      "bytes": 522452
+    },
+    {
+      "path": "dist/assets/coastal-bakery-map-clear.webp",
+      "bytes": 521976
+    },
+    {
+      "path": "dist/assets/coastal-bakery-map-roof.webp",
+      "bytes": 519534
+    },
+    {
+      "path": "dist/assets/bakery-yard-clear-4.webp",
+      "bytes": 514550
+    },
+    {
+      "path": "dist/assets/bakery-shop-master.webp",
+      "bytes": 510112
+    },
+    {
+      "path": "dist/assets/warehouse-room-exterior-master.webp",
+      "bytes": 506730
+    },
+    {
+      "path": "dist/assets/bakery-yard-clear-3.webp",
+      "bytes": 506332
+    },
+    {
       "path": "dist/assets/campaign-map.webp",
-      "bytes": 529648
+      "bytes": 504686
+    },
+    {
+      "path": "dist/assets/coastal-bakery-map-final.webp",
+      "bytes": 503582
+    },
+    {
+      "path": "dist/assets/coastal-bakery-map-ready.webp",
+      "bytes": 503494
+    },
+    {
+      "path": "dist/assets/bakery-yard-clear-2.webp",
+      "bytes": 500288
+    },
+    {
+      "path": "dist/assets/bakery-yard-clear-1.webp",
+      "bytes": 492550
+    },
+    {
+      "path": "dist/assets/hall-room-main-master.webp",
+      "bytes": 486568
+    },
+    {
+      "path": "dist/assets/hall-canvas-Dn4TarPx.js",
+      "bytes": 472690
+    },
+    {
+      "path": "dist/assets/warehouse-room-exterior-clean.webp",
+      "bytes": 472530
+    },
+    {
+      "path": "dist/assets/hall-room-prep-master.webp",
+      "bytes": 470322
+    },
+    {
+      "path": "dist/assets/worker-VFztytQN.js",
+      "bytes": 466206
+    },
+    {
+      "path": "dist/assets/warehouse-room-exterior-tool-cupboard-v8.webp",
+      "bytes": 461764
+    },
+    {
+      "path": "dist/assets/bakery-shop-stock.webp",
+      "bytes": 458672
+    },
+    {
+      "path": "dist/assets/coastal-bakery-map-walls.webp",
+      "bytes": 453512
+    },
+    {
+      "path": "dist/assets/bakery-yard-cleared.webp",
+      "bytes": 452754
+    },
+    {
+      "path": "dist/assets/warehouse-room-site-walls.webp",
+      "bytes": 449196
+    },
+    {
+      "path": "dist/assets/fruit-room-market-before-v2.webp",
+      "bytes": 444168
+    },
+    {
+      "path": "dist/assets/bakery-shop-clean.webp",
+      "bytes": 442638
+    },
+    {
+      "path": "dist/assets/bakery-yard-foundation-v2.webp",
+      "bytes": 441780
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-before.webp",
+      "bytes": 440366
+    },
+    {
+      "path": "dist/assets/bakery-shop-trays.webp",
+      "bytes": 435598
+    },
+    {
+      "path": "dist/assets/warehouse-room-cold-master.webp",
+      "bytes": 434428
+    },
+    {
+      "path": "dist/assets/fruit-room-market-master.webp",
+      "bytes": 432604
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-master.webp",
+      "bytes": 432510
+    },
+    {
+      "path": "dist/assets/bakery-yard-walls-v2.webp",
+      "bytes": 429910
+    },
+    {
+      "path": "dist/assets/hall-room-main-empty.webp",
+      "bytes": 419640
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-master.webp",
+      "bytes": 419198
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-cleared-1.webp",
+      "bytes": 416538
+    },
+    {
+      "path": "dist/assets/bakery-oven-rough.webp",
+      "bytes": 414416
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-stocked-v2.webp",
+      "bytes": 413290
+    },
+    {
+      "path": "dist/assets/bakery-shop-bare.webp",
+      "bytes": 412840
+    },
+    {
+      "path": "dist/assets/fruit-room-market-supported.webp",
+      "bytes": 411060
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-stocked-rack-v2.webp",
+      "bytes": 408240
+    },
+    {
+      "path": "dist/assets/bakery-shop-trays-clean.webp",
+      "bytes": 404528
+    },
+    {
+      "path": "dist/assets/fruit-room-hall-before.webp",
+      "bytes": 403068
+    },
+    {
+      "path": "dist/assets/bakery-shop-unlit.webp",
+      "bytes": 401434
+    },
+    {
+      "path": "dist/assets/bakery-yard-finished-v2.webp",
+      "bytes": 399646
+    },
+    {
+      "path": "dist/assets/bakery-yard-master-v2.webp",
+      "bytes": 397292
+    },
+    {
+      "path": "dist/assets/hall-polish-main-counter.webp",
+      "bytes": 396216
+    },
+    {
+      "path": "dist/assets/bakery-yard-awning-bare.webp",
+      "bytes": 396148
+    },
+    {
+      "path": "dist/assets/stage-warehouse-yard-empty.webp",
+      "bytes": 393306
+    },
+    {
+      "path": "dist/assets/bakery-shop-furniture.webp",
+      "bytes": 391508
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-cleared-2.webp",
+      "bytes": 390468
+    },
+    {
+      "path": "dist/assets/fruit-room-extension-before.webp",
+      "bytes": 388522
+    },
+    {
+      "path": "dist/assets/bakery-yard-roof.webp",
+      "bytes": 388452
+    },
+    {
+      "path": "dist/assets/fruit-room-hall-master.webp",
+      "bytes": 387598
+    },
+    {
+      "path": "dist/assets/content-Cl-UoHqI.js",
+      "bytes": 387415
+    },
+    {
+      "path": "dist/assets/bakery-yard-ready.webp",
+      "bytes": 384638
+    },
+    {
+      "path": "dist/assets/fruit-room-market-table-stock-v2.webp",
+      "bytes": 384290
+    },
+    {
+      "path": "dist/assets/scene-prep-before.webp",
+      "bytes": 381778
+    },
+    {
+      "path": "dist/assets/hall-room-prep-empty.webp",
+      "bytes": 378636
+    },
+    {
+      "path": "dist/assets/shop-expansion-service-master.webp",
+      "bytes": 378236
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-before.webp",
+      "bytes": 377752
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-cleared-3.webp",
+      "bytes": 377186
+    },
+    {
+      "path": "dist/assets/hall-room-main-clean.webp",
+      "bytes": 376360
+    },
+    {
+      "path": "dist/assets/fruit-room-market-bare.webp",
+      "bytes": 373264
+    },
+    {
+      "path": "dist/assets/fruit-room-market-table-empty-v2.webp",
+      "bytes": 367886
+    },
+    {
+      "path": "dist/assets/bakery-oven-master.webp",
+      "bytes": 364716
+    },
+    {
+      "path": "dist/assets/hall-polish-main-lighting.webp",
+      "bytes": 363796
+    },
+    {
+      "path": "dist/assets/bakery-oven-clean.webp",
+      "bytes": 360954
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-empty.webp",
+      "bytes": 352348
+    },
+    {
+      "path": "dist/assets/bakery-oven-bare.webp",
+      "bytes": 350590
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-labels.webp",
+      "bytes": 350434
+    },
+    {
+      "path": "dist/assets/shop-expansion-service-counter.webp",
+      "bytes": 350094
+    },
+    {
+      "path": "dist/assets/fruit-room-hall-left-stock-v2.webp",
+      "bytes": 347924
+    },
+    {
+      "path": "dist/assets/bakery-oven-unlit.webp",
+      "bytes": 347218
+    },
+    {
+      "path": "dist/assets/warehouse-room-cold-empty.webp",
+      "bytes": 346018
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-empty-rack-v2.webp",
+      "bytes": 340406
+    },
+    {
+      "path": "dist/assets/warehouse-room-cold-before.webp",
+      "bytes": 340062
+    },
+    {
+      "path": "dist/assets/warehouse-2-C-6tP80o.json",
+      "bytes": 337125
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-cleared-4.webp",
+      "bytes": 335300
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-dry-crates-bare.webp",
+      "bytes": 334082
+    },
+    {
+      "path": "dist/assets/fruit-yard-2-B6-8lDjF.json",
+      "bytes": 333616
+    },
+    {
+      "path": "dist/assets/fruit-room-hall-bare.webp",
+      "bytes": 330584
+    },
+    {
+      "path": "dist/assets/warehouse-room-cold-cabinet-bare.webp",
+      "bytes": 330358
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-roof.webp",
+      "bytes": 328974
+    },
+    {
+      "path": "dist/assets/warehouse-room-cold-ventilation.webp",
+      "bytes": 328270
+    },
+    {
+      "path": "dist/assets/fruit-room-hall-structure.webp",
+      "bytes": 327830
+    },
+    {
+      "path": "dist/assets/warehouse-room-cold-rack-bare.webp",
+      "bytes": 326870
+    },
+    {
+      "path": "dist/assets/fruit-room-market-empty-v2.webp",
+      "bytes": 326644
+    },
+    {
+      "path": "dist/assets/fruit-room-hall-left-empty-v2.webp",
+      "bytes": 326578
+    },
+    {
+      "path": "dist/assets/shop-2-BgEYtqnl.json",
+      "bytes": 324295
+    },
+    {
+      "path": "dist/assets/stage-fruit-market-empty.webp",
+      "bytes": 323406
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-rack-bare.webp",
+      "bytes": 322962
+    },
+    {
+      "path": "dist/assets/hall-corner-empty.webp",
+      "bytes": 320580
+    },
+    {
+      "path": "dist/assets/bakery-shop-rough.webp",
+      "bytes": 319394
+    },
+    {
+      "path": "dist/assets/fruit-room-hall-rack-only-v2.webp",
+      "bytes": 315630
+    },
+    {
+      "path": "dist/assets/fruit-room-extension-walls.webp",
+      "bytes": 314260
+    },
+    {
+      "path": "dist/assets/shop-expansion-service-base.webp",
+      "bytes": 313832
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-bare.webp",
+      "bytes": 313212
+    },
+    {
+      "path": "dist/assets/fruit-room-extension-frame.webp",
+      "bytes": 307802
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-supported.webp",
+      "bytes": 302356
+    },
+    {
+      "path": "dist/assets/fruit-room-market-structure.webp",
+      "bytes": 298022
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-structure.webp",
+      "bytes": 295818
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-frame.webp",
+      "bytes": 295256
+    },
+    {
+      "path": "dist/assets/fruit-room-hall-empty.webp",
+      "bytes": 290612
     },
     {
       "path": "dist/assets/shop.webp",
       "bytes": 288054
     },
     {
+      "path": "dist/assets/fruit-room-extension-master.webp",
+      "bytes": 284520
+    },
+    {
+      "path": "dist/assets/hall-room-prep-clean.webp",
+      "bytes": 279614
+    },
+    {
+      "path": "dist/assets/fruit-room-extension-clear.webp",
+      "bytes": 275020
+    },
+    {
+      "path": "dist/assets/fruit-room-extension-unlit.webp",
+      "bytes": 273716
+    },
+    {
+      "path": "dist/assets/fruit-room-extension-plinth.webp",
+      "bytes": 273664
+    },
+    {
+      "path": "dist/assets/fruit-room-extension-roof.webp",
+      "bytes": 268694
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-master.webp",
+      "bytes": 267326
+    },
+    {
+      "path": "dist/assets/stage-warehouse-empty.webp",
+      "bytes": 266956
+    },
+    {
+      "path": "dist/assets/warehouse-room-cold-clean.webp",
+      "bytes": 265734
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-foundation.webp",
+      "bytes": 262868
+    },
+    {
+      "path": "dist/assets/fruit-room-extension-foundation.webp",
+      "bytes": 261514
+    },
+    {
+      "path": "dist/assets/hall-v1-empty.webp",
+      "bytes": 261464
+    },
+    {
+      "path": "dist/assets/fruit-room-pavilion-clear.webp",
+      "bytes": 258446
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-packing-station-v6.webp",
+      "bytes": 257816
+    },
+    {
+      "path": "dist/assets/stage-shop-front-empty.webp",
+      "bytes": 252742
+    },
+    {
+      "path": "dist/assets/scene-main-before.webp",
+      "bytes": 247256
+    },
+    {
+      "path": "dist/assets/hall-polish-prep-lighting.webp",
+      "bytes": 246026
+    },
+    {
+      "path": "dist/assets/shop-expansion-grocery-clean.webp",
+      "bytes": 244844
+    },
+    {
+      "path": "dist/assets/stage-shop-expansion-empty.webp",
+      "bytes": 244258
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-packing-bench-bare.webp",
+      "bytes": 242574
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-pallet-only.webp",
+      "bytes": 241728
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-clean.webp",
+      "bytes": 241470
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-inspection-table-bare.webp",
+      "bytes": 229606
+    },
+    {
+      "path": "dist/assets/warehouse-room-storage-cans-bare.webp",
+      "bytes": 225562
+    },
+    {
+      "path": "dist/assets/warehouse-1-rbkNCrn2.json",
+      "bytes": 222998
+    },
+    {
+      "path": "dist/assets/fruit-yard-1-DLtidTQk.json",
+      "bytes": 219234
+    },
+    {
+      "path": "dist/assets/hall-corner-counter.webp",
+      "bytes": 211312
+    },
+    {
+      "path": "dist/assets/shop-1-B8Uh2qu4.json",
+      "bytes": 201199
+    },
+    {
+      "path": "dist/assets/bakery-1-DuHIfZEL.json",
+      "bytes": 199668
+    },
+    {
+      "path": "dist/assets/scene-prep-light.webp",
+      "bytes": 199482
+    },
+    {
+      "path": "dist/assets/scene-main-master.webp",
+      "bytes": 193348
+    },
+    {
+      "path": "dist/assets/scene-main-light.webp",
+      "bytes": 190848
+    },
+    {
+      "path": "dist/assets/scene-main-empty.webp",
+      "bytes": 187326
+    },
+    {
+      "path": "dist/assets/scene-prep-master.webp",
+      "bytes": 184518
+    },
+    {
       "path": "dist/assets/campaign-shop-empty.webp",
       "bytes": 182596
+    },
+    {
+      "path": "dist/assets/scene-prep-empty.webp",
+      "bytes": 181970
+    },
+    {
+      "path": "dist/assets/hall-v2-empty.webp",
+      "bytes": 174154
     },
     {
       "path": "dist/assets/campaign-shop-cold.webp",
@@ -26,32 +662,144 @@
       "bytes": 151674
     },
     {
+      "path": "dist/assets/scene-main-clean.webp",
+      "bytes": 130564
+    },
+    {
+      "path": "dist/assets/game-IFqUMlUd.js",
+      "bytes": 117520
+    },
+    {
       "path": "dist/assets/campaign-shelving.webp",
       "bytes": 116132
+    },
+    {
+      "path": "dist/assets/hall-corner-left.webp",
+      "bytes": 115928
+    },
+    {
+      "path": "dist/assets/hall-corner-right.webp",
+      "bytes": 114272
+    },
+    {
+      "path": "dist/assets/hall-packing-wall-shelf.webp",
+      "bytes": 111744
+    },
+    {
+      "path": "dist/assets/scene-prep-clean.webp",
+      "bytes": 103838
     },
     {
       "path": "dist/assets/campaign-fridge.webp",
       "bytes": 94416
     },
     {
-      "path": "dist/assets/worker-CyMeiIjg.js",
-      "bytes": 64371
+      "path": "dist/assets/hall-v1-counter.webp",
+      "bytes": 86118
+    },
+    {
+      "path": "dist/assets/hall-corner-tray-left.webp",
+      "bytes": 84126
+    },
+    {
+      "path": "dist/assets/hall-corner-tray-right.webp",
+      "bytes": 84050
+    },
+    {
+      "path": "dist/assets/campaign-window-display.webp",
+      "bytes": 82540
+    },
+    {
+      "path": "dist/assets/hall-tray-right.webp",
+      "bytes": 82476
+    },
+    {
+      "path": "dist/assets/hall-v2-north-display.webp",
+      "bytes": 81458
+    },
+    {
+      "path": "dist/assets/hall-tray-left.webp",
+      "bytes": 81094
+    },
+    {
+      "path": "dist/assets/hall-v1-north-display.webp",
+      "bytes": 77328
+    },
+    {
+      "path": "dist/assets/CanvasPool-CWB7dUpA.js",
+      "bytes": 71198
+    },
+    {
+      "path": "dist/assets/game-DC2pxQzJ.css",
+      "bytes": 67210
+    },
+    {
+      "path": "dist/assets/site-vines.webp",
+      "bytes": 65502
+    },
+    {
+      "path": "dist/assets/hall-balance-scale.webp",
+      "bytes": 63732
     },
     {
       "path": "dist/assets/shelf.webp",
       "bytes": 62010
     },
     {
-      "path": "dist/assets/game-BeVTRpKt.js",
-      "bytes": 55116
+      "path": "dist/assets/GraphicsContext-DBPmrbyq.js",
+      "bytes": 61700
+    },
+    {
+      "path": "dist/assets/hall-v2-order-rack.webp",
+      "bytes": 61376
+    },
+    {
+      "path": "dist/assets/hall-v1-west-display.webp",
+      "bytes": 59290
+    },
+    {
+      "path": "dist/assets/RenderTargetSystem-BE0EIfcE.js",
+      "bytes": 58826
+    },
+    {
+      "path": "dist/assets/site-ruins.webp",
+      "bytes": 58306
+    },
+    {
+      "path": "dist/assets/site-frame.webp",
+      "bytes": 57210
+    },
+    {
+      "path": "dist/assets/furniture-drying-rack.webp",
+      "bytes": 56996
+    },
+    {
+      "path": "dist/assets/site-rubbish.webp",
+      "bytes": 50902
     },
     {
       "path": "dist/assets/bread.webp",
       "bytes": 50120
     },
     {
+      "path": "dist/assets/hall-v2-packing-table.webp",
+      "bytes": 49964
+    },
+    {
+      "path": "dist/assets/furniture-display-window.webp",
+      "bytes": 48612
+    },
+    {
       "path": "dist/assets/campaign-basket.webp",
       "bytes": 48576
+    },
+    {
+      "path": "dist/assets/site-stumps.webp",
+      "bytes": 47714
+    },
+    {
+      "path": "dist/assets/hall-order-parcel.webp",
+      "bytes": 47538
     },
     {
       "path": "dist/assets/jam.webp",
@@ -62,80 +810,744 @@
       "bytes": 45534
     },
     {
+      "path": "dist/assets/furniture-bread-trays.webp",
+      "bytes": 45032
+    },
+    {
       "path": "dist/assets/pear.webp",
       "bytes": 44714
     },
     {
-      "path": "dist/assets/jobs-D7rhbHQH.css",
-      "bytes": 43915
+      "path": "dist/assets/site-rough-ground.webp",
+      "bytes": 44580
+    },
+    {
+      "path": "dist/assets/jobs-CW_JHeLp.css",
+      "bytes": 44407
+    },
+    {
+      "path": "dist/assets/furniture-wire-shelves.webp",
+      "bytes": 43596
+    },
+    {
+      "path": "dist/assets/browserAll-uTUoBkyd.js",
+      "bytes": 43518
+    },
+    {
+      "path": "dist/assets/Filter-K5N_DjEv.js",
+      "bytes": 42004
     },
     {
       "path": "dist/assets/lemon.webp",
       "bytes": 40684
     },
     {
+      "path": "dist/assets/croissant.webp",
+      "bytes": 40480
+    },
+    {
+      "path": "dist/assets/furniture-fruit-island.webp",
+      "bytes": 40022
+    },
+    {
+      "path": "dist/assets/site-windows-door.webp",
+      "bytes": 38806
+    },
+    {
+      "path": "dist/assets/furniture-shopping-baskets.webp",
+      "bytes": 38780
+    },
+    {
+      "path": "dist/assets/furniture-tiered-baskets.webp",
+      "bytes": 37436
+    },
+    {
+      "path": "dist/assets/furniture-fruit-baskets.webp",
+      "bytes": 36874
+    },
+    {
+      "path": "dist/assets/furniture-berry-case.webp",
+      "bytes": 36522
+    },
+    {
+      "path": "dist/assets/furniture-packing-table.webp",
+      "bytes": 36118
+    },
+    {
+      "path": "dist/assets/pasta.webp",
+      "bytes": 35934
+    },
+    {
+      "path": "dist/assets/furniture-flour-rack.webp",
+      "bytes": 35864
+    },
+    {
+      "path": "dist/assets/furniture-bench.webp",
+      "bytes": 35506
+    },
+    {
+      "path": "dist/assets/site-outline.webp",
+      "bytes": 35228
+    },
+    {
+      "path": "dist/assets/site-clear-ground.webp",
+      "bytes": 35132
+    },
+    {
+      "path": "dist/assets/rice.webp",
+      "bytes": 34342
+    },
+    {
       "path": "dist/assets/juice.webp",
       "bytes": 34286
     },
     {
-      "path": "dist/assets/campaign-scene-CUseQUfR.js",
-      "bytes": 33084
+      "path": "dist/assets/furniture-insulation.webp",
+      "bytes": 33852
+    },
+    {
+      "path": "dist/assets/site-walls.webp",
+      "bytes": 33760
+    },
+    {
+      "path": "dist/assets/furniture-fruit-stand.webp",
+      "bytes": 33578
+    },
+    {
+      "path": "dist/assets/furniture-inspection-table.webp",
+      "bytes": 33512
+    },
+    {
+      "path": "dist/assets/furniture-sacks.webp",
+      "bytes": 33174
+    },
+    {
+      "path": "dist/assets/furniture-category-boards.webp",
+      "bytes": 33110
+    },
+    {
+      "path": "dist/assets/furniture-window-display.webp",
+      "bytes": 33024
+    },
+    {
+      "path": "dist/assets/furniture-spotlight.webp",
+      "bytes": 32838
+    },
+    {
+      "path": "dist/assets/furniture-lanterns.webp",
+      "bytes": 32768
+    },
+    {
+      "path": "dist/assets/grape.webp",
+      "bytes": 32750
+    },
+    {
+      "path": "dist/assets/furniture-tool-cupboard.webp",
+      "bytes": 32534
+    },
+    {
+      "path": "dist/assets/furniture-canopy.webp",
+      "bytes": 32178
+    },
+    {
+      "path": "dist/assets/furniture-crates.webp",
+      "bytes": 31898
+    },
+    {
+      "path": "dist/assets/site-foundation.webp",
+      "bytes": 31682
+    },
+    {
+      "path": "dist/assets/furniture-bread-stand.webp",
+      "bytes": 30754
     },
     {
       "path": "dist/assets/eggs.webp",
       "bytes": 30724
     },
     {
+      "path": "dist/assets/orange.webp",
+      "bytes": 30630
+    },
+    {
+      "path": "dist/assets/peach.webp",
+      "bytes": 30624
+    },
+    {
+      "path": "dist/assets/hall-v2-cupboard.webp",
+      "bytes": 30314
+    },
+    {
+      "path": "dist/assets/furniture-opening-sign.webp",
+      "bytes": 30210
+    },
+    {
+      "path": "dist/assets/sugar.webp",
+      "bytes": 30186
+    },
+    {
+      "path": "dist/assets/apple.webp",
+      "bytes": 29928
+    },
+    {
+      "path": "dist/assets/furniture-wash-basin.webp",
+      "bytes": 29722
+    },
+    {
+      "path": "dist/assets/material-gears.webp",
+      "bytes": 29670
+    },
+    {
+      "path": "dist/assets/furniture-banana-bar.webp",
+      "bytes": 29662
+    },
+    {
+      "path": "dist/assets/furniture-walkway.webp",
+      "bytes": 29570
+    },
+    {
+      "path": "dist/assets/olive-oil.webp",
+      "bytes": 29556
+    },
+    {
+      "path": "dist/assets/baguette.webp",
+      "bytes": 29346
+    },
+    {
+      "path": "dist/assets/olives.webp",
+      "bytes": 29314
+    },
+    {
+      "path": "dist/assets/furniture-floor-broken.webp",
+      "bytes": 29186
+    },
+    {
+      "path": "dist/assets/coffee.webp",
+      "bytes": 29124
+    },
+    {
+      "path": "dist/assets/furniture-large-sign.webp",
+      "bytes": 29120
+    },
+    {
+      "path": "dist/assets/strawberry.webp",
+      "bytes": 28968
+    },
+    {
+      "path": "dist/assets/canned-tomatoes.webp",
+      "bytes": 28774
+    },
+    {
+      "path": "dist/assets/flour.webp",
+      "bytes": 28564
+    },
+    {
+      "path": "dist/assets/furniture-hamper-counter.webp",
+      "bytes": 28280
+    },
+    {
+      "path": "dist/assets/furniture-modular-shelf.webp",
+      "bytes": 27790
+    },
+    {
+      "path": "dist/assets/material-tiles.webp",
+      "bytes": 27212
+    },
+    {
+      "path": "dist/assets/furniture-cold-cabinet.webp",
+      "bytes": 27106
+    },
+    {
+      "path": "dist/assets/furniture-trolley.webp",
+      "bytes": 27026
+    },
+    {
+      "path": "dist/assets/furniture-door.webp",
+      "bytes": 26940
+    },
+    {
+      "path": "dist/assets/furniture-pickup-counter.webp",
+      "bytes": 26702
+    },
+    {
       "path": "dist/assets/milk.webp",
       "bytes": 26586
+    },
+    {
+      "path": "dist/assets/furniture-sugar-containers.webp",
+      "bytes": 26436
+    },
+    {
+      "path": "dist/assets/furniture-order-rack.webp",
+      "bytes": 26434
+    },
+    {
+      "path": "dist/assets/furniture-scale.webp",
+      "bytes": 25970
+    },
+    {
+      "path": "dist/assets/furniture-packing-station.webp",
+      "bytes": 25904
+    },
+    {
+      "path": "dist/assets/site-roof.webp",
+      "bytes": 25562
+    },
+    {
+      "path": "dist/assets/furniture-metal-bins.webp",
+      "bytes": 25390
+    },
+    {
+      "path": "dist/assets/material-wire.webp",
+      "bytes": 25156
+    },
+    {
+      "path": "dist/assets/furniture-wall-panel.webp",
+      "bytes": 24836
+    },
+    {
+      "path": "dist/assets/furniture-cupboard.webp",
+      "bytes": 24674
+    },
+    {
+      "path": "dist/assets/furniture-citrus-stand.webp",
+      "bytes": 24596
+    },
+    {
+      "path": "dist/assets/material-toolbox.webp",
+      "bytes": 24242
+    },
+    {
+      "path": "dist/assets/material-nails.webp",
+      "bytes": 24190
+    },
+    {
+      "path": "dist/assets/furniture-bag-roll.webp",
+      "bytes": 24028
+    },
+    {
+      "path": "dist/assets/furniture-return-bin.webp",
+      "bytes": 23454
+    },
+    {
+      "path": "dist/assets/furniture-direction-post.webp",
+      "bytes": 23416
+    },
+    {
+      "path": "dist/assets/material-cement.webp",
+      "bytes": 23406
+    },
+    {
+      "path": "dist/assets/furniture-awning.webp",
+      "bytes": 23298
+    },
+    {
+      "path": "dist/assets/furniture-pallet.webp",
+      "bytes": 23240
+    },
+    {
+      "path": "dist/assets/furniture-tea-shelf.webp",
+      "bytes": 22694
+    },
+    {
+      "path": "dist/assets/furniture-counter-extension.webp",
+      "bytes": 22446
     },
     {
       "path": "dist/assets/cheese.webp",
       "bytes": 22414
     },
     {
-      "path": "dist/assets/game-C1m4eo4W.css",
-      "bytes": 19244
+      "path": "dist/assets/furniture-condiment-stand.webp",
+      "bytes": 22300
     },
     {
-      "path": "dist/assets/content-DFe4qp7f.js",
-      "bytes": 12340
+      "path": "dist/assets/furniture-packaging-cupboard.webp",
+      "bytes": 22206
     },
     {
-      "path": "dist/assets/campaign-DRilzifX.css",
-      "bytes": 6424
+      "path": "dist/assets/site-pavilion-roof.webp",
+      "bytes": 22194
     },
     {
-      "path": "dist/assets/author-CGfbQEGi.js",
+      "path": "dist/assets/furniture-directions.webp",
+      "bytes": 22190
+    },
+    {
+      "path": "dist/assets/furniture-bag-stand.webp",
+      "bytes": 22018
+    },
+    {
+      "path": "dist/assets/banana.webp",
+      "bytes": 22004
+    },
+    {
+      "path": "dist/assets/material-boards.webp",
+      "bytes": 21950
+    },
+    {
+      "path": "dist/assets/furniture-price-holders.webp",
+      "bytes": 21918
+    },
+    {
+      "path": "dist/assets/material-bricks.webp",
+      "bytes": 21894
+    },
+    {
+      "path": "dist/assets/furniture-groceries-stand.webp",
+      "bytes": 21586
+    },
+    {
+      "path": "dist/assets/tea.webp",
+      "bytes": 21476
+    },
+    {
+      "path": "dist/assets/furniture-supply-bell.webp",
+      "bytes": 21418
+    },
+    {
+      "path": "dist/assets/material-paint.webp",
+      "bytes": 21296
+    },
+    {
+      "path": "dist/assets/furniture-floor-new.webp",
+      "bytes": 20700
+    },
+    {
+      "path": "dist/assets/furniture-ice-chest.webp",
+      "bytes": 19370
+    },
+    {
+      "path": "dist/assets/GCManagedHash-Cxey1C9H.js",
+      "bytes": 19344
+    },
+    {
+      "path": "dist/assets/material-glass.webp",
+      "bytes": 18524
+    },
+    {
+      "path": "dist/assets/furniture-side-counter.webp",
+      "bytes": 17724
+    },
+    {
+      "path": "dist/assets/furniture-lantern-right.webp",
+      "bytes": 16972
+    },
+    {
+      "path": "dist/assets/furniture-lantern-left.webp",
+      "bytes": 16722
+    },
+    {
+      "path": "dist/assets/furniture-base-cabinet.webp",
+      "bytes": 16484
+    },
+    {
+      "path": "dist/assets/init-xsI8n59V.js",
+      "bytes": 14665
+    },
+    {
+      "path": "dist/assets/furniture-terminal.webp",
+      "bytes": 14200
+    },
+    {
+      "path": "dist/assets/furniture-wind-screens.webp",
+      "bytes": 13824
+    },
+    {
+      "path": "dist/assets/campaign-B-tRPpsT.css",
+      "bytes": 12559
+    },
+    {
+      "path": "dist/assets/furniture-thermometer.webp",
+      "bytes": 11970
+    },
+    {
+      "path": "dist/assets/getTexelRangeRects-BYyexSrH.js",
+      "bytes": 11358
+    },
+    {
+      "path": "dist/assets/campaign-V90GrYPR.js",
+      "bytes": 6674
+    },
+    {
+      "path": "dist/assets/jobs-CrbjB6Xz.js",
+      "bytes": 6671
+    },
+    {
+      "path": "dist/assets/author-Bpo_hi3Z.js",
       "bytes": 6350
     },
     {
-      "path": "dist/assets/campaign-BQaBXxXd.js",
-      "bytes": 4881
+      "path": "dist/assets/canvasUtils-DgOpi9E8.js",
+      "bytes": 6054
     },
     {
-      "path": "dist/assets/jobs-B4k-DL22.js",
-      "bytes": 3046
+      "path": "dist/index.html",
+      "bytes": 1998
     },
     {
       "path": "dist/assets/author-bxatv301.css",
       "bytes": 1982
     },
     {
-      "path": "dist/index.html",
-      "bytes": 1233
+      "path": "dist/assets/warehouse-room-parking-v6.svg",
+      "bytes": 1540
     },
     {
       "path": "dist/campaign.html",
-      "bytes": 732
+      "bytes": 1497
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-rack-v8.svg",
+      "bytes": 1147
+    },
+    {
+      "path": "dist/assets/Cache-CjXwQj7Q.js",
+      "bytes": 1100
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-crates-v8.svg",
+      "bytes": 1040
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-cold-rack-v8.svg",
+      "bytes": 1033
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-cold-cabinet-v8.svg",
+      "bytes": 920
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-delivery-crate-v8.svg",
+      "bytes": 820
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-pallet-v8.svg",
+      "bytes": 820
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-inspection-table-v8.svg",
+      "bytes": 818
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-cold-bins-v8.svg",
+      "bytes": 816
     },
     {
       "path": "dist/author.html",
       "bytes": 714
     },
     {
+      "path": "dist/assets/warehouse-shadow-cold-fruit-v8.svg",
+      "bytes": 710
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-packing-bench-v8.svg",
+      "bytes": 710
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-exterior-wash-basin-v8.svg",
+      "bytes": 709
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-cans-v8.svg",
+      "bytes": 707
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-chest-v8.svg",
+      "bytes": 706
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-trolley-v8.svg",
+      "bytes": 706
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-exterior-tool-cupboard-v8.svg",
+      "bytes": 703
+    },
+    {
+      "path": "dist/assets/bakery-contact-bread-counter.svg",
+      "bytes": 602
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-exterior-awning-v8.svg",
+      "bytes": 598
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-exterior-returns-rack-v8.svg",
+      "bytes": 596
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-storage-cupboard-v8.svg",
+      "bytes": 596
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-1-18.svg",
+      "bytes": 579
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-13.svg",
+      "bytes": 578
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-4-v2.svg",
+      "bytes": 577
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-4.svg",
+      "bytes": 577
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-1-13.svg",
+      "bytes": 576
+    },
+    {
+      "path": "dist/assets/bakery-yard-survey.svg",
+      "bytes": 568
+    },
+    {
+      "path": "dist/assets/bakery-contact-table.svg",
+      "bytes": 545
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-1-22.svg",
+      "bytes": 514
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-1-24.svg",
+      "bytes": 514
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-2-14.svg",
+      "bytes": 514
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-2-17.svg",
+      "bytes": 514
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-2-16.svg",
+      "bytes": 512
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-1-16.svg",
+      "bytes": 511
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-14.svg",
+      "bytes": 511
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-1-17.svg",
+      "bytes": 510
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-16.svg",
+      "bytes": 510
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-2-12.svg",
+      "bytes": 509
+    },
+    {
+      "path": "dist/assets/bakery-contact-basket.svg",
+      "bytes": 487
+    },
+    {
+      "path": "dist/assets/warehouse-shadow-exterior-direction-post-v8.svg",
+      "bytes": 484
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-10.svg",
+      "bytes": 449
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-1-25.svg",
+      "bytes": 447
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-2-11.svg",
+      "bytes": 447
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-2-19.svg",
+      "bytes": 447
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-15.svg",
+      "bytes": 447
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-6.svg",
+      "bytes": 447
+    },
+    {
+      "path": "dist/assets/bakery-contact-packaging.svg",
+      "bytes": 430
+    },
+    {
+      "path": "dist/assets/bakery-contact-rack.svg",
+      "bytes": 430
+    },
+    {
+      "path": "dist/assets/bakery-contact-sink.svg",
+      "bytes": 429
+    },
+    {
+      "path": "dist/assets/fruit-room-contact-1-23.svg",
+      "bytes": 384
+    },
+    {
+      "path": "dist/assets/shop-expansion-contact-17.svg",
+      "bytes": 384
+    },
+    {
+      "path": "dist/assets/fruit-room-outline.svg",
+      "bytes": 375
+    },
+    {
+      "path": "dist/assets/bakery-contact-oven.svg",
+      "bytes": 373
+    },
+    {
+      "path": "dist/assets/getTextureBatchBindGroup-BztqtdtG.js",
+      "bytes": 344
+    },
+    {
       "path": "dist/favicon.svg",
       "bytes": 278
+    },
+    {
+      "path": "dist/assets/fruit-yard-1-DCCFAU_6.js",
+      "bytes": 86
+    },
+    {
+      "path": "dist/assets/fruit-yard-2-C7xGAxlT.js",
+      "bytes": 86
+    },
+    {
+      "path": "dist/assets/warehouse-1-CCAp9NME.js",
+      "bytes": 85
+    },
+    {
+      "path": "dist/assets/warehouse-2-lintpA_j.js",
+      "bytes": 85
+    },
+    {
+      "path": "dist/assets/bakery-1-B_JzTuNZ.js",
+      "bytes": 82
+    },
+    {
+      "path": "dist/assets/shop-1-BycOcwjw.js",
+      "bytes": 80
+    },
+    {
+      "path": "dist/assets/shop-2-B_Q_Yc9F.js",
+      "bytes": 80
+    },
+    {
+      "path": "dist/assets/webworkerAll-Ca28I165.js",
+      "bytes": 61
     }
   ]
 }

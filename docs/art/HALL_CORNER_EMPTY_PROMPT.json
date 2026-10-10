@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-06",
+  "useCase": "precise-object-edit",
+  "tool": "built-in image_gen.imagegen",
+  "source": "docs/art/hall-corner-empty-original.png",
+  "runtime": "public/assets/hall-corner-empty.webp",
+  "references": [
+    {
+      "path": "docs/art/concepts/hall-corner-fuller.png",
+      "role": "approved scene and exact edit target"
+    }
+  ],
+  "transparentBackground": false,
+  "prompt": "Use case: precise-object-edit. Asset type: EMPTY architectural background layer for a 2D cozy seaside grocery game. Input image1 is the APPROVED FULL SCENE and EXACT EDIT TARGET, not a loose style reference. Edit this existing image by removing ALL movable shop contents: remove BOTH entire perpendicular turquoise-and-oak grocery display units, every wooden display surface and support belonging to these units, every product, every small and large wicker basket, and the entire foreground turquoise wooden checkout counter including all legs, cash register and its close shadows. Remove contact shadows cast by removed furniture. Reconstruct only the empty cream-plaster walls, turquoise skirting and honey oak plank floor behind removed furniture using the SAME existing room geometry and exact camera perspective. Preserve every existing architectural feature and its screen placement: the open turquoise door and its opening at far LEFT, turquoise-framed sea-view window and striped awning above that left window, the two perpendicular walls meeting at the same center-rear vertical timber corner beam around x53%, the ceiling timber beams, the Mediterranean sea/village/garden visible through openings, wood-floor perspective and golden sunlight/shadow patterns from the door/window. Keep framing, crop, camera viewpoint, perspective, lighting, palette, rendering style and the 3:2 canvas EXACTLY as image1. No redesign, no zoom, no moved doorway or window, no added extra windows. The result contains ONLY the architectural shell and view beyond openings: no shelves or display cabinets, no counters, tables, cash register, goods, baskets, crates, signs, decorations, people, interface, lettering or watermark. Beautiful polished tactile dimensional casual-game raster illustration remains identical in style to the approved input. Opaque architectural background; no transparency.",
+  "visualReview": {
+    "preserved": [
+      "3:2 camera/framing",
+      "left open turquoise door and threshold",
+      "left window, awning, sea and village view",
+      "central timber corner and perpendicular walls",
+      "ceiling beams",
+      "wood floor and sunlight from window/door"
+    ],
+    "removed": [
+      "both entire display units",
+      "all products and baskets",
+      "foreground counter and cash register",
+      "contact shadows of removed furniture"
+    ],
+    "method": "Original concept and generated empty background viewed and compared side by side. Architectural landmarks and perspective retained; no movable contents remain."
+  }
+}

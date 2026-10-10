@@ -1,0 +1,142 @@
+{
+  "hall-v1-empty": {
+    "width": 1536,
+    "height": 1024,
+    "crop": [
+      0,
+      0,
+      1536,
+      1024
+    ]
+  },
+  "hall-v2-empty": {
+    "width": 1536,
+    "height": 1024,
+    "crop": [
+      0,
+      0,
+      1536,
+      1024
+    ]
+  },
+  "hall-v1-west-display": {
+    "width": 472,
+    "height": 556,
+    "crop": [
+      371,
+      75,
+      843,
+      631
+    ]
+  },
+  "hall-v1-north-display": {
+    "width": 602,
+    "height": 598,
+    "crop": [
+      843,
+      75,
+      1445,
+      673
+    ]
+  },
+  "hall-v1-counter": {
+    "width": 751,
+    "height": 586,
+    "crop": [
+      730,
+      407,
+      1481,
+      993
+    ]
+  },
+  "hall-v2-north-display": {
+    "width": 524,
+    "height": 646,
+    "crop": [
+      14,
+      158,
+      538,
+      804
+    ]
+  },
+  "hall-v2-packing-table": {
+    "width": 625,
+    "height": 487,
+    "crop": [
+      471,
+      306,
+      1096,
+      793
+    ]
+  },
+  "hall-v2-order-rack": {
+    "width": 402,
+    "height": 635,
+    "crop": [
+      969,
+      181,
+      1371,
+      816
+    ]
+  },
+  "hall-v2-cupboard": {
+    "width": 296,
+    "height": 678,
+    "crop": [
+      1239,
+      224,
+      1535,
+      902
+    ]
+  },
+  "hall-tray-left": {
+    "width": 640,
+    "height": 341,
+    "crop": [
+      87,
+      175,
+      1484,
+      920
+    ]
+  },
+  "hall-tray-right": {
+    "width": 640,
+    "height": 376,
+    "crop": [
+      110,
+      152,
+      1441,
+      934
+    ]
+  },
+  "hall-order-parcel": {
+    "width": 400,
+    "height": 416,
+    "crop": [
+      249,
+      251,
+      1005,
+      1038
+    ]
+  },
+  "hall-packing-wall-shelf": {
+    "width": 700,
+    "height": 672,
+    "crop": [
+      33,
+      60,
+      1234,
+      1213
+    ]
+  },
+  "hall-balance-scale": {
+    "width": 500,
+    "height": 436,
+    "crop": [
+      295,
+      108,
+      1252,
+      943
+    ]
+  }
+}

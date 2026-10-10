@@ -1,0 +1,17 @@
+{
+  "version": 8,
+  "mode": "built-in image_gen edit",
+  "output": "docs/art/warehouse-rooms/exterior-tool-cupboard-v8.png",
+  "prompt": "Use case: precise-object-edit.\nAsset type: registered 1536 x 1024 game illustration donor.\nInput image 1 is the EDIT TARGET: exterior-clean warehouse scene. Input image 2 is a STYLE REFERENCE ONLY for the teal freestanding double-door tool cupboard and broom near its right edge.\nModify image 1 ONLY by adding that teal freestanding tool cupboard against the BLANK FRONT WALL TO THE LEFT OF THE LARGE CENTRAL ENTRANCE, between the left drainpipe and the entrance. In original 1536x1024 coordinates, the entire cupboard including molding and feet fits x340..510, y398..655. It is a freestanding cabinet, clearly shallower than the building, with teal paneled double doors, two dark small handles, small metal hinges and a thin visible right side. It stands firmly on two short visible feet at floor y655. A broom can lean on its LEFT side entirely within x323..345, without touching the drainpipe.\nDo NOT put any cupboard at the right side of the building. The original narrow teal service door at x1290..1406,y376..624 MUST stay fully visible, unchanged and unobstructed. The large entrance x533..902 also stays completely unchanged, with an empty open passage and no objects in front of its threshold.\nKeep image 1's precise camera, perspective, 1536x1024 registration, roof, building walls, all doors, sea, plants, lighting and paving unchanged. Do not add awning, racks, basin, lights, signs or road markings from reference image 2. Only add this cupboard on the blank LEFT wall. Do not copy the old cupboard's background or floor. Short soft natural contact directly below its feet; no large dark floor blob. Warm polished hand-painted coastal game style exactly matching target. No text or overlays.",
+  "inputs": [
+    {
+      "path": "docs/art/warehouse-rooms/exterior-clean.png",
+      "role": "edit target; preserve architecture and both doors"
+    },
+    {
+      "path": "docs/art/warehouse-rooms/exterior-master.png",
+      "role": "cupboard style reference only; original blocked doorway explicitly rejected"
+    }
+  ],
+  "accepted": true
+}

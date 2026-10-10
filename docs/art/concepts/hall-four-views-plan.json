@@ -1,0 +1,155 @@
+{
+  "status": "concept only, requires user approval before runtime changes",
+  "room": {
+    "width": 6,
+    "depth": 5,
+    "height": 3
+  },
+  "door": {
+    "wall": "W",
+    "from": 3.7,
+    "to": 4.7,
+    "height": 2.6,
+    "opens": "outward"
+  },
+  "window": {
+    "wall": "W",
+    "from": 1.35,
+    "to": 3.15,
+    "bottom": 1.45,
+    "top": 2.95
+  },
+  "fixtures": [
+    {
+      "id": "west-display",
+      "type": "display",
+      "u0": 0.05,
+      "u1": 0.6,
+      "v0": 0.6,
+      "v1": 2.6,
+      "height": 1.75
+    },
+    {
+      "id": "north-display",
+      "type": "display",
+      "u0": 0.6,
+      "u1": 3.3,
+      "v0": 0.05,
+      "v1": 0.6,
+      "height": 1.75
+    },
+    {
+      "id": "packing-table",
+      "type": "table",
+      "u0": 5.4,
+      "u1": 5.95,
+      "v0": 0.55,
+      "v1": 1.95,
+      "height": 0.95
+    },
+    {
+      "id": "ready-order-rack",
+      "type": "rack",
+      "u0": 5.4,
+      "u1": 5.95,
+      "v0": 2.15,
+      "v1": 3.15,
+      "height": 1.65
+    },
+    {
+      "id": "supply-cupboard",
+      "type": "cupboard",
+      "u0": 5.45,
+      "u1": 5.95,
+      "v0": 3.4,
+      "v1": 4.2,
+      "height": 1.9
+    },
+    {
+      "id": "cashier-counter",
+      "type": "counter",
+      "u0": 3.2,
+      "u1": 5.2,
+      "v0": 3.4,
+      "v1": 4,
+      "height": 1.1
+    },
+    {
+      "id": "waiting-bench",
+      "type": "bench",
+      "u0": 0.85,
+      "u1": 2.15,
+      "v0": 4.45,
+      "v1": 4.9,
+      "height": 0.48
+    },
+    {
+      "id": "customer-baskets",
+      "type": "baskets",
+      "u0": 0.1,
+      "u1": 0.5,
+      "v0": 3.2,
+      "v1": 3.55,
+      "height": 0.7
+    }
+  ],
+  "cameras": [
+    {
+      "id": 1,
+      "name": "Entrance and displays",
+      "corner": "NW",
+      "walls": [
+        "W",
+        "N"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Order preparation",
+      "corner": "NE",
+      "walls": [
+        "N",
+        "E"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Cashier and collection",
+      "corner": "SE",
+      "walls": [
+        "E",
+        "S"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Welcome and waiting",
+      "corner": "SW",
+      "walls": [
+        "S",
+        "W"
+      ]
+    }
+  ],
+  "projection": {
+    "left": [
+      113.6,
+      -53
+    ],
+    "right": [
+      128.4,
+      46.7
+    ],
+    "vertical": [
+      0,
+      -154.4
+    ]
+  },
+  "constraints": [
+    "All fixtures are axis-aligned to their wall.",
+    "One physical room and fixed floorplan across four camera views.",
+    "Entrance corridor is clear.",
+    "One cashier, one doorway, one west window.",
+    "No new refrigerator or other room concepts in this stage."
+  ]
+}

@@ -1,0 +1,22 @@
+/* Native form controls keep scene review usable in the game's ordinary modal. */
+.modal-debug { width:min(100%,560px); text-align:left; }
+.modal-debug > h2 { text-align:center; }
+.debug-scene { display:grid; gap:12px; padding-top:18px; border-top:1px solid #d6bd92; }
+.debug-scene h3 { margin:0; color:#24575a; font:700 21px/1.3 Georgia,serif; }
+.debug-scene-field { display:grid; gap:6px; min-width:0; color:#24575a; font:600 16px/1.35 "Trebuchet MS",sans-serif; }
+.debug-scene-field small { font:400 16px/1.35 "Trebuchet MS",sans-serif; }
+.debug-scene-field select,.debug-scene-field input { width:100%; min-width:0; min-height:44px; padding:9px 10px; box-sizing:border-box; border:2px solid #c9ad7e; border-radius:12px; color:#24575a; background:#fff8e7; font:400 16px/1.3 "Trebuchet MS",sans-serif; }
+.debug-scene-field :is(select,input):focus-visible { outline:3px solid #16878b; outline-offset:2px; }
+.debug-scene-presets { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.debug-scene-presets .secondary { padding:8px; }
+.debug-menu .debug-scene-note { margin:0; font-size:16px; line-height:1.45; color:#6e644e; }
+.debug-scene .primary { margin:0; width:100%; }
+.debug-wallet-fields { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(76px,1fr); gap:10px; }
+.debug-scene-wallet { margin-top:4px; }
+@media (max-width:420px) {
+  .modal-debug { padding:42px 16px 20px; }
+  .debug-scene-field { font-size:16px; }
+}
+@media (max-height:480px) {
+  .modal-debug { max-height:calc(100dvh - 24px); }
+}

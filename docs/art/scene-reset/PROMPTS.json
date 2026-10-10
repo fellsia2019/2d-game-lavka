@@ -1,0 +1,74 @@
+{
+  "status": "IMPLEMENTED_DIRECTION",
+  "date": "2026-10-07",
+  "tool": "image_gen.imagegen (built-in)",
+  "requests": [
+    {
+      "output": "main-clean.png",
+      "prompt": "Use case: precise-object-edit. Edit target: attached approved orthographic room with EMPTY cabinets. Produce the clean restored architectural background plate for a layered 2D game. Remove ONLY all turquoise furniture: the low cabinet under the window and its two EMPTY wooden bins, the entire long wall cabinet/shelf unit on the right and its three EMPTY wooden bins, and the free standing counter. Reconstruct the clean cream walls, wooden skirting and wooden floor previously hidden behind furniture. The result is a completely EMPTY restored room. Invariants: EXACT SAME 1536x1024 canvas, exact pixel positions of room silhouette, two walls corner, all wall beam edges, door/window openings and every visible floorboard outside removed furniture. Preserve orthographic projection, fixed camera, lighting, color palette, blank cream exterior background. Do not recenter, zoom, rotate or regenerate architecture; this is local removal only. No text, no labels, no decor, no furniture, no goods. Floorboards continue along the same axis underneath removed cabinets.",
+      "inputs": [
+        "../concepts/scene-reset-middle-v2.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "output": "main-light.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production layer source for the approved cozy orthographic game room. Edit target Image1: full shop finished source. Change ONLY add two elegant small brass wall-mounted lantern sconces on the clear cream right wall ABOVE the long cabinet: at canvas pixel (975,142) and (1245,285), attached flush to wall, their mounts aligned with the wall. Lanterns emit a subtle warm light onto the wall and shelves. Keep original daylight and all other pixels/architecture/cabinets/bins/goods/counter/register position exactly unchanged; no camera change, no crop, same1536x1024 orthographiccanvas. These lamps will be extracted as two small separate local image layers. Do not add any sign/text/mat/floorobject/person. Preserve canonical source geometry and materials; do not globally recolor or redraw the room. Two sconces and their local soft warm halos only.",
+      "inputs": [
+        "../concepts/scene-reset-finished-v3.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "output": "prep-master.png",
+      "prompt": "Use case: stylized-concept. Asset type: second registered camera sheet for the same coastal grocery 2D game. Image1 supplies the approved architectural orthographic camera+exact outer cutaway frame. Image2 is mandatory final material/style/scale reference. Image3 supplies the previously accepted workroom FUNCTIONAL arrangement only, NOT its old perspective/detail. Create the second corner view of this SAME rectangular shop, looking at the preparation/ready-orders corner rather than the entrance. 1536x1024 landscape. Keep the EXACT room silhouette/corner/floor dimensions and orthographic +30/-30 degree projected axes of Image1; blank cream exterior; wooden skirting and matte turquoise closed-base furniture match Image2. This rear corner has NO door or window in the two visible walls, remove those openings from Image1. Furniture sits flush parallel against walls, zero rotation relative to wall axes. Left wall: the SAME three-bay long merchandise cabinet seen now from its other side along the left wall, same height and shallow depth as Image2, closed turquoise lower cabinet doors and shelves with milk, jam, honey and integrated LOW-front bins with pears/lemons/bread. Right wall near central corner: one turquoise waist-high packing workbench, wooden top, small brass tabletop weighing scale, paper roll, wrapping sheets and modest scissors/cup directly on its top, and a matching simple wall shelf above with spare wrapping paper and twine. Farther right on that same wall: one matching turquoise order rack with three open shelving compartments above closed-base doors; 3 kraft parcels on top shelf, 3 ready grocery paper bags in middle, 3 kraft parcels on bottom shelf. All contents sit inside shelves, rendered from the SAME camera. No separate tall decorative wardrobe is needed; rack closed base stores supplies. Entire wall-aligned furniture fits inside the room; central floor clear with NO loose baskets/crates/mats/pallets. No freestanding cash counter in this cropped rear corner, no text/category labels/prices/UI/people/plants. Large clean beveled shapes, restrained game-art details as Image2, consistent soft daylight from outside frameleft. Orthographic axes: all edges along left wall minus30deg, all along rightwall plus30deg, all vertical edges truly vertical. This is one coherent room, no independently pasted frontal goods.",
+      "inputs": [
+        "main-clean.png",
+        "../concepts/scene-reset-finished-v3.png",
+        "../concepts/hall-four-view-2.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "output": "prep-empty.png",
+      "prompt": "Use case: precise-object-edit. Edit target: this registered1536x1024 ortho preparation room. Produce EMPTY shelf donor for game layering. Remove ONLY all milk/jam/honey/pear/lemon/bread goods from the LEFT three-bay display, leaving every cabinet panel, shelf, divider and all3 wooden LOW-front bins intact and EMPTY. Remove ONLY the3kraft parcels,3paper bags,3bottom parcels from the RIGHT order rack, leaving every shelf and closed turquoise base intact and empty. Keep the packing table, tabletop scale/paper/tools and wall shelf supplies untouched. Absolutely preserve original1536x1024 canvas, exact camera, ALL cabinet silhouettes, wall/floor pixels, light and furniturecoordinates. Local removal only. No new props or text. This is a same-coordinate donor, not a redesign.",
+      "inputs": [
+        "prep-master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "output": "prep-clean.png",
+      "prompt": "Use case: precise-object-edit. Edit target: this registered1536x1024 ortho preparation room. Produce a CLEAN empty architectural plate. Remove ALL furniture and all its contents: entire left displaycabinet and goods/bins; packingworkbench+scale/paperroll/tools; wall-mounted packing shelf and everything on it; entire right orderrack andparcels/bags. Reconstruct clean cream walls and wooden skirting/floor behind them. Preserve exact1536x1024 canvas, room silhouette, two wall cornerpixelpositions, timberbeam edges, every visible floorboard outside removedobjects, orthographic projection, camera, background and soft daylight. No door/window, no furniture, no goods, no decorations, no text. Do not zoom/crop/recenter. Local object removal only.",
+      "inputs": [
+        "prep-master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "output": "prep-before.png",
+      "prompt": "Use case: precise-object-edit. Edit target: the EMPTY restored orthographic room. Produce its worn BEFORE restoration state for a2Dgame, keeping EXACT1536x1024 frame and all room silhouette/two walls corner/skirting/floorboard locations and ortho camera. Change only surface CONDITION: weathered chipped timber beams, dull scratched wooden floor, cream plaster has large readable peeling/worn patches and small cracks near corners. The room stays entirely empty, with no doors/windows/no debris/no mats/no tools/no goods/no props/no text. No darkening camera shift, no crop. Preserve floorboard direction and common geometric edges so the restoration stages can use locally clipped originalcleanpixels.",
+      "inputs": [
+        "prep-clean.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "output": "prep-light.png",
+      "prompt": "Use case: precise-object-edit. Edit target: the fully equipped orthographic packingroom. Add ONLY2small elegant golden brass wall-mounted lanterns matching the shopfront lamps: one attached to right wall at pixel(830,87) ABOVE the packing shelf, second atpixel(1265,309) on the right wall ABOVE the orderrack, near butunder beam. Each lantern is about45pixels tall with restrained soft warm halo. Everything else must remain unchanged at exact same1536x1024 pixel registration: room silhouette, walls, floor, cabinets, goods, paperrolls/scissors/scale, wall shelf, rack andallparcels. Do not move furniture, crop/zoom/recenter/rotate/repaint goods. No added signs/text/plant/flooritems/UI. Onlytwo small sconces andlocalwarmglow. Sameorthographicprojection andmattepaintstyle.",
+      "inputs": [
+        "prep-master.png"
+      ],
+      "transparent_background": false
+    },
+    {
+      "output": "prep-master-v2.png",
+      "prompt": "Use case: precise-object-edit. Edit target Image1: orthographic preparationroom with3-bay LEFT-wall display. Image2: SAME shop's entrance view, for matching stock counts and categories. Change ONLY the stock of the LEFT display's TWO farther bays so it is the exact same cabinet as Image2 seen from opposite angle. Closestleftbay alreadyhas4milk bottles and4loaves: leave it untouched. Middlebay:4honeyjars untouched, in lowerwoodenbin replace somelemons with2greenpears, so mixed lemons+pears exactly like Image2. Farthestbay nearcentralroomcorner: REPLACE its upper4jamjars with3milk bottles withbluecaps, and REPLACE its lower greenpears with4redjam jars. Allitems sit inside existing shelves/bins behindtheirwoodenrims, same orthocamera/height/lighting. Invariants: exact original1536x1024 pixelregistration andcanvas, allcabinetwood/turquoise silhouette/dividers/floor/walls/packingstation/wallshelf/orderrack andparcels completely unchanged. Do not change furniturepositions, addnewitems onfloor or restyle/zoom/crop. Local substitution of7items and2fruit only. NO text/UI/labels.",
+      "inputs": [
+        "prep-master.png",
+        "../concepts/scene-reset-finished-v3.png"
+      ],
+      "transparent_background": false
+    }
+  ]
+}

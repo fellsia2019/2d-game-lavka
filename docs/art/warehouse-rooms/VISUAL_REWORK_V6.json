@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-08",
+  "modelRole": "GPT-6 Astra owns warehouse visual decisions",
+  "provider": "built-in image_gen.imagegen",
+  "frame": [
+    0,
+    0,
+    1536,
+    1024
+  ],
+  "accepted": [
+    {
+      "name": "storage-cans-bare",
+      "source": "docs/art/warehouse-rooms/storage-cans-bare.png",
+      "inputs": [
+        "storage-master.png",
+        "storage-clean.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Production 2D illustrated game asset, registered full plate 1536x1024.\nImage 1 is the furnished master reference: the THREE silver milk cans beneath the small scale table, around original x430..605 and y466..576, are the only objects to preserve. Image 2 is the clean empty room to preserve exactly as background.\nCreate the same clean room plate, with ONLY these three metal milk cans standing on the floor at their existing coordinates, sizes and perspective. Reconstruct the complete rounded cylinders, rolled rims, handles, lids and bottom edges of all three cans, including metal hidden by the teal table legs in Image1. Absolutely no furniture legs, teal pixels, table, shelf, cupboard, wooden boards, crates or scale may remain in or around the cans. No cutouts, missing vertical stripes, flat rectangular holes or amputated handles. Each can must be a complete freestanding object; cans can naturally occlude one another. Preserve the established warm polished painterly 3D casual-game look and silver reflections. Only a tiny soft contact immediately under each metal base; no long cast shadow, no silhouette shadow, no broad dirty patch on floor. Keep all doors, window, walls, floor grout, camera and framing of Image2 unchanged. The cans together remain within x428..606,y465..579, not enlarged or moved. This is a full opaque room donor for later precise silhouette masking, not a new close-up composition. No text or UI."
+    },
+    {
+      "name": "storage-packing-station-v6",
+      "source": "docs/art/warehouse-rooms/storage-packing-station-v6.png",
+      "inputs": [
+        "storage-clean.png",
+        "packing-station-design-reference.png",
+        "packing-station-perspective-guide.png"
+      ],
+      "prompt": "Edit Image1 ONLY: add the exact furniture design shown in Image2 at the geometry and SMALL scale shown by Image3. Full1536x1024 registered room plate. Preserve Image1 background/camera/window/door/corner/floor exactly. The square teal packing stand in Image2 has the correct corner-facing orientation, keep that orientation. IMPORTANT match the SMALL size of Image3 blueprint, not Image2. Worktop exact corners about(581,362),(706,339),(840,375),(714,398); frontmost legfoot about(716,552), leftfoot(590,515), rightfoot(827,530). Recreate the same square straight-legged teal bench and golden tabletop, paper sheet/roll/twine, lower shelf supplies at this size. Bench LONG edge rises to the RIGHT toward the corner; its broad LEFT side faces viewer. Wall shelf from Image2 also shrunk to fit x582..754,y150..238; retain its rising-right diagonal, with supplies and small hanging tools. Match Image1 warm painterly casualgame material style, softened details.\nEntire object, including all supplies, stays within x578..842,y130..554. Do not change the table into the old wide front-facing bench. Keep visible left and right tabletop edges roughly equally long as a square compact stand. Do not add any halo/glow/drop-shadow/outline or floor silhouette from Image2. Only tiny foot contact on the existing floor. No extra furniture. Full registered room, not a close-up."
+    }
+  ],
+  "designReference": {
+    "source": "packing-station-design-reference.png",
+    "prompt": "Transform the diagram into polished painterly 3D GAME ART on a TRANSPARENT background, full canvas1536x1024. Keep the exact position and perspective of the drawn table and shelf. Remove all room lines, text, background. Only furniture and supplies.\nThis is a compact square wrapping stand with its narrow drawer-facing side on the RIGHT, its broad plain side on the LEFT. Match the geometric blueprint EXACTLY: tabletop corners(581,362),(706,339),(840,375),(714,398). Rear corner is the highest point at706,339; nearest point714,398. Draw the straight square teal legs and teal lower shelf exactly as shown. Golden honey wood worktop, teal painted wood. The floor feet are at590,515;706,489;716,552;827,530. No additional feet. Shelf above has corners582,182;704,160;754,174;632,196; all its long edges rise to right. It is mounted on the wall facing us from LEFT of corner, using its existing blue brackets. Keep these distinct perspective directions rather than making the shelf horizontal. Geometry matters more than accessories.\nAdd a small wrapping paper roll parallel to the RISING RIGHT worktop edge, a paper sheet, small twine spool. Put a small stack of paper and compact box below on lower shelf. Add two small wrapping supply boxes on wall shelf and a short twine loop/scissors hanging below. Details fit completely on the prescribed geometry. No room, floor, wall, shadows or cast silhouettes, no text. Preserve full canvas registration and generous transparent margins: do not enlarge or center object. Warm coastal cozy management game rendering, beveled polished edges and natural soft shading on actual material only.",
+    "purpose": "Intermediate design reference only; final opaque registered donor is the runtime source."
+  },
+  "nativeParking": {
+    "source": "public/assets/warehouse-room-parking-v6.svg",
+    "generator": "scripts/prepare-warehouse-parking.mjs",
+    "corners": [
+      [
+        132,
+        682
+      ],
+      [
+        491,
+        663
+      ],
+      [
+        673,
+        806
+      ],
+      [
+        206,
+        838
+      ]
+    ],
+    "roi": [
+      126,
+      657,
+      553,
+      187
+    ]
+  },
+  "maskNotes": "No generated contact contains color floor/furniture pixels. Inspection table teal contours were retraced without donor brown cast shadows. Cans are whole metal shapes before front-leg occlusion. Bench and shelf share final donor; no old packingKit fragments."
+}

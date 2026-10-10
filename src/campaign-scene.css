@@ -1,13 +1,25 @@
+@import './hall-scene.css';
+@import './warehouse-scene.css';
 /* Shared composition for the live game and the visual workshop. */
 .shop-composition { position: relative; aspect-ratio: 3 / 2; overflow: hidden; isolation: isolate; border-radius: 16px; background: #e9dac2; }
+.hall-composition { container-type: inline-size; }
 .scene-background { width: 100%; height: 100%; display: block; object-fit: cover; }
-.scene-shelving { position: absolute; left: 46%; top: 34%; width: 49%; aspect-ratio: 1000 / 590; }
-.scene-shelving-secondary { left: 8%; top: 47%; width: 34%; }
+.scene-shelving { position: absolute; left: 51.5%; top: 12%; width: 39.5%; aspect-ratio: 700 / 772; isolation: isolate; }
+.scene-shelving-secondary { left: 13%; }
 .shelving-base { display: block; width: 100%; height: 100%; }
-.scene-basket { position: absolute; width: 32%; height: auto; bottom: 45.5%; }
 .scene-good { position: absolute; width: auto; max-width: 18%; object-fit: contain; transform: translateX(-50%); }
-.scene-counter { position: absolute; left: 23%; bottom: 2.5%; width: 55%; height: auto; }
-.scene-sign { position: absolute; left: 51%; top: 12%; width: 31%; padding: 8px; border: 3px solid #ddbb72; border-radius: 7px; background: #087a80; color: #fff7dd; text-align: center; font: bold clamp(16px, 2vw, 28px)/1.1 Georgia, serif; }
+.scene-shelving > .scene-good { z-index: 1; }
+.scene-tray { position: absolute; width: 28%; aspect-ratio: 640 / 387; transform: translate(-50%, -55%); }
+.scene-tray .scene-basket, .tray-rim { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.scene-tray .tray-good { left: 50%; bottom: 42%; max-width: 65%; z-index: 1; }
+/* Repeat the untouched sprite above goods only for the two low, camera-facing rims. */
+.tray-rim { z-index: 2; clip-path: polygon(3% 60%, 44% 81%, 95% 18%, 100% 18%, 100% 100%, 0% 100%, 0% 60%); }
+.scene-tray-right .tray-rim { clip-path: polygon(97% 60%, 56% 81%, 5% 18%, 0% 18%, 0% 100%, 100% 100%, 100% 60%); }
+.scene-counter { position: absolute; left: 44%; bottom: 4%; width: 46%; height: auto; }
+.scene-sign { position: absolute; left: 66%; top: 6%; width: 26%; padding: 6px; border: 3px solid #ddbb72; border-radius: 7px; background: #087a80; color: #fff7dd; text-align: center; font: bold clamp(16px, 2vw, 28px)/1.1 Georgia, serif; }
+.shop-composition.hall-composition .scene-sign { left: 70%; top: 1.5%; width: 16%; padding: .45cqi; border-width: .25cqi; font-size: clamp(9px, 1.9cqi, 28px); line-height: 1.05; white-space: nowrap; }
+.room-preview .shop-composition.hall-composition .scene-sign { font-size: 1.9cqi; padding: .45cqi; border-width: .25cqi; border-radius: .7cqi; }
+.hall-composition .scene-sign::before, .hall-composition .scene-sign::after { height: .9cqi; width: .22cqi; }
 .scene-sign::before, .scene-sign::after { content: ""; position: absolute; bottom: 100%; width: 3px; height: 13px; background: #806539; }
 .scene-sign::before { left: 18%; }
 .scene-sign::after { right: 18%; }
@@ -16,8 +28,46 @@
 .scene-sign.coral { background: #b86550; }
 .scene-counter.honey, .scene-garden.honey { filter: sepia(.28) saturate(1.15); }
 .scene-counter.coral, .scene-garden.coral { filter: sepia(.18) hue-rotate(330deg) saturate(1.15); }
-.scene-garden { position: absolute; left: 3%; bottom: 7%; width: 23%; height: auto; }
+.scene-garden { position: absolute; left: 23%; top: 22%; width: 12%; height: auto; }
 .scene-fridge { position: absolute; left: 42%; top: 30%; width: 52%; aspect-ratio: 1100 / 683; }
 .fridge-base { display: block; width: 100%; height: 100%; }
 .scene-receiving { position: absolute; left: 10%; bottom: 12%; width: 28%; display: flex; gap: 4%; align-items: end; }
 .scene-receiving img { width: 48%; height: auto; }
+
+.stage-composition, .campaign-map-composition { width: 100%; }
+.scene-art-layers { position: absolute; inset: 0; pointer-events: none; isolation: isolate; }
+.scene-layer { position: absolute; display: block; object-fit: contain; transform: translate(-50%, -50%); pointer-events: none; }
+.scene-interaction-layer { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.scene-interaction-layer > button { pointer-events: auto; }
+.scene-site-backdrop { position: absolute; inset: 0; overflow: hidden; }
+.scene-site-backdrop img { position: absolute; display: block; width: calc(var(--site-scale) * 100%); max-width: none; height: calc(var(--site-scale) * 100%); left: var(--site-x); top: var(--site-y); object-fit: cover; }
+.scene-clearing-target { filter: drop-shadow(0 0 6px #ffefab); }
+.stage-composition .scene-layer.scene-planned { opacity: .35; filter: grayscale(.5) drop-shadow(0 0 5px #fcf1b4); }
+.stage-composition .scene-built-pop, .campaign-map-composition .scene-built-pop { animation: stage-build-glow .9s ease-out; }
+@keyframes stage-build-glow { from { filter: brightness(1.7) drop-shadow(0 0 14px #ffe19a); } to { filter: none; } }
+@media (prefers-reduced-motion: reduce) { .stage-composition .scene-built-pop, .campaign-map-composition .scene-built-pop { animation: none; } }
+
+/* Both cameras use fixed 3:2 registration, including thumbnails and narrow phones. */
+.hall-composition .hall-prop, .hall-composition .hall-object { position:absolute; object-fit:fill; pointer-events:none; }
+.hall-composition .scene-shelving { isolation:isolate; }
+.hall-composition .hall-object-base { display:block; width:100%; height:100%; }
+.hall-composition .hall-object .scene-good { max-width:27%; }
+.hall-composition .scene-good { object-position:center bottom; }
+.hall-composition .hall-tray { transform:translate(-50%,-50%); isolation:isolate; }
+.hall-composition .hall-tray .scene-basket, .hall-composition .hall-tray .tray-rim { transform-origin:50% 50%; }
+.hall-composition .hall-tray .tray-good { bottom:auto; max-width:35%; width:auto; z-index:1; }
+.hall-composition .hall-tray .tray-rim { clip-path:polygon(0% 34%,25% 85%,100% 51%,100% 100%,0% 100%); }
+.hall-composition .scene-tray-right .tray-rim { clip-path:polygon(0% 49%,62% 85%,100% 26%,100% 100%,0% 100%); }
+.hall-linen { position:absolute; inset:0; background:#f4e7cc; border:1px solid #d3bb92; clip-path:polygon(5% 68%,72% 42%,96% 55%,25% 85%); }
+.scene-tray-right .hall-linen { clip-path:polygon(36% 39%,94% 61%,62% 89%,2% 61%); }
+.hall-bread-label, .hall-price { position:absolute; transform:translateX(-50%); color:#684a29; background:#ffedc5; border:1px solid #ad8550; border-radius:.25cqi; font:600 1cqi/1.25 Georgia,serif; padding:.1cqi .45cqi; z-index:3; }
+.hall-bread-label { background:#b87734; color:#fff2d5; }
+.hall-composition .scene-sign, .room-preview .shop-composition.hall-composition .scene-sign { left:72%; top:3.5%; width:16%; height:8%; display:grid; place-content:center; margin:0; box-sizing:border-box; padding:.3cqi; font-size:1.9cqi; }
+.hall-composition .scene-counter { bottom:auto; }
+.hall-composition .scene-garden { left:23%; top:24%; width:4.5%; }
+.hall-doormat { position:absolute; left:9%; top:65%; width:13%; height:9%; background:repeating-linear-gradient(0deg,#bf8d4c 0 2px,#ab783e 2px 3px); clip-path:polygon(0 54%,67% 0,100% 44%,34% 100%); box-shadow:inset 0 0 0 3px #947038; }
+.hall-entry-awning { position:absolute; left:0; top:2%; width:15%; height:10%; background:repeating-linear-gradient(90deg,#078b97 0 12%,#fff4d9 12% 24%); clip-path:polygon(0 65%,100% 0,100% 23%,0 100%); }
+.hall-price-register { position:absolute; left:75%; top:74%; background:#fff0c7; color:#735028; font:bold 1.4cqi/1 Georgia,serif; padding:.25cqi; border:1px solid #ad8550; }
+.hall-composition .scene-planned { opacity:.3; filter:grayscale(.6); }
+.hall-composition .scene-built-pop { animation:stage-build-glow .9s ease-out; }
+@media (prefers-reduced-motion:reduce) { .hall-composition .scene-built-pop { animation:none; } }

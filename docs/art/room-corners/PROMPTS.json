@@ -1,0 +1,41 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparent_background": false,
+  "frame": [
+    1536,
+    1024
+  ],
+  "status": "User-selected original corners; derivative game assets are not separately approved",
+  "generations": [
+    {
+      "id": "main-master",
+      "input": "docs/art/concepts/hall-four-view-1.png",
+      "prompt": "Use case: precise-object-edit.\nEdit target: attached full-room coastal shop corner selected by the user. This is the approved immersive interior art, NOT an isometric cutaway diorama.\nChange ONLY the foreground checkout counter and its register enough to make the complete counter fit inside the image. The bottom-right foot/plinth is currently cut by the bottom canvas edge. Make this entire checkout counter about 10% smaller and slightly farther from the camera, keeping its edges parallel to the same right-hand wall axis, so its entire four-foot silhouette and base are visible with at least 50 pixels of continuous wooden floor below the nearest foot and at least 40 pixels on the right. Do not obstruct the left entrance or remove the staff aisle behind the counter. Rotate the brass register 180 degrees ON its tabletop so the keypad faces the staff aisle behind the counter; from this camera the attractive curved brass back should be visible. Keep its gold style and correct counter-relative scale.\nPreserve EVERYTHING ELSE exactly: full-bleed 1536x1024 room view, door/window/sea, both wall shelves/cabinets, every merchandise bottle/jar/fruit/bread, low-front trays, architecture and wall axes, timber beams, warm detailed textures, sun and shadow direction. Fill the entire canvas with room walls or floor, no blank background, no white margins, no cutaway exterior. No UI, text, logo, signs or new decor. This is a surgical counter-framing correction to the accepted art, not a new art style.",
+      "output": "docs/art/room-corners/main-master.png"
+    },
+    {
+      "id": "prep-empty",
+      "input": "docs/art/concepts/hall-four-view-2.png",
+      "prompt": "Use case: precise-object-edit.\nEdit target: selected full-room coastal-shop second corner (packing and order area), 1536x1024.\nCreate the EMPTY EQUIPMENT donor in EXACTLY the same pixel coordinate frame. Preserve the camera, canvas, room geometry, light, every cabinet silhouette, shelf height/depth, decorative turquoise rails, table/cupboard dimensions, handles, wicker bin positions, cabinet doors and shadows. Do not move, rotate, recenter, resize or redesign ANY furniture.\nRemove only all merchandise from the LEFT display cabinet: milk, jars, fruit and bread; leave its wooden shelving, empty wicker fruit/bread trays and closed lower storage baskets intact. Remove only the contents on the RIGHT open order rack: cardboard parcels, fruit, folded textiles and paper bags; leave the rack, empty shallow tray/basket furniture and lower storage baskets intact. Remove nothing from the central packing station or its wall shelf: keep brass scales, paper roll, scissors, twine, packing sheets, towel and plant exactly in place. Keep the tall closed cupboard on the far right unchanged.\nReveal the appropriate empty shelf/table surfaces behind removed stock, with matched perspective and soft shadows. The front lips of the open wicker trays must be low and clean so later merchandise can be shown behind the separately masked foreground lip. Do not alter the exterior silhouette or footprint of those trays.\nRetain the approved warm richly illustrated casual-game coastal room, full-bleed walls and wooden floor occupying the entire canvas. No diorama, white/cream void outside room, UI, text, lettering, category labels, new props, people or watermark.",
+      "output": "docs/art/room-corners/prep-empty.png"
+    },
+    {
+      "id": "main-empty",
+      "input": "docs/art/room-corners/main-master.png",
+      "prompt": "Use case: precise-object-edit.\nEdit target: attached corrected full-room coastal shop corner. Create an empty-merchandise donor in the identical 1536x1024 source coordinate frame. Preserve camera, canvas and all architecture EXACTLY. Preserve both cabinets, every shelf/rail silhouette, wicker tray positions/shapes, lower storage baskets, foreground checkout counter including its entire newly fitted legs/base, furniture sizes and contact shadows. Do not move, rotate, recenter or resize any item.\nRemove ONLY all stock: bottles and jam/honey jars on both upper shelves, all lemons/pears from the middle open trays, all bread from its open tray. Keep every empty wicker tray in precisely the same original place. Remove only the brass cash register from the checkout tabletop, revealing matched bare wood there. No other change. Keep the small window plant, sunlit floor, open left door, bright seaside window, wall materials and timber beams.\nFill in the empty shelf surfaces behind removed stock, aligned to the exact shelf plane. The front lip of each open produce/bread tray remains low, with the original silhouette, and should naturally mask only the bottom of future stock. Full-bleed immersive warm casual-game interior, no cutaway/isometric display board, white void, borders, UI, words, price cards, decorative signs, extra props, people or watermarks.",
+      "output": "docs/art/room-corners/main-empty.png"
+    },
+    {
+      "id": "main-before",
+      "input": "docs/art/hall-v1-empty-original.png",
+      "prompt": "Use case: precise-object-edit.\nEdit target: this empty full-room seaside shop interior architectural plate, 1536x1024. Keep the EXACT same camera, composition, pixel-coordinate locations of both walls, floor boundaries, beams, doors/windows and baseboards, and sunlight/shadow positions. Create its state BEFORE renovation: worn dull wooden floor with visible scratches and mild stains, modestly cracked/chipped cream plaster walls, weathered beams and faded turquoise door/window/baseboard paint. The room remains structurally sound and uncluttered. No furniture, merchandise, rugs, junk, boxes, rubble, people, labels or UI. Do not move/resize architecture, do not change the wall axes or crop. Retain the same richly illustrated warm coastal casual-game style. Whole canvas is filled with room walls/floor, no white void/diorama/cutaway. Sunlight remains in the same place; age is shown through surfaces, not extra objects.",
+      "output": "docs/art/room-corners/main-before.png"
+    },
+    {
+      "id": "prep-before",
+      "input": "docs/art/hall-v2-empty-original.png",
+      "prompt": "Use case: precise-object-edit.\nEdit target: this empty full-room seaside shop interior architectural plate, 1536x1024. Keep the EXACT same camera, composition, pixel-coordinate locations of both walls, floor boundaries, beams, doors/windows and baseboards, and sunlight/shadow positions. Create its state BEFORE renovation: worn dull wooden floor with visible scratches and mild stains, modestly cracked/chipped cream plaster walls, weathered beams and faded turquoise door/window/baseboard paint. The room remains structurally sound and uncluttered. No furniture, merchandise, rugs, junk, boxes, rubble, people, labels or UI. Do not move/resize architecture, do not change the wall axes or crop. Retain the same richly illustrated warm coastal casual-game style. Whole canvas is filled with room walls/floor, no white void/diorama/cutaway. Sunlight remains in the same place; age is shown through surfaces, not extra objects.",
+      "output": "docs/art/room-corners/prep-before.png"
+    }
+  ]
+}

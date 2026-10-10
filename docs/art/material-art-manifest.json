@@ -1,0 +1,192 @@
+[
+  {
+    "id": "paint",
+    "source": "docs/art/materials/paint-original.png",
+    "sourceSha256": "269a5abc790a0075afdab02d36a16a0bb6bc10db958d4ee041cc0291802e53cd",
+    "sourceCrop": [
+      184,
+      88,
+      1071,
+      1169
+    ],
+    "runtime": "public/assets/material-paint.webp",
+    "runtimeSha256": "73e90ef09e56e152b2f476455da86395ef6b19a110cf5b3d1af43cbe95df624e",
+    "size": [
+      210,
+      256
+    ],
+    "alpha": true,
+    "bytes": 21296
+  },
+  {
+    "id": "boards",
+    "source": "docs/art/materials/boards-original.png",
+    "sourceSha256": "1db27c3410c673a2313ed7aedd7e95a95b5312c294327a00050d86edb1d668fc",
+    "sourceCrop": [
+      76,
+      136,
+      1206,
+      1142
+    ],
+    "runtime": "public/assets/material-boards.webp",
+    "runtimeSha256": "245a63ff884950c9f1afec656137baf121ae4c341d100ece135fda17a2880983",
+    "size": [
+      256,
+      228
+    ],
+    "alpha": true,
+    "bytes": 21950
+  },
+  {
+    "id": "bricks",
+    "source": "docs/art/materials/bricks-original.png",
+    "sourceSha256": "8fa3aba8bb195041a4a6b77851ca4ca52f86c4049d313cfbe556347580fc2046",
+    "sourceCrop": [
+      52,
+      172,
+      1204,
+      1148
+    ],
+    "runtime": "public/assets/material-bricks.webp",
+    "runtimeSha256": "d2054c25adb52c8353140cf431081d3bd254d82583959e53e5242f4299972172",
+    "size": [
+      256,
+      217
+    ],
+    "alpha": true,
+    "bytes": 21894
+  },
+  {
+    "id": "tiles",
+    "source": "docs/art/materials/tiles-original.png",
+    "sourceSha256": "9b3a00dd9e13dcc6c90c7be01fb69d56458e0751d21f90e83096bea25a9661d3",
+    "sourceCrop": [
+      108,
+      121,
+      1166,
+      1180
+    ],
+    "runtime": "public/assets/material-tiles.webp",
+    "runtimeSha256": "4dbb3ec23df47e819904ab948dc78d3931e2532e8c36994c282d3b0a85164a0d",
+    "size": [
+      256,
+      256
+    ],
+    "alpha": true,
+    "bytes": 27212
+  },
+  {
+    "id": "nails",
+    "source": "docs/art/materials/nails-original.png",
+    "sourceSha256": "0f1d9fdab4a4fb980ac9e4e4f57a53f1c48601464f2155d007a5cd730faf0019",
+    "sourceCrop": [
+      52,
+      109,
+      1206,
+      1188
+    ],
+    "runtime": "public/assets/material-nails.webp",
+    "runtimeSha256": "ee486e7dcb34b756a58db79a89a3f2345b194d5e887581b120d11758d5e366ac",
+    "size": [
+      256,
+      239
+    ],
+    "alpha": true,
+    "bytes": 24190
+  },
+  {
+    "id": "cement",
+    "source": "docs/art/materials/cement-original.png",
+    "sourceSha256": "aebf04cade1acd7d0e4717a4af3bb5c5b53fbf1d338110560a360e99021099c0",
+    "sourceCrop": [
+      118,
+      56,
+      1139,
+      1206
+    ],
+    "runtime": "public/assets/material-cement.webp",
+    "runtimeSha256": "d977cca4b7809d68bfc1fb80dd3e0026d266f0699f21c7c47f8b57ae7039284a",
+    "size": [
+      227,
+      256
+    ],
+    "alpha": true,
+    "bytes": 23406
+  },
+  {
+    "id": "glass",
+    "source": "docs/art/materials/glass-original.png",
+    "sourceSha256": "ae53b02bce6bca71f7fc77ede22d62b51b4887ec45423ff3b4e14147a0cb2e93",
+    "sourceCrop": [
+      136,
+      69,
+      1119,
+      1197
+    ],
+    "runtime": "public/assets/material-glass.webp",
+    "runtimeSha256": "180ded216cb389effdad97f32f3293436866f5e943cb96c621e6dcbaebbaa0ca",
+    "size": [
+      223,
+      256
+    ],
+    "alpha": true,
+    "bytes": 18524
+  },
+  {
+    "id": "gears",
+    "source": "docs/art/materials/gears-original.png",
+    "sourceSha256": "707c5e2179ba129987f263abc3bc02c4841e04fd7e297f059f66774f1abdb853",
+    "sourceCrop": [
+      37,
+      65,
+      1241,
+      1180
+    ],
+    "runtime": "public/assets/material-gears.webp",
+    "runtimeSha256": "7739990b33e62f55f2cedda28aaa5883f6e45a9a1fe1ce5d1eb22b84fa1ba430",
+    "size": [
+      256,
+      237
+    ],
+    "alpha": true,
+    "bytes": 29670
+  },
+  {
+    "id": "wire",
+    "source": "docs/art/materials/wire-original.png",
+    "sourceSha256": "a5e0e1f119534057e122ed959594cd6290f8d2fd330436956847ca7cf1499965",
+    "sourceCrop": [
+      152,
+      89,
+      1107,
+      1115
+    ],
+    "runtime": "public/assets/material-wire.webp",
+    "runtimeSha256": "bad31ae7dd48259437135d9905b5288804028639e33c4961960ef454c09831ae",
+    "size": [
+      238,
+      256
+    ],
+    "alpha": true,
+    "bytes": 25156
+  },
+  {
+    "id": "toolbox",
+    "source": "docs/art/materials/toolbox-original.png",
+    "sourceSha256": "afc90d574f1becebb5694a52949df1cd99e18177f36b4d2abd889694b169e299",
+    "sourceCrop": [
+      41,
+      106,
+      1216,
+      1126
+    ],
+    "runtime": "public/assets/material-toolbox.webp",
+    "runtimeSha256": "75db5312f8de2f2308fffe906ee771b1966df38a8eacdac0d275acd5a8b2f55a",
+    "size": [
+      256,
+      222
+    ],
+    "alpha": true,
+    "bytes": 24242
+  }
+]

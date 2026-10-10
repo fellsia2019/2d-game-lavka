@@ -9,7 +9,7 @@ ART = ROOT / "docs" / "art"
 ASSETS = ROOT / "public" / "assets"
 ITEMS = [
     ("campaign-shop-empty-original.png", "campaign-shop-empty.webp", (1536, 1024), False),
-    ("campaign-map-original.png", "campaign-map.webp", (1536, 1024), False),
+    ("campaign-map-cleared-original.png", "campaign-map.webp", (1536, 1024), False),
     ("campaign-shelving-original.png", "campaign-shelving.webp", (1000, 700), True),
     ("campaign-basket-original.png", "campaign-basket.webp", (640, 320), True),
 ]

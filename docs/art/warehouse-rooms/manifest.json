@@ -1,0 +1,437 @@
+[
+  {
+    "name": "exterior-master",
+    "source": "docs/art/warehouse-rooms/exterior-master.png",
+    "sourceSha256": "f37c81b31a213e9d96dbda0c8f5ce4a241855bede686770e9a8a93a6890f402d",
+    "runtime": "public/assets/warehouse-room-exterior-master.webp",
+    "bytes": 506730,
+    "runtimeSha256": "c4ef5dcc6966d52ed567c9cfc3982e8ac9066e08dd040903149d8307c8e27e55",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "exterior-clean",
+    "source": "docs/art/warehouse-rooms/exterior-clean.png",
+    "sourceSha256": "838714dc23b423f463c8aba400da7b6e018b26d3b0ba0e90197cff17d4bfadf6",
+    "runtime": "public/assets/warehouse-room-exterior-clean.webp",
+    "bytes": 472530,
+    "runtimeSha256": "f8fc94bed1bef5fa23a3c4240ad3e2b53338d31e253d8302dfc2ada78d8a2721",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "exterior-tool-cupboard-v8",
+    "source": "docs/art/warehouse-rooms/exterior-tool-cupboard-v8.png",
+    "sourceSha256": "dca4517b488868addaca3389fd199ff5c9f8deb53e4948658e2f004613ec6c7f",
+    "runtime": "public/assets/warehouse-room-exterior-tool-cupboard-v8.webp",
+    "bytes": 461764,
+    "runtimeSha256": "5a9418bc15151d0e29bcde369306a10dfbc544f63e98931a282e547c5f1cc757",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-master",
+    "source": "docs/art/warehouse-rooms/storage-master.png",
+    "sourceSha256": "935472710f900256ad8ffba7811c6ed8f4b8a1004e11a23ec4de41b39ff3ac4c",
+    "runtime": "public/assets/warehouse-room-storage-master.webp",
+    "bytes": 419198,
+    "runtimeSha256": "62128145affe9ac3a0601ceb56aaf19119c2dd598dfcfd30de1f5679b8b051d1",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-empty",
+    "source": "docs/art/warehouse-rooms/storage-empty.png",
+    "sourceSha256": "6497911f062c57f9b9029da0a97db927c2427ed11a5a0bfa5d19a735c6feec6d",
+    "runtime": "public/assets/warehouse-room-storage-empty.webp",
+    "bytes": 352348,
+    "runtimeSha256": "b3030a0d7bba124ccbd8b40dcd9c4bc902f932a01413bc7a94c7a7c34d99de82",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-clean",
+    "source": "docs/art/warehouse-rooms/storage-clean.png",
+    "sourceSha256": "52953d7da81e5594293cdcceb26ff91c246d5a5e8f93b6e1bef44956ac4aa32b",
+    "runtime": "public/assets/warehouse-room-storage-clean.webp",
+    "bytes": 241470,
+    "runtimeSha256": "08463febefab06a6d6d405700c039aec2acd38f34e3dd97e3c1c57529117f460",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-before",
+    "source": "docs/art/warehouse-rooms/storage-before.png",
+    "sourceSha256": "2a7a3fc9ed728f9fa9f1ac8074231783978148cb39b0331af0df2c341616e757",
+    "runtime": "public/assets/warehouse-room-storage-before.webp",
+    "bytes": 377752,
+    "runtimeSha256": "00b4af1ddc0947140fdd3bf78ecb51602027214c5c7321e2ec884a8ed727799e",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-labels",
+    "source": "docs/art/warehouse-rooms/storage-labels.png",
+    "sourceSha256": "d6bbdf69396b131175c5cec3d5a43fe447355ce1c2b6d74280966526418bb72a",
+    "runtime": "public/assets/warehouse-room-storage-labels.webp",
+    "bytes": 350434,
+    "runtimeSha256": "9be1b65d78db30d0538ad1f4470fb9eaf27a547d6c716240ae0262fd6d7addf6",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-rack-bare",
+    "source": "docs/art/warehouse-rooms/storage-rack-bare.png",
+    "sourceSha256": "0b56755a708fac2d76ed624a80ad307a6401544f8cb805af7ebb952e74b44fc8",
+    "runtime": "public/assets/warehouse-room-storage-rack-bare.webp",
+    "bytes": 322962,
+    "runtimeSha256": "b7623af2d326d1580b417b1a301da0ff37243c25afc34c3e34284c81c60293ab",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-pallet-only",
+    "source": "docs/art/warehouse-rooms/storage-pallet-only.png",
+    "sourceSha256": "9513b2617220602dad5a0a6c29364730fd53709eec51d9b5b0fff67ac1514465",
+    "runtime": "public/assets/warehouse-room-storage-pallet-only.webp",
+    "bytes": 241728,
+    "runtimeSha256": "20e556f4e2bc047dec61329dbaef22fe15ca22cca67a13273f2f860b11879c90",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-inspection-table-bare",
+    "source": "docs/art/warehouse-rooms/storage-inspection-table-bare.png",
+    "sourceSha256": "bc98831b0c13a495f0144d52897273f9d13c0f64ed060dfe931286aa0806a814",
+    "runtime": "public/assets/warehouse-room-storage-inspection-table-bare.webp",
+    "bytes": 229606,
+    "runtimeSha256": "b6dac233dd66a972ddd8f5144785444d7381de08f481857f1de964ff5a87260f",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-packing-bench-bare",
+    "source": "docs/art/warehouse-rooms/storage-packing-bench-bare.png",
+    "sourceSha256": "c8a9b1898815dce2cb3b82e7a44e3a414f96c36cd0ee8cc6a18278208c57ec98",
+    "runtime": "public/assets/warehouse-room-storage-packing-bench-bare.webp",
+    "bytes": 242574,
+    "runtimeSha256": "f413b6ed33fc14529e114bf9a6ba1daf06102515febba9f040adca597928f7e3",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-packing-station-v6",
+    "source": "docs/art/warehouse-rooms/storage-packing-station-v6.png",
+    "sourceSha256": "0e05740392d2067c6b46edc253749b8c8f676f5e0b1ff51f92567dd06537750a",
+    "runtime": "public/assets/warehouse-room-storage-packing-station-v6.webp",
+    "bytes": 257816,
+    "runtimeSha256": "f212b3611dda6abc33e0574096d8af74458b4e2bbb3089146dbd72b24fe69b23",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-dry-crates-bare",
+    "source": "docs/art/warehouse-rooms/storage-dry-crates-bare.png",
+    "sourceSha256": "f97e7e326f7dcc8f500bb19009f2936c009fee1ca95284b9caaaf94f01c7f6df",
+    "runtime": "public/assets/warehouse-room-storage-dry-crates-bare.webp",
+    "bytes": 334082,
+    "runtimeSha256": "822ab975da93aa037ad55c79f09adb53ce14fbc94c385ae031415c4f4e0d388e",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "storage-cans-bare",
+    "source": "docs/art/warehouse-rooms/storage-cans-bare.png",
+    "sourceSha256": "c6ee87d69725621bf706b088b5de99f2fd7826d4a5a1b22302d70ca5e5c231ad",
+    "runtime": "public/assets/warehouse-room-storage-cans-bare.webp",
+    "bytes": 225562,
+    "runtimeSha256": "b9d5428b38e9d6117144f225d07981472dc86f3ca960c16646b958055f43ffb9",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "cold-master",
+    "source": "docs/art/warehouse-rooms/cold-master.png",
+    "sourceSha256": "a48758477a789e16be2a949d5862174e15879713c1a394436f3f12297354d5cb",
+    "runtime": "public/assets/warehouse-room-cold-master.webp",
+    "bytes": 434428,
+    "runtimeSha256": "857dfb2afda4193d551a41dfdcf19856d45edc546545bacf048cbe017d378cad",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "cold-empty",
+    "source": "docs/art/warehouse-rooms/cold-empty.png",
+    "sourceSha256": "97e69e49bd8e683a63b027c20e16ce54f3d57d55b0a7239d289836f93d3d1404",
+    "runtime": "public/assets/warehouse-room-cold-empty.webp",
+    "bytes": 346018,
+    "runtimeSha256": "73bf69a748de1006ac47f7a0863dba1f75837d33466f71be00cf471918ee52fb",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "cold-clean",
+    "source": "docs/art/warehouse-rooms/cold-clean.png",
+    "sourceSha256": "9857684ca618b2b3d787ee24cb9f9b7b370a95c78a58715de07fb90f8dfdc5a1",
+    "runtime": "public/assets/warehouse-room-cold-clean.webp",
+    "bytes": 265734,
+    "runtimeSha256": "f12c89852b6c20050b4b48fc93beb47f8c4abee906f14f377fe9dd63921d5d0b",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "cold-before",
+    "source": "docs/art/warehouse-rooms/cold-before.png",
+    "sourceSha256": "361e628bbe6b83a61ba780b3b22a7f0b10ac423549758672f32b4e522b4d6586",
+    "runtime": "public/assets/warehouse-room-cold-before.webp",
+    "bytes": 340062,
+    "runtimeSha256": "8c861c957b6183f76c8ef2d3a469267a42b2e0c2558e08c95bd32a4d42ad4260",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "cold-cabinet-bare",
+    "source": "docs/art/warehouse-rooms/cold-cabinet-bare.png",
+    "sourceSha256": "601297aef0a48a91d29a44bf95341167a727c9fa84fca2bc82e998bf39ea29fa",
+    "runtime": "public/assets/warehouse-room-cold-cabinet-bare.webp",
+    "bytes": 330358,
+    "runtimeSha256": "3404be5c4a40559ec59a23411a065ab9709a0116f5cc78257033acf717f18dba",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "cold-rack-bare",
+    "source": "docs/art/warehouse-rooms/cold-rack-bare.png",
+    "sourceSha256": "7d92c9d13db8dd5179f47fb770f0e92d6c7baedc98fc1066177f085af8559813",
+    "runtime": "public/assets/warehouse-room-cold-rack-bare.webp",
+    "bytes": 326870,
+    "runtimeSha256": "dd17cedc5345cc39b061491d456fd52b324cc961966cd75791fb91a06043af06",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "cold-ventilation",
+    "source": "docs/art/warehouse-rooms/cold-ventilation.png",
+    "sourceSha256": "4e732d3f3bc278db70d325dd0e0e838fadddd29f55bece3f84a54902e8961a25",
+    "runtime": "public/assets/warehouse-room-cold-ventilation.webp",
+    "bytes": 328270,
+    "runtimeSha256": "1c6c690489620217bf070028a9c9a93b595f97f65de1d4bba7be62b9690ffd01",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "site-clear",
+    "source": "docs/art/warehouse-rooms/site-clear.png",
+    "sourceSha256": "56ed0265c25c0074e1736d5c86589e1e58caff10b0eb733ede7e61a1e4b91eda",
+    "runtime": "public/assets/warehouse-room-site-clear.webp",
+    "bytes": 564658,
+    "runtimeSha256": "ad7b2978ac8b4a9b9be91b9cfd1c6d7302c37579ceb7187534da7c234c1793da",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "site-before",
+    "source": "docs/art/warehouse-rooms/site-before.png",
+    "sourceSha256": "e192f5edcf751b37e522f1ccc71128c16cdc3e60d29e3fe0b225422d7825e7bb",
+    "runtime": "public/assets/warehouse-room-site-before.webp",
+    "bytes": 587728,
+    "runtimeSha256": "99252f40bf30290c804d737592c4b314de40aabd099ac02f4e94d221f3ce2de9",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "site-foundation",
+    "source": "docs/art/warehouse-rooms/site-foundation.png",
+    "sourceSha256": "7aac90f71e5b67bcad97e327e8309a8eb0f81abeb0184e7b473ff2617cd2b4d4",
+    "runtime": "public/assets/warehouse-room-site-foundation.webp",
+    "bytes": 522452,
+    "runtimeSha256": "3d95bed99638813b7cdd633dda76101c622898dd46c8d3ce0efbfdb98be4e8dc",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "site-walls",
+    "source": "docs/art/warehouse-rooms/site-walls.png",
+    "sourceSha256": "3139ecce3ddd77879161170124cb8258d8ebded85b27fd722e8868fe4a209271",
+    "runtime": "public/assets/warehouse-room-site-walls.webp",
+    "bytes": 449196,
+    "runtimeSha256": "4e804175d8576e0927471d0dda56c5df8addc9319dbd957e4344d231058d4483",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "map-master",
+    "source": "docs/art/warehouse-rooms/map-master.png",
+    "sourceSha256": "8071a38b297ec4839911c9bf90087b4243e1edd21638088cf3ac96e68692fc1e",
+    "runtime": "public/assets/warehouse-room-map-master.webp",
+    "bytes": 569186,
+    "runtimeSha256": "e2eeda0fa05e342c6626d0e71962d2aa6d24d0c92b740f075a709d111f457a5a",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "map-foundation",
+    "source": "docs/art/warehouse-rooms/map-foundation.png",
+    "sourceSha256": "5569e9813ad31a9a74cd6fa53fee98ae4e0abee7c68c94eaa14dcfcc923705e8",
+    "runtime": "public/assets/warehouse-room-map-foundation.webp",
+    "bytes": 583148,
+    "runtimeSha256": "5fef79d79bbf1304481ca5e8f141facef806f8debb941cc1474edc425811304e",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "map-walls",
+    "source": "docs/art/warehouse-rooms/map-walls.png",
+    "sourceSha256": "7ec072c8061c4149340eee5d8cc4db848fa9eab0685daf7c51806ca0d2b27ed5",
+    "runtime": "public/assets/warehouse-room-map-walls.webp",
+    "bytes": 529244,
+    "runtimeSha256": "ad17f9944d2c8310affda094388d1a2b501747606f6369d6b37c9706e93cede0",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  }
+]

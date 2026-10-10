@@ -1,0 +1,73 @@
+/* Journey controls. Loaded last; the room/courtyard projection is never scaled here. */
+.world-journey-copy { min-width: 0; }
+.world.world-unified-navigation .world-journey-copy h2 { margin: 0 0 5px; font-size: 19px; line-height: 1.15; text-wrap: pretty; }
+.world-journey-copy p { margin: 0; color: #5c6552; font-size: 15px; line-height: 1.25; text-wrap: pretty; }
+.world.world-unified-navigation .world-main-action { border-radius: 19px; gap: 10px; text-wrap: balance; }
+.world.world-unified-navigation .world-main-action.next-destination,
+.world.world-unified-navigation .world-map-action {
+  border-color: #fff1b2; background: linear-gradient(#32c9bd, #078993);
+  box-shadow: inset 0 2px #a6eee0, inset 0 -4px #08717b, 0 4px #075761, 0 7px 12px #664c3633;
+  color: #fffbed; font-size: 20px; line-height: 1.12;
+}
+.world.world-unified-navigation.on-map .world-dock {
+  grid-template-rows: 80px 40px; gap: 10px 20px;
+  padding: 10px 18px calc(24px + env(safe-area-inset-bottom));
+}
+.world.world-unified-navigation.on-map .world-map-action { grid-column: 2; grid-row: 1; align-self: center; }
+.world.world-unified-navigation.on-map .world-dock .world-map-status {
+  grid-row: 2; align-self: center; padding: 0 10px; color: #6c583c;
+  font-size: 15px; line-height: 1.25; text-wrap: pretty;
+}
+.world.world-unified-navigation.on-map .world-mission-art { width: 48px; }
+.world.world-unified-navigation.on-map .world-mission-art > .icon { width: 34px; height: 34px; }
+
+.modal-navigation { border-radius: 24px; }
+.modal-navigation .navigation-intro { margin: 0 0 10px; color: #667365; line-height: 1.3; }
+.modal-navigation .navigation-view-grid { gap: 12px; }
+.modal-navigation .navigation-view-card {
+  position: relative; grid-template-rows: auto auto auto 8px 46px; row-gap: 0;
+  border: 2px solid #e1bd83; border-radius: 17px; background: #fff2d8;
+  box-shadow: 0 3px 0 #b88d5940; align-content: start;
+}
+.modal-navigation .navigation-view-card > strong { min-height: 0; padding: 10px 12px 3px; line-height: 1.2; }
+.modal-navigation .navigation-view-card > small { min-height: 0; padding: 0 12px 9px; color: #687461; font-size: 14px; line-height: 1.2; }
+.modal-navigation .navigation-view-card .room-progress { display: block; height: 5px; margin: 0 12px 3px; padding: 0; min-height: 0; border-radius: 4px; overflow: hidden; background: #dbc8a3; }
+.modal-navigation .room-progress > i { display: block; height: 100%; width: var(--room-progress, 0%); border-radius: inherit; background: linear-gradient(90deg, #249c93, #62c9a1); }
+.modal-navigation .navigation-view-card .room-card-action { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 8px 12px; border-top: 1px solid #e5cea5; color: #16737a; font-size: 16px; font-weight: 700; }
+.modal-navigation .navigation-view-card.room-current { border-color: #218b90; box-shadow: 0 0 0 2px #b9e6d3; }
+.modal-navigation .navigation-view-card.room-next { border-color: #dfb54a; box-shadow: 0 0 0 2px #ffe7a1, 0 4px 0 #b58c5540; }
+.modal-navigation .navigation-view-card.room-next .room-card-action { background: linear-gradient(#32bcad, #138e93); border-top-color: #76cfb6; color: #fffbed; }
+.modal-navigation .navigation-view-card.room-next > small { color: #9b641d; font-weight: 700; }
+.modal-navigation .navigation-view-card:focus-visible { outline: 3px solid #137d88; outline-offset: 3px; }
+/* The recommended destination breathes in light only: no moving hit areas or scenes. */
+.modal-navigation .navigation-view-card.room-next .room-card-action { animation: journey-invitation 3.2s ease-in-out infinite; }
+@keyframes journey-invitation { 0%, 100% { box-shadow: inset 0 1px #ffffff30; } 50% { box-shadow: inset 0 1px #ffffff80, inset 0 0 17px #e6ffc745; } }
+@media (max-width: 700px) {
+  .world.world-unified-navigation .world-journey-copy h2 { font-size: 17px; }
+  .world-journey-copy p { font-size: 15px; }
+  .world.world-unified-navigation.on-map .world-dock { grid-template-columns: minmax(0, 1fr) 148px; grid-template-rows: 76px 40px; gap: 8px 12px; padding: 8px 12px calc(24px + env(safe-area-inset-bottom)); }
+  .world.world-unified-navigation .world-map-action { font-size: 18px; padding-inline: 9px; }
+  .world.world-unified-navigation.on-map .world-dock .world-map-status { padding: 0; }
+  .modal-navigation .navigation-view-grid { gap: 9px; }
+  .modal-navigation .navigation-view-card > strong { padding-inline: 9px; }
+  .modal-navigation .navigation-view-card > small { padding-inline: 9px; }
+  .modal-navigation .navigation-view-card .room-progress { margin-inline: 9px; }
+  .modal-navigation .navigation-view-card .room-card-action { padding-inline: 9px; }
+}
+@media (min-width: 600px) and (max-height: 500px) {
+  .world.world-unified-navigation.on-map .world-dock { display: flex; flex-direction: column; justify-content: center; gap: 15px; padding: 12px 10px calc(16px + env(safe-area-inset-bottom)); }
+  .world.world-unified-navigation.on-map .world-mission { align-items: flex-start; }
+  .world.world-unified-navigation.on-map .world-map-action { align-self: stretch; flex: 0 0 auto; }
+  .world.world-unified-navigation.on-map .world-dock .world-map-status { flex: 0 1 auto; }
+}
+.reduced-motion .modal-navigation .navigation-view-card.room-next .room-card-action { animation: none; }
+@media (prefers-reduced-motion: reduce) { .modal-navigation .navigation-view-card.room-next .room-card-action { animation: none; } }
+/* Keep the escape action reachable after a player scrolls through room cards. */
+.modal-navigation > .modal-close {
+  position: sticky; top: 10px; right: auto; z-index: 10;
+  width: 44px; height: 44px; min-height: 44px;
+  margin: -27px -21px -17px auto;
+}
+@media (max-width: 600px) {
+  .modal-navigation > .modal-close { margin: -24px -12px -20px auto; }
+}

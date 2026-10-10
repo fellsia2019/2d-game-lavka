@@ -1,0 +1,72 @@
+{
+  "projection": {
+    "origin": [
+      820,
+      430
+    ],
+    "leftAxis": [
+      122.6,
+      -57.2
+    ],
+    "rightAxis": [
+      138.6,
+      50.5
+    ],
+    "vertical": [
+      0,
+      -167.7
+    ]
+  },
+  "room": {
+    "x": [
+      -6,
+      0
+    ],
+    "y": [
+      0,
+      5
+    ],
+    "z": [
+      0,
+      3.1
+    ]
+  },
+  "door": {
+    "x": [
+      -6,
+      -4.5
+    ]
+  },
+  "leftCabinet": {
+    "x": [
+      -3.5,
+      -0.5
+    ],
+    "y": [
+      0,
+      0.5
+    ]
+  },
+  "rightCabinet": {
+    "x": [
+      -0.5,
+      0
+    ],
+    "y": [
+      0,
+      3.5
+    ]
+  },
+  "counter": {
+    "x": [
+      -2.4,
+      -1.5
+    ],
+    "y": [
+      2,
+      4.7
+    ]
+  },
+  "entranceClearance": 1,
+  "notes": "Common orthographic projection. Counter is parallel to right wall. Goods will be separate runtime sprites."
+}

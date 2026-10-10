@@ -1,0 +1,5 @@
+Use case: precise-object-edit.
+Asset type: registered full-frame bakery clearing step 2, RGB 1536×1024.
+Image 1 is the sole EDIT TARGET, the previous cleared-rubbish state.
+Remove ONLY the central ruined wooden shelter and its low stone/brick ruin: rotten diagonal roof planks, upright posts and low masonry/debris around x655..1135,y407..635. Restore the permanent garden boundary and its flowers behind the removed upper wood, and slightly uneven dusty weedy earth under the removed ruin. Keep the original permanent cream stone garden wall spanning the background, never remove that boundary wall.
+Preserve EXACTLY the stump and fallen log on the left around x490..740,y530..650, and the thorny bush on the right. These are later tasks and MUST stay. No rubbish bucket or heap returns. Keep all permanent gardens, walls, trees, sea/sky, distant village, paving/steps, lantern, blurred foreground, lighting and camera identical. No new structure, foundation, furniture or tools. Ground remains rough dirt with tufts, not newly levelled or tiled. No text or borders.

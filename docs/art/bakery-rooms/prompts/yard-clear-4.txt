@@ -1,0 +1,5 @@
+Use case: precise-object-edit.
+Asset type: registered full-frame bakery clearing step 4, RGB1536×1024.
+Image 1 is the sole EDIT TARGET, the previous clearing state with just a stump/log left.
+Remove ONLY the left tree stump, its protruding roots and the adjacent fallen log around x470..750,y530..650. Restore continuous ordinary uneven dusty earth with sparse short grass tufts under them. No crater, no new paving or foundation. This is after clearing but BEFORE levelling: the entire site must still have a slightly bumpy dusty surface and visible scattered short weeds.
+Everything else must stay registered and unchanged: all permanent stone garden boundary walls, colorful flowers and shrubs BEHIND those walls, living trees, sea/sky/village, paving path and original steps, lantern, blurred foreground, sunlight and camera. Do not reintroduce rubbish, shelter, ruin or right bush. No other objects, no equipment, no buildings. Keep original full1536×1024 composition and warm painted coastal game style. No text/borders.

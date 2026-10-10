@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-06",
+  "tool": "built-in image_gen.imagegen",
+  "reference": {
+    "path": "docs/art/concepts/hall-corner-fuller.png",
+    "role": "approved room/furniture/perspective reference"
+  },
+  "outputs": [
+    {
+      "source": "docs/art/hall-corner-cabinets-original.png",
+      "runtime": [
+        "hall-corner-left.webp",
+        "hall-corner-right.webp"
+      ],
+      "prompt": "Use case: stylized-concept / compositing.\nAsset type: PRODUCTION GAME SPRITE ATLAS, TWO separate furniture cutouts on true transparent alpha. Use the supplied room concept ONLY as a design, proportions, materials and camera-perspective reference. Do not include the room itself.\nCreate exactly TWO matching empty grocery display cabinets: the LEFT wing and RIGHT wing of that reference's L-shaped 90-degree corner. They are mirror-identical views of the same cabinet design, each turned 45 degrees relative to the viewer, a raised approximately 30-degree camera. LEFT wing: outer left end is near/lower, inner right end far/higher, long shelf edges slope UP-RIGHT about 25 degrees. RIGHT wing: inner left end far/higher, outer right end near/lower, long shelf edges slope DOWN-RIGHT about 25 degrees. Identical physical heights, widths, depths, curved supports and shelf thickness. Strong visible front faces AND shelf top surfaces, complete silhouettes and feet. Do not make front-facing flat bookcases.\nMaterials/design match exactly the concept: honey-oak wood, rich turquoise curved upright side supports with cream edge trim, turquoise solid raised plinth, TWO generously spaced open display tiers, a deep lower storage cubby with built-in wicker storage bay. Upright substantial shop furniture, not low benches. Keep the enlarged long dimensions of the approved concept. Upper two wooden display shelves COMPLETELY EMPTY, with low wooden retaining lips. Lower wicker bay empty, no products. The food trays on the MIDDLE display shelf are NOT part of this furniture, REMOVE THEM: they will be independently purchased and composited.\nArrange these as two SEPARATE sprites SIDE BY SIDE with a clearly generous transparent gap between, left-view cabinet on the left, right-view cabinet on the right. Both same apparent scale and baseline; each complete uncut sprite tightly occupies its half with enough surrounding transparent margin. Do NOT JOIN them at the corner in this atlas. Do not include any counter, floor, wall, shadow plane, background, scene, text, goods, jars, bottles, fruits, bread, loose baskets, people, props, labels, UI or watermark. Keep only a small soft contact shadow at each foot, no cast room shadow.\nPolished high-detail casual Mediterranean game raster art. Precise dimensional perspective, warm sunlight from upper left in BOTH views, consistent lighting. Transparent background, 3:2 landscape atlas."
+    },
+    {
+      "source": "docs/art/hall-corner-counter-original.png",
+      "runtime": [
+        "hall-corner-counter.webp"
+      ],
+      "prompt": "Use case: compositing / stylized-concept.\nAsset type: ONE transparent game furniture sprite, cashier counter only. Supplied image is the exact approved room concept and a perspective/materials reference.\nRecreate the concept's broad turquoise cashier counter and antique brass register, but as a COMPLETE isolated sprite with all feet and edges inside the frame, no clipping. Same elevated roughly 30-degree corner camera as the concept, broad long front face visible, long countertop edges sloping diagonally DOWN-RIGHT about 20–25 degrees, visible right end panel, deep rounded honey oak countertop. Rich turquoise paneled base, cream trim and short cream pillars at both front corners, turquoise rounded raised plinth. Vintage brass cash register on the right half of the top, same size relation as concept. Counter occupies substantial width and depth, approximately 1.55 times as wide as its full height including register, do not make it an almost flat frontal strip. Empty clear countertop except the register; NO wicker tray or goods baked into the counter. Warm directional light from upper left, detailed honey oak grain, dimensional polished Mediterranean casual game raster illustration. Entire unit alone centered with transparent margin, no room, wall, floor, shadows beyond tight contact around feet, scenery, people, shelves, product bottles, jars, groceries, lettering, labels, logo, UI or watermark. True transparent alpha background."
+    },
+    {
+      "source": "docs/art/hall-corner-trays-original.png",
+      "runtime": [
+        "hall-corner-tray-left.webp",
+        "hall-corner-tray-right.webp"
+      ],
+      "prompt": "Use case: stylized-concept / compositing.\nAsset type: TWO empty shallow wicker grocery TRAY sprites on real transparent alpha, side-by-side atlas.\nThe image is a camera and material reference for a corner shop. These trays go on its middle wooden display shelves, with separate food sprites composited later.\nGenerate TWO mirror-identical shallow rectangular woven honey-gold wicker trays, left-view tray on LEFT and right-view tray on RIGHT, separated by generous transparent space. Same physical dimensions and scale. Same elevated 30-degree camera as reference's shelving. Left tray long edges rise UP-RIGHT approximately 25 degrees (outer LEFT end nearest, right end farthest). Right tray long edges fall DOWN-RIGHT approximately 25 degrees (outer RIGHT end nearest). True perspective, top surfaces visible, not front-facing and not a near-flat horizontal basket.\nCRITICAL: extraordinarily LOW FRONT RIM, only TWO small wicker weave rows (about 2 cm real height). FRONT lip noticeably lower than the modest 4cm back rim. The contents will later be independent sprites; a high front wall would cause visual overlap, so show a wide unobstructed interior woven FLOOR with no tall front wall. Side rims taper down toward front. These are open shallow serving/display TRAYS, not storage baskets, not deep crates. Empty flat interior base clearly visible, not black hole. Neat rounded rim corners, realistic fine wicker pattern, warm polished dimensional cozy seaside casual game art. Every tray full silhouette inside its half of atlas; actual alpha background, small tight contact shadow.\nNo fruits, bread, products, goods, labels, handles, surrounding floor, shelves, room, UI, lettering or watermark. Landscape 3:2 atlas. Only these two shallow trays."
+    }
+  ],
+  "constraints": "Runtime goods remain separate. Front rim is shallow and drawn ahead of goods by clipping an unchanged copy of the tray sprite."
+}

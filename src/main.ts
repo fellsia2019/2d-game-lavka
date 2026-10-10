@@ -1,9 +1,16 @@
 import "./style.css";
 import "./campaign-game.css";
-import { CAMPAIGN_AREAS, FIRST_SHOP_PHASE, nextShopTask, shopComplete, type CampaignAreaId, type ShopTaskId, type ShopView } from "./campaign";
-import { worldHTML, taskArtwork } from "./world";
+import "./scene-navigation.css";
+import { CAMPAIGN_AREAS, nextProjectTask, nextProjectOrder, projectTasks, taskBalance,
+  isProjectOrderUnlocked, blockComplete, projectById,phaseStatus,
+  type CampaignAreaId, type ProjectId } from "./campaign";
+import { campaignSceneHTML, sceneTaskView, type CampaignView } from "./campaign-scene";
+import {buildingRooms,projectRoomEntry,type BuildingRoom} from './building-rooms';
+import { hallSceneHTML, hallCounterPreviewHTML } from "./hall-scene";
+import { mountHallCanvases, retainHallScene, prepareHallScene } from "./hall-canvas";
+import { worldHTML } from "./world";
+import { navigationState,projectSpaceName } from "./world-navigation";
 import {
-  GOODS,
   addReserve,
   applyMove,
   clone,
@@ -12,7 +19,6 @@ import {
   validateDefinition,
   won,
   type Board,
-  type Definition,
   type Good,
   type Move,
   type Position,
@@ -23,8 +29,7 @@ import {
   chapterNumber,
   completedCount,
   isCompleted,
-  isUnlocked,
-  nextOrder,
+  loadChapterLevel,
 } from "./content";
 import { structuralKey } from "./generator";
 import { RENOVATIONS, COLORS, type RenovationId } from "./renovations";
@@ -36,7 +41,9 @@ import {
   completeAttempt,
   loadProgress,
   renovate,
-  purchaseShopTask,
+  renovationOwned,
+  purchaseProjectTask,
+  selectProject,
   saveProgress,
   cachedHint,
   finishes,
@@ -49,6 +56,19 @@ import { audio } from "./audio";
 import { icon } from "./icons";
 import { TOOLS, purchaseTool, toolUnlocked, type ToolKind } from "./tools";
 import "./tool-shop.css";
+import "./debug.css";
+import { debugSceneHTML, applyDebugSceneState, readDebugSceneState, updateDebugSceneFields, addDebugCurrency, readDebugCurrency, type DebugScenePreset } from './debug-scene';
+import './debug-scene.css';
+import { sceneShopHTML, sceneShopDecorations, purchaseSceneItem, equipSceneItem, type SceneShopSlot } from './scene-shop';
+import './scene-shop.css';
+import { presentSceneReveal, finishSceneReveal, retainSpriteScene, decodeSpriteScene, type SceneReveal } from './scene-reveal';
+import './scene-reveal.css';
+import { DebugAutoPlayer } from "./debug-auto";
+import { createOrderAppearance, orderItem, orderSummary } from "./order-supplies";
+import "./economy-ui.css";
+import "./world-navigation.css";
+import './journey-ui.css';
+import { compactAmount, currencyIcon } from "./economy-ui";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 const overlay = document.querySelector<HTMLDivElement>("#overlay")!;
@@ -81,9 +101,12 @@ let toastTimer: ReturnType<typeof setTimeout>;
 let lastFocus: HTMLElement | null = null;
 let storageWarned = false;
 let externalChanged = !!loaded.readOnly;
-let repairTarget: RenovationId = "sign";
-let selectedArea: CampaignAreaId = "shop";
-let justBuilt: ShopTaskId | undefined;
+let repairTarget: RenovationId = "counter";
+let selectedArea: CampaignAreaId = projectById(progress.selectedProject)!.areaId;
+let justBuilt: string | undefined;
+let buildReveal: SceneReveal | undefined;
+let sceneShopPreview: string | undefined;
+let hallResizeObserver: ResizeObserver | null = null;
 let pendingLevel: number | null = null;
 let toolLesson = false;
 let drag: {
@@ -96,12 +119,38 @@ let drag: {
 } | null = null;
 let suppressClick = false;
 const assets = `${import.meta.env.BASE_URL}assets/`;
+const currentAppearance = () => progress.attempt
+  ? progress.attempt.appearance ??= createOrderAppearance(progress.attempt.definition)
+  : undefined;
+const itemFor = (good: Good) => orderItem(currentAppearance(), good);
 const goodImage = (good: Good, cls = "") =>
-  `<img class="good ${cls}" src="${assets}${GOODS[good].file}.webp" alt="" draggable="false" />`;
+  `<img class="good ${cls}" src="${assets}${itemFor(good).file}.webp" alt="" draggable="false" />`;
 const samePosition = (a: Position | null, b: Position) =>
   !!a && a[0] === b[0] && a[1] === b[1];
 const positionSelector = (p: Position) => `[data-slot="${p[0]},${p[1]}"]`;
 const current = () => progress.attempt!;
+const debugControl = document.createElement("button");
+debugControl.className = "debug-run-control";
+debugControl.dataset.action = "debug-stop";
+debugControl.hidden = true;
+document.body.append(debugControl);
+let debugRequest = 0;
+const debugPlayer = new DebugAutoPlayer({
+  current: () => progress.attempt,
+  allowed: () => screen === "game" && !busy && !modal && !externalChanged && !document.hidden,
+  move: ([from, to]) => move(from, to, "debug"),
+  solve: (board, path) => job<SearchResult>({ kind: "hint", board, path }),
+  report: message => toast(message),
+  statusChanged: status => {
+    debugControl.hidden = status === "idle";
+    debugControl.textContent = "Стоп";
+    debugControl.setAttribute("aria-label", status === "checking" ? "Остановить проверку" : "Остановить автопрохождение");
+  },
+});
+function cancelDebugAuto() {
+  debugRequest++;
+  debugPlayer.cancel();
+}
 const escapeHTML = (s: string) =>
   s.replace(
     /[&<>"']/g,
@@ -137,16 +186,7 @@ function applySettings() {
   audio.configure(progress.settings);
 }
 function stats() {
-  const stars = progress.stars % 100;
-  const unit =
-    stars >= 11 && stars <= 14
-      ? "звёзд"
-      : stars % 10 === 1
-        ? "звезда"
-        : stars % 10 >= 2 && stars % 10 <= 4
-          ? "звезды"
-          : "звёзд";
-  return `<div class="wallet"><span class="currency star" aria-label="${progress.stars} ${unit} ремонта">${icon("star")}<b>${progress.stars}</b></span><span class="currency coin" aria-label="${progress.coins} монет">${icon("coin")}<b>${progress.coins}</b></span></div>`;
+  return `<div class="wallet"><span class="currency star" title="Звёзды для обустройства" aria-label="${progress.stars} звёзд для обустройства">${icon("star")}<b>${compactAmount(progress.stars)}</b></span><span class="currency currency-repair" title="Ремкомплекты для ремонта" aria-label="${progress.repairKits} ремкомплектов">${icon("repair")}<b>${compactAmount(progress.repairKits)}</b></span><span class="currency coin" aria-label="${progress.coins} монет">${icon("coin")}<b>${compactAmount(progress.coins)}</b></span></div>`;
 }
 function focusGame(selector = "#order-heading", reveal = false) {
   if (screen === "game" && !modal && !externalChanged) {
@@ -158,7 +198,10 @@ function focusGame(selector = "#order-heading", reveal = false) {
 function settingsButton() {
   return `<button class="round cream" data-action="settings" aria-label="Настройки">${icon("settings")}</button>`;
 }
-function render() {
+function debugButton() {
+  return '<button class="debug-launch" data-action="debug-menu" aria-haspopup="dialog">Дебаг</button>';
+}
+function render(preserveRoom = false, preparedRoom?:HTMLElement) {
   const previousScroll = app.scrollTop;
   const changedScreen = renderedScreen !== screen;
   const active = document.activeElement as HTMLElement | null;
@@ -175,7 +218,7 @@ function render() {
             : null
       : null;
   app.className = screen === "game" ? "game-screen" : screen === "tools-shop" ? "tool-shop-screen" : "campaign-screen";
-  app.innerHTML =
+  const html =
     screen === "home"
       ? homeHTML()
       : screen === "finish"
@@ -183,6 +226,21 @@ function render() {
         : screen === "shop"
           ? shopHTML()
           : screen === "map" ? mapHTML() : screen === "tools-shop" ? toolsShopHTML() : gameHTML();
+  const previousRoom = preserveRoom ? app.querySelector<HTMLElement>('.world-scene > .shop-composition') : null;
+  if (previousRoom || preparedRoom) {
+    const fragment = document.createElement('template');
+    fragment.innerHTML = html;
+    const generatedRoom = fragment.content.querySelector<HTMLElement>('.world-scene > .shop-composition');
+    const nextRoom = preparedRoom?.dataset.sceneView===generatedRoom?.dataset.sceneView ? preparedRoom : generatedRoom;
+    if (generatedRoom && nextRoom) {
+      if (previousRoom && (retainHallScene(previousRoom,nextRoom)||retainSpriteScene(previousRoom,nextRoom))) generatedRoom.replaceWith(previousRoom);
+      else if(preparedRoom)generatedRoom.replaceWith(preparedRoom);
+    }
+    app.replaceChildren(fragment.content);
+  } else app.innerHTML = html;
+  const sceneView = app.querySelector<HTMLElement>(".shop-composition")?.dataset.sceneView;
+  if (sceneView) navigationView = sceneView as CampaignView;
+  configureHallScene();
   if (focusSelector)
     app
       .querySelector<HTMLElement>(focusSelector)
@@ -191,7 +249,10 @@ function render() {
   else updateCoach();
   if (busy)
     app.querySelectorAll<HTMLButtonElement>("button").forEach((b) => {
-      if (b.dataset.action !== "settings") b.disabled = true;
+      if ((buildReveal || b.dataset.action !== "settings") && !b.disabled) {
+        b.dataset.busyDisabled = "true";
+        b.disabled = true;
+      }
     });
   else if (!modal && document.activeElement === document.body)
     app
@@ -201,16 +262,60 @@ function render() {
       ?.focus({ preventScroll: true });
   if (screen !== "game") app.scrollTop = changedScreen ? 0 : previousScroll;
   renderedScreen = screen;
+  if (buildReveal) {
+    const state=buildReveal;
+    const scene=app.querySelector<HTMLElement>('.world-scene > .hall-composition');
+    if(state.phase==='revealing'&&scene) {
+      scene.dataset.purchasePhase='revealing';
+      scene.addEventListener('scene-transition-start',()=>{
+        if(buildReveal===state)presentSceneReveal(app,state);
+      },{once:true});
+    } else presentSceneReveal(app,state);
+  }
+  void mountHallCanvases(app).catch(error=>console.warn('[scene] Unable to update the painted room:',error));
 }
-const repairNext = () => nextShopTask(progress.campaign);
-const chapterDone = () => completedCount(progress.completed) === CHAPTER.length;
-const allDone = () => shopComplete(progress.completed, progress.campaign);
-let shopView: ShopView | undefined;
-const ownedDecorations = () => RENOVATIONS.filter(r => progress.renovations[r.id]);
+const repairNext = () => nextProjectTask(progress.campaign, progress.selectedProject);
+const nextAvailableOrder = () => nextProjectOrder(progress.selectedProject, progress.completed, progress.campaign);
+const allDone = () => blockComplete(progress.completed, progress.campaign);
+let shopView: CampaignView | undefined;
+let navigationView: CampaignView | undefined;
+const ownedDecorations = () => RENOVATIONS.filter(r => r.id === "counter" && renovationOwned(progress, r.id));
 function homeHTML() { return worldHTML(progress, assets, "home", selectedArea, justBuilt, shopView); }
 function shopHTML() { return worldHTML(progress, assets, "shop", selectedArea, justBuilt, shopView); }
 function finishHTML() { return worldHTML(progress, assets, "finish", selectedArea, justBuilt); }
 function mapHTML() { return worldHTML(progress, assets, "map", selectedArea); }
+function configureHallScene() {
+  hallResizeObserver?.disconnect();
+  hallResizeObserver = null;
+  const scene = app.querySelector<HTMLElement>(".world-scene > .hall-composition");
+  const stage = scene?.querySelector<HTMLElement>(".hall-world-stage");
+  const world = scene?.closest<HTMLElement>(".world");
+  const worldStage = world?.querySelector<HTMLElement>(".world-stage");
+  if (!scene || !stage || !world || !worldStage) return;
+  const viewport = scene.parentElement!;
+  world.classList.add("hall-game-world");
+  world.classList.toggle('bakery-game-world', scene.classList.contains('bakery-composition'));
+  if (scene.classList.contains('bakery-composition')) {
+    const plan = JSON.parse(stage.querySelector('script.hall-canvas-plan')!.textContent!);
+    world.style.setProperty('--bakery-surround', `url("${new URL(plan.base, document.baseURI).href}")`);
+  } else world.style.removeProperty('--bakery-surround');
+  // Painting already has a dock button; a second marker crowds the room goal.
+  scene.querySelectorAll(".world-edit").forEach(button => button.remove());
+  // The entire room shares one frame. Its DOM goals retain their normal hit area.
+  const frame = () => {
+    if (!scene.isConnected) return;
+    const space = getComputedStyle(worldStage);
+    const width = worldStage.clientWidth - parseFloat(space.paddingLeft) - parseFloat(space.paddingRight);
+    const height = worldStage.clientHeight - parseFloat(space.paddingTop) - parseFloat(space.paddingBottom);
+    const scale = Math.min(width / 1536, height / 1024);
+    viewport.style.width = `${1536 * scale}px`;
+    viewport.style.height = `${1024 * scale}px`;
+    stage.style.transform = `scale(${scale})`;
+  };
+  frame();
+  hallResizeObserver = new ResizeObserver(frame);
+  hallResizeObserver.observe(worldStage);
+}
 function toolsShopHTML() {
   return `<main class="tool-shop"><header class="tool-shop-header"><button class="round cream" data-action="leave-tools-shop" aria-label="${toolShopReturn === "game" ? "Вернуться в заказ" : "Вернуться в лавку"}">${icon("undo")}</button><h1 id="tool-shop-heading" tabindex="-1">Магазин помощи</h1><span class="store-wallet" aria-label="${progress.coins} монет">${icon("coin")}<b>${progress.coins}</b></span></header><div class="tool-shop-content"><p class="store-intro">Любой заказ можно пройти без помощи.</p><div class="store-shelves">${TOOLS.map(tool => {
     const unlocked = toolUnlocked(progress, tool.id);
@@ -303,8 +408,8 @@ function updateGentleGuide() {
   if (instruction) {
     const good = board.shelves[step[0][0]].front[step[0][1]]!;
     instruction.textContent = placing
-      ? `Перенеси товар в золотую рамку: полка ${step[1][0] + 1}, место ${step[1][1] + 1}.`
-      : `Выбери товар в золотой рамке: ${GOODS[good].name}.`;
+      ? `Перенеси предмет в золотую рамку: полка ${step[1][0] + 1}, место ${step[1][1] + 1}.`
+      : `Выбери предмет в золотой рамке: ${itemFor(good).name}.`;
   }
 }
 function startLesson(number: number) {
@@ -342,7 +447,7 @@ function updateCoach(focus = false) {
   updateGentleGuide();
   if (!target) return;
   app.querySelectorAll<HTMLButtonElement>("button").forEach((el) => {
-    if (el !== target && !el.disabled) {
+    if (el !== target && el.dataset.action !== "debug-menu" && !el.disabled) {
       el.dataset.coachDisabled = "true";
       el.disabled = true;
     }
@@ -354,9 +459,11 @@ function updateCoach(focus = false) {
     r = target.getBoundingClientRect();
   }
   const label = selected ? "Сюда" : "Возьми";
-  coach.innerHTML = `<div class="coach-spotlight" style="left:${r.left - 4}px;top:${r.top - 4}px;width:${r.width + 8}px;height:${r.height + 8}px" aria-hidden="true"><span class="coach-hand">${icon("hand")}</span></div><div class="coach-label" id="coach-instruction" role="status" style="left:${Math.max(8, Math.min(innerWidth - 140, r.left + r.width / 2 - 66))}px;top:${Math.max(68, r.top - 42)}px">${label}${icon("arrow")}</div><button class="coach-skip" data-action="skip-lesson">Пропустить</button>`;
+  const shadeTop = app.querySelector(".game-topbar")!.getBoundingClientRect().bottom - r.top + 4;
+  coach.innerHTML = `<div class="coach-spotlight" style="left:${r.left - 4}px;top:${r.top - 4}px;width:${r.width + 8}px;height:${r.height + 8}px;--coach-shade-top:${shadeTop}px" aria-hidden="true"><span class="coach-hand">${icon("hand")}</span></div><div class="coach-label" id="coach-instruction" role="status" style="left:${Math.max(8, Math.min(innerWidth - 140, r.left + r.width / 2 - 66))}px;top:${Math.max(68, r.top - 42)}px">${label}${icon("arrow")}</div><button class="coach-skip" data-action="skip-lesson">Пропустить</button>`;
   target.setAttribute("aria-describedby", "coach-instruction");
-  if (focus || (document.activeElement !== target && !coach.contains(document.activeElement)))
+  if (focus || (document.activeElement !== target && !coach.contains(document.activeElement)
+    && !(document.activeElement as HTMLElement | null)?.closest('[data-action="debug-menu"]')))
     target.focus({ preventScroll: true });
 }
 function gameHTML() {
@@ -365,18 +472,24 @@ function gameHTML() {
     board = attempt.board;
   const goalCount = Object.keys(board.goals).length;
   const stuck = !won(board) && !hasMoves(board);
+  const story = CHAPTER[chapterNumber(def.id)! - 1];
+  const project = projectById(story.phaseId)!;
+  const area = CAMPAIGN_AREAS.find(a => a.id === project.areaId)!;
+  const appearance = currentAppearance()!;
+  const repairOrder = appearance.kind === "repair";
+  const orderLabel = `${repairOrder ? "РЕМОНТ" : area.shortName.toUpperCase()} · ${story.localNumber} / ${project.orderTarget}`;
   const status = stuck ? (board.budget !== null && board.used >= board.budget
     ? "Ходы закончились. Отмени ход или начни заново." : "Нет свободных мест. Отмени ход или начни заново.") : "";
   return `<div class="game-backdrop" aria-hidden="true"></div>
-    <header class="topbar game-topbar"><button class="round cream" data-action="home" aria-label="Вернуться в лавку">${icon("home")}</button><div class="level-title"><span>ЗАКАЗ ${chapterNumber(def.id)} / ${FIRST_SHOP_PHASE.orderTarget}${board.budget !== null ? ` · ХОДЫ ${board.budget - board.used}` : ""}</span><h1 id="order-heading" tabindex="-1">${escapeHTML(def.name)}</h1></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
+    <header class="topbar game-topbar"><button class="round cream" data-action="home" aria-label="Вернуться в лавку">${icon("home")}</button>${debugButton()}<div class="level-title"><span>${orderLabel}${board.budget !== null ? ` · ХОДЫ ${board.budget - board.used}` : ""}</span><h1 id="order-heading" tabindex="-1" title="${escapeHTML(appearance.line)}" aria-describedby="order-purpose">${escapeHTML(appearance.title)}</h1></div><div class="top-actions">${stats()}${settingsButton()}</div></header>
     <main class="puzzle-layout">
-      <section class="puzzle rows-${Math.ceil(def.shelves.length / 2)}" aria-label="Игровое поле"><div class="orders goals-${goalCount}" aria-label="Товары для заказа">${Object.entries(
+      <section class="puzzle rows-${Math.ceil(def.shelves.length / 2)} ${repairOrder ? "repair-order" : "food-order"}" data-order-kind="${appearance.kind}" aria-label="Игровое поле"><span id="order-purpose" class="visually-hidden">${escapeHTML(appearance.customer)}. ${escapeHTML(appearance.line)} Награда: ${repairOrder ? "1 ремкомплект" : "1 звезда"} и 60 монет за первую победу.</span><div class="orders goals-${goalCount}" aria-label="${repairOrder ? "Материалы для ремонта" : "Товары для заказа"}">${Object.entries(
         board.goals,
       )
         .map(([key, goal]) => {
           const k = key as Good,
             n = board.delivered[k] ?? 0;
-          return `<div class="order-card ${n === goal ? "fulfilled" : ""}" data-order="${k}" aria-label="${GOODS[k].name}: ${n} из ${goal}">${goodImage(k)}<div><strong>${n}<small> / ${goal}</small></strong></div>${n === goal ? `<i class="done-icon">${icon("check")}</i>` : ""}</div>`;
+          return `<div class="order-card ${n === goal ? "fulfilled" : ""}" data-order="${k}" aria-label="${itemFor(k).name}: ${n} из ${goal}">${goodImage(k)}<div><strong>${n}<small> / ${goal}</small></strong></div>${n === goal ? `<i class="done-icon">${icon("check")}</i>` : ""}</div>`;
         })
         .join("")}</div>
       <div class="board-wrap"><div class="board shelves-${def.shelves.length}" aria-label="Полки">${board.shelves
@@ -384,13 +497,16 @@ function gameHTML() {
           if (sh.reserve) return "";
           const events = board.events.filter((e) => e.shelf === i);
           const stock = hiddenStock(sh);
-          const stockLabel = stock.map(([good, count]) => `${GOODS[good].name}: ${count}`).join(", ");
+          const stockLabel = stock.map(([good, count]) => `${itemFor(good).name}: ${count}`).join(", ");
           const stockPreview = sh.opened && sh.rear.length ? `<div class="rear-preview" aria-label="Запас во всех скрытых рядах: ${stockLabel}. Освободи полку, чтобы открыть следующий ряд.">${stock.map(([good, count]) => `<span class="rear-stock">${goodImage(good)}<b><span class="stock-times">×</span>${count}</b></span>`).join("")}</div>` : "";
-          const stockBadge = sh.rear.length ? `<span class="rear-badge" aria-label="Запас: ${sh.rear.length} ${sh.rear.length === 1 ? "ряд" : "ряда"}">${icon("layers")}<span class="stock-label">Запас ·</span>${sh.rear.length}<span class="stock-label">${sh.rear.length === 1 ? "ряд" : "ряда"}</span></span>` : "";
+          const rows = sh.rear.length;
+          const rowWord = rows % 100 >= 11 && rows % 100 <= 14 ? "рядов"
+            : rows % 10 === 1 ? "ряд" : rows % 10 >= 2 && rows % 10 <= 4 ? "ряда" : "рядов";
+          const stockBadge = rows ? `<span class="rear-badge" aria-label="Запас: ${rows} ${rowWord}">${icon("layers")}<span><span class="stock-label">Запас · </span>${rows}<span class="stock-label"> ${rowWord}</span></span></span>` : "";
           return `<div class="shelf ${!sh.opened ? "locked" : ""} ${events.some((e) => e.type === "unlock") ? "just-unlocked" : ""}" data-shelf="${i}"><div class="shelf-footer"><span>${i + 1}</span>${stockPreview}${stockBadge}</div>${sh.opened ? `<div class="shelf-tray"></div><div class="slots">${sh.front.map((k, j) => slotHTML(k, [i, j])).join("")}</div>` : `<div class="shelf-tray"></div><div class="crate-cover">${icon("lock")}<span>${board.triples} / ${sh.unlockAfter}</span></div>`}</div>`;
         })
         .join("")}</div></div>
-      <div class="tools" aria-label="Дополнительная помощь">${toolHTML("hint", stuck ? "Как выйти" : "Подсказка")}${toolHTML("mix", "Смешать")}${board.shelves.some(sh => sh.reserve) ? `<div class="tool tray-tool" role="group" aria-label="Лоток для одного товара"><span class="tool-label"><span class="tool-name">Лоток</span></span>${slotHTML(board.shelves[board.shelves.length - 1].front[0], [board.shelves.length - 1, 0])}</div>` : toolHTML("reserve", "Лоток")}</div>
+      <div class="tools" aria-label="Дополнительная помощь">${toolHTML("hint", stuck ? "Как выйти" : "Подсказка")}${toolHTML("mix", "Смешать")}${board.shelves.some(sh => sh.reserve) ? `<div class="tool tray-tool" role="group" aria-label="Лоток для одного предмета"><span class="tool-label"><span class="tool-name">Лоток</span></span>${slotHTML(board.shelves[board.shelves.length - 1].front[0], [board.shelves.length - 1, 0])}</div>` : toolHTML("reserve", "Лоток")}</div>
       <div class="utility-bar"><button data-action="undo" ${!attempt.undo.length || won(board) ? "disabled" : ""} class="quiet ${stuck ? "recover-action" : ""}" aria-label="Отмена">${icon("undo")} Отмена</button><button class="quiet" data-action="restart" aria-label="Заново">${icon("restart")} Заново</button><button class="quiet game-store-link" data-action="tools-shop" aria-label="Магазин помощи">${icon("store")} Магазин</button><button class="mobile-help quiet" data-action="help" aria-label="Как играть">${icon("help")}</button>${toolLesson || highlighted ? `<button class="quiet" data-action="skip-lesson" aria-label="${toolLesson ? "Пропустить" : "Скрыть подсказку"}">${icon("close")}${toolLesson ? "Пропустить" : "Скрыть подсказку"}</button>` : ""}</div>
       <span class="visually-hidden" role="status">${status}</span>
       <span id="gentle-instruction" class="visually-hidden" role="status"></span>
@@ -402,7 +518,7 @@ function slotHTML(good: Good | null, position: Position) {
   const hintSource = step && samePosition(step[0], position);
   const hintDest = step && samePosition(step[1], position);
   const place = current().board.shelves[position[0]]?.reserve ? "Лоток" : `Полка ${position[0] + 1}, место ${position[1] + 1}`;
-  return `<button class="slot ${good ? "occupied" : "empty"} ${samePosition(selected, position) ? "selected" : ""} ${hintSource ? "hint-source" : ""} ${hintDest ? "hint-dest" : ""}" data-slot="${position.join(",")}" aria-label="${place}: ${good ? GOODS[good].name : "свободно"}" aria-pressed="${samePosition(selected, position)}">${good ? goodImage(good) : '<span class="empty-mark">+</span>'}</button>`;
+  return `<button class="slot ${good ? "occupied" : "empty"} ${samePosition(selected, position) ? "selected" : ""} ${hintSource ? "hint-source" : ""} ${hintDest ? "hint-dest" : ""}" data-slot="${position.join(",")}" aria-label="${place}: ${good ? itemFor(good).name : "свободно"}" aria-pressed="${samePosition(selected, position)}">${good ? goodImage(good) : '<span class="empty-mark">+</span>'}</button>`;
 }
 function toolHTML(kind: ToolKind, name: string) {
   const tool = TOOLS.find(tool => tool.id === kind)!;
@@ -418,8 +534,10 @@ function toolHTML(kind: ToolKind, name: string) {
   return `<button class="tool ${empty ? "tool-empty" : ""}" data-action="${empty ? "tools-shop" : kind}" ${empty ? `data-tool="${kind}"` : ""} aria-label="${name} ${stock}" title="${tool.description}${empty ? " Купить в магазине помощи." : " Дополнительная помощь: все заказы можно пройти без неё."}" ${locked || unavailable || busy || won(board) ? "disabled" : ""}><span class="tool-circle">${icon(kind)}</span><span class="tool-label"><span class="tool-name">${name}</span><span class="tool-stock">${stock}</span></span></button>`;
 }
 async function start(number: number, force = false) {
-  if (busy || externalChanged || !isUnlocked(progress.completed, number))
-    return;
+  cancelDebugAuto();
+  if (busy || externalChanged || !isProjectOrderUnlocked(progress.completed, progress.campaign, number)) return;
+  const projectId = CHAPTER[number - 1].phaseId as ProjectId;
+  if (projectId !== progress.selectedProject && !selectProject(progress, projectId)) return;
   if (
     !force &&
     progress.attempt &&
@@ -460,7 +578,7 @@ async function start(number: number, force = false) {
     false,
   );
   try {
-    const definition = await job<Definition>({ kind: "level", number });
+    const definition = await loadChapterLevel(number);
     if (externalChanged) return;
     validateDefinition(definition);
     if (chapterNumber(definition.id) !== number)
@@ -470,6 +588,7 @@ async function start(number: number, force = false) {
     progress.attempt = {
       id: crypto.randomUUID(),
       definition,
+      appearance: createOrderAppearance(definition),
       board: initial(definition),
       undo: [],
       solution: clone(definition.verifiedSolution),
@@ -503,6 +622,7 @@ async function start(number: number, force = false) {
   }
 }
 function selectSlot(position: Position) {
+  cancelDebugAuto();
   if (
     externalChanged ||
     busy ||
@@ -521,7 +641,7 @@ function selectSlot(position: Position) {
     audio.play("take");
     renderSelection();
   } else if (selected) move(selected, position);
-  else toast("Выбери товар");
+  else toast("Выбери предмет");
 }
 function renderSelection() {
   document.querySelectorAll<HTMLElement>("[data-slot]").forEach((el) => {
@@ -536,16 +656,17 @@ function renderSelection() {
   });
   updateCoach();
 }
-function move(from: Position, to: Position) {
-  if (externalChanged || busy || modal || document.hidden) return;
+function move(from: Position, to: Position, source: "player" | "debug" = "player"): boolean {
+  if (source === "player") cancelDebugAuto();
+  if (externalChanged || busy || modal || document.hidden) return false;
   const lesson = guidedLesson(), step = activeHint();
-  if (step && (!samePosition(step[0], from) || !samePosition(step[1], to))) return;
+  if (step && (!samePosition(step[0], from) || !samePosition(step[1], to))) return false;
   const attempt = current();
   const before = attempt.board;
   const next = applyMove(before, from, to);
   if (!next) {
     toast("Нужно свободное место");
-    return;
+    return false;
   }
   const sourceRect = app
     .querySelector(positionSelector(from))
@@ -630,6 +751,7 @@ function move(from: Position, to: Position) {
     audio.play("win");
     showResult();
   }
+  return true;
 }
 function showModal(
   name: string,
@@ -637,6 +759,7 @@ function showModal(
   closable = true,
   wide = false,
 ) {
+  cancelDebugAuto();
   endDrag(undefined, true);
   if (!modal) lastFocus = document.activeElement as HTMLElement;
   modal = name;
@@ -645,9 +768,12 @@ function showModal(
     (
       {
         settings: "Настройки",
-                switch: "Смена заказа",
+        debug: "Дебаг",
+        "scene-shop": "Магазин оформления",
+        switch: "Смена заказа",
         unsupported: "Обновление игры",
         result: "Заказ готов",
+        navigation: "Помещения и зоны",
         renovation: "Оформление лавки",
         task: "Обустройство лавки",
         levels: "Книжка заказов",
@@ -658,6 +784,7 @@ function showModal(
       } as Record<string, string>
     )[name] ?? "Лавка у моря"
   }">${closable ? `<button class="modal-close round cream" data-action="close" aria-label="Закрыть">${icon("close")}</button>` : ""}${content}</section></div>`;
+  void mountHallCanvases(overlay);
   app.inert = true;
   updateCoach();
   queueMicrotask(() =>
@@ -677,31 +804,158 @@ function showResult() {
   clearToast();
   const attempt = current(),
     reward = attempt.reward ?? completeAttempt(progress, today())!;
-  const next = nextOrder(progress.completed),
+  const next = nextAvailableOrder(),
     node = repairNext(),
-    affordable = node && progress.stars >= node.cost;
+    affordable = node && taskBalance(progress, node) >= node.cost;
+  const repairOrder = currentAppearance()?.kind === "repair";
+  const rewardCurrency = repairOrder ? "repairKits" : "stars";
+  const navigation = navigationState(progress);
+  const destination = navigation.nextDestination;
+  const returnLabel = `К зданию: ${navigation.currentLabel}`;
+  const mainAction = affordable ? "buy-task" : allDone() ? "finish" : next ? "next" : destination ? "continue-journey" : "home";
+  const mainLabel = affordable ? `Выполнить · ${node.cost} ${currencyIcon(node.currency)}`
+    : allDone() ? "Во двор" : next ? "Дальше" : destination ? destination.actionLabel : returnLabel;
+  const guidance = affordable ? `Можно выполнить: ${node.name}.` : navigation.remainingOrders === 0
+    ? affordable ? "Все заказы выполнены. Завершите обустройство здания, чтобы открыть следующий участок."
+      : destination ? `Здесь всё готово. Дальше — ${projectSpaceName(destination.projectId).toLocaleLowerCase("ru-RU")}.` : ""
+    : "";
   persist();
   showModal(
     "result",
-    `<div class="result-badge">${icon("check")}</div><h2>Заказ готов!</h2><div class="reward-row"><div>${icon("coin")}<strong>+${reward.coins}</strong><span>монет</span></div><div>${icon("star")}<strong>+${reward.stars}</strong><span>${reward.stars ? "" : "Повтор"}</span></div></div>${node ? `<div class="result-goal"><span class="result-goal-art">${taskArtwork(node.id, assets)}</span>${icon("arrow")}<span>${node.name}</span></div>` : ""}<button class="primary" data-action="${affordable ? "buy-task" : allDone() ? "finish" : next ? "next" : "home"}" ${affordable ? `data-task-id="${node.id}"` : ""}>${affordable ? `Поставить · ${node.cost} ★` : allDone() ? "В лавку" : next ? "Дальше" : "В лавку"}${icon("arrow")}</button><button class="quiet" data-action="home">В лавку${icon("home")}</button>`,
+    `<div class="result-badge">${icon("check")}</div><h2>${repairOrder ? "Материалы собраны!" : "Заказ готов!"}</h2><div class="reward-row"><div>${icon("coin")}<strong>+${reward.coins}</strong><span>монет</span></div><div class="reward-${rewardCurrency}">${currencyIcon(rewardCurrency)}<strong>+${reward[rewardCurrency]}</strong><span>${reward.fresh ? repairOrder ? "на ремонт" : "на обустройство" : "Повтор"}</span></div></div>${guidance ? `<p class="result-next-step">${guidance}</p>` : ""}<button class="primary ${["next", "buy-task", "continue-journey"].includes(mainAction) ? "game-guidance" : ""}" ${["next", "buy-task", "continue-journey"].includes(mainAction) ? 'data-guide="result-next"' : ""} data-action="${mainAction}" ${affordable ? `data-task-id="${node.id}"` : destination && mainAction === "continue-journey" ? `data-project="${destination.projectId}"` : ""}>${mainLabel}${icon("arrow")}</button><button class="quiet" data-action="home">${returnLabel}${icon("home")}</button>`,
     false,
   );
 }
+const currentSceneViews=()=>buildingRooms(progress,progress.selectedProject);
+function roomCards(rooms:BuildingRoom[],currentView?:CampaignView){
+  return `<div class="navigation-view-grid">${rooms.map(room=>{
+    const current=room.id===currentView&&room.projectId===progress.selectedProject;
+    const ready=room.total>0&&room.completed===room.total;
+    return `<button class="navigation-view-card ${room.recommended?'room-next':''} ${current?'room-current':''}" data-action="shop-view" data-view="${room.id}" data-project="${room.projectId}" aria-label="${room.name}" aria-pressed="${current}"><span class="navigation-view-preview" aria-hidden="true">${campaignSceneHTML(progress.campaign.completedTasks,assets,{areaId:projectById(room.projectId)!.areaId,phaseId:room.projectId,view:room.id,decorations:progress.renovations,decor:sceneShopDecorations(progress)})}</span><strong>${room.name}</strong><small>${current?'Вы здесь':room.recommended?'Следующая работа':ready?'Обустройство готово':room.kind}</small><span class="room-progress" role="progressbar" aria-label="Обустройство: ${room.name}" aria-valuemin="0" aria-valuemax="${room.total}" aria-valuenow="${room.completed}" style="--room-progress:${room.total?room.completed/room.total*100:0}%"><i></i></span><span class="room-card-action">${room.recommended?'Продолжить':ready?'Осмотреть':'Перейти'}${icon('arrow')}</span></button>`;
+  }).join('')}</div>`;
+}
+function buildingRoomsModal(projectId:ProjectId){
+  const project=projectById(projectId),rooms=buildingRooms(progress,projectId);
+  if(!project||!rooms.length)return;
+  const area=CAMPAIGN_AREAS.find(area=>area.id===project.areaId)!;
+  showModal('navigation',`<h2>${area.shortName}</h2><div class="navigation-breadcrumb">${icon('globe')}<span>Карта двора</span>${icon('arrow')}<span class="navigation-current">${area.shortName}</span></div><h3 class="navigation-room-heading">Куда перейти?</h3><p class="navigation-room-description navigation-intro">Помещения и зоны здания</p>${roomCards(rooms)}<button class="quiet" data-action="close">Назад к карте${icon('back')}</button>`);
+}
+function navigationModal() {
+  const navigation = navigationState(progress);
+  const project = navigation.currentProject;
+  const view = (app.querySelector<HTMLElement>(".shop-composition")?.dataset.sceneView
+    ?? shopView ?? navigationView) as CampaignView | undefined;
+  const views = currentSceneViews();
+  const notice = navigation.warehouseNotice;
+  showModal("navigation", `<h2>Двор у моря</h2><div class="navigation-breadcrumb">${icon("globe")}<span>Двор</span>${icon("arrow")}<span class="navigation-current">${navigation.currentLabel}</span></div><button class="navigation-up" data-action="show-map"><img src="${assets}coastal-map-cleared-v1.webp" width="96" height="64" alt=""/><span class="navigation-up-copy"><strong>На карту двора</strong><span>Все здания и новые участки</span></span>${icon("arrow")}</button>${navigation.nextDestination?`<button class="navigation-notice game-guidance" data-guide="next-place" data-action="continue-journey" data-project="${navigation.nextDestination.projectId}">${icon('arrow')}<span><strong>${navigation.nextDestination.actionLabel}</strong><span>Следующее помещение для обустройства</span></span></button>`:notice?.kind==='new'&&project.areaId!=='warehouse'?`<button class="navigation-notice game-guidance" data-guide="new-warehouse" data-action="continue-journey" data-project="warehouse-1">${icon('reserve')}<span><strong>Открыт склад</strong><span>Начните восстановление</span></span>${icon('arrow')}</button>`:''}<h3 class="navigation-room-heading">Помещения и зоны</h3>${roomCards(views,view)}`);
+}
+
 function settingsModal() {
   showModal(
     "settings",
-    `<h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button>${new URLSearchParams(location.search).has("playtest") ? `<button class="quiet" data-action="export-events">Скачать отчёт этой сессии</button>` : ""}<p class="save-note">${storageWarned ? "Сохранение недоступно — игра работает в этой вкладке." : "Сохранено в браузере"}</p>`,
+    `<h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button>${debugButton()}${new URLSearchParams(location.search).has("playtest") ? `<button class="quiet" data-action="export-events">Скачать отчёт этой сессии</button>` : ""}<p class="save-note">${storageWarned ? "Сохранение недоступно — игра работает в этой вкладке." : "Сохранено в браузере"}</p>`,
   );
 }
-function renovationModal(target: RenovationId = ownedDecorations()[0]?.id ?? "sign", focusTab = false) {
+function sceneShopModal() {
+  showModal('scene-shop', sceneShopHTML(progress, assets, { previewId:sceneShopPreview,
+    renderPreview: decor => hallSceneHTML(progress.campaign.completedTasks,assets,progress.renovations,{view:'hall',decor}),
+  }),true,true);
+}
+const pauseScene=(ms:number)=>new Promise<void>(resolve=>setTimeout(resolve,ms));
+async function buyTaskWithReveal(taskId:string) {
+  if(busy||externalChanged||buildReveal)return;
+  const task=repairNext();
+  if(!task||task.id!==taskId||taskBalance(progress,task)<task.cost)return;
+  const reduced=progress.settings.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches;
+  busy=true;
+  app.querySelectorAll<HTMLButtonElement>('button:not([disabled])').forEach(button=>{
+    button.disabled=true;button.dataset.busyDisabled='true';
+  });
+  closeModal();
+  clearToast();
+  screen='shop';shopView=sceneTaskView(taskId);justBuilt=undefined;
+  buildReveal={taskId,name:task.name,phase:'preparing'};
+  try {
+    const currentRoom=app.querySelector<HTMLElement>('.world-scene > .shop-composition');
+    let prepared:Awaited<ReturnType<typeof prepareHallScene>>|undefined;
+    if(!currentRoom||currentRoom.dataset.sceneView!==shopView||(currentRoom.classList.contains('hall-composition')&&currentRoom.dataset.sceneReady!=='true')) {
+      const template=document.createElement('template');template.innerHTML=shopHTML();
+      const room=template.content.querySelector<HTMLElement>('.world-scene > .shop-composition');
+      if(room?.classList.contains('hall-composition'))prepared=await prepareHallScene(room);
+      else if(room){await decodeSpriteScene(room);prepared={scene:room,release:()=>{}};}
+    }
+    try {render(true,prepared?.scene);} finally {prepared?.release();}
+    await mountHallCanvases(app);
+    const surface=app.querySelector<HTMLElement>('.world-scene > .hall-composition');
+    if(surface&&surface.dataset.sceneReady!=='true')throw new Error('Сцена ещё не загрузилась. Попробуйте ещё раз.');
+    await pauseScene(reduced?150:650);
+    if(externalChanged||!purchaseProjectTask(progress,taskId))throw new Error('Не удалось выполнить работу.');
+    persist();
+    justBuilt=taskId;
+    buildReveal={taskId,name:task.name,phase:'revealing'};
+    let spriteRoom:HTMLElement|undefined;
+    if(!app.querySelector('.world-scene > .hall-composition')) {
+      const template=document.createElement('template');template.innerHTML=shopHTML();
+      spriteRoom=template.content.querySelector<HTMLElement>('.world-scene > .shop-composition')??undefined;
+      if(spriteRoom)await decodeSpriteScene(spriteRoom);
+    }
+    render(true,spriteRoom);
+    await mountHallCanvases(app);
+    audio.play('repair');
+    track('campaign_task',undefined,{task:taskId});
+    await pauseScene(reduced?180:1450);
+    buildReveal=undefined;
+    justBuilt=undefined;
+    busy=false;
+    // Balances and the next goal were already rendered before the effect.
+    // Replacing that finished room would expose a blank/new canvas for a frame.
+    finishSceneReveal(app);
+    app.querySelectorAll<HTMLButtonElement>('button[data-busy-disabled]').forEach(button=>{
+      button.disabled=false;
+      delete button.dataset.busyDisabled;
+    });
+    if(!modal&&!externalChanged)app.querySelector<HTMLElement>('.world-main-action')?.focus({preventScroll:true});
+  } catch(error) {
+    buildReveal=undefined;justBuilt=undefined;busy=false;finishSceneReveal(app);render(true);
+    toast(error instanceof Error?error.message:'Не удалось выполнить работу.');
+  } finally { busy=false; }
+}
+function debugModal() {
+  const number = progress.attempt && !won(progress.attempt.board)
+    ? chapterNumber(progress.attempt.definition.id) : nextAvailableOrder();
+  showModal("debug", `<h2>Дебаг</h2><div class="debug-menu"><p>Автопрохождение выполняет обычные ходы по проверенному решению. Помощь не расходуется.</p><p class="debug-status">${number ? escapeHTML(progress.attempt && chapterNumber(progress.attempt.definition.id) === number ? progress.attempt.appearance?.title ?? orderSummary(CHAPTER[number - 1].id).title : orderSummary(CHAPTER[number - 1].id).title) : "Нет открытого незавершённого заказа"}</p><button class="primary" data-action="debug-auto" ${number ? "" : "disabled"}>Пройти уровень</button><button class="secondary" data-action="debug-restart" ${screen === "game" && progress.attempt ? "" : "disabled"}>Заново этот уровень</button><button class="secondary" data-action="debug-orders">Заказы здания</button>${debugSceneHTML(progress)}<button class="quiet" data-action="close">Закрыть</button></div>`);
+}
+async function debugAutoOrder() {
+  if (externalChanged || busy) return;
+  closeModal();
+  if (progress.attempt && won(progress.attempt.board) && !progress.attempt.reward) {
+    screen = "game";
+    render();
+    showResult();
+    return;
+  }
+  let request = debugRequest;
+  if (screen !== "game" || !progress.attempt || won(progress.attempt.board)) {
+    const number = progress.attempt && !won(progress.attempt.board)
+      ? chapterNumber(progress.attempt.definition.id) : nextAvailableOrder();
+    if (!number) return;
+    const opening = start(number);
+    request = debugRequest;
+    await opening;
+  }
+  if (request !== debugRequest || screen !== "game" || modal || !progress.attempt || won(progress.attempt.board)) return;
+  selected = null;
+  highlighted = null;
+  await debugPlayer.start();
+}
+function renovationModal(target: RenovationId = ownedDecorations()[0]?.id ?? "counter", focusTab = false) {
   repairTarget = target;
   const node = RENOVATIONS.find((r) => r.id === target)!,
     color = progress.renovations[target] ?? "sea",
-    owned = !!progress.renovations[target];
+    owned = ownedDecorations().some(r => r.id === target);
   if (!owned) return;
   const note = "Смена цвета бесплатна.";
-  const preview = target === "sign" ? `${icon("shell")}<strong>Лавка у моря</strong>`
-    : `<img src="${assets}${target === "counter" ? "counter" : "garden"}.webp" alt="" />`;
+  const preview = hallCounterPreviewHTML(assets, color);
   showModal(
     "renovation",
     `<div class="repair-header"><h2>Оформление лавки</h2></div>
@@ -722,34 +976,39 @@ function selectRepairColor(color: RenovationColor) {
   });
   const preview = overlay.querySelector<HTMLElement>("#sign-preview")!;
   preview.className = `repair-preview preview-${repairTarget} ${color}`;
+  preview.innerHTML = hallCounterPreviewHTML(assets, color);
   preview.setAttribute("aria-label", `Предпросмотр: ${RENOVATIONS.find(r => r.id === repairTarget)!.name}, ${COLORS[color]}`);
   const button = overlay.querySelector<HTMLButtonElement>(".repair-footer .primary")!;
   button.dataset.choice = color;
-  if (progress.renovations[repairTarget]) {
-    const changed = color !== progress.renovations[repairTarget];
+  if (renovationOwned(progress, repairTarget)) {
+    const changed = color !== (progress.renovations[repairTarget] ?? "sea");
     button.dataset.action = changed ? "buy-renovation" : "close";
     button.textContent = changed ? "Применить цвет" : "Готово";
   }
 }
 function levelsModal() {
-  showModal(
-    "levels",
-    `<span class="eyebrow">ЛАВКА · ПЕРВЫЙ ТОРГОВЫЙ ДЕНЬ</span><h2>Заказы</h2><p>Выполнено ${completedCount(progress.completed)} из ${FIRST_SHOP_PHASE.orderTarget}. Доступно ${CHAPTER.length} заказов; продолжение этапа ещё готовится.</p><div class="level-list">${CHAPTER.map(
-      (level, i) => {
-        const completed = isCompleted(progress.completed, i + 1);
-        const unlocked = isUnlocked(progress.completed, i + 1);
-        const block = i === 0 ? "Открытие лавки · 1–10" : i === 10 ? "Вторая выкладка · 11–20" : i === 20 ? "Холодный отдел · 21–30" : "";
-        return `${block ? `<h3 class="level-block-heading">${block}</h3>` : ""}<button class="level-entry ${completed ? "complete" : ""}" data-level="${i + 1}" ${unlocked ? "" : "disabled"}><span class="level-number">${completed ? icon("check") : i + 1}</span><span><strong>${level.name}</strong></span>${icon(unlocked ? "arrow" : "lock")}</button>`;
-      },
-    ).join("")}</div><p class="content-boundary">Далее: хлебная стойка, упаковка и вход. Эти заказы и покупки ещё не подключены. Складской проект станет доступен после всех ${FIRST_SHOP_PHASE.orderTarget} заказов и ${FIRST_SHOP_PHASE.taskTarget} работ первого этапа лавки.</p>`,
-    true,
-    true,
-  );
+  const project = projectById(progress.selectedProject)!;
+  const entries = CHAPTER.map((level, index) => ({ level, number: index + 1 })).filter(e => e.level.phaseId === project.id);
+  const done = entries.filter(e => isCompleted(progress.completed, e.number)).length;
+  showModal("levels", `<span class="eyebrow">${projectSpaceName(project.id).toUpperCase()}</span><h2>Заказы</h2>
+    <p>Выполнено ${done} из ${project.orderTarget}. Строительные задания дают ремкомплекты для ремонта. Продуктовые заказы — звёзды для обустройства.</p>
+    <div class="level-list">${entries.map(({level, number}) => {
+      const completed = isCompleted(progress.completed, number);
+      const unlocked = isProjectOrderUnlocked(progress.completed, progress.campaign, number, project.id);
+      const summary = orderSummary(level.id);
+      const construction = summary.kind === "repair";
+      const previousKind = level.localNumber > 1 ? orderSummary(entries[level.localNumber - 2].level.id).kind : null;
+      const block = previousKind !== summary.kind ? construction ? "Материалы для ремонта" : "Заказы покупателей" : "";
+      return `${block ? `<h3 class="level-block-heading">${block}</h3>` : ""}<button class="level-entry ${completed ? "complete" : ""}" data-level="${number}" ${unlocked ? "" : "disabled"}><span class="level-number">${completed ? icon("check") : level.localNumber}</span><span><strong>${escapeHTML(summary.title)}</strong><small>${construction ? "Ремонт" : "Обустройство"} · +1 ${currencyIcon(construction ? "repairKits" : "stars")}</small></span>${icon(unlocked ? "arrow" : "lock")}</button>`;
+    }).join("")}</div><button class="secondary" data-action="show-map">Карта двора${icon("globe")}</button>`, true, true);
 }
 function helpModal() {
+  const appearance = currentAppearance();
+  const exampleGoods = progress.attempt ? Object.keys(current().board.goals) as Good[] : ["m", "j"] as Good[];
+  const [first, second = first] = exampleGoods;
   showModal(
     "help",
-    `<h2>Собери тройку</h2><div class="visual-help"><div class="help-transfer">${goodImage("m")}${icon("arrow")}<span class="help-empty">+</span></div><span>Товар → место</span><div class="help-goods">${goodImage("j")}${goodImage("j")}${goodImage("j")}${icon("arrow")}${icon("check")}</div><span>Три в ряд — готово</span><div class="help-shortcuts"><span>${icon("undo")} Отмена</span><span>${icon("restart")} Заново</span></div></div><div class="help-tools"><p>Все заказы можно пройти обычными переносами. Инструменты — дополнительная помощь.</p><p><strong>${icon("mix")} Смешать</strong> — помогает сменить неудобную расстановку открытых товаров. Запас и выполненная часть заказа сохраняются.</p><p><strong>${icon("reserve")} Лоток</strong> — если товар мешает собрать тройку, временно убери его в лоток на месте кнопки. Позже верни товар на полку.</p><p>Помощь пополняется в магазине. Покупка добавляет использование в запас; чтобы применить его, нажми кнопку в заказе.</p></div><button class="primary" data-action="close">Играть${icon("arrow")}</button>`,
+    `<h2>Собери тройку</h2>${appearance ? `<p class="order-brief">${escapeHTML(appearance.line)}</p><p class="order-reward">${currencyIcon(appearance.kind === "repair" ? "repairKits" : "stars")} Первая победа: +1 ${appearance.kind === "repair" ? "ремкомплект на ремонт" : "звезда на обустройство"} и 60 монет.</p>` : ""}<div class="visual-help"><div class="help-transfer">${goodImage(first)}${icon("arrow")}<span class="help-empty">+</span></div><span>Предмет → место</span><div class="help-goods">${goodImage(second)}${goodImage(second)}${goodImage(second)}${icon("arrow")}${icon("check")}</div><span>Три в ряд — готово</span><div class="help-shortcuts"><span>${icon("undo")} Отмена</span><span>${icon("restart")} Заново</span></div></div><div class="help-tools"><p>Все заказы можно пройти обычными переносами. Инструменты — дополнительная помощь.</p><p><strong>${icon("mix")} Смешать</strong> — помогает сменить неудобную расстановку открытых предметов. Запас и выполненная часть заказа сохраняются.</p><p><strong>${icon("reserve")} Лоток</strong> — если предмет мешает собрать тройку, временно убери его в лоток на месте кнопки. Позже верни предмет на полку.</p><p>Помощь пополняется в магазине. Покупка добавляет использование в запас; чтобы применить его, нажми кнопку в заказе.</p></div><button class="primary" data-action="close">Играть${icon("arrow")}</button>`,
   );
 }
 function hasTool(kind: ToolKind): boolean {
@@ -761,6 +1020,7 @@ function consumeTool(kind: ToolKind) {
   progress.inventory[kind]--;
 }
 async function hint(teaching = false) {
+  cancelDebugAuto();
   if (busy || won(current().board)) return;
   if (!hasMoves(current().board)) {
     toast(
@@ -825,6 +1085,7 @@ async function hint(teaching = false) {
   }
 }
 async function mix() {
+  cancelDebugAuto();
   if (
     busy ||
     !isCompleted(progress.completed, 3) ||
@@ -886,6 +1147,7 @@ async function mix() {
   }
 }
 function reserve() {
+  cancelDebugAuto();
   if (busy || !isCompleted(progress.completed, 6) || won(current().board))
     return;
   if (
@@ -907,6 +1169,7 @@ function reserve() {
   clearToast();
 }
 function undo() {
+  cancelDebugAuto();
   const attempt = current();
   if (won(attempt.board)) return;
   const previous = attempt.undo.pop();
@@ -925,9 +1188,66 @@ function undo() {
 }
 function action(name: string, button: HTMLElement) {
   if (externalChanged && name !== "refresh") return;
-  if (busy && !["settings", "close"].includes(name)) return;
+  if (busy && (buildReveal || !["settings", "close"].includes(name))) return;
+  cancelDebugAuto();
   audio.play("button");
   switch (name) {
+    case "debug-menu":
+      debugModal();
+      break;
+    case "debug-scene-preset":
+      if (["start","middle","built","complete"].includes(button.dataset.preset!)) updateDebugSceneFields(overlay, progress, button.dataset.preset as DebugScenePreset);
+      break;
+    case "debug-scene-apply": {
+      const state=readDebugSceneState(overlay);
+      if(!state){toast("Проверьте выбранный этап и числа.");break;}
+      // Rewind just the selected work, then use the ordinary purchase/reveal.
+      const task=state.works ? projectTasks(state.projectId)[state.works-1] : undefined;
+      const result=applyDebugSceneState(progress,{...state,works:state.works-(task?1:0)});
+      if(!result.ok){toast(result.message);break;}
+      // Closing a game modal refreshes its coach. Leave the order screen before
+      // that refresh, since applying a scene deliberately removes its attempt.
+      screen="shop";
+      selectedArea=projectById(progress.selectedProject)!.areaId;
+      shopView=undefined;justBuilt=undefined;buildReveal=undefined;
+      selected=null;highlighted=null;gentleBoard=null;gentleStep=null;toolLesson=false;
+      persist();closeModal();clearToast();
+      if(task)void buyTaskWithReveal(task.id);
+      else render();
+      break;
+    }
+    case "debug-scene-currency": {
+      const credit=readDebugCurrency(overlay);
+      if(!credit||!addDebugCurrency(progress,credit.currency,credit.amount)){toast("Укажите положительное целое количество.");break;}
+      persist();render();debugModal();toast("Валюта добавлена");break;
+    }
+    case "scene-shop":
+      sceneShopPreview=undefined;sceneShopModal();break;
+    case "scene-shop-preview":
+      sceneShopPreview=button.dataset.item;sceneShopModal();break;
+    case "scene-shop-buy": {
+      const result=purchaseSceneItem(progress,button.dataset.item);
+      if(!result.ok){toast(result.reason==='coins'?"Не хватает монет":"Этот вариант сейчас недоступен");break;}
+      persist();render();sceneShopPreview=result.item.id;sceneShopModal();audio.play("repair");toast(`Оформление куплено: ${result.item.name}`);break;
+    }
+    case "scene-shop-equip":
+    case "scene-shop-reset": {
+      const reset=name==='scene-shop-reset';
+      if(!equipSceneItem(progress,reset?null:button.dataset.item,reset?button.dataset.slot as SceneShopSlot:undefined))break;
+      persist();render();sceneShopPreview=undefined;sceneShopModal();toast("Оформление применено");break;
+    }
+    case "debug-auto":
+      void debugAutoOrder();
+      break;
+    case "debug-stop":
+      toast("Автопрохождение остановлено");
+      break;
+    case "debug-restart":
+      if (screen === "game" && progress.attempt) action("confirm-restart", button);
+      break;
+    case "debug-orders":
+      levelsModal();
+      break;
     case "skip-lesson": {
       const key = toolLesson ? "tools" : guidedLesson();
       if (key) completeLesson(key);
@@ -941,20 +1261,39 @@ function action(name: string, button: HTMLElement) {
       window.location.reload();
       break;
     case "play":
-      if (progress.attempt && !won(progress.attempt.board))
+      if (progress.attempt && won(progress.attempt.board) && !progress.attempt.reward) {
+        screen = "game"; render(); showResult();
+      } else if (progress.attempt && !won(progress.attempt.board))
         void start(chapterNumber(progress.attempt.definition.id)!);
       else if (allDone()) {
         screen = "finish";
         render();
-      } else if (chapterDone()) { screen = "home"; render(); }
-      else void start(nextOrder(progress.completed));
+      } else if (nextAvailableOrder()) void start(nextAvailableOrder()!);
+      else { screen = "home"; render(); }
       break;
-    case "shop-view":
-      if (button.dataset.view === "hall" || button.dataset.view === "cold") shopView = button.dataset.view;
+    case "world-navigation":
+    case "room-views":
+      navigationModal();
+      break;
+    case "continue-journey":
+    case "shop-view": {
+      const projectId=(button.dataset.project??progress.selectedProject) as ProjectId;
+      const entry=name==='continue-journey'?projectRoomEntry(progress,projectId):undefined;
+      const roomView=entry?.id??button.dataset.view;
+      if(name==='continue-journey'&&phaseStatus(projectId,progress.completed,progress.campaign)!=='available')return;
+      if (!buildingRooms(progress,projectId).some(v => v.id === roomView&&v.projectId===projectId)) return;
+      if(!selectProject(progress,projectId))return;
+      shopView = roomView as CampaignView;
       justBuilt = undefined;
+      screen = "shop";
+      selectedArea=projectById(projectId)!.areaId;
+      selected=null;highlighted=null;gentleBoard=null;gentleStep=null;toolLesson=false;
+      persist();
+      if (modal) closeModal();
       render();
-      app.querySelector<HTMLElement>(`[data-view="${shopView}"]`)?.focus({ preventScroll: true });
+      app.querySelector<HTMLElement>(name==='continue-journey'?'.world-main-action':'[data-action="world-navigation"]')?.focus({ preventScroll: true });
       break;
+    }
     case "show-target":
       shopView = undefined;
       justBuilt = undefined;
@@ -982,9 +1321,29 @@ function action(name: string, button: HTMLElement) {
     case "show-map":
       closeModal();
       screen = "map";
-      selectedArea = allDone() ? "warehouse" : "shop";
+      selectedArea = CAMPAIGN_AREAS.some(area => area.id === button.dataset.area)
+        ? button.dataset.area as CampaignAreaId : projectById(progress.selectedProject)!.areaId;
       render();
+      app.querySelector<HTMLElement>(`.world-pin[data-area="${selectedArea}"]`)?.focus({ preventScroll: true });
       break;
+    case "select-project": {
+      if(screen==='map'||screen==='finish'&&allDone()){buildingRoomsModal(button.dataset.project as ProjectId);break;}
+      if (!selectProject(progress, button.dataset.project as ProjectId)) return;
+      selectedArea = projectById(progress.selectedProject)!.areaId;
+      shopView = undefined;
+      justBuilt = undefined;
+      selected = null;
+      highlighted = null;
+      gentleBoard = null;
+      gentleStep = null;
+      toolLesson = false;
+      persist();
+      screen = "shop";
+      closeModal();
+      render();
+      track("project_select", undefined, { project: progress.selectedProject });
+      break;
+    }
     case "show-shop":
       closeModal();
       screen = "shop";
@@ -1025,8 +1384,8 @@ function action(name: string, button: HTMLElement) {
       break;
     case "next":
       closeModal();
-      if (nextOrder(progress.completed))
-        void start(nextOrder(progress.completed));
+      if (nextAvailableOrder())
+        void start(nextAvailableOrder()!);
       else {
         screen = allDone() ? "finish" : "home";
         render();
@@ -1044,19 +1403,9 @@ function action(name: string, button: HTMLElement) {
     case "appearance":
       renovationModal();
       break;
-    case "buy-task": {
-      if (!purchaseShopTask(progress, button.dataset.taskId as ShopTaskId)) return;
-      persist();
-      closeModal();
-      justBuilt = button.dataset.taskId as ShopTaskId;
-      screen = allDone() ? "finish" : "shop";
-      render();
-      setTimeout(() => { justBuilt = undefined; }, 1000);
-      audio.play("repair");
-      track("campaign_task", undefined, { task: button.dataset.taskId! });
-      toast("Готово!");
+    case "buy-task":
+      void buyTaskWithReveal(button.dataset.taskId!);
       break;
-    }
     case "help":
       helpModal();
       break;
@@ -1085,9 +1434,11 @@ function action(name: string, button: HTMLElement) {
       clearToast();
       const def = current().definition;
       const hints = clone(current().hints);
+      const appearance = clone(current().appearance ?? createOrderAppearance(def));
       progress.attempt = {
         id: crypto.randomUUID(),
         definition: clone(def),
+        appearance,
         board: initial(def),
         undo: [],
         solution: clone(def.verifiedSolution),
@@ -1113,7 +1464,7 @@ function action(name: string, button: HTMLElement) {
       persist();
       closeModal();
       track("renovation", undefined, { node: repairTarget, color });
-      screen = allDone() ? "finish" : "shop";
+      screen = "shop";
       render();
       app.scrollTop = 0;
       audio.play("repair");
@@ -1134,13 +1485,13 @@ document.addEventListener("click", (event) => {
   else if (target.dataset.level) void start(Number(target.dataset.level));
   else if (target.dataset.slot)
     selectSlot(target.dataset.slot.split(",").map(Number) as Position);
-  else if (target.dataset.area && screen === "map") {
+  else if (target.dataset.area && (screen === "map" || screen === "finish")) {
     const area = CAMPAIGN_AREAS.find(a => a.id === target.dataset.area);
     if (area) {
+      screen = "map";
       selectedArea = area.id;
-      if (area.id === "shop") screen = "shop";
       render();
-      if (screen === "map") app.querySelector<HTMLElement>(`.world-pin[data-area="${area.id}"]`)?.focus({ preventScroll: true });
+      app.querySelector<HTMLElement>(`.world-pin[data-area="${area.id}"]`)?.focus({ preventScroll: true });
     }
   }
   else if (target.dataset.repair)
@@ -1149,6 +1500,7 @@ document.addEventListener("click", (event) => {
 document.addEventListener("change", (event) => {
   if (externalChanged) return;
   const input = event.target as HTMLInputElement;
+  if (input.dataset.debugField === "project") updateDebugSceneFields(overlay, progress);
   if (input.dataset.color && input.checked) selectRepairColor(input.dataset.color as RenovationColor);
   if (input.dataset.setting) {
     progress.settings[input.dataset.setting as keyof Settings] = input.checked;
@@ -1157,6 +1509,13 @@ document.addEventListener("change", (event) => {
   }
 });
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && debugPlayer.status !== "idle") {
+    cancelDebugAuto();
+    toast("Автопрохождение остановлено");
+    event.preventDefault();
+    return;
+  }
+
   const tab = (event.target as HTMLElement).closest<HTMLElement>('[role="tab"][data-repair]');
   if (modal === "renovation" && tab && ["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
     event.preventDefault();
@@ -1181,7 +1540,7 @@ document.addEventListener("keydown", (event) => {
   }
   if (event.key === "Tab" && modal) {
     const items = [
-      ...overlay.querySelectorAll<HTMLElement>('button:not(:disabled):not([tabindex="-1"]),input:not([type="radio"]),input[type="radio"]:checked,[role="tabpanel"]:not([hidden])'),
+      ...overlay.querySelectorAll<HTMLElement>('button:not(:disabled):not([tabindex="-1"]),input:not(:disabled):not([type="radio"]),input[type="radio"]:checked,select:not(:disabled),textarea:not(:disabled),[role="tabpanel"]:not([hidden])'),
     ];
     if (!items.length) {
       event.preventDefault();
@@ -1201,7 +1560,10 @@ document.addEventListener("keydown", (event) => {
     const target = app.querySelector<HTMLElement>(coachSelector()!)!,
       skip = coach.querySelector<HTMLElement>("button")!;
     event.preventDefault();
-    (document.activeElement === target ? skip : target).focus({ preventScroll: true });
+    const debug = app.querySelector<HTMLElement>('[data-action="debug-menu"]');
+    const items = [target, skip, debug].filter((item): item is HTMLElement => !!item);
+    const index = items.indexOf(document.activeElement as HTMLElement);
+    items[(index + (event.shiftKey ? items.length - 1 : 1)) % items.length].focus({ preventScroll: true });
   }
 });
 document.addEventListener("pointerdown", (event) => {
@@ -1218,6 +1580,7 @@ document.addEventListener("pointerdown", (event) => {
     "[data-slot]",
   );
   if (!slot?.classList.contains("occupied") || won(current().board)) return;
+  cancelDebugAuto();
   const step = activeHint();
   if (step && !samePosition(step[0], slot.dataset.slot!.split(",").map(Number) as Position)) return;
   drag = {
@@ -1309,10 +1672,13 @@ document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
 });
 document.addEventListener("visibilitychange", () => {
+  cancelDebugAuto();
   endDrag(undefined, true);
   audio.pause(document.hidden);
 });
+window.addEventListener("pagehide", cancelDebugAuto);
 window.addEventListener("blur", () => {
+  cancelDebugAuto();
   endDrag(undefined, true);
   audio.pause(true);
 });
@@ -1328,6 +1694,7 @@ document.addEventListener(
 );
 window.addEventListener("storage", (event) => {
   if (event.key === STORAGE_KEY || event.key === null) {
+    cancelDebugAuto();
     externalChanged = true;
     endDrag(undefined, true);
     showModal(
@@ -1339,7 +1706,7 @@ window.addEventListener("storage", (event) => {
 });
 applySettings();
 if (loaded.migrated) persist();
-if (allDone() && (!progress.attempt || won(progress.attempt.board)))
+if (allDone() && (!progress.attempt || (won(progress.attempt.board) && progress.attempt.reward)))
   screen = "finish";
 render();
 track("session_start", undefined, {

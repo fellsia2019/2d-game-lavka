@@ -1,0 +1,94 @@
+{
+  "mode": "built-in image_gen",
+  "approvedConcepts": [
+    1,
+    2
+  ],
+  "prompts": [
+    {
+      "asset": "hall-v1-empty",
+      "prompt": "Use case: precise-object-edit. Asset type: empty background for a layered2D game. Edit the approved reference image. PRESERVE EXACTLY the camera,1536x1024 framing, corner timber beam, both walls and baseboards, open entrance door at left, doorway/threshold, sea/village scenery, west window/frame/awning/flower pot, ceiling and warm honey plank floor. REMOVE BOTH grocery display cabinets entirely, REMOVE every jar/bottle/fruit/bread/wicker basket, REMOVE the cashier counter and brass register. Reconstruct the wall and floor behind them with matching wood grain and sunlight. Result is precisely this same room empty of furniture; do not reposition door/window/corner or change directions of wall vectors. Preserve decorative flower pot at window. No new architecture, no furniture, no goods, no labels, UI, signs, watermark or text. Same polished cozy coastal casual-game3D art, landscape3:2. Solid opaque background.",
+      "refs": [
+        "docs/art/concepts/hall-four-view-1.png"
+      ],
+      "transparentBackground": false,
+      "status": "runtime source"
+    },
+    {
+      "asset": "hall-v2-empty",
+      "prompt": "Use case: precise-object-edit. Asset type: empty background for layered2D game. Edit the approved image preserving EXACT1536x1024 framing and camera, ceiling timber, both walls, room corner, timber posts, turquoise baseboards, honey wood-plank floor and west daylight. REMOVE all furniture and contents: grocery display on LEFT, packing table on RIGHT, scales/paper/bags, ready-order rack, tall closed cupboard, wall shelf and hooks/cloth/plant/boxes. Reconstruct empty cream plaster walls and floor beneath. Result is this SAME northeast room corner completely EMPTY, no door and no window added. Do not alter wall vectors or move the corner. No furniture, decorative props, writing, labels, UI, diagram or watermark. Preserve exquisite cozy coastal casual-game3D materials and warm directional light. Opaque landscape3:2.",
+      "refs": [
+        "docs/art/concepts/hall-four-view-2.png"
+      ],
+      "transparentBackground": false,
+      "status": "runtime source"
+    },
+    {
+      "asset": "hall-v1-north-display",
+      "prompt": "Use case: background-extraction / precise-object-edit. Game sprite extraction from approved concept. Isolate ONLY the RIGHT-HAND grocery display against the NORTH wall, from the room corner toward the right foreground. Its long shelf rails descend RIGHT at20 degrees. Retain the graceful turquoise/cream curved end supports, warm oak two open display tiers, oak backboards and two CLOSED wicker storage hampers in lowest bay. Remove ALL jars/bottles/fruit/bread and the TWO shallow open middle-shelf trays. There is no cash register or counter in this cutout. Copy its EXACT silhouette, proportions, shelf-axis directions and3D camera from reference. Do NOT redraw as a frontal cabinet, do NOT mirror, do NOT add a tier or change height. Background transparent alpha. Remove every other object, wall, floor, door/window, scenery and goods. One single complete piece of empty display furniture, both feet and all edges fully visible, no shadow floor plane. Center the isolated object with generous transparent padding; uniform scale only, preserve its original projection. Exact polished coastal casual-game3D turquoise/honey-oak/cream/wicker material from approved reference. No text, UI, outline, watermark or checkerboard painted into pixels.",
+      "refs": [
+        "docs/art/concepts/hall-four-view-1.png"
+      ],
+      "transparentBackground": true,
+      "status": "discarded draft"
+    },
+    {
+      "asset": "hall-v1-west-display",
+      "prompt": "Use case: background-extraction / precise-object-edit. Game sprite extraction from approved concept. Isolate ONLY the LEFT-HAND grocery display under the WEST window, from left foreground toward the room corner. Its long shelf rails rise RIGHT at25 degrees. It is SHORTER than the north display in this reference. Retain graceful turquoise/cream curved end supports, warm oak two open display tiers, oak backboards and two CLOSED wicker storage hampers in lowest bay. Remove ALL jars/bottles/fruit/bread and the TWO shallow open middle-shelf trays. There is no cash register or counter in this cutout. Copy its EXACT silhouette, proportions, shelf-axis directions and3D camera from reference. Do NOT redraw as a frontal cabinet, do NOT mirror, do NOT add a tier or change height. Background transparent alpha. Remove every other object, wall, floor, door/window, scenery and goods. One single complete piece of empty display furniture, both feet and all edges fully visible, no shadow floor plane. Center the isolated object with generous transparent padding; uniform scale only, preserve its original projection. Exact polished coastal casual-game3D turquoise/honey-oak/cream/wicker material from approved reference. No text, UI, outline, watermark or checkerboard painted into pixels.",
+      "refs": [
+        "docs/art/concepts/hall-four-view-1.png"
+      ],
+      "transparentBackground": true,
+      "status": "discarded draft"
+    },
+    {
+      "asset": "hall-v1-displays",
+      "prompt": "Use case: precise-object-edit / background-extraction. Game registered furniture layer. Edit the approved reference IN PLACE on EXACT SAME1536x1024 landscape canvas. Retain ONLY the TWO L-shaped grocery cabinets, at their EXACT ORIGINAL PIXEL POSITIONS and EXACT ORIGINAL SCALE. Do not center, enlarge, shrink, reframe, change camera or redesign either cabinet. Left WEST cabinet is shorter and stops before door. Right NORTH cabinet longer. Cabinet long edges must keep their reference directions: left25 degrees rising right, right20 degrees descending right. Vertical supports vertical.\nRemove architecture, floor, scenery, door/window, ceiling and cashier counter/register to transparent alpha. Remove ALL food/jars/milk/fruits/bread and ALL open shallow trays from middle shelves. Keep both cabinets themselves: turquoise curved side supports/cream inlays/oak backboard and rails, TWO usable open tiers, closed wicker STORAGE hampers in lowest bay. Exact contours and3D pose remain. Do not generate a new generic symmetric cabinet pair. This is a cutout of approved furniture in place, for alignment over the already extracted empty room. No outer glow, no background tint/blackplate/checkerboard painted, no floor shadow plane; clean transparent pixels around retained cabinet silhouettes. Keep fullcanvas blank margins from reference. No text/UI/watermark.",
+      "refs": [
+        "docs/art/concepts/hall-four-view-1.png"
+      ],
+      "transparentBackground": true,
+      "status": "runtime source"
+    },
+    {
+      "asset": "hall-v1-counter",
+      "prompt": "Use case: precise-object-edit / background-extraction. Registered game sprite. Extract ONLY the CASHIER COUNTER WITH ITS SINGLE BRASS CASH REGISTER from approved image. Preserve its EXACT pose, silhouette, location/scale and camera on the original1536x1024 frame. No centering, zoom or camera change. Keep top corners and feet in same pixel positions. Transparent blank around counter. Every other object/wall/floor/cabinet/goods/door/window/scenery removed to alpha. Keep the antique machine attached in original EAST/right-end position, keep honey-oak clear worktop, three turquoise paneled front doors, ivory columns and turquoise plinth. Its long edges descend RIGHT20 degrees like the NORTH wall; short edges rise right25 degrees; vertical columns vertical. Do NOT rotate/straighten to face camera or change countertop into a new trapezoid; maintain approved parallel edge directions and full original proportions. Feet completely visible, no clipped corners. No added object, no background plane, no painted black, no outer glow, no labels/UI/text/watermark. Same polished coastal casual-game3D art on truly transparent alpha.",
+      "refs": [
+        "docs/art/concepts/hall-four-view-1.png"
+      ],
+      "transparentBackground": true,
+      "status": "discarded draft"
+    },
+    {
+      "asset": "hall-v1-counter-final",
+      "prompt": "Use case: sketch-to-render. Transparent game sprite with EXACT GEOMETRY from image1 and materials from images2/3. Render only cashier counter/register inside image1's exact1536x1024 coordinates. Keep top four corners(860,482),(1450,696),(1350,743),(760,529), basefeet down to992. Keep register atE/right end as guide.\nMOST IMPORTANT orthographic projection: ALL long top/front/back/base horizontal rails descend right with EXACT SAME slope214/590 (~20 degrees). Short depth edges rise right slope47/100 (~25 degrees). Vertical columns remain vertical. No perspective convergence, no vanishing points, no trapezoid; top is parallelogram. Style references are ONLY for honey-oak grain, turquoise door panels, ivory columns and ornate brass cash register; do not copy their camera/geometry. Beautify the plain cuboid with three recessed turquoise front panels, ivory vertical columns, honey-oak rounded tabletop edge and turquoise plinth. Keep the exact cuboid's overall bounds/axes. Cash register is detailed antique brass with one drawer and ivory buttons, rotated consistently with counter.\nTransparent alpha everywhere outside one counter/register, clean edge, no glow/tinted halo/ground/backdrop. Do not center/enlarge/reframe object; blank upper and left canvas retained exactly like guide. No goods, food, other furniture, architecture, text, UI, logo or watermark. Exquisite cozy coastal casual-game3D asset but parallel orthographic axes mandatory.",
+      "refs": [
+        "docs/art/hall-counter-geometry.png",
+        "docs/art/hall-v1-counter-draft-original.png",
+        "docs/art/concepts/hall-four-view-1.png"
+      ],
+      "transparentBackground": true,
+      "status": "runtime source"
+    },
+    {
+      "asset": "hall-tray-left",
+      "prompt": "Use case: stylized-concept. Asset type: empty shallow wicker grocery tray sprite on truly transparent alpha. ONE rectangular EMPTY flat woven wicker tray like middle-shelf baskets in approved reference, tan honey natural wicker. NOT a deep basket/crate. Front rim height ONLY TWO rows of wicker, low lip about2cm, sides/back same low lip, interior bottom fully exposed and roomy for separately overlaid product sprites. No goods, no fruit, no bread, no cloth, no handles. Orthographic camera with long front/back edges RISE to the RIGHT at25 degrees, short depth edges DESCEND right20 degrees. All opposite edges parallel, no perspective convergence. Warm west light, exquisite cozy coastal casual-game3D material consistent with reference. Isolate ONE tray, center with transparent padding, no background or floor shadow plane, no blackplate, glow, label, UI or watermark.",
+      "refs": [
+        "docs/art/concepts/hall-four-view-1.png"
+      ],
+      "transparentBackground": true,
+      "status": "superseded flat draft; runtime now uses source hall-basket-* from HALL_BASKET_PROMPTS.json"
+    },
+    {
+      "asset": "hall-tray-right",
+      "prompt": "Use case: stylized-concept. Asset type: empty shallow wicker grocery tray sprite on truly transparent alpha. ONE rectangular EMPTY flat woven wicker tray like middle-shelf baskets in approved reference, tan honey natural wicker. NOT a deep basket/crate. Front rim height ONLY TWO rows of wicker, low lip about2cm, sides/back same low lip, interior bottom fully exposed and roomy for separately overlaid product sprites. No goods, no fruit, no bread, no cloth, no handles. Orthographic camera with long front/back edges DESCEND to the RIGHT at20 degrees, short depth edges RISE right25 degrees. All opposite edges parallel, no perspective convergence. Warm west light, exquisite cozy coastal casual-game3D material consistent with reference. Isolate ONE tray, center with transparent padding, no background or floor shadow plane, no blackplate, glow, label, UI or watermark.",
+      "refs": [
+        "docs/art/concepts/hall-four-view-1.png"
+      ],
+      "transparentBackground": true,
+      "status": "superseded flat draft; runtime now uses source hall-basket-* from HALL_BASKET_PROMPTS.json"
+    }
+  ],
+  "packingScript": "scripts/prepare-hall-two-views.py",
+  "runtimeManifest": "docs/art/hall-two-views-manifest.json"
+}

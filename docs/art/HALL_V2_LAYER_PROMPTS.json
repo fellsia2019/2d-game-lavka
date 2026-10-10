@@ -1,0 +1,332 @@
+{
+  "formatVersion": 1,
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "purpose": "Four empty furniture layers and three fixed props from approved hall view 2",
+  "reference": "docs/art/concepts/hall-four-view-2.png",
+  "oneCallPerAsset": true,
+  "pixelEditsPerformed": false,
+  "webpPackingPerformed": true,
+  "registration": {
+    "canvasPreserved": true,
+    "exactPixelRegistration": false,
+    "notes": "Built-in generations preserve perspective directions but changed screen scale/position. Native alpha>=128 bounds are recorded for uniform crop/place in the shared packing process. Weak alpha halos exist beyond furniture silhouettes; no alpha or pixel editing was performed here.",
+    "registeredFurnitureLayerIds": [
+      "north-display",
+      "packing-table",
+      "order-rack",
+      "cupboard"
+    ],
+    "additionalPropFraming": "The added small props are isolated cutouts retaining the reference camera direction; full room-coordinate registration was not requested."
+  },
+  "assets": [
+    {
+      "id": "north-display",
+      "output": "docs/art/hall-v2-north-display-original.png",
+      "prompt": "Use case: background-extraction and precise-object-edit. Asset type: a registered transparent furniture layer for a 2D game. Image 1 is the edit target: the approved full room, 1536 x 1024 pixels. Extract ONLY the LEFT north display cabinet as a clean PNG layer, still EMPTY of merchandise. Preserve its EXACT original silhouette, scale, position, camera, handedness, perspective, curves, turquoise paint, wooden shelving, highlights, and closed bottom wicker hampers. Remove all milk/jam/honey jars, pears, bread, and every removable OPEN fruit or bread tray/basket from the upper and middle rows; retain the permanent CLOSED wicker hamper base in the bottom row. All open gaps between shelves/frame must be genuinely transparent; do not invent a solid backboard. Make all walls, floor, sunlight on the floor, other furniture and decorations transparent. No ground plane, no other object, no shadow extending outside the furniture silhouette. Registration is crucial: output the SAME 1536 x 1024 landscape canvas, leave the isolated cabinet at its exact original LEFT position approximately x=18..505, y=205..760, with transparent padding everywhere else. DO NOT center, crop, enlarge, reframe, mirror, rotate, change camera, or render a product shot. The long horizontal wooden shelf edges must run UP to the RIGHT at approximately 25 degrees, exactly as in the reference; vertical posts stay vertical. Do not rotate these edges down-right. The cabinet's lower-left edge remains near the left canvas edge. This is a faithful extraction and removal edit of Image 1, not a new cabinet design. Return real alpha transparency, no checkerboard painted into the PNG.",
+      "referenceImages": [
+        {
+          "path": "docs/art/concepts/hall-four-view-2.png",
+          "role": "edit-target"
+        }
+      ],
+      "transparentBackground": true,
+      "canvasSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        14,
+        21,
+        1450,
+        803
+      ],
+      "dominantAlpha128BBox": [
+        18,
+        162,
+        534,
+        800
+      ],
+      "nearOpaqueAlpha250BBox": [
+        19,
+        163,
+        533,
+        799
+      ],
+      "alphaZeroPixels": 1351978,
+      "fileBytes": 1073887,
+      "observedLongEdgeDirection": "up-right"
+    },
+    {
+      "id": "packing-table",
+      "output": "docs/art/hall-v2-packing-table-original.png",
+      "prompt": "Use case: background-extraction and precise-object-edit. Asset type: a registered transparent furniture layer for a 2D game. Image 1 is the edit target: the approved room, 1536 x 1024 pixels. Extract ONLY the central PACKING TABLE as an EMPTY clean cutout. Keep the exact original table silhouette, proportions, screen position, vertical white-and-gold front posts, turquoise paneled front cabinet, warm wooden tabletop, wood grain, lighting, camera, handedness and perspective. Remove EVERY loose object from its tabletop: scales, paper stack, kraft paper roll, scissors, string spools, cups, jars, baskets, parcels and all decorative items. Do not extract the wall shelf above the table. Make architecture, wall, floor, floor sunlight, the left display, right order rack, tall cupboard, and every other object genuinely transparent. Make the removed tabletop objects' areas become the same clean wood surface of this table. Do not add another object, floor plane, glow, halo, cast shadow or environmental reflection outside the furniture silhouette. Registration is essential: output the SAME full 1536 x 1024 landscape canvas; the table stays at its original position approximately x=605..996,y=382..725, and all padding around it is transparent. Keep object edges crisp and antialiased, with alpha exactly zero outside its silhouette. DO NOT center, zoom, crop, reposition, enlarge, mirror, rotate, change camera, or turn this into a product shot. The long front tabletop edge slopes DOWN to the RIGHT at approximately 20 degrees exactly as in Image 1; preserve that direction, do not flip it into up-right. All legs remain vertical. This is extraction and removal editing of the original image, not a newly designed counter. Real alpha transparency, no painted checkerboard.",
+      "referenceImages": [
+        {
+          "path": "docs/art/concepts/hall-four-view-2.png",
+          "role": "edit-target"
+        }
+      ],
+      "transparentBackground": true,
+      "canvasSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        65,
+        21,
+        1448,
+        998
+      ],
+      "dominantAlpha128BBox": [
+        475,
+        310,
+        1092,
+        789
+      ],
+      "nearOpaqueAlpha250BBox": [
+        477,
+        312,
+        1091,
+        788
+      ],
+      "alphaZeroPixels": 1368172,
+      "fileBytes": 981353,
+      "observedLongEdgeDirection": "down-right"
+    },
+    {
+      "id": "order-rack",
+      "output": "docs/art/hall-v2-order-rack-original.png",
+      "prompt": "REGISTERED LAYER EXTRACTION EDIT. Use case: background-extraction and precise-object-edit. Image 1 is the exact edit target, a 1536 x 1024 room image. Preserve this full image coordinate system. Keep ONLY the ORIGINAL right-hand ORDER RACK that stands between the packing table and tall turquoise cupboard. Literally preserve this rack's silhouette, existing position, size, handedness, camera axes, perspective, carved curved turquoise posts, cream trim, wooden shelves and wood grain. Remove ALL parcels, fruit baskets and fruits, open trays, cloths, bags, packaging and loose items from its upper and middle shelves. KEEP the rack's permanent CLOSED woven wicker hamper base on the bottom level. Keep empty shelves otherwise. Walls/background visible through open shelving must become alpha zero; do not invent an opaque backboard. Alpha zero for every other furniture item, every wall, floor, architecture, decor and shadow outside the rack. No ambient halo/glow. Composition invariant: output exactly 1536 x 1024; LEFT 974 pixels of the canvas must stay empty/transparent, because this original rack stays in the right third approximately x=980..1310,y=245..810. Preserve that position and scale. Do not center or crop the rack. Do not enlarge it, mirror it, rotate it, change its design or show a new product-photo camera angle. Its long front shelf edges slope DOWN towards the RIGHT at about 20 degrees, just as in the original reference. Its upright supports remain vertical. Entire room except this single furniture silhouette is transparent. Keep original object lighting only. Real transparent PNG, crisp antialiased edges, no checkerboard drawn into pixels. This is faithful extraction of an existing object at its exact original coordinates.",
+      "referenceImages": [
+        {
+          "path": "docs/art/concepts/hall-four-view-2.png",
+          "role": "edit-target"
+        }
+      ],
+      "transparentBackground": true,
+      "canvasSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        65,
+        14,
+        1374,
+        982
+      ],
+      "dominantAlpha128BBox": [
+        973,
+        185,
+        1367,
+        812
+      ],
+      "nearOpaqueAlpha250BBox": [
+        975,
+        187,
+        1366,
+        811
+      ],
+      "alphaZeroPixels": 1396044,
+      "fileBytes": 998714,
+      "observedLongEdgeDirection": "down-right"
+    },
+    {
+      "id": "cupboard",
+      "output": "docs/art/hall-v2-cupboard-original.png",
+      "prompt": "REGISTERED TRANSPARENT LAYER EXTRACTION EDIT. Use case: background-extraction. Image 1 is the edit target: approved room, original canvas 1536 x 1024. Keep ONLY the ORIGINAL tall CLOSED TURQUOISE CUPBOARD at the far RIGHT edge of this image. Preserve its exact silhouette, original scale and screen position, narrow left side panel, two closed paneled doors, gold handles and hinges, carved turquoise plinth, warm flat wooden top, paint and wood texture, highlights and lighting. Empty furniture only: no other object, no shelf/rack, no baskets, no products or decorations. Every wall, floor, ceiling, wooden architecture post behind it, other piece of furniture and room detail becomes alpha-zero transparent. No shadow or halo outside the cupboard's silhouette. Keep precisely the original cupboard pixels/camera relationship: long wooden top and plinth edges run DOWN to the RIGHT at approximately 20 degrees; vertical edges remain vertical. Do not mirror, rotate, reverse the camera, center, zoom, enlarge, crop, redesign or make a product shot. Preserve the SAME 1536 x 1024 landscape coordinate system and transparent padding: cupboard stays at approximately x=1265..1535,y=277..874, with the left 1260 columns empty/transparent and its right edge near the right edge of the canvas. Original-position registration is more important than filling the frame. Keep doors closed exactly as in the reference. Real transparent PNG with clean antialiased silhouette and alpha exactly zero outside the cupboard; no checkerboard painted into pixels.",
+      "referenceImages": [
+        {
+          "path": "docs/art/concepts/hall-four-view-2.png",
+          "role": "edit-target"
+        }
+      ],
+      "transparentBackground": true,
+      "canvasSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        353,
+        36,
+        1536,
+        900
+      ],
+      "dominantAlpha128BBox": [
+        1243,
+        228,
+        1531,
+        898
+      ],
+      "nearOpaqueAlpha250BBox": [
+        1246,
+        230,
+        1530,
+        897
+      ],
+      "alphaZeroPixels": 1400350,
+      "fileBytes": 789372,
+      "observedLongEdgeDirection": "down-right"
+    },
+    {
+      "id": "order-parcel",
+      "output": "docs/art/hall-order-parcel-original.png",
+      "canvasSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        25,
+        20,
+        1230,
+        1214
+      ],
+      "dominantAlpha128BBox": [
+        253,
+        255,
+        1001,
+        1034
+      ],
+      "nearOpaqueAlpha250BBox": [
+        255,
+        257,
+        1000,
+        1032
+      ],
+      "alphaZeroPixels": 1096289,
+      "fileBytes": 1034212,
+      "prompt": "Use case: background-extraction. Asset type: one small transparent 2D game prop for the approved shop hall view 2. Image 1 is the edit target and perspective/style reference. Isolate ONE cubic grocery parcel from the upper shelf of the right-hand order rack: a simple closed cube-shaped cardboard box wrapped in plain warm brown kraft paper and tied neatly with natural beige twine crossing its top and sides. Exactly one parcel; keep its small knotted string/bow on top. Preserve the reference's warm stylized 3D game rendering, paper folds, square corners and lighting. Preserve the approved camera axes: the long front/top edge runs DOWN to the RIGHT about 20 degrees, the depth/top edge runs UP to the RIGHT about 25 degrees, and all upright edges are vertical. Show the same three-dimensional top and front/side faces as the reference rack parcels. Do not turn the cube into a bag, tall package, front-facing product photo, or another perspective. Remove the rack, adjacent parcels, basket, shelf, room, wall, ground and all other objects. Actual transparent PNG around this one object, including no floor shadow, halo, gradient, border, watermark or lettering. A square 1024 x 1024 canvas with comfortable transparent padding and the cube centered is suitable for this small reusable prop; do not crop its twine or corners.",
+      "referenceImages": [
+        {
+          "path": "docs/art/concepts/hall-four-view-2.png",
+          "role": "edit-target and style/perspective reference"
+        }
+      ],
+      "transparentBackground": true,
+      "observedLongEdgeDirection": "down-right",
+      "framing": "centered isolated prop; one ImageGen call",
+      "pixelEditsPerformed": false
+    },
+    {
+      "id": "packing-wall-shelf",
+      "output": "docs/art/hall-packing-wall-shelf-original.png",
+      "canvasSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        9,
+        1238,
+        1217
+      ],
+      "dominantAlpha128BBox": [
+        37,
+        64,
+        1230,
+        1209
+      ],
+      "nearOpaqueAlpha250BBox": [
+        38,
+        65,
+        1229,
+        1208
+      ],
+      "alphaZeroPixels": 974675,
+      "fileBytes": 1336153,
+      "prompt": "Use case: background-extraction. Asset type: one transparent decorative wall-shelf assembly for a stylized 2D game, matching approved hall view 2. Image 1 is the edit target and exact style/camera reference. Isolate ONLY the single mounted cream-painted/oak wooden shelf above the central packing table, INCLUDING its permanent decorative contents as one assembly: one small green trailing plant in a pale pot, TWO natural twine rolls, TWO small plain brown kraft-paper boxes, and the low wooden peg rail beneath the shelf with one hanging turquoise-and-cream checked cloth. Preserve the original warm wooden/cream materials, plant foliage, gold sunlight, and polished stylized game-art quality. Keep a single shelf, its support brackets and the peg rail; do not add additional shelves, packages, pots, ornaments or products. Preserve the right wall camera exactly: the shelf's long front edge and the peg rail slope DOWN to the RIGHT about 20 degrees, the short depth edges slope UP to the RIGHT about 25 degrees, and all vertical edges stay vertical. Do not turn the shelf to face the camera squarely, mirror it, or flatten it into a frontal icon. Preserve the reference's dimensional view and relative placement of plant-left, twine-center, two boxes-right, peg rail below and checked cloth hanging below-right. Room wall, wood architecture beams, packing table, counters, floor, rack and everything outside this single decorative shelf assembly must be genuinely transparent; no opaque wall patch or cast shadow, no glow/halo, text, watermark or painted checkerboard. A square transparent PNG with generous padding is fine; include the full hanging cloth and trailing leaves without clipping. This whole assembly is one furniture-decoration purchase.",
+      "referenceImages": [
+        {
+          "path": "docs/art/concepts/hall-four-view-2.png",
+          "role": "edit-target and style/perspective reference"
+        }
+      ],
+      "transparentBackground": true,
+      "observedLongEdgeDirection": "down-right",
+      "framing": "centered isolated prop; one ImageGen call",
+      "pixelEditsPerformed": false
+    },
+    {
+      "id": "balance-scale",
+      "output": "docs/art/hall-balance-scale-original.png",
+      "canvasSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        57,
+        31,
+        1522,
+        1024
+      ],
+      "dominantAlpha128BBox": [
+        299,
+        112,
+        1248,
+        939
+      ],
+      "nearOpaqueAlpha250BBox": [
+        301,
+        113,
+        1246,
+        938
+      ],
+      "alphaZeroPixels": 1115555,
+      "fileBytes": 1705548,
+      "referenceBBoxApproximate": [
+        650,
+        314,
+        757,
+        411
+      ],
+      "prompt": "Use case: background-extraction. Asset type: one transparent furniture accessory for the approved 2D shop hall view 2. Image 1 is the edit target and style/camera reference. Isolate ONLY the small antique BRASS BALANCE SCALE standing on the left end of the packing table, approximately x=650..757,y=314..411 in the original 1536 x 1024 image. Preserve the reference type: a central brass upright with a horizontal balance beam and TWO matching shallow golden/brass weighing bowls, one on each side, supported by brass stems/arms above a small rectangular warm-brown wooden base with brass fittings and front adjustment detail. Two bowls are essential. Keep the original polished warm brass, visible curved bowl rims, small central mechanical ornament, wood grain, sculpted stylized 3D game finish and warm sunlight. Perspective must match this right-wall packing table: the rectangular base's long front edge slopes DOWN to the RIGHT about 20 degrees; depth edges slope UP to the RIGHT about 25 degrees; upright support stays vertical. Keep a three-quarter orthographic view with the top of the wooden base and bowl interiors visible, exactly like the reference balance scale. Do not change to a frontal symmetric icon, modern kitchen scale, single tray, single bowl, hanging-chain justice scale, circular dial, digital numbers, text or logo. Remove table, wall, tabletop paper, twine, other objects, architecture and floor; only the balance scale remains. Genuine transparent PNG, clean antialiased edges, no wall patch, floor shadow, glowing halo or painted checkerboard. Use a 1536 x 1024 landscape canvas with transparent padding around the single object; centering is acceptable for later shared cropping, but preserve the referenced camera/perspective and do not clip either bowl or base.",
+      "referenceImages": [
+        {
+          "path": "docs/art/concepts/hall-four-view-2.png",
+          "role": "edit-target and style/perspective reference"
+        }
+      ],
+      "transparentBackground": true,
+      "observedLongEdgeDirection": "down-right",
+      "framing": "centered isolated prop; one ImageGen call",
+      "pixelEditsPerformed": false
+    }
+  ],
+  "packingScript": "scripts/prepare-hall-two-views.py",
+  "runtimeManifest": "docs/art/hall-two-views-manifest.json"
+}

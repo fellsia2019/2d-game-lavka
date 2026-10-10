@@ -1,0 +1,197 @@
+[
+  {
+    "name": "grocery-master",
+    "source": "docs/art/shop-expansion/grocery-master.png",
+    "runtime": "public/assets/shop-expansion-grocery-master.webp",
+    "bytes": 432510,
+    "sourceSha256": "1ecf61e69c4cbbfcb9df4eb20374a1b5bc1b96f050446e6e6549ed845bc6bbe1",
+    "runtimeSha256": "53951270965989148d7bf0974f7d533f837a90ebd056ee5fcfa55d19f2ab87b4",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-bare",
+    "source": "docs/art/shop-expansion/grocery-bare.png",
+    "runtime": "public/assets/shop-expansion-grocery-bare.webp",
+    "bytes": 313212,
+    "sourceSha256": "b20deea0a6b6c7be0ac01253202c0283e59964e0240fe85737f89ddd8872374c",
+    "runtimeSha256": "dc91906ea6ace11a186395166e32c979b828b17b0e3d89fc5d1e5af06a1c9ad8",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-structure",
+    "source": "docs/art/shop-expansion/grocery-structure.png",
+    "runtime": "public/assets/shop-expansion-grocery-structure.webp",
+    "bytes": 295818,
+    "sourceSha256": "7baa5bc786940de93ec9afee27b602a37fb1e3b01e005c3b7f301c3ed54ebdbe",
+    "runtimeSha256": "fa65f583915dda1c663de87226feef0658e4b1aee5b2f3c0ee85c16b74842a24",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-clean",
+    "source": "docs/art/shop-expansion/grocery-clean.png",
+    "runtime": "public/assets/shop-expansion-grocery-clean.webp",
+    "bytes": 244844,
+    "sourceSha256": "e75165c1d98318eaa0bebd023cde0fdc238f0c5d386151310651bce28a28116a",
+    "runtimeSha256": "b0ce08926c614a9e881c28863a8e65950e25984f45660bf14d9ecf995dda7fea",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-cleared",
+    "source": "docs/art/shop-expansion/grocery-cleared.png",
+    "runtime": "public/assets/shop-expansion-grocery-cleared.webp",
+    "bytes": 626216,
+    "sourceSha256": "b7878074bb8e3fe6b2f097279fbaf0f9bda287fa127cd8301b917bf2dff5e3a9",
+    "runtimeSha256": "78030bb08c5dd5d9fd59d06e2f7007ce611c7a5987a674e8fbdbfcd1d63e2572",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-before",
+    "source": "docs/art/shop-expansion/grocery-before.png",
+    "runtime": "public/assets/shop-expansion-grocery-before.webp",
+    "bytes": 581124,
+    "sourceSha256": "46120fd118f540069524eeb40d16da3a2d6741cd0c541c31b82bd22f411ecb23",
+    "runtimeSha256": "7aaf91456d7f447f8edbe73bbbd0036f9616ffdd67e27aef6c44b27ff3b61c63",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "service-master",
+    "source": "docs/art/shop-expansion/service-master.png",
+    "runtime": "public/assets/shop-expansion-service-master.webp",
+    "bytes": 378236,
+    "sourceSha256": "1bd3ac568425fb60783c71e5dc98767852868641deebc7250b935a961a684b49",
+    "runtimeSha256": "4ee0a1de21ab62b126c66e823cd00e6aec19944ec5da574cd6349a13d6b1bbd6",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "service-base",
+    "source": "docs/art/shop-expansion/service-base.png",
+    "runtime": "public/assets/shop-expansion-service-base.webp",
+    "bytes": 313832,
+    "sourceSha256": "e35355c805155d9a085365806558de4c6312cb7fa28d671ff2e6c669136e14a1",
+    "runtimeSha256": "95b6cfae5758c0245fa13660dbd77ea30ecd03cb063082b2f58f530ef1ba040a",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "service-counter",
+    "source": "docs/art/shop-expansion/service-counter.png",
+    "runtime": "public/assets/shop-expansion-service-counter.webp",
+    "bytes": 350094,
+    "sourceSha256": "1e55c6d4e4e607879b9d7e21bff4b7274f67ba86f052c14ea02c76da0cc7546c",
+    "runtimeSha256": "94b1342615defb337678f0ff021bd760ab0a927c9e17234b36fae586c23923a6",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-supported",
+    "source": "docs/art/shop-expansion/grocery-supported.png",
+    "runtime": "public/assets/shop-expansion-grocery-supported.webp",
+    "bytes": 302356,
+    "sourceSha256": "b0bd22b7629b819ad94eff0fd18d5b9b8e052cab27f432ae9e600faeefe1dcf1",
+    "runtimeSha256": "fd6c1e02dd0a674cce5242a1ed4ade00da751d260b5595045cd42c0d055dea82",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-stocked-v2",
+    "source": "docs/art/shop-expansion/grocery-stocked-v2.png",
+    "runtime": "public/assets/shop-expansion-grocery-stocked-v2.webp",
+    "bytes": 413290,
+    "sourceSha256": "12ebd072e6983caa52ef766add6211fb57a08d1d547a12ae63d1ce4687f9023f",
+    "runtimeSha256": "6b73e4fed7a9642edd170e47095ef561baad16dd75af3f8f09a916458e5d3360",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-stocked-rack-v2",
+    "source": "docs/art/shop-expansion/grocery-stocked-rack-v2.png",
+    "runtime": "public/assets/shop-expansion-grocery-stocked-rack-v2.webp",
+    "bytes": 408240,
+    "sourceSha256": "74b65ffd3435732baa2a6a60be0ad4bca4540f4bb01084c40f6bc7e1b07f5fa8",
+    "runtimeSha256": "c489550922723fc1e78b3ac490e472eb7c700a9723f4f4cae72d013f40ec6ca6",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  },
+  {
+    "name": "grocery-empty-rack-v2",
+    "source": "docs/art/shop-expansion/grocery-empty-rack-v2.png",
+    "runtime": "public/assets/shop-expansion-grocery-empty-rack-v2.webp",
+    "bytes": 340406,
+    "sourceSha256": "c9c8d6dffe448a2e74d89d2e8c38a1e863967cbec1ea5cd4ace284dc0b788862",
+    "runtimeSha256": "0ffa771a2ad6f4858a2eeffdd8b11a2bab0e0e5ccd426d07fbe17d8c29227833",
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "operation": "RGB WebP export only"
+  }
+]

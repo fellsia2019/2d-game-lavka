@@ -1,4 +1,7 @@
 const paths: Record<string, string> = {
+  globe: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/>',
+  back: '<path d="m14 5-7 7 7 7M7 12h14"/>',
+  camera: '<rect x="3" y="6" width="18" height="15" rx="3"/><path d="m8 6 2-3h4l2 3"/><circle cx="12" cy="13" r="4"/>',
   store: '<path d="M4 10v11h16V10M3 3h18l1 7a3 3 0 0 1-5 2 3 3 0 0 1-5 0 3 3 0 0 1-5 0 3 3 0 0 1-5-2zM9 21v-7h6v7"/>',
   play: '<path d="m8 4 12 8-12 8z"/>',
   palette: '<path d="M12 3a9 9 0 1 0 0 18h2a2 2 0 0 0 1-4 2 2 0 0 1 1-4h2c4 0 3-10-6-10z"/><circle cx="7" cy="9" r="1"/><circle cx="11" cy="6" r="1"/><circle cx="16" cy="7" r="1"/>',
@@ -8,6 +11,7 @@ const paths: Record<string, string> = {
   settings:
     '<path d="m9 3-1 3-3 1-2 5 2 5 3 1 1 3h6l1-3 3-1 2-5-2-5-3-1-1-3z"/><circle cx="12" cy="12" r="3"/>',
   star: '<path d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>',
+  repair: '<path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><rect x="2" y="7" width="20" height="14" rx="3"/><path d="M2 12h20M9 11v4h6v-4"/>',
   coin: '<circle cx="12" cy="12" r="9"/><path d="M14 7h-3a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-3m2-10v12"/>',
   hint: '<path d="M8 17c0-3-3-3-3-8a7 7 0 0 1 14 0c0 5-3 5-3 8zM9 21h6M10 17v-5m4 5v-5"/>',
   mix: '<path d="M3 7h4l10 10h4m-4-4 4 4-4 4M3 17h4l10-10h4m-4-4 4 4-4 4"/>',

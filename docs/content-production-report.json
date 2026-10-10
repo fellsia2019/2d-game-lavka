@@ -1,0 +1,162 @@
+{
+  "contentVersion": "coastal-stage-1-2-v1",
+  "generatorVersion": "coastal-slice-4",
+  "orders": 600,
+  "structuralKeys": 600,
+  "replayedSolutions": 600,
+  "projects": [
+    {
+      "id": "shop-1",
+      "orders": 80,
+      "jsonBytes": 201199,
+      "definitionDigest": "f9b1aa4b42269277a10a4e8ac7b53f675cb753e178261ac6c0c3c8c97b32109a"
+    },
+    {
+      "id": "warehouse-1",
+      "orders": 80,
+      "jsonBytes": 222998,
+      "definitionDigest": "01c8e6e8a608f9c76b537dee5497c0340038d0a1a9ca64abcd5ce48a9634bc4d"
+    },
+    {
+      "id": "shop-2",
+      "orders": 120,
+      "jsonBytes": 324295,
+      "definitionDigest": "67944d8d02d3cc6eb94f88b94b6e857af2db47fc29f22c2cc94ba2b60d30162c"
+    },
+    {
+      "id": "warehouse-2",
+      "orders": 120,
+      "jsonBytes": 337125,
+      "definitionDigest": "dade5e7fa15a9b61e352795166e908e1e9276e44ade84b69fe6d96e1da02cfbd"
+    },
+    {
+      "id": "fruit-yard-1",
+      "orders": 80,
+      "jsonBytes": 219234,
+      "definitionDigest": "3552209e856be4600163f30196b196c92a979d4a3cf2830d6985b4f0cae597c8"
+    },
+    {
+      "id": "fruit-yard-2",
+      "orders": 120,
+      "jsonBytes": 333616,
+      "definitionDigest": "6760824a76c136c55221a10e34c87f0d1cfdc48226bd42d9cb6f7d5f3a160de2"
+    }
+  ],
+  "projectJsonBytes": 1638467,
+  "metadataJsonBytes": 451924,
+  "parsedProjectCacheLimit": 2,
+  "recipes": {
+    "front-classic": 13,
+    "front-four": 26,
+    "front-double": 8,
+    "layers-classic": 19,
+    "layers-deep": 31,
+    "crate-classic": 11,
+    "crate-room": 12,
+    "mixed-classic": 7,
+    "mixed-deep": 8,
+    "front-wide": 36,
+    "front-five-triples": 39,
+    "front-two-pairs": 28,
+    "layers-light": 19,
+    "layers-four-kinds": 30,
+    "layers-staggered": 20,
+    "layers-wide": 16,
+    "layers-balanced": 11,
+    "layers-long": 35,
+    "layers-deep-long": 34,
+    "crate-small": 5,
+    "crate-paired": 14,
+    "crate-five-triples": 17,
+    "crate-twin": 28,
+    "crate-twin-paired": 19,
+    "mixed-light": 5,
+    "mixed-room": 7,
+    "mixed-staggered": 8,
+    "mixed-twin": 24,
+    "mixed-twin-deep": 10,
+    "mixed-long": 12,
+    "mixed-twin-long": 15,
+    "mixed-ten-triples": 1,
+    "mixed-deep-ten": 5,
+    "mixed-triple-crate": 24
+  },
+  "generatorVersions": {
+    "coastal-slice-2": 20,
+    "coastal-slice-3": 10,
+    "coastal-slice-4": 570
+  },
+  "triples": {
+    "3": 21,
+    "4": 154,
+    "5": 108,
+    "6": 127,
+    "7": 28,
+    "8": 36,
+    "9": 120,
+    "10": 6
+  },
+  "hiddenRows": {
+    "0": 259,
+    "1": 19,
+    "2": 75,
+    "3": 76,
+    "4": 69,
+    "5": 97,
+    "6": 5
+  },
+  "shipments": {
+    "0": 368,
+    "1": 112,
+    "2": 96,
+    "3": 24
+  },
+  "initialFreeSlots": {
+    "3": 292,
+    "6": 304,
+    "9": 4
+  },
+  "verifiedMoveCounts": {
+    "min": 2,
+    "max": 56,
+    "interpretation": "Replayed proof length, not minimum solution length or measured difficulty."
+  },
+  "usedGoods": [
+    "ap",
+    "b",
+    "ba",
+    "ch",
+    "co",
+    "ct",
+    "eg",
+    "fl",
+    "gr",
+    "h",
+    "j",
+    "ju",
+    "l",
+    "m",
+    "oi",
+    "ol",
+    "or",
+    "p",
+    "pa",
+    "pe",
+    "ri",
+    "st",
+    "su",
+    "te"
+  ],
+  "preservedBaselineDigests": {
+    "first20": "86ee2c26eb037d66215c99113bc355ecd684ff630a34bfe3f610766acfca8c0e",
+    "first30": "f8c0083f5fa7d067823bde46ba2fb322f60c35e276648370fe28ae548a5ca39c"
+  },
+  "notMeasured": [
+    "Interest",
+    "Minimum difficulty",
+    "Duration",
+    "Retention",
+    "Revenue",
+    "Browser decoded memory"
+  ]
+}

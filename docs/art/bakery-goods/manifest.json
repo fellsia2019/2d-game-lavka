@@ -1,0 +1,52 @@
+[
+  {
+    "id": "baguette",
+    "source": "docs/art/bakery-goods/baguette-v1.png",
+    "prompt": "docs/art/bakery-goods/baguette.prompt.txt",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceSha256": "7ff49899df40c870989a98306099c3b26732649fb51c67108dcb6e50ee5b7dcf",
+    "runtime": "public/assets/baguette.webp",
+    "runtimeSize": [
+      320,
+      320
+    ],
+    "mode": "RGBA",
+    "bytes": 29346,
+    "runtimeSha256": "3837def35e2fa9e9902ee9679ccf5e213873a26f466a3f17d79f1f077ae4ae8d",
+    "generator": "built-in ImageGen",
+    "references": [
+      "public/assets/bread.webp",
+      "public/assets/pear.webp"
+    ],
+    "referenceRole": "read-only visual style study; not attached to generation",
+    "normalization": "complete frame resized to 320x320; RGBA alpha preserved; WebP quality96"
+  },
+  {
+    "id": "croissant",
+    "source": "docs/art/bakery-goods/croissant-v1.png",
+    "prompt": "docs/art/bakery-goods/croissant.prompt.txt",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceSha256": "ade2ed1027e200d2c81b2bda76f463447abcc1348c6426c781601adab33c3ae2",
+    "runtime": "public/assets/croissant.webp",
+    "runtimeSize": [
+      320,
+      320
+    ],
+    "mode": "RGBA",
+    "bytes": 40480,
+    "runtimeSha256": "41db2817e23a849bd7b20b3f0b0a24b68566ce86732874983038b48a5a2a966a",
+    "generator": "built-in ImageGen",
+    "references": [
+      "public/assets/bread.webp",
+      "public/assets/pear.webp"
+    ],
+    "referenceRole": "read-only visual style study; not attached to generation",
+    "normalization": "complete frame resized to 320x320; RGBA alpha preserved; WebP quality96"
+  }
+]

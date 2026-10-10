@@ -1,0 +1,122 @@
+[
+  {
+    "source": "docs/art/hall-corner-cabinets-original.png",
+    "sourceSha256": "ce8a110b7115c0ba26e408d3c85be1fdf3f297ee04bbe7be005727f9f865ad8c",
+    "runtime": "public/assets/hall-corner-left.webp",
+    "runtimeSha256": "049bc1151783fcb0c5d3fdd377b2a119513da32123cffc4095583b8a50a409f1",
+    "size": [
+      698,
+      771
+    ],
+    "bytes": 115928,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      768,
+      1024
+    ],
+    "sourceCrop": [
+      29,
+      115,
+      727,
+      886
+    ]
+  },
+  {
+    "source": "docs/art/hall-corner-cabinets-original.png",
+    "sourceSha256": "ce8a110b7115c0ba26e408d3c85be1fdf3f297ee04bbe7be005727f9f865ad8c",
+    "runtime": "public/assets/hall-corner-right.webp",
+    "runtimeSha256": "ca32d7d5f5ad841fc790659fb4854c3bc45fef892359922e8f87089693186017",
+    "size": [
+      700,
+      772
+    ],
+    "bytes": 114272,
+    "alpha": true,
+    "sourceCell": [
+      768,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      810,
+      115,
+      1510,
+      887
+    ]
+  },
+  {
+    "source": "docs/art/hall-corner-counter-original.png",
+    "sourceSha256": "c1d23d79ecc260d3e5ae04a1d03bc9e0845bec4bd410615d819e0bfda98f9cc9",
+    "runtime": "public/assets/hall-corner-counter.webp",
+    "runtimeSha256": "6006d4437e07d1ad32e93b2468f3b07697a88704be6092562d89d6e139899877",
+    "size": [
+      1200,
+      803
+    ],
+    "bytes": 211312,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      1558,
+      1009
+    ],
+    "sourceCrop": [
+      71,
+      50,
+      1505,
+      1009
+    ]
+  },
+  {
+    "source": "docs/art/hall-corner-trays-original.png",
+    "sourceSha256": "b786497fcc289fc561bc360cd2084ef2016c0d3d384e205e756196ad4fa6582b",
+    "runtime": "public/assets/hall-corner-tray-left.webp",
+    "runtimeSha256": "0e8263c18c912b8966dc15dedbf6a0122acbe5f53e70c6b6d29771af2ebdee0f",
+    "size": [
+      640,
+      387
+    ],
+    "bytes": 84126,
+    "alpha": true,
+    "sourceCell": [
+      0,
+      0,
+      768,
+      1024
+    ],
+    "sourceCrop": [
+      56,
+      314,
+      742,
+      729
+    ]
+  },
+  {
+    "source": "docs/art/hall-corner-trays-original.png",
+    "sourceSha256": "b786497fcc289fc561bc360cd2084ef2016c0d3d384e205e756196ad4fa6582b",
+    "runtime": "public/assets/hall-corner-tray-right.webp",
+    "runtimeSha256": "4feb17f3f4d8ed07bb8a9458d487a8d47dbbbdb1aa79e6d3599bdad7ddfb7b72",
+    "size": [
+      640,
+      387
+    ],
+    "bytes": 84050,
+    "alpha": true,
+    "sourceCell": [
+      768,
+      0,
+      1536,
+      1024
+    ],
+    "sourceCrop": [
+      794,
+      314,
+      1480,
+      729
+    ]
+  }
+]

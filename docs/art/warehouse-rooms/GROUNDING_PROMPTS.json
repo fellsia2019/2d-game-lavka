@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-08",
+  "tool": "image_gen.imagegen (built-in)",
+  "entries": [
+    {
+      "name": "storage-inspection-table-bare",
+      "inputs": [
+        "docs/art/warehouse-rooms/storage-empty.png",
+        "docs/art/warehouse-rooms/storage-clean.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: registered isolated furniture donor for a 2D game, opaque full1536x1024frame.\nImage1 is the edit target/geometry reference. Image2 is the exact clean room reference. Change only the furniture inventory: preserve ONLY the small turquoise inspection table under the little window at EXACT x394..660,y380..600 of image1. Keep its existing warm wood tabletop, carved turquoise turned legs, shape, size, perspective and light. REMOVE all scales, weights, cans, neighbouring packing bench, cupboards, racks, chests, crates, trolley and lamp; everything except this one bare table. Use the clean original room of image2 unchanged outside it.\nCritical repair: reconstruct its complete FOUR continuous turned legs all the way to their natural floor contact; the formerly hidden rear-right leg at x565..581 currently stops near y505 because the metal can occludes it. Finish that leg down to the floor about y534, in the same carved style and perspective. Preserve the existing visible feet near (415,562),(475,596),(635,563); rear-right foot around(573,534). The table must look sturdy, with clearly attached legs and complete rounded feet, never floating. No rectangular cutoffs, no cuttings from the cans. Subtle warm soft contact shadows directly beneath feet, matching the sunlight. Top stays EMPTY, scales will be a separate game layer.\nDo not move, enlarge, recenter, rotate or change camera. Exact full1536x1024image; retain all window/door architecture and tile lines fromimage2. No new objects, no text, no labels.",
+      "output": "docs/art/warehouse-rooms/storage-inspection-table-bare.png"
+    },
+    {
+      "name": "storage-packing-bench-bare",
+      "inputs": [
+        "docs/art/warehouse-rooms/storage-empty.png",
+        "docs/art/warehouse-rooms/storage-clean.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: registered isolated furniture donor for a2Dgame, opaque full1536x1024frame.\nImage1 is the edit target/geometry reference. Image2 is the exact clean room background. Preserve ONLY the turquoise wood packing/work bench on the wall right of the small window, EXACT x589..834,y350..560 ofimage1. Keep its warm wood tabletop, drawer, turquoise frame, lower shelf, geometry, size, camera and perspective. The wall shelf, hanging kit, paper rolls, packages, scissors are all separate game items: REMOVE these; bare table top and EMPTY lower shelf. Remove ALL other room furniture including inspection table/cans, cupboard, racks, chest, crates,trolley,lamp. Outside this single bare bench use precisely the clean room inimage2.\nCritical repair: reconstruct all FOUR legs continuously to their natural floor contacts. Its left rear leg at x607..632 currently disappears aroundy450 because the foreground inspection table/cans cover it; reconstruct it down tofloor aroundy510..525 in correctperspective. Keep the front right visible leg atx771..798,y401..560 andrear right atx810..832,y402..533 complete. The bench should be a sturdy complete standalone item, with every exposed foot touching the tiled floor, no floating ends and no remnants of neighbouring items. Add small soft warm contact shadows under itsfeet. No new paper/tools/products.\nNever move/resize/recenter/rotate anything; fixedroom/frame1536x1024. Preserve architecture/tilelines/camera exactly. No labels or text.",
+      "output": "docs/art/warehouse-rooms/storage-packing-bench-bare.png"
+    }
+  ]
+}

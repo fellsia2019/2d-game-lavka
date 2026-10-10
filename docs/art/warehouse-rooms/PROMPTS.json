@@ -1,0 +1,113 @@
+{
+  "original": {
+    "briefs": {
+      "exterior": "A complete wide loading-yard scene outside a small coastal grocery warehouse. One long rectangular single-storey storage building fills upper two thirds of landscape frame. Elevated 3/4 camera sees long FRONT facade and short LEFT end, perspective shallow and consistent. Warm cream plaster, warm timber beams, terra-cotta gable roof, turquoise double loading doors on center-left facade, stone foundation plinth exactly under outer walls. Beautiful stone paved yard fills lower third, sea and mediterranean greenery at side edges, never white. Along RIGHT part of same front facade, a compact empty-return-crate rack, a wall-mounted sink, drying rack ABOVE it, tall tool cupboard at far right all parallel and flush to wall. A teal-and-cream fabric awning above this service area with supports outside the door corridor, right wind screen, one brass wall lantern and small brass door bell, a wooden direction post near left yard edge with NO text. A marked unloading bay on left paving, center door passage completely free. No loose crates or goods blocking entrance. Entire building roof, foundation and furniture feet inside frame, 8% breathing room. No second building, no tiny house on huge platform. Completion master for registered construction states; stable visible four footprint corners.",
+      "storage": "A full corner of a coastal grocery warehouse dry-storage room, not a retail shop. Elevated 3/4 camera, 1536x1024 landscape feel, warm cream walls and timber ceiling beams, terracotta tile floor, turquoise trim, bright warm daylight from open doorway on far LEFT. Wide wooden-and-teal shelving system FLUSH ALONG the RIGHT WALL, all shelf planes and side edges parallel to the wall, with several flour and sugar paper sacks, jam and honey jars on upper shelves. A wooden pallet spot and THREE wooden empty receiving crates at right floor below shelf. A separate stock delivery crate with jam/honey products near right foreground and low front lip so goods sit INSIDE. Along LEFT back wall: compact tall teal tool cabinet, then an inspection table with brass weighing scales and clipboard, then a packing bench with kraft paper and twine. Two distinct working tables. Foreground LEFT at edge: teal insulated receiving chest and a small upright two-wheel hand trolley parked, not blocking door. Returnable metal milk canisters beside inspection table. Plain small category-symbol plates above shelving, absolutely NO text. Furniture against walls and following exact same perspective, ample central walking path but furniture substantial and fills room. Every object fully framed including feet. Beautiful cozy premium casual game painted illustration, detailed material shading, clean silhouettes.",
+      "cold": "A full corner of a coastal grocery warehouse cold-and-dry storage zone. Elevated 3/4 camera into wall corner, bright pale cream plaster, wood ceiling beams and terracotta tiles, teal trim, sunlight. Along LEFT WALL a tall teal glass-door refrigerator cabinet with visible wire shelves and milk bottles, topped with modest cooling equipment, white insulation panel behind it. Wall thermometer beside refrigerator. Along RIGHT WALL a beautiful tall wood-and-teal dry flour storage rack filled with neatly ordered kraft flour bags, all shelf lines parallel to right wall. Below/near rack three storage bins with OPEN TOPS with granular white sugar visible INSIDE below front walls. At far right a matching low wooden fruit crate stand, with apples and pears tucked INSIDE crates, below front borders. Flour/sugar OUTSIDE refrigerator. Goods/furniture all obey same perspective, floor contact and wall-parallel placement. No center island, no loose scattered goods, no unnecessary props or floor rug. Large open central walking aisle and door edge at far left. Entire furniture framed feet intact with breathing room. Cozy premium casual-game painterly rendering, believable material shading, harmonious turquoise and warm honey palette, no UI, no letters."
+    },
+    "styles": {
+      "exterior": "Retain the whole long rectangular warehouse, door/awning/bell/sink/rack/cupboard positions and building footprint. Make exterior no taller or wider. Remove arbitrary fish mural and extra plants/loose pots near loading area. Create vivid turquoise trim and warm clear honey colors matching reference2. Allfootprint corners stay where they are.",
+      "storage": "Keep this storage room arrangement, back corner and furniture wall-parallel. Widen camera slightly and pull ALL foreground objects inside frame: the insulated chest on left, trolley and right delivery crate must each have complete silhouette with 30+ pixels floor margin, no furniture cutoff at edges. Remove mat, loose stool, pictureframe, decorative flowers/planters, arbitrary floor sack. Keep real inspection table and separate packing table, pallets, returnable metal cans, tool cupboard, right shelving and distinct stock crates.",
+      "cold": "Keep this refrigerator left and dry stock rack right arrangement with consistent wall perspective. Widen camera and move entire right fruit stand inward enough to frame BOTH sideposts and all feet 40+ pixels from edge. No cropped fruit stand or tall rack. Fully frame fridge, separate flour shelf, open sugar bins and apple/pear crates, aisle stays open. Remove decorative plant in right window."
+    }
+  },
+  "donors": [
+    {
+      "key": "storage-final",
+      "refs": [
+        "docs/art/warehouse-rooms/storage-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. EDIT ONLY TWO FOREGROUND OBJECTS: LEFT blue insulated chest must shift right by 65 pixels and become slightly smaller so its entire left side and all four feet are visible at least30px inside frame; RIGHT foreground stocked delivery crate must shift left by75pixels and become15%smaller so its right corner and feet are at least40px inside frame. Keep ALL OTHER pixels/objects/room/lighting/style/camera/projection unchanged. Do not change shelves/cabinets/worktables/products. Single1536×1024 registered game master."
+    },
+    {
+      "key": "cold-empty",
+      "refs": [
+        "docs/art/warehouse-rooms/cold-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. This is a REGISTERED asset donor of the same game room. Remove ALL consumable GOODS ONLY: milk bottles, butter/cheese/yogurt from refrigerator; flour sacks from dry rack; white sugar from three open sugar bins; every apple and pear from fruit crates. Keep refrigerator shelves as wiregrids. All furniture/doors/frames/window/insulation/thermometer/bins/crates/shelf planks and legs EXACTLY same position,size,shape and color, camera fixed. Bins remain OPEN EMPTY with lowfront walls. Do not remove any furniture, do not add anything. Keep the entire background floor wall lighting EXACTLY identical. Output1536×1024 full room."
+    },
+    {
+      "key": "exterior-clean",
+      "refs": [
+        "docs/art/warehouse-rooms/exterior-master.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create registered bare completed warehouse. REMOVE ONLY service furniture and work-equipment: return crate rack and all crates, sink and taps/bucket, drying wallrack/towel/hooks, cupboard/brooms/tools, awning fabric/frame/posts/rightscreen, BOTH brass wall lanterns and small doorbell, direction post, painted unloading marker. Remove goods/equipment visible inside doorway leaving empty dark floor/wall. Remove plants/pots immediately against facade. KEEP ENTIRE BUILDING, roof/window/door/open doorway stoneplinth beams gutters unchanged at exactpixel positions. Keep entire background/paving/landscape/sunlight/camera identical. Final1536×1024 gameasset."
+    },
+    {
+      "key": "map-master",
+      "refs": [
+        "public/assets/campaign-map.webp",
+        "docs/art/warehouse-rooms/exterior-master.png"
+      ],
+      "prompt": "Use case: compositing. Image1 EDIT TARGET exact existing coastal game map, image2 BUILDING DESIGN reference only. On upper-right vacant plot of image1, create a proportionately WIDE single-storey warehouse similar to image2, no furniture outside and no awning. Fits inside plot, roughly x1050–1420,y85–265 in1536×1024 originalcanvas. Long cream front facade with teal double loadingdoor and stoneplinth, terracotta long gable roof, short leftend/window. Building front and foundation edges EXACTLY PARALLEL to front/back boundaries of this plot, its plinthfootprint corners will be stable throughout futurefoundation construction stages. Need complete building within plot and no blockingpaths. KEEP EVERYTHING OUTSIDE that upper-right plot100%unchanged including shop/sea/otherplots/camera/style/layout. No UI or letters."
+    }
+  ],
+  "clean": [
+    {
+      "key": "storage-empty",
+      "source": "storage-master",
+      "edit": "Remove ONLY every flour/sugar sack and jam/honey jar from the THREE tall shelf sections, and jam/honey jars INSIDE the foreground delivery crate. Keep ALL three tall shelving sections and their woodenbottom boxes, pallets, 3 empty floor crates, stockedcrate WOOD, every piece of furniture/chest/trolley/inspection-table/packing kit/cabinet/metalreturncans EXACTLY unchanged. Keep shelf planks and verticaltealposts; keep frontcrateboards/lowborder. Remove no other items."
+    },
+    {
+      "key": "storage-clean",
+      "source": "storage-master",
+      "edit": "Remove ALL purchasable furnishings: all tall right shelving sections including goods and crates/pallets, foreground deliverycrate and goods, blue chest and handtrolley, inspection table/scales/clipboard, packingbench/worktools/wallshelf/hooks/paper/string, toolcupboard, returnmetal cans, ceilingbrasslamp and symbolicsectionboards. Restore bare cream wall where furniturewas, bare continuous terracotta tiledfloor. KEEP doorway/openwoodendoor, ocean/window/wallcorner/beams/floorprojection and lighting/shadows unaffected exactly in place. Empty clean warehouse room, no furniture or items."
+    },
+    {
+      "key": "cold-clean",
+      "source": "cold-master",
+      "edit": "Remove ALL equipment/furniture/products: refrigerator with coolingunit and all internalgoods, insulationwallpanel, wallthermometer, flourrack and allbags, sugarbinsandfilling, fruitstand+cratesandfruit. Restore clean creamwalls and continuous terracotta floor. KEEP doorway/openblue-door/window/beams/wallcorner/sea/floorprojection and light EXACTLY in place. Empty room, nofurniture oritems."
+    },
+    {
+      "key": "site-clear",
+      "source": "exterior-clean",
+      "edit": "Remove ONLY ENTIRE warehouse building down to floor level: roof/beams/doors/windows/plinth/gutters/walls. Replace it with a broad empty leveled earthen rectangular constructionpad whose fourfootprintcorners are EXACTLY those of the original building plinth. The footprint from image is front-left(300,661),front-right(1434,623),back-left(162,591),back-right(1296,553) approximately; inspectimage and maintain actualouterbuildingfootprint. No remaining architecture/equipment/markings/foundation. KEEP foreground stonepaving, backgroundsea/coastalgreens, alloutside originalbuildingbbox unchanged. Level earthysoil constructionpad, warm painted style."
+    },
+    {
+      "key": "site-foundation",
+      "source": "exterior-clean",
+      "edit": "Replace ONLY roof/walls/doors/window of this warehouse with ONE LOW stone foundation rectangular SLAB at the very same originalbuilding plinth footprint and same ground height. Its front-leftcorner near(300,660),front-right(1434,623),back-left(162,591),back-right(1296,553), originalplinth'sfootprintnot oversized. Remove entirebuilding aboveplinth, showtop of lowfoundation slab (20pxhigh), correctly parallel longfrontedge tooriginalwall. KEEP camera/perspective/scale/site/foregroundpaving/backgroundcoastalgreens unchanged. Thefoundation and futurebuildingmusthaveidenticalhorizontalextent. No tools props or letters."
+    },
+    {
+      "key": "site-walls",
+      "source": "exterior-clean",
+      "edit": "Replace ONLY the ROOF and completeddoor/window inserts with roofless cream brick walls+timber structuralframe; keep exteriorwalls and stoneplinth EXACT originalpositionsandsize. No roof or completeddoors/windows yet, hollow doorway/windowopenings showing emptyinterior, visibletopofwalls/structuralbeams. KEEP identicalcamera/floorfootprint/buildingwidth/wallheight/plinth contact and alloutsidebuilding unchanged. This is constructionstate of samewidewarehouse, no smallhouse, no stretchingfoundation. Warm paintedcasualgame style."
+    }
+  ],
+  "detail": [
+    {
+      "key": "cold-cabinet-bare",
+      "source": "cold-empty",
+      "edit": "Remove ONLY the thin horizontal WIREGRID shelf racks INSIDE glassdoor refrigerator compartments. Cabinet/doorframes/glass/handles/coolingunit/sidepanels/light EXACTLY UNCHANGED, no shelves or goods inside. Leave empty metal interior recesses. All flour shelves/sugarbins/fruitstands OUTSIDE refrigeratorremainEXACTLY unchanged."
+    },
+    {
+      "key": "storage-labels",
+      "source": "storage-empty",
+      "edit": "Add ONLY three small tidy neutral colored CATEGORY TAGS/blank iconless woodlabelplates attached to FRONT wood rail of TOP shelf, one at each of three shelving sections, near(880,145),(1075,130),(1330,107) on1536×1024canvas. Each 36×20px roundedrectangle, mutedgolden/cream, nocharacters/noletters/noproductnames. Allotherpixels EXACTLY unchanged. Must be small physicallabels attachedtoshelf not floating UI."
+    },
+    {
+      "key": "site-before",
+      "source": "site-clear",
+      "edit": "Create five CLEARLY SEPARATE obstaclegroups in this empty constructionplot, all on footprint area and no overlapping: 1 rubbishwood/offcutsandstones aroundx300y620; 2 small dilapidatedbrokenwoodenshed aroundx620y430 extendingto760y590;3 tangledweed/vines aroundx1150y560;4 two cut stumps aroundx825y685;5 a muddyunevenearthpatcharoundx475y520. Leave widegapsbetweenindividualgroups forindependent removal masks. Allgroupcontainedinside originalclearedpad. KeepALLbackground/foreground/camera/paving exactly unchanged. Nohumans,novisibleconstructionfornewwarehouseyet."
+    },
+    {
+      "key": "cold-before",
+      "source": "cold-clean",
+      "edit": "Only change LOCAL patch of leftwallwhere futurefridgeinsulationwillgo: x260–650,y160–640 approximately. Make wallpatch have exposed dullplaster,crackedpaint and two smallplanks/offcuts atitsfloorbase x350y705. Keepdoor/window/tilefloor/ceiling/otherwalls and sunlight unchanged. No furniture. This is task01 preparingcoldzone, onlythislocalarea startsunfinished."
+    },
+    {
+      "key": "map-foundation",
+      "source": "map-master",
+      "edit": "Replace ONLY warehouse roof/walls/window/door/lamps with LOW rectangularstonefoundation SLAB on EXACT sameupperright warehouseplinth footprint. Frontedge sameas currentstoneplinth bottomfromapproximately(1110,241) to(1418,256), leftendfrom(1024,222) to(1110,241). The foundationmustNOT be wider/deeperthan currentbuilding. Removeallabovefoundationleavingvisiblelowtopplane. Allother mapobjects/imagepixels/camera/parallels unchanged. This isstage07construction of SAMEbuilding."
+    },
+    {
+      "key": "map-walls",
+      "source": "map-master",
+      "edit": "Remove ONLY upperrightwarehouse terracotta roof and teal doors/window/lamps. Showsamecreamwalls/stoneplinth/framedopenings, visibletimberroofstructure but no roof tiles. EXACT samewarehousewallpositions andfoundationfootprint, no rescaling/rotation. Allothermapobjects/pixels/camera unchanged. This isstage08before roofandopenings installed."
+    }
+  ],
+  "storageBefore": {
+    "source": "docs/art/warehouse-rooms/storage-clean.png",
+    "prompt": "Use case: precise-object-edit. Registered fullframe1536×1024 game donor for BEFORE floor renovation. Edit ONLY the terracotta tiled FLOOR inside this EMPTY warehouse room to a rough unpainted grey-beige CONCRETE floor with a few old hairline cracks and worn patches. EXACT same floor perspective, wall-floor meeting edges, doorway outsidepaving unchanged. Do not add rubble/objects. Keep everywall/window/door/ceilingbeam/sea/lighting/style unchanged. The paid floor restoration will replace this area with the exact originaltilefloor."
+  }
+}

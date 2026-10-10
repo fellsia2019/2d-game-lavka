@@ -1,0 +1,4 @@
+Use case: precise-object-edit.
+Image1 is the sole EDIT TARGET: registered full1536×1024 game world map.
+Remove ONLY the two small terracotta flowerpots belonging to the bakery: one immediately left of the front entrance at approximately(1029,431), and one at the front-right building corner approximately(1326,461). Include their flowers/leaves but do not erase any pergola flowers overlapping in front. Restore the original cream plinth/paving behind each pot. Keep the exact three opening sizes, walls, bare roofless shell, masonry texture, footprint and doorstep untouched.
+Every other pixel and object stays visually unchanged: other buildings, front pergola, paths, lanterns, gardens, beach/sea, sky, roof where present, camera and sunlight. This is a tiny local correction, not redesign or rescaling. Output same full1536×1024 RGB, no labels/borders.

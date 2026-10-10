@@ -1,0 +1,13 @@
+Use case: stylized-concept. Use image1 as architectural reference (same open fruit pavilion) and image2 as visual style reference. Create a NEW independent1536x1024 INTERIOR viewpoint standing under that pavilion looking diagonally toward the back-right corner. Entire scene furnished ready to open. Exact warm honey oak/turquoise polished stylized 3D game style of image2, no photography. Cream and teal striped canopy underside at top, oak roof beams, turquoise low rear parapet, huge open sea view above low wall with dreamy blurred coastal town. Continuous pale stone floor fills bottom35% with a WIDE FREE central customer aisle to front edge; no furniture in center. ALL furniture along rear and side boundaries, full legs and bases within frame, at least45px margin from edges. Layout must be clear and separated:
+1 Large low wooden three-bay produce counter along rear center-left, filled with shallow wicker trays of apples and pears. Counter warm wood/teal, solid cabinet base, top fruit entirely inside shallow borders, no deep tall sides.
+2 Narrow three-tier citrus stand at far left of this counter, each shallow tray filled oranges/lemons, complete floor base.
+3 Separate banana display small standing rack at left foreground against left post, whole bananas in shallow trays, full feet.
+4 Compact packing table along rear right edge, papers neatly ontable, small traditional brass weighing scale on its left half; legs all visible.
+5 Tall narrow closed turquoise packaging cupboard at extreme right rear, doors closed.
+6 Small hamper pickup counter at right foreground against boundary, two neat filled wicker gift baskets on counter, all feet and counter fully in frame.
+7 A small stack of empty customer shopping baskets on floor just inside right front edge, separate from counter.
+8 Low two-tier wooden display at left foreground in front of citrus, filled mixed peaches/grapes/citrus, completely separated from banana rack.
+9 Simple long turquoise floor runner in CENTRAL aisle, stone floor still visible around it.
+10 Small wooden oval blank hanging opening sign beneath rear central roof beam, little painted fruit emblem, NO text.
+11 At far LEFT THROUGH opening outside pavilion, one small wooden bench under its own attached cream/teal small awning, completely visible and separated from indoor furniture. This is later optional bench purchase.
+Two small brass pendant lamps hang under roof and illuminate scene gently. No people, no UI, no letters, no logos. Finely made cheerful clean restrained scene, avoid clutter, each furniture silhouette clear. Do not crop anything at edges.

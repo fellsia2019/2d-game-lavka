@@ -1,0 +1,18 @@
+{
+  "source": "docs/art/campaign-window-display-original.png",
+  "sourceSha256": "f947beeed5ada8dc6c5168b2f2022e3560d01d492a6552f9a1a575b0e48bf731",
+  "runtime": "public/assets/campaign-window-display.webp",
+  "runtimeSha256": "1bc3d381ad2704a5ce89c68a7f2552f7d4823631798ad22fd93cf87854516e88",
+  "size": [
+    1000,
+    416
+  ],
+  "bytes": 82540,
+  "alpha": true,
+  "sourceCrop": [
+    76,
+    130,
+    1764,
+    833
+  ]
+}

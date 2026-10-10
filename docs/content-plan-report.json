@@ -1,13 +1,13 @@
 {
-  "planVersion": "coastal-full-product-plan-2",
-  "date": "2026-10-06",
-  "scope": "Арифметика 6000/756, глобальные и локальные зависимости, произвольный допустимый выбор проектов, финансирование расчистки/стройки до доступа к внутренним заказам, совместимость выпущенных id; не проходимость будущих Definition и не коммерческий результат.",
+  "planVersion": "coastal-full-product-plan-6",
+  "date": "2026-10-10",
+  "scope": "Арифметика 6000/744, глобальные и локальные зависимости, произвольный допустимый выбор проектов, финансирование расчистки/стройки до доступа к внутренним заказам, совместимость выпущенных заказов и перенос ценового кредита прежних работ лавки; не проходимость будущих Definition и не коммерческий результат.",
   "chapters": 6,
   "globalStages": [
     {
       "stage": 1,
       "orders": 160,
-      "tasks": 52,
+      "tasks": 40,
       "introducedAreaIds": [
         "shop",
         "warehouse"
@@ -92,16 +92,21 @@
   ],
   "phases": 36,
   "plannedOrderSlots": 6000,
-  "existingDefinitions": 30,
-  "definitionsToProduce": 5970,
-  "taskDesigns": 756,
-  "existingTasks": 11,
-  "tasksToImplement": 745,
+  "existingDefinitions": 680,
+  "definitionsToProduce": 5320,
+  "taskDesigns": 744,
+  "existingTasks": 152,
+  "tasksToImplement": 592,
   "goods": 48,
   "characters": 12,
-  "starsEarned": 6000,
-  "starsSpent": 6000,
+  "starsEarned": 5789,
+  "starsSpent": 5789,
+  "repairKitsEarned": 211,
+  "repairKitsSpent": 211,
+  "implementedStars": 469,
+  "implementedRepairKits": 211,
   "finalStarBalance": 0,
+  "finalRepairKitBalance": 0,
   "minimumSimulatedBalance": 0,
   "legacyArithmeticCases": 25,
   "maxNewOrdersBetweenPurchases": 11,
@@ -121,8 +126,9 @@
       "phase": "shop-1",
       "globalStage": 1,
       "orders": 80,
-      "tasks": 26,
-      "stars": 80,
+      "tasks": 14,
+      "stars": 61,
+      "repairKits": 19,
       "globalRange": [
         1,
         80
@@ -139,7 +145,8 @@
       "globalStage": 1,
       "orders": 80,
       "tasks": 26,
-      "stars": 80,
+      "stars": 48,
+      "repairKits": 32,
       "globalRange": [
         81,
         160
@@ -158,7 +165,8 @@
       "globalStage": 2,
       "orders": 120,
       "tasks": 20,
-      "stars": 120,
+      "stars": 102,
+      "repairKits": 18,
       "globalRange": [
         161,
         280
@@ -178,7 +186,8 @@
       "globalStage": 2,
       "orders": 120,
       "tasks": 20,
-      "stars": 120,
+      "stars": 102,
+      "repairKits": 18,
       "globalRange": [
         281,
         400
@@ -198,7 +207,8 @@
       "globalStage": 2,
       "orders": 80,
       "tasks": 26,
-      "stars": 80,
+      "stars": 48,
+      "repairKits": 32,
       "globalRange": [
         401,
         480
@@ -218,7 +228,8 @@
       "globalStage": 2,
       "orders": 120,
       "tasks": 20,
-      "stars": 120,
+      "stars": 60,
+      "repairKits": 60,
       "globalRange": [
         481,
         600
@@ -240,6 +251,7 @@
       "orders": 160,
       "tasks": 20,
       "stars": 160,
+      "repairKits": 0,
       "globalRange": [
         601,
         760
@@ -261,6 +273,7 @@
       "orders": 160,
       "tasks": 20,
       "stars": 160,
+      "repairKits": 0,
       "globalRange": [
         761,
         920
@@ -282,6 +295,7 @@
       "orders": 160,
       "tasks": 20,
       "stars": 160,
+      "repairKits": 0,
       "globalRange": [
         921,
         1080
@@ -302,7 +316,8 @@
       "globalStage": 3,
       "orders": 80,
       "tasks": 26,
-      "stars": 80,
+      "stars": 48,
+      "repairKits": 32,
       "globalRange": [
         1081,
         1160
@@ -324,6 +339,7 @@
       "orders": 120,
       "tasks": 20,
       "stars": 120,
+      "repairKits": 0,
       "globalRange": [
         1161,
         1280
@@ -346,6 +362,7 @@
       "orders": 160,
       "tasks": 20,
       "stars": 160,
+      "repairKits": 0,
       "globalRange": [
         1281,
         1440
@@ -368,6 +385,7 @@
       "orders": 200,
       "tasks": 20,
       "stars": 200,
+      "repairKits": 0,
       "globalRange": [
         1441,
         1640
@@ -390,6 +408,7 @@
       "orders": 200,
       "tasks": 20,
       "stars": 200,
+      "repairKits": 0,
       "globalRange": [
         1641,
         1840
@@ -412,6 +431,7 @@
       "orders": 200,
       "tasks": 20,
       "stars": 200,
+      "repairKits": 0,
       "globalRange": [
         1841,
         2040
@@ -434,6 +454,7 @@
       "orders": 200,
       "tasks": 20,
       "stars": 200,
+      "repairKits": 0,
       "globalRange": [
         2041,
         2240
@@ -456,6 +477,7 @@
       "orders": 80,
       "tasks": 26,
       "stars": 80,
+      "repairKits": 0,
       "globalRange": [
         2241,
         2320
@@ -478,6 +500,7 @@
       "orders": 120,
       "tasks": 20,
       "stars": 120,
+      "repairKits": 0,
       "globalRange": [
         2321,
         2440
@@ -501,6 +524,7 @@
       "orders": 160,
       "tasks": 20,
       "stars": 160,
+      "repairKits": 0,
       "globalRange": [
         2441,
         2600
@@ -524,6 +548,7 @@
       "orders": 200,
       "tasks": 20,
       "stars": 200,
+      "repairKits": 0,
       "globalRange": [
         2601,
         2800
@@ -547,6 +572,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         2801,
         3020
@@ -570,6 +596,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         3021,
         3240
@@ -593,6 +620,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         3241,
         3460
@@ -616,6 +644,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         3461,
         3680
@@ -639,6 +668,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         3681,
         3900
@@ -662,6 +692,7 @@
       "orders": 80,
       "tasks": 26,
       "stars": 80,
+      "repairKits": 0,
       "globalRange": [
         3901,
         3980
@@ -685,6 +716,7 @@
       "orders": 120,
       "tasks": 20,
       "stars": 120,
+      "repairKits": 0,
       "globalRange": [
         3981,
         4100
@@ -709,6 +741,7 @@
       "orders": 160,
       "tasks": 20,
       "stars": 160,
+      "repairKits": 0,
       "globalRange": [
         4101,
         4260
@@ -733,6 +766,7 @@
       "orders": 200,
       "tasks": 20,
       "stars": 200,
+      "repairKits": 0,
       "globalRange": [
         4261,
         4460
@@ -757,6 +791,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         4461,
         4680
@@ -781,6 +816,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         4681,
         4900
@@ -805,6 +841,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         4901,
         5120
@@ -829,6 +866,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         5121,
         5340
@@ -853,6 +891,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         5341,
         5560
@@ -877,6 +916,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         5561,
         5780
@@ -901,6 +941,7 @@
       "orders": 220,
       "tasks": 20,
       "stars": 220,
+      "repairKits": 0,
       "globalRange": [
         5781,
         6000
@@ -921,10 +962,10 @@
     }
   ],
   "notVerified": [
-    "Решения 5970 будущих Definition",
+    "Решения 5320 будущих Definition",
     "Интерес, длительность, удержание и доход",
-    "Будущий размер dist и память",
-    "Runtime глобальных Stage, выбора проектов и строительства",
-    "Будущие сцены, UI, сезоны, платежи и SDK"
+    "Будущий размер полной игры и память на физических устройствах",
+    "Остальные runtime и сцены Stage 3–6",
+    "Сезоны, платежи и SDK"
   ]
 }

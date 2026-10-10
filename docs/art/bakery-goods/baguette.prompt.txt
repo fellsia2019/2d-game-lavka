@@ -1,0 +1,8 @@
+Use case: stylized-concept
+Asset type: one transparent bakery food sprite for a small mobile matching puzzle.
+Primary request: exactly ONE whole French baguette, a long slender golden loaf with rounded tapered tips and five clear diagonal scoring marks. It must be instantly distinct from a round bread boule and from a croissant.
+Scene/backdrop: genuinely transparent background, RGBA cutout. No environment, no plate, no board, no basket, no wrapper.
+Style/medium: warm polished hand-painted semi-realistic casual-game food illustration, crisp clean silhouette, rich honey-gold crust, soft orange-brown shading and pale flour inside the scoring. Match the visual language of an existing luminous golden round-bread game sprite: dimensional, appetizing, restrained highlights, no black outlines, not a photograph.
+Composition/framing: square image 1024x1024. A single baguette centered, its long axis diagonal from lower left to upper right about 45 degrees, fills approximately 85 percent of the image diagonal. Complete rounded tips visible with generous transparent margin on all sides. Slight three-quarter view from above, visible crust thickness. Simplified strong silhouette readable at 48 pixels.
+Lighting/mood: soft light from upper left, subtle volume shading. One small very soft translucent brown contact shadow close immediately below the loaf, no long cast shadow.
+Constraints: exactly one indivisible baguette, no sliced pieces, no loose crumbs, no utensils, no extra food, no floor plane, no opaque background or checkerboard, no border, no text, no watermark, no UI. Keep all food and shadow inside the image. Preserve genuine alpha transparency.

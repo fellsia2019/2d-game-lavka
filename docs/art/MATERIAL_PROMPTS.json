@@ -1,0 +1,57 @@
+{
+  "mechanism": "Built-in image_gen.imagegen",
+  "transparent_background": true,
+  "styleReference": "docs/art/goods-atlas-original.png",
+  "assets": [
+    {
+      "id": "paint",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A single closed cylindrical paint tin with a bright turquoise painted side and a cream paint droplet symbol, shiny metal lid and carry handle. No brush. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/paint-original.png"
+    },
+    {
+      "id": "boards",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A compact tied bundle of three short golden wooden planks, readable ends, natural wood grain. Planks oriented diagonally upward to the right, full ends visible. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/boards-original.png"
+    },
+    {
+      "id": "bricks",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A compact stack of three warm terracotta red construction bricks with softly bevelled edges, two below and one above. Clear rectangular brick silhouette. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/bricks-original.png"
+    },
+    {
+      "id": "tiles",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A compact stack of three square glazed turquoise ceramic tiles, upper tile cream border and teal centre. Slightly offset corners, recognizable square tiles. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/tiles-original.png"
+    },
+    {
+      "id": "nails",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A small open sturdy golden cardboard box filled with shiny chunky steel nails, a few nail heads clearly visible and one nail lying diagonally across front. No writing. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/nails-original.png"
+    },
+    {
+      "id": "cement",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A small closed cream paper sack of construction cement with folded top, broad grey band and simple brick pictogram, dimensional full silhouette. No text. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/cement-original.png"
+    },
+    {
+      "id": "glass",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A single framed square transparent pale aqua glass panel, smooth golden wooden protective edge and clear diagonal white glass glints, slightly angled in three-quarter view. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/glass-original.png"
+    },
+    {
+      "id": "gears",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: Two chunky interlocking brass cogwheels, one large and one small, warm metallic sheen and clear teeth silhouettes. No machinery around them. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/gears-original.png"
+    },
+    {
+      "id": "wire",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A compact orange insulated electrical wire wound into a tidy circular coil, two short visible ends with brass tips. Coil standing slightly angled, not lying flat. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/wire-original.png"
+    },
+    {
+      "id": "toolbox",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent isolated construction material sprite for a polished cozy seaside sorting puzzle game. Reference image ONLY for polished rounded illustrated 3D material rendering, warm highlights and crisp readable silhouettes; do not include any food or background from the reference. Primary request: A single closed coral-red vintage tool box with a cream central latch, brass hinges and a dark golden handle, a tiny embossed wrench pictogram, no text. Composition: centred single compact object filling 78 percent of a square canvas, full object visible with generous transparent padding. Slightly elevated front three-quarter camera, clean small icon readability. Warm soft light upper left, mild contact shadow contained beneath object, saturated welcoming colors, handcrafted tactile materials. Absolutely transparent background, no floor, no scenery, no frame, no labels, no numbers, no watermark.",
+      "source": "docs/art/materials/toolbox-original.png"
+    }
+  ]
+}

@@ -4,13 +4,14 @@ import { CHAPTER, chapterLevel } from "../src/content";
 import { initial, applyMove, clone } from "../src/engine";
 import { freshProgress, loadProgress, saveProgress, type Attempt } from "../src/storage";
 import { TOOLS, purchaseTool } from "../src/tools";
+import { createOrderAppearance } from "../src/order-supplies";
 
 function shopper() {
   const p = freshProgress();
   p.completed = CHAPTER.slice(0, 9).map(order => order.id);
   p.coins = 600;
   const definition = chapterLevel(10), board = initial(definition);
-  p.attempt = { id: "pinned-shopping-attempt", definition,
+  p.attempt = { id: "pinned-shopping-attempt", definition, appearance: createOrderAppearance(definition),
     board: applyMove(board, ...definition.verifiedSolution[0])!, undo: [board],
     solution: definition.verifiedSolution.slice(1), hints: {}, mixCount: 0, reward: null } satisfies Attempt;
   return p;

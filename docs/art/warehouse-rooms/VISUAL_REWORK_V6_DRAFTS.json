@@ -1,0 +1,23 @@
+{
+  "rejected": [
+    {
+      "source": "storage-packing-station-draft-1.png",
+      "prompt": "Use case: precise-object-edit. Registered full 1536x1024 illustrated game room plate.\nImage1 is the clean room edit target: preserve its camera, walls, corner at x710, floor grout, door and window exactly. Image2 is only a MATERIAL/STYLE reference for the small teal packing bench with honey wood worktop, wrapping paper, boxes, twine, scissors and hanging wall shelf.\nBuild ONE coherent small packing workstation in the corner immediately right of the window, all within x580..840 and y140..555. Redraw the bench AND wall shelf together with correct shared perspective. The bench's BACK edge must lie flush against the LEFT wall, ending before the vertical room corner at x710. Its long edges therefore rise gently to the RIGHT, parallel to the left-wall baseboard and window sill. The depth edges project down-right into the room, parallel to the right-wall floor direction. Do not draw a front-facing flat table spanning inconsistently across both walls.\nSuggested geometric footprint for WORKTOP corners: rear left(588,366), rear right(706,345), front right(834,379), front left(714,400). Four vertical straight sturdy square teal legs beneath these corners, to the floor at approximately (591,510),(706,487),(831,524),(716,547), connected by one lower shelf. All four legs complete. The near drawer face is under the front edge from(714,400)to(834,379), parallel to the left wall. Avoid bulbous decorative turned legs and avoid twisting individual parts.\nOne small wooden WALL SHELF above this bench on the SAME LEFT WALL, its back edge from about(582,182) to(704,160), its depth projecting down-right about45px. Shelf long edges exactly parallel to the worktop long edges. Shelf brackets against left wall. A few compact wrapping supplies on shelf; twine loop, scissors and folded cloth hang below. Paper roll on the worktop; a few paper sheets and one small empty wooden supply box on the lower shelf. Keep all supplies physically supported and entirely inside their shelves. No loose duplicate table parts.\nStyle: warm polished painterly 3D casual game, matching Image2's teal painted wood and golden wood. Restrained small shadows only immediately under each floor support. No cast silhouette on the floor or broad oval floor shadow.\nKeep every unrelated background pixel/geometry consistent with Image1. Do not add the scale table, milk cans, cupboard, pallet, storage rack or floor boxes. No text/UI. This must remain a full registered room plate with this single complete workstation; never crop or zoom.",
+      "inputs": [
+        "storage-clean.png",
+        "storage-master.png"
+      ],
+      "reason": "Bench and shelf retained front-facing geometry inconsistent with the left wall."
+    },
+    {
+      "source": "storage-packing-station-draft-2.png",
+      "prompt": "Use case: precise registered game art edit. FULL1536x1024.\nImage1 is the exact clean room backdrop to preserve. Image2 is a GEOMETRY BLUEPRINT: exactly obey the tabletop's four corners, leg arrangement, lower shelf and wall shelf coordinates/directions from this diagram. Image3 only provides painted materials and wrapping supplies style. Replace the flat blueprint bench with a beautifully finished painterly3D casualgame packing bench in the clean room, using the SAME blueprint geometry at the SAME pixel position. All long bench/shelf edges rise to the right, following the left wall baseboard; their depth edges descend to the right. The bench back is against the LEFT wall ending at the vertical corner. Important: do NOT change into a front-facing wide table. Do not follow Image3's table orientation. Follow Image2 geometry exactly. Golden wood worktop, straight square teal legs, small drawer on rightward near face. Modest paper roll on top following that tabletop perspective, sheets and a tiny twine box on lower shelf. Wall shelf has compact teal/golden wrapping boxes; twine/scissors/cloth hang beneath at a height clear of the worktop. All physically supported. Whole workstation within x578..842 and y140..554. Keep clean room walls/window/door/floor exactly registered. Add no other furniture. No floor silhouette/shadow or reflection: only a tiny soft contact immediately beneath each foot. No drawing outlines, text, diagram arrows or captions in final. Do not crop or zoom.",
+      "inputs": [
+        "storage-clean.png",
+        "packing-station-perspective-guide.png",
+        "storage-packing-station-draft-1.png"
+      ],
+      "reason": "Diagram was not followed closely enough; no runtime use."
+    }
+  ]
+}
