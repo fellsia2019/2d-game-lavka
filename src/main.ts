@@ -68,6 +68,9 @@ import { createOrderAppearance, orderItem, orderSummary } from "./order-supplies
 import "./economy-ui.css";
 import "./world-navigation.css";
 import './journey-ui.css';
+import './achievements.css';
+import { acknowledgeAchievement, unseenAchievement, FINAL_ACHIEVEMENT_ID } from './achievements';
+import { achievementModalHTML, achievementsHTML } from './achievements-ui';
 import { compactAmount, currencyIcon } from "./economy-ui";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
@@ -775,6 +778,8 @@ function showModal(
         switch: "Смена заказа",
         unsupported: "Обновление игры",
         result: "Заказ готов",
+        achievement: "Достижение получено",
+        achievements: "Ваши достижения",
         navigation: "Помещения и зоны",
         renovation: "Оформление лавки",
         task: "Обустройство лавки",
@@ -802,6 +807,19 @@ function closeModal() {
   updateCoach();
 }
 function dismissModal() { closeModal(); }
+function achievementModal(id = FINAL_ACHIEVEMENT_ID) {
+  if (!acknowledgeAchievement(progress, id)) return;
+  persist();
+  showModal('achievement', achievementModalHTML(progress, assets, id));
+}
+function celebratePendingAchievement() {
+  const achievement = unseenAchievement(progress, progress.selectedProject);
+  if (!achievement || externalChanged) return;
+  // The final medal includes the last room; avoid a second celebration for it.
+  if (achievement.id === FINAL_ACHIEVEMENT_ID) acknowledgeAchievement(progress, `project:${progress.selectedProject}`);
+  achievementModal(achievement.id);
+  audio.play('win');
+}
 function showResult() {
   clearToast();
   const attempt = current(),
@@ -814,17 +832,19 @@ function showResult() {
   const navigation = navigationState(progress);
   const destination = navigation.nextDestination;
   const returnLabel = `К зданию: ${navigation.currentLabel}`;
-  const mainAction = affordable ? "buy-task" : allDone() ? "finish" : next ? "next" : destination ? "continue-journey" : "home";
-  const mainLabel = affordable ? `Выполнить · ${node.cost} ${currencyIcon(node.currency)}`
+  const milestone = reward.fresh && unseenAchievement(progress, progress.selectedProject);
+  const mainAction = milestone ? "celebrate" : affordable ? "buy-task" : allDone() ? "achievement-map" : next ? "next" : destination ? "continue-journey" : "home";
+  const mainLabel = milestone ? allDone() ? "Итоги двора" : "Достижение получено" : affordable ? `Выполнить · ${node.cost} ${currencyIcon(node.currency)}`
     : allDone() ? "Во двор" : next ? "Дальше" : destination ? destination.actionLabel : returnLabel;
   const guidance = affordable ? `Можно выполнить: ${node.name}.` : navigation.remainingOrders === 0
     ? affordable ? "Все заказы выполнены. Завершите обустройство здания, чтобы открыть следующий участок."
       : destination ? `Здесь всё готово. Дальше — ${projectSpaceName(destination.projectId).toLocaleLowerCase("ru-RU")}.` : ""
     : "";
+  const resultTitle = reward.fresh && navigation.remainingOrders === 0 ? "Все заказы выполнены!" : repairOrder ? "Материалы собраны!" : "Заказ готов!";
   persist();
   showModal(
     "result",
-    `<div class="result-badge">${icon("check")}</div><h2>${repairOrder ? "Материалы собраны!" : "Заказ готов!"}</h2><div class="reward-row"><div>${icon("coin")}<strong>+${reward.coins}</strong><span>монет</span></div><div class="reward-${rewardCurrency}">${currencyIcon(rewardCurrency)}<strong>+${reward[rewardCurrency]}</strong><span>${reward.fresh ? repairOrder ? "на ремонт" : "на обустройство" : "Повтор"}</span></div></div>${guidance ? `<p class="result-next-step">${guidance}</p>` : ""}<button class="primary ${["next", "buy-task", "continue-journey"].includes(mainAction) ? "game-guidance" : ""}" ${["next", "buy-task", "continue-journey"].includes(mainAction) ? 'data-guide="result-next"' : ""} data-action="${mainAction}" ${affordable ? `data-task-id="${node.id}"` : destination && mainAction === "continue-journey" ? `data-project="${destination.projectId}"` : ""}>${mainLabel}${icon("arrow")}</button><button class="quiet" data-action="home">${returnLabel}${icon("home")}</button>`,
+    `<div class="result-badge">${icon("check")}</div><h2>${resultTitle}</h2><div class="reward-row"><div>${icon("coin")}<strong>+${reward.coins}</strong><span>монет</span></div><div class="reward-${rewardCurrency}">${currencyIcon(rewardCurrency)}<strong>+${reward[rewardCurrency]}</strong><span>${reward.fresh ? repairOrder ? "на ремонт" : "на обустройство" : "Повтор"}</span></div></div>${guidance ? `<p class="result-next-step">${guidance}</p>` : ""}<button class="primary ${["next", "buy-task", "continue-journey", "celebrate"].includes(mainAction) ? "game-guidance" : ""}" ${["next", "buy-task", "continue-journey", "celebrate"].includes(mainAction) ? 'data-guide="result-next"' : ""} data-action="${mainAction}" ${affordable ? `data-task-id="${node.id}"` : destination && mainAction === "continue-journey" ? `data-project="${destination.projectId}"` : ""}>${mainLabel}${icon("arrow")}</button><button class="quiet" data-action="home">${returnLabel}${icon("home")}</button>`,
     false,
   );
 }
@@ -849,13 +869,13 @@ function navigationModal() {
     ?? shopView ?? navigationView) as CampaignView | undefined;
   const views = currentSceneViews();
   const notice = navigation.warehouseNotice;
-  showModal("navigation", `<h2>Двор у моря</h2><div class="navigation-breadcrumb">${icon("globe")}<span>Двор</span>${icon("arrow")}<span class="navigation-current">${navigation.currentLabel}</span></div><button class="navigation-up" data-action="show-map"><img src="${assets}coastal-map-cleared-v1.webp" width="96" height="64" alt=""/><span class="navigation-up-copy"><strong>На карту двора</strong><span>Все здания и новые участки</span></span>${icon("arrow")}</button>${navigation.nextDestination?`<button class="navigation-notice game-guidance" data-guide="next-place" data-action="continue-journey" data-project="${navigation.nextDestination.projectId}">${icon('arrow')}<span><strong>${navigation.nextDestination.actionLabel}</strong><span>Следующее помещение для обустройства</span></span></button>`:notice?.kind==='new'&&project.areaId!=='warehouse'?`<button class="navigation-notice game-guidance" data-guide="new-warehouse" data-action="continue-journey" data-project="warehouse-1">${icon('reserve')}<span><strong>Открыт склад</strong><span>Начните восстановление</span></span>${icon('arrow')}</button>`:''}<h3 class="navigation-room-heading">Помещения и зоны</h3>${roomCards(views,view)}`);
+  showModal("navigation", `<h2>Двор у моря</h2><div class="navigation-breadcrumb">${icon("globe")}<span>Двор</span>${icon("arrow")}<span class="navigation-current">${navigation.currentLabel}</span></div><button class="navigation-up" data-action="show-map"><img src="${assets}coastal-map-cleared-v1.webp" width="96" height="64" alt=""/><span class="navigation-up-copy"><strong>На карту двора</strong><span>Все здания и новые участки</span></span>${icon("arrow")}</button>${navigation.nextDestination?`<button class="navigation-notice game-guidance" data-guide="next-place" data-action="continue-journey" data-project="${navigation.nextDestination.projectId}">${icon('arrow')}<span><strong>${navigation.nextDestination.actionLabel}</strong><span>Следующее помещение для обустройства</span></span></button>`:notice?.kind==='new'&&project.areaId!=='warehouse'?`<button class="navigation-notice game-guidance" data-guide="new-warehouse" data-action="continue-journey" data-project="warehouse-1">${icon('reserve')}<span><strong>Открыт склад</strong><span>Начните восстановление</span></span>${icon('arrow')}</button>`:''}<h3 class="navigation-room-heading">Помещения и зоны</h3>${roomCards(views,view)}<button class="quiet" data-action="achievements">${icon("trophy")}Достижения</button>`);
 }
 
 function settingsModal() {
   showModal(
     "settings",
-    `<h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button>${debugButton()}${new URLSearchParams(location.search).has("playtest") ? `<button class="quiet" data-action="export-events">Скачать отчёт этой сессии</button>` : ""}<p class="save-note">${storageWarned ? "Сохранение недоступно — игра работает в этой вкладке." : "Сохранено в браузере"}</p>`,
+    `<h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button><button class="quiet" data-action="achievements">${icon("trophy")}Достижения</button>${debugButton()}${new URLSearchParams(location.search).has("playtest") ? `<button class="quiet" data-action="export-events">Скачать отчёт этой сессии</button>` : ""}<p class="save-note">${storageWarned ? "Сохранение недоступно — игра работает в этой вкладке." : "Сохранено в браузере"}</p>`,
   );
 }
 function sceneShopModal() {
@@ -917,6 +937,8 @@ async function buyTaskWithReveal(taskId:string) {
       delete button.dataset.busyDisabled;
     });
     if(!modal&&!externalChanged)app.querySelector<HTMLElement>('.world-main-action')?.focus({preventScroll:true});
+    // A room milestone waits for the last purchase effect, without replacing its canvas.
+    celebratePendingAchievement();
   } catch(error) {
     buildReveal=undefined;justBuilt=undefined;busy=false;finishSceneReveal(app);render(true);
     toast(error instanceof Error?error.message:'Не удалось выполнить работу.');
@@ -1194,6 +1216,35 @@ function action(name: string, button: HTMLElement) {
   cancelDebugAuto();
   audio.play("button");
   switch (name) {
+    case 'achievements':
+      showModal('achievements', achievementsHTML(progress, assets));
+      break;
+    case 'achievement-detail':
+      if (button.dataset.achievement) achievementModal(button.dataset.achievement);
+      break;
+    case 'achievement-finale':
+      achievementModal();
+      break;
+    case 'celebrate':
+      closeModal();
+      screen = allDone() ? 'finish' : 'shop';
+      render();
+      celebratePendingAchievement();
+      break;
+    case 'achievement-map':
+      closeModal();
+      screen = 'map';
+      selectedArea = projectById(progress.selectedProject)!.areaId;
+      render();
+      app.querySelector<HTMLElement>(`.world-pin[data-area="${selectedArea}"]`)?.focus({ preventScroll: true });
+      break;
+    case 'achievement-orders':
+      // Leave a won-order screen before closing its celebration; the pinned attempt stays intact.
+      screen = allDone() ? 'finish' : 'home';
+      closeModal();
+      render();
+      levelsModal();
+      break;
     case "debug-menu":
       debugModal();
       break;
@@ -1279,6 +1330,7 @@ function action(name: string, button: HTMLElement) {
       break;
     case "world-navigation":
     case "room-views":
+      if (screen === 'map' || screen === 'finish' && allDone()) break;
       navigationModal();
       break;
     case "continue-journey":
@@ -1359,6 +1411,7 @@ function action(name: string, button: HTMLElement) {
       closeModal();
       screen = allDone() ? "finish" : "home";
       render();
+      if (allDone()) achievementModal();
       track("chapter_finish");
       break;
     case "keep-order":
@@ -1387,6 +1440,7 @@ function action(name: string, button: HTMLElement) {
       toastElement.classList.remove("visible");
       toastElement.textContent = "";
       render();
+      if (progress.attempt?.reward?.fresh) celebratePendingAchievement();
       break;
     case "next":
       closeModal();
@@ -1725,3 +1779,4 @@ if (loaded.readOnly)
     false,
   );
 else if (loaded.warning) toast(loaded.warning);
+else if (screen === 'finish') celebratePendingAchievement();

@@ -1,5 +1,5 @@
 {
-  "bytes": 79040696,
+  "bytes": 79061444,
   "files": [
     {
       "path": "dist/assets/hall-room-main-before.webp",
@@ -42,8 +42,8 @@
       "bytes": 581124
     },
     {
-      "path": "dist/assets/worker-D4JdmFiK.js",
-      "bytes": 577056
+      "path": "dist/assets/worker-CEElsdfz.js",
+      "bytes": 577089
     },
     {
       "path": "dist/assets/coastal-map-cleared-v1.webp",
@@ -94,8 +94,8 @@
       "bytes": 533934
     },
     {
-      "path": "dist/assets/world-navigation-B57OJZID.js",
-      "bytes": 529717
+      "path": "dist/assets/world-navigation-C0Gv-GTC.js",
+      "bytes": 529833
     },
     {
       "path": "dist/assets/warehouse-room-map-walls.webp",
@@ -786,8 +786,8 @@
       "bytes": 151674
     },
     {
-      "path": "dist/assets/game-eZ1L90FA.js",
-      "bytes": 119136
+      "path": "dist/assets/game-ByzAOZd-.js",
+      "bytes": 128581
     },
     {
       "path": "dist/assets/campaign-shelving.webp",
@@ -822,16 +822,16 @@
       "bytes": 81094
     },
     {
+      "path": "dist/assets/game-TQeQTTQr.css",
+      "bytes": 78684
+    },
+    {
       "path": "dist/assets/hall-v1-north-display.webp",
       "bytes": 77328
     },
     {
       "path": "dist/assets/CanvasPool-CWB7dUpA.js",
       "bytes": 71198
-    },
-    {
-      "path": "dist/assets/game-CHditdau.css",
-      "bytes": 67530
     },
     {
       "path": "dist/assets/site-vines.webp",
@@ -934,7 +934,7 @@
       "bytes": 43596
     },
     {
-      "path": "dist/assets/browserAll-DSNR7SYC.js",
+      "path": "dist/assets/browserAll-D5ZTS6LP.js",
       "bytes": 43523
     },
     {
@@ -1370,7 +1370,7 @@
       "bytes": 16484
     },
     {
-      "path": "dist/assets/init-CYjBopvv.js",
+      "path": "dist/assets/init-dfN6n2hy.js",
       "bytes": 14670
     },
     {
@@ -1406,15 +1406,15 @@
       "bytes": 8410
     },
     {
-      "path": "dist/assets/campaign-uMRnjY7K.js",
+      "path": "dist/assets/campaign-fjU2Q5ig.js",
       "bytes": 6906
     },
     {
-      "path": "dist/assets/jobs-DheW6g9z.js",
+      "path": "dist/assets/jobs-p425-3kO.js",
       "bytes": 6671
     },
     {
-      "path": "dist/assets/author-VSSZriKS.js",
+      "path": "dist/assets/author-PHCcq0TL.js",
       "bytes": 6350
     },
     {
@@ -1734,7 +1734,7 @@
       "bytes": 80
     },
     {
-      "path": "dist/assets/webworkerAll-DbEa3L0W.js",
+      "path": "dist/assets/webworkerAll-DEIj-3nn.js",
       "bytes": 66
     }
   ]

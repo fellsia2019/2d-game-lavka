@@ -4,6 +4,7 @@ import { worldHTML } from "../src/world";
 import { freshProgress } from "../src/storage";
 import { CHAPTER } from "../src/content";
 import { SHOP_STEPS } from "../src/campaign";
+import { applyDebugSceneState } from '../src/debug-scene';
 
 test("world has a globe and explicit map return without permanent room selectors", () => {
   const progress = freshProgress();
@@ -11,6 +12,21 @@ test("world has a globe and explicit map return without permanent room selectors
   assert.match(html, /data-action="world-navigation" aria-label="Навигация по двору"/);
   assert.match(html, /class="world-scene-back" data-action="show-map" aria-label="На карту двора"/);
   assert.doesNotMatch(html, /world-hall-views|world-room-switch|world-room-selector/);
+});
+
+test('map and completed map hide the globe and expose achievements without changing selection', () => {
+  const p = freshProgress();
+  for (const complete of [false, true]) {
+    if (complete) applyDebugSceneState(p, { projectId: 'restaurant-1', works: 26, orders: 80 });
+    for (const mode of complete ? ['map', 'finish'] as const : ['map'] as const) {
+      const before = structuredClone(p);
+      const html = worldHTML(p, '/assets/', mode, 'shop');
+      assert.doesNotMatch(html, /world-globe|data-action="world-navigation"/);
+      assert.match(html, /world-achievements.*data-action="achievements"/);
+      if (complete) assert.match(html, /data-action="achievement-finale">Итоги двора/);
+      assert.deepEqual(p, before);
+    }
+  }
 });
 
 test("80 orders retain the final job CTA until purchase then recommend the warehouse", () => {

@@ -11,6 +11,7 @@ const paths: Record<string, string> = {
   settings:
     '<path d="m9 3-1 3-3 1-2 5 2 5 3 1 1 3h6l1-3 3-1 2-5-2-5-3-1-1-3z"/><circle cx="12" cy="12" r="3"/>',
   star: '<path d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>',
+  trophy: '<path d="M7 3h10v5a5 5 0 0 1-10 0zM7 5H3v2a5 5 0 0 0 5 5M17 5h4v2a5 5 0 0 1-5 5M12 13v5M8 21h8M9 18h6v3"/>',
   repair: '<path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><rect x="2" y="7" width="20" height="14" rx="3"/><path d="M2 12h20M9 11v4h6v-4"/>',
   coin: '<circle cx="12" cy="12" r="9"/><path d="M14 7h-3a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-3m2-10v12"/>',
   hint: '<path d="M8 17c0-3-3-3-3-8a7 7 0 0 1 14 0c0 5-3 5-3 8zM9 21h6M10 17v-5m4 5v-5"/>',

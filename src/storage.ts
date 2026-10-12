@@ -29,6 +29,7 @@ import {
 } from "./renovations";
 import { createOrderAppearance, validOrderAppearance, type OrderAppearance } from "./order-supplies";
 import { freshSceneDecor, validSceneDecor, type SceneDecor } from "./scene-shop";
+import { normalizeAchievementSeen } from './achievements';
 export type { RenovationColor } from "./renovations";
 export interface Settings {
   sound: boolean;
@@ -51,6 +52,8 @@ export interface Progress {
   campaign: CampaignProgress;
   contentVersion: string;
   completed: string[];
+  /** Optional presentation receipts; achievements themselves derive from campaign progress. */
+  achievementsSeen?: string[];
   coins: number;
   stars: number;
   repairKits: number;
@@ -77,6 +80,7 @@ export function freshProgress(): Progress {
     campaign: freshCampaign(),
     contentVersion: CONTENT_VERSION,
     completed: [],
+    achievementsSeen: [],
     coins: 0,
     stars: 0,
     repairKits: 0,
@@ -451,6 +455,10 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
       Array.isArray(p.attempts) || Object.keys(p.attempts).some(key => !isProjectId(key)))
       throw new Error("Corrupted project selection");
     const typed = p as Progress;
+    // Old saves gain only presentation metadata; currencies and pinned attempts stay intact.
+    const achievementSeen = normalizeAchievementSeen(typed.achievementsSeen);
+    const achievementsInitialized = JSON.stringify(achievementSeen) !== JSON.stringify(typed.achievementsSeen);
+    typed.achievementsSeen = achievementSeen;
     const decorInitialized = typed.sceneDecor === undefined;
     const invalidDecor = !decorInitialized && !validSceneDecor(typed.sceneDecor);
     if (decorInitialized || invalidDecor) typed.sceneDecor = freshSceneDecor();
@@ -488,14 +496,14 @@ export function loadProgress(storage: Pick<Storage, "getItem">): {
     if (legacy && typed.attempt?.solution?.length)
       rememberHint(typed.attempt, typed.attempt.solution);
     if (invalidAttempt) return {
-      progress: typed, migrated: migrated || appearanceInitialized || decorInitialized || invalidDecor,
+      progress: typed, migrated: migrated || appearanceInitialized || decorInitialized || invalidDecor || achievementsInitialized,
       warning: "Не удалось восстановить один из заказов. Остальные попытки, работы и награды сохранены.",
     };
     if (invalidDecor) return {
       progress: typed, migrated: true,
       warning: "Не удалось восстановить дополнительное оформление. Заказы, работы и кошелёк сохранены.",
     };
-    return { progress: typed, migrated: migrated || appearanceInitialized || decorInitialized };
+    return { progress: typed, migrated: migrated || appearanceInitialized || decorInitialized || achievementsInitialized };
   } catch {
     return {
       progress: freshProgress(),
