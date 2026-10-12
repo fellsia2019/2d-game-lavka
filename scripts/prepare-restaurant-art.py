@@ -7,7 +7,7 @@ SOURCE=ROOT/'docs/art/restaurant-rooms'
 NAMES=['hall-stair-rework-v4','kitchen-balcony-rework-v4','yard-foundation-rework-v4','yard-before','yard-clear','yard-walls','yard-ready-v3','hall-rough','hall-empty','hall-tables','hall-seating','hall-furniture','hall-master-v3','hall-master','kitchen-empty','kitchen-prep','kitchen-master-v3']
 rows=[]
 for name in NAMES:
- original={'hall-stair-rework-v4':'hall-stair-empty-v5','yard-before':'yard-debris-registered','yard-walls':'yard-walls-rework-v4','yard-ready-v3':'yard-architecture-v5','hall-furniture':'hall-rework-v4','hall-master-v3':'hall-rework-v4','kitchen-prep':'kitchen-prep-rework-v4','kitchen-master-v3':'kitchen-rework-v4'}.get(name,name)
+ original={'hall-stair-rework-v4':'hall-stair-empty-v5','yard-before':'yard-debris-registered','yard-walls':'yard-walls-rework-v4','yard-ready-v3':'yard-architecture-v5','hall-furniture':'hall-rework-v4','hall-master-v3':'hall-rework-v4','kitchen-prep':'kitchen-furniture-v6','kitchen-master-v3':'kitchen-rework-v4'}.get(name,name)
  source=SOURCE/(original+'.png');target=ROOT/'public/assets'/('restaurant-'+name+'.webp')
  with Image.open(source) as im:
   assert im.size==(1536,1024),(name,im.size)

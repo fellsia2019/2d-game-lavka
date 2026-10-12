@@ -163,5 +163,20 @@
     "sourceSha256": "8ea337347347167bc1a702bad80ab1d70b8e4124712ef328c1cb1c20cdcfdf16",
     "runtimeSha256": "b68c845f5a8a8dbabb2887b5cd9ad48d2edd67c966e16b1ea90f530f789f8c0e",
     "operation": "RGB WebP export only"
+  },
+  {
+    "name": "tray-return-inside",
+    "source": "docs/art/terrace-rooms/tray-return-inside.png",
+    "runtime": "public/assets/terrace-tray-return-inside.webp",
+    "bytes": 344564,
+    "frame": [
+      0,
+      0,
+      1536,
+      1024
+    ],
+    "sourceSha256": "ff7b7f36554cc3442627a4812a9f619ee8360f73b7ffca5b8f8ecfabcbdda1ef",
+    "runtimeSha256": "97279e34c5497c5412ab7f427d5359788fdcb3f793a08133420f41622c5b8563",
+    "operation": "RGB WebP export only"
   }
 ]

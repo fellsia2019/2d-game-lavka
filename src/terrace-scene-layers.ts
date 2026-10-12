@@ -51,11 +51,12 @@ export const TERRACE_LAYERS:readonly RegisteredLayer[]=[
  layer('deck-finish',11,'empty',floor,'architecture'),layer('finished-side-rails',11,'empty',rearRails,'architecture'),
  layer('hanging-lights',12,'furniture-full','M356 188 L389 188 L390 210 Q402 222 404 242 L383 246 L359 246 L337 241 Q340 221 356 211 Z M1196 188 L1228 188 L1228 211 Q1241 221 1245 241 L1224 246 L1201 246 L1181 240 Q1183 223 1198 211 Z','equipment'),
  contact('tables',13),contact('chairs',14),contact('counter',15),contact('cupboard',16),contact('returns',17),contact('drinks',18),contact('bench',22),contact('sink',23),
+ // The return rack stands inside the east railing and behind the foreground guest chair.
+ layer('tray-return',17,'tray-return-inside','M1190 370 L1233 370 L1254 389 L1253 396 L1207 397 L1190 378 Z M1190 377 L1196 381 L1196 462 L1189 462 Z M1201 389 L1210 391 L1209 488 L1201 487 Z M1245 390 L1254 389 L1254 486 L1246 487 Z M1208 400 Q1230 394 1241 403 L1240 423 Q1227 430 1210 425 Z M1192 412 L1206 425 L1247 425 L1250 432 L1205 432 L1191 420 Z M1192 449 L1234 449 L1249 464 L1249 471 L1206 471 L1190 457 Z M1230 432 L1236 432 L1237 450 L1231 452 Z M1231 468 L1237 468 L1237 476 L1231 476 Z'),
  layer('chairs',14,'furniture-bare',chairLeft+' '+chairMiddle+' '+chairRight),
  layer('counter',15,'furniture-bare','M607 324 L1020 324 L1035 341 L1035 355 L1030 355 L1030 420 L1020 421 L1019 413 L930 413 L930 421 L915 426 L914 427 L623 427 L610 426 L609 355 L604 353 Z','counter'),
  layer('dish-cupboard',16,'furniture-bare','M493 273 L596 273 L599 285 L593 290 L593 402 L581 405 L579 399 L507 399 L505 405 L494 405 L493 291 L488 289 L488 282 Z'),
  layer('dish-stock',16,'furniture-full','M508 295 H580 V393 H508 Z','goods',16),
- layer('tray-return',17,'furniture-bare','M1185 295 L1231 295 L1232 291 L1242 291 L1243 302 L1262 310 L1261 326 L1255 327 L1255 420 L1247 422 L1246 412 L1206 412 L1205 421 L1197 422 L1195 315 L1185 312 Z'),
  layer('drink-table',18,'furniture-bare',drinkTable),
  layer('drinks',18,'furniture-full','M1056 286 Q1072 278 1080 288 L1080 306 Q1091 334 1080 346 L1055 346 Q1047 335 1056 307 Z M1091 286 Q1106 278 1117 288 L1115 306 Q1127 335 1116 346 L1090 346 Q1082 337 1091 307 Z M1125 311 Q1132 305 1139 309 L1141 320 L1148 306 L1162 309 L1162 323 L1170 324 L1173 346 L1123 345 Z','goods'),
  layer('bakery-case',19,'furniture-full','M626 255 L754 256 L760 266 L759 341 L619 341 L619 329 Z','equipment',15),

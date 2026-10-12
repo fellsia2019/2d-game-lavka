@@ -6,7 +6,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / 'docs/art/terrace-rooms'
-NAMES = ['before','before-v2','tidied','level','foundation','frame','empty','tables-only-v2','furniture-bare','furniture-full','master-v2']
+NAMES = ['before','before-v2','tidied','level','foundation','frame','empty','tables-only-v2','furniture-bare','furniture-full','master-v2','tray-return-inside']
 entries = []
 for name in NAMES:
     source = SOURCE / f'{name}.png'

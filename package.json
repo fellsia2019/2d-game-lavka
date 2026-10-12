@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5180 --strictPort",
     "build": "tsc --noEmit && npm run content:plan && npm run content:check && vite build && node scripts/check-size.mjs",
+    "build:yandex": "VITE_YANDEX_GAMES=1 npm run build",
+    "test:platform": "npm run build:yandex && TEST_YANDEX_GAMES=1 playwright test tests/ui/yandex-platform.spec.ts",
     "preview": "vite preview --host 0.0.0.0 --port 4173 --strictPort",
     "test": "tsx --test tests/*.test.ts",
     "test:ui": "npm run build && playwright test",

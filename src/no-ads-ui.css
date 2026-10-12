@@ -1,0 +1,43 @@
+.modal.modal-no-ads {
+  width: min(100%, 460px);
+  padding: 28px 28px 20px;
+  background: radial-gradient(ellipse at 50% 0, #fffef3, #fff5df 52%, #f8e8c8);
+  box-shadow: inset 0 0 0 1px #e9d3a4, 0 18px 80px #183c3852;
+}
+.modal-no-ads > .modal-close {
+  position: sticky;
+  top: 0;
+  right: auto;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: -17px -17px -27px auto;
+}
+.no-ads-offer { min-width: 0; }
+.no-ads-badge { margin: 10px auto 22px; }
+.modal-no-ads h2 { margin: 0; font-size: 30px; line-height: 1.12; text-wrap: balance; }
+.modal-no-ads .no-ads-description { margin: 15px 0 18px; color: #526b5f; line-height: 1.45; text-wrap: pretty; }
+.no-ads-details { display: flex; align-items: flex-start; gap: 10px; padding: 14px; border: 1px solid #ded9b3; border-radius: 14px; background: #f2f0dc; text-align: left; }
+.no-ads-details > span { flex: none; color: #337b70; padding-top: 2px; }
+.no-ads-details .icon { width: 20px; height: 20px; }
+.modal-no-ads .no-ads-details p { margin: 0; color: #5c695c; font-size: 14px; line-height: 1.45; }
+.no-ads-actions { display: grid; gap: 8px; margin-top: 20px; }
+.modal-no-ads .no-ads-actions button { width: 100%; min-height: 44px; margin: 0; white-space: normal; }
+.modal-no-ads .no-ads-actions .primary { min-height: 54px; padding: 11px 14px; }
+.no-ads-buy { flex-wrap: wrap; justify-content: center; gap: 8px 14px; }
+.no-ads-price { display: inline-flex; align-items: center; justify-content: center; gap: 5px; overflow-wrap: anywhere; }
+.no-ads-currency { flex: none; width: 22px; height: 22px; object-fit: contain; }
+.modal-no-ads .no-ads-message { margin: 12px 0 0; font-size: 14px; line-height: 1.4; color: #5c695c; overflow-wrap: anywhere; }
+.no-ads-message:empty { display: none; }
+.modal-no-ads button:focus-visible { outline: 3px solid #146c75; outline-offset: 3px; box-shadow: 0 0 0 6px #fff8dd; }
+.modal-no-ads button:active { transform: none; }
+.modal-no-ads button:disabled { cursor: default; }
+@media (max-width: 480px) {
+  .modal.modal-no-ads { padding: 20px 16px 16px; border-radius: 22px; }
+  .modal-no-ads > .modal-close { margin: -9px -7px -31px auto; }
+  .no-ads-badge { margin-top: 12px; margin-bottom: 18px; }
+  .modal-no-ads h2 { font-size: 27px; }
+  .modal-no-ads .no-ads-description { font-size: 15px; margin: 12px 0 15px; }
+  .no-ads-details { padding: 12px; gap: 8px; }
+  .no-ads-actions { margin-top: 16px; }
+}

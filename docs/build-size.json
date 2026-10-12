@@ -1,5 +1,5 @@
 {
-  "bytes": 79061444,
+  "bytes": 79425772,
   "files": [
     {
       "path": "dist/assets/hall-room-main-before.webp",
@@ -94,8 +94,8 @@
       "bytes": 533934
     },
     {
-      "path": "dist/assets/world-navigation-C0Gv-GTC.js",
-      "bytes": 529833
+      "path": "dist/assets/world-navigation-DIwo3ezw.js",
+      "bytes": 530623
     },
     {
       "path": "dist/assets/warehouse-room-map-walls.webp",
@@ -446,6 +446,10 @@
       "bytes": 346018
     },
     {
+      "path": "dist/assets/terrace-tray-return-inside.webp",
+      "bytes": 344564
+    },
+    {
       "path": "dist/assets/shop-expansion-grocery-empty-rack-v2.webp",
       "bytes": 340406
     },
@@ -750,12 +754,12 @@
       "bytes": 201199
     },
     {
-      "path": "dist/assets/bakery-1-DuHIfZEL.json",
-      "bytes": 199668
+      "path": "dist/assets/restaurant-kitchen-prep.webp",
+      "bytes": 200198
     },
     {
-      "path": "dist/assets/restaurant-kitchen-prep.webp",
-      "bytes": 194236
+      "path": "dist/assets/bakery-1-DuHIfZEL.json",
+      "bytes": 199668
     },
     {
       "path": "dist/assets/campaign-shop-empty.webp",
@@ -786,8 +790,8 @@
       "bytes": 151674
     },
     {
-      "path": "dist/assets/game-ByzAOZd-.js",
-      "bytes": 128581
+      "path": "dist/assets/game-C9d9IX_D.js",
+      "bytes": 137482
     },
     {
       "path": "dist/assets/campaign-shelving.webp",
@@ -822,8 +826,8 @@
       "bytes": 81094
     },
     {
-      "path": "dist/assets/game-TQeQTTQr.css",
-      "bytes": 78684
+      "path": "dist/assets/game-CC3lo3fG.css",
+      "bytes": 80749
     },
     {
       "path": "dist/assets/hall-v1-north-display.webp",
@@ -934,7 +938,7 @@
       "bytes": 43596
     },
     {
-      "path": "dist/assets/browserAll-D5ZTS6LP.js",
+      "path": "dist/assets/browserAll-ByWQk2bl.js",
       "bytes": 43523
     },
     {
@@ -1370,7 +1374,7 @@
       "bytes": 16484
     },
     {
-      "path": "dist/assets/init-dfN6n2hy.js",
+      "path": "dist/assets/init-Cebig0ov.js",
       "bytes": 14670
     },
     {
@@ -1406,7 +1410,7 @@
       "bytes": 8410
     },
     {
-      "path": "dist/assets/campaign-fjU2Q5ig.js",
+      "path": "dist/assets/campaign-3CT-M9Wx.js",
       "bytes": 6906
     },
     {
@@ -1444,6 +1448,10 @@
     {
       "path": "dist/campaign.html",
       "bytes": 1502
+    },
+    {
+      "path": "dist/assets/terrace-contact-returns.svg",
+      "bytes": 1162
     },
     {
       "path": "dist/assets/warehouse-shadow-storage-rack-v8.svg",
@@ -1526,10 +1534,6 @@
       "bytes": 638
     },
     {
-      "path": "dist/assets/terrace-contact-returns.svg",
-      "bytes": 638
-    },
-    {
       "path": "dist/assets/terrace-contact-cupboard.svg",
       "bytes": 636
     },
@@ -1582,6 +1586,10 @@
       "bytes": 568
     },
     {
+      "path": "dist/assets/restaurant-contact-service-v6.svg",
+      "bytes": 549
+    },
+    {
       "path": "dist/assets/bakery-contact-table.svg",
       "bytes": 545
     },
@@ -1628,6 +1636,14 @@
     {
       "path": "dist/assets/bakery-contact-basket.svg",
       "bytes": 487
+    },
+    {
+      "path": "dist/assets/restaurant-contact-prep-v6.svg",
+      "bytes": 487
+    },
+    {
+      "path": "dist/assets/restaurant-contact-stove-v6.svg",
+      "bytes": 486
     },
     {
       "path": "dist/assets/warehouse-shadow-exterior-direction-post-v8.svg",
@@ -1734,7 +1750,7 @@
       "bytes": 80
     },
     {
-      "path": "dist/assets/webworkerAll-DEIj-3nn.js",
+      "path": "dist/assets/webworkerAll-Z7Yiwofd.js",
       "bytes": 66
     }
   ]

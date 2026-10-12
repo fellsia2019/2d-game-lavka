@@ -164,6 +164,39 @@
         }
       ],
       "status": "accepted permanent background; neutral west neighbor and north-east bakery"
+    },
+    {
+      "file": "tray-return-rejected.png",
+      "prompt": "prompts/tray-return-rejected.txt",
+      "references": [
+        {
+          "file": "furniture-bare.png",
+          "role": "registered furniture target"
+        }
+      ],
+      "status": "rejected: feet still outside east railing; never exported"
+    },
+    {
+      "file": "tray-return-position.png",
+      "prompt": "prompts/tray-return-inside.txt",
+      "references": [
+        {
+          "file": "tray-return-rejected.png",
+          "role": "registered target for explicit forward/left relocation"
+        }
+      ],
+      "status": "accepted corrected placement; intermediate chair-occluded reference only, not exported"
+    },
+    {
+      "file": "tray-return-inside.png",
+      "prompt": "prompts/tray-return-inside.txt",
+      "references": [
+        {
+          "file": "tray-return-position.png",
+          "role": "registered accepted position; remove foreground chair only for complete support donor"
+        }
+      ],
+      "status": "accepted task17 rack silhouette only; complete support donor, 2026-10-12"
     }
   ],
   "postprocessing": "Copy generated PNG into repository; diagnostic crops only in artifacts; RGB WebP export only for runtime. No programmatic bitmap painting."

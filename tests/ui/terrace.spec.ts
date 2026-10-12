@@ -161,6 +161,13 @@ for (const renderer of ['default', 'canvas2d'] as const) test(`Independently rev
     { works: 19, source: 'furniture-full', boxes: [[650, 280, 34, 18]] },
     { works: 20, source: 'furniture-full', boxes: [[944, 282, 26, 18]] },
     { works: 21, source: 'furniture-full', boxes: [[495, 444, 16, 20]] },
+    // The east rail is exposed again; the relocated rack keeps its complete outer
+    // support while the guest chair is correctly in front in every later state.
+    ...[17, 18, 26].flatMap(works => [
+      { works, source: 'empty', boxes: [[1236, 361, 10, 10]] },
+      { works, source: 'tray-return-inside', boxes: [[1247, 475, 5, 9], [1212, 408, 20, 10]] },
+      { works, source: 'furniture-bare', boxes: [[1215, 450, 10, 20]] },
+    ]),
   ]) {
     await open(page, state.works);
     for (const values of state.boxes) {
@@ -181,6 +188,23 @@ for (const renderer of ['default', 'canvas2d'] as const) test(`Independently rev
     }
   }
 });
+
+test('The corrected return rack and drinks table appear through ordinary purchases and survive reload', async ({ page }, info) => {
+  await open(page, 16);
+  await page.evaluate(key => { const progress = JSON.parse(localStorage.getItem(key)!); progress.stars = 20; localStorage.setItem(key, JSON.stringify(progress)); }, STORAGE_KEY);
+  await page.reload(); await settleHallFrame(page);
+  for (const number of [17, 18]) {
+    await page.locator('.world-target.ready').click();
+    await finishScenePurchase(page); await settleHallFrame(page);
+    expect((await saved(page)).campaign.completedTasks).toContain(terraceTaskId(number));
+  }
+  const before = await saved(page);
+  await page.reload(); await expectWholeHallFrame(page);
+  expect(await saved(page)).toEqual(before);
+  await expect(page.locator('[data-layer-id="terrace-tray-return"]')).toHaveAttribute('data-source-sheet', 'terrace-tray-return-inside');
+  await page.screenshot({ path: `docs/screenshots/terrace-corner-v4-purchase-${info.project.name}.png` });
+});
+const terraceTaskId = (number: number) => `terrace-s1-t${String(number).padStart(2, '0')}`;
 
 test('Both terrace renderers agree locally in all captured construction and furnishing states', async ({ page }, info) => {
   await page.goto('/');

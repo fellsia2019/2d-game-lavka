@@ -71,6 +71,10 @@ import './journey-ui.css';
 import './achievements.css';
 import { acknowledgeAchievement, unseenAchievement, FINAL_ACHIEVEMENT_ID } from './achievements';
 import { achievementModalHTML, achievementsHTML } from './achievements-ui';
+import { NoAdsService, type YandexSDK } from './no-ads';
+import { loadYandexPlatform } from './yandex-platform';
+import { noAdsHTML } from './no-ads-ui';
+import './no-ads-ui.css';
 import { compactAmount, currencyIcon } from "./economy-ui";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
@@ -104,6 +108,14 @@ let toastTimer: ReturnType<typeof setTimeout>;
 let lastFocus: HTMLElement | null = null;
 let storageWarned = false;
 let externalChanged = !!loaded.readOnly;
+let platformSDK: YandexSDK | null = null;
+let platformTransaction = false;
+let platformPaused = false;
+let platformGameActive = false;
+let noAdsRestoring = false;
+let noAdsMessage = '';
+const platformRequested = import.meta.env.VITE_YANDEX_GAMES === '1' || !!window.YaGames;
+const noAdsService = new NoAdsService(updateNoAdsUI);
 let repairTarget: RenovationId = "counter";
 let selectedArea: CampaignAreaId = projectById(progress.selectedProject)!.areaId;
 let justBuilt: string | undefined;
@@ -141,7 +153,7 @@ document.body.append(debugControl);
 let debugRequest = 0;
 const debugPlayer = new DebugAutoPlayer({
   current: () => progress.attempt,
-  allowed: () => screen === "game" && !busy && !modal && !externalChanged && !document.hidden,
+  allowed: () => screen === "game" && !busy && !modal && !externalChanged && !platformTransaction && !platformPaused && !document.hidden,
   move: ([from, to]) => move(from, to, "debug"),
   solve: (board, path) => job<SearchResult>({ kind: "hint", board, path }),
   report: message => toast(message),
@@ -188,6 +200,76 @@ function applySettings() {
     progress.settings.reducedMotion,
   );
   audio.configure(progress.settings);
+}
+function pauseAudio(paused: boolean) {
+  audio.pause(paused || platformTransaction || platformPaused);
+  syncPlatformGameplay();
+}
+function syncPlatformGameplay() {
+  const running = screen === 'game' && !!progress.attempt && !won(progress.attempt.board)
+    && !busy && !modal && !externalChanged && !platformTransaction && !platformPaused && !document.hidden && document.hasFocus();
+  if (!platformSDK || running === platformGameActive) return;
+  platformGameActive = running;
+  try {
+    if (running) platformSDK.features?.GameplayAPI?.start?.();
+    else platformSDK.features?.GameplayAPI?.stop?.();
+  } catch { /* A platform telemetry failure cannot interrupt the game. */ }
+}
+function noAdsEntryHTML() {
+  const state = noAdsService.snapshot;
+  // A console with no active product must not show an offer on the platform.
+  if (platformRequested && !state.owned && !state.product) return '';
+  return `<button class="quiet" data-action="no-ads">${icon('wave')}${state.owned ? 'Рекламные паузы отключены' : 'Без рекламных пауз'}</button>`;
+}
+function noAdsModal() {
+  showModal('no-ads', noAdsHTML(noAdsService.snapshot, noAdsRestoring, noAdsMessage), !platformTransaction);
+}
+function updateNoAdsUI() {
+  const entry = overlay.querySelector<HTMLElement>('.no-ads-entry');
+  if (entry) entry.innerHTML = noAdsEntryHTML();
+  if (modal === 'no-ads' && !externalChanged) noAdsModal();
+}
+async function transactNoAds(restore = false) {
+  if (platformTransaction || busy || externalChanged) return;
+  cancelDebugAuto();
+  platformTransaction = true;
+  noAdsRestoring = restore;
+  noAdsMessage = '';
+  pauseAudio(true);
+  noAdsModal();
+  try {
+    const owned = restore ? await noAdsService.restore() : await noAdsService.purchase();
+    noAdsMessage = owned ? 'Рекламные паузы отключены.' : restore
+      ? noAdsService.snapshot.status === 'error' ? 'Не удалось проверить покупку. Попробуйте ещё раз.' : 'Покупка для этого аккаунта не найдена.'
+      : 'Покупка не завершена. Можно попробовать ещё раз.';
+  } catch { noAdsMessage = 'Покупка сейчас недоступна. Попробуйте позже.'; }
+  finally {
+    platformTransaction = false;
+    noAdsRestoring = false;
+    pauseAudio(document.hidden || !document.hasFocus());
+    if (!externalChanged && modal === 'no-ads') noAdsModal();
+  }
+}
+async function initializePlatform() {
+  try {
+    platformSDK = await loadYandexPlatform();
+    if (!platformSDK) return;
+    platformSDK.on?.('game_api_pause', () => {
+      platformPaused = true;
+      cancelDebugAuto(); endDrag(undefined, true);
+      app.inert = true; overlay.inert = true;
+      pauseAudio(true);
+    });
+    platformSDK.on?.('game_api_resume', () => {
+      platformPaused = false;
+      app.inert = !!modal || platformTransaction; overlay.inert = false;
+      pauseAudio(document.hidden || !document.hasFocus());
+    });
+    await noAdsService.connect(platformSDK);
+    await mountHallCanvases(app);
+    platformSDK.features?.LoadingAPI?.ready?.();
+    syncPlatformGameplay();
+  } catch { /* SDK failure leaves the local game playable, without a sale. */ }
 }
 function stats() {
   return `<div class="wallet"><span class="currency star" title="Звёзды для обустройства" aria-label="${progress.stars} звёзд для обустройства">${icon("star")}<b>${compactAmount(progress.stars)}</b></span><span class="currency currency-repair" title="Ремкомплекты для ремонта" aria-label="${progress.repairKits} ремкомплектов">${icon("repair")}<b>${compactAmount(progress.repairKits)}</b></span><span class="currency coin" aria-label="${progress.coins} монет">${icon("coin")}<b>${compactAmount(progress.coins)}</b></span></div>`;
@@ -277,6 +359,7 @@ function render(preserveRoom = false, preparedRoom?:HTMLElement) {
     } else presentSceneReveal(app,state);
   }
   void mountHallCanvases(app).catch(error=>console.warn('[scene] Unable to update the painted room:',error));
+  syncPlatformGameplay();
 }
 const repairNext = () => nextProjectTask(progress.campaign, progress.selectedProject);
 const nextAvailableOrder = () => nextProjectOrder(progress.selectedProject, progress.completed, progress.campaign);
@@ -630,6 +713,7 @@ function selectSlot(position: Position) {
   cancelDebugAuto();
   if (
     externalChanged ||
+    platformTransaction || platformPaused ||
     busy ||
     screen !== "game" ||
     modal ||
@@ -663,7 +747,7 @@ function renderSelection() {
 }
 function move(from: Position, to: Position, source: "player" | "debug" = "player"): boolean {
   if (source === "player") cancelDebugAuto();
-  if (externalChanged || busy || modal || document.hidden) return false;
+  if (externalChanged || busy || modal || platformTransaction || platformPaused || document.hidden) return false;
   const lesson = guidedLesson(), step = activeHint();
   if (step && (!samePosition(step[0], from) || !samePosition(step[1], to))) return false;
   const attempt = current();
@@ -768,7 +852,7 @@ function showModal(
   endDrag(undefined, true);
   if (!modal) lastFocus = document.activeElement as HTMLElement;
   modal = name;
-  audio.pause(document.hidden || !document.hasFocus());
+  pauseAudio(document.hidden || !document.hasFocus());
   overlay.innerHTML = `<div class="modal-backdrop"><section class="modal ${wide ? "wide" : ""} modal-${name}" role="dialog" aria-modal="true" aria-label="${
     (
       {
@@ -780,6 +864,7 @@ function showModal(
         result: "Заказ готов",
         achievement: "Достижение получено",
         achievements: "Ваши достижения",
+        'no-ads': 'Без рекламных пауз внутри игры',
         navigation: "Помещения и зоны",
         renovation: "Оформление лавки",
         task: "Обустройство лавки",
@@ -801,8 +886,8 @@ function showModal(
 function closeModal() {
   overlay.innerHTML = "";
   modal = null;
-  app.inert = false;
-  audio.pause(document.hidden || !document.hasFocus());
+  app.inert = platformPaused || platformTransaction;
+  pauseAudio(document.hidden || !document.hasFocus());
   if (lastFocus?.isConnected) lastFocus.focus();
   updateCoach();
 }
@@ -875,7 +960,7 @@ function navigationModal() {
 function settingsModal() {
   showModal(
     "settings",
-    `<h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button><button class="quiet" data-action="achievements">${icon("trophy")}Достижения</button>${debugButton()}${new URLSearchParams(location.search).has("playtest") ? `<button class="quiet" data-action="export-events">Скачать отчёт этой сессии</button>` : ""}<p class="save-note">${storageWarned ? "Сохранение недоступно — игра работает в этой вкладке." : "Сохранено в браузере"}</p>`,
+    `<h2>Настройки</h2><div class="settings-list">${(["sound", "music", "reducedMotion"] as const).map((key) => `<label class="setting-row"><span>${icon(key === "sound" ? "sound" : key === "music" ? "music" : "wave")}<span><strong>${{ sound: "Звуки", music: "Музыка", reducedMotion: "Меньше движения" }[key]}</strong></span></span><input type="checkbox" data-setting="${key}" ${progress.settings[key] ? "checked" : ""}/><i class="toggle"></i></label>`).join("")}</div><button class="secondary" data-action="close">Готово${icon("check")}</button><button class="quiet" data-action="achievements">${icon("trophy")}Достижения</button><div class="no-ads-entry">${noAdsEntryHTML()}</div>${debugButton()}${new URLSearchParams(location.search).has("playtest") ? `<button class="quiet" data-action="export-events">Скачать отчёт этой сессии</button>` : ""}<p class="save-note">${storageWarned ? "Сохранение недоступно — игра работает в этой вкладке." : "Сохранено в браузере"}</p>`,
   );
 }
 function sceneShopModal() {
@@ -1211,11 +1296,18 @@ function undo() {
   audio.play("place");
 }
 function action(name: string, button: HTMLElement) {
+  if (platformTransaction || platformPaused) return;
   if (externalChanged && name !== "refresh") return;
   if (busy && (buildReveal || !["settings", "close"].includes(name))) return;
   cancelDebugAuto();
   audio.play("button");
   switch (name) {
+    case 'no-ads':
+      noAdsMessage = ''; noAdsModal(); break;
+    case 'no-ads-buy':
+      void transactNoAds(); break;
+    case 'no-ads-restore':
+      void transactNoAds(true); break;
     case 'achievements':
       showModal('achievements', achievementsHTML(progress, assets));
       break;
@@ -1558,7 +1650,7 @@ document.addEventListener("click", (event) => {
     renovationModal(target.dataset.repair as RenovationId, modal === "renovation");
 });
 document.addEventListener("change", (event) => {
-  if (externalChanged) return;
+  if (externalChanged || platformTransaction || platformPaused) return;
   const input = event.target as HTMLInputElement;
   if (input.dataset.debugField === "project") updateDebugSceneFields(overlay, progress);
   if (input.dataset.color && input.checked) selectRepairColor(input.dataset.color as RenovationColor);
@@ -1569,6 +1661,7 @@ document.addEventListener("change", (event) => {
   }
 });
 document.addEventListener("keydown", (event) => {
+  if (platformPaused || platformTransaction) return;
   if (event.key === "Escape" && debugPlayer.status !== "idle") {
     cancelDebugAuto();
     toast("Автопрохождение остановлено");
@@ -1633,6 +1726,7 @@ document.addEventListener("pointerdown", (event) => {
     screen !== "game" ||
     modal ||
     busy ||
+    platformTransaction || platformPaused ||
     document.hidden
   )
     return;
@@ -1734,15 +1828,15 @@ document.addEventListener("contextmenu", (event) => {
 document.addEventListener("visibilitychange", () => {
   cancelDebugAuto();
   endDrag(undefined, true);
-  audio.pause(document.hidden);
+  pauseAudio(document.hidden);
 });
 window.addEventListener("pagehide", cancelDebugAuto);
 window.addEventListener("blur", () => {
   cancelDebugAuto();
   endDrag(undefined, true);
-  audio.pause(true);
+  pauseAudio(true);
 });
-window.addEventListener("focus", () => audio.pause(document.hidden));
+window.addEventListener("focus", () => pauseAudio(document.hidden));
 window.addEventListener("resize", () => updateCoach());
 app.addEventListener("scroll", () => updateCoach(), true);
 document.addEventListener(
@@ -1780,3 +1874,4 @@ if (loaded.readOnly)
   );
 else if (loaded.warning) toast(loaded.warning);
 else if (screen === 'finish') celebratePendingAchievement();
+void initializePlatform();

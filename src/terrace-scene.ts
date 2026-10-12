@@ -8,7 +8,7 @@ const artData:readonly (readonly [string,number,number,number,number])[]=[
  ['level',210,360,1100,385],['level',210,360,1100,385],['foundation',160,330,1250,430],['frame',180,65,1215,610],
  ['empty',175,60,1230,155],['empty',485,625,585,150],['empty',390,397,780,250],['furniture-full',320,180,110,90],
  ['tables-only-v2',397,435,220,160],['furniture-bare',560,425,105,170],['furniture-bare',597,315,450,120],
- ['furniture-full',480,260,130,155],['furniture-bare',1174,280,100,150],['furniture-full',1035,275,158,160],
+ ['furniture-full',480,260,130,155],['tray-return-inside',1178,357,91,143],['furniture-full',1035,275,158,160],
  ['furniture-full',610,244,162,105],['furniture-full',910,244,137,105],['furniture-full',412,397,190,95],
  ['furniture-full',260,392,155,212],['furniture-bare',380,263,110,155],['furniture-full',492,587,90,100],
  ['furniture-full',801,239,120,109],['master-v2',80,468,175,225],
@@ -21,7 +21,7 @@ export function terraceSceneHTML(completed:readonly string[], assets:string, opt
   const base=`${assets}terrace-before-v2.webp`;
   const plan={base,layers:active.map(layer=>({id:layer.id,source:`${assets}${layer.source}${layer.source.endsWith('.svg')?'':'.webp'}`,path:layer.path,kind:layer.kind,alpha:options.pending===layer.task?.27:1,animate:options.justBuilt===layer.task}))};
   const metadata=active.map(layer=>`<span data-scene-task="${layer.task}" data-scene-object="${layer.object}" data-layer-id="${layer.id}" data-source-sheet="${layer.source}" data-layer-kind="${layer.kind}"${layer.parent?` data-layer-parent="${layer.parent}"`:''} class="hall-registered-layer${options.pending===layer.task?' scene-planned':''}"></span>`).join('');
-  return `<div class="shop-composition hall-composition terrace-composition scene-reset" data-scene-view="terrace-deck" data-room-id="terrace" data-art-version="terrace-rooms-3" data-scene-ready="false" role="${options.controls?'group':'img'}" aria-label="Гостевая терраса"><div class="hall-world-stage"><img class="hall-loading-frame" src="${escape(base)}" width="1536" height="1024" alt=""/><canvas class="hall-canvas-surface" width="1536" height="1024" aria-hidden="true"></canvas><script class="hall-canvas-plan" type="application/json">${JSON.stringify(plan).replace(/</g,'\\u003c')}</script></div><div class="hall-canvas-metadata" hidden>${metadata}</div>${options.controls?`<div class="hall-goal-layer">${options.controls}</div>`:''}</div>`;
+  return `<div class="shop-composition hall-composition terrace-composition scene-reset" data-scene-view="terrace-deck" data-room-id="terrace" data-art-version="terrace-rooms-4" data-scene-ready="false" role="${options.controls?'group':'img'}" aria-label="Гостевая терраса"><div class="hall-world-stage"><img class="hall-loading-frame" src="${escape(base)}" width="1536" height="1024" alt=""/><canvas class="hall-canvas-surface" width="1536" height="1024" aria-hidden="true"></canvas><script class="hall-canvas-plan" type="application/json">${JSON.stringify(plan).replace(/</g,'\\u003c')}</script></div><div class="hall-canvas-metadata" hidden>${metadata}</div>${options.controls?`<div class="hall-goal-layer">${options.controls}</div>`:''}</div>`;
 }
 export function terraceTaskArtwork(id:string, assets:string):string|undefined {
   const art=TERRACE_TASK_ART.find(task=>task.id===id);if(!art)return;

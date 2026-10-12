@@ -136,11 +136,11 @@
   },
   {
     "name": "kitchen-prep",
-    "source": "docs/art/restaurant-rooms/kitchen-prep-rework-v4.png",
+    "source": "docs/art/restaurant-rooms/kitchen-furniture-v6.png",
     "runtime": "public/assets/restaurant-kitchen-prep.webp",
-    "bytes": 194236,
-    "sourceSha256": "7b3fb0e5f685baaadda3594ca7991c869e884c6dd42a6fee549a2f46f297e800",
-    "runtimeSha256": "9c8e2fb547f8160b910f21db9e40c167e3857195c7ae9ab8b56a517471905b42",
+    "bytes": 200198,
+    "sourceSha256": "f7b0988f313921e7fed348566a383e11bd51d703c2a9e3c531f5c3de10432c77",
+    "runtimeSha256": "05d90b189d07d7cb6e167b1161fbc6e81758684598d4815864a9a45a21eb0f8b",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   },
   {

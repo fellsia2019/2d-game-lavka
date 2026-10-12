@@ -168,7 +168,11 @@ for (const renderer of ['default', 'canvas2d'] as const) test(`Independently rev
     {works:15,final:16,room:'restaurant-kitchen',source:'restaurant-kitchen-prep',boxes:[[210,612,10,14]]},
     {works:19,room:'restaurant-hall',source:'restaurant-hall-master-v3',boxes:[[1380,250,20,8],[1464,738,10,17],[1373,690,9,11],[1492,745,10,8]]},
     {works:20,room:'restaurant-hall',source:'restaurant-hall-furniture',boxes:[[8,535,8,5],[56,751,7,12],[12,751,6,9]]},
-    {works:22,room:'restaurant-kitchen',source:'restaurant-kitchen-prep',boxes:[[1100,426,20,10],[1168,677,10,17],[1230,677,8,15],[1041,582,10,18]]},
+    // v6 independently inspected surfaces: whole left apron, straight cooker
+    // side, and the deeper right table's relocated front and far-left supports.
+    {works:15,final:16,room:'restaurant-kitchen',source:'restaurant-kitchen-prep',boxes:[[130,465,15,10],[159,486,15,15],[203,577,13,14]]},
+    {works:16,room:'restaurant-kitchen',source:'restaurant-kitchen-prep',boxes:[[750,430,10,75],[752,520,11,18],[773,571,7,9]]},
+    {works:22,room:'restaurant-kitchen',source:'restaurant-kitchen-prep',boxes:[[1100,426,20,10],[1134,687,12,15],[1230,677,8,15],[1007,582,10,15]]},
     {works:23,room:'restaurant-kitchen',source:'restaurant-kitchen-master-v3',boxes:[[84,508,20,9],[32,806,9,13],[143,806,9,13],[214,731,8,11]]},
     {works:24,room:'restaurant-kitchen',source:'restaurant-kitchen-master-v3',boxes:[[793,318,12,12],[899,333,5,7],[1042,289,6,10],[810,603,25,8]]},
   ];
