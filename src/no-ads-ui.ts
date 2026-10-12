@@ -29,7 +29,7 @@ export function noAdsHTML(snapshot: NoAdsSnapshot, restoring = false, message = 
     <div class="result-badge no-ads-badge" aria-hidden="true">${icon(snapshot.owned ? 'check' : 'shell')}</div>
     <h2 id="no-ads-title">${title}</h2>
     <p class="no-ads-description">${snapshot.owned ? 'Играйте без рекламных пауз и баннера внутри игры.' : 'Одна покупка убирает рекламные паузы и баннер внутри игры.'}</p>
-    <div class="no-ads-details"><span aria-hidden="true">${icon('check')}</span><p>Видео за награду останутся по вашему выбору. Реклама при запуске на площадке не меняется.</p></div>
+    <div class="no-ads-details"><span aria-hidden="true">${icon('check')}</span><p>Реклама при запуске на площадке не меняется.</p></div>
     <div class="no-ads-actions">${action}${restore}</div>
     <p class="no-ads-message" role="status" aria-live="polite" aria-atomic="true">${escape(message || progress)}</p>
   </section>`;

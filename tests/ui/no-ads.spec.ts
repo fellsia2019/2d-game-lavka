@@ -85,7 +85,7 @@ test('local preview has one inactive purchase, no invented price or SDK request,
   await expect(page.locator('[data-action="no-ads-restore"]')).toBeDisabled();
   await expect(page.locator('.no-ads-price')).toHaveCount(0);
   await expect(page.locator('.modal-no-ads')).toContainText('Покупка пока недоступна');
-  await expect(page.locator('.modal-no-ads')).toContainText('Видео за награду');
+  await expect(page.locator('.no-ads-details')).toHaveText('Реклама при запуске на площадке не меняется.');
   const geometry = await page.locator('.modal-no-ads').evaluate(element => {
     const r = element.getBoundingClientRect();
     return { left: r.left, right: r.right, width: element.clientWidth, scroll: element.scrollWidth, document: document.documentElement.scrollWidth, viewport: innerWidth };
