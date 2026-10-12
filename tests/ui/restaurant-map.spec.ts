@@ -35,12 +35,13 @@ test('Actual restaurant map construction keeps its frame and neighbouring buildi
   // Fixed independent protected landmarks: unchanged first-floor shop, warehouse, fruit pavilion,
   // bakery, terrace and promenade. None belongs to the new upper floor.
   const protectedPoints = [[655, 345], [555, 335], [748, 335], [628, 268], [1188, 160], [1402, 208], [337, 480], [1227, 330], [1200, 660], [609, 731]];
-  for (const works of [0, 2, 5, 6, 7, 8, 9, 10, 12, 26]) {
+  for (const works of [0, 2, 5, 6, 7, 8, 9, 10, 11, 12, 14, 26]) {
     await openMap(page, works);
     const map = page.locator('.coastal-map-art'), bounds = (await map.boundingBox())!;
     if (geometry) for (const key of ['x', 'y', 'width', 'height'] as const) expect(bounds[key]).toBeCloseTo(geometry[key], 1);
     else geometry = bounds;
     await expect(map.locator('[data-map-site="restaurant"]')).toHaveAttribute('data-map-stage', String(works));
+    if (works >= 10) await expect(map.locator('[data-map-site="restaurant"]')).toHaveAttribute('data-map-state', 'ready');
     const png = await map.screenshot({ style: '.scene-interaction-layer,.world-hud,.world-scene-back{visibility:hidden!important}' });
     if (reference) {
       const differences = await page.evaluate(async ({ reference, png, points }) => {

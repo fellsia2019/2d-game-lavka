@@ -68,3 +68,14 @@
 Промпт отдельной D3 (дословно):
 
 > Precise object edit of this enlarged door crop. REMOVE the huge curved turquoise protruding handle at the BOTTOM of the door and the white knob above it. Replace this malformed bottom 20% with straight vertical turquoise wooden door boards finishing at a normal simple beige stone threshold. No blue structure protrudes outside the door opening. The door is a complete closed wooden turquoise door with four upper glass panes and vertical lower wood planks. Keep exact camera angle, existing door dimensions and perspective, surrounding beige wall. Keep the cropped narrow vertical framing, no zoom or extra scenery. The only handle is a small dark normal handle at mid-height; NO handle or knob at floor height.
+
+
+## Переделка 5: безопасный вход до ремонта, работающая лавка и честное остекление
+
+Ниже нормализованные требования трёх встроенных ImageGen edit-проходов. Геометрия и камеры предыдущей переделки сохранены; готовые источники выбраны по фактическому просмотру.
+
+- `restaurant-rooms/yard-architecture-v5.png` ← `yard-rework-v5.png`: preserve exact 1536×1024 registered architecture, roof, openings, stairs, landings and full wooden rails. Remove upper-storey lantern bodies/glow and every potted plant/vine on both landings. Upper windows and glazed doors show natural sea/sky reflections with no visible furniture, plants or interior lamps. Through existing lower shop windows and central door show a subtle stocked working grocery, soft shelving/products/counter behind reflections; do not invent a detailed new room. Keep frames, awning, masonry, ground and landscape unchanged. A follow-up precise edit removed remaining rear-balcony pots, retaining background garden.
+- `restaurant-map/architecture-v5.png` ← actual map26 plus `yard-architecture-v5.png` as same-building reference: reproduce the same neutral upper glazing, stocked lower shop and complete unlit undecorated entrance. Keep full-height D3 connected to its balcony floor, both railings, exact original map camera and all other buildings. Remove only the restaurant upper lamps and landing pots; preserve background vegetation.
+- `restaurant-rooms/hall-stair-empty-v5.png` ← `hall-stair-rework-v4.png`: remove only the pot around x503,y398 and flowering vine x466–535,y178–386 through D1, reconstruct existing bare stone side wall and landing floor, preserve complete wooden railing, door frame, camera and room pixels. No furniture or added decoration.
+
+Экспорт копирует зарегистрированные прямоугольники исходников в прозрачные WebP без рисования. `yard-context-v5` и map `context-v5` постоянно поддерживают нижнее остекление; готовая архитектура принадлежит 10, старые светильники выделены на 12, цветы на 26. `hall-opening-view-v5` возвращает прежние вьюн/горшок только на 26. Старые ранние дверные доноры сняты с runtime, их PNG сохранены как история; прежние разделы выше описывают переделку 4, а не актуальное распределение покупок.

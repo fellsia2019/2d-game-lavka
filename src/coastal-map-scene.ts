@@ -1,15 +1,14 @@
 /** Registered coastal map artwork. Ownership and navigation remain with campaign/world. */
-export const COASTAL_MAP_VERSION = 'coastal-map-2';
+export const COASTAL_MAP_VERSION = 'coastal-map-3';
 const plates = ['dormant', 'tidied', 'rough', 'cleared', 'foundation', 'structure', 'roofed', 'ready', 'complete'] as const;
 type Plate = typeof plates[number];
 const bakeryPlates = ['before', 'clear', 'foundation', 'walls', 'roof', 'ready', 'final'] as const;
-const restaurantPlates = ['clear', 'walls', 'ready', 'windows'] as const;
+const restaurantPlates = ['clear', 'walls', 'ready', 'context-v5', 'details-v5'] as const;
 const terracePlates = ['before', 'clear', 'foundation', 'frame', 'roof', 'ready', 'final'] as const;
 export const COASTAL_MAP_ASSETS = [...plates.map(name => `coastal-map-${name}-v1.webp`),
   ...bakeryPlates.map(name => `coastal-bakery-map-${name}.webp`),
   ...terracePlates.map(name => `coastal-terrace-map-${name}.webp`),
-  ...restaurantPlates.map(name => `coastal-restaurant-map-${name}.webp`),
-  'coastal-restaurant-map-door-front.webp', 'coastal-restaurant-map-door-side.webp'];
+  ...restaurantPlates.map(name => `coastal-restaurant-map-${name}.webp`)];
 export const COASTAL_BAKERY_SITE = {
   domain: 'M993 322 L1010 303 L1015 290 L1064 253 L1277 263 L1277 234 L1303 228 L1338 234 L1338 275 L1411 297 L1422 329 L1425 454 L1410 486 L1330 496 L1242 479 L1160 474 L1071 457 L994 462 L980 445 Z',
   beforeDomain: 'M1000 298 L1177 292 L1210 265 L1234 283 L1248 284 L1248 261 L1311 261 L1321 296 L1431 298 L1424 452 L1395 470 L1359 477 L1050 446 L994 423 Z',
@@ -145,7 +144,7 @@ export function coastalMapArtHTML(completed: readonly string[], assets: string):
   const restaurantImage=(plate:typeof restaurantPlates[number],path:string,n:number)=>{
     const id=`${namespace}-${clipIndex++}`;
     defs.push(`<clipPath id="${id}"><path d="${path}"/></clipPath>`);
-    return `<image href="${escape(assets)}coastal-restaurant-map-${plate}.webp" width="1536" height="1024" clip-path="url(#${id})" data-map-plate="restaurant-${plate}" data-scene-task="restaurant-s1-t${String(n).padStart(2,'0')}"/>`;
+    return `<image href="${escape(assets)}coastal-restaurant-map-${plate}.webp" width="1536" height="1024" clip-path="url(#${id})" data-map-plate="restaurant-${plate}"${n>0?` data-scene-task="restaurant-s1-t${String(n).padStart(2,'0')}"`:''}/>`;
   };
   const restaurantLayers:string[]=[];
   const cleanRoof='M483 99 H925 V230 H483 Z';
@@ -161,15 +160,13 @@ export function coastalMapArtHTML(completed: readonly string[], assets: string):
   if(restaurantStage>=8)restaurantLayers.push(restaurantImage('walls','M483 53 H925 V186 L889 204 L849 234 L486 218 L483 218 Z',8));
   if(restaurantStage>=9)restaurantLayers.push(restaurantImage('ready','M513 68 L528 59 L686 4 L708 9 L824 43 L824 28 L820 23 L833 12 L848 25 L844 30 L844 48 L866 58 L867 72 L836 86 L524 82 Z',9));
   if(restaurantStage>=10)restaurantLayers.push(restaurantImage('ready','M553 90 H635 V176 H553 Z M653 91 H735 V177 H653 Z',10));
-  if(restaurantStage>=10&&restaurantStage<12){
-    restaurantLayers.push(`<image href="${escape(assets)}coastal-restaurant-map-door-front.webp" x="750" y="94" width="50" height="105" data-map-plate="restaurant-door-front" data-scene-task="restaurant-s1-t10"/><image href="${escape(assets)}coastal-restaurant-map-door-side.webp" x="825" y="80" width="40" height="115" data-map-plate="restaurant-door-side" data-scene-task="restaurant-s1-t10"/>`);
+  if(restaurantStage>=10){
+    restaurantLayers.push(restaurantImage('ready','M483 85 L834 85 L867 73 L867 100 L925 100 L925 232 L913 241 L919 249 L915 335 L899 359 L871 360 L854 345 L850 235 L486 218 L483 218 Z',10));
   }
-  if(restaurantStage>=12){
-    // One registered upper silhouette, with the first-floor storefront retained below its cornice.
-    restaurantLayers.push(restaurantImage('ready','M483 85 L834 85 L867 73 L867 100 L925 100 L925 232 L913 241 L919 249 L915 335 L899 359 L871 360 L854 345 L850 235 L486 218 L483 218 Z',12));
-  }
-  if(restaurantStage>=12)restaurantLayers.push(restaurantImage('windows','M831 84 L861 80 L865 177 L831 185 Z',10));
-  const restaurantState=restaurantStage>=12?'ready':restaurantStage>=10?'glazed':restaurantStage>=9?'roof':restaurantStage>=8?'walls':restaurantStage>=7?'foundation':restaurantStage>=5?'clear':restaurantStage?'tidied':'before';
+  if(restaurantStage>=12)restaurantLayers.push(restaurantImage('details-v5','M798 101 H830 V149 H798 Z',12));
+  if(restaurantStage>=26)restaurantLayers.push(restaurantImage('details-v5','M799 154 H833 V211 H799 Z M862 90 H919 V176 H862 Z',26));
+  if(owned.has('shop-s1-r14')||owned.has('terrace-s1-t26')||restaurantStage>0)restaurantLayers.push(restaurantImage('context-v5','M536 277 L625 282 L625 343 L536 339 Z M648 282 L679 283 L679 341 L648 339 Z M709 283 L800 288 L800 353 L709 348 Z',0));
+  const restaurantState=restaurantStage>=10?'ready':restaurantStage>=9?'roof':restaurantStage>=8?'walls':restaurantStage>=7?'foundation':restaurantStage>=5?'clear':restaurantStage?'tidied':'before';
   parts.push(`<g data-map-site="restaurant" data-map-stage="${restaurantStage}" data-map-state="${restaurantState}">${restaurantLayers.join('')}</g>`);
   return `<svg class="coastal-map-art scene-background map-image" viewBox="0 0 1536 1024" width="1536" height="1024" data-art-version="${COASTAL_MAP_VERSION}" aria-hidden="true"><defs>${defs.join('')}</defs><image href="${escape(assets)}coastal-map-cleared-v1.webp" width="1536" height="1024"/>${parts.join('')}</svg>`;
 }

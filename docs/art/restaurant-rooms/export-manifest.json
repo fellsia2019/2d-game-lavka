@@ -1,20 +1,11 @@
 [
   {
-    "name": "yard-doors-rework-v4",
-    "source": "docs/art/restaurant-rooms/yard-doors-rework-v4.png",
-    "runtime": "public/assets/restaurant-yard-doors-rework-v4.webp",
-    "bytes": 386818,
-    "sourceSha256": "fa884d2325f383393f6d7b78808c7578e4fd7b08d272c3181814414657d1c68b",
-    "runtimeSha256": "ff29caf8193d4f2faf31f44d08a9142503b56faa9a764c2217432f1e06d9faf2",
-    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
-  },
-  {
     "name": "hall-stair-rework-v4",
-    "source": "docs/art/restaurant-rooms/hall-stair-rework-v4.png",
+    "source": "docs/art/restaurant-rooms/hall-stair-empty-v5.png",
     "runtime": "public/assets/restaurant-hall-stair-rework-v4.webp",
-    "bytes": 186264,
-    "sourceSha256": "57e1580fe16fa9bce9d29f370cd38d2cfe060ea9c04c0e175a3aea2ec2edd135",
-    "runtimeSha256": "392d7f713b27a51969949931f121c5a0eb42b9219307633d13f2f263822780c7",
+    "bytes": 182330,
+    "sourceSha256": "d489d3a2fe150dbb5b3d91074b298f11c2ac08ae34347100761a036097f29cfe",
+    "runtimeSha256": "9dd8f276100a76f0bb00825342c5a049dbee4392436c416651f36e479baa95cd",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   },
   {
@@ -64,11 +55,11 @@
   },
   {
     "name": "yard-ready-v3",
-    "source": "docs/art/restaurant-rooms/yard-rework-v5.png",
+    "source": "docs/art/restaurant-rooms/yard-architecture-v5.png",
     "runtime": "public/assets/restaurant-yard-ready-v3.webp",
-    "bytes": 405616,
-    "sourceSha256": "d43420fe65f66052c37f313cfc75f76560ecb0464aed963a1f4e1806bed378ca",
-    "runtimeSha256": "ff1800f00084517bf1587fd101fede3d010b7a7e079735642876567556ea4e2f",
+    "bytes": 391056,
+    "sourceSha256": "c5516bb8189f4cb52475b79fcbec245656b630426530835b1c50bd09c52fff2e",
+    "runtimeSha256": "71888a4723ceff97c7ac00ede1b93fa4335bc0b32871e1bdbf99913c7846e5dc",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   },
   {
@@ -160,5 +151,32 @@
     "sourceSha256": "ecccaf6d25ff9d7dcea1a2248fdc0817c1a05a15e74395d02a33ddefd54d48ad",
     "runtimeSha256": "f9fab5ad46cd23748dfca039c7ad09c58d18237fab747ad7f2736324a91676d2",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-opening-view-v5",
+    "source": "docs/art/restaurant-rooms/hall-stair-rework-v4.png",
+    "runtime": "public/assets/restaurant-hall-opening-view-v5.webp",
+    "bytes": 10732,
+    "sourceSha256": "57e1580fe16fa9bce9d29f370cd38d2cfe060ea9c04c0e175a3aea2ec2edd135",
+    "runtimeSha256": "aec759ea20a660032c7e62cd9f82a74fa3d40d954d7c453657552351684ee120",
+    "operation": "registered rectangular packing [(462, 166, 540, 434)]; RGBA WebP q90; no painting"
+  },
+  {
+    "name": "yard-context-v5",
+    "source": "docs/art/restaurant-rooms/yard-architecture-v5.png",
+    "runtime": "public/assets/restaurant-yard-context-v5.webp",
+    "bytes": 25532,
+    "sourceSha256": "c5516bb8189f4cb52475b79fcbec245656b630426530835b1c50bd09c52fff2e",
+    "runtimeSha256": "cfdf53bd1e2f83086635ce11efbb289a4c345f924bb6f1c4c0c9557ad0e522e4",
+    "operation": "registered rectangular packing [(420, 535, 628, 722), (648, 548, 750, 716), (778, 550, 995, 736)]; RGBA WebP q90; no painting"
+  },
+  {
+    "name": "yard-details-v5",
+    "source": "docs/art/restaurant-rooms/yard-rework-v5.png",
+    "runtime": "public/assets/restaurant-yard-details-v5.webp",
+    "bytes": 19376,
+    "sourceSha256": "d43420fe65f66052c37f313cfc75f76560ecb0464aed963a1f4e1806bed378ca",
+    "runtimeSha256": "f62187fe03c7f9467c5a34e9bfc19748721fbc13dc29827e0a8171b4803a8a8a",
+    "operation": "registered rectangular packing [(1030, 202, 1087, 294), (1217, 215, 1259, 282), (1005, 310, 1109, 436), (1180, 266, 1334, 400)]; RGBA WebP q90; no painting"
   }
 ]

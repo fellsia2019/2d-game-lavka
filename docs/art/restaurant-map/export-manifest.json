@@ -19,38 +19,29 @@
   },
   {
     "name": "ready",
-    "source": "docs/art/restaurant-map/ready-rework-v5.png",
+    "source": "docs/art/restaurant-map/architecture-v5.png",
     "runtime": "public/assets/coastal-restaurant-map-ready.webp",
-    "bytes": 462216,
+    "bytes": 442268,
+    "sourceSha256": "9ed41564edb6bde931c1315b84e6e6e08aaebb153da8dcac201678ef79236259",
+    "runtimeSha256": "e48ecc77a50307df1d7d41ad5408e0451e903faa8875cddd110460a0ce45e8ff",
+    "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
+  },
+  {
+    "name": "context-v5",
+    "source": "docs/art/restaurant-map/architecture-v5.png",
+    "runtime": "public/assets/coastal-restaurant-map-context-v5.webp",
+    "bytes": 9986,
+    "sourceSha256": "9ed41564edb6bde931c1315b84e6e6e08aaebb153da8dcac201678ef79236259",
+    "runtimeSha256": "1b5185fe08ed4e46a3b152a3eb13e2a6a0eafe5336e231a81e54c16442a48f9e",
+    "operation": "registered rectangular packing [(533, 272, 631, 357), (643, 274, 689, 354), (704, 277, 809, 363)]; RGBA WebP q90; no painting"
+  },
+  {
+    "name": "details-v5",
+    "source": "docs/art/restaurant-map/ready-rework-v5.png",
+    "runtime": "public/assets/coastal-restaurant-map-details-v5.webp",
+    "bytes": 8410,
     "sourceSha256": "8591cb36d297933a8aa08a3d7a02d4d52159912afe8f97fbda8182b363709565",
-    "runtimeSha256": "fdcb8566b75f430ad977ec5fb22dd6f933a2dcb39e39d58ae3d7d43e424873f5",
-    "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
-  },
-  {
-    "name": "windows",
-    "source": "docs/art/restaurant-map/door-rework-v6.png",
-    "runtime": "public/assets/coastal-restaurant-map-windows.webp",
-    "bytes": 448208,
-    "sourceSha256": "1029794ebda2e3fc9854847dcebe115d7bd9f15d378d16d88824019a7125411a",
-    "runtimeSha256": "7d1107a9091bacb108bc572896c57482a3df1f074ad7a3a4a3b633039ab91240",
-    "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
-  },
-  {
-    "name": "door-front",
-    "source": "docs/art/restaurant-map/doors-rework-v8.png",
-    "runtime": "public/assets/coastal-restaurant-map-door-front.webp",
-    "bytes": 1200,
-    "sourceSha256": "9dd76de80073871099fe4787b56cc87e64e5a77d6e9a8eac7b83e06389e0d28c",
-    "runtimeSha256": "dbc4474355d4cb2819e906837125d52f61a3e47d63d0fd93887969279e0f9d9d",
-    "operation": "registered crop (750, 94, 800, 199) and size (50, 105); WebP q90; no painting"
-  },
-  {
-    "name": "door-side",
-    "source": "docs/art/restaurant-map/door-side-rework-v9.png",
-    "runtime": "public/assets/coastal-restaurant-map-door-side.webp",
-    "bytes": 1390,
-    "sourceSha256": "d96ab2cb862ca2cc1cc72a5b0cda9e9c3e15b889a50b56cf82ff2c7dfd2a39ca",
-    "runtimeSha256": "7a5d0bd49db452b007a35f68cf822bb7e7377c42b760f03cefbbd6fc8717e9f4",
-    "operation": "registered crop None and size (40, 115); WebP q90; no painting"
+    "runtimeSha256": "78e2d65c500d5c82f005583aa38e9cb4a516a0bef00ff36d526e9cecf4f59d7f",
+    "operation": "registered rectangular packing [(796, 99, 831, 150), (793, 152, 852, 212), (860, 88, 921, 177)]; RGBA WebP q90; no painting"
   }
 ]

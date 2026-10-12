@@ -6799,7 +6799,7 @@
         },
         {
           "id": "restaurant-s1-t10",
-          "name": "Установить окна и входную дверь",
+          "name": "Установить окна, двери и лестницу",
           "cost": 3,
           "status": "implemented",
           "target": "restaurant-s1-object-10",
@@ -6817,7 +6817,7 @@
         },
         {
           "id": "restaurant-s1-t12",
-          "name": "Провести свет и построить безопасную лестницу",
+          "name": "Провести освещение ресторана",
           "cost": 3,
           "status": "implemented",
           "target": "restaurant-s1-object-12",

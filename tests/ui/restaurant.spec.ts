@@ -213,7 +213,8 @@ for (const renderer of ['default', 'canvas2d'] as const) test(`Independently rev
   // fractional CSS reduction there can alias individual high-contrast bars.
   if(info.project.name==='desktop')await page.setViewportSize({width:1720,height:1250});
   const rails:{works:number;room:string;source:string;boxes:[number,number,number,number][]}[]=[
-    {works:12,room:'restaurant-hall',source:'restaurant-hall-stair-rework-v4',boxes:[[555,329,18,110],[575,366,27,65]]},
+    {works:10,room:'restaurant-hall',source:'restaurant-hall-stair-rework-v4',boxes:[[555,329,18,110],[575,366,27,65]]},
+    // The kitchen first becomes navigable when its next work15 is reached.
     {works:14,room:'restaurant-kitchen',source:'restaurant-kitchen-balcony-rework-v4',boxes:[[1388,410,15,110],[1408,435,68,92]]},
   ];
   for(const state of rails)for(const works of [state.works,26]){
@@ -221,10 +222,10 @@ for (const renderer of ['default', 'canvas2d'] as const) test(`Independently rev
     for(const box of state.boxes)expect(difference(await sceneSourcePixels(page,'.world-scene .hall-world-stage',box),await sourcePixels(box,state.source)),`${works} matching rail at ${box}`).toBeLessThan(18);
   }
   // An independent review found an old slab fragment in the open background
-  // beside the new wall. Inspect8–10; at11 the next staircase's legitimate ghost
-  // covers this background, so its pixels cannot equal the wall donor alone.
+  // beside the new wall. Inspect8; at9 the next access structure's legitimate
+  // ghost covers this background, so its pixels cannot equal the wall donor alone.
   const seam:[number,number,number,number]=[1270,354,8,32];
-  for(const works of [8,9,10]){
+  for(const works of [8]){
     await open(page,works);await view(page,'restaurant-yard');
     expect(difference(await sceneSourcePixels(page,'.world-scene .hall-world-stage',seam),await sourcePixels(seam,'restaurant-yard-walls')),`${works} clear background beside the wall`).toBeLessThan(18);
   }

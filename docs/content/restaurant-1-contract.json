@@ -383,7 +383,7 @@
     },
     {
       "id": "restaurant-s1-t10",
-      "name": "Установить окна и входную дверь",
+      "name": "Установить окна, двери и лестницу",
       "cost": 3,
       "currency": "repairKits",
       "fundingSource": "repair-orders",
@@ -411,7 +411,7 @@
     },
     {
       "id": "restaurant-s1-t12",
-      "name": "Провести свет и построить безопасную лестницу",
+      "name": "Провести освещение ресторана",
       "cost": 3,
       "currency": "repairKits",
       "fundingSource": "repair-orders",
