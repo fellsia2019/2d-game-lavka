@@ -90895,11 +90895,19 @@
   "monetization": {
     "launchRequired": true,
     "seasonPass": {
-      "model": "Покупка пропуска одного сезона через SDK, бесплатная и платная дорожки наград",
-      "cycleDaysTarget": 28,
-      "rewardStepsTarget": 30,
-      "progressFrom": "Основные заказы, ежедневные контракты и недельные проекты",
-      "baseCampaignPaywall": false
+      "model": "Разовая покупка постоянной коллекции с бесплатной и дополнительной платной дорожками; не подписка",
+      "firstCollection": "Морская регата",
+      "rewardStepsTarget": 6,
+      "pointsPerStepTarget": 150,
+      "mainWinPointsTarget": 10,
+      "ownedProgressExpires": false,
+      "freeDecorRewardsTarget": 4,
+      "paidDecorSetsTarget": 6,
+      "immediateFacadeSet": true,
+      "progressFrom": "Новые победы кампании, независимые ежедневные контракты и недельная цель",
+      "baseCampaignPaywall": false,
+      "calendarSeasonsStatus": "planned-after-collection-and-player-data",
+      "runtimeStatus": "planned-not-integrated"
     },
     "dailyContracts": true,
     "weeklyProjects": true,
@@ -90914,7 +90922,9 @@
       "season participation",
       "purchase conversion",
       "revenue per user"
-    ]
+    ],
+    "directionVersion": "coastal-collection-pass-1",
+    "directionDocument": "docs/PAID_PASS_DIRECTION.md"
   },
   "shopTaskMigration": {
     "fromCampaignVersion": "coastal-campaign-4",
