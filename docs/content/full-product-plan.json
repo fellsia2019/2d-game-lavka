@@ -1,7 +1,7 @@
 {
-  "planVersion": "coastal-full-product-plan-7",
+  "planVersion": "coastal-full-product-plan-8",
   "status": "design-not-runtime",
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "launchPolicy": "Полный первый публичный выпуск: 6000 закреплённых проверенных заказов, шесть локаций по 1000 заказов, 36 локальных этапов в шести глобальных Stage, 744 постоянных работ, выбор доступных проектов, расчистка и стройка каждой новой локации, сезоны и монетизация. Производственные блоки внутренние.",
   "totals": {
     "chapters": 6,
@@ -9,10 +9,10 @@
     "phases": 36,
     "orders": 6000,
     "tasks": 744,
-    "starsEarned": 5757,
-    "starsSpent": 5757,
-    "repairKitsEarned": 243,
-    "repairKitsSpent": 243
+    "starsEarned": 5725,
+    "starsSpent": 5725,
+    "repairKitsEarned": 275,
+    "repairKitsSpent": 275
   },
   "chapters": [
     {
@@ -6720,124 +6720,124 @@
           "id": "restaurant-s1-t01",
           "name": "Вывезти мусор с верхней площадки",
           "cost": 2,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-01",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t02",
           "name": "Разобрать сгнивший чердак и старые навесы",
           "cost": 2,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-02",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t03",
           "name": "Убрать лианы и растительность с крыши",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-03",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t04",
           "name": "Очистить остатки старых конструкций",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-04",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t05",
           "name": "Дочистить верхнюю площадку",
           "cost": 2,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-05",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t06",
           "name": "Проверить несущие части и разметить надстройку",
           "cost": 2,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-06",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t07",
           "name": "Усилить опоры и основание второго этажа",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-07",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t08",
           "name": "Возвести каркас и стены ресторана",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-08",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t09",
           "name": "Построить крышу ресторана",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-09",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t10",
           "name": "Установить окна и входную дверь",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-10",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t11",
           "name": "Подготовить пол и внутреннюю отделку",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-11",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t12",
           "name": "Провести свет и построить безопасную лестницу",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-12",
-          "currency": "stars",
-          "fundingSource": "food-orders"
+          "currency": "repairKits",
+          "fundingSource": "repair-orders"
         },
         {
           "id": "restaurant-s1-t13",
           "name": "Установить первые столы зала",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-13",
           "currency": "stars",
           "fundingSource": "food-orders"
         },
         {
           "id": "restaurant-s1-t14",
-          "name": "Добавить гостевые кресла",
+          "name": "Поставить стулья для гостей",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-14",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6846,7 +6846,7 @@
           "id": "restaurant-s1-t15",
           "name": "Поставить стол подготовки блюд",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-15",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6855,16 +6855,16 @@
           "id": "restaurant-s1-t16",
           "name": "Установить плиту и вытяжку",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-16",
           "currency": "stars",
           "fundingSource": "food-orders"
         },
         {
           "id": "restaurant-s1-t17",
-          "name": "Добавить холодный шкаф",
+          "name": "Установить холодильный шкаф",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-17",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6873,7 +6873,7 @@
           "id": "restaurant-s1-t18",
           "name": "Оборудовать кухонную мойку",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-18",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6882,7 +6882,7 @@
           "id": "restaurant-s1-t19",
           "name": "Поставить шкаф посуды",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-19",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6891,7 +6891,7 @@
           "id": "restaurant-s1-t20",
           "name": "Добавить сервисную стойку",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-20",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6900,7 +6900,7 @@
           "id": "restaurant-s1-t21",
           "name": "Наполнить ассортимент первого меню",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-21",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6909,7 +6909,7 @@
           "id": "restaurant-s1-t22",
           "name": "Обустроить выдачу на балкон",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-22",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6918,16 +6918,16 @@
           "id": "restaurant-s1-t23",
           "name": "Поставить шкаф подносов",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-23",
           "currency": "stars",
           "fundingSource": "food-orders"
         },
         {
           "id": "restaurant-s1-t24",
-          "name": "Обозначить кухонные проходы",
+          "name": "Оборудовать безопасный кухонный проход",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-24",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6936,7 +6936,7 @@
           "id": "restaurant-s1-t25",
           "name": "Подготовить первое обслуживание зала",
           "cost": 4,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-25",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6945,7 +6945,7 @@
           "id": "restaurant-s1-t26",
           "name": "Открыть ресторан второго этажа",
           "cost": 3,
-          "status": "planned",
+          "status": "implemented",
           "target": "restaurant-s1-object-26",
           "currency": "stars",
           "fundingSource": "food-orders"
@@ -6996,17 +6996,12 @@
         "pe",
         "gr",
         "st",
-        "wa",
-        "ar",
         "bg",
         "cr",
         "pr",
         "bu",
-        "ck",
-        "cu",
-        "pi",
         "le",
-        "yo",
+        "cu",
         "so"
       ],
       "globalStage": 5,
@@ -7051,7 +7046,16 @@
         "earningContext": "any-already-open-building",
         "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
       },
-      "earningPolicy": "project-in-open-building-then-gated-interior"
+      "earningPolicy": "project-in-open-building-then-gated-interior",
+      "runtimeDeliveryOverride": {
+        "requiresCompletedPhases": [
+          "terrace-1"
+        ],
+        "reason": "prototype-preview-after-terrace-1",
+        "completeGlobalStage3": false,
+        "completeGlobalStage4": false,
+        "completeGlobalStage5": false
+      }
     },
     {
       "id": "restaurant-2",
@@ -10017,8 +10021,9 @@
       "id": "cu",
       "name": "Кекс",
       "introducedIn": "bakery-3",
-      "status": "planned",
-      "availableFromGlobalStage": 3
+      "status": "implemented",
+      "availableFromGlobalStage": 3,
+      "productionPhase": "restaurant-1"
     },
     {
       "id": "pi",
@@ -10067,8 +10072,9 @@
       "id": "so",
       "name": "Газированная вода",
       "introducedIn": "terrace-2",
-      "status": "planned",
-      "availableFromGlobalStage": 4
+      "status": "implemented",
+      "availableFromGlobalStage": 4,
+      "productionPhase": "restaurant-1"
     },
     {
       "id": "ic",
@@ -63054,12 +63060,15 @@
       "chapterNumber": 1,
       "family": "multi-crate",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t01"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t01",
+      "catalogNumber": 3901,
+      "denseNumber": 761,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-002",
@@ -63068,12 +63077,15 @@
       "chapterNumber": 2,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t01"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t01",
+      "catalogNumber": 3902,
+      "denseNumber": 762,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-003",
@@ -63082,12 +63094,15 @@
       "chapterNumber": 3,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t02"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t02",
+      "catalogNumber": 3903,
+      "denseNumber": 763,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-004",
@@ -63096,12 +63111,15 @@
       "chapterNumber": 4,
       "family": "front-flow",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t02"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t02",
+      "catalogNumber": 3904,
+      "denseNumber": 764,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-005",
@@ -63110,12 +63128,15 @@
       "chapterNumber": 5,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t03"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t03",
+      "catalogNumber": 3905,
+      "denseNumber": 765,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-006",
@@ -63124,12 +63145,15 @@
       "chapterNumber": 6,
       "family": "paired-demand",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t03"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t03",
+      "catalogNumber": 3906,
+      "denseNumber": 766,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-007",
@@ -63138,12 +63162,15 @@
       "chapterNumber": 7,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t03"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t03",
+      "catalogNumber": 3907,
+      "denseNumber": 767,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-008",
@@ -63152,12 +63179,15 @@
       "chapterNumber": 8,
       "family": "multi-crate",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t04"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t04",
+      "catalogNumber": 3908,
+      "denseNumber": 768,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-009",
@@ -63166,12 +63196,15 @@
       "chapterNumber": 9,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t04"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t04",
+      "catalogNumber": 3909,
+      "denseNumber": 769,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-010",
@@ -63180,12 +63213,15 @@
       "chapterNumber": 10,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t04"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t04",
+      "catalogNumber": 3910,
+      "denseNumber": 770,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-011",
@@ -63194,12 +63230,15 @@
       "chapterNumber": 11,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t05"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t05",
+      "catalogNumber": 3911,
+      "denseNumber": 771,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-012",
@@ -63208,12 +63247,15 @@
       "chapterNumber": 12,
       "family": "rear-priority",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t05"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t05",
+      "catalogNumber": 3912,
+      "denseNumber": 772,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-013",
@@ -63222,12 +63264,15 @@
       "chapterNumber": 13,
       "family": "paired-demand",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t06"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t06",
+      "catalogNumber": 3913,
+      "denseNumber": 773,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-014",
@@ -63236,12 +63281,15 @@
       "chapterNumber": 14,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t06"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t06",
+      "catalogNumber": 3914,
+      "denseNumber": 774,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-015",
@@ -63250,12 +63298,15 @@
       "chapterNumber": 15,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t07"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t07",
+      "catalogNumber": 3915,
+      "denseNumber": 775,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-016",
@@ -63264,12 +63315,15 @@
       "chapterNumber": 16,
       "family": "space-recovery",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t07"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t07",
+      "catalogNumber": 3916,
+      "denseNumber": 776,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-017",
@@ -63278,12 +63332,15 @@
       "chapterNumber": 17,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t07"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t07",
+      "catalogNumber": 3917,
+      "denseNumber": 777,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-018",
@@ -63292,12 +63349,15 @@
       "chapterNumber": 18,
       "family": "front-flow",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t08"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t08",
+      "catalogNumber": 3918,
+      "denseNumber": 778,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-019",
@@ -63306,12 +63366,15 @@
       "chapterNumber": 19,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t08"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t08",
+      "catalogNumber": 3919,
+      "denseNumber": 779,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-020",
@@ -63320,12 +63383,15 @@
       "chapterNumber": 20,
       "family": "paired-demand",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t08"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t08",
+      "catalogNumber": 3920,
+      "denseNumber": 780,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-021",
@@ -63334,12 +63400,15 @@
       "chapterNumber": 21,
       "family": "supply-chain",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t09"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t09",
+      "catalogNumber": 3921,
+      "denseNumber": 781,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-022",
@@ -63348,12 +63417,15 @@
       "chapterNumber": 22,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t09"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t09",
+      "catalogNumber": 3922,
+      "denseNumber": 782,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-023",
@@ -63362,12 +63434,15 @@
       "chapterNumber": 23,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t09"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t09",
+      "catalogNumber": 3923,
+      "denseNumber": 783,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-024",
@@ -63376,12 +63451,15 @@
       "chapterNumber": 24,
       "family": "counter-space",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t10"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t10",
+      "catalogNumber": 3924,
+      "denseNumber": 784,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-025",
@@ -63390,12 +63468,15 @@
       "chapterNumber": 25,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t10"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t10",
+      "catalogNumber": 3925,
+      "denseNumber": 785,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-026",
@@ -63404,12 +63485,15 @@
       "chapterNumber": 26,
       "family": "rear-priority",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t10"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t10",
+      "catalogNumber": 3926,
+      "denseNumber": 786,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-027",
@@ -63418,12 +63502,15 @@
       "chapterNumber": 27,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t11"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t11",
+      "catalogNumber": 3927,
+      "denseNumber": 787,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-028",
@@ -63432,12 +63519,15 @@
       "chapterNumber": 28,
       "family": "supply-chain",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t11"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t11",
+      "catalogNumber": 3928,
+      "denseNumber": 788,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-029",
@@ -63446,12 +63536,15 @@
       "chapterNumber": 29,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t11"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t11",
+      "catalogNumber": 3929,
+      "denseNumber": 789,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-030",
@@ -63460,12 +63553,15 @@
       "chapterNumber": 30,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t12"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t12",
+      "catalogNumber": 3930,
+      "denseNumber": 790,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-031",
@@ -63474,12 +63570,15 @@
       "chapterNumber": 31,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t12"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t12",
+      "catalogNumber": 3931,
+      "denseNumber": 791,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-032",
@@ -63488,12 +63587,15 @@
       "chapterNumber": 32,
       "family": "front-flow",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
-      "rewardCurrency": "stars",
-      "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t12"
+      "rewardCurrency": "repairKits",
+      "supplyKind": "repair",
+      "fundingTaskId": "restaurant-s1-t12",
+      "catalogNumber": 3932,
+      "denseNumber": 792,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-033",
@@ -63502,12 +63604,15 @@
       "chapterNumber": 33,
       "family": "rear-priority",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t13"
+      "fundingTaskId": "restaurant-s1-t13",
+      "catalogNumber": 3933,
+      "denseNumber": 793,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-034",
@@ -63516,12 +63621,15 @@
       "chapterNumber": 34,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t13"
+      "fundingTaskId": "restaurant-s1-t13",
+      "catalogNumber": 3934,
+      "denseNumber": 794,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-035",
@@ -63530,12 +63638,15 @@
       "chapterNumber": 35,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t13"
+      "fundingTaskId": "restaurant-s1-t13",
+      "catalogNumber": 3935,
+      "denseNumber": 795,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-036",
@@ -63544,12 +63655,15 @@
       "chapterNumber": 36,
       "family": "multi-crate",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t14"
+      "fundingTaskId": "restaurant-s1-t14",
+      "catalogNumber": 3936,
+      "denseNumber": 796,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-037",
@@ -63558,12 +63672,15 @@
       "chapterNumber": 37,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t14"
+      "fundingTaskId": "restaurant-s1-t14",
+      "catalogNumber": 3937,
+      "denseNumber": 797,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-038",
@@ -63572,12 +63689,15 @@
       "chapterNumber": 38,
       "family": "counter-space",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "construction-project",
       "executionContext": "already-open-building",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t14"
+      "fundingTaskId": "restaurant-s1-t14",
+      "catalogNumber": 3938,
+      "denseNumber": 798,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-039",
@@ -63586,12 +63706,15 @@
       "chapterNumber": 39,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t15"
+      "fundingTaskId": "restaurant-s1-t15",
+      "catalogNumber": 3939,
+      "denseNumber": 799,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-040",
@@ -63600,12 +63723,15 @@
       "chapterNumber": 40,
       "family": "rear-priority",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t15"
+      "fundingTaskId": "restaurant-s1-t15",
+      "catalogNumber": 3940,
+      "denseNumber": 800,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-041",
@@ -63614,12 +63740,15 @@
       "chapterNumber": 41,
       "family": "paired-demand",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t15"
+      "fundingTaskId": "restaurant-s1-t15",
+      "catalogNumber": 3941,
+      "denseNumber": 801,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-042",
@@ -63628,12 +63757,15 @@
       "chapterNumber": 42,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t16"
+      "fundingTaskId": "restaurant-s1-t16",
+      "catalogNumber": 3942,
+      "denseNumber": 802,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-043",
@@ -63642,12 +63774,15 @@
       "chapterNumber": 43,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t16"
+      "fundingTaskId": "restaurant-s1-t16",
+      "catalogNumber": 3943,
+      "denseNumber": 803,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-044",
@@ -63656,12 +63791,15 @@
       "chapterNumber": 44,
       "family": "space-recovery",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t16"
+      "fundingTaskId": "restaurant-s1-t16",
+      "catalogNumber": 3944,
+      "denseNumber": 804,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-045",
@@ -63670,12 +63808,15 @@
       "chapterNumber": 45,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t17"
+      "fundingTaskId": "restaurant-s1-t17",
+      "catalogNumber": 3945,
+      "denseNumber": 805,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-046",
@@ -63684,12 +63825,15 @@
       "chapterNumber": 46,
       "family": "front-flow",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t17"
+      "fundingTaskId": "restaurant-s1-t17",
+      "catalogNumber": 3946,
+      "denseNumber": 806,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-047",
@@ -63698,12 +63842,15 @@
       "chapterNumber": 47,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t17"
+      "fundingTaskId": "restaurant-s1-t17",
+      "catalogNumber": 3947,
+      "denseNumber": 807,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-048",
@@ -63712,12 +63859,15 @@
       "chapterNumber": 48,
       "family": "paired-demand",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t18"
+      "fundingTaskId": "restaurant-s1-t18",
+      "catalogNumber": 3948,
+      "denseNumber": 808,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-049",
@@ -63726,12 +63876,15 @@
       "chapterNumber": 49,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t18"
+      "fundingTaskId": "restaurant-s1-t18",
+      "catalogNumber": 3949,
+      "denseNumber": 809,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-050",
@@ -63740,12 +63893,15 @@
       "chapterNumber": 50,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t18"
+      "fundingTaskId": "restaurant-s1-t18",
+      "catalogNumber": 3950,
+      "denseNumber": 810,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-051",
@@ -63754,12 +63910,15 @@
       "chapterNumber": 51,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t19"
+      "fundingTaskId": "restaurant-s1-t19",
+      "catalogNumber": 3951,
+      "denseNumber": 811,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-052",
@@ -63768,12 +63927,15 @@
       "chapterNumber": 52,
       "family": "counter-space",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t19"
+      "fundingTaskId": "restaurant-s1-t19",
+      "catalogNumber": 3952,
+      "denseNumber": 812,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-053",
@@ -63782,12 +63944,15 @@
       "chapterNumber": 53,
       "family": "front-flow",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t19"
+      "fundingTaskId": "restaurant-s1-t19",
+      "catalogNumber": 3953,
+      "denseNumber": 813,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-054",
@@ -63796,12 +63961,15 @@
       "chapterNumber": 54,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t19"
+      "fundingTaskId": "restaurant-s1-t19",
+      "catalogNumber": 3954,
+      "denseNumber": 814,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-055",
@@ -63810,12 +63978,15 @@
       "chapterNumber": 55,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t20"
+      "fundingTaskId": "restaurant-s1-t20",
+      "catalogNumber": 3955,
+      "denseNumber": 815,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-056",
@@ -63824,12 +63995,15 @@
       "chapterNumber": 56,
       "family": "supply-chain",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t20"
+      "fundingTaskId": "restaurant-s1-t20",
+      "catalogNumber": 3956,
+      "denseNumber": 816,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-057",
@@ -63838,12 +64012,15 @@
       "chapterNumber": 57,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t20"
+      "fundingTaskId": "restaurant-s1-t20",
+      "catalogNumber": 3957,
+      "denseNumber": 817,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-058",
@@ -63852,12 +64029,15 @@
       "chapterNumber": 58,
       "family": "space-recovery",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t20"
+      "fundingTaskId": "restaurant-s1-t20",
+      "catalogNumber": 3958,
+      "denseNumber": 818,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-059",
@@ -63866,12 +64046,15 @@
       "chapterNumber": 59,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t21"
+      "fundingTaskId": "restaurant-s1-t21",
+      "catalogNumber": 3959,
+      "denseNumber": 819,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-060",
@@ -63880,12 +64063,15 @@
       "chapterNumber": 60,
       "family": "front-flow",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t21"
+      "fundingTaskId": "restaurant-s1-t21",
+      "catalogNumber": 3960,
+      "denseNumber": 820,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-061",
@@ -63894,12 +64080,15 @@
       "chapterNumber": 61,
       "family": "section-shelves",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t21"
+      "fundingTaskId": "restaurant-s1-t21",
+      "catalogNumber": 3961,
+      "denseNumber": 821,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-062",
@@ -63908,12 +64097,15 @@
       "chapterNumber": 62,
       "family": "targeted-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t21"
+      "fundingTaskId": "restaurant-s1-t21",
+      "catalogNumber": 3962,
+      "denseNumber": 822,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-063",
@@ -63922,12 +64114,15 @@
       "chapterNumber": 63,
       "family": "front-flow",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t22"
+      "fundingTaskId": "restaurant-s1-t22",
+      "catalogNumber": 3963,
+      "denseNumber": 823,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-064",
@@ -63936,12 +64131,15 @@
       "chapterNumber": 64,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t22"
+      "fundingTaskId": "restaurant-s1-t22",
+      "catalogNumber": 3964,
+      "denseNumber": 824,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-065",
@@ -63950,12 +64148,15 @@
       "chapterNumber": 65,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t22"
+      "fundingTaskId": "restaurant-s1-t22",
+      "catalogNumber": 3965,
+      "denseNumber": 825,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-066",
@@ -63964,12 +64165,15 @@
       "chapterNumber": 66,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t23"
+      "fundingTaskId": "restaurant-s1-t23",
+      "catalogNumber": 3966,
+      "denseNumber": 826,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-067",
@@ -63978,12 +64182,15 @@
       "chapterNumber": 67,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t23"
+      "fundingTaskId": "restaurant-s1-t23",
+      "catalogNumber": 3967,
+      "denseNumber": 827,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-068",
@@ -63992,12 +64199,15 @@
       "chapterNumber": 68,
       "family": "space-recovery",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t23"
+      "fundingTaskId": "restaurant-s1-t23",
+      "catalogNumber": 3968,
+      "denseNumber": 828,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-069",
@@ -64006,12 +64216,15 @@
       "chapterNumber": 69,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t23"
+      "fundingTaskId": "restaurant-s1-t23",
+      "catalogNumber": 3969,
+      "denseNumber": 829,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-070",
@@ -64020,12 +64233,15 @@
       "chapterNumber": 70,
       "family": "section-shelves",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t24"
+      "fundingTaskId": "restaurant-s1-t24",
+      "catalogNumber": 3970,
+      "denseNumber": 830,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-071",
@@ -64034,12 +64250,15 @@
       "chapterNumber": 71,
       "family": "targeted-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t24"
+      "fundingTaskId": "restaurant-s1-t24",
+      "catalogNumber": 3971,
+      "denseNumber": 831,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-072",
@@ -64048,12 +64267,15 @@
       "chapterNumber": 72,
       "family": "front-flow",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t24"
+      "fundingTaskId": "restaurant-s1-t24",
+      "catalogNumber": 3972,
+      "denseNumber": 832,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-073",
@@ -64062,12 +64284,15 @@
       "chapterNumber": 73,
       "family": "rear-priority",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t24"
+      "fundingTaskId": "restaurant-s1-t24",
+      "catalogNumber": 3973,
+      "denseNumber": 833,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-074",
@@ -64076,12 +64301,15 @@
       "chapterNumber": 74,
       "family": "paired-demand",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t25"
+      "fundingTaskId": "restaurant-s1-t25",
+      "catalogNumber": 3974,
+      "denseNumber": 834,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-075",
@@ -64090,12 +64318,15 @@
       "chapterNumber": 75,
       "family": "supply-chain",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t25"
+      "fundingTaskId": "restaurant-s1-t25",
+      "catalogNumber": 3975,
+      "denseNumber": 835,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-076",
@@ -64104,12 +64335,15 @@
       "chapterNumber": 76,
       "family": "multi-crate",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t25"
+      "fundingTaskId": "restaurant-s1-t25",
+      "catalogNumber": 3976,
+      "denseNumber": 836,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-077",
@@ -64118,12 +64352,15 @@
       "chapterNumber": 77,
       "family": "space-recovery",
       "difficulty": "complex",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t25"
+      "fundingTaskId": "restaurant-s1-t25",
+      "catalogNumber": 3977,
+      "denseNumber": 837,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-078",
@@ -64132,12 +64369,15 @@
       "chapterNumber": 78,
       "family": "counter-space",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t26"
+      "fundingTaskId": "restaurant-s1-t26",
+      "catalogNumber": 3978,
+      "denseNumber": 838,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-079",
@@ -64146,12 +64386,15 @@
       "chapterNumber": 79,
       "family": "section-shelves",
       "difficulty": "standard",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t26"
+      "fundingTaskId": "restaurant-s1-t26",
+      "catalogNumber": 3979,
+      "denseNumber": 839,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s1-order-080",
@@ -64160,12 +64403,15 @@
       "chapterNumber": 80,
       "family": "targeted-crate",
       "difficulty": "rest",
-      "status": "planned-no-definition",
+      "status": "implemented-definition",
       "kind": "interior",
       "requiresCompletedTaskId": "restaurant-s1-t14",
       "rewardCurrency": "stars",
       "supplyKind": "food",
-      "fundingTaskId": "restaurant-s1-t26"
+      "fundingTaskId": "restaurant-s1-t26",
+      "catalogNumber": 3980,
+      "denseNumber": 840,
+      "definitionFile": "src/levels/projects/restaurant-1.json"
     },
     {
       "id": "restaurant-s2-order-001",
@@ -90430,11 +90676,11 @@
   ],
   "validationScope": "Арифметика 6000/744, глобальные и локальные зависимости, произвольный допустимый выбор проектов, финансирование расчистки/стройки до доступа к внутренним заказам, совместимость выпущенных заказов и перенос ценового кредита прежних работ лавки; не проходимость будущих Definition и не коммерческий результат.",
   "deliveryStatus": {
-    "existingOrders": 760,
-    "plannedOrders": 5240,
-    "existingTasks": 178,
-    "plannedTasks": 566,
-    "fullyImplementedPlannedPhases": 8
+    "existingOrders": 840,
+    "plannedOrders": 5160,
+    "existingTasks": 204,
+    "plannedTasks": 540,
+    "fullyImplementedPlannedPhases": 9
   },
   "productDirection": {
     "platform": "Yandex Games, online browser game; desktop and mobile browsers, not a native Android/iOS app",
@@ -90615,7 +90861,7 @@
     }
   ],
   "nextDelivery": {
-    "scope": "Stage 1–2, bakery I and a terrace prototype; global Stage 3 and 4 remain incomplete",
+    "scope": "Stage 1–2, bakery I, terrace I and a restaurant prototype; global Stages 3–5 remain incomplete",
     "phaseIds": [
       "shop-1",
       "warehouse-1",
@@ -90624,10 +90870,11 @@
       "fruit-yard-1",
       "fruit-yard-2",
       "bakery-1",
-      "terrace-1"
+      "terrace-1",
+      "restaurant-1"
     ],
-    "orders": 760,
-    "tasks": 178,
+    "orders": 840,
+    "tasks": 204,
     "requirements": [
       "Полная лавка I 80/14",
       "Расчистка и строительство склада до внутренних заказов",
@@ -90637,11 +90884,13 @@
       "Сохранение незавершённых попыток и проектов между локациями",
       "Первая пекарня: 80 закреплённых Definition и 26 зарегистрированных результатов",
       "Все 680 решений воспроизведены; каталожные номера отделены от индексов выдачи",
-      "Terrace: 80 pinned Definitions and 26 registered results; explicit prototype dependencies"
+      "Terrace: 80 pinned Definitions and 26 registered results; explicit prototype dependencies",
+      "Restaurant: 80 pinned Definitions and 26 registered results; explicit prototype dependencies"
     ],
     "status": "implemented-internal-block",
     "completeGlobalStage3": false,
-    "completeGlobalStage4": false
+    "completeGlobalStage4": false,
+    "completeGlobalStage5": false
   },
   "monetization": {
     "launchRequired": true,
@@ -90788,7 +91037,8 @@
       "fruit-yard-1",
       "fruit-yard-2",
       "bakery-1",
-      "terrace-1"
+      "terrace-1",
+      "restaurant-1"
     ],
     "repairTaskPrefixes": {
       "shop-1": 3,
@@ -90798,10 +91048,11 @@
       "warehouse-2": 3,
       "fruit-yard-2": 10,
       "bakery-1": 12,
-      "terrace-1": 12
+      "terrace-1": 12,
+      "restaurant-1": 12
     },
-    "implementedRepairOrders": 243,
-    "implementedFoodOrders": 517,
+    "implementedRepairOrders": 275,
+    "implementedFoodOrders": 565,
     "plannedPhases": "Retain existing star economics until their architectural tasks are classified.",
     "reward": "Each unique completed order gives exactly one unit of its pinned rewardCurrency; replay gives none."
   }

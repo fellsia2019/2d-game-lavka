@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-11",
+  "reason": "Retired diorama/corner sprites are not used by the current full-room renderers; preserve exact WebP bytes outside public/dist.",
+  "bytes": 2610616,
+  "files": [
+    {
+      "formerPath": "public/assets/scene-main-before.webp",
+      "archivePath": "docs/art/retired-runtime/scene-main-before.webp",
+      "bytes": 247256,
+      "sha256": "dd5cf884b8b111e62e42fbff7b7c2b1b6be8f9397b712b2b5c56adb7ceee0b3e"
+    },
+    {
+      "formerPath": "public/assets/scene-main-clean.webp",
+      "archivePath": "docs/art/retired-runtime/scene-main-clean.webp",
+      "bytes": 130564,
+      "sha256": "b9986a0b9adce22d100ab9e0a864ede405a46e20b3419e63418b62485bc4546e"
+    },
+    {
+      "formerPath": "public/assets/scene-main-empty.webp",
+      "archivePath": "docs/art/retired-runtime/scene-main-empty.webp",
+      "bytes": 187326,
+      "sha256": "97f059759a4609a3b26b9476a15f8e0ccc73ce061b88f254386a1c373437d917"
+    },
+    {
+      "formerPath": "public/assets/scene-main-light.webp",
+      "archivePath": "docs/art/retired-runtime/scene-main-light.webp",
+      "bytes": 190848,
+      "sha256": "c3a917bfa59d79a81473784445600aa850577ba24a74bd8591349ba153b1756c"
+    },
+    {
+      "formerPath": "public/assets/scene-main-master.webp",
+      "archivePath": "docs/art/retired-runtime/scene-main-master.webp",
+      "bytes": 193348,
+      "sha256": "659113a6863dfe834b8bdcd6f750701928be590e651ee47ddd32b59057eaeddb"
+    },
+    {
+      "formerPath": "public/assets/scene-prep-before.webp",
+      "archivePath": "docs/art/retired-runtime/scene-prep-before.webp",
+      "bytes": 381778,
+      "sha256": "90396f72d93bafc6cf8e921c2169d68218e637f2f684d92023ab4fc41bc3e9c0"
+    },
+    {
+      "formerPath": "public/assets/scene-prep-clean.webp",
+      "archivePath": "docs/art/retired-runtime/scene-prep-clean.webp",
+      "bytes": 103838,
+      "sha256": "42962b534fb616baa4695de13e1dcd787fd513126395df53e726755f88da7f52"
+    },
+    {
+      "formerPath": "public/assets/scene-prep-empty.webp",
+      "archivePath": "docs/art/retired-runtime/scene-prep-empty.webp",
+      "bytes": 181970,
+      "sha256": "011e52c86e4797a3a5cd75a86d16485d75dcf498e8317f3207fecb8d7e6b2a82"
+    },
+    {
+      "formerPath": "public/assets/scene-prep-light.webp",
+      "archivePath": "docs/art/retired-runtime/scene-prep-light.webp",
+      "bytes": 199482,
+      "sha256": "72ca1e37e5e0e5252f8a3c39f01c6ff57d0520905b0abc665600408cf167f2fa"
+    },
+    {
+      "formerPath": "public/assets/scene-prep-master.webp",
+      "archivePath": "docs/art/retired-runtime/scene-prep-master.webp",
+      "bytes": 184518,
+      "sha256": "a39113221a0cecac10645cb6ec624315b51fe6082e51d6c15a56e15806e0408a"
+    },
+    {
+      "formerPath": "public/assets/hall-corner-left.webp",
+      "archivePath": "docs/art/retired-runtime/hall-corner-left.webp",
+      "bytes": 115928,
+      "sha256": "049bc1151783fcb0c5d3fdd377b2a119513da32123cffc4095583b8a50a409f1"
+    },
+    {
+      "formerPath": "public/assets/hall-corner-right.webp",
+      "archivePath": "docs/art/retired-runtime/hall-corner-right.webp",
+      "bytes": 114272,
+      "sha256": "ca32d7d5f5ad841fc790659fb4854c3bc45fef892359922e8f87089693186017"
+    },
+    {
+      "formerPath": "public/assets/hall-corner-counter.webp",
+      "archivePath": "docs/art/retired-runtime/hall-corner-counter.webp",
+      "bytes": 211312,
+      "sha256": "6006d4437e07d1ad32e93b2468f3b07697a88704be6092562d89d6e139899877"
+    },
+    {
+      "formerPath": "public/assets/hall-corner-tray-left.webp",
+      "archivePath": "docs/art/retired-runtime/hall-corner-tray-left.webp",
+      "bytes": 84126,
+      "sha256": "0e8263c18c912b8966dc15dedbf6a0122acbe5f53e70c6b6d29771af2ebdee0f"
+    },
+    {
+      "formerPath": "public/assets/hall-corner-tray-right.webp",
+      "archivePath": "docs/art/retired-runtime/hall-corner-tray-right.webp",
+      "bytes": 84050,
+      "sha256": "4feb17f3f4d8ed07bb8a9458d487a8d47dbbbdb1aa79e6d3599bdad7ddfb7b72"
+    }
+  ]
+}

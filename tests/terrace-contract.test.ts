@@ -73,9 +73,9 @@ test("Terrace integration replays all 760 and fingerprints the unchanged seven b
   assert.deepEqual(checker.checkTerraceContract(), { produced: true, runtimeEnabled: true, terraceOrders: 80, terraceWorks: 26,
     repairKits: 32, stars: 48, gate: "terrace-s1-t14 after order 38", baselineOrders: 680, baselineWorks: 152,
     replayed: 760, catalogRange: [2241, 2320], denseRange: [681, 760], completeGlobalStage3: false, completeGlobalStage4: false });
-  assert.equal(PROJECTS.length, 8);
-  assert.equal(TASKS.length, 178);
-  assert.equal(CHAPTER.length, 760);
+  assert.equal(PROJECTS.length, 9);
+  assert.equal(TASKS.length, 204);
+  assert.equal(CHAPTER.length, 840);
   assert.equal(phaseStatus("terrace-1", [], freshProgress().campaign), "locked");
   assert.ok(["pr","bu","le"].every(good=>Object.hasOwn(GOODS,good)));
 });
@@ -170,9 +170,9 @@ test("Catalog 2241–2320 loads through real dense indices 681–760 without rew
     assert.deepEqual(definition, offlineChapterLevel(entry.denseNumber));
     assert.equal(orderCurrency(entry.id), entry.localNumber <= 32 ? "repairKits" : "stars");
   }
-  await assert.rejects(loader.load(761), /Unknown chapter/);
+  await assert.rejects(loader.load(841), /Unknown chapter/);
   assert.equal(currentGlobalStage(CHAPTER.map(story => story.id), { ...freshProgress().campaign, completedTasks: TASKS.map(task => task.id) }), 3);
-  for (const id of ["shop-3", "warehouse-3", "fruit-yard-3", "terrace-2", "restaurant-1"])
+  for (const id of ["shop-3", "warehouse-3", "fruit-yard-3", "terrace-2", "restaurant-2"])
     assert.equal(phaseStatus(id, CHAPTER.map(story => story.id), { ...freshProgress().campaign, completedTasks: TASKS.map(task => task.id) }), "planned");
 });
 

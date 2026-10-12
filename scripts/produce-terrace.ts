@@ -136,8 +136,22 @@ for (const [index, slot] of slots.entries()) {
 if (!wasPinned) save(definitionsFile, output);
 const activate = process.argv.includes("--activate");
 if (activate) {
-  assert.ok(currentStories.length === 680 || currentStories.length === 760, "Unexpected playable block size");
-  if (currentStories.length === 760) assert.deepEqual(currentStories.slice(680), stories, "Do not rewrite pinned terrace metadata");
+  assert.ok(currentStories.length === 680 || currentStories.length >= 760, "Unexpected playable block size");
+  if (currentStories.length >= 760) assert.deepEqual(currentStories.slice(680,760), stories, "Do not rewrite pinned terrace metadata");
+}
+// Later pinned projects are immutable tails; this historical producer cannot remove or reseal them.
+for (const phaseId of new Set(currentStories.slice(760).map(story => story.phaseId))) {
+  const tail = currentStories.slice(760).filter(story => story.phaseId === phaseId);
+  const manifest = read(`docs/content/${phaseId}-production.json`);
+  assert.ok(manifest.produced && manifest.runtimeEnabled, `Cannot preserve unproduced tail: ${phaseId}`);
+  const raw = readFileSync(new URL(manifest.definitionFile, root), "utf8");
+  assert.equal(digest(raw), manifest.sourceFileDigest, `Pinned tail source changed: ${phaseId}`);
+  assert.equal(digest(tail), manifest.storiesDigest, `Pinned tail metadata changed: ${phaseId}`);
+  for (const definition of JSON.parse(raw) as Definition[]) {
+    validateDefinition(definition); assert.equal(replay(definition, definition.verifiedSolution), true, definition.id);
+    const key = structuralKey(definition); assert.ok(!keySet.has(key), `Structural tail duplicate: ${definition.id}`);
+    keySet.add(key);
+  }
 }
 const manifest = {
   productionVersion: contract.contractVersion, contentVersion: contract.contentVersion, phaseId: phase.id,
@@ -158,22 +172,25 @@ const manifest = {
 save(manifestFile, manifest);
 contract.produced = true;
 if (activate) {
-  save("src/levels/stage-block.json", [...currentStories.slice(0,680), ...stories]);
+  save("src/levels/stage-block.json", [...currentStories.slice(0,680), ...stories, ...currentStories.slice(760)]);
   for (const task of phase.tasks) task.status = "implemented";
   for (const slot of slots) Object.assign(slot, { status: "implemented-definition", catalogNumber: slot.globalNumber,
     denseNumber: 681 + slots.indexOf(slot), definitionFile: definitionsFile });
   for (const good of plan.goods.filter((good: { id: string }) => contract.newGoods.includes(good.id))) {
     good.status = "implemented"; good.productionPhase = "terrace-1";
   }
-  plan.planVersion = contract.planVersion;
-  plan.nextDelivery = { scope: "Stage 1–2, bakery I and a terrace prototype; global Stage 3 and 4 remain incomplete",
-    phaseIds: [...contract.baseline.projectIds, phase.id], orders: 760, tasks: 178,
+  if (currentStories.length <= 760) plan.planVersion = contract.planVersion;
+  const readyPhases = plan.route.filter((id: string) => plan.orderSlots.some((slot: Slot & { status: string }) => slot.phaseId === id && slot.status !== "planned-no-definition"));
+  const readyOrders = plan.orderSlots.filter((slot: { status: string }) => slot.status !== "planned-no-definition").length;
+  const readyTasks = plan.phases.flatMap((phase: { tasks: { status: string }[] }) => phase.tasks).filter((task: { status: string }) => task.status !== "planned").length;
+  plan.nextDelivery = { ...plan.nextDelivery, scope: currentStories.length > 760 ? plan.nextDelivery.scope : "Stage 1–2, bakery I and a terrace prototype; global Stage 3 and 4 remain incomplete",
+    phaseIds: readyPhases, orders: readyOrders, tasks: readyTasks,
     requirements: [...new Set([...plan.nextDelivery.requirements, "Terrace: 80 pinned Definitions and 26 registered results; explicit prototype dependencies"] )],
     status: "implemented-internal-block", completeGlobalStage3: false, completeGlobalStage4: false };
-  plan.deliveryStatus = { existingOrders:760, plannedOrders:5240, existingTasks:178, plannedTasks:566, fullyImplementedPlannedPhases:8 };
+  plan.deliveryStatus = { existingOrders:readyOrders, plannedOrders:6000-readyOrders, existingTasks:readyTasks, plannedTasks:744-readyTasks, fullyImplementedPlannedPhases:readyPhases.length };
   plan.orderSupplyPolicy = { ...plan.orderSupplyPolicy, version:2, implementedScope:plan.nextDelivery.phaseIds,
     repairTaskPrefixes:{ ...plan.orderSupplyPolicy.repairTaskPrefixes, "bakery-1":12, "terrace-1":12 },
-    implementedRepairOrders:243, implementedFoodOrders:517 };
+    implementedRepairOrders:plan.orderSlots.filter((slot: { status: string; rewardCurrency: string }) => slot.status !== "planned-no-definition" && slot.rewardCurrency === "repairKits").length, implementedFoodOrders:plan.orderSlots.filter((slot: { status: string; rewardCurrency: string }) => slot.status !== "planned-no-definition" && slot.rewardCurrency === "stars").length };
   save("docs/content/full-product-plan.json", plan);
   contract.state = "implemented"; contract.runtimeEnabled = true; contract.numbering.denseAppend.status = "runtime";
   contract.implementedBlock ??= contract.proposedImplementedBlock; delete contract.proposedImplementedBlock;

@@ -152,8 +152,12 @@ test("Completed siblings are inspectable but never recommended as the next unfin
   finish(p, "bakery-1");
   assert.equal(navigationState(p).nextDestination!.projectId, "terrace-1");
   assert.deepEqual(navigationState(p).unlockedUnstarted.map(destination => destination.projectId), ["terrace-1"]);
-  assert.equal(navigationState(p).availableDestinations.length, PROJECTS.length);
+  assert.equal(navigationState(p).availableDestinations.length, 8, "restaurant still waits for the terrace");
   finish(p, "terrace-1");
+  assert.equal(navigationState(p).nextDestination!.projectId, "restaurant-1");
+  assert.deepEqual(navigationState(p).unlockedUnstarted.map(destination => destination.projectId), ["restaurant-1"]);
+  assert.equal(navigationState(p).availableDestinations.length, PROJECTS.length);
+  finish(p, "restaurant-1");
   assert.equal(navigationState(p).nextDestination, null);
   assert.deepEqual(navigationState(p).unlockedUnstarted, []);
 });

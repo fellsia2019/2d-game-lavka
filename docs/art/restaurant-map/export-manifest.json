@@ -1,0 +1,38 @@
+[
+  {
+    "name": "clear",
+    "source": "docs/art/restaurant-map/clear.png",
+    "runtime": "public/assets/coastal-restaurant-map-clear.webp",
+    "bytes": 470322,
+    "sourceSha256": "aa19246dfb340ed8ae141368d338a8cd2202f798b0af101a94964af97e6e7630",
+    "runtimeSha256": "996fdfc852c7ac1919a6c572b34d1d335e39b7a2e23dedb4a73d7c55fba13724",
+    "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
+  },
+  {
+    "name": "walls",
+    "source": "docs/art/restaurant-map/walls.png",
+    "runtime": "public/assets/coastal-restaurant-map-walls.webp",
+    "bytes": 437206,
+    "sourceSha256": "1ad9a89f22ed23a1ded86000a220aa2e5c7e299e0742eaf5848d641728834a7a",
+    "runtimeSha256": "e3e8b623b5135994bc20ad6d98db5da18a63281fcd376e3130d9d45e68c2592e",
+    "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
+  },
+  {
+    "name": "ready",
+    "source": "docs/art/restaurant-map/final-v2.png",
+    "runtime": "public/assets/coastal-restaurant-map-ready.webp",
+    "bytes": 459780,
+    "sourceSha256": "a42e8b2f5a2782f3184e963fb5bb3b101b7cfec8574e1de6908a6bbb44d69b6f",
+    "runtimeSha256": "641c6e9bd346084a62d2675e1caf6cc29dbbb0280a5449f8ccf9b156b8dbaed3",
+    "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
+  },
+  {
+    "name": "windows",
+    "source": "docs/art/restaurant-map/final-v5.png",
+    "runtime": "public/assets/coastal-restaurant-map-windows.webp",
+    "bytes": 436568,
+    "sourceSha256": "853ad5cfa1db2401b69ad3057296b9faf2b5ee043582390295787ca780ac0815",
+    "runtimeSha256": "476663132d4cdccd937e09a1160e9daa8b505571bbfd7246e9cd57f438415e6c",
+    "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
+  }
+]

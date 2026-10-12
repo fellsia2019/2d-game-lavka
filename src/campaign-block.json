@@ -2060,5 +2060,313 @@
       "earningContext": "any-already-open-building",
       "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
     }
+  },
+  {
+    "id": "restaurant-1",
+    "areaId": "restaurant",
+    "stage": 1,
+    "globalStage": 5,
+    "title": "Построить второй этаж",
+    "result": "Над лавкой появляется первый зал ресторана; начинается завершение двора",
+    "requiresCompletedPhases": [
+      "terrace-1"
+    ],
+    "plannedRequiresCompletedPhases": [
+      "shop-4",
+      "warehouse-4",
+      "fruit-yard-4",
+      "bakery-4",
+      "terrace-4"
+    ],
+    "runtimeDeliveryOverride": {
+      "requiresCompletedPhases": [
+        "terrace-1"
+      ],
+      "reason": "prototype-preview-after-terrace-1",
+      "completeGlobalStage3": false,
+      "completeGlobalStage4": false,
+      "completeGlobalStage5": false
+    },
+    "orderTarget": 80,
+    "taskTarget": 26,
+    "taskIds": [
+      "restaurant-s1-t01",
+      "restaurant-s1-t02",
+      "restaurant-s1-t03",
+      "restaurant-s1-t04",
+      "restaurant-s1-t05",
+      "restaurant-s1-t06",
+      "restaurant-s1-t07",
+      "restaurant-s1-t08",
+      "restaurant-s1-t09",
+      "restaurant-s1-t10",
+      "restaurant-s1-t11",
+      "restaurant-s1-t12",
+      "restaurant-s1-t13",
+      "restaurant-s1-t14",
+      "restaurant-s1-t15",
+      "restaurant-s1-t16",
+      "restaurant-s1-t17",
+      "restaurant-s1-t18",
+      "restaurant-s1-t19",
+      "restaurant-s1-t20",
+      "restaurant-s1-t21",
+      "restaurant-s1-t22",
+      "restaurant-s1-t23",
+      "restaurant-s1-t24",
+      "restaurant-s1-t25",
+      "restaurant-s1-t26"
+    ],
+    "tasks": [
+      {
+        "id": "restaurant-s1-t01",
+        "name": "Вывезти мусор с верхней площадки",
+        "cost": 2,
+        "target": "restaurant-s1-object-01",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t02",
+        "name": "Разобрать сгнивший чердак и старые навесы",
+        "cost": 2,
+        "target": "restaurant-s1-object-02",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t03",
+        "name": "Убрать лианы и растительность с крыши",
+        "cost": 3,
+        "target": "restaurant-s1-object-03",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t04",
+        "name": "Очистить остатки старых конструкций",
+        "cost": 3,
+        "target": "restaurant-s1-object-04",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t05",
+        "name": "Дочистить верхнюю площадку",
+        "cost": 2,
+        "target": "restaurant-s1-object-05",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t06",
+        "name": "Проверить несущие части и разметить надстройку",
+        "cost": 2,
+        "target": "restaurant-s1-object-06",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t07",
+        "name": "Усилить опоры и основание второго этажа",
+        "cost": 3,
+        "target": "restaurant-s1-object-07",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t08",
+        "name": "Возвести каркас и стены ресторана",
+        "cost": 3,
+        "target": "restaurant-s1-object-08",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t09",
+        "name": "Построить крышу ресторана",
+        "cost": 3,
+        "target": "restaurant-s1-object-09",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t10",
+        "name": "Установить окна и входную дверь",
+        "cost": 3,
+        "target": "restaurant-s1-object-10",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t11",
+        "name": "Подготовить пол и внутреннюю отделку",
+        "cost": 3,
+        "target": "restaurant-s1-object-11",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t12",
+        "name": "Провести свет и построить безопасную лестницу",
+        "cost": 3,
+        "target": "restaurant-s1-object-12",
+        "currency": "repairKits",
+        "fundingSource": "repair-orders"
+      },
+      {
+        "id": "restaurant-s1-t13",
+        "name": "Установить первые столы зала",
+        "cost": 3,
+        "target": "restaurant-s1-object-13",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t14",
+        "name": "Поставить стулья для гостей",
+        "cost": 3,
+        "target": "restaurant-s1-object-14",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t15",
+        "name": "Поставить стол подготовки блюд",
+        "cost": 3,
+        "target": "restaurant-s1-object-15",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t16",
+        "name": "Установить плиту и вытяжку",
+        "cost": 3,
+        "target": "restaurant-s1-object-16",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t17",
+        "name": "Установить холодильный шкаф",
+        "cost": 3,
+        "target": "restaurant-s1-object-17",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t18",
+        "name": "Оборудовать кухонную мойку",
+        "cost": 3,
+        "target": "restaurant-s1-object-18",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t19",
+        "name": "Поставить шкаф посуды",
+        "cost": 4,
+        "target": "restaurant-s1-object-19",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t20",
+        "name": "Добавить сервисную стойку",
+        "cost": 4,
+        "target": "restaurant-s1-object-20",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t21",
+        "name": "Наполнить ассортимент первого меню",
+        "cost": 4,
+        "target": "restaurant-s1-object-21",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t22",
+        "name": "Обустроить выдачу на балкон",
+        "cost": 3,
+        "target": "restaurant-s1-object-22",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t23",
+        "name": "Поставить шкаф подносов",
+        "cost": 4,
+        "target": "restaurant-s1-object-23",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t24",
+        "name": "Оборудовать безопасный кухонный проход",
+        "cost": 4,
+        "target": "restaurant-s1-object-24",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t25",
+        "name": "Подготовить первое обслуживание зала",
+        "cost": 4,
+        "target": "restaurant-s1-object-25",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      },
+      {
+        "id": "restaurant-s1-t26",
+        "name": "Открыть ресторан второго этажа",
+        "cost": 3,
+        "target": "restaurant-s1-object-26",
+        "currency": "stars",
+        "fundingSource": "food-orders"
+      }
+    ],
+    "construction": {
+      "kind": "upper-floor",
+      "states": [
+        "abandoned",
+        "rubbish-removed",
+        "demolished",
+        "vegetation-cleared",
+        "stumps-removed",
+        "cleared",
+        "planned",
+        "foundation",
+        "walls",
+        "roof",
+        "enclosed",
+        "fitout",
+        "entry-ready",
+        "base-equipment",
+        "open"
+      ],
+      "taskIds": [
+        "restaurant-s1-t01",
+        "restaurant-s1-t02",
+        "restaurant-s1-t03",
+        "restaurant-s1-t04",
+        "restaurant-s1-t05",
+        "restaurant-s1-t06",
+        "restaurant-s1-t07",
+        "restaurant-s1-t08",
+        "restaurant-s1-t09",
+        "restaurant-s1-t10",
+        "restaurant-s1-t11",
+        "restaurant-s1-t12",
+        "restaurant-s1-t13",
+        "restaurant-s1-t14"
+      ],
+      "opensInteriorAfterTaskId": "restaurant-s1-t14",
+      "projectOrders": 38,
+      "interiorOrders": 42,
+      "earningContext": "any-already-open-building",
+      "mapChanges": "Каждая очистка удаляет свой слой; фундамент, стены и крыша показываются по отдельным оплаченным шагам. Состояние сохраняется."
+    }
   }
 ]

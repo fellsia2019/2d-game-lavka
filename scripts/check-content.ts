@@ -21,6 +21,12 @@ if (CHAPTER.some(order=>order.phaseId==="terrace-1")) {
   if(terrace?.requiresCompletedPhases.join()!=="bakery-1")
     throw new Error("Terrace prototype must use the explicit bakery dependency");
 }
+if (CHAPTER.some(order => order.phaseId === "restaurant-1")) {
+  if (CONTENT_VERSION !== "coastal-stage-1-2-bakery-terrace-restaurant-v1" || CAMPAIGN_VERSION !== "coastal-campaign-10")
+    throw new Error("Restaurant delivery content and campaign versions differ");
+  if (PROJECTS.find(project => project.id === "restaurant-1")?.requiresCompletedPhases.join() !== "terrace-1")
+    throw new Error("Restaurant prototype must use the explicit terrace dependency");
+}
 for (const file of [
   ...Object.values(GOODS).map((g) => `${g.file}.webp`),
   ...Object.values(MATERIALS).map((material) => `${material.file}.webp`),

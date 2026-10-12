@@ -115,7 +115,7 @@ test('All fourteen ordinary shop improvements retain their completed room frame 
   await page.screenshot({path:`docs/screenshots/scene-animation-stable-${info.project.name}.png`});
 });
 
-for(const project of ['warehouse-1','bakery-1','terrace-1'] as const)test(`${project} foundation stays on its painted Canvas2D fallback at the end of the effect`,async({page})=>{
+for(const project of ['warehouse-1','bakery-1','terrace-1','restaurant-1'] as const)test(`${project} foundation stays on its painted Canvas2D fallback at the end of the effect`,async({page})=>{
   await page.emulateMedia({reducedMotion:'no-preference'});
   await page.addInitScript(()=>{
     const original=HTMLCanvasElement.prototype.getContext;
@@ -125,12 +125,12 @@ for(const project of ['warehouse-1','bakery-1','terrace-1'] as const)test(`${pro
   });
   await seed(page,project,6);
   const before=await saved(page);
-  await page.evaluate(()=>{
+  await page.evaluate(project=>{
     const canvas=document.querySelector<HTMLCanvasElement>('.world-scene canvas')!;
     const ctx=canvas.getContext('2d')!;
     const sample=()=>Array.from({length:24},(_,index)=>[...ctx.getImageData(
-      Math.floor((310+(index%8)*135)/1536*canvas.width),
-      Math.floor((525+Math.floor(index/8)*45)/1024*canvas.height),1,1).data]).flat();
+      Math.floor(((project==='restaurant-1'?350:310)+(index%8)*(project==='restaurant-1'?110:135))/1536*canvas.width),
+      Math.floor(((project==='restaurant-1'?410:525)+Math.floor(index/8)*(project==='restaurant-1'?16:45))/1024*canvas.height),1,1).data]).flat();
     const state=window as unknown as {pixelContinuity:{before:string;firstReveal:string|null;unique:number;blank:number;stop:()=>void}};
     const unique=new Set<string>();
     const report=state.pixelContinuity={before:sample().join(','),firstReveal:null as string|null,unique:0,blank:0,stop:()=>{}};
@@ -142,7 +142,7 @@ for(const project of ['warehouse-1','bakery-1','terrace-1'] as const)test(`${pro
       frame=requestAnimationFrame(tick);
     };
     frame=requestAnimationFrame(tick);report.stop=()=>cancelAnimationFrame(frame);
-  });
+  },project);
   await watchCompletion(page);
   await page.locator('.world-main-action[data-action="buy-task"]').click();
   await expectContinuity(page);
@@ -241,7 +241,7 @@ test('Counter contour repair retains the painted service room through purchase t
   await page.screenshot({path:`docs/screenshots/shop-expansion-counter-animation-${info.project.name}.png`});
 });
 
-for(const project of ['fruit-yard-1','fruit-yard-2','bakery-1','terrace-1'] as const)test(`Every ${project} purchase retains its registered scene and pinned order`,async({page},info)=>{
+for(const project of ['fruit-yard-1','fruit-yard-2','bakery-1','terrace-1','restaurant-1'] as const)test(`Every ${project} purchase retains its registered scene and pinned order`,async({page},info)=>{
   test.setTimeout(300_000);await page.emulateMedia({reducedMotion:'no-preference'});
   await seed(page,project,0,true);
   const before=await saved(page),tasks=projectTasks(project);

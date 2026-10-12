@@ -6,10 +6,12 @@ import { SHOP_EXPANSION_TASK_ART } from './shop-expansion-scene';
 import {FRUIT_TASK_ART} from './fruit-scene';
 import {BAKERY_TASK_ART} from './bakery-scene';
 import {TERRACE_TASK_ART} from './terrace-scene';
+import {RESTAURANT_TASK_ART} from './restaurant-scene';
 export type CampaignView = 'hall' | 'hall-prep' | 'cold' | 'shop-bread' | 'shop-service' | 'shop-grocery' | 'shop-front'
   | 'warehouse-yard' | 'warehouse' | 'warehouse-cold' | 'warehouse-receiving'
   | 'fruit-yard' | 'fruit-market' | 'fruit-extension-site' | 'fruit-extension'
-  | 'bakery-yard' | 'bakery-oven' | 'bakery-shop' | 'terrace-deck';
+  | 'bakery-yard' | 'bakery-oven' | 'bakery-shop' | 'terrace-deck'
+  | 'restaurant-yard' | 'restaurant-hall' | 'restaurant-kitchen';
 export interface SceneLayer { asset: string; x: number; y: number; w: number; h: number; z?: number; foot?: boolean; }
 export interface SceneTaskArt { id: string; phaseId: string; view: CampaignView; artwork: string;
   anchor: { x: number; y: number }; layers: SceneLayer[]; remove?: string[]; }
@@ -159,6 +161,9 @@ for (const art of BAKERY_TASK_ART) {
 for (const art of TERRACE_TASK_ART) {
   tasks.push({id:art.id,phaseId:'terrace-1',view:art.view,artwork:art.source,anchor:art.anchor,layers:[]});
 }
+for (const art of RESTAURANT_TASK_ART) {
+  tasks.push({id:art.id,phaseId:'restaurant-1',view:art.view,artwork:art.source,anchor:art.anchor,layers:[]});
+}
 export const SCENE_TASKS: readonly SceneTaskArt[] = tasks;
 export const SCENE_TASK_BY_ID = new Map(tasks.map(task => [task.id, task]));
 export const SCENE_VIEW_NAMES: Record<CampaignView, string> = {
@@ -170,6 +175,7 @@ export const SCENE_VIEW_NAMES: Record<CampaignView, string> = {
   'fruit-extension-site': 'Строительство пристройки', 'fruit-extension': 'Зал фруктовой лавки',
   'bakery-yard': 'Пекарня и вход', 'bakery-oven': 'Рабочая кухня', 'bakery-shop': 'Вход и торговый зал',
   'terrace-deck': 'Терраса у моря',
+  'restaurant-yard': 'Лавка и второй этаж', 'restaurant-hall': 'Зал ресторана', 'restaurant-kitchen': 'Кухня и балкон',
 };
 export const SCENE_BACKGROUNDS: Partial<Record<CampaignView, string>> = {
   hall: 'hall-v1-empty', 'hall-prep': 'hall-v2-empty',

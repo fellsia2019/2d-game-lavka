@@ -42,9 +42,9 @@ test("Accepted design has 6000 slots, while production status still matches only
   assert.deepEqual(plan.orderSlots.filter(slot => slot.status !== "planned-no-definition").map(slot => slot.id), CHAPTER_DEFINITIONS.map(definition => definition.id));
   assert.equal(CAMPAIGN_PHASES.reduce((sum, phase) => sum + phase.orderTarget, 0), 6000);
   const firstBlock = plan.phases.filter(phase => plan.nextDelivery.phaseIds.includes(phase.id));
-  assert.equal(firstBlock.reduce((sum, phase) => sum + phase.orderCount, 0), 760);
-  assert.equal(firstBlock.reduce((sum, phase) => sum + phase.tasks.length, 0), 178);
-  assert.deepEqual(plan.nextDelivery.phaseIds, ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2", "bakery-1", "terrace-1"]);
+  assert.equal(firstBlock.reduce((sum, phase) => sum + phase.orderCount, 0), 840);
+  assert.equal(firstBlock.reduce((sum, phase) => sum + phase.tasks.length, 0), 204);
+  assert.deepEqual(plan.nextDelivery.phaseIds, ["shop-1", "warehouse-1", "shop-2", "warehouse-2", "fruit-yard-1", "fruit-yard-2", "bakery-1", "terrace-1", "restaurant-1"]);
   assert.deepEqual(plan.phases.filter(phase => phase.globalStage === 3 && !plan.nextDelivery.phaseIds.includes(phase.id)).map(phase => phase.id),
     ["shop-3", "warehouse-3", "fruit-yard-3", "bakery-2", "bakery-3"]);
 });

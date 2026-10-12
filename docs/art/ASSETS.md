@@ -89,3 +89,9 @@ Use case: stylized-concept. Asset type: single transparent 2.5D game sprite for 
 ## Основа карты глобальных Stage, 6 октября 2026 года
 
 Встроенный image_gen.imagegen подготовил [campaign-map-cleared-original.png](campaign-map-cleared-original.png), 1536 × 1024, 2 808 737 байт. Точное задание, относительный референс, SHA-256 и статус — [STAGE_MAP_PROMPT.json](STAGE_MAP_PROMPT.json). Исходник хранится внутри репозитория, в runtime пока не включён. Перед подключением нужны самостоятельные мусор, хозяйственные остатки, растительность, пни и состояния фундамента/стен/крыши; чистая основа не заменяет заброшенную стартовую композицию. Старую runtime-карту с готовым складом заменить при реализации Stage 1–2. Оригинальный campaign-map.webp остаётся исходным референсом этого задания.
+
+## Ресторан — 12 октября
+
+Три зарегистрированных вида1536×1024,14 WebP-сцен,4 карты,2 прозрачных товара320×320 и техническаяSVG-разметка: **5 852 842 байта** runtime-ассетов. Качество сцен/карты90 без уменьшения разрешения; кекс/газировка96 с настоящейRGBA. Источники, промпты, экспортёры и SHA находятся в[restaurant-rooms](restaurant-rooms/export-manifest.json), [restaurant-map](restaurant-map/export-manifest.json), [restaurant-goods](restaurant-goods/manifest.json). Все26 миниатюр соответствуют реальным покупкам. Художник — GPT-6 Astra; независимый просмотр игровых комбинаций — [RESTAURANT_REVIEW.md](RESTAURANT_REVIEW.md). Карта, фасад и интерьеры следуют [модели](RESTAURANT_MODEL.md); [runtime](RESTAURANT_RUNTIME.md).
+
+15 неиспользуемых листов прежней диорамы/отдельных полок перенесены побайтно изpublic/assets в[retired-runtime](retired-runtime/manifest.json),2 610 616 байт. PNG-оригиналы иreference сохранены; архивные экспортёры больше не возвращают эти файлы вdist. `hall-corner-empty.webp` остаётся вpublic как фон магазина помощи. Финальный размер всегоdist — в[QA.md](../QA.md).

@@ -46,8 +46,8 @@ test('Every schema-10 bakery prefix keeps ownership, wallets and exact pinned at
     assert.equal(loaded.warning, undefined, `${prefix}/${legacy}`);
     assert.equal(loaded.migrated, true);
     const progress = loaded.progress;
-    assert.equal(progress.schema, 11);
-    assert.equal(progress.campaign.version, 'coastal-campaign-9');
+    assert.equal(progress.schema, 12);
+    assert.equal(progress.campaign.version, 'coastal-campaign-10');
     assert.deepEqual(progress.campaign.completedTasks, before.campaign.completedTasks);
     assert.equal(progress.campaign.bakeryLegacyPrefix, before.campaign.bakeryLegacyPrefix);
     for (const key of ['coins', 'stars', 'repairKits', 'completed', 'inventory', 'settings', 'sceneDecor', 'attempt', 'attempts', 'selectedProject'] as const)

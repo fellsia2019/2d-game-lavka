@@ -63,7 +63,7 @@ export function validateTerracePlan(contract,plan) {
   assert.equal(contract.contractVersion,"terrace-1-production-1");
   assert.equal(contract.contentVersion,"coastal-stage-1-2-bakery-terrace-v1");
   assert.equal(contract.schema,11);assert.equal(contract.campaignVersion,"coastal-campaign-9");
-  assert.equal(contract.planVersion,plan.planVersion);assert.equal(plan.planVersion,"coastal-full-product-plan-7");
+  assert.equal(contract.planVersion,"coastal-full-product-plan-7");assert.ok(["coastal-full-product-plan-7","coastal-full-product-plan-8"].includes(plan.planVersion));
   assert.equal(contract.state,active?"implemented":"prepared");
   assert.equal(contract.orders,80);assert.equal(contract.works,26);
   assert.equal(contract.globalStage,4);assert.equal(contract.localStage,1);
@@ -128,14 +128,14 @@ function validateBaseline(contract,plan) {
     assert.deepEqual(plan.orderSlots.filter(s=>s.phaseId===project.id).map(s=>({id:s.id,currency:s.rewardCurrency})),project.rewards);
   }
   if(contract.runtimeEnabled) {
-    assert.equal(stories.length,760);assert.equal(block.flatMap(p=>p.tasks).length,178);assert.equal(block.length,8);
-    assert.deepEqual(block.at(-1).requiresCompletedPhases,["bakery-1"]);
-    assert.deepEqual(block.at(-1).plannedRequiresCompletedPhases,contract.requiresCompletedPhases);
-    assert.deepEqual(block.at(-1).runtimeDeliveryOverride,contract.runtimeDeliveryOverride);
+    assert.equal(stories.length,plan.nextDelivery.orders);assert.equal(block.flatMap(p=>p.tasks).length,plan.nextDelivery.tasks);assert.ok(block.length>=8);
+    assert.deepEqual(block.find(p=>p.id==="terrace-1").requiresCompletedPhases,["bakery-1"]);
+    assert.deepEqual(block.find(p=>p.id==="terrace-1").plannedRequiresCompletedPhases,contract.requiresCompletedPhases);
+    assert.deepEqual(block.find(p=>p.id==="terrace-1").runtimeDeliveryOverride,contract.runtimeDeliveryOverride);
     assert.deepEqual(contract.implementedBlock,{orders:760,works:178,stars:517,repairKits:243,completeGlobalStage3:false,completeGlobalStage4:false});
     assert.equal(plan.nextDelivery.completeGlobalStage3,false);assert.equal(plan.nextDelivery.completeGlobalStage4,false);
-    assert.deepEqual(plan.nextDelivery.phaseIds,[...contract.baseline.projectIds,"terrace-1"]);
-    assert.equal(plan.deliveryStatus.plannedOrders,5240);assert.equal(plan.deliveryStatus.plannedTasks,566);
+    assert.deepEqual(plan.nextDelivery.phaseIds.slice(0,8),[...contract.baseline.projectIds,"terrace-1"]);
+    assert.equal(plan.deliveryStatus.plannedOrders,6000-plan.nextDelivery.orders);assert.equal(plan.deliveryStatus.plannedTasks,744-plan.nextDelivery.tasks);
   }
 }
 function validateProduction(contract) {
@@ -147,7 +147,7 @@ function validateProduction(contract) {
   assert.equal(manifest.storiesDigest,digest(manifest.stories));assert.deepEqual(manifest.denseRange,[681,760]);assert.deepEqual(manifest.catalogRange,[2241,2320]);
   assert.deepEqual(manifest.runtimeDeliveryOverride,contract.runtimeDeliveryOverride);
   assert.deepEqual(manifest.baseline,contract.baseline.projects.map(({id,sourceFileDigest,definitionDigest})=>({id,sourceFileDigest,definitionDigest})));
-  if(contract.runtimeEnabled)assert.deepEqual(manifest.stories,read("src/levels/stage-block.json").slice(680));
+  if(contract.runtimeEnabled)assert.deepEqual(manifest.stories,read("src/levels/stage-block.json").slice(680,760));
   for(const [index,entry] of manifest.entries.entries()) {
     const n=terraceOrderNumbers(contract,index+1),d=defs[index],story=manifest.stories[index];
     assert.deepEqual({id:entry.id,localNumber:entry.localNumber,denseNumber:entry.denseNumber,catalogNumber:entry.catalogNumber},n);
@@ -174,8 +174,8 @@ function replayProduction(contract,manifest) {
     for(let i=0;i<4;i++){const seed='terrace-default-pool-'+i;
       assert.deepEqual(generate(seed,'mixed',77,{recipe:'mixed-classic'}),generate(seed,'mixed',77,{recipe:'mixed-classic',goods:oldGoods}));}
     if(${contract.runtimeEnabled}){
-      assert.equal(CHAPTER.length,760);assert.equal(OFFLINE_CHAPTER_DEFINITIONS.length,760);assert.equal(TASKS.length,178);assert.equal(PROJECTS.length,8);
-      assert.equal(CAMPAIGN_VERSION,'coastal-campaign-9');assert.equal(freshProgress().schema,11);assert.equal(CONTENT_VERSION,${JSON.stringify(contract.contentVersion)});
+      assert.equal(CHAPTER.length,${read('docs/content/full-product-plan.json').nextDelivery.orders});assert.equal(OFFLINE_CHAPTER_DEFINITIONS.length,CHAPTER.length);assert.equal(TASKS.length,${read('docs/content/full-product-plan.json').nextDelivery.tasks});assert.equal(PROJECTS.length,${read('docs/content/full-product-plan.json').nextDelivery.phaseIds.length});
+      assert.equal(CAMPAIGN_VERSION,${JSON.stringify(read('docs/content/restaurant-1-contract.json').runtimeEnabled?'coastal-campaign-10':contract.campaignVersion)});assert.equal(freshProgress().schema,${read('docs/content/restaurant-1-contract.json').runtimeEnabled?12:contract.schema});assert.equal(CONTENT_VERSION,${JSON.stringify(read('docs/content/restaurant-1-contract.json').runtimeEnabled?read('docs/content/restaurant-1-contract.json').contentVersion:contract.contentVersion)});
       assert.equal(chapterNumber('terrace-s1-order-001'),681);assert.equal(chapterNumber('terrace-s1-order-080'),760);
       for(let n=681;n<=760;n++)assert.equal(offlineChapterLevel(n).number,2241+n-681);
       const p=freshProgress();p.completed=CHAPTER.slice(0,680).map(s=>s.id);p.campaign.completedTasks=TASKS.filter(t=>t.phaseId!=='terrace-1').map(t=>t.id);

@@ -25,7 +25,8 @@ for filename, name, cell, size in specs:
     crop = (max(0, left-4), max(0, top-4), min(sprite.width, right+4), min(sprite.height, bottom+4))
     sprite = sprite.crop(crop)
     sprite.thumbnail(size, Image.Resampling.LANCZOS)
-    destination = ROOT / 'public/assets' / (name + '.webp')
+    destination = ROOT / 'docs/art/retired-runtime' / (name + '.webp')
+    destination.parent.mkdir(parents=True, exist_ok=True)
     sprite.save(destination, 'WEBP', quality=92, method=6)
     entry = dict(source=str(source.relative_to(ROOT)), sourceSha256=hashlib.sha256(source.read_bytes()).hexdigest(),
         runtime=str(destination.relative_to(ROOT)), runtimeSha256=hashlib.sha256(destination.read_bytes()).hexdigest(),

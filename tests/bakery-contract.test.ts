@@ -70,13 +70,13 @@ test("Pinned bakery production refuses changed Definitions and unversioned metad
   }
 });
 
-test("Bakery integration replays all 760 and fingerprints the unchanged six baseline catalogs", () => {
+test("Bakery integration replays all 840 and fingerprints the unchanged six baseline catalogs", () => {
   assert.deepEqual(checker.checkBakeryContract(), { planning: false, produced: true, runtimeEnabled: true, bakeryOrders: 80, bakeryWorks: 26,
     repairKits: 32, stars: 48, gate: "bakery-s1-t20 after order 38", baselineOrders: 600, baselineWorks: 126,
-    replayed: 760, catalogRange: [1081, 1160], denseRange: [601, 680], completeGlobalStage3: false });
-  assert.equal(PROJECTS.length, 8);
-  assert.equal(TASKS.length, 178);
-  assert.equal(CHAPTER.length, 760);
+    replayed: 840, catalogRange: [1081, 1160], denseRange: [601, 680], completeGlobalStage3: false });
+  assert.equal(PROJECTS.length, 9);
+  assert.equal(TASKS.length, 204);
+  assert.equal(CHAPTER.length, 840);
   assert.equal(phaseStatus("bakery-1", [], freshProgress().campaign), "locked");
   assert.ok(Object.hasOwn(GOODS, "bg") && Object.hasOwn(GOODS, "cr"));
 });
@@ -179,7 +179,7 @@ test("Catalog 1081–1160 loads through real dense indices 601–680 without rew
     assert.deepEqual(definition, offlineChapterLevel(entry.denseNumber));
     assert.equal(orderCurrency(entry.id), entry.localNumber <= 32 ? "repairKits" : "stars");
   }
-  await assert.rejects(loader.load(761), /Unknown chapter/);
+  await assert.rejects(loader.load(841), /Unknown chapter/);
   assert.equal(currentGlobalStage(CHAPTER.map(story => story.id), { ...freshProgress().campaign, completedTasks: TASKS.map(task => task.id) }), 3);
   for (const id of ["shop-3", "warehouse-3", "fruit-yard-3", "bakery-2", "bakery-3", "terrace-2"])
     assert.equal(phaseStatus(id, CHAPTER.map(story => story.id), { ...freshProgress().campaign, completedTasks: TASKS.map(task => task.id) }), "planned");

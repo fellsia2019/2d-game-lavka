@@ -989,8 +989,8 @@
     "title": "Построить второй этаж",
     "orderTarget": 80,
     "taskTarget": 26,
-    "starTarget": 80,
-    "repairKitTarget": 0,
+    "starTarget": 48,
+    "repairKitTarget": 32,
     "taskIds": [
       "restaurant-s1-t01",
       "restaurant-s1-t02",

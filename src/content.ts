@@ -32,7 +32,7 @@ export interface ChapterEntry {
   guidance?: "gentle";
 }
 export const CHAPTER: readonly ChapterEntry[] = chapterStories as ChapterEntry[];
-export const CONTENT_VERSION = "coastal-stage-1-2-bakery-terrace-v1";
+export const CONTENT_VERSION = "coastal-stage-1-2-bakery-terrace-restaurant-v1";
 // Frozen migration map: changing a seed or reordering today's catalog must not
 // change the meaning of ids that have already been stored by schema 1.
 const LEGACY_IDS: Record<string, string> = {
@@ -99,6 +99,7 @@ const PROJECT_LOADERS: Record<string, () => Promise<Definition[]>> = {
   "fruit-yard-2": async () => readProjectUrl((await import("./levels/projects/fruit-yard-2.json?url")).default),
   "bakery-1": async () => readProjectUrl((await import("./levels/projects/bakery-1.json?url")).default),
   "terrace-1": async () => readProjectUrl((await import("./levels/projects/terrace-1.json?url")).default),
+  "restaurant-1": async () => readProjectUrl((await import("./levels/projects/restaurant-1.json?url")).default),
 };
 async function readProjectUrl(url: string): Promise<Definition[]> {
   const response = await fetch(url);

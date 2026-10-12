@@ -203,7 +203,7 @@ if (bakeryReady) {
   const manifest = read("docs/content/bakery-1-production.json"), contract = read("docs/content/bakery-1-contract.json");
   const bakeryDefinitions = read(manifest.definitionFile), bakeryStories = stories.filter(story => story.phaseId === "bakery-1");
   const digest = value => createHash("sha256").update(typeof value === "string" ? value : JSON.stringify(value)).digest("hex");
-  assert(["coastal-full-product-plan-6", "coastal-full-product-plan-7"].includes(plan.planVersion) && contract.planVersion === "coastal-full-product-plan-6" &&
+  assert(["coastal-full-product-plan-6", "coastal-full-product-plan-7", "coastal-full-product-plan-8"].includes(plan.planVersion) && contract.planVersion === "coastal-full-product-plan-6" &&
     contract.contractVersion === "bakery-1-production-2" && manifest.productionVersion === contract.contractVersion &&
     contract.contentVersion === "coastal-stage-1-2-bakery-v2" && manifest.contentVersion === contract.contentVersion,
     "Bakery metadata revision must have matching plan, contract and content versions");
@@ -239,7 +239,7 @@ if (terraceReady) {
   const contract=read("docs/content/terrace-1-contract.json"), manifest=read(contract.productionManifest);
   const terraceStories=stories.filter(story=>story.phaseId==="terrace-1"), terraceDefinitions=read(manifest.definitionFile);
   const digest=value=>createHash("sha256").update(typeof value==="string"?value:JSON.stringify(value)).digest("hex");
-  assert(plan.planVersion === "coastal-full-product-plan-7" && contract.planVersion === plan.planVersion &&
+  assert(["coastal-full-product-plan-7","coastal-full-product-plan-8"].includes(plan.planVersion) && contract.planVersion === "coastal-full-product-plan-7" &&
     contract.contractVersion === "terrace-1-production-1" && manifest.productionVersion === contract.contractVersion &&
     contract.contentVersion === "coastal-stage-1-2-bakery-terrace-v1" && manifest.contentVersion === contract.contentVersion,
     "Terrace production versions differ");
@@ -255,8 +255,25 @@ if (terraceReady) {
     entry.seed===terraceDefinitions[index].seed && entry.generatorVersion===terraceDefinitions[index].generatorVersion), "Terrace numbering mismatch");
   assert(terraceStories.every((story,index)=>story.orderContext.requiresCompletedTaskId===(index<38?undefined:"terrace-s1-t14")),"Terrace interior gate mismatch");
   assert(plan.nextDelivery.completeGlobalStage3===false && plan.nextDelivery.completeGlobalStage4===false,"Prototype delivery cannot finish Stage3 or4");
-  assert(plan.orderSupplyPolicy.implementedRepairOrders===243 && plan.orderSupplyPolicy.implementedFoodOrders===517 &&
-    plan.orderSupplyPolicy.implementedScope.join()===readyPhases.join(),"Actual supply policy differs from produced eight projects");
+  assert(plan.orderSupplyPolicy.implementedRepairOrders===readySlots.filter(slot=>slot.rewardCurrency==="repairKits").length && plan.orderSupplyPolicy.implementedFoodOrders===readySlots.filter(slot=>slot.rewardCurrency==="stars").length &&
+    plan.orderSupplyPolicy.implementedScope.join()===readyPhases.join(),"Actual supply policy differs from produced projects");
+}
+const restaurant=phases.get("restaurant-1"),restaurantReady=readyPhases.includes("restaurant-1");
+assert(restaurant.tasks.every((task,index)=>task.id===`restaurant-s1-t${String(index+1).padStart(2,"0")}` && task.currency===(index<12?"repairKits":"stars")),"Restaurant stable task IDs or repair prefix changed");
+assert(sum(restaurant.tasks.slice(0,12).map(task=>task.cost))===32 && sum(restaurant.tasks.slice(12).map(task=>task.cost))===48,"Restaurant32/48 budget mismatch");
+assert(restaurant.requiresCompletedPhases.join()==="shop-4,warehouse-4,fruit-yard-4,bakery-4,terrace-4","Long-term restaurant dependencies changed");
+assert(restaurant.runtimeDeliveryOverride.requiresCompletedPhases.join()==="terrace-1" && restaurant.runtimeDeliveryOverride.reason==="prototype-preview-after-terrace-1" && restaurant.runtimeDeliveryOverride.completeGlobalStage3===false && restaurant.runtimeDeliveryOverride.completeGlobalStage4===false && restaurant.runtimeDeliveryOverride.completeGlobalStage5===false,"Restaurant prototype override must stay explicit");
+if(restaurantReady){
+ const contract=read("docs/content/restaurant-1-contract.json"),manifest=read(contract.productionManifest),restaurantStories=stories.filter(story=>story.phaseId==="restaurant-1"),restaurantDefinitions=read(manifest.definitionFile);
+ const digest=value=>createHash("sha256").update(typeof value==="string"?value:JSON.stringify(value)).digest("hex");
+ assert(plan.planVersion==="coastal-full-product-plan-8" && contract.planVersion===plan.planVersion && contract.contractVersion==="restaurant-1-production-1" && manifest.productionVersion===contract.contractVersion && contract.contentVersion==="coastal-stage-1-2-bakery-terrace-restaurant-v1" && manifest.contentVersion===contract.contentVersion,"Restaurant production versions differ");
+ assert(contract.produced && contract.runtimeEnabled && manifest.produced && manifest.runtimeEnabled,"Restaurant readiness needs pinned production and runtime integration");
+ assert(manifest.definitionDigest===digest(restaurantDefinitions) && manifest.sourceFileDigest===digest(readFileSync(new URL(manifest.definitionFile,root),"utf8")) && manifest.storiesDigest===digest(restaurantStories),"Restaurant production fingerprint mismatch");
+ assert(digest(stories.slice(0,760))===contract.baseline.storiesDigest,"Existing760 metadata changed");
+ for(const project of contract.baseline.projects)assert(digest(readFileSync(new URL(project.definitionFile,root),"utf8"))===project.sourceFileDigest,`Existing pinned source changed:${project.id}`);
+ assert(manifest.entries.length===80 && manifest.entries.every((entry,index)=>entry.id===restaurantDefinitions[index].id && entry.localNumber===index+1 && entry.catalogNumber===3901+index && entry.denseNumber===761+index && entry.seed===restaurantDefinitions[index].seed && entry.generatorVersion===restaurantDefinitions[index].generatorVersion),"Restaurant numbering mismatch");
+ assert(restaurantStories.every((story,index)=>story.orderContext.requiresCompletedTaskId===(index<38?undefined:"restaurant-s1-t14")),"Restaurant interior gate mismatch");
+ assert(plan.nextDelivery.completeGlobalStage3===false && plan.nextDelivery.completeGlobalStage4===false && plan.nextDelivery.completeGlobalStage5===false,"Prototype cannot complete global Stages3–5");
 }
 const readyTasks = tasks.filter(t => t.status !== "planned");
 assert(plan.deliveryStatus.existingOrders === readySlots.length &&

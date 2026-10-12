@@ -29,7 +29,8 @@ for name, source in SOURCES.items():
         continue
     original = Image.open(path)
     assert original.size == (1536, 1024), (source, original.size)
-    target = ROOT / 'public/assets' / (name + '.webp')
+    target = ROOT / 'docs/art/retired-runtime' / (name + '.webp')
+    target.parent.mkdir(parents=True, exist_ok=True)
     original.convert('RGB').save(target, 'WEBP', quality=96, method=6)
     entries.append(dict(name=name, source=source, sourceSha256=hashlib.sha256(path.read_bytes()).hexdigest(),
         runtime=str(target.relative_to(ROOT)), runtimeSha256=hashlib.sha256(target.read_bytes()).hexdigest(),

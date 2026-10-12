@@ -1,0 +1,142 @@
+[
+  {
+    "source": "docs/art/restaurant-rooms/hall-empty.png",
+    "sha256": "105323972c37a05951d535ca48c24a69e4099583a086dee055ca8905fd45f765",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/hall-empty.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/hall-furniture.png",
+    "sha256": "54d9c4c5d9212c097743e85d9533759f6c59c557a1419b3a193a0a6e643259c6",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/hall-furniture.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/hall-master-v2.png",
+    "sha256": "cf94bbab275e6932f5ccd2043e38e925130f6d26160d252c4c2a5c0dcede6a82",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/hall-master-v2.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/hall-master-v3.png",
+    "sha256": "4a24773c835797e90cbb39e3801ca29827d307022bd2f845cbe042d53e6a5348",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/hall-master-v3.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/hall-master.png",
+    "sha256": "8b236d8137c619c06d33ace12001b2ec1dc8c64430c73feed98fa57ace870d60",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/hall-master.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/hall-rough.png",
+    "sha256": "f35a1a742bfd81fa5f7baf3960d176f581e76bfc106d44c7efe5ed21d44ba04b",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/hall-rough.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/hall-seating.png",
+    "sha256": "a3195c07589604f79e19ee99227f6597fd4a306c25b7429e0eca183809936875",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/hall-seating.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/hall-tables.png",
+    "sha256": "5c35bfce5bf97c7691bd844b1bab8572fb29510bd6500c5b6a2ff2e000781a9b",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/hall-tables.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/kitchen-empty.png",
+    "sha256": "b4ef8ad438d8f3b291e9217be13f35880b986a7c39f2e55a01e268162ec1d5d9",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/kitchen-empty.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/kitchen-master-v2.png",
+    "sha256": "3eb677dd20218cbcb7bc6eac3db87b75eade51d170805eedf60ea15be0ff516d",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/kitchen-master-v2.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/kitchen-master-v3.png",
+    "sha256": "21c449fdf139d91dad275c433417200c08faae95d61ca7936d7844a68b07c481",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/kitchen-master-v3.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/kitchen-master.png",
+    "sha256": "e47703dc83380e09161c901db9c56412adabe8ce88ce95f29e8d3848044a1534",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/kitchen-master.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/kitchen-prep.png",
+    "sha256": "00fa539ab38ed9b73d702c6747bbad0b95f14281f18152b8debe92c53f1e074f",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/kitchen-prep.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/yard-before.png",
+    "sha256": "72090091e831826aa373ed69cb2146fd0e7ed45c8d852e758fc9f8b182747a2a",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/yard-before.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/yard-clear.png",
+    "sha256": "07d4323e7617fc5f06078fd8fa7f81393ed55494ced4f45bfb708613335091bd",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/yard-clear.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/yard-ready-draft.png",
+    "sha256": "3b4e3736ea39b4ceb4396f9c23be7bd3e42081b8023f91dc4741e9953d61509e",
+    "generator": "built-in ImageGen",
+    "prompt": null,
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/yard-ready-v2.png",
+    "sha256": "7d1f8f6929a1a6d521070e312174c4e964cd9f5f7d1c6f75c2f1f19e077877d4",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/yard-ready-v2.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/yard-ready-v3.png",
+    "sha256": "53bb75aef6afae6a37e541b608ede6b36f632cfa9683500f51d66a62ae01a74d",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/yard-ready-v3.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/yard-walls.png",
+    "sha256": "ba07335f3bef7481a5801f9222250268005cb12e06dff62849ee7684d1e19a46",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/yard-walls.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-rooms/yard-debris-registered.png",
+    "sha256": "847bfe961152613d1828b35d51a1c0b52253bf7eb6c894efc36e3e28625f19bc",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-rooms/prompts/yard-debris-registered.txt",
+    "role": "registered low debris donor on clean slab; runtime restaurant-yard-before.webp"
+  }
+]

@@ -206,7 +206,16 @@ function between(previous:Plan,next:Plan,factor:number):Frame {
     const before=old.get(layerKey(layer));old.delete(layerKey(layer));
     return {...layer,alpha:(before?.alpha??0)+(layer.alpha-(before?.alpha??0))*factor};
   });
-  layers.push(...[...old.values()].map(layer=>({...layer,alpha:layer.alpha*(1-factor)})));
+  // Keep a disappearing layer in its previous paint order. Appending it above
+  // every surviving layer makes the first frame jump (e.g. survey markings
+  // that used to sit beneath a partially visible foundation).
+  for (let index=previous.layers.length-1;index>=0;index--) {
+    const layer=previous.layers[index],key=layerKey(layer);
+    if (!old.has(key)) continue;
+    const following=previous.layers.slice(index+1).find(candidate=>layers.some(current=>layerKey(current)===layerKey(candidate)));
+    const position=following?layers.findIndex(current=>layerKey(current)===layerKey(following)):layers.length;
+    layers.splice(position,0,{...layer,alpha:layer.alpha*(1-factor)});
+  }
   const bases=previous.base===next.base?[{source:next.base,alpha:1}]
     :[{source:previous.base,alpha:1},{source:next.base,alpha:factor}];
   return {bases,layers:layers.filter(layer=>!lightOperator(layer)),exposure:exposure(layers.filter(lightOperator),new Set(),1)};

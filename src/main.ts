@@ -294,7 +294,7 @@ function configureHallScene() {
   if (!scene || !stage || !world || !worldStage) return;
   const viewport = scene.parentElement!;
   world.classList.add("hall-game-world");
-  const currentSurround = scene.classList.contains('bakery-composition') || scene.classList.contains('terrace-composition');
+  const currentSurround = scene.classList.contains('bakery-composition') || scene.classList.contains('terrace-composition') || scene.classList.contains('restaurant-composition');
   world.classList.toggle('bakery-game-world', currentSurround);
   if (currentSurround) {
     const plan = JSON.parse(stage.querySelector('script.hall-canvas-plan')!.textContent!);

@@ -6,7 +6,7 @@ import { GOODS, GOOD_IDS } from "../src/catalog";
 import { projectTasks, PROJECTS } from "../src/campaign";
 import { createOrderAppearance, validOrderAppearance, orderItem, orderSummary, MATERIALS } from "../src/order-supplies";
 
-test("all 760 pinned orders have complete stable presentation and 243 repair / 517 food rewards", () => {
+test("all 840 pinned orders have complete stable presentation and 275 repair / 565 food rewards", () => {
   const before = JSON.stringify(OFFLINE_CHAPTER_DEFINITIONS);
   let repairs = 0;
   for (const definition of OFFLINE_CHAPTER_DEFINITIONS) {
@@ -35,8 +35,8 @@ test("all 760 pinned orders have complete stable presentation and 243 repair / 5
       assert.deepEqual(appearance.items, {});
     }
   }
-  assert.equal(repairs, 243);
-  assert.equal(OFFLINE_CHAPTER_DEFINITIONS.length - repairs, 517);
+  assert.equal(repairs, 275);
+  assert.equal(OFFLINE_CHAPTER_DEFINITIONS.length - repairs, 565);
   assert.equal(JSON.stringify(OFFLINE_CHAPTER_DEFINITIONS), before);
 });
 

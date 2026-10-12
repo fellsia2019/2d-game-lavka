@@ -1,0 +1,46 @@
+[
+  {
+    "id": "cupcake",
+    "source": "docs/art/restaurant-goods/cupcake.png",
+    "prompt": "docs/art/restaurant-goods/prompts/cupcake.txt",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceSha256": "6257c5491a2f9b4d0ce71f7ba37d2f5837c2abe81377c279d03d095d107297a7",
+    "runtime": "public/assets/cupcake.webp",
+    "runtimeSize": [
+      320,
+      320
+    ],
+    "mode": "RGBA",
+    "bytes": 28692,
+    "runtimeSha256": "c2abbc82bc7a36132c25b3b4b2206faadebc487c7e1064b87cbed701faf076d3",
+    "generator": "built-in ImageGen",
+    "references": [],
+    "referenceRole": "read-only visual style study; not attached to generation",
+    "normalization": "complete frame resized to 320x320; RGBA alpha preserved; WebP quality96"
+  },
+  {
+    "id": "soda",
+    "source": "docs/art/restaurant-goods/soda.png",
+    "prompt": "docs/art/restaurant-goods/prompts/soda.txt",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "sourceSha256": "72c63ab2c7f3a17a0e411c765717298a7917fbbe8a22659a361054220a453370",
+    "runtime": "public/assets/soda.webp",
+    "runtimeSize": [
+      320,
+      320
+    ],
+    "mode": "RGBA",
+    "bytes": 19970,
+    "runtimeSha256": "f9a6d3ba1cefd6314f9cedc51320fb6807a995f11e806fd9c215db125960ee6f",
+    "generator": "built-in ImageGen",
+    "references": [],
+    "referenceRole": "read-only visual style study; not attached to generation",
+    "normalization": "complete frame resized to 320x320; RGBA alpha preserved; WebP quality96"
+  }
+]

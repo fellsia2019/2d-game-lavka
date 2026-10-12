@@ -1,0 +1,128 @@
+[
+  {
+    "name": "yard-before",
+    "source": "docs/art/restaurant-rooms/yard-debris-registered.png",
+    "runtime": "public/assets/restaurant-yard-before.webp",
+    "bytes": 411328,
+    "sourceSha256": "847bfe961152613d1828b35d51a1c0b52253bf7eb6c894efc36e3e28625f19bc",
+    "runtimeSha256": "21393065ef746411a03277712c0c0204bcf0d5f1c9de746ab1e030198bd79e91",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "yard-clear",
+    "source": "docs/art/restaurant-rooms/yard-clear.png",
+    "runtime": "public/assets/restaurant-yard-clear.webp",
+    "bytes": 381900,
+    "sourceSha256": "07d4323e7617fc5f06078fd8fa7f81393ed55494ced4f45bfb708613335091bd",
+    "runtimeSha256": "0c06e66e3d5408766281a10af5dbb54488192bdf1f5fd16bfa90639e1a71f36e",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "yard-walls",
+    "source": "docs/art/restaurant-rooms/yard-walls.png",
+    "runtime": "public/assets/restaurant-yard-walls.webp",
+    "bytes": 385052,
+    "sourceSha256": "ba07335f3bef7481a5801f9222250268005cb12e06dff62849ee7684d1e19a46",
+    "runtimeSha256": "e96a71f05ae97cb78f7a34d6d859924fc83e9bee118126ede99f2dce8f946592",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "yard-ready-v3",
+    "source": "docs/art/restaurant-rooms/yard-ready-v3.png",
+    "runtime": "public/assets/restaurant-yard-ready-v3.webp",
+    "bytes": 390688,
+    "sourceSha256": "53bb75aef6afae6a37e541b608ede6b36f632cfa9683500f51d66a62ae01a74d",
+    "runtimeSha256": "c033e3d9b138d1baf0a8906eb11b4e627f126d23b5a82540f7c872f01e1e7c2c",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-rough",
+    "source": "docs/art/restaurant-rooms/hall-rough.png",
+    "runtime": "public/assets/restaurant-hall-rough.webp",
+    "bytes": 291220,
+    "sourceSha256": "f35a1a742bfd81fa5f7baf3960d176f581e76bfc106d44c7efe5ed21d44ba04b",
+    "runtimeSha256": "c807d4c1cfa6682b239de759b690314b8d3f7b946a8b729045fde2d9b3144dc1",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-empty",
+    "source": "docs/art/restaurant-rooms/hall-empty.png",
+    "runtime": "public/assets/restaurant-hall-empty.webp",
+    "bytes": 210862,
+    "sourceSha256": "105323972c37a05951d535ca48c24a69e4099583a086dee055ca8905fd45f765",
+    "runtimeSha256": "26203f5c8932a7c92a50d209bfc44f49ec27a4f82adb902926a41d9598f461b6",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-tables",
+    "source": "docs/art/restaurant-rooms/hall-tables.png",
+    "runtime": "public/assets/restaurant-hall-tables.webp",
+    "bytes": 202000,
+    "sourceSha256": "5c35bfce5bf97c7691bd844b1bab8572fb29510bd6500c5b6a2ff2e000781a9b",
+    "runtimeSha256": "f7a892fa37f2a9a2c68085876786e816dfe39290710a0d758748b58904ad71c3",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-seating",
+    "source": "docs/art/restaurant-rooms/hall-seating.png",
+    "runtime": "public/assets/restaurant-hall-seating.webp",
+    "bytes": 226958,
+    "sourceSha256": "a3195c07589604f79e19ee99227f6597fd4a306c25b7429e0eca183809936875",
+    "runtimeSha256": "775f166f189bd6c276671de73cdf5e0ef7925b1063ad1f5bcd629a2e35c61c0f",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-furniture",
+    "source": "docs/art/restaurant-rooms/hall-furniture.png",
+    "runtime": "public/assets/restaurant-hall-furniture.webp",
+    "bytes": 227442,
+    "sourceSha256": "54d9c4c5d9212c097743e85d9533759f6c59c557a1419b3a193a0a6e643259c6",
+    "runtimeSha256": "58cbc2ca32a1d3838d75f85c988f1fb02794e2066933bb134583ef04161d7ce3",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-master-v3",
+    "source": "docs/art/restaurant-rooms/hall-master-v3.png",
+    "runtime": "public/assets/restaurant-hall-master-v3.webp",
+    "bytes": 249620,
+    "sourceSha256": "4a24773c835797e90cbb39e3801ca29827d307022bd2f845cbe042d53e6a5348",
+    "runtimeSha256": "3b321130cd62b1f9c3d55a9b30413970706add7a27ab8e9825d0e12c6e741a62",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-master",
+    "source": "docs/art/restaurant-rooms/hall-master.png",
+    "runtime": "public/assets/restaurant-hall-master.webp",
+    "bytes": 402814,
+    "sourceSha256": "8b236d8137c619c06d33ace12001b2ec1dc8c64430c73feed98fa57ace870d60",
+    "runtimeSha256": "634b55c5e434cfdfd21fc89f699076aebf703535c218065fa6aa3ab685ff181c",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "kitchen-empty",
+    "source": "docs/art/restaurant-rooms/kitchen-empty.png",
+    "runtime": "public/assets/restaurant-kitchen-empty.webp",
+    "bytes": 203936,
+    "sourceSha256": "b4ef8ad438d8f3b291e9217be13f35880b986a7c39f2e55a01e268162ec1d5d9",
+    "runtimeSha256": "462b61029ac15068d62af03b0bc9f9fe2fb68046d6ce15f251d93a529aa78be4",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "kitchen-prep",
+    "source": "docs/art/restaurant-rooms/kitchen-prep.png",
+    "runtime": "public/assets/restaurant-kitchen-prep.webp",
+    "bytes": 202198,
+    "sourceSha256": "00fa539ab38ed9b73d702c6747bbad0b95f14281f18152b8debe92c53f1e074f",
+    "runtimeSha256": "8cc5bdea1b814f5a0eb54be6bebb1db35eba492343b4f56fa6cf9f781ee2fd4e",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "kitchen-master-v3",
+    "source": "docs/art/restaurant-rooms/kitchen-master-v3.png",
+    "runtime": "public/assets/restaurant-kitchen-master-v3.webp",
+    "bytes": 213894,
+    "sourceSha256": "21c449fdf139d91dad275c433417200c08faae95d61ca7936d7844a68b07c481",
+    "runtimeSha256": "980d62854fa630f9213badada7ea06a8d4b5cacd86458325b08f05908aa9d6ca",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  }
+]

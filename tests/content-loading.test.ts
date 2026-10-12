@@ -8,7 +8,7 @@ import { describeStructure } from "../src/generator";
 
 const projectIds = [...new Set(CHAPTER.map(story => story.phaseId))];
 const readers = () => Object.fromEntries(projectIds.map(id => [id, async () => offlineProjectDefinitions(id)]));
-test("Project loading serves all 760 exact pinned Definitions without mutating its cache", async () => {
+test("Project loading serves all 840 exact pinned Definitions without mutating its cache", async () => {
   const loader = createChapterLoader(readers());
   for (let number = 1; number <= CHAPTER.length; number++) {
     const definition = await loader.load(number);
@@ -21,7 +21,7 @@ test("Project loading serves all 760 exact pinned Definitions without mutating i
   }
   assert.throws(() => chapterLevel(31), /loadChapterLevel/);
   await assert.rejects(loader.load(0), /Unknown chapter/);
-  await assert.rejects(loader.load(761), /Unknown chapter/);
+  await assert.rejects(loader.load(841), /Unknown chapter/);
 });
 test("Concurrent requests share one load, LRU evicts projects, and failed requests can retry", async () => {
   const calls = new Map<string, number>();
@@ -76,9 +76,9 @@ test("A terrace catalog cannot substitute dense760 for its stable2320 before ent
 });
 test("The produced block keeps exact construction gates, phase assortments, stable numbers and varied structures", () => {
   const plan = JSON.parse(readFileSync(new URL("../docs/content/full-product-plan.json", import.meta.url), "utf8"));
-  assert.equal(CHAPTER.length, 760);
-  assert.equal(OFFLINE_CHAPTER_DEFINITIONS.length, 760);
-  assert.deepEqual(projectIds.map(id => CHAPTER.filter(story => story.phaseId === id).length), [80, 80, 120, 120, 80, 120, 80, 80]);
+  assert.equal(CHAPTER.length, 840);
+  assert.equal(OFFLINE_CHAPTER_DEFINITIONS.length, 840);
+  assert.deepEqual(projectIds.map(id => CHAPTER.filter(story => story.phaseId === id).length), [80, 80, 120, 120, 80, 120, 80, 80, 80]);
   for (const [index, story] of CHAPTER.entries()) {
     const phase = plan.phases.find((phase: any) => phase.id === story.phaseId);
     const slot = plan.orderSlots.find((slot: any) => slot.id === story.id);

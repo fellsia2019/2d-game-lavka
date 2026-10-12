@@ -1,0 +1,51 @@
+[
+  {
+    "source": "docs/art/restaurant-map/clear.png",
+    "sha256": "aa19246dfb340ed8ae141368d338a8cd2202f798b0af101a94964af97e6e7630",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-map/prompts/clear.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-map/final-v2.png",
+    "sha256": "a42e8b2f5a2782f3184e963fb5bb3b101b7cfec8574e1de6908a6bbb44d69b6f",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-map/prompts/final-v2.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-map/final-v3.png",
+    "sha256": "2c034ede0f2cf9552577cac60d256afeac167cd1ea75e585a485a702fd149748",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-map/prompts/final-v3.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-map/final-v4.png",
+    "sha256": "0ba4d8171e291b83a8f74ec1fd8a2117c279b7912c288837f42c80639131007b",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-map/prompts/final-v4.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-map/final-v5.png",
+    "sha256": "853ad5cfa1db2401b69ad3057296b9faf2b5ee043582390295787ca780ac0815",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-map/prompts/final-v5.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-map/final.png",
+    "sha256": "d98bcf5623d37211fe6d7ec45ef5165f0080ac158311b1738d8e9b5732814891",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-map/prompts/final.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  },
+  {
+    "source": "docs/art/restaurant-map/walls.png",
+    "sha256": "1ad9a89f22ed23a1ded86000a220aa2e5c7e299e0742eaf5848d641728834a7a",
+    "generator": "built-in ImageGen",
+    "prompt": "docs/art/restaurant-map/prompts/walls.txt",
+    "role": "source or retained iteration; runtime selection in export-manifest.json"
+  }
+]

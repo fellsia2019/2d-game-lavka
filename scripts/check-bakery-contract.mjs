@@ -69,7 +69,7 @@ export function validateBakeryPlan(contract, plan) {
   assert.equal(contract.contentVersion, "coastal-stage-1-2-bakery-v2");
   assert.equal(contract.schema, 10);
   assert.equal(contract.campaignVersion, "coastal-campaign-8");
-  assert.ok(["coastal-full-product-plan-6", "coastal-full-product-plan-7"].includes(plan.planVersion));
+  assert.ok(["coastal-full-product-plan-6", "coastal-full-product-plan-7", "coastal-full-product-plan-8"].includes(plan.planVersion));
   assert.equal(contract.planVersion, "coastal-full-product-plan-6");
   assert.equal(contract.orders, 80);
   assert.equal(contract.works, 26);
@@ -198,7 +198,7 @@ function validateBaseline(contract, plan) {
 /** Reuse the actual engine and current reward registry; no copied puzzle implementation. */
 function replayProduction(contract, manifest) {
   const delivery = read("docs/content/full-product-plan.json").nextDelivery;
-  const runtimeContract = delivery.phaseIds.includes("terrace-1") ? read("docs/content/terrace-1-contract.json") : contract;
+  const runtimeContract = delivery.phaseIds.includes("restaurant-1") ? read("docs/content/restaurant-1-contract.json") : delivery.phaseIds.includes("terrace-1") ? read("docs/content/terrace-1-contract.json") : contract;
   const code = `import assert from 'node:assert/strict';
     import { OFFLINE_CHAPTER_DEFINITIONS } from './src/content-offline.ts';
     import { replay, validateDefinition } from './src/engine.ts';
