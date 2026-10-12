@@ -12,6 +12,9 @@
 .scene-shop-preview-frame .shop-composition { width: 100%; height: 100%; }
 .scene-shop-preview p { margin: 12px 0 4px; font-size: 18px; text-align: center; }
 .scene-shop-preview small { display: block; color: #795e40; font-size: 16px; line-height: 1.4; text-align: center; }
+.scene-shop-room-controls { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.scene-shop-room-controls .quiet { min-height: 44px; padding: 8px 12px; margin: 0; font-size: 16px; border: 1px solid #ddc296; border-radius: 14px; }
+.scene-shop-room-controls [aria-pressed="true"] { background: #117e84; border-color: #117e84; color: #fff6dc; }
 .scene-shop-catalog { min-width: 0; display: grid; gap: 20px; }
 .scene-shop-section h3 { margin: 0 0 8px; font: bold 22px/1.2 Georgia, serif; }
 .scene-shop-default { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; color: #755b3d; font-size: 16px; }

@@ -1,5 +1,5 @@
 {
-  "bytes": 78681115,
+  "bytes": 79842393,
   "files": [
     {
       "path": "dist/assets/hall-room-main-before.webp",
@@ -94,6 +94,10 @@
       "bytes": 533934
     },
     {
+      "path": "dist/assets/world-navigation-DJawXzhT.js",
+      "bytes": 529386
+    },
+    {
       "path": "dist/assets/warehouse-room-map-walls.webp",
       "bytes": 529244
     },
@@ -104,10 +108,6 @@
     {
       "path": "dist/assets/coastal-bakery-map-foundation.webp",
       "bytes": 526810
-    },
-    {
-      "path": "dist/assets/world-navigation-CndeSxbM.js",
-      "bytes": 523060
     },
     {
       "path": "dist/assets/warehouse-room-site-foundation.webp",
@@ -178,12 +178,12 @@
       "bytes": 470322
     },
     {
-      "path": "dist/assets/warehouse-room-exterior-tool-cupboard-v8.webp",
-      "bytes": 461764
+      "path": "dist/assets/coastal-restaurant-map-ready.webp",
+      "bytes": 462216
     },
     {
-      "path": "dist/assets/coastal-restaurant-map-ready.webp",
-      "bytes": 459780
+      "path": "dist/assets/warehouse-room-exterior-tool-cupboard-v8.webp",
+      "bytes": 461764
     },
     {
       "path": "dist/assets/terrace-level.webp",
@@ -206,6 +206,10 @@
       "bytes": 449196
     },
     {
+      "path": "dist/assets/coastal-restaurant-map-windows.webp",
+      "bytes": 448208
+    },
+    {
       "path": "dist/assets/fruit-room-market-before-v2.webp",
       "bytes": 444168
     },
@@ -218,16 +222,12 @@
       "bytes": 441780
     },
     {
+      "path": "dist/assets/coastal-restaurant-map-walls.webp",
+      "bytes": 441436
+    },
+    {
       "path": "dist/assets/fruit-room-pavilion-before.webp",
       "bytes": 440366
-    },
-    {
-      "path": "dist/assets/coastal-restaurant-map-walls.webp",
-      "bytes": 437206
-    },
-    {
-      "path": "dist/assets/coastal-restaurant-map-windows.webp",
-      "bytes": 436568
     },
     {
       "path": "dist/assets/bakery-shop-trays.webp",
@@ -286,6 +286,10 @@
       "bytes": 408240
     },
     {
+      "path": "dist/assets/restaurant-yard-ready-v3.webp",
+      "bytes": 405616
+    },
+    {
       "path": "dist/assets/bakery-shop-trays-clean.webp",
       "bytes": 404528
     },
@@ -330,10 +334,6 @@
       "bytes": 391508
     },
     {
-      "path": "dist/assets/restaurant-yard-ready-v3.webp",
-      "bytes": 390688
-    },
-    {
       "path": "dist/assets/fruit-room-pavilion-cleared-2.webp",
       "bytes": 390468
     },
@@ -354,8 +354,8 @@
       "bytes": 387052
     },
     {
-      "path": "dist/assets/restaurant-yard-walls.webp",
-      "bytes": 385052
+      "path": "dist/assets/restaurant-yard-doors-rework-v4.webp",
+      "bytes": 386818
     },
     {
       "path": "dist/assets/bakery-yard-ready.webp",
@@ -390,12 +390,20 @@
       "bytes": 377186
     },
     {
+      "path": "dist/assets/restaurant-yard-walls.webp",
+      "bytes": 376670
+    },
+    {
       "path": "dist/assets/hall-room-main-clean.webp",
       "bytes": 376360
     },
     {
       "path": "dist/assets/fruit-room-market-bare.webp",
       "bytes": 373264
+    },
+    {
+      "path": "dist/assets/restaurant-yard-foundation-rework-v4.webp",
+      "bytes": 372696
     },
     {
       "path": "dist/assets/terrace-furniture-full.webp",
@@ -642,10 +650,6 @@
       "bytes": 252742
     },
     {
-      "path": "dist/assets/restaurant-hall-master-v3.webp",
-      "bytes": 249620
-    },
-    {
       "path": "dist/assets/hall-polish-prep-lighting.webp",
       "bytes": 246026
     },
@@ -656,6 +660,14 @@
     {
       "path": "dist/assets/stage-shop-expansion-empty.webp",
       "bytes": 244258
+    },
+    {
+      "path": "dist/assets/restaurant-hall-furniture.webp",
+      "bytes": 243488
+    },
+    {
+      "path": "dist/assets/restaurant-hall-master-v3.webp",
+      "bytes": 243488
     },
     {
       "path": "dist/assets/warehouse-room-storage-packing-bench-bare.webp",
@@ -702,10 +714,6 @@
       "bytes": 229559
     },
     {
-      "path": "dist/assets/restaurant-hall-furniture.webp",
-      "bytes": 227442
-    },
-    {
       "path": "dist/assets/restaurant-hall-seating.webp",
       "bytes": 226958
     },
@@ -731,7 +739,7 @@
     },
     {
       "path": "dist/assets/restaurant-kitchen-master-v3.webp",
-      "bytes": 213894
+      "bytes": 212256
     },
     {
       "path": "dist/assets/restaurant-hall-empty.webp",
@@ -740,10 +748,6 @@
     {
       "path": "dist/assets/restaurant-kitchen-empty.webp",
       "bytes": 203936
-    },
-    {
-      "path": "dist/assets/restaurant-kitchen-prep.webp",
-      "bytes": 202198
     },
     {
       "path": "dist/assets/restaurant-hall-tables.webp",
@@ -758,8 +762,20 @@
       "bytes": 199668
     },
     {
+      "path": "dist/assets/restaurant-kitchen-prep.webp",
+      "bytes": 194236
+    },
+    {
+      "path": "dist/assets/restaurant-hall-stair-rework-v4.webp",
+      "bytes": 186264
+    },
+    {
       "path": "dist/assets/campaign-shop-empty.webp",
       "bytes": 182596
+    },
+    {
+      "path": "dist/assets/restaurant-kitchen-balcony-rework-v4.webp",
+      "bytes": 180410
     },
     {
       "path": "dist/assets/hall-v2-empty.webp",
@@ -778,8 +794,8 @@
       "bytes": 151674
     },
     {
-      "path": "dist/assets/game-DHyY2jR6.js",
-      "bytes": 118426
+      "path": "dist/assets/game-6AzIJpJM.js",
+      "bytes": 119114
     },
     {
       "path": "dist/assets/campaign-shelving.webp",
@@ -822,8 +838,8 @@
       "bytes": 71198
     },
     {
-      "path": "dist/assets/game-DC2pxQzJ.css",
-      "bytes": 67210
+      "path": "dist/assets/game-CHditdau.css",
+      "bytes": 67530
     },
     {
       "path": "dist/assets/site-vines.webp",
@@ -926,7 +942,7 @@
       "bytes": 43596
     },
     {
-      "path": "dist/assets/browserAll-HQ5J6_tp.js",
+      "path": "dist/assets/browserAll-Bnbjcjjk.js",
       "bytes": 43523
     },
     {
@@ -1354,7 +1370,7 @@
       "bytes": 16484
     },
     {
-      "path": "dist/assets/init-CMJtPiex.js",
+      "path": "dist/assets/init-ey1EyjH1.js",
       "bytes": 14670
     },
     {
@@ -1378,7 +1394,7 @@
       "bytes": 11358
     },
     {
-      "path": "dist/assets/campaign-Cib-FFby.js",
+      "path": "dist/assets/campaign-D9qJrOfa.js",
       "bytes": 6906
     },
     {
@@ -1416,6 +1432,14 @@
     {
       "path": "dist/campaign.html",
       "bytes": 1502
+    },
+    {
+      "path": "dist/assets/coastal-restaurant-map-door-side.webp",
+      "bytes": 1390
+    },
+    {
+      "path": "dist/assets/coastal-restaurant-map-door-front.webp",
+      "bytes": 1200
     },
     {
       "path": "dist/assets/warehouse-shadow-storage-rack-v8.svg",
@@ -1706,7 +1730,7 @@
       "bytes": 80
     },
     {
-      "path": "dist/assets/webworkerAll-C2EjwQWu.js",
+      "path": "dist/assets/webworkerAll-B2TFKTm0.js",
       "bytes": 66
     }
   ]

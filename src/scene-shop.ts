@@ -1,6 +1,7 @@
 import type { Progress } from "./storage";
 import { icon } from "./icons";
 import { compactAmount } from "./economy-ui";
+import type { SceneMaterial } from './scene-material';
 
 export const SCENE_SHOP_SLOTS = ["counterTop", "floor", "lighting"] as const;
 export type SceneShopSlot = (typeof SCENE_SHOP_SLOTS)[number];
@@ -16,7 +17,8 @@ export interface SceneShopItem {
   cost: number;
   requires: string;
   swatch: string;
-  /** Relative to the restored sheet. Geometry and wood grain are unchanged. */
+  /** Registered surface finish; geometry and wood grain are unchanged. */
+  colorize?: SceneMaterial;
   hue?: number;
   brightness?: number;
   saturation?: number;
@@ -24,12 +26,12 @@ export interface SceneShopItem {
   glowStrength?: number;
 }
 export const SCENE_SHOP_ITEMS: readonly SceneShopItem[] = [
-  { id: "counter-smoked-oak", slot: "counterTop", name: "Морёный дуб", description: "Спокойная серая отделка кассовой столешницы.", cost: 600, requires: "shop-s1-r09", swatch: "#776b58", hue: 6, brightness: .82, saturation: .45 },
-  { id: "counter-cherry", slot: "counterTop", name: "Вишнёвое дерево", description: "Насыщенный красноватый оттенок столешницы.", cost: 900, requires: "shop-s1-r09", swatch: "#914c35", hue: -12, brightness: 1.05, saturation: 1.22 },
-  { id: "floor-weathered", slot: "floor", name: "Дымчатый дуб", description: "Приглушённый настил в обоих углах лавки.", cost: 900, requires: "shop-s1-r01", swatch: "#a19583", hue: 5, brightness: .84, saturation: .42 },
-  { id: "floor-honey", slot: "floor", name: "Медовый настил", description: "Солнечная золотистая отделка восстановленного пола.", cost: 1200, requires: "shop-s1-r01", swatch: "#bd9254", hue: 2, brightness: 1.1, saturation: 1.13 },
-  { id: "lighting-amber", slot: "lighting", name: "Янтарный вечер", description: "Мягкий янтарный свет уже установленных светильников.", cost: 300, requires: "shop-s1-r14", swatch: "#ffd27a", glowColor: 0xffd27a, glowStrength: .23 },
-  { id: "lighting-sea", slot: "lighting", name: "Морской свет", description: "Прохладное бирюзовое свечение светильников.", cost: 600, requires: "shop-s1-r14", swatch: "#9cdeda", glowColor: 0x9cdeda, glowStrength: .17 },
+  { id: "counter-smoked-oak", slot: "counterTop", name: "Морёный дуб", description: "Глубокая тёмная древесина на прилавке и столе упаковки.", cost: 600, requires: "shop-s1-r09", swatch: "#526069", colorize: { shadow: 0x121e28, highlight: 0x9dacb2, amount: .98 } },
+  { id: "counter-cherry", slot: "counterTop", name: "Вишнёвое дерево", description: "Красная древесина с тёплыми прожилками на обеих столешницах.", cost: 900, requires: "shop-s1-r09", swatch: "#914c35", colorize: { shadow: 0x340f19, highlight: 0xf4a87c, amount: .96 } },
+  { id: "floor-weathered", slot: "floor", name: "Дымчатый дуб", description: "Прохладный серо-песочный дуб во всей лавке.", cost: 900, requires: "shop-s1-r01", swatch: "#a19583", colorize: { shadow: 0x303b46, highlight: 0xe8e1c8, amount: .96 } },
+  { id: "floor-honey", slot: "floor", name: "Медовый настил", description: "Светлый медовый пол с сохранённым рисунком досок и солнечными бликами.", cost: 1200, requires: "shop-s1-r01", swatch: "#d9b974", colorize: { shadow: 0x583313, highlight: 0xffefad, amount: .94 } },
+  { id: "lighting-amber", slot: "lighting", name: "Янтарный вечер", description: "Янтарные светильники и тёплое рассеянное свечение.", cost: 300, requires: "shop-s1-r14", swatch: "#ffb64b", glowColor: 0xffb64b, glowStrength: .48 },
+  { id: "lighting-sea", slot: "lighting", name: "Морской свет", description: "Бирюзовые светильники с мягким прохладным свечением.", cost: 600, requires: "shop-s1-r14", swatch: "#65dde3", glowColor: 0x65dde3, glowStrength: .42 },
 ];
 const SLOT_NAMES: Record<SceneShopSlot, string> = { counterTop: "Столешница", floor: "Пол лавки", lighting: "Освещение" };
 const BASE_NAMES: Record<SceneShopSlot, string> = { counterTop: "Ореховая столешница", floor: "Восстановленный пол", lighting: "Тёплый свет" };
@@ -98,6 +100,7 @@ export function equipSceneItem(progress: Progress, id: unknown, resetSlot?: Scen
 const escape = (text: string) => text.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]!));
 export interface SceneShopOptions {
   previewId?: string | null;
+  previewView?: 'hall' | 'hall-prep';
   renderPreview?: (decorations: SceneShopDecorations, item?: SceneShopItem) => string;
 }
 /** Modal body only. Root owns saving, mounting room canvases and button routing. */
@@ -107,7 +110,7 @@ export function sceneShopHTML(progress: Progress, assets: string, options: Scene
   const applicable = preview && sceneShopUnlocked(progress, preview) ? preview : undefined;
   const previewHTML = options.renderPreview?.(sceneShopDecorations(progress, applicable?.id), applicable) ??
     `<img src="${escape(assets)}hall-room-main-master.webp" width="1536" height="1024" alt="Вход и витрины лавки" />`;
-  return `<div class="scene-shop"><header class="scene-shop-heading"><div><h2 id="scene-shop-heading">Оформление лавки</h2><p>Новые варианты за монеты. Купленное оформление остаётся у вас.</p></div><span class="scene-shop-wallet" aria-label="${progress.coins} монет">${icon("coin")}<b>${compactAmount(progress.coins)}</b></span></header><div class="scene-shop-layout"><section class="scene-shop-preview" aria-labelledby="scene-shop-preview-title"><div class="scene-shop-preview-frame">${previewHTML}</div><p id="scene-shop-preview-title">${applicable ? `Примерка: <strong>${escape(applicable.name)}</strong>` : "Ваше оформление"}</p><small>Примерка не тратит монеты. Покупка меняет только оформление.</small></section><div class="scene-shop-catalog">${SCENE_SHOP_SLOTS.map(slot => `<section class="scene-shop-section" aria-labelledby="scene-shop-${slot}"><h3 id="scene-shop-${slot}">${SLOT_NAMES[slot]}</h3><div class="scene-shop-default"><span>${BASE_NAMES[slot]} · входит в обустройство</span>${decor.equipped[slot] ? `<button class="quiet" data-action="scene-shop-reset" data-slot="${slot}" aria-label="Вернуть: ${BASE_NAMES[slot]}">Вернуть</button>` : `<span class="scene-shop-applied">${icon("check")}Выбрано</span>`}</div>${SCENE_SHOP_ITEMS.filter(item => item.slot === slot).map(item => {
+  return `<div class="scene-shop"><header class="scene-shop-heading"><div><h2 id="scene-shop-heading">Оформление лавки</h2><p>Новые варианты за монеты. Купленное оформление остаётся у вас.</p></div><span class="scene-shop-wallet" aria-label="${progress.coins} монет">${icon("coin")}<b>${compactAmount(progress.coins)}</b></span></header><div class="scene-shop-layout"><section class="scene-shop-preview" aria-labelledby="scene-shop-preview-title"><div class="scene-shop-preview-frame">${previewHTML}</div><div class="scene-shop-room-controls" role="group" aria-label="Угол лавки для примерки">${(["hall", "hall-prep"] as const).map(view => `<button class="quiet" data-action="scene-shop-room" data-view="${view}" aria-pressed="${(options.previewView ?? "hall") === view}">${view === "hall" ? "Вход и касса" : "Упаковка"}</button>`).join("")}</div><p id="scene-shop-preview-title">${applicable ? `Примерка: <strong>${escape(applicable.name)}</strong>` : "Ваше оформление"}</p><small>Примерка не тратит монеты. Покупка меняет только оформление.</small></section><div class="scene-shop-catalog">${SCENE_SHOP_SLOTS.map(slot => `<section class="scene-shop-section" aria-labelledby="scene-shop-${slot}"><h3 id="scene-shop-${slot}">${SLOT_NAMES[slot]}</h3><div class="scene-shop-default"><span>${BASE_NAMES[slot]} · входит в обустройство</span>${decor.equipped[slot] ? `<button class="quiet" data-action="scene-shop-reset" data-slot="${slot}" aria-label="Вернуть: ${BASE_NAMES[slot]}">Вернуть</button>` : `<span class="scene-shop-applied">${icon("check")}Выбрано</span>`}</div>${SCENE_SHOP_ITEMS.filter(item => item.slot === slot).map(item => {
     const unlocked = sceneShopUnlocked(progress, item), owned = decor.owned.includes(item.id), equipped = decor.equipped[slot] === item.id;
     const label = !unlocked ? REQUIRE_NAMES[slot] : equipped ? "Выбрано" : owned ? "Применить" : `${item.cost} монет`;
     const afford = progress.coins >= item.cost;

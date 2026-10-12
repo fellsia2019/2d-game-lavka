@@ -1,10 +1,11 @@
 import { Application, Assets, ColorMatrixFilter, Container, Graphics, Sprite, Texture, isWebGLSupported } from "pixi.js";
+import { applySceneMaterial, validSceneMaterial, type SceneMaterial } from './scene-material';
 
 const WIDTH = 1536;
 const HEIGHT = 1024;
 const FADE_MS = 850;
 type Paint = "sea" | "honey" | "coral";
-interface Layer { id: string; source: string; path: string; alpha: number; kind?: string; color?: Paint; brightness?: number; hue?: number; saturation?: number; animate?: boolean; }
+interface Layer { id: string; source: string; path: string; alpha: number; kind?: string; color?: Paint; brightness?: number; hue?: number; saturation?: number; colorize?: SceneMaterial; animate?: boolean; }
 interface Plan { base: string; layers: Layer[]; }
 interface Frame { bases: {source:string;alpha:number}[]; layers:Layer[]; exposure:number; }
 interface Mount {
@@ -34,6 +35,7 @@ const active = new Set<Mount>();
 const usedSurfaces = new WeakSet<HTMLCanvasElement>();
 const observers = new WeakMap<Document, MutationObserver>();
 const textures = new Map<string, Promise<Texture>>();
+const materialTextures = new Map<string, Promise<Texture>>();
 
 function valid(record: Mount): boolean {
   return !record.cancelled && record.canvas.isConnected && record.outer.contains(record.canvas) &&
@@ -134,6 +136,7 @@ function readPlan(text: string): Plan {
       (layer.brightness !== undefined && (!Number.isFinite(layer.brightness) || layer.brightness < 0)) ||
       (layer.hue !== undefined && !Number.isFinite(layer.hue)) ||
       (layer.saturation !== undefined && (!Number.isFinite(layer.saturation) || layer.saturation < 0)) ||
+      (layer.colorize !== undefined && !validSceneMaterial(layer.colorize)) ||
       (layer.animate !== undefined && typeof layer.animate !== "boolean")) throw new Error("Invalid registered hall layer");
   }
   return p;
@@ -154,9 +157,35 @@ function texture(url: string): Promise<Texture> {
   return pending;
 }
 async function sheets(plan: Plan): Promise<Map<string, Texture>> {
-  const urls = [...new Set([plan.base, ...plan.layers.filter(layer => !lightOperator(layer)).map(layer => layer.source)])];
-  return new Map(await Promise.all(urls.map(async url => [url, await texture(url)] as const)));
+  const layers = plan.layers.filter(layer => !lightOperator(layer));
+  const urls = [...new Set([plan.base, ...layers.map(layer => layer.source)])];
+  const loaded = new Map(await Promise.all(urls.map(async url => [url, await texture(url)] as const)));
+  for (const layer of layers) {
+    if (!layer.colorize || loaded.has(sheetKey(layer))) continue;
+    const key = sheetKey(layer);
+    let pending = materialTextures.get(key);
+    if (!pending) {
+      const source = loaded.get(layer.source)!;
+      const material = layer.colorize;
+      pending = Promise.resolve().then(() => {
+        const canvas = document.createElement('canvas'); canvas.width = WIDTH; canvas.height = HEIGHT;
+        const context = canvas.getContext('2d', { willReadFrequently: true });
+        if (!context) throw new Error('Unable to prepare the scene material');
+        context.drawImage(nativeImage(source), 0, 0, WIDTH, HEIGHT);
+        const pixels = context.getImageData(0, 0, WIDTH, HEIGHT);
+        applySceneMaterial(pixels.data, material); context.putImageData(pixels, 0, 0);
+        const result = Texture.from(canvas);
+        result.source.autoGenerateMipmaps = true; result.source.scaleMode = 'linear';
+        return result;
+      });
+      materialTextures.set(key, pending);
+      void pending.catch(() => { if (materialTextures.get(key) === pending) materialTextures.delete(key); });
+    }
+    loaded.set(key, await pending);
+  }
+  return loaded;
 }
+const sheetKey = (layer: Layer) => layer.colorize ? JSON.stringify([layer.source, layer.colorize]) : layer.source;
 function lightOperator(layer: Layer): boolean {
   return layer.kind === "light" && layer.brightness !== undefined;
 }
@@ -196,7 +225,7 @@ function fades(plan: Plan): Set<string> {
   return fading;
 }
 const layerKey = (layer:Layer) => JSON.stringify([layer.id,layer.source,layer.path,layer.kind,
-  layer.color,layer.brightness,layer.hue,layer.saturation]);
+  layer.color,layer.brightness,layer.hue,layer.saturation,layer.colorize]);
 const still = (plan:Plan):Frame => ({bases:[{source:plan.base,alpha:1}],
   layers:plan.layers.filter(layer=>!lightOperator(layer)),exposure:exposure(plan.layers.filter(lightOperator),new Set(),1)});
 /** Interpolate the actual previous ghost, disappearing clutter, base and lighting. */
@@ -405,7 +434,7 @@ async function pixi(record: Mount, loaded: Map<string, Texture>): Promise<void> 
         if(node.mask)source.setChildIndex(node.mask,index++);
       };
       for(const base of frame.bases)place(`base:${base.source}`,base.source,base.alpha);
-      for(const layer of frame.layers)place(`layer:${layerKey(layer)}`,layer.source,layer.alpha,layer);
+      for(const layer of frame.layers)place(`layer:${layerKey(layer)}`,sheetKey(layer),layer.alpha,layer);
       for(const [key,node] of nodes)if(!keep.has(key)) {
         if(node.filter) {const group=node.filter.groups[0];group?.destroy();node.filter.destroy();record.filters=record.filters.filter(filter=>filter!==node.filter);}
         node.image.mask=null;node.image.destroy({texture:false,textureSource:false});node.mask?.destroy();nodes.delete(key);
@@ -484,7 +513,7 @@ async function native(record: Mount, reason: unknown): Promise<void> {
         let path=paths.get(layer.path);
         if(!path){path=new Path2D(layer.path);paths.set(layer.path,path);}
         ctx.save();ctx.clip(path);ctx.globalAlpha=layer.alpha;ctx.filter=nativeFilter(layer);
-        ctx.drawImage(nativeImage(sheets.get(layer.source)!),0,0,WIDTH,HEIGHT);ctx.restore();
+        ctx.drawImage(nativeImage(sheets.get(sheetKey(layer))!),0,0,WIDTH,HEIGHT);ctx.restore();
       }
       if(frame.exposure!==1) {
         copyContext.clearRect(0,0,WIDTH,HEIGHT);copyContext.drawImage(record.canvas,0,0);

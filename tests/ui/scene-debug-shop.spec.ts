@@ -216,18 +216,35 @@ test("Direct scene debug previews every shop improvement through the ordinary be
   for (const [index,task] of projectTasks('shop-1').entries()) {
     await page.locator('.world-debug-control').click();
     await page.locator('[data-debug-field="works"]').selectOption(String(index+1));
-    // Inspect the event in the same turn, before a reduced-motion timer ends.
-    const preparing=await page.locator('[data-action="debug-scene-apply"]').evaluate((button,key)=>{
-      (button as HTMLButtonElement).click();
-      return {phase:document.querySelector<HTMLElement>('.world-scene [data-purchase-phase]')?.dataset.purchasePhase,
+    // Payment stays unchanged immediately. A first camera change deliberately
+    // decodes the destination before mounting its preparing notice.
+    const observed=await page.locator('[data-action="debug-scene-apply"]').evaluate(async(button,{key,name})=>{
+      const sample=()=>({phase:document.querySelector<HTMLElement>('.world-scene [data-purchase-phase]')?.dataset.purchasePhase,
         name:document.querySelector('.scene-reveal-notice')?.textContent,
         disabled:(document.querySelector('.world-main-action') as HTMLButtonElement)?.disabled,
-        works:JSON.parse(localStorage.getItem(key)!).campaign.completedTasks};
-    },STORAGE_KEY);
-    expect(preparing.phase,task.name).toBe('preparing');
-    expect(preparing.name).toContain(task.name);
-    expect(preparing.disabled).toBe(true);
-    expect(preparing.works).toEqual(projectTasks('shop-1').slice(0,index).map(work=>work.id));
+        works:JSON.parse(localStorage.getItem(key)!).campaign.completedTasks});
+      // Observe inside the page: the reduced-motion notice lasts only150ms,
+      // shorter than a busy WebGL browser's round trip to the test runner.
+      return new Promise<{immediate:ReturnType<typeof sample>;preparing:ReturnType<typeof sample>}>((resolve,reject)=>{
+        let immediate:ReturnType<typeof sample>;
+        const observer=new MutationObserver(check);
+        const timer=setTimeout(()=>{observer.disconnect();reject(new Error(`No decoded preparing frame for ${name}`));},15000);
+        function check(){
+          const preparing=sample();
+          if(preparing.phase==='preparing'&&preparing.name?.includes(name)){
+            observer.disconnect();clearTimeout(timer);resolve({immediate,preparing});
+          }
+        }
+        observer.observe(document.body,{childList:true,subtree:true,attributes:true});
+        (button as HTMLButtonElement).click();immediate=sample();check();
+      });
+    },{key:STORAGE_KEY,name:task.name});
+    for(const snapshot of [observed.immediate,observed.preparing]) {
+      expect(snapshot.disabled).toBe(true);
+      expect(snapshot.works).toEqual(projectTasks('shop-1').slice(0,index).map(work=>work.id));
+    }
+    expect(observed.preparing.phase,task.name).toBe('preparing');
+    expect(observed.preparing.name).toContain(task.name);
     await finishScenePurchase(page);
     const progress=await saved(page);
     expect(progress.campaign.completedTasks).toEqual(projectTasks('shop-1').slice(0,index+1).map(work=>work.id));

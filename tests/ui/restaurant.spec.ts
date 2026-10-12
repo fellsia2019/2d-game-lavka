@@ -151,49 +151,82 @@ test('Restaurant controls and complete room fit desktop, narrow phones and table
   }
 });
 
-for (const renderer of ['default', 'canvas2d'] as const) test(`Independently diagnosed kitchen support and utensil bowl stay complete (${renderer})`, async ({ page }) => {
+for (const renderer of ['default', 'canvas2d'] as const) test(`Independently reviewed furniture edges, supports and utensils stay complete (${renderer})`, async ({ page }, info) => {
+  test.setTimeout(300_000);
   if (renderer === 'canvas2d') await page.addInitScript(() => {
     const original = HTMLCanvasElement.prototype.getContext;
     HTMLCanvasElement.prototype.getContext = function (this: HTMLCanvasElement, kind: string, ...args: unknown[]) {
       return /^(webgl2?|experimental-webgl)$/.test(kind) ? null : Reflect.apply(original, this, [kind, ...args]);
     } as typeof original;
   });
-  // These solid interior ROIs were identified by the independent Astra reviewer
-  // in the painted frame, where a missing fourth leg and pan bowl were visible.
-  for (const state of [
-    { works: 22, boxes: [[1085, 545, 6, 35]] },
-    { works: 24, boxes: [[1085, 545, 6, 35], [842, 324, 8, 15]] },
-    { works: 26, boxes: [[1085, 545, 6, 35], [842, 324, 8, 15]] },
-  ]) {
-    await open(page, state.works); await view(page, 'restaurant-kitchen');
-    for (const values of state.boxes) {
-      const box = values as [number, number, number, number];
-      const actual = await sceneSourcePixels(page, '.world-scene .hall-world-stage', box);
-      const expected = await page.evaluate(async box => {
-        const image = new Image(); image.src = '/assets/restaurant-kitchen-master-v3.webp'; await image.decode();
-        const bounds = document.querySelector('.world-scene .hall-world-stage')!.getBoundingClientRect();
-        const small = document.createElement('canvas'); small.width = Math.round(bounds.width * devicePixelRatio); small.height = Math.round(bounds.height * devicePixelRatio);
-        const scaled = small.getContext('2d')!; scaled.imageSmoothingQuality = 'high'; scaled.drawImage(image, 0, 0, small.width, small.height);
-        const copy = document.createElement('canvas'); copy.width = 1536; copy.height = 1024;
-        const context = copy.getContext('2d')!; context.drawImage(small, 0, 0, 1536, 1024);
-        return [...context.getImageData(...box).data];
-      }, box);
-      let difference = 0;
-      for (let index = 0; index < actual.length; index += 4) for (let channel = 0; channel < 3; channel++) difference += Math.abs(actual[index + channel] - expected[index + channel]);
-      expect(difference / (actual.length / 4 * 3), `${state.works} support/utensil at ${box}`).toBeLessThan(18);
+  // Independent Astra review of actual before/after frames at100–200% identified
+  // these surface/support pixels. Coordinates do not come from the clip paths.
+  const cases: {works:number;final?:number;room:string;source:string;boxes:[number,number,number,number][]}[] = [
+    {works:15,room:'restaurant-kitchen',source:'restaurant-kitchen-prep',boxes:[[160,458,12,9],[248,708,12,13],[328,612,8,12]]},
+    // Later foreground furniture hides this shelf/support joint. Inspect it
+    // immediately, before the completed room can conceal the cropped board.
+    {works:15,final:16,room:'restaurant-kitchen',source:'restaurant-kitchen-prep',boxes:[[210,612,10,14]]},
+    {works:19,room:'restaurant-hall',source:'restaurant-hall-master-v3',boxes:[[1380,250,20,8],[1464,738,10,17],[1373,690,9,11],[1492,745,10,8]]},
+    {works:20,room:'restaurant-hall',source:'restaurant-hall-furniture',boxes:[[8,535,8,5],[56,751,7,12],[12,751,6,9]]},
+    {works:22,room:'restaurant-kitchen',source:'restaurant-kitchen-prep',boxes:[[1100,426,20,10],[1168,677,10,17],[1230,677,8,15],[1041,582,10,18]]},
+    {works:23,room:'restaurant-kitchen',source:'restaurant-kitchen-master-v3',boxes:[[84,508,20,9],[32,806,9,13],[143,806,9,13],[214,731,8,11]]},
+    {works:24,room:'restaurant-kitchen',source:'restaurant-kitchen-master-v3',boxes:[[793,318,12,12],[899,333,5,7],[1042,289,6,10],[810,603,25,8]]},
+  ];
+  const difference=(a:number[],b:number[])=>a.reduce((sum,value,index)=>sum+(index%4===3?0:Math.abs(value-b[index])),0)/(a.length/4*3);
+  const sourcePixels=async(box:[number,number,number,number],source:string)=>page.evaluate(async({box,source,encoded})=>{
+    const bitmap=await createImageBitmap(new Blob([Uint8Array.from(atob(encoded),value=>value.charCodeAt(0))],{type:'image/png'}));
+    const image=new Image();image.src=`/assets/${source}.webp`;await image.decode();
+    // Match the actual screenshot raster, including Chromium's fractional-edge
+    // rounding, before normalising. Raw source pixels falsely flag thin rails.
+    const small=document.createElement('canvas');small.width=bitmap.width;small.height=bitmap.height;bitmap.close();
+    small.getContext('2d')!.drawImage(image,0,0,small.width,small.height);
+    const copy=document.createElement('canvas');copy.width=1536;copy.height=1024;
+    const context=copy.getContext('2d')!;context.drawImage(small,0,0,1536,1024);
+    return [...context.getImageData(...box).data];
+  },{box,source,encoded:(await scenePNG(page,'.world-scene .hall-world-stage')).toString('base64')});
+  for(const state of cases) {
+    await open(page,state.works-1);await view(page,state.room);
+    const before=await Promise.all(state.boxes.map(box=>sceneSourcePixels(page,'.world-scene .hall-world-stage',box)));
+    for(const works of [state.works,state.final??26]) {
+      await open(page,works);await view(page,state.room);
+      for(const [index,box] of state.boxes.entries()) {
+        const actual=await sceneSourcePixels(page,'.world-scene .hall-world-stage',box);
+        const expected=await sourcePixels(box,state.source);
+        expect(difference(actual,expected),`${works} complete support/edge at ${box}`).toBeLessThan(18);
+        // A donor containing only background must not satisfy the completeness check.
+        if(works===state.works)expect(difference(before[index],actual),`${works} really installs foreground at ${box}`).toBeGreaterThan(8);
+      }
     }
   }
-  // The independent review also found a cropped crock painted below the rail.
-  // This backsplash area must remain unchanged when buying the utensils.
-  const backsplash: [number, number, number, number] = [1000, 365, 25, 12];
-  await open(page, 23); await view(page, 'restaurant-kitchen');
-  const before = await sceneSourcePixels(page, '.world-scene .hall-world-stage', backsplash);
-  for (const works of [24, 26]) {
-    await open(page, works); await view(page, 'restaurant-kitchen');
-    const after = await sceneSourcePixels(page, '.world-scene .hall-world-stage', backsplash);
-    let difference = 0;
-    for (let index = 0; index < before.length; index += 4) for (let channel = 0; channel < 3; channel++) difference += Math.abs(before[index + channel] - after[index + channel]);
-    expect(difference / (before.length / 4 * 3), `${works} keeps the wall below the utensil rail`).toBeLessThan(3);
+  // Rail/mat purchase must leave the nearby floor untouched, not import a donor patch.
+  const outside:[number,number,number,number]=[920,675,15,15];
+  await open(page,23);await view(page,'restaurant-kitchen');
+  const floor=await sceneSourcePixels(page,'.world-scene .hall-world-stage',outside);
+  for(const works of [24,26]){
+    await open(page,works);await view(page,'restaurant-kitchen');
+    expect(difference(floor,await sceneSourcePixels(page,'.world-scene .hall-world-stage',outside))).toBeLessThan(3);
+  }
+  // Independent close review selected these architectural pixels. Both indoor
+  // views must retain the same straight wooden rail design as the facade.
+  // On desktop inspect these thin balusters at source resolution, as in the
+  // independent art audit. The1280px UI/frame matrix remains covered above;
+  // fractional CSS reduction there can alias individual high-contrast bars.
+  if(info.project.name==='desktop')await page.setViewportSize({width:1720,height:1250});
+  const rails:{works:number;room:string;source:string;boxes:[number,number,number,number][]}[]=[
+    {works:12,room:'restaurant-hall',source:'restaurant-hall-stair-rework-v4',boxes:[[555,329,18,110],[575,366,27,65]]},
+    {works:14,room:'restaurant-kitchen',source:'restaurant-kitchen-balcony-rework-v4',boxes:[[1388,410,15,110],[1408,435,68,92]]},
+  ];
+  for(const state of rails)for(const works of [state.works,26]){
+    await open(page,works);await view(page,state.room);
+    for(const box of state.boxes)expect(difference(await sceneSourcePixels(page,'.world-scene .hall-world-stage',box),await sourcePixels(box,state.source)),`${works} matching rail at ${box}`).toBeLessThan(18);
+  }
+  // An independent review found an old slab fragment in the open background
+  // beside the new wall. Inspect8–10; at11 the next staircase's legitimate ghost
+  // covers this background, so its pixels cannot equal the wall donor alone.
+  const seam:[number,number,number,number]=[1270,354,8,32];
+  for(const works of [8,9,10]){
+    await open(page,works);await view(page,'restaurant-yard');
+    expect(difference(await sceneSourcePixels(page,'.world-scene .hall-world-stage',seam),await sourcePixels(seam,'restaurant-yard-walls')),`${works} clear background beside the wall`).toBeLessThan(18);
   }
 });
 

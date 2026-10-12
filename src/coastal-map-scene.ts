@@ -8,7 +8,8 @@ const terracePlates = ['before', 'clear', 'foundation', 'frame', 'roof', 'ready'
 export const COASTAL_MAP_ASSETS = [...plates.map(name => `coastal-map-${name}-v1.webp`),
   ...bakeryPlates.map(name => `coastal-bakery-map-${name}.webp`),
   ...terracePlates.map(name => `coastal-terrace-map-${name}.webp`),
-  ...restaurantPlates.map(name => `coastal-restaurant-map-${name}.webp`)];
+  ...restaurantPlates.map(name => `coastal-restaurant-map-${name}.webp`),
+  'coastal-restaurant-map-door-front.webp', 'coastal-restaurant-map-door-side.webp'];
 export const COASTAL_BAKERY_SITE = {
   domain: 'M993 322 L1010 303 L1015 290 L1064 253 L1277 263 L1277 234 L1303 228 L1338 234 L1338 275 L1411 297 L1422 329 L1425 454 L1410 486 L1330 496 L1242 479 L1160 474 L1071 457 L994 462 L980 445 Z',
   beforeDomain: 'M1000 298 L1177 292 L1210 265 L1234 283 L1248 284 L1248 261 L1311 261 L1321 296 L1431 298 L1424 452 L1395 470 L1359 477 L1050 446 L994 423 Z',
@@ -152,22 +153,22 @@ export function coastalMapArtHTML(completed: readonly string[], assets: string):
   else {
     if(restaurantStage>=1)restaurantLayers.push(restaurantImage('clear','M518 139 H668 V196 H518 Z',1));
     if(restaurantStage>=2)restaurantLayers.push(restaurantImage('clear','M630 110 H822 V185 H630 Z',2));
-    if(restaurantStage>=3)restaurantLayers.push(restaurantImage('clear','M810 109 H925 V211 H810 Z',3));
+    if(restaurantStage>=3)restaurantLayers.push(restaurantImage('clear','M770 109 H925 V231 H770 Z',3));
     if(restaurantStage>=4)restaurantLayers.push(restaurantImage('clear','M482 154 H875 V217 H482 Z',4));
   }
   if(restaurantStage===6)restaurantLayers.push(`<path d="M507 181 L570 146 L885 157 L848 202 Z" fill="none" stroke="#fff1be" stroke-width="4" stroke-dasharray="10 7" data-scene-task="restaurant-s1-t06"/>`);
-  if(restaurantStage>=7)restaurantLayers.push(restaurantImage('walls','M475 203 L883 222 L946 184 L946 202 L884 244 L474 225 Z',7));
-  if(restaurantStage>=8)restaurantLayers.push(restaurantImage('walls','M477 78 L578 64 L884 68 L945 71 L945 196 L885 243 L475 225 Z',8));
-  if(restaurantStage>=9)restaurantLayers.push(restaurantImage('clear','M474 60 L562 60 L474 87 Z',9),restaurantImage('ready','M464 78 L593 47 L672 24 L757 22 L890 64 L894 35 L890 29 L903 20 L919 29 L914 36 L915 68 L969 76 L974 86 L945 101 L887 98 L882 96 L479 97 Z',9));
-  if(restaurantStage>=10){
-    restaurantLayers.push(restaurantImage('ready','M529 102 H605 V199 H529 Z M646 103 H724 V201 H646 Z M762 104 H833 V224 H762 Z',10));
-    restaurantLayers.push(restaurantImage('windows','M541 112 H597 V190 H541 Z M658 115 H713 V192 H658 Z',10));
+  if(restaurantStage>=7)restaurantLayers.push(restaurantImage('walls','M486 198 L526 190 L833 208 L882 186 L889 204 L849 234 L486 218 Z',7));
+  if(restaurantStage>=8)restaurantLayers.push(restaurantImage('walls','M483 53 H925 V186 L889 204 L849 234 L486 218 L483 218 Z',8));
+  if(restaurantStage>=9)restaurantLayers.push(restaurantImage('ready','M513 68 L528 59 L686 4 L708 9 L824 43 L824 28 L820 23 L833 12 L848 25 L844 30 L844 48 L866 58 L867 72 L836 86 L524 82 Z',9));
+  if(restaurantStage>=10)restaurantLayers.push(restaurantImage('ready','M553 90 H635 V176 H553 Z M653 91 H735 V177 H653 Z',10));
+  if(restaurantStage>=10&&restaurantStage<12){
+    restaurantLayers.push(`<image href="${escape(assets)}coastal-restaurant-map-door-front.webp" x="750" y="94" width="50" height="105" data-map-plate="restaurant-door-front" data-scene-task="restaurant-s1-t10"/><image href="${escape(assets)}coastal-restaurant-map-door-side.webp" x="825" y="80" width="40" height="115" data-map-plate="restaurant-door-side" data-scene-task="restaurant-s1-t10"/>`);
   }
   if(restaurantStage>=12){
-    // Only upper story and east staircase are imported; the old ground-floor shop facade stays live.
-    restaurantLayers.push(restaurantImage('ready','M479 103 L891 100 L949 89 L950 195 L968 205 L962 251 L954 307 L929 360 L917 410 L895 414 L890 337 L861 305 L852 245 L847 235 L477 222 Z',12));
-    restaurantLayers.push(restaurantImage('windows','M541 112 H597 V190 H541 Z M658 115 H713 V192 H658 Z',12));
+    // One registered upper silhouette, with the first-floor storefront retained below its cornice.
+    restaurantLayers.push(restaurantImage('ready','M483 85 L834 85 L867 73 L867 100 L925 100 L925 232 L913 241 L919 249 L915 335 L899 359 L871 360 L854 345 L850 235 L486 218 L483 218 Z',12));
   }
+  if(restaurantStage>=12)restaurantLayers.push(restaurantImage('windows','M831 84 L861 80 L865 177 L831 185 Z',10));
   const restaurantState=restaurantStage>=12?'ready':restaurantStage>=10?'glazed':restaurantStage>=9?'roof':restaurantStage>=8?'walls':restaurantStage>=7?'foundation':restaurantStage>=5?'clear':restaurantStage?'tidied':'before';
   parts.push(`<g data-map-site="restaurant" data-map-stage="${restaurantStage}" data-map-state="${restaurantState}">${restaurantLayers.join('')}</g>`);
   return `<svg class="coastal-map-art scene-background map-image" viewBox="0 0 1536 1024" width="1536" height="1024" data-art-version="${COASTAL_MAP_VERSION}" aria-hidden="true"><defs>${defs.join('')}</defs><image href="${escape(assets)}coastal-map-cleared-v1.webp" width="1536" height="1024"/>${parts.join('')}</svg>`;

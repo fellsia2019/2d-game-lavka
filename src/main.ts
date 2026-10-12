@@ -106,6 +106,7 @@ let selectedArea: CampaignAreaId = projectById(progress.selectedProject)!.areaId
 let justBuilt: string | undefined;
 let buildReveal: SceneReveal | undefined;
 let sceneShopPreview: string | undefined;
+let sceneShopView: 'hall' | 'hall-prep' = 'hall';
 let hallResizeObserver: ResizeObserver | null = null;
 let pendingLevel: number | null = null;
 let toolLesson = false;
@@ -858,8 +859,8 @@ function settingsModal() {
   );
 }
 function sceneShopModal() {
-  showModal('scene-shop', sceneShopHTML(progress, assets, { previewId:sceneShopPreview,
-    renderPreview: decor => hallSceneHTML(progress.campaign.completedTasks,assets,progress.renovations,{view:'hall',decor}),
+  showModal('scene-shop', sceneShopHTML(progress, assets, { previewId:sceneShopPreview, previewView:sceneShopView,
+    renderPreview: decor => hallSceneHTML(progress.campaign.completedTasks,assets,progress.renovations,{view:sceneShopView,decor}),
   }),true,true);
 }
 const pauseScene=(ms:number)=>new Promise<void>(resolve=>setTimeout(resolve,ms));
@@ -1223,7 +1224,11 @@ function action(name: string, button: HTMLElement) {
       persist();render();debugModal();toast("Валюта добавлена");break;
     }
     case "scene-shop":
+      sceneShopView=shopView==='hall-prep'?'hall-prep':'hall';
       sceneShopPreview=undefined;sceneShopModal();break;
+    case "scene-shop-room":
+      if(button.dataset.view==='hall'||button.dataset.view==='hall-prep')sceneShopView=button.dataset.view;
+      sceneShopModal();break;
     case "scene-shop-preview":
       sceneShopPreview=button.dataset.item;sceneShopModal();break;
     case "scene-shop-buy": {

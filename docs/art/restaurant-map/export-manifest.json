@@ -10,29 +10,47 @@
   },
   {
     "name": "walls",
-    "source": "docs/art/restaurant-map/walls.png",
+    "source": "docs/art/restaurant-map/walls-rework-v7.png",
     "runtime": "public/assets/coastal-restaurant-map-walls.webp",
-    "bytes": 437206,
-    "sourceSha256": "1ad9a89f22ed23a1ded86000a220aa2e5c7e299e0742eaf5848d641728834a7a",
-    "runtimeSha256": "e3e8b623b5135994bc20ad6d98db5da18a63281fcd376e3130d9d45e68c2592e",
+    "bytes": 441436,
+    "sourceSha256": "404535bcc78ce9bbc5e446d002e27a14fc43481832c17b1266bb4ae12103a0d9",
+    "runtimeSha256": "ee4a479491b48680844b896bc41adcfd30eb7b13e29c5ec06bd806d429cc8966",
     "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
   },
   {
     "name": "ready",
-    "source": "docs/art/restaurant-map/final-v2.png",
+    "source": "docs/art/restaurant-map/ready-rework-v5.png",
     "runtime": "public/assets/coastal-restaurant-map-ready.webp",
-    "bytes": 459780,
-    "sourceSha256": "a42e8b2f5a2782f3184e963fb5bb3b101b7cfec8574e1de6908a6bbb44d69b6f",
-    "runtimeSha256": "641c6e9bd346084a62d2675e1caf6cc29dbbb0280a5449f8ccf9b156b8dbaed3",
+    "bytes": 462216,
+    "sourceSha256": "8591cb36d297933a8aa08a3d7a02d4d52159912afe8f97fbda8182b363709565",
+    "runtimeSha256": "fdcb8566b75f430ad977ec5fb22dd6f933a2dcb39e39d58ae3d7d43e424873f5",
     "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
   },
   {
     "name": "windows",
-    "source": "docs/art/restaurant-map/final-v5.png",
+    "source": "docs/art/restaurant-map/door-rework-v6.png",
     "runtime": "public/assets/coastal-restaurant-map-windows.webp",
-    "bytes": 436568,
-    "sourceSha256": "853ad5cfa1db2401b69ad3057296b9faf2b5ee043582390295787ca780ac0815",
-    "runtimeSha256": "476663132d4cdccd937e09a1160e9daa8b505571bbfd7246e9cd57f438415e6c",
+    "bytes": 448208,
+    "sourceSha256": "1029794ebda2e3fc9854847dcebe115d7bd9f15d378d16d88824019a7125411a",
+    "runtimeSha256": "7d1107a9091bacb108bc572896c57482a3df1f074ad7a3a4a3b633039ab91240",
     "operation": "full-frame1536x1024 WebP q90 export; registered SVG runtime clipping"
+  },
+  {
+    "name": "door-front",
+    "source": "docs/art/restaurant-map/doors-rework-v8.png",
+    "runtime": "public/assets/coastal-restaurant-map-door-front.webp",
+    "bytes": 1200,
+    "sourceSha256": "9dd76de80073871099fe4787b56cc87e64e5a77d6e9a8eac7b83e06389e0d28c",
+    "runtimeSha256": "dbc4474355d4cb2819e906837125d52f61a3e47d63d0fd93887969279e0f9d9d",
+    "operation": "registered crop (750, 94, 800, 199) and size (50, 105); WebP q90; no painting"
+  },
+  {
+    "name": "door-side",
+    "source": "docs/art/restaurant-map/door-side-rework-v9.png",
+    "runtime": "public/assets/coastal-restaurant-map-door-side.webp",
+    "bytes": 1390,
+    "sourceSha256": "d96ab2cb862ca2cc1cc72a5b0cda9e9c3e15b889a50b56cf82ff2c7dfd2a39ca",
+    "runtimeSha256": "7a5d0bd49db452b007a35f68cf822bb7e7377c42b760f03cefbbd6fc8717e9f4",
+    "operation": "registered crop None and size (40, 115); WebP q90; no painting"
   }
 ]

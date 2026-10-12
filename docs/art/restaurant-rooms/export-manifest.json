@@ -1,5 +1,41 @@
 [
   {
+    "name": "yard-doors-rework-v4",
+    "source": "docs/art/restaurant-rooms/yard-doors-rework-v4.png",
+    "runtime": "public/assets/restaurant-yard-doors-rework-v4.webp",
+    "bytes": 386818,
+    "sourceSha256": "fa884d2325f383393f6d7b78808c7578e4fd7b08d272c3181814414657d1c68b",
+    "runtimeSha256": "ff29caf8193d4f2faf31f44d08a9142503b56faa9a764c2217432f1e06d9faf2",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "hall-stair-rework-v4",
+    "source": "docs/art/restaurant-rooms/hall-stair-rework-v4.png",
+    "runtime": "public/assets/restaurant-hall-stair-rework-v4.webp",
+    "bytes": 186264,
+    "sourceSha256": "57e1580fe16fa9bce9d29f370cd38d2cfe060ea9c04c0e175a3aea2ec2edd135",
+    "runtimeSha256": "392d7f713b27a51969949931f121c5a0eb42b9219307633d13f2f263822780c7",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "kitchen-balcony-rework-v4",
+    "source": "docs/art/restaurant-rooms/kitchen-balcony-rework-v4.png",
+    "runtime": "public/assets/restaurant-kitchen-balcony-rework-v4.webp",
+    "bytes": 180410,
+    "sourceSha256": "cafa8ed3d3ef50992586d61f5f420a2778c0a8f3c23c8c7f8fbc7a8272c41d43",
+    "runtimeSha256": "46178e6a3a384a2b1c605f1a9f96812fae0b9b7ac08f768714e82a436580a7f2",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
+    "name": "yard-foundation-rework-v4",
+    "source": "docs/art/restaurant-rooms/yard-foundation-rework-v4.png",
+    "runtime": "public/assets/restaurant-yard-foundation-rework-v4.webp",
+    "bytes": 372696,
+    "sourceSha256": "2f310a264ccf02591488ee6fb250d72d9a2b37e73b6c1cb9f041d7abec6d96d0",
+    "runtimeSha256": "92a86577dfaf77601c79790e7d0eb220c7744135ade30b046c974ce540629249",
+    "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
+  },
+  {
     "name": "yard-before",
     "source": "docs/art/restaurant-rooms/yard-debris-registered.png",
     "runtime": "public/assets/restaurant-yard-before.webp",
@@ -19,20 +55,20 @@
   },
   {
     "name": "yard-walls",
-    "source": "docs/art/restaurant-rooms/yard-walls.png",
+    "source": "docs/art/restaurant-rooms/yard-walls-rework-v4.png",
     "runtime": "public/assets/restaurant-yard-walls.webp",
-    "bytes": 385052,
-    "sourceSha256": "ba07335f3bef7481a5801f9222250268005cb12e06dff62849ee7684d1e19a46",
-    "runtimeSha256": "e96a71f05ae97cb78f7a34d6d859924fc83e9bee118126ede99f2dce8f946592",
+    "bytes": 376670,
+    "sourceSha256": "c77b8b051ef4543e1518cfb4fadfc1fda1c885e9daf9da1b1b53e8dae1c4b4ca",
+    "runtimeSha256": "36eb2ae5f1f6e72e81d5610139039a8c2f8a1452f9a484d62eb1d4da931bc276",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   },
   {
     "name": "yard-ready-v3",
-    "source": "docs/art/restaurant-rooms/yard-ready-v3.png",
+    "source": "docs/art/restaurant-rooms/yard-rework-v5.png",
     "runtime": "public/assets/restaurant-yard-ready-v3.webp",
-    "bytes": 390688,
-    "sourceSha256": "53bb75aef6afae6a37e541b608ede6b36f632cfa9683500f51d66a62ae01a74d",
-    "runtimeSha256": "c033e3d9b138d1baf0a8906eb11b4e627f126d23b5a82540f7c872f01e1e7c2c",
+    "bytes": 405616,
+    "sourceSha256": "d43420fe65f66052c37f313cfc75f76560ecb0464aed963a1f4e1806bed378ca",
+    "runtimeSha256": "ff1800f00084517bf1587fd101fede3d010b7a7e079735642876567556ea4e2f",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   },
   {
@@ -73,20 +109,20 @@
   },
   {
     "name": "hall-furniture",
-    "source": "docs/art/restaurant-rooms/hall-furniture.png",
+    "source": "docs/art/restaurant-rooms/hall-rework-v4.png",
     "runtime": "public/assets/restaurant-hall-furniture.webp",
-    "bytes": 227442,
-    "sourceSha256": "54d9c4c5d9212c097743e85d9533759f6c59c557a1419b3a193a0a6e643259c6",
-    "runtimeSha256": "58cbc2ca32a1d3838d75f85c988f1fb02794e2066933bb134583ef04161d7ce3",
+    "bytes": 243488,
+    "sourceSha256": "4fd4128babb6533177e7751ae9aae0b0415bf3d5ec5af5dd990944f77cae3f10",
+    "runtimeSha256": "2e84aa1fd2dc21fa1e835bb05d06e42b1f28a3de7e79b5ed3d035cdeda7436cc",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   },
   {
     "name": "hall-master-v3",
-    "source": "docs/art/restaurant-rooms/hall-master-v3.png",
+    "source": "docs/art/restaurant-rooms/hall-rework-v4.png",
     "runtime": "public/assets/restaurant-hall-master-v3.webp",
-    "bytes": 249620,
-    "sourceSha256": "4a24773c835797e90cbb39e3801ca29827d307022bd2f845cbe042d53e6a5348",
-    "runtimeSha256": "3b321130cd62b1f9c3d55a9b30413970706add7a27ab8e9825d0e12c6e741a62",
+    "bytes": 243488,
+    "sourceSha256": "4fd4128babb6533177e7751ae9aae0b0415bf3d5ec5af5dd990944f77cae3f10",
+    "runtimeSha256": "2e84aa1fd2dc21fa1e835bb05d06e42b1f28a3de7e79b5ed3d035cdeda7436cc",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   },
   {
@@ -109,20 +145,20 @@
   },
   {
     "name": "kitchen-prep",
-    "source": "docs/art/restaurant-rooms/kitchen-prep.png",
+    "source": "docs/art/restaurant-rooms/kitchen-prep-rework-v4.png",
     "runtime": "public/assets/restaurant-kitchen-prep.webp",
-    "bytes": 202198,
-    "sourceSha256": "00fa539ab38ed9b73d702c6747bbad0b95f14281f18152b8debe92c53f1e074f",
-    "runtimeSha256": "8cc5bdea1b814f5a0eb54be6bebb1db35eba492343b4f56fa6cf9f781ee2fd4e",
+    "bytes": 194236,
+    "sourceSha256": "7b3fb0e5f685baaadda3594ca7991c869e884c6dd42a6fee549a2f46f297e800",
+    "runtimeSha256": "9c8e2fb547f8160b910f21db9e40c167e3857195c7ae9ab8b56a517471905b42",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   },
   {
     "name": "kitchen-master-v3",
-    "source": "docs/art/restaurant-rooms/kitchen-master-v3.png",
+    "source": "docs/art/restaurant-rooms/kitchen-rework-v4.png",
     "runtime": "public/assets/restaurant-kitchen-master-v3.webp",
-    "bytes": 213894,
-    "sourceSha256": "21c449fdf139d91dad275c433417200c08faae95d61ca7936d7844a68b07c481",
-    "runtimeSha256": "980d62854fa630f9213badada7ea06a8d4b5cacd86458325b08f05908aa9d6ca",
+    "bytes": 212256,
+    "sourceSha256": "ecccaf6d25ff9d7dcea1a2248fdc0817c1a05a15e74395d02a33ddefd54d48ad",
+    "runtimeSha256": "f9fab5ad46cd23748dfca039c7ad09c58d18237fab747ad7f2736324a91676d2",
     "operation": "full1536x1024 RGB WebP q90 export; no painting or resizing"
   }
 ]
